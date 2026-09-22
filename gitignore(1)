@@ -1,0 +1,23 @@
+# Lean/Lake build products
+.lake/
+
+# Python
+__pycache__/
+.pytest_cache/
+*.py[cod]
+
+# LaTeX build products
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.synctex.gz
+*.toc
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
+*~

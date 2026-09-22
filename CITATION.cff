@@ -1,0 +1,23 @@
+cff-version: 1.2.0
+message: "If you use this formalization or reproducibility package, please cite the accompanying manuscript and this repository."
+title: "Unforced Navier-Stokes: Lean Audit and Reproducibility Package"
+type: software
+version: 0.1.0
+authors:
+  - family-names: Newton
+    given-names: Tony
+    email: tony.newton79@gmail.com
+    affiliation: Newton Astro Labs
+abstract: >-
+  Lean 4 abstract closure formalization and reproducibility package accompanying
+  the manuscript "Unforced Finite-Time Blow-Up for Navier-Stokes: Exact Nonlinear
+  Closure on the Three-Dimensional Periodic Torus". The current formalization
+  covers the abstract closure layer and does not yet constitute a machine-checked
+  proof of the full PDE theorem.
+keywords:
+  - Lean 4
+  - Mathlib
+  - Navier-Stokes
+  - partial differential equations
+  - formal verification
+  - reproducibility
