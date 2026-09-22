@@ -1,0 +1,64 @@
+SUGGESTED GITHUB REPOSITORY SETUP
+=================================
+
+Repository name:
+  unforced-navier-stokes-lean
+
+Short description:
+  Lean 4 formal-certificate and reproducibility package for the abstract unforced closure layer accompanying “Unforced Finite-Time Blow-Up for Navier–Stokes: Exact Nonlinear Closure on the Three-Dimensional Periodic Torus”.
+
+Suggested visibility:
+  Public, if you want referees and independent verifiers to replay the certificate.
+
+Suggested topics:
+  lean4
+  mathlib
+  navier-stokes
+  pde
+  formal-verification
+  theorem-proving
+  reproducibility
+  mathematical-physics
+
+Default branch:
+  main
+
+UPLOAD PATHS
+============
+
+Upload these to the repository root:
+  README.md
+  FORMAL_STATUS.md
+  REPRODUCIBILITY.md
+  PDE_INTEGRATION_GATE.md
+  CITATION.cff
+  paper.pdf
+  paper.tex
+  references.bib
+  UnforcedClosure.lean
+  lean-toolchain
+  lakefile.toml
+  verify_unforced_closure.py
+  test_unforced_closure.py
+  requirements-dev.txt
+  verification_receipt.json
+  pytest_receipt.txt
+  SHA256SUMS.txt
+  .gitignore
+
+Create this nested GitHub path and place the workflow there:
+  .github/workflows/verify.yml
+
+IMPORTANT STATUS WORDING
+========================
+
+Before a green Lean CI run:
+  “Lean source supplied; kernel compilation pending CI.”
+
+After a green Lean CI run:
+  “The abstract closure Lean file compiles and its contained declarations are kernel-checked.”
+
+Do NOT yet write:
+  “The full unforced Navier–Stokes theorem is formally verified in Lean.”
+
+That stronger wording requires completion of PDE_INTEGRATION_GATE.md.
