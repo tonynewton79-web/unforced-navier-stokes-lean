@@ -1,0 +1,60 @@
+name: Verify Lean closure
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+
+      - name: Install elan
+        shell: bash
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+
+      - name: Install pinned Lean toolchain
+        shell: bash
+        run: |
+          export PATH="$HOME/.elan/bin:$PATH"
+          elan toolchain install "$(cat lean-toolchain)"
+          lean --version
+          lake --version
+
+      - name: Resolve pinned Lean dependencies
+        run: lake update
+
+      - name: Fetch Mathlib cache
+        run: lake exe cache get
+
+      - name: Compile abstract closure source
+        run: lake env lean UnforcedClosure.lean
+
+      - name: Build Lake target
+        run: lake build
+
+      - name: Compile PDE integration layer
+        run: lake env lean PDEIntegration.lean
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: '3.13'
+
+      - name: Install Python test dependency
+        run: python -m pip install -r requirements-dev.txt
+
+      - name: Run exact-arithmetic and source-hygiene replay
+        run: python verify_unforced_closure.py
+
+      - name: Run Pytest suite
+        run: python -m pytest -q test_unforced_closure.py
