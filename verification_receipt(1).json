@@ -1,0 +1,31 @@
+{
+  "exact_arithmetic": "PASS",
+  "contraction_arithmetic": "PASS",
+  "lean_source_hygiene": "PASS",
+  "lean_kernel_compile": "PASS",
+  "lean_kernel_compile_scope": "abstract closure layer only",
+  "lean_ci_certificate": {
+    "workflow": "Verify Lean closure",
+    "run_number": 12,
+    "run_id": 35779131542,
+    "commit": "7d7f33200e4553afbb80a29ce6435b44511c2f4a",
+    "result": "SUCCESS",
+    "toolchain": "leanprover/lean4:v4.34.0-rc2",
+    "mathlib_commit": "85e3a25e006c35636f0e53b0e9296caca2685bc0",
+    "upstream_navier_stokes_commit": "f9e8bc5b38b6e212696e8a30e3e91517af887bbd"
+  },
+  "pde_integration": {
+    "status": "HOLD",
+    "upstream_dependency_resolution": "PASS",
+    "upstream_navier_stokes_library_build": "IN_PROGRESS_NOT_YET_CERTIFIED",
+    "pde_integration_compile": "PENDING",
+    "full_unforced_pde_theorem_in_lean": "NOT_YET_CERTIFIED"
+  },
+  "corrected_pde_audit_conditions": [
+    "K_full G_reg S_r(Y) subset Y_c (core-range condition for the global inverse)",
+    "periodic pressure reconstruction includes div F_* unless the force is first Leray-projected",
+    "full contraction gate is 4 M_G C_B eta < 1",
+    "fixed-point space completeness and smoothness/regularity bootstrap must be established"
+  ],
+  "scope": "The abstract unforced-closure layer is kernel-checked in Lean. The full PDE-specific unforced three-dimensional Navier-Stokes finite-time blow-up theorem remains conditional on the manuscript's explicit analytic hypotheses and is not yet end-to-end Lean certified."
+}
