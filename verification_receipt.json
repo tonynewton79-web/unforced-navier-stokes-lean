@@ -1,7 +1,0 @@
-{
-  "exact_arithmetic": "PASS",
-  "contraction_arithmetic": "PASS",
-  "lean_source_hygiene": "PASS",
-  "lean_kernel_compile": "NOT_RUN_TOOLCHAIN_UNAVAILABLE_IN_BUILD_ENVIRONMENT",
-  "scope": "abstract closure layer only; PDE-specific OpenAI repository integration not certified here"
-}
