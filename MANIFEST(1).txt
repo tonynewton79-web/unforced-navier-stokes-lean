@@ -1,0 +1,31 @@
+REPOSITORY MANIFEST
+===================
+
+Root files
+----------
+README.md
+FORMAL_STATUS.md
+REPRODUCIBILITY.md
+PDE_INTEGRATION_GATE.md
+CI_CERTIFICATE.md
+GITHUB_SETUP.txt
+CITATION.cff
+.gitignore
+MANIFEST.txt
+PDEIntegration.lean
+paper.pdf
+paper.tex
+references.bib
+UnforcedClosure.lean
+lean-toolchain
+lakefile.toml
+verify_unforced_closure.py
+test_unforced_closure.py
+requirements-dev.txt
+verification_receipt.json
+pytest_receipt.txt
+SHA256SUMS.txt
+
+Nested file
+-----------
+.github/workflows/verify.yml
