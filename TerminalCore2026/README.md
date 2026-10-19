@@ -41,3 +41,52 @@ The inequality `two_derivative_ratio_le_eight` in `TwoDerivativeWeight.lean` pas
 A typeset three-page scholarly mathematical supplement, `Sharp_Weight_Ratio_Manuscript_Update.tex`, has been successfully built in GitHub Actions run `39262528882` and published as workflow artifact `terminal-core-sharp-weight-ratio-pdf`. The 16-page original article has **not** been overwritten or silently replaced. Its exact LaTeX project is needed for a fully integrated manuscript revision.
 
 The abstract array transport theorem subsequently added to `TwoDerivativeWeight.lean` is a distinct theorem: judge it by its own CI run, not the earlier successful ratio-certificate run.
+
+
+## Cumulative analytic amendment: three inverse channels and ideal norms
+
+The new cumulative manuscript source is
+`TerminalCore2026/Terminal_Core_Cumulative_Analytic_Amendment.tex`.
+It supersedes the earlier stand-alone weight-ratio supplement for manuscript
+integration. The printed research packet consists of the original 16 pages,
+unchanged, followed by this single, newly typeset four-page cumulative
+amendment. This is not represented as a re-typeset edit of the unpublished
+original LaTeX source.
+
+Writing the ambient coefficient weight as
+`w(a,b)=R^(-a) rho^(-b) b! binom(2a+b,b)/((a+1)^2 (b+1)^2)`,
+the precise normalized coefficient multiplier for
+`J_nu d_eta^k` satisfies for `nu >= 1`:
+
+- `T_0 <= 4R/(a+1)^2`;
+- `T_1 <= 8R/[rho(a+1)]`;
+- `T_2 <= 8R/rho^2`, with 8 sharp.
+
+The zero- and one-derivative bounds provide concrete constituent
+`O(n^-2)` and `O(n^-1)` estimates in the induced analytic norm on
+the radial ideals `I_n`. The delayed two-derivative channel is only `O(1)`.
+The sums and similarity shifts are treated explicitly in the amendment.
+
+**Norm clarification:** `I_m=X^m B` must use the norm inherited from the
+absolute radial-indexed coefficient space, not the quotient norm
+`||X^m f|| = ||f||_B`. Under the quotient norm,
+`J_nu d_eta^2` is unbounded, witnessed by `X^m exp(k eta)` as `k -> infinity`.
+This does not invalidate the induced-norm estimate; it removes an
+otherwise ambiguous possible interpretation.
+
+Independent exact regression:
+`python TerminalCore2026/exact_radial_channels.py`.
+New Lean statement:
+`TerminalCore2026/FirstDerivativeChannel.lean` (CI status must be checked
+on its own latest commit). The earlier sharp all-index two-derivative
+inequality remains separately kernel-certified.
+
+### Remaining full PDE theorem obligations
+
+The three multiplier bounds do NOT yet instantiate all four physical
+current-order operators (47)–(50). In particular the actual maps
+`U_n -> V_n[U_n]`, leading-profile products, and the composite
+pressure integration/shift must be proved bounded in the same
+radial-valuation-indexed space, with explicit uniform constants.
+The full `||K_n|| <= C/(n+1)` estimate, majorant, differentiated
+normal convergence and unforced PDE identity are NOT machine-checked.
