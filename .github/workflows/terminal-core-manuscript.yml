@@ -6,6 +6,7 @@ on:
       - feature/zenodo-23474915-lean
     paths:
       - 'TerminalCore2026/Sharp_Weight_Ratio_Manuscript_Update.tex'
+      - 'TerminalCore2026/Terminal_Core_Cumulative_Analytic_Amendment.tex'
       - '.github/workflows/terminal-core-manuscript.yml'
   workflow_dispatch:
 
@@ -30,11 +31,18 @@ jobs:
             Sharp_Weight_Ratio_Manuscript_Update.tex
           pdflatex -halt-on-error -interaction=nonstopmode -file-line-error \
             Sharp_Weight_Ratio_Manuscript_Update.tex
+          pdflatex -halt-on-error -interaction=nonstopmode -file-line-error \
+            Terminal_Core_Cumulative_Analytic_Amendment.tex
+          pdflatex -halt-on-error -interaction=nonstopmode -file-line-error \
+            Terminal_Core_Cumulative_Analytic_Amendment.tex
+          test -s Terminal_Core_Cumulative_Analytic_Amendment.pdf
           test -s Sharp_Weight_Ratio_Manuscript_Update.pdf
           pdfinfo Sharp_Weight_Ratio_Manuscript_Update.pdf | head -15
       - name: Upload typeset manuscript update
         uses: actions/upload-artifact@v4
         with:
-          name: terminal-core-sharp-weight-ratio-pdf
-          path: TerminalCore2026/Sharp_Weight_Ratio_Manuscript_Update.pdf
+          name: terminal-core-cumulative-mathematical-amendments
+          path: |
+            TerminalCore2026/Sharp_Weight_Ratio_Manuscript_Update.pdf
+            TerminalCore2026/Terminal_Core_Cumulative_Analytic_Amendment.pdf
           if-no-files-found: error
