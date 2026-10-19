@@ -90,3 +90,57 @@ pressure integration/shift must be proved bounded in the same
 radial-valuation-indexed space, with explicit uniform constants.
 The full `||K_n|| <= C/(n+1)` estimate, majorant, differentiated
 normal convergence and unforced PDE identity are NOT machine-checked.
+
+
+## Fourth-round four-block and explicit majorant theorem (2026-10-19)
+
+The cumulative manuscript has been **updated**, not split into competing notes:
+`Terminal_Core_Cumulative_Analytic_Amendment.tex` now includes
+`Four_Block_and_Majorant_Insert.tex` and is rebuilt through the existing
+manuscript Actions workflow. The original 16-page deposited preprint remains
+unchanged; the new cumulative standalone amendment is seven pages.
+
+**Key correction to the earlier argument.** In the induced weight norm,
+the bare radial derivative `D_X` is unbounded: the normalized monomial
+`w_{m,0} X^m` has norm 1, but its `D_X` image has norm `m`.
+The bare axial parameter derivative is also unbounded. Thus an
+`O(n)` bound for a standalone `T_{a,n}`, or boundedness for
+`partial_eta A_X`, cannot be invoked prior to radial inversion.
+This observation does not disprove the coupled estimate. The new proof
+estimates composites using the product-derivative commutators.
+
+The exact decomposition of the swirl--swirl source has been encoded in
+`SwirlDiagonal.lean`. The pressure and other source decompositions
+are independently replayed in `four_block_and_majorant_exact.py`.
+
+**Concrete analytic norm theorem:** Assuming the explicit leading
+multipliers `v,g,H,k,m_phi,m_U,q_phi,q_U,s_1,s_2,s_3,phi_0`,
+and the multiplier derivatives displayed in the manuscript, all
+belong to one fixed induced analytic coefficient space with the stated
+Banach multiplication bound, the manuscript derives
+`||K_phi_phi|| <= C_phi_phi/(n+1)`,
+`||K_phi_U|| <= C_phi_U/(n+1)^2`,
+`||K_U_phi|| <= C_U_phi/(n+1)^2`,
+`||K_U_U|| <= C_U_U/(n+1)`,
+with all four constants displayed, and therefore
+`||K_n|| <= C_K/(n+1)`.
+
+**Independent remaining gates:** The precise source-to-norm
+verification of all imported leading multipliers and the pressure
+normalization has not been formally checked, nor has the complete
+lower-order forcing recurrence or the differentiable PDE
+reconstruction. Accordingly this is a conditional analytic-space
+estimate, not an end-to-end proof of the manuscript's Theorem 1.1.
+
+**Constructive scalar majorant:** The proof introduces
+`M = 1/[16(1+C1)]`, chooses `R` according to explicit finite
+conditions, and proves `A_n <= M R^n/(n+1)^2` from the scalar
+recurrence. Its key all-order inequality is
+`sum_(i=1)^(n-1) 1/[(i+1)^2 (n-i+1)^2] <= 4/(n+2)^2`.
+The finite polynomial inequality and budget gates have been
+submitted in `MajorantBounds.lean`; the exact finite rational
+regression is in `four_block_and_majorant_exact.py`.
+
+Do not claim the new Lean files passed CI until their current run has
+completed successfully. An older green run is not transferable to
+these new declarations.
