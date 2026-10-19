@@ -37,6 +37,8 @@ jobs:
           fi
       - name: Kernel check finite mathematical lemmas
         run: lake env lean TerminalCore2026.lean
+      - name: Kernel check radial gain and first-zero barrier
+        run: lake env lean TerminalCore2026/RadialGainAndBarrier.lean
       - name: Independent exact-equation tests
         run: |
           python -m pip install sympy
