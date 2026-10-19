@@ -144,3 +144,44 @@ regression is in `four_block_and_majorant_exact.py`.
 Do not claim the new Lean files passed CI until their current run has
 completed successfully. An older green run is not transferable to
 these new declarations.
+
+
+## Cauchy-profile bridge — next Lean test (19 October 2026)
+
+The cumulative mathematical manuscript has been updated to include
+`CauchyProfileBridge_Insert.tex`, and the PDF should now be rebuilt
+as one eight-page supplement appended to the original 16-page paper.
+
+**Quantified bridge.** For the exact doubled analytic weight in (37),
+if a function has uniform Cauchy bounds
+`|∂_eta^b F_a(eta)| <= M S^-a delta^-b b!` on the chosen compact
+core, then `R <= S/4` and `rho <= delta/4` imply
+`||F||_(R,rho) <= M`. This follows from
+`(j+1)^2 q^j <= 1` for every natural `j` and `0<=q<=1/4`;
+the binomial factor in the weight only improves the estimate.
+An exact proof appears in the current TeX manuscript.
+
+The source multipliers needed for the conditional four-block
+estimate are all holomorphic on any common complex product
+neighborhood on which the actual leading profiles are holomorphic,
+`V0(0,eta)=0`, and `L(eta)=1-2h eta^2` does not vanish.
+For `0<h<1/100` and `|eta|<=2`,
+`|L(eta)|>23/25` by a complex triangle bound.
+
+**Lean theorem scope:** `CauchyProfileBridge.lean` contains three
+all-natural-index statements: polynomial-geometric absorption,
+two-index absorption, and the normalized Cauchy jet-array majorant.
+The workflow compiles that module and checks the exact finite
+regression in `profile_cauchy_exact.py`. These kernel statements
+do not prove Cauchy's integral theorem in Lean, nor do they
+instantiate the actual imported Navier--Stokes profiles.
+
+**Open scientific gate:** Check a concrete holomorphic extension and
+explicit complex-radius bounds for the particular source leading
+profiles. Then independently verify all full lower-order recurrence
+terms and termwise differentiated physical PDE reconstruction.
+Do not claim the full Theorem 1.1 is Lean-certified at this stage.
+
+**CI status discipline:** The current workflow run must complete
+successfully before this new module is described as kernel-verified.
+Previously successful unrelated runs do not transfer.
