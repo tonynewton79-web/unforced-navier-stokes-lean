@@ -31,7 +31,7 @@ jobs:
       - name: Reject admitted or axiomatic replacements
         shell: bash
         run: |
-          if grep -nE '^[[:space:]]*(sorry|admit|axiom)([[:space:]]|$)' TerminalCore2026.lean; then
+          if grep -nE '^[[:space:]]*(sorry|admit|axiom)([[:space:]]|$)' TerminalCore2026.lean TerminalCore2026/FirstDerivativeChannel.lean TerminalCore2026/TwoDerivativeWeight.lean; then
             echo 'Prohibited admitted or axiomatic proof found'
             exit 1
           fi
@@ -47,3 +47,4 @@ jobs:
         run: |
           python -m pip install sympy
           python TerminalCore2026/check_equations.py
+          python TerminalCore2026/exact_radial_channels.py
