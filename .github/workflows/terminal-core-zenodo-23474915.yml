@@ -39,6 +39,8 @@ jobs:
         run: lake env lean TerminalCore2026.lean
       - name: Kernel check radial gain and first-zero barrier
         run: lake env lean TerminalCore2026/RadialGainAndBarrier.lean
+      - name: Kernel check all-index two-derivative coefficient bound
+        run: lake env lean TerminalCore2026/TwoDerivativeWeight.lean
       - name: Independent exact-equation tests
         run: |
           python -m pip install sympy
