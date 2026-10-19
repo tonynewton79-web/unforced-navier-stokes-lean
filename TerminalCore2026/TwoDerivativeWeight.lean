@@ -25,29 +25,34 @@ def twoDerivativeRatio (a b nu : ℝ) : ℝ :=
     ((a+1)^2 * (a+nu) * (b+3)^2)
 
 /-- All-index (not finite-grid) bound corresponding to Eq. (45)/(118). -/
-theorem two_derivative_ratio_le_sixteen
+theorem two_derivative_ratio_le_eight
     (a b nu : ℝ) (ha : 0 ≤ a) (hb : 0 ≤ b) (hnu : 1 ≤ nu) :
-    twoDerivativeRatio a b nu ≤ 16 := by
+    twoDerivativeRatio a b nu ≤ 8 := by
   have ha1 : 0 < a+1 := by linarith
   have ha2 : 0 ≤ 2*a+1 := by linarith
   have han : 0 < a+nu := by linarith
   have hb3 : 0 < b+3 := by linarith
-  have h1 : (a+2)^2 ≤ 4*(a+1)^2 := by nlinarith [sq_nonneg a]
-  have h2 : 2*a+1 ≤ 2*(a+nu) := by linarith
+  have hzero : 0 ≤ a^2 * (2*a+3) :=
+    mul_nonneg (sq_nonneg a) (by linarith)
+  have hcore : (a+2)^2*(2*a+1) ≤ 4*(a+1)^3 := by
+    nlinarith [hzero]
+  have hshift : (a+1)^3 ≤ (a+1)^2*(a+nu) := by
+    have hmono : a+1 ≤ a+nu := by linarith
+    have hprod := mul_le_mul_of_nonneg_left hmono (sq_nonneg (a+1))
+    nlinarith [hprod]
+  have h2 : (a+2)^2*(2*a+1) ≤
+      4*((a+1)^2*(a+nu)) := by
+    linarith
   have h3 : (b+1)^2 ≤ (b+3)^2 := by nlinarith
-  have h12 : (a+2)^2*(2*a+1) ≤
-      (4*(a+1)^2)*(2*(a+nu)) := by
-    exact mul_le_mul h1 h2 (le_of_lt (by linarith : 0 < 2*a+1))
-      (by positivity)
   have h123 : ((a+2)^2*(2*a+1))*(b+1)^2 ≤
-      ((4*(a+1)^2)*(2*(a+nu)))*(b+3)^2 := by
-    exact mul_le_mul h12 h3 (sq_nonneg _) (by positivity)
+      (4*((a+1)^2*(a+nu)))*(b+3)^2 := by
+    exact mul_le_mul h2 h3 (sq_nonneg _) (by positivity)
   have hden : 0 < ((a+1)^2 * (a+nu)) * (b+3)^2 := by positivity
   unfold twoDerivativeRatio
   rw [div_le_iff₀ hden]
   nlinarith [h123]
 
-#print axioms two_derivative_ratio_le_sixteen
+#print axioms two_derivative_ratio_le_eight
 
 end
 end TerminalCore2026
