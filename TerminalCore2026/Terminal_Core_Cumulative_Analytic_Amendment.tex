@@ -12,7 +12,7 @@
 \begin{document}
 \maketitle
 \begin{abstract}
-A formal terminal-core expansion of the three-dimensional incompressible Navier--Stokes equations can yield an exact local solution only if its coefficient estimates hold uniformly in the expansion order. The anisotropic analytic weight in the accompanying manuscript was designed to let one radial inverse absorb up to two derivatives in the axial similarity variable. We give explicit uniform bounds for the zero-, one-, and two-derivative inverse channels. The two-derivative constant improves from $16R/\rho^2$ to the sharp coefficient bound $8R/\rho^2$; the other two channels gain, respectively, two and one inverse powers of the radial valuation. We also distinguish the induced analytic norm on a valuation ideal from its quotient norm: the latter makes the two-derivative inverse unbounded. These observations supply quantitative components of the current-order analysis but do not establish the four-block coupled estimate or normal convergence of the Navier--Stokes hierarchy.
+A formal terminal-core expansion of the three-dimensional incompressible Navier--Stokes equations can yield an exact local solution only if its coefficient estimates hold uniformly in the expansion order. The anisotropic analytic weight in the accompanying manuscript was designed to let one radial inverse absorb up to two derivatives in the axial similarity variable. We give explicit uniform bounds for the zero-, one-, and two-derivative inverse channels. The two-derivative constant improves from $16R/\rho^2$ to the sharp coefficient bound $8R/\rho^2$; the other two channels gain, respectively, two and one inverse powers of the radial valuation. We also distinguish the induced analytic norm on a valuation ideal from its quotient norm: the latter makes the two-derivative inverse unbounded. The three scalar channels admit a four-block composite estimate under explicit analytic regularity hypotheses for the imported leading profiles. We also derive a constructive quadratic coefficient majorant; verification of those hypotheses and the full physical reconstruction remain separate steps.
 \end{abstract}
 
 \section{The common weighted space}
@@ -127,6 +127,8 @@ then the triangle inequality gives
 The estimate \eqref{eq:matrix} explains the exact remaining verification task: the coefficients $c_{ij}$ must be derived from the four actual PDE channels, not assigned as hypotheses. Only then do Neumann inversion, the quadratic coefficient majorant, normal convergence, and physical PDE reconstruction become available as subsequent steps.
 
 The pointwise weight identity and sharp two-derivative inequality have already been checked in Lean 4. The one-derivative inequality and the integrated Banach-space consequences require separate kernel certificates; the rational regression program checks the three ratio formulas and their bounds on an extensive finite grid but is not a proof for all orders. The reproducibility materials are maintained at \url{https://github.com/tonynewton79-web/unforced-navier-stokes-lean/pull/1}.
+
+\input{Four_Block_and_Majorant_Insert.tex}
 
 \begin{thebibliography}{9}
 \bibitem{newton2026}
