@@ -1,0 +1,40 @@
+name: Compile terminal-core manuscript update
+
+on:
+  push:
+    branches:
+      - feature/zenodo-23474915-lean
+    paths:
+      - 'TerminalCore2026/Sharp_Weight_Ratio_Manuscript_Update.tex'
+      - '.github/workflows/terminal-core-manuscript.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  manuscript-pdf:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install LaTeX
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends \
+            texlive-latex-base texlive-latex-recommended \
+            texlive-fonts-recommended lmodern
+      - name: Typeset and cross-reference
+        working-directory: TerminalCore2026
+        run: |
+          pdflatex -halt-on-error -interaction=nonstopmode -file-line-error \
+            Sharp_Weight_Ratio_Manuscript_Update.tex
+          pdflatex -halt-on-error -interaction=nonstopmode -file-line-error \
+            Sharp_Weight_Ratio_Manuscript_Update.tex
+          test -s Sharp_Weight_Ratio_Manuscript_Update.pdf
+          pdfinfo Sharp_Weight_Ratio_Manuscript_Update.pdf | head -15
+      - name: Upload typeset manuscript update
+        uses: actions/upload-artifact@v4
+        with:
+          name: terminal-core-sharp-weight-ratio-pdf
+          path: TerminalCore2026/Sharp_Weight_Ratio_Manuscript_Update.pdf
+          if-no-files-found: error
