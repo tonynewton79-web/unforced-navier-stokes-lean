@@ -1,0 +1,66 @@
+
+\section{Uniform reconstruction from the radial valuation}
+\label{sec:reconstruction}
+The previous estimates control each coefficient in the analytic norm of
+\eqref{eq:norm}. To pass from coefficient norms to the actual complex
+similarity variables, one must also ensure that the radial Taylor series and
+its parameter derivatives converge uniformly. The radial valuation gives a
+quantitative improvement on a smaller fixed core.
+
+\begin{theorem}[Uniform derivative tails for valuation ideals]
+\label{thm:radialtails}
+Let $R,\rho>0$ and $n\ge1$, and let
+$F(X,\eta)=\sum_{a\ge n}F_a(\eta)X^a\in I_n$ have finite induced
+coefficient norm $\|F\|_{R,\rho;E}\le A$. Suppose the coefficient functions
+are analytic on a common neighborhood of the compact parameter set $E$.
+For each integer $b\ge0$ and $\eta\in E$, if $|X|\le R/8$, then
+\begin{equation}\label{eq:tailreconstruct}
+ |\partial_\eta^b F(X,\eta)|\le
+ 2^{1-n}A\,\frac{b!}{(b+1)^2}\left(\frac2\rho\right)^b.
+\end{equation}
+The radial series defining each derivative converges absolutely
+and uniformly on this closed core.
+\end{theorem}
+\begin{proof}
+By the binomial theorem, for $a,b\ge0$,
+$\binom{2a+b}{b}\le 2^{2a+b}=4^a2^b$. Hence the defining
+coefficient norm and $|X|/R\le1/8$ imply
+\[
+ |\partial_\eta^b F_a(\eta)X^a|
+ \le A\,\frac{b!}{(a+1)^2(b+1)^2}
+ \left(\frac2\rho\right)^b
+ \left(\frac{4|X|}{R}\right)^a.
+\]
+Sum over $a\ge n$. Because $4|X|/R\le1/2$ and
+$\sum_{a\ge n}2^{-a}=2^{1-n}$, the claim follows from
+the Weierstrass test.
+\end{proof}
+
+\begin{corollary}[Sufficient terminal-series convergence condition]
+\label{cor:reconstruct}
+Suppose $F_n\in I_n$ and
+$\|F_n\|_{R,\rho;E}\le MT^n/(n+1)^2$ with $M,T>0$.
+For each fixed $b\ge0$, the series
+$\sum_{n\ge1}s^n\partial_\eta^b F_n$ converges normally
+on $|X|\le R/8$, $\eta\in E$, whenever $|s|T<2$, and its
+absolute sum is bounded by
+\begin{equation}\label{eq:reconstructmaj}
+ \frac{2Mb!}{(b+1)^2}\left(\frac2\rho\right)^b
+ \sum_{n\ge1}\frac{(|s|T/2)^n}{(n+1)^2}.
+\end{equation}
+\end{corollary}
+\begin{proof}
+Apply Theorem~\ref{thm:radialtails} to $F_n$, multiply by
+$|s|^n$, and sum. The right-hand series converges geometrically
+for $|s|T<2$.
+\end{proof}
+
+\noindent The estimate applies to fixed derivatives in $\eta$.
+Derivatives in $X$ introduce polynomial factors in radial degree,
+which remain geometrically summable on a smaller core.
+Physical $t,r,z$ derivatives need the exact similarity chain rules
+and pressure reconstruction; those operations are not certified by
+the present coefficient-space estimate. The all-index binomial
+envelope and finite geometric-tail identity are submitted for Lean
+verification in \texttt{AnalyticReconstruction.lean}. The actual
+Navier--Stokes lower-order forcing recurrence remains to be proved.
