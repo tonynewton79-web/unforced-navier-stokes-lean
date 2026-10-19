@@ -185,3 +185,36 @@ Do not claim the full Theorem 1.1 is Lean-certified at this stage.
 **CI status discipline:** The current workflow run must complete
 successfully before this new module is described as kernel-verified.
 Previously successful unrelated runs do not transfer.
+
+## Radial-valuation normal-convergence bridge (19 October 2026)
+
+This continuation adds `AnalyticReconstruction.lean`,
+`AnalyticReconstruction_Insert.tex`, and
+`analytic_reconstruction_exact.py`. The cumulative LaTeX manuscript
+now includes the reconstruction theorem as its final mathematical section.
+For `F_n in I_n`, the induced analytic norm `||F_n|| <= A_n`, and
+`|X|<=R/8`, the finite coefficient-space estimate proves for each
+`b>=0`:
+
+`|∂_eta^b F_n(X,eta)| <= 2^(1-n) A_n * b!/(b+1)^2 * (2/rho)^b`.
+
+The argument uses the all-index envelope
+`choose(2a+b,b) <= 4^a 2^b` and exact geometric tail
+`sum_{a=n}^infty 2^-a = 2^(1-n)`. If the *actual* coefficient
+sequence has `A_n <= M T^n/(n+1)^2`, this gives uniform
+convergence of each fixed axial derivative for `|s| T < 2`,
+with the terminal parameter `s=q^(2h)`.
+
+The local exact replay independently passed 25,921 integer binomial
+comparisons, 2,500 rational tail identities, and 665 weighted tail
+checks. GitHub Actions has been configured to compile the new Lean module,
+but only the eventual *completed successful* CI run can certify it.
+No statement in these new files certifies the source leading-profile
+holomorphic extension, lower-order Navier--Stokes coefficient
+recurrence, full physical derivatives, pressure reconstruction,
+or the unforced PDE theorem.
+
+The reader PDF is the original 16-page preprint unchanged with a
+nine-page cumulative amendment attached. The editable amendment is
+in the GitHub source; do not treat it as a replacement for the
+original deposited manuscript's unavailable LaTeX project.
