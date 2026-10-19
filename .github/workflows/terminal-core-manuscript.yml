@@ -9,6 +9,7 @@ on:
       - 'TerminalCore2026/Terminal_Core_Cumulative_Analytic_Amendment.tex'
       - 'TerminalCore2026/Four_Block_and_Majorant_Insert.tex'
       - 'TerminalCore2026/CauchyProfileBridge_Insert.tex'
+      - 'TerminalCore2026/AnalyticReconstruction_Insert.tex'
       - '.github/workflows/terminal-core-manuscript.yml'
   workflow_dispatch:
 
