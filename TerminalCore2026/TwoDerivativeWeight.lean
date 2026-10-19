@@ -52,6 +52,46 @@ theorem two_derivative_ratio_le_eight
   rw [div_le_iff₀ hden]
   nlinarith [h123]
 
+/-- The dimensionless ratio has nonnegative coefficients on its physical domain. -/
+theorem two_derivative_ratio_nonneg
+    (a b nu : ℝ) (ha : 0 ≤ a) (hb : 0 ≤ b) (hnu : 1 ≤ nu) :
+    0 ≤ twoDerivativeRatio a b nu := by
+  have ha1 : 0 ≤ a+1 := by linarith
+  have ha2 : 0 ≤ a+2 := by linarith
+  have ha3 : 0 ≤ 2*a+1 := by linarith
+  have han : 0 ≤ a+nu := by linarith
+  have hb1 : 0 ≤ b+1 := by linarith
+  have hb3 : 0 ≤ b+3 := by linarith
+  unfold twoDerivativeRatio
+  positivity
+
+/-- A concrete bounded-array operator induced by the normalized two-eta
+coefficient transport. For actual profile jets, the correspondence to
+the weighted analytic coefficient space is a further obligation. -/
+theorem normalized_jet_transport_bounded
+    (nu M : ℝ) (hnu : 1 ≤ nu) (hM : 0 ≤ M)
+    (jets : ℕ → ℕ → ℝ)
+    (hjets : ∀ a b, |jets a b| ≤ M) :
+    ∀ a b,
+      |twoDerivativeRatio (a : ℝ) (b : ℝ) nu *
+        jets a (b+2)| ≤ 8*M := by
+  intro a b
+  have ha : 0 ≤ (a : ℝ) := Nat.cast_nonneg _
+  have hb : 0 ≤ (b : ℝ) := Nat.cast_nonneg _
+  have hr0 : 0 ≤ twoDerivativeRatio (a : ℝ) (b : ℝ) nu :=
+    two_derivative_ratio_nonneg _ _ _ ha hb hnu
+  have hr8 : twoDerivativeRatio (a : ℝ) (b : ℝ) nu ≤ 8 :=
+    two_derivative_ratio_le_eight _ _ _ ha hb hnu
+  rw [abs_mul, abs_of_nonneg hr0]
+  calc
+    twoDerivativeRatio (a : ℝ) (b : ℝ) nu *
+        |jets a (b+2)| ≤
+      twoDerivativeRatio (a : ℝ) (b : ℝ) nu * M :=
+        mul_le_mul_of_nonneg_left (hjets _ _) hr0
+    _ ≤ 8*M := mul_le_mul_of_nonneg_right hr8 hM
+
+#print axioms normalized_jet_transport_bounded
+
 #print axioms two_derivative_ratio_le_eight
 
 end
