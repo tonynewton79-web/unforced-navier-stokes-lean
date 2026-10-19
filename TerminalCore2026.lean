@@ -54,7 +54,6 @@ theorem radial_inverse_exact (nu : ℝ) (hnu : 0 < nu)
   unfold inverseCoefficient
   have hs : radialSymbol nu m ≠ 0 := ne_of_gt (radialSymbol_pos nu hnu m)
   field_simp [hs]
-  ring
 
 /-- At `p=3`, the exact velocity power is `-4h/3`, equation (59). -/
 theorem sigma_three (h : ℝ) : sigma h 3 = -(4 * h) / 3 := by
