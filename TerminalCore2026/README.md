@@ -1621,3 +1621,72 @@ Only then is it legitimate to turn the quadratic formula into
 a verified TRUE source moment-matched amplitude. The originating
 OpenAI global Navier--Stokes construction has smooth forcing;
 the proposed unforced theorem remains unproved.
+
+
+## ERRATUM and exact four-moment source transport — 20 October 2026
+
+**Material correction to previous A.19 numeric claim.** The originating
+Appendix A FIXES its two axial moment-correction bumps to be rescaled
+copies of the derivative of its specific smooth step (A.5). An earlier
+manuscript revision replaced that by an unrelated smooth plateau bump
+and asserted `int beta^2<=5`. This bound is FALSE for the fixed
+source correction. The source-specific revised analytic proof gives
+`27/5 < int beta_source^2 <= 640/3`; exploratory quadrature yields
+approximately 18.30243186625. The exact quadratic remainder formula
+survives support separation, but the **correct conditional** estimates
+for `0<lambda<=1/20, |A|<=1.011` with true pre-pulse moments <=1
+are instead `0<=E-(P_pre-D_post)<5e-17` and
+`|d_A E|<1e-16`. Previous 2e-18 and 4e-18 claims MUST NOT
+be used for the actual Appendix-A bump.
+
+**New exact source anchor at X_R, from (A.7), (4.15):**
+`M_R=4 eta X_R`;
+`J_R=(5/2) eta X_R sqrt(2X_R) Pstar f(eta)`;
+`S_R=X_R[16eta^2-(5/12)Pstar^2 f(eta)^2]`.
+These values derive by elementary exact power-law integration,
+not surrogate initial conditions.
+
+**Four scale-normalized transport equations:** Put
+`y=log(X/X_R)`, `a=U/E`,
+`ell=partial_y log(sqrt(X)E)`,
+`m=M/(X E)`, `j=J/(X H E)`,
+`s=S/(X E^2)`, and
+`d=(2 X E^2)^(-1) integral_X^infty E^2 dx`.
+Then EXACTLY
+`m'=a-(ell+1/2)m`, `j'=a-(2ell+1/2)j`,
+`s'=a^2-1/2-2ell*s`, `d'=-1/2-2ell*d`.
+At the source's pure power-law terminal stage
+`d_T=1/(4h)` (note this differs from the pressure-mass
+tail integral, which has denominator `1+2h`).
+The exact amplitude-independent remainder is
+`P_pre-D_post=lambda[s(Xp)-exp(-26)d(Xend)]`.
+
+**Exact endpoint numerical gate:**
+`max(|m(Xp)|,|j(Xp)|)<=1`, plus
+`lambda sup_eta |s(Xp)-exp(-26)*d(Xend)| <=0.0004-5e-17`.
+These are the ONLY data still needed for the corrected earlier
+conditional amplitude certificate, but they have NOT been
+checked for any frozen source-admissible Appendix-A schedule.
+
+**Independent local checks:** Exact SymPy integrals at X_R;
+all four normalized transport differential identities; exact
+terminal-tail boundary and pulse-end e^-26; exact rational
+source-bump norm bounds and corrected 5e-17/1e-16 error thresholds.
+The optional high-precision sigma' integral is exploratory,
+not a validated quadrature value. The new Lean scalar module
+contains only finite arithmetic identities and is not an
+end-to-end proof of the integral or Navier--Stokes results.
+
+**Files:** `Source_Moment_Transport_and_Bump_Correction_Insert.tex`,
+`source_bump_exact_audit.py`,
+`source_moment_transport_exact.py`,
+`SourceMomentBumpScalar.lean`. Previous source remainder
+insert and interval demo have been corrected to use B2<=640/3.
+The downloadable reading PDF is 72 pages (16-page original
+unchanged plus corrected 56-page cumulative mathematical
+amendment); the 32-file ZIP passes integrity checks.
+
+**Open:** exact source-admissible parameter schedule; stagewise
+interval enclosures of a and ell; actual numerical M0, A19
+amplitude, nonlinear Appendix-B contraction, n=1,2 UNFORCED
+corrections and zero physical residual. Theorem 1.1 is open.
