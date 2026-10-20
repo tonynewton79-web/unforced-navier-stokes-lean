@@ -1,0 +1,82 @@
+\subsection*{An explicit Appendix-A pulse integral and two-moment conditioning}
+The exact source step (A.5) obeys $\sigma(1-t)=1-\sigma(t)$. Define
+$\phi_b(\xi)=\int_0^\xi \sigma(50v)\,dv$ and
+$R_0(\xi)=\phi_b(\xi)(1-\sigma(\xi-10))$, as in
+(A.9). The step has mean $1/2$ on $[0,1]$, so
+\[
+\phi_b(\xi)=\xi-1/100\quad(\xi\ge1/50),
+\qquad 0\le\phi_b(\xi)\le1/100\quad(0\le\xi\le1/50).
+\]
+Also $R_0=0$ for $\xi\ge11$. This permits an exact
+rational enclosure of (A.19)'s pulse coefficient:
+\begin{proposition}[Pulse integral interval]
+\[
+0.2450478<K_b:=\int_0^{13}e^{-2\xi}R_0(\xi)^2d\xi<0.245052.
+\]
+The positive root of $K_bA^2=(1-e^{-26})/4$ is in $(1.009,1.011)$;
+its numerical value is about $1.01005$.
+\end{proposition}
+\begin{proof}
+The comparison integral over $[0,\infty)$ with
+$R_0$ replaced by $\xi-1/100$ equals $4901/20000$.
+The discrepancy in $[0,1/50]$ is at most
+$1/500000$. The removed tail past $\xi=10$ is exactly
+$(1102901/20000)e^{-20}$. The finite exponential sum
+$\sum_{k=0}^{35}20^k/k!>470000000$ yields
+$e^{-20}<1/470000000$ and the announced rational interval.
+Similarly $\sum_{k=0}^{30}26^k/k!>10^{11}$ brackets the principal
+amplitude by rational substitution.
+\end{proof}
+\begin{proposition}[Residual-to-amplitude certificate]
+If the actual source remainder in (A.19) satisfies
+$|\mathcal E(A,\eta)|\le1/2500$ and
+$|\partial_A\mathcal E|\le1/100$ on
+$[1.009,1.011]\times[-1,1]$, then
+\[
+K_bA^2-(1-e^{-26})/4+\mathcal E(A,\eta)=0
+\]
+has precisely one solution $A(\eta)\in(1.009,1.011)$ for each $\eta$.
+Where differentiable, $|A'(\eta)|\le\sup|\partial_\eta\mathcal E|/0.48$.
+\end{proposition}
+\begin{proof}
+At the left and right endpoints the full residual is respectively
+less than $-0.000117$ and greater than $0.000068$.
+Furthermore its $A$ derivative is greater than
+$2(1.009)(0.2450478)-0.01>0.48$.
+Use the intermediate value theorem, monotonicity, and implicit
+differentiation.
+\end{proof}
+The two end corrections of (A.9) have normalized matrix (A.1)
+\[
+\mathcal B=\begin{pmatrix}b(s_1)&e^{2s_1}b(s_1)\\
+b(s_2)&e^{2s_2}b(s_2)\end{pmatrix},
+\quad s_1=1/2-\lambda,\quad s_2=1/2-2\lambda,
+\quad b(s)=\int e^{sy}\beta(y)\,dy,
+\]
+where $\beta\ge0$, $\int\beta=1$, $\operatorname{supp}\beta
+\subset[-3/20,3/20]$ and the bump centers differ by $2$.
+\begin{proposition}[Explicit normalized two-moment inverse]
+For $0<\lambda\le1/20$,
+\[
+|\det\mathcal B|\ge(1369/400)\lambda>3\lambda,
+\qquad \|\mathcal B^{-1}\|_\infty<2/\lambda.
+\]
+Hence a certified normalized moment discrepancy $d$ produces
+the unique linear correction $c=\mathcal B^{-1}d$ with
+$\|c\|_\infty<2\|d\|_\infty/\lambda$.
+\end{proposition}
+\begin{proof}
+The slopes belong to $[2/5,1/2]$ and
+$37/40\le b(s_i)\le40/37<13/12$.
+Moreover $e^{2s_2}>2$ and $e^{2\lambda}-1\ge2\lambda$.
+Thus $\det\mathcal B$ has absolute value at least
+$4(37/40)^2\lambda$. Each adjugate row sum is at most $13/2$.
+Divide and use $(13/2)/(1369/400)=2600/1369<2$.
+\end{proof}
+The true source remainder is only bounded qualitatively by
+$C_{\rm pre}\lambda(1+\log(1/\lambda))$, with $C_{\rm pre}$
+unfrozen. These results do not determine a source-admissible
+$\lambda$, $\mathcal E$, corrected exterior schedule, numerical
+$M_0$, nonlinear Appendix-B contraction, or unforced startup
+solutions. They furnish explicit verifiable thresholds, not a
+completed Navier--Stokes blowup proof.
