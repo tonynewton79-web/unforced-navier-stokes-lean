@@ -266,3 +266,31 @@ feedback block.
 
 The full normal convergence statement (Theorem 1.1) is **not**
 independently end-to-end Lean-certified. Keep PR #1 in draft.
+
+
+### Extended five-channel symbolic bound (20 October 2026)
+
+The delayed-pressure source manuscript has been upgraded beyond the sharp
+four-jet coefficient lemma. Let (w_{a,b}) be the exact weight (37).
+For (n>=2), (a>=n-2), (b>=0), and integer (0<=k<=4),
+
+```
+(n+1)^(4-k) * w_(a,b+k)
+    / [(a+1)^2 (a+2)^2 * w_(a+2,b)]
+ <= 54 * R^2 * rho^(-k) * (25/(k+1)^2) * 3^(4-k).
+```
+
+The proof is all-index and follows by factoring the (k=4) ratio;
+the remaining ((4-k)) reciprocal factors are each at most
+`1/(a+1)`, while (n+1<=a+3<=3(a+1)).
+The `b` ratio is bounded by `(5/(k+1))^2`.
+The independent script `fourjet_symbol_bounds_exact.py` passed
+15,345 exact-rational formula and inequality checks.
+
+Total new local exact replay in this tranche:
+9,333 four-jet ratios + 48 full source-native symbolic differential
+compositions + 15,345 mixed slots = **24,726** reproducible cases.
+The actual complete variable-coefficient forcing recurrence (53)
+still lacks a uniform all-channel Banach-norm certificate and
+remains **open**. Exact-rational replay is not Lean kernel validation;
+watch the new workflow run for its conclusion.
