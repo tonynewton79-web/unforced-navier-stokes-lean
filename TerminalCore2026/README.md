@@ -1358,3 +1358,65 @@ run is returned. Existing Mathematica/SymPy probes are not
 a numerical enclosure of the originating Appendix-A pressure
 integral and do not turn a forced published construction into
 an unforced proof.
+
+
+## Outer pressure measure and quantitative Appendix-B (B.2) (20 October 2026)
+
+This round proves a source-preserving reduction of the actual axis
+pressure trace, rather than replacing it with an invented numerical
+pressure function. In Lemma A.5 of OpenAI's *Finite Time Blowup for
+Navier--Stokes*, the pressure-neutral angular correction bumps are
+omitted and each remaining schedule stage is exactly
+`E_id,sched(y,eta)=c(y)(1+eta²)^(-theta(y))`, with `0<=theta<=1`.
+The measure `mu = (theta)_#(c(y)^2 dy)` on [0,1] is positive and finite,
+and the reference inner tail contributes an atom of mass `5Pstar²` at
+`theta=1`. Thus
+`Pi0(eta)=-1/2 int_[0,1](1+eta²)^(-2s)dmu(s)`
+is an **exact** representation of the prescribed source pressure.
+Writing `m=-Pi0(0)=mu([0,1])/2`, one gets
+`|Pi0'|<=2m`, `|Pi0''|<=8m` on [-1,1] and the
+source lower bound `Pi0<=-(5/2)Pstar²/(1+eta²)^2`.
+On the complex rectangle
+`|Re eta|<=1.1,|Im eta|<=0.1`,
+`|Pi0(eta)| <= (100/99)^2 m`, with Cauchy derivative
+bounds `|Pi0^(b)| <= (100/99)^2 m b! 20^b`.
+These statements are mathematical analytic consequences of the source
+schedule's positive-measure form; **m is not numerically frozen**.
+
+A **constructive condition (B.2) theorem**, requiring the source's
+`Pstar>=1,0<h<=1/100,0<j0<=1/20`, sets
+
+`K=200(1+m), delta_star=j0/12, epsilon=j0/(12K),
+ sigma_star=epsilon/30=j0/[72000(1+m)]`.
+
+It proves the unique real Hstar zero eta0 lies in
+`(-j0/4,-j0/5)`, `Zstar(eta0)>j0/3`,
+`|Zstar'|<K`, and
+`|Hstar(eta)|>(2/5)|eta-eta0|` on [-1,1].
+Therefore `|Zstar|<=delta_star` implies
+`chi=Hstar²/(Hstar²+sigma_star²)>=144/145>0.99`.
+The strict margins persist on a slightly larger real compact interval.
+
+The proof is in
+`TerminalCore2026/Outer_Pressure_Measure_and_Admissibility_Insert.tex`;
+its exact rational replay is
+`TerminalCore2026/outer_pressure_measure_B2_exact.py`;
+finite scalar Lean gates are in
+`TerminalCore2026/OuterPressureB2Scalar.lean`.
+CI has been updated to check both. The complex and measure arguments are
+**not** formalized in Lean. Numerical synthetic masses in the checker
+are NOT the original outer schedule.
+
+The associated reading PDF is the original 16-page deposited paper
+unchanged plus a revised 48-page mathematical amendment: **64 pages**.
+The 26-entry reproducibility packet contains the manuscript TeX,
+exact replay and source proof limitations, with a SHA256 manifest.
+
+**Still missing:** a frozen actual exterior schedule and numerical
+`m`, explicitly chosen large parameters `Lambda,C` with a
+verified Appendix-B contraction map, actual n=1/n=2 unforced
+coefficient solutions on one common domain, and an end-to-end
+physical Navier--Stokes residual proof. Appendix-B (B.2) is only
+one admissibility condition; this round does NOT certify a complete
+leading profile or establish Theorem 1.1. The source's whole-space
+blowup theorem uses smooth compactly supported forcing.
