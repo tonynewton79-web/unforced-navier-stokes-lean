@@ -25,6 +25,7 @@ on:
       - 'TerminalCore2026/Remaining_Shifted_Pressure_Insert.tex'
       - 'TerminalCore2026/Leading_Profile_Radius_and_Current_Feedback_Insert.tex'
       - 'TerminalCore2026/Fixed_Radius_Volterra_and_Two_Space_Majorant_Insert.tex'
+      - 'TerminalCore2026/Source_Level_Startup_and_Reconstruction_Insert.tex'
       - '.github/workflows/terminal-core-manuscript.yml'
   workflow_dispatch:
 
