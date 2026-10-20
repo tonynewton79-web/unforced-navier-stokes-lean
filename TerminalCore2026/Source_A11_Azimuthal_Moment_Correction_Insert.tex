@@ -1,0 +1,191 @@
+\subsection*{Quantitative azimuthal moment restoration at (A.11)}
+\label{subsec:exact-A11}
+The source's angular correction must be evaluated with the prescribed
+translated copies of $\sigma'$, rather than arbitrary moment bumps.
+We give an explicit inverse and a quantitative nonlinear correction
+on the post-pulse constant-slope interval. This analysis concerns
+only the two moment equalities in (A.11); it does not freeze the
+preceding stress-cone parameters or the later exterior matching time.
+
+Put $y=\log(X/X_1)$, where $X_1$ is the center of the first
+correction bump. The second center is $y=2$, and the unedited
+profile has $\ell=-\lambda$ between them. Let
+\[
+ \beta(t)=\frac{10}{3}\sigma'\!\left(\frac{10t}{3}+\frac12\right),
+ \quad \beta_1(y)=\beta(y),\quad\beta_2(y)=\beta(y-2),
+ \quad \operatorname{supp}\beta\subset[-3/20,3/20].
+\]
+Here $\int\beta=1$ and, by the corrected source-bump lemma,
+$\int\beta^2\le640/3$. Write
+$E_c=E_{\rm base}(1+c_1\beta_1+c_2\beta_2)$.
+The source's angular-moment equation and its pressure-neutrality
+equation are precisely
+\begin{equation}\label{eq:A11-two-exact}
+ \begin{split}
+ u(c_1+xc_2)&=\Delta_I,\\
+ 2v(c_1+zc_2)+w(c_1^2+zc_2^2)&=0,
+ \end{split}
+\end{equation}
+where the positive source-bump integrals are
+\begin{equation}\label{eq:A11-weights}
+\begin{gathered}
+ u=\int e^{(1-\lambda)t}\beta(t)\,dt,\qquad
+ v=\int e^{-(1+2\lambda)t}\beta(t)\,dt,\qquad
+ w=\int e^{-(1+2\lambda)t}\beta(t)^2\,dt,\\
+ x=e^{2(1-\lambda)},\qquad z=e^{-2(1+2\lambda)},\qquad
+ \Delta_I=\frac1{1-\lambda}-\frac{I(X_1)}{X_1H(X_1)}.
+\end{gathered}
+\end{equation}
+Equivalently, put $\alpha=\Delta_I/u$ and eliminate
+$c_1=\alpha-xc_2$. Then the \emph{actual} two-equation
+correction is reduced to the scalar quadratic
+\[
+ \mathsf A c_2^2+\mathsf Bc_2+\mathsf C=0,\quad
+ \mathsf A=w(x^2+z),\quad
+ \mathsf B=2v(z-x)-2w\alpha x,\quad
+ \mathsf C=2v\alpha+w\alpha^2.
+\]
+On the small branch supplied below $\mathsf B<0$ and the
+discriminant is positive. A cancellation-safe evaluation is
+$c_2=2\mathsf C/[\sqrt{\mathsf B^2-4\mathsf A\mathsf C}-\mathsf B]$,
+followed by $c_1=\alpha-xc_2$. This is an exact specification
+of the two source correction coefficients once $\Delta_I$ is known.
+
+The first identity follows by evaluating the change in
+$I=\int H\,dX$ and normalizing by $X_1H(X_1)$, including the
+fact that $I/(XH)$ approaches $1/(1-\lambda)$ under the
+unedited constant-slope flow. The second is exactly
+$\int(E_c^2-E_{\rm base}^2)\,dy=0$: disjoint supports
+eliminate its mixed quadratic term.
+
+\begin{proposition}[Uniform two-bump inverse and quadratic bound]
+\label{prop:A11-matrix-bound}
+For $0<\lambda\le1/20$, the Jacobian and quadratic part of
+\eqref{eq:A11-two-exact} satisfy
+\[
+ B_{11}=\begin{pmatrix}u&ux\\2v&2vz\end{pmatrix},
+ \qquad Q(c,c)=\binom{0}{w(c_1^2+zc_2^2)},
+ \qquad\|B_{11}^{-1}\|_\infty<\frac32,\quad\|Q\|<320.
+\]
+In particular, its determinant is bounded away from zero
+uniformly as $\lambda\downarrow0$.
+\end{proposition}
+\begin{proof}
+Since $|t|\le3/20$ on the support, both $u$ and $v$ belong
+to $[4/5,5/4]$ by $e^{-1/5}\ge4/5$ and
+$e^{1/5}\le5/4$. Also $6<x<8$ and $0<z<1/7$.
+The determinant is $2uv(z-x)$, with magnitude exceeding
+$2(4/5)^2(6-1/7)=1312/175$. Row sums of its inverse
+are bounded by
+\[
+ \frac{2(5/4)(1/7)+(5/4)8}{1312/175}
+ =\frac{3625}{2624}<\frac32,
+ \qquad
+ \frac{2(5/4)+5/4}{1312/175}
+ =\frac{2625}{5248}<\frac32.
+\]
+The bound on the prescribed bump implies
+$w\le(5/4)(640/3)$, and hence
+$\|Q\|\le w(1+z)<6400/21<320$.
+\end{proof}
+
+\begin{proposition}[Source moment discrepancy at the first bump]
+\label{prop:A11-discrepancy}
+Suppose the prescribed pre-pulse and interpolation stages
+satisfy their exact source bounds, namely
+$\ell\ge-\lambda-1/10$ and
+$\ell=-\lambda$ throughout the following
+$30\log(1/\lambda)$ interval. Then
+\begin{equation}\label{eq:A11-delta-small}
+ |\Delta_I|<64\lambda^{28}.
+\end{equation}
+\end{proposition}
+\begin{proof}
+For $r=I/(XH)$, the exact source transport law is
+$r'+(1+\ell)r=1$. At the reference radius,
+$r=5/8$, and during all pre-bump stages
+$1+\ell\ge17/20$, so $0\le r\le20/17$.
+Under $\ell=-\lambda$, the difference from the fixed
+point $1/(1-\lambda)$ decreases at rate $1-\lambda$.
+The first bump lies three units before the end of a plateau
+of length $30\log(1/\lambda)$. Consequently
+\[
+ |\Delta_I|<3e^{3(1-\lambda)}\lambda^{30(1-\lambda)}
+ \le3e^3\lambda^{57/2}<64\lambda^{28},
+\]
+since $e^3<21$ and $0<\lambda\le1/20$.
+\end{proof}
+
+\begin{theorem}[The two actual (A.11) corrections preserve negative slope]
+\label{thm:A11-true-corrections}
+For $0<\lambda\le1/20$ the source's two equations
+\eqref{eq:A11-two-exact} admit a unique solution in the
+small-correction ball with
+\begin{equation}\label{eq:A11-c-coeff}
+ \|c\|_\infty\le192\lambda^{28}.
+\end{equation}
+The edited azimuthal field is positive, and on both bump
+supports the actual logarithmic slope satisfies
+\begin{equation}\label{eq:A11-slope}
+ -\frac{3\lambda}{2}\le\ell_c\le-\frac\lambda2.
+\end{equation}
+Off the supports, $\ell_c=-\lambda$.
+\end{theorem}
+\begin{proof}
+Propositions~\ref{prop:A11-matrix-bound} and
+\ref{prop:A11-discrepancy} give
+$8\|B_{11}^{-1}\|^2\|Q\||\Delta_I|
+ <368640\lambda^{28}<1$. The contraction lemma A.2
+of the source therefore supplies a unique small solution
+with $\|c\|_\infty\le2(3/2)|\Delta_I|
+\le192\lambda^{28}$.
+For completeness, the actual step $\sigma$ has derivative
+bounds $\|\sigma'\|_\infty\le64$ and
+$\|\sigma''\|_\infty\le17152$.
+On $[1/4,3/4]$, write
+$g=-t^{-2}+(1-t)^{-2}$ and
+$\sigma=(1+e^{-g})^{-1}$; then
+$|g'|\le256$, $|g''|\le3072$, giving the asserted
+second-derivative bound. For $0<t\le1/4$, put $s=1/t\ge4$.
+The tail derivatives satisfy
+$|\sigma'|\le3s^3e^{-s^2+16/9}<1$ and
+$|\sigma''|\le7s^6e^{-s^2+16/9}<1$;
+symmetry gives the remaining quarter.
+Thus $\|\beta\|_\infty\le640/3$ and
+$\|\beta'\|_\infty<200000$.
+The two supports are disjoint, so
+$\|\sum_i c_i\beta_i\|_\infty
+\le(640/3)192\lambda^{28}<1/2$.
+Moreover
+\[
+ |\ell_c+\lambda|
+ =\left|\frac{\sum_i c_i\beta_i'}{1+\sum_i c_i\beta_i}\right|
+ <76800000\lambda^{28}<\frac\lambda2.
+\]
+This proves positivity and the slope interval.
+\end{proof}
+
+\paragraph{Explicit interpolation and terminal slope parameters.}
+One may fix $T_f=512$ in (A.10): since
+$0\le J_0(\eta)=\log(1+\eta^2)\le\log2<7/10$
+and $\|\sigma'\|_\infty\le64$, its slope satisfies
+\begin{equation}\label{eq:A11-Tf-fixed}
+ -\lambda-\frac7{80}\le\ell_{\rm interp}\le-\lambda.
+\end{equation}
+Likewise the terminal cutoff coefficient in (A.12) may be
+fixed as $c_o=1/256$, which yields
+$0\le f_o'/f_o<h/4$ for $0<h\le1/100$.
+For every $T_d>10$, the explicit parameter expressions
+\begin{equation}\label{eq:A11-partial-tuple}
+ T_f=512,\quad c_o=1/256,\quad
+ \lambda=\frac{10^{-6}}{T_d+513},\quad
+ h=\frac{\lambda e^{-T_d}}{10^6}
+\end{equation}
+satisfy all smallness assumptions used in this section and
+in the preceding forward/backward pulse-energy inequalities.
+This is a \emph{partial} quantitative parameter selection:
+it does not certify an admissible choice of $M_d,P_*$,
+all later stress-cone constants, or the unique stopping length
+of the terminal $Q_s$ matching interval. No full profile,
+Appendix-B contraction, unforced similarity corrections or
+physical Navier--Stokes solution is thereby established.
