@@ -1,0 +1,137 @@
+\paragraph{A fixed-radius inverse for every current-order block.}
+The preceding Neumann argument used $\|K_n\|\le C_K/(n+1)$ and therefore treated finitely many small orders separately. That step is unnecessary if one retains radial valuation. Each term of the current-order operator $K_n$ has a final radial inverse $J_1$ or $J_2$; the pressure-feedback channel additionally has an axis primitive. The similarity order $n$ remains fixed while $K_n$ is iterated, but the radial valuation of the input increases.
+
+\begin{theorem}[Factorially convergent current-order resolvent]\label{thm:factorial-resolvent}
+Fix a common analytic coefficient space $\mathcal B_{R,\rho}$, and assume the finite leading-profile multiplier norms of Theorem~\ref{thm:fourblock}. Let $K_n$ denote the exact two-by-two operator (47)--(50). A finite constant $C_*$, independent of $n$ and of the input valuation $m$, exists such that, for $m\ge n\ge1$,
+\begin{equation}\label{eq:valuation-tame-K}
+ K_n(I_m\oplus I_m)\subseteq I_{m+1}\oplus I_{m+1},
+ \qquad\|K_nF\|\le\frac{C_*}{m+1}\|F\|.
+\end{equation}
+Consequently,
+\begin{equation}\label{eq:factorial-K}
+\|K_n^\ell\|_{I_n^2\to I_{n+\ell}^2}
+\le\frac{C_*^\ell n!}{(n+\ell)!}
+\le\frac{C_*^\ell}{\ell!},
+\end{equation}
+and, for every $n\ge1$, $I-K_n$ is invertible on $I_n^2$ with
+\begin{equation}\label{eq:fixed-radius-inverse}
+ (I-K_n)^{-1}=\sum_{\ell\ge0}K_n^\ell,
+ \qquad\|(I-K_n)^{-1}\|\le e^{C_*}.
+\end{equation}
+There is no radius-dependent exceptional startup order.
+\end{theorem}
+\begin{proof}
+The source identities \eqref{eq:swirlblock}, \eqref{eq:Voperator}, \eqref{eq:phiu}, \eqref{eq:uu}, and \eqref{eq:pressureblock} express each block as a finite sum of complete radial-inverse composites. The estimates \eqref{eq:comp0}--\eqref{eq:compX} hold on arbitrary $I_m$: an undifferentiated term gains $(m+1)^{-2}$ and one $D_X$ or $\partial_\eta$ costs at most one power of $m+1$. The similarity coefficients cause no loss uniform in $m\ge n$, since
+\[
+ |b+\lambda_n|\le(|b|+2h)(m+1),\quad
+ |c+\lambda_n|\le(|c|+2h)(m+1),\quad
+ |D+\lambda_n|\le(|D|+2h)(m+1).
+\]
+The radial-velocity cross blocks include an average and satisfy
+$\|\mathcal V_{n,\nu}^{g,q}|_{I_m}\|\le C_V(g,q)/(m+1)^2$.
+The pressure block includes an axis primitive, followed by $J_1$;
+using \eqref{eq:averageprim} at input valuation $m$ gives
+$\|K_n^{U\varphi}|_{I_m}\|\le C_{U\varphi}/(m+1)^2$.
+Fixed leading-profile multipliers have nonnegative radial degrees;
+the final inverses increase valuation by at least one.
+Thus $C_*=1+\max\{C_{\varphi\varphi}+C_{U\varphi},
+ C_{UU}+C_V(m_\varphi,q_\varphi)\}$, with the constants
+defined in Section~4, is sufficient.
+
+Successively apply the gain at valuations $n,n+1,\ldots,n+\ell-1$.
+The factorial inequality in \eqref{eq:factorial-K} follows because
+$(n+1)\cdots(n+\ell)\ge\ell!$. The Neumann series converges
+absolutely in operator norm, without the assumption $\|K_n\|<1$.
+Its partial sums are inverses modulo the remainder $K_n^{N+1}$,
+which tends to zero. Summation gives the bound $e^{C_*}$.
+\end{proof}
+
+\paragraph{A two-shift convolution majorant.}
+The pressure source contains positive-order quadratic sums at
+$i+j=n$ and $i+j=n-1$; these cannot be merged without an assumption
+on the coefficient sequence.
+
+\begin{proposition}[Constructive majorant with both quadratic shifts]
+\label{prop:two-shift-majorant}
+Suppose nonnegative $B_n$ are finite at $n=1,2$ and satisfy, for $n\ge3$,
+\begin{equation}\label{eq:two-shift-recurrence}
+ B_n\le H\left(
+ B_{n-1}+B_{n-2}+
+ \sum_{\substack{i+j=n\\i,j\ge1}}B_iB_j+
+ \sum_{\substack{i+j=n-1\\i,j\ge1}}B_iB_j\right),
+\end{equation}
+with fixed $H\ge0$. Put $M=[32(1+H)]^{-1}$ and choose
+\[
+ T\ge\max\left\{2,16H,6\sqrt H,\frac{4B_1}{M},
+ 3\sqrt{\frac{B_2}{M}}\right\}.
+\]
+Then $B_n\le MT^n/(n+1)^2$ for all $n\ge1$.
+\end{proposition}
+\begin{proof}
+The startup bounds follow from the choice of $T$.
+Apply the inductive hypothesis and \eqref{eq:convolution}.
+For $n\ge3$ the right side of \eqref{eq:two-shift-recurrence},
+divided by $MT^n/(n+1)^2$, is at most
+\[
+ \frac{2H}{T}+\frac{4H}{T^2}
+ +4HM\left(1+\frac1T\right)<1.
+\]
+The $n-1$ convolution contributes the final term $4HM/T$;
+it is not identified with the $n$ convolution. Induction closes.
+\end{proof}
+
+\paragraph{Source-to-majorant reduction on a prescribed strip.}
+Put $B_n=\|\varphi_n\|_{\mathcal B}+\|U_n\|_{\mathcal B}$.
+Let $C_{\rm del,mom}$ and $C_{\rm mom}$ denote the direct delayed
+and bilinear momentum constants above, $C_E$ the shifted
+pressure-to-velocity bound, and
+$C_L=C_{\rm P,time}+C_{\rm P,lap}+C_{\rm lead,P}$,
+$C_D=C_{\rm P,del}$, $C_{\rm sw}$ and $C_{\rm quad,P}$
+the shifted-pressure source constants in
+\eqref{eq:complete-two-space-P-ledger}. After separating
+$\varphi_0\varphi_n$ into the current-order block $K_n^{U\varphi}$,
+the assembled lower-order estimates have the form
+\begin{equation}\label{eq:fixed-radius-source-budget}
+ \|S_nf_n\|\le L_1B_{n-1}+L_2B_{n-2}
+ +Q_0\!\sum_{\substack{i+j=n\\i,j\ge1}}B_iB_j
+ +Q_1\!\sum_{\substack{i+j=n-1\\i,j\ge1}}B_iB_j,
+\end{equation}
+with conservative budgets
+\[
+ L_1=2C_{\rm del,mom}+C_EC_L,\quad
+ L_2=C_EC_D,\quad
+ Q_0=2C_{\rm mom}+C_EC_{\rm sw},\quad
+ Q_1=C_EC_{\rm quad,P}.
+\]
+They are independent of $n$ on one preselected common analytic
+space. The source decomposition
+\eqref{eq:lower-swirl}--\eqref{eq:lower-pressure}
+and the previous component theorems provide this budget only
+upon verifying their exact normalization and leading-profile
+hypotheses for the proposed unforced hierarchy.
+
+Under these stated hypotheses the inverse theorem gives
+\eqref{eq:two-shift-recurrence} with
+\begin{equation}\label{eq:source-majorant-H}
+ H=e^{C_*}\max\{1,L_1,L_2,Q_0,Q_1\}.
+\end{equation}
+Proposition~\ref{prop:two-shift-majorant} then gives geometric
+velocity coefficients on $T|q^{2h}|<2$ and $|X|<R/8$.
+The shifted pressure ledger implies
+$\|\Pi_n\|_{\mathcal P}\le\Gamma T^n/(n+1)^2$
+with finite $\Gamma$ as in \eqref{eq:conditional-pressure-geometric}.
+The physical coordinate Jacobian is $L(\eta)>0$ on the compact
+subcore $q>0$, so each fixed physical derivative passes through
+the normally convergent series once the exact startup source
+equations and chain rule have been checked.
+
+\paragraph{Scope of this result.}
+Theorem~\ref{thm:factorial-resolvent} removes the circular
+finite-startup radius cutoff, provided the analytic strip and all
+leading multipliers have been fixed beforehand.
+Proposition~B.2 of \cite{openai2026} gives an analytic source
+leading profile for admissible parameters. The identification
+of that particular profile, its pressure datum, and the unforced
+hierarchy's startup normalization require independent correspondence
+checks. These results are a conditional local reconstruction criterion,
+not a proof of the proposed unforced Theorem~1.1 or a global singularity.
