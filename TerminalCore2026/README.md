@@ -1812,3 +1812,74 @@ editable source ZIP passed the integrity test. GitHub CI has
 been updated, but the full theorem is NOT kernel-certified:
 the Lean file concerns rational scalar gates only.
 The proposed unforced Theorem 1.1 remains unproved.
+
+
+## Actual A.11 parameter derivatives and explicit terminal stopping length — 20 October 2026
+
+Further to the source-native two-bump correction theorem in
+`Source_A11_Azimuthal_Moment_Correction_Insert.tex`, a new section
+`A11_Derivatives_and_Explicit_Terminal_Stop_Insert.tex` establishes
+two additional all-index results.
+
+**Parameter-derivative certificate:** For the source's actual
+post-pulse interpolation (A.10) and fixed Tf=512,
+the normalized angular moment r=I/(XH) has eta-independent
+initial value 5/8 and follows r'+(1+ell)r=1.
+On the interpolation |ell_eta|<=1/8,
+r<=20/17 and 1+ell>=17/20, whence
+|r_eta|<=50/289. Its decay over the later
+30log(1/lambda)-3 constant-slope units implies
+|Delta_eta|<4lambda^28. Differentiating the exact
+(A.11) 2x2 linear-quadratic correction system gives
+
+`max |partial_eta c_i| < 12 lambda^28`,
+`|partial_eta ell_corrected| < 5,000,000 lambda^28`,
+
+uniformly for eta in [-1,1], 0<lambda<=1/20.
+The pressure-neutrality and angular moment identities
+hold identically in eta and hence preserve their
+fixed eta derivatives where smooth.
+
+**Explicit terminal stopping:** On the source's subsequent
+unit transition to ell=-1, hold for 4log(1/h), and unit
+transition to ell=-h, for 0<h<=1/100 and h<lambda,
+the source Q_s transport obeys
+
+`Q_start >= (4/e)(1-h)log(1/h) > 5`.
+
+For terminal cutoff c_o=1/256, the actual Qp from (A.13)
+has the exact representation
+
+`Qp = (1/f_o(0)) int_0^3 exp((1-h)v) f_o'(v) dv`
+
+and source-explicit interval
+
+`c_o h/(1-c_o h) <= Qp <=
+  exp(3(1-h))c_o h/(1-c_o h) < h/10`.
+
+Thus the UNIQUE positive constant-slope stopping length is
+
+`L_stop = log(Q_start/Qp)/(1-h)`.
+
+All terms are independent of eta; this discharges the
+source's qualitative positivity-of-stopping-length step
+under its stated stage conditions. It does NOT certify
+the full global cone test or a numerical terminal profile.
+
+**Verification:** `A11_stopping_and_eta_exact.py` passes
+exact-rational exponential-series, Jacobian perturbation,
+parameter-slope and terminal Q bounds;
+`A11ParameterAndStopping.lean` submits finite scalar
+gates to CI, not complete analytic/PDE formalization.
+No kernel certification is claimed until the run passes.
+The 78-page reader retains the original 16-page deposited
+preprint and appends a revised 62-page amendment.
+The source package includes a separate scope note and
+SHA-256 manifest.
+
+**Still open:** jointly admissible actual numerical
+(M_d,P_*,lambda,h,X_R, all stress-cone parameters) source tuple,
+verified moment-matched pressure mass M0, Appendix-B
+nonlinear fixed point, unforced n=1,2 corrections and
+complete unforced Navier-Stokes PDE residual. The
+originating OpenAI whole-space construction includes forcing.
