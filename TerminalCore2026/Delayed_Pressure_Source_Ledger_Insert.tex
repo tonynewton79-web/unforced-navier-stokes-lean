@@ -47,6 +47,18 @@ The first arrow and the final radial inverse each add one radial
 degree. The radial average and pressure primitive provide the
 factor $(a+1)^{-2}$; $J_1$ at input radial index $a+1$ adds
 $(a+2)^{-2}$. This explains the \emph{principal} weight ratio below.
+Keeping the full variable coefficients in these differential operators,
+the coefficient of $\partial_\eta^4U_{n-2,a}$ in the resulting
+$U_{n,a+2}$ is exactly
+\begin{equation}\label{eq:principal-path}
+ -\frac{1}{4(a+1)^2(a+2)^2}\left(\frac{d}{L}\right)^4.
+\end{equation}
+This coefficient follows from the highest-jet parts of the three
+successive $Z$ factors, the differentiated radial average, the
+pressure primitive, and the final $\frac12J_1$; all derivatives
+falling on $d/L$ contribute to lower jet orders. An independent
+full symbolic operator composition checks \eqref{eq:principal-path}
+without freezing the coefficients.
 
 \begin{theorem}[Sharp fourth-jet, two-step radial compensation]
 \label{thm:pressure-fourjet}
@@ -110,5 +122,7 @@ new Lean file \texttt{DelayedPressureFourJet.lean}, submitted
 for kernel checking. An independent SymPy and exact-rational
 script verifies the analytic weight identity and inequality
 for 9,333 nontrivial index and parameter triples and checks
-the asymptotic sharpness. These computational checks do not
+the asymptotic sharpness. A second replay expands the complete
+variable-coefficient shifted operators and confirms the fourth-jet
+coefficient in 48 exact symbolic cases. These computational checks do not
 replace a proof of the full operator bound.
