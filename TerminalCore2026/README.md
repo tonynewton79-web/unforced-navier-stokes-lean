@@ -1999,3 +1999,57 @@ Remaining: jointly frozen Appendix A realization and all other
 stagewise cone checks, the pulse o(1) margins, Appendix B nonlinear
 profile, true n=1,2 unforced corrections and the physical zero
 forcing residual. Theorem 1.1 is still OPEN.
+
+
+## Source A.5 pulse: explicit curvature and cone acceptance — 20 October 2026
+
+The new scholarly insert `A5_Pulse_Quantified_Cone_Insert.tex`
+addresses the main axial pulse's formerly unspecified O(lambda^2)
+remainder (source equation A.28). From the **actual source sigmoid**
+(A.5), its derivatives and cutoff, one proves
+`||sigma'||<=64`, `||sigma''||<=17152`,
+`||R0'||<=705`, and `||R0''||<=192000`.
+The causal exponential convolution therefore has a quantitative
+error bounded by `192000 |Amp| lambda^2 / (1/2-lambda)^3`
+plus the decaying entry moment and separately bounded **A.9 axial**
+end bumps. No A.11 azimuthal bump estimate is substituted.
+
+The source's two Appendix A.24 quadratic leading expressions have
+exact maxima `58081/80000 = 0.7260125` and
+`58081/35000 = 1.659457142857...`. Hence a verified upper
+error <=0.01 in both expressions preserves the source's
+0.74 and 1.68 bounds respectively, with the second remaining
+strictly under the cone threshold 2.
+
+A separate conditional scalar pulse theorem gives a stronger
+pointwise acceptance test. Under the **jointly unverified**
+requirements `1.009<Amp<1.011`,
+`lambda<=1/(2*10^9)`, `h<=lambda/10^4`,
+`|c_i^axial|<=lambda/400000`, one has the exact source
+shear relation
+`b_s=-(1+2lambda)R_b+2lambda partial_xi R_b`
+and `|b_s+A R0|<10^-6`.
+If an independently generated source interval additionally
+certifies `|w-(2A R0-C_d A R0')|<=10^-6`
+with `w=N_s/(E Q_s)`, plus Q_s positivity and sufficiently
+large XQ_s/L, the full axial pulse has both strict source
+cone margins. This is a conditional implication: the
+relevant w interval still needs to be calculated from source
+(A.29)--(A.30), and the A.9 axial coefficients must be
+certified separately.
+
+`A5PulseFiniteGates.lean` contains finite scalar candidates.
+`a5_pulse_cone_exact.py` checks rational coefficient comparisons;
+`a5_pulse_source_gate.py --demo` includes passing and failing
+SYNTHETIC controls, not actual source-data certification.
+These new files are wired into pinned CI; no kernel pass is
+claimed before its completed successful workflow run.
+
+The local **84-page** reading PDF retains the original 16-page
+preprint unchanged and appends a newly compiled 68-page cumulative
+mathematical amendment. The associated ZIP has a SHA-256 manifest
+and the full  start-to-finish Lean dependency ledger. The full
+source-generated exterior stress cone, parameter tuple, pulse
+w bound, terminal matching, Appendix B contraction, unforced
+startup profiles and Theorem 1.1 remain **OPEN**. The originating
+OpenAI whole-space construction has compact smooth forcing.
