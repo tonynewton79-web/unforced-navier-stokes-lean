@@ -509,3 +509,58 @@ momentum terms and full source-to-norm hypotheses before applying
 recurrence (53) to the actual hierarchy. Theorem 1.1 remains open
 as an end-to-end Lean/PDE assertion. Do not present these
 finite source identities as a full Navier--Stokes singularity proof.
+
+
+## Uniform radial convolution after two lifts — 20 October 2026
+
+The cumulative article now includes `Weighted_Radial_Convolution_Smoothing_Insert.tex`,
+a complete mathematical proof covering **unrestricted radial Taylor
+series**, not only coefficient-monomial tests.
+
+For the exact doubled weight (37), the convolution/Leibniz/Vandermonde
+argument yields the explicit Banach multiplication constant
+`||g F|| <= 64 ||g|| ||F||`, improving the paper's previous sufficient
+`16*pi^4/9`.
+
+For `n>=1, j=0,1,2,3, F in I_n`, define
+`(R_(n,j)F)_(a+2)=(a+n+2)^(3-j)/(a+1)^2(a+2)^2 * d_eta^j F_a`.
+The all-index two-lift estimate yields
+`||R_(n,j)F|| <= D_j/(n+1) ||F||`, with
+`D_j=675*2^(4-j)*R^2/((j+1)^2*rho^j)`.
+
+The radial-convolution-inverse operator
+`(C_(n,j)(g,F))_N =
+ sum_(a+c+2=N) (N+n)^(3-j)/[(N-1)^2*N^2] * g_c * d_eta^j F_a`
+maps to `I_(n+2)`, with norm
+`<= [64 D_j/(n+1)] * (sum_(s=0)^(3-j) choose(3-j,s)
+ ||D_X^s g||) * ||F||`, as long as those indicated norms are
+finite on the **same** analytic domain.
+
+The crucial proof detail is the exact binomial expansion
+`(a+c+n+2)^(3-j) =
+ sum choose(3-j,s) (a+n+2)^(3-j-s) c^s`.
+It accounts for arbitrarily high radial multiplier frequencies
+`c` through `D_X^s g`; the output inverse denominators are
+monotone in `c`. It uses the derivative Leibniz rule and the
+uniform product algebra bound, not a truncated coefficient grid.
+
+The independently replayed exact tests passed **99,494 cases**:
+500 one-dimensional telescoping-convolution inequalities;
+48,510 Vandermonde/Leibniz coefficient inequalities;
+48,048 two-lift `O(1/n)` weight ratios; and 2,436 index
+polynomial/denominator comparisons (including multiplier indices
+up to 1000). Script: `radial_convolution_smoothing_exact.py`.
+The standalone Lean file `WeightedRadialConvolution.lean`
+contains the finite index and polynomial proof gates and has been
+added to pinned CI; its kernel status depends on the latest completed
+run, not prior runs.
+
+**Remaining genuine PDE bridge:** The complete source-native
+leading-pressure formula and nonlinear `H_k` pressure term must be
+normal-ordered into this *specific* controlled multiplier class,
+including intermediate radial averages and the two unknown inputs
+in bilinear terms, with actual imported leading-profile norm bounds.
+This normal-ordering is NOT claimed by the new abstract theorem.
+The physical full recurrence (53), normal convergence and
+Theorem 1.1 remain open; no full Lean or global singularity
+claim follows.
