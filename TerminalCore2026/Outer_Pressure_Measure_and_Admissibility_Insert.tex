@@ -1,0 +1,145 @@
+\subsection*{The outer pressure datum as a positive measure}
+\label{subsec:outer-pressure-measure}
+The pressure datum of Lemma A.5 in \cite{openai2026} is defined using
+the reference exterior schedule with its pressure-neutral angular
+corrections omitted. The proof of that lemma states that each stage
+has the form
+\begin{equation}\label{eq:measure-profile}
+ E_{\mathrm{id,sched}}(y,\eta)
+   =c(y)(1+\eta^2)^{-\vartheta(y)},\qquad
+ c(y)>0,\quad0\le\vartheta(y)\le1,
+\end{equation}
+where $c$ and $\vartheta$ are independent of $\eta$. Let $\mu$ be the
+pushforward of $c(y)^2dy$ under $y\mapsto\vartheta(y)$, and put
+$\mathfrak p=\frac12\mu([0,1])=-\Pi_0(0)>0$.
+
+\begin{proposition}[Exact positive-measure pressure trace]
+\label{prop:exact-pressure-measure}
+The actual axis datum is exactly
+\begin{equation}\label{eq:exact-pressure-measure}
+ \Pi_0(\eta)=-\frac12\int_{[0,1]}
+ (1+\eta^2)^{-2s}\,d\mu(s),\qquad
+ \mu(\{1\})\ge5P_*^2.
+\end{equation}
+For $|\eta|\le1$,
+\begin{equation}\label{eq:pressure-mass-bounds}
+ -\mathfrak p\le\Pi_0(\eta)\le
+ -\frac52P_*^2(1+\eta^2)^{-2},\qquad
+ |\Pi_0'|\le2\mathfrak p,\quad
+ |\Pi_0''|\le8\mathfrak p.
+\end{equation}
+Its first derivative has the strict sign of $\eta\ne0$.
+The pressure extends holomorphically to
+$|\operatorname{Re}z|\le11/10$,
+$|\operatorname{Im}z|\le1/10$, with
+\begin{equation}\label{eq:pressure-complex-bound}
+ |\Pi_0(z)|\le(100/99)^2\mathfrak p,\qquad
+ |\Pi_0^{(m)}(\eta)|\le(100/99)^2\mathfrak p\,m!20^m.
+\end{equation}
+\end{proposition}
+\begin{proof}
+The inner interval $y\le0$ has
+$c(y)=P_*e^{y/10}$ and $\vartheta=1$; its contribution to
+$\mu$ is $5P_*^2\delta_1$. The remaining stages contribute
+a finite positive measure. For $w_s=(1+\eta^2)^{-2s}$,
+\[
+ \frac{w_s'}{w_s}=-\frac{4s\eta}{1+\eta^2},\qquad
+ \frac{w_s''}{w_s}
+ =-\frac{4s(1-\eta^2)}{(1+\eta^2)^2}
+   +\frac{16s^2\eta^2}{(1+\eta^2)^2}.
+\]
+For $|\eta|\le1$, $|w_s'|\le2$,
+$|w_s''|\le8$. Positivity of $\mu$ proves the real estimates;
+the inner atom gives strictness of the derivative sign.
+For complex $z$ in the stated rectangle,
+$\operatorname{Re}(1+z^2)\ge99/100$; the principal complex
+power is analytic and has modulus at most $(100/99)^2$.
+Integrating over $\mu$ gives the complex bound.
+Cauchy's estimate on radius-$1/20$ disks proves the last one.
+\end{proof}
+
+\subsection*{Quantitative choice of the B.2 parameters}
+The full schedule is not numerically frozen, but the preceding
+positivity permits explicit admissibility parameters depending
+only on its pressure mass $\mathfrak p$ and the axis offset $j_0$.
+
+\begin{proposition}[A constructive real-interval B.2 bound]
+\label{prop:constructive-B2}
+Assume the source Lemma A.5, $P_*\ge1$,
+$0<h\le1/100$, $0<j_0\le1/20$. Set
+\[
+ U_*=4\eta+j_0,\quad D=\tfrac12-h,\quad
+ A=\tfrac12+h,\quad d=1-\eta^2,\quad
+ H_*=D\eta+dU_*,
+\]
+\[
+ Z_*=-A(1-2\eta U_*)U_*-4H_*-d\Pi_0'
+       +4A\eta\Pi_0.
+\]
+Let
+\begin{equation}\label{eq:constructive-B2-parameters}
+ K=200(1+\mathfrak p),\quad
+ \delta_*=\frac{j_0}{12},\quad
+ \epsilon=\frac{j_0}{12K},\quad
+ \sigma_*=\frac{\epsilon}{30}.
+\end{equation}
+The unique zero $\eta_0$ of $H_*$ lies in
+$(-j_0/4,-j_0/5)$. Moreover on $[-1,1]$,
+\begin{equation}\label{eq:B2-certified}
+ |Z_*|\le\delta_*
+ \quad\Longrightarrow\quad |H_*|>\frac25\epsilon
+ \quad\Longrightarrow\quad
+ \frac{H_*^2}{H_*^2+\sigma_*^2}\ge\frac{144}{145}
+ >\frac{99}{100}.
+\end{equation}
+These strict inequalities persist on some larger real compact
+interval $I\supset[-1,1]$.
+\end{proposition}
+\begin{proof}
+The quotient $H_*/d=D\eta/d+4\eta+j_0$
+is strictly increasing on $(-1,1)$, and
+$H_*(-j_0/4)=-Dj_0/4<0$ while
+$H_*(-j_0/5)=(j_0/5)(1-D-j_0^2/25)>0$.
+Write $t=-\eta_0$, so $j_0/5<t<j_0/4$.
+At the root, $U_*(\eta_0)=Dt/(1-t^2)<j_0/7$
+and $1-2\eta_0U_*(\eta_0)<2$.
+The reference inner-tail inequality in
+\eqref{eq:pressure-mass-bounds}, together with
+$(1+t^2)^{-2}>1/2$, gives
+$4A\eta_0\Pi_0(\eta_0)\ge5AtP_*^2\ge Aj_0P_*^2$.
+Also $-d\Pi_0'(\eta_0)\ge0$. Therefore
+\begin{equation}\label{eq:Z-root-positive}
+ Z_*(\eta_0)>Aj_0(P_*^2-2/7)>j_0/3.
+\end{equation}
+Differentiating the exact formula for $Z_*$ and applying
+\eqref{eq:pressure-mass-bounds} gives
+$|Z_*'|\le120+20\mathfrak p<K$ on $[-1,1]$.
+Indeed $|U_*|\le81/20$, $|H_*'|\le83/5$ and
+$A\le51/100$ bound the polynomial terms.
+Thus $|\eta-\eta_0|\le\epsilon$ implies
+$Z_*(\eta)>j_0/3-K\epsilon=j_0/4>\delta_*$.
+
+Factoring at the zero,
+\[
+ H_*(\eta)=(\eta-\eta_0)Q(\eta),\quad
+ Q=D+4-4(\eta^2+\eta\eta_0+\eta_0^2)
+      -j_0(\eta+\eta_0).
+\]
+The quadratic $Q$ is concave; on $[-1,1]$ its endpoint
+values exceed $2/5$ because $D\ge49/100$ and
+$|\eta_0|<j_0/4\le1/80$. Hence
+$|H_*|>(2/5)|\eta-\eta_0|$. The condition
+$|Z_*|\le\delta_*$ excludes $|\eta-\eta_0|\le\epsilon$.
+Finally $\sigma_*=\epsilon/30$ yields $\chi\ge144/145$.
+Compactness and strictness allow $I$ to be enlarged slightly.
+\end{proof}
+
+\paragraph{Unresolved numerical and dynamical data.}
+The positive measure $\mu$ and its mass $\mathfrak p$ remain
+defined by the actual full outer schedule and its moment matching,
+not by an arbitrary model. Numerical evaluation requires freezing
+that schedule and certified quadrature. The remaining nonlinear
+Appendix-B construction requires effective values of $\Lambda$,
+$C$, and a verified contraction ball. The theorem does not solve
+the separate similarity-order $n=1,2$ unforced corrections or
+establish the physical Navier--Stokes reconstruction.
