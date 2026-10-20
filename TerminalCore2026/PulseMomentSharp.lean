@@ -19,6 +19,11 @@ theorem amplitude_right_margin :
       (1/2500) := by norm_num
 theorem amplitude_derivative_margin :
     2*(1009/1000:ℚ)*(1225239/5000000) - 1/100 > 48/100 := by norm_num
+theorem principal_amplitude_lower_margin :
+    (1010045/1000000:ℚ)^2 * (61263/250000) -
+      (1 - 1/100000000000)/4 < 0 := by norm_num
+theorem principal_amplitude_upper_margin :
+    (1010055/1000000:ℚ)^2 * (1225239/5000000) - 1/4 > 0 := by norm_num
 theorem moment_matrix_determinant_factor :
     4*(37/40:ℚ)^2 = 1369/400 := by norm_num
 theorem moment_matrix_inverse_factor :
