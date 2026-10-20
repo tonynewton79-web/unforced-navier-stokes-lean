@@ -19,6 +19,7 @@ on:
       - 'TerminalCore2026/Full_Leading_Pressure_Normal_Form_Insert.tex'
       - 'TerminalCore2026/Quadratic_Highest_Jet_Insert.tex'
       - 'TerminalCore2026/Complete_Bilinear_Pressure_Insert.tex'\n      - 'TerminalCore2026/Direct_Momentum_and_Pressure_Norm_Insert.tex'
+      - 'TerminalCore2026/Shifted_Pressure_Repair_Insert.tex'
       - '.github/workflows/terminal-core-manuscript.yml'
   workflow_dispatch:
 
