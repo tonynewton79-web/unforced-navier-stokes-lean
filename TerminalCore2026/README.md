@@ -876,3 +876,67 @@ physical PDE reconstruction remain to be independently certified.
 Consequently no full end-to-end Lean proof or theorem 1.1 proof
 is claimed. Latest new Lean source was submitted to GitHub Actions,
 but kernel status is PENDING until the run completes successfully.
+
+
+## Three additional pressure-source bounds in the shifted space — 20 October 2026
+
+The next mathematical release, source `Shifted_Pressure_Source_Closure_Insert.tex`,
+proves in the one-derivative-loss shifted pressure norm:
+
+1. **Sharp axis primitive:** `||int_0^X F dx||_P <= (16/3) R rho ||F||_B`.
+   The constant is attained by the degree-zero input and follows from
+   `4(a+1)^3(2a+3)-3(a+2)^2 =
+   a(8a^3+36a^2+57a+32)>=0`.
+   The complete swirl-square source in (27) is thereby bounded by
+   `(1024/3) R rho |C|^(-2) sum_(i+j=n) ||phi_i||||phi_j||`,
+   including the leading/current index pairs.
+
+2. **Exact radial-Laplacian pressure cancellation:** the term
+   `-2X V_(k,XX)` in Omega_k gives
+   `Pi_(k+1)^lap = partial_X V_k` (k>=1, zero axis constant).
+   In source variables its degree-a coefficient is
+   `(a+1-D-lambda_k) B F_a-G partial_eta F_a`.
+   The one-shift weight absorbs both contributions uniformly:
+   `||Pi_(k+1)^lap||_P <= (80/27)(32 rho+13)||U_k||_B`.
+
+3. **Complete direct time-pressure composite:** the term
+   `T_(0,k)V_k` yields a two-eta-derivative, six-term
+   variable-coefficient normal form after one axis primitive.
+   Its source-native proof gives
+   `||Pi_(k+1)^time||_P <=
+    (1280 R/27)((32/3)rho+12+8/rho)||U_k||_B`.
+   The proof covers all derivative orders, the similarity shift,
+   and all derivatives of the fixed rational coefficients.
+
+In combination with the prior *isolated* delayed-pressure theorem,
+these bound the three direct linear Omega_(n-1) contributions
+(n>=3) and the entire swirl-square pressure source in shifted P.
+This is an explicit substantial reduction of the two-space
+recurrence problem, NOT the complete recurrence.
+
+**Exact regression:** `shifted_pressure_sources_exact.py`
+replays 21,675 axis-primitive weight identities,
+21,675 Laplacian pressure weight ratios, 65,025 time-pressure
+jet inequalities, and 24 exact symbolic source cases:
+**108,375 coefficient checks and 24 symbolic cases** pass.
+`ShiftedPressureSourceGates.lean` encodes the finite all-index
+scalar polynomial inequalities and exact source algebra,
+with a new CI compilation gate. The full analytic Banach
+source theorems are written in the paper, not end-to-end
+formalized in Lean; check a completed successful Actions
+run before treating these new declarations as kernel-certified.
+
+The combined reader is **50 pages**: the original 16-page
+preprint unchanged plus one updated 34-page cumulative
+mathematical amendment. Editable LaTeX and the independently
+tested full regression are included in the 20-file ZIP release.
+
+**Remaining critical gates:** prove shifted-P pressure primitive
+bounds for the five leading-profile Omega interactions and the
+ordered positive-order quadratic Omega terms (previous post-J1
+velocity estimates do not suffice); certify the actual imported
+leading-profile complex radii; derive the full two-space
+recurrence including finite startup data; and prove differentiated
+physical-coordinate PDE reconstruction. Neither Theorem 1.1
+nor a global unforced finite-energy singularity has been
+proved in this release.
