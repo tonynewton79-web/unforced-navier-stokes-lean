@@ -37,7 +37,9 @@ theorem pressure_pole_linear_lower
     (b : ℝ) (hb : 0 ≤ b) :
     (b+5)*(b+1)^2*16 ≥ (b+5)*(b+4)^2 := by
   have h := pressure_pole_weight_gap_nonnegative b hb
-  exact mul_le_mul_of_nonneg_left h (by linarith)
+  have hs : 0 ≤ b+5 := by linarith
+  have hx := mul_le_mul_of_nonneg_left h hs
+  nlinarith [hx]
 
 theorem uniform_source_polynomial_budget :
     (64:ℕ)^2*25 = 102400 ∧
