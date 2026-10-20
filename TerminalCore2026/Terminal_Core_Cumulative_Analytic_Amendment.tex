@@ -13,7 +13,19 @@
 \begin{document}
 \maketitle
 \begin{abstract}
-The terminal-core expansion of the unforced three-dimensional Navier--Stokes equations requires estimates compatible with the radial singular inverse and a weaker pressure space. Previous bounds control the complete pressure source in the one-parameter-derivative-loss norm, conditional on common leading-profile analytic regularity. Here we strengthen current-order inversion: each feedback block raises radial valuation and has norm bounded by a constant divided by the input valuation. Its iterates satisfy a factorial majorant, yielding an inverse on a preselected analytic strip at every expansion order, without a radius-dependent finite-startup cutoff. A constructive scalar majorant handles separately both the order-$n$ and order-$(n-1)$ quadratic source convolutions. We give a conditional source-to-convergence theorem and state the required checks on imported leading profiles, startup normalization and physical-coordinate reconstruction. The argument is a fixed-radius reduction, not an unconditional proof of the proposed unforced singularity construction.
+We examine the analytic convergence problem for an axisymmetric
+Navier--Stokes terminal-core coefficient hierarchy. Previous sections
+develop a strong velocity space, a weaker pressure space and a
+valuation-dependent inverse for current-order feedback. The source-level
+audit checks the first two coefficient equations and their pressure
+normalizations against the originating formal hierarchy, and derives
+the exact physical similarity chain rules. It records the dependent
+leading-profile parameter choices and the complex-norm data that are
+needed for a numerical certificate. Conditional on a common analytic
+domain, complete coefficient identities and differentiated normal
+convergence, the reconstructed field satisfies the unforced equations
+locally. The required numerical profile certificate and convergence
+of the unmodified infinite series are not established here.
 \end{abstract}
 
 \section{The common weighted space}
@@ -156,6 +168,8 @@ The pointwise weight identity and sharp two-derivative inequality have already b
 \input{Leading_Profile_Radius_and_Current_Feedback_Insert.tex}
 
 \input{Fixed_Radius_Volterra_and_Two_Space_Majorant_Insert.tex}
+
+\input{Source_Level_Startup_and_Reconstruction_Insert.tex}
 
 \begin{thebibliography}{9}
 \bibitem{newton2026}
