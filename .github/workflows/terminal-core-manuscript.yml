@@ -21,6 +21,7 @@ on:
       - 'TerminalCore2026/Complete_Bilinear_Pressure_Insert.tex'\n      - 'TerminalCore2026/Direct_Momentum_and_Pressure_Norm_Insert.tex'
       - 'TerminalCore2026/Shifted_Pressure_Repair_Insert.tex'
       - 'TerminalCore2026/Shifted_Pressure_Source_Closure_Insert.tex'
+      - 'TerminalCore2026/Remaining_Shifted_Pressure_Insert.tex'
       - '.github/workflows/terminal-core-manuscript.yml'
   workflow_dispatch:
 
