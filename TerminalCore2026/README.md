@@ -996,3 +996,75 @@ with termwise derivative justification. Estimates for pressure
 *after* final `J1 Z` reconstruction do not by themselves bound
 the bare pressure primitive. The full Theorem 1.1 remains unproved
 and no whole-space unforced finite-energy blow-up follows.
+
+
+## Completion of the shifted-pressure source ledger (20 October 2026)
+
+The newly added cumulative theorem
+`Remaining_Shifted_Pressure_Insert.tex` proves the two previously open
+bare-pressure estimates. The reading PDF is the unchanged 16-page
+deposited paper plus one replacement 37-page cumulative mathematical
+amendment (53 pages total). The original Zenodo record is not modified.
+
+1. The exact mixed product estimate is
+   `||fP||_P <=64||f||_B||P||_P`, for arbitrary nontruncated
+   analytic radial Taylor series. The proof uses the positive
+   differentiated coefficient ratio, Vandermonde's inequality,
+   and two telescoping index convolutions. This is a **mixed**
+   algebra statement; it does NOT claim that P is an algebra.
+2. The elementary shifted-pressure operations obey
+   `||XP||_P <=4R||P||_P`,
+   `||int_0^X P||_P <=4R/(m+1)||P||_P` for `P in I_m`,
+   and `||int_0^X partial_eta P||_P <=8R/rho||P||_P`.
+   The radial-velocity coefficient satisfies
+   `||W_k||_P <= C_W||U_k||_B`,
+   `C_W=64(4rho||B||_B+||G||_B)<=1600(4rho+1)`.
+3. **All five leading-profile pressure interactions** have an exact
+   radial integration-by-parts identity
+   `-2 Pi_(k+1)^lead = X(v-BU0)W_k
+     +int_0^X[ U0 G d_eta W_k
+       +B(lambda_k U0 +D_X U0)W_k +U_k K0]dx`.
+   This yields `||Pi_(k+1)^lead||_P <=
+   C_lead,P||U_k||_B`, with the explicit constant in the
+   new manuscript; it is uniform in k **conditional on**
+   `U0,D_X U0,v,D_Xv,K0` having finite norms on a common
+   analytic domain. That domain has not been checked for the
+   *actual imported* leading profiles.
+4. **All positive-order quadratic bare-pressure terms** have the
+   exact symmetrized ordered-pair radial integration-by-parts
+   identity shown in the manuscript. The apparent `D_XU_i`
+   factor is divided by the total radial degree:
+   `0<=(a+lambda_j)/(a+b+1)<=1` for `a>=i,b>=j`.
+   The two radial averages also satisfy
+   `(a+1)(b+1)>=a+b+1`. Combining the mixed product
+   and unsigned jet majorants proves
+   `||Pi_(i+j+1)^quad,ij||_P
+      <= C_quad,P||U_i||_B||U_j||_B`.
+   The constant in the manuscript is explicit, independent of
+   both orders and does not require the shifted pressure space
+   to multiply with itself.
+5. This gives a **complete pressure-source inequality**:
+   `P_n <= C_sw sum_(i+j=n)B_iB_j
+       +(C_P,time+C_P,lap+C_lead,P)B_(n-1)
+       +C_P,del B_(n-2)
+       +C_quad,P sum_(i+j=n-1,i,j>=1) B_i B_j`,
+   for the full source ledger and the fixed leading multipliers
+   assumed finite. The `phi_0 phi_n` term is current-order and
+   must remain in the coupled velocity feedback system.
+
+Independent local script `remaining_shifted_pressure_exact.py`
+passed **38,539** finite exact checks: 840 mixed two-index
+convolution sums, 31,850 shifted-weight transfer comparisons,
+5,832 ordered-pair radial inequalities, and 17 symbolic
+leading/quadratic integration-by-parts identities.
+`RemainingShiftedPressure.lean` encodes finite scalar transport,
+double-average and valuation gates. The **full** mixed Banach
+algebra and source theorems are manuscript proofs, NOT completely
+formalized Lean statements. Await a completed successful CI run
+before describing the finite Lean lemmas as kernel-certified.
+
+**Still open:** Verified imported leading-profile complex analytic
+radii, the full current-order feedback and actual closed velocity
+recurrence, the physical-coordinate chain-rule/pressure
+reconstruction, and an end-to-end Lean certification of Theorem 1.1.
+No whole-space finite-energy Navier--Stokes singularity is claimed.
