@@ -1,0 +1,116 @@
+\subsection{The two remaining direct linear pressure terms}
+\label{subsec:remaining-linear-pressure}
+
+The pressure vorticity source $\Omega_{n-1}$ also contains
+$T_{0,n-1}V_{n-1}-2X\partial_X^2V_{n-1}$. Unlike the delayed
+viscosity source these terms act on $U_{n-1}$ and produce
+\emph{different radial valuations}. Put $k=n-1$, $r=a+1$,
+$a\ge n-1$, and define $B=2\eta/L$, $G=d/L$ and the coefficient
+differential operators
+\[
+H_{a,k}=B(r-D-\lambda_k)-G\partial_\eta,\quad
+Z_q^{(s)}=G\partial_\eta+B(q-s),\quad
+T_q^{(s)}=\frac{D\eta}{L}\partial_\eta+\frac{s-q}{L}.
+\]
+Equation (24) reads $V_k[X^aF_a]=X^rH_{a,k}F_a/r$.
+Taking each of the two sources through
+$\Pi_n'=-\Omega_{n-1}/(2X)$ and $\frac12J_1Z_{-2A,n}$
+gives the exact maps
+\begin{align}
+(\mathcal L_nF)_{a+1}
+ &=\frac1{2r^2}Z_{\lambda_n-2A}^{(a)}H_{a,k}F_a,
+\label{eq:radialpressure}\\
+(\mathcal T_nF)_{a+2}
+ &=-\frac1{4r^2(r+1)^2}
+ Z_{\lambda_n-2A}^{(r)}T_{\lambda_k}^{(r)}H_{a,k}F_a.
+\label{eq:timepressure}
+\end{align}
+The source $-2XV_k''$ produces the first map, from
+$I_{n-1}$ to $I_n$, whereas $T_{0,k}V_k$ produces the
+second map, from $I_{n-1}$ to $I_{n+1}$.
+
+\begin{theorem}[Uniform bounds for the direct linear pressure sources]
+For $0<h<1/100$, $R>0$, $0<\rho\le1/4$ and $E=[-1,1]$,
+\[
+\|\mathcal L_n\|_{I_{n-1}\to I_n}\le C_{\rm lap},\qquad
+\|\mathcal T_n\|_{I_{n-1}\to I_{n+1}}\le C_{\rm time}/n,
+\]
+where
+\begin{align*}
+C_{\rm lap}&=\frac{1157}{2}\frac{80}{27}R
+ \left(4+\frac8\rho+\frac8{\rho^2}\right),\\
+C_{\rm time}&=\frac{9256}{4}\frac{80}{27}\,54R^2
+ \sum_{j=0}^3\frac{25\,3^{4-j}}{(j+1)^2\rho^j}.
+\end{align*}
+In particular their combined action maps $I_{n-1}$ into
+$I_n$ with a uniform operator bound.
+\end{theorem}
+
+\begin{proof}
+On $|\eta|\le3$, the estimates $|L|>41/50$,
+$|B|\le8$, $|G|\le13$, $|D\eta/L|\le2$ hold.
+Since $r\ge n$, the zeroth- and first-order coefficient
+bounds for $H_{a,k}$ are $13r$ and $13$.
+For each shifted $Z$ factor they are $24r$ and $13$;
+for $T_{\lambda_k}^{(r)}$ they are $2r$ and $2$.
+Writing each composition as $\sum_j c_j\partial_\eta^j$,
+apply Cauchy's estimate upon shrinking the complex disc
+by $1/4$ at each stage. A $Z$ composition maps the bound
+$|c_j|\le C_mr^{m-j}$ to
+$|c_j^{\rm new}|\le89C_mr^{m+1-j}$, by estimating
+$Gc_{j-1}$, $Gc'_j$ and $B(q-r)c_j$ separately.
+A $T$ composition admits the factor $8$ instead.
+Thus the Laplacian path has coefficient bounds
+$1157r^{2-j}$, $j\le2$, on $|\eta|\le11/4$;
+the time path has $9256r^{3-j}$, $j\le3$,
+on $|\eta|\le5/2$. Derivatives of these coefficients
+of order $\ell$ on $E$ gain at most $\ell!$.
+
+The established one-radial-inverse inequalities give
+\[
+ \frac{r^{2-j}w_{a,b+j}}{r^2w_{a+1,b}}
+ \le R(4,8/\rho,8/\rho^2)_j,\quad j=0,1,2.
+\]
+For the second source, the mixed four-jet estimate in
+\eqref{eq:alljet} and $n\le r$ give
+\[
+ \frac{nr^{3-j}w_{a,b+j}}{r^2(r+1)^2w_{a+2,b}}
+ \le54R^2\rho^{-j}\frac{25\,3^{4-j}}{(j+1)^2},
+ \quad j\le3.
+\]
+Leibniz differentiation is absorbed by the coefficient-weight
+factor \eqref{eq:commutatorratio}; its sum is at most $80/27$
+when $\rho\le1/4$. Combining the prefactors $1/2$, $1/4$
+and the indicated finite sums proves the theorem.
+\end{proof}
+
+\subsection{The remaining leading-profile and nonlinear pressure sources}
+\label{subsec:nonlinear-pressure-ledger}
+
+The full $\Omega_k$, $k\ge1$, may now be written as
+\begin{align}
+\Omega_k={}&T_{0,k}V_k-2XV_k''-Z_{0,k-1}^{[2]}V_{k-1}\notag\\
+ &+V_0V_k'+V_kV_0'-\frac{V_0V_k}{X}
+   +U_0Z_{0,k}V_k+U_kZ_{0,0}V_0\notag\\
+ &+\sum_{\substack{i+j=k\\i,j\ge1}}
+ \left(V_iV_j'-\frac{V_iV_j}{2X}+U_iZ_{0,j}V_j\right).
+\label{eq:omega-complete-ledger}
+\end{align}
+The first line is now bounded term by term: the two estimates
+just proved and the earlier complete delayed-viscosity pressure
+estimate. The second line consists of \emph{linear}
+leading-profile interactions and must be estimated separately
+using concrete multiplier norms for $U_0,V_0$.
+The final line contains all the genuinely positive-order
+quadratic terms, for which the convolution structure is
+visible but a full weighted pressure estimate is still needed.
+
+The direct delays in the momentum equations, the interior
+momentum products, and the swirl-square contribution in
+$\Pi_n'$ remain additional proof obligations. Consequently
+the lower-order forcing recurrence (53), normal convergence of
+the actual Navier--Stokes hierarchy, and Theorem 1.1 are not
+established by the present direct-pressure estimates.
+The all-index Banach-space proof above is mathematical;
+the accompanying Lean checks presently address its radial
+integration factors and exact coefficient indexing only.
