@@ -1,0 +1,162 @@
+\paragraph{Analytic radii of the imported leading profiles.}
+The leading fields of the hierarchy are the source profiles from
+Appendix~B of \cite{openai2026}, with $Y=\Lambda X$.
+Proposition~B.2 constructs these fields on $0\le Y\le4.1$
+and a common neighborhood of $[-1,1]$ in $\eta$, once
+admissible $\Lambda,C$ and axis data have been chosen. Its
+proof selects a radius $S$ with $4.1<S<20$ and a smaller
+positive complex $\eta$-neighborhood. This proves qualitative
+regularity for fixed admissible parameters; it does not supply
+explicit numerical values of $\Lambda,C,S,\delta$, nor a
+certified complex supremum for one frozen realization.
+
+\begin{lemma}[Source-radius transfer into the doubled norm]
+\label{lem:source-radius-transfer}
+Suppose $F(Y,\eta)$ is holomorphic on $|Y|<S$ and in
+the $\delta$-neighborhood of $[-1,1]$, with $|F|\le M$.
+Then $F_0(X,\eta)=F(\Lambda X,\eta)$ obeys
+$\|F_0\|_{\mathcal B}\le M$ provided
+$R\le S/(8\Lambda)$ and $\rho\le\delta/8$.
+For any fixed integers $p,q\ge0$,
+\begin{equation}\label{eq:source-Cauchy-bound}
+\|D_X^p\partial_\eta^qF_0\|_{\mathcal B}
+\le M\delta^{-q}\sup_{a,b\ge0}
+\frac{a^p(a+1)^2(b+1)^2}{8^{a+b}}
+\frac{(b+q)!}{b!}<\infty.
+\end{equation}
+\end{lemma}
+\begin{proof}
+Cauchy's inequalities give
+$|\partial_\eta^{b+q}F_a|\le MS^{-a}(b+q)!\delta^{-b-q}$;
+substitution of $Y=\Lambda X$ supplies $\Lambda^a$.
+Divide by (37) and use $\binom{2a+b}{b}^{-1}\le1$.
+The radial and parameter radius ratios are at most $1/8$.
+For $p=q=0$, $(a+1)^2/8^a\le1$ and
+$(b+1)^2/8^b\le1$. General fixed derivatives introduce
+only polynomial factors absorbed by the geometric terms.
+\end{proof}
+The source's $U_0,\varphi_0$ and their finite derivatives
+therefore have finite multiplier budgets after shrinking the
+working radii. The incompressibility formula for $V_0/X$
+uses only radial averages, rational factors with $L\ne0$,
+and finite parameter derivatives. These operations preserve
+holomorphy on a smaller common domain. This is an
+\emph{existential} certification, not a numerical enclosure
+of any fixed source profile.
+
+\paragraph{The complete current-order swirl-pressure block.}
+The two ordered terms $(0,n),(n,0)$ of (27) contribute
+\begin{equation}\label{eq:current-pressure-identity}
+\Pi_n^{\mathrm{cur}}(F)
+=\frac2{C^2}\int_0^X\varphi_0(x,\eta)F(x,\eta)\,dx,
+\qquad F=\varphi_n\in I_n.
+\end{equation}
+They belong in $K_n^{U\varphi}$, not in lower-order forcing.
+\begin{lemma}[Quadratic radial gain in current pressure]
+\label{lem:current-pressure-quadratic}
+For $F\in I_n(\mathcal B)$,
+\begin{align}
+\left\|\int_0^X F\,dx\right\|_{\mathcal P}
+&\le\frac{8R\rho}{(n+1)^2}\|F\|_{\mathcal B},\label{eq:axis-primitive-n2}\\
+\|\Pi_n^{\mathrm{cur}}(F)\|_{\mathcal P}
+&\le\frac{1024R\rho\|\varphi_0\|_{\mathcal B}}
+{|C|^2(n+1)^2}\|F\|_{\mathcal B},\label{eq:current-pressure-n2}\\
+\|K_n^{U\varphi}F\|_{\mathcal B}
+&\le\frac{1024R\rho C_E\|\varphi_0\|_{\mathcal B}}
+{|C|^2(n+1)^2}\|F\|_{\mathcal B},\label{eq:current-block-n2}
+\end{align}
+where $C_E$ is the pressure-to-velocity constant in
+\eqref{eq:P-to-U}.
+\end{lemma}
+\begin{proof}
+Factorial cancellation gives the exact weight ratio
+\[
+\frac{w_{a,b}}{(a+1)w_{a+1,b+1}}
+=R\rho\frac{(a+2)^2(b+2)^2(2a+1)(2a+2)}
+{(a+1)^3(b+1)^2(2a+b+1)(2a+b+2)(2a+b+3)}.
+\]
+Its maximum at fixed $a$ occurs for $b=0$, giving
+$4R\rho(a+2)^2/[(a+1)^3(2a+3)]$.
+The identity
+$2(a+1)(2a+3)-(a+2)^2=3a^2+6a+2\ge0$
+bounds this by $8R\rho/(a+1)^2$.
+Since $a\ge n$ this proves the first inequality.
+The Banach-algebra constant $64$, and the factor two
+from the two ordered source pairs, prove the second.
+Theorem~\ref{thm:pressure-to-velocity} proves the third.
+\end{proof}
+
+\paragraph{Conditional simultaneous pressure convergence.}
+The preceding estimate replaces the earlier current-pressure
+bound without double-counting $\varphi_0\varphi_n$.
+If the three other current-block estimates
+\eqref{eq:swirlbound}, \eqref{eq:phiuB} and \eqref{eq:uuB}
+hold with a finite combined constant $C_{\rm other}$,
+then
+\begin{equation}\label{eq:current-K-updated}
+\|K_n\|\le\frac{C_{\rm other}}{n+1}
++\frac{1024R\rho C_E\|\varphi_0\|}
+{|C|^2(n+1)^2}.
+\end{equation}
+The Neumann-series inverse has norm at most two for
+$n$ larger than twice the sum of the numerator constants.
+
+Write $B_n=\|\varphi_n\|+\|U_n\|$, and suppose
+$B_n\le MT^n/(n+1)^2$ for $n\ge1$ with $M,T\ge1$.
+Then the complete shifted pressure ledger
+\eqref{eq:complete-two-space-P-ledger},
+after separating the current ordered pairs, implies
+\begin{equation}\label{eq:conditional-pressure-geometric}
+\|\Pi_n\|_{\mathcal P}
+\le\frac{\Gamma T^n}{(n+1)^2},\quad n\ge3,
+\end{equation}
+where
+\[
+\Gamma=2C_{\rm sw}B_0M+4C_{\rm sw}M^2
++\frac{4C_LM}{T}+\frac{4C_DM}{T^2}
++\frac{4C_{\rm quad,P}M^2}{T},
+\]
+$B_0=\|\varphi_0\|+\|U_0\|$,
+$C_L=C_{\rm P,time}+C_{\rm P,lap}+C_{\rm lead,P}$
+and $C_D=C_{\rm P,del}$. The proof uses
+$\sum_{i=1}^{n-1}[(i+1)^2(n-i+1)^2]^{-1}
+\le4/(n+2)^2$ and the elementary adjacent-index
+comparisons. The finite startup indices are absorbed by
+enlarging $\Gamma$. This implication is not a proof that
+the actual velocity sequence obeys the assumed bound.
+
+\paragraph{Physical-coordinate reconstruction, conditional on convergence.}
+With $\tau=q(1-\eta^2)$ and $z=q^D\eta$,
+\begin{equation}\label{eq:coordinate-inverse-Jacobian}
+\left.\frac\partial{\partial q}
+[q-z^2q^{1-2D}]\right|_{z\ {\rm fixed}}
+=1-2h\eta^2=L(\eta)>0.
+\end{equation}
+Thus the physical chain-rule coefficients are smooth on
+compact subcores with $q>0$. If the velocity and pressure
+weighted geometric estimates above hold on a common domain,
+the radial valuation and coefficient weights give normal
+convergence after each fixed $X,\eta$ derivative when
+$T|q^{2h}|<2$ and $|X|<R/8$. Physical differentiation
+then passes termwise on compact subcores. Exact recovery
+of the unforced equations additionally requires the actual
+coefficient hierarchy, including its startup normalization.
+
+\paragraph{The finite-startup radius-selection gap.}
+A bound $\|K_n\|\le C_K(\rho)/(n+1)$ may require a cutoff
+$N_*(\rho)$. Merely knowing each finite-order coefficient
+has some positive analytic radius $\rho_n$ does not
+guarantee a common $\rho$ obeying
+\begin{equation}\label{eq:radius-startup-fixed-point}
+\rho\le\rho_{\rm lead},\qquad
+\rho\le\min_{1\le n<N_*(\rho)}\rho_n.
+\end{equation}
+For example, the abstract choices $\rho_n=e^{-n}$ and
+$N_*(\rho)=\lceil1/\rho\rceil+1$ provide positive radii
+at every finite order but no $0<\rho\le1$ satisfying
+the second inequality: its right-hand side is at most
+$e^{-1/\rho}<\rho$. This does not refute the source
+Navier--Stokes hierarchy. It shows that a common-radius
+induction or noncircular quantitative initialization is
+still required before the closed recurrence and
+Theorem~1.1 can be claimed.
