@@ -378,3 +378,66 @@ quadratic interior sum. The entire lower-order forcing recurrence
 (53), actual profile radii, quadratic pressure bounds, and physical
 PDE reconstruction remain OPEN. No end-to-end Lean proof of
 Theorem 1.1 or global unforced blow-up has been obtained.
+
+## Leading-profile pressure: five-term cancellation and valuation (20 October 2026)
+
+The cumulative paper now includes `Leading_Profile_Pressure_Cancellation_Insert.tex`
+in its ninth section. It establishes the complete exact identity for the five
+ordered leading-profile interactions in source equation (28). Writing
+`v=V0/X`, `F=Uk`, `Vk=XWk`, `B=2eta/L`, `G=d/L`,
+`Wk=B F-B(D+lambda_k) A_XF-G partial_eta A_XF`, and
+`K0=G partial_eta v-B(v+D_Xv)`, the source satisfies
+
+```
+S_k/X = (D_X+1)(v Wk)
+       + U0 [G partial_eta+B(lambda_k-1-D_X)] Wk
+       + F K0.
+```
+
+The radial derivative and the pressure primitive cancel **exactly**:
+`int_0^X (D_X+1)(vWk) dx = X vWk`.
+Thus the full induced pressure contribution is
+
+```
+P_lead_(k+1) F =
+ -1/4 J1 Z_(-2A,k+1) [
+   X v Wk + int_0^X {
+     U0 [G partial_eta + B(lambda_k-1-D_X)] Wk
+     + F K0
+   } dx ].
+```
+
+Coefficientwise, this maps `I_k` into `I_(k+2)`. In the three
+grouped channels the unknown F sees respectively <=2, <=3, and <=1
+axial derivatives after final pressure reconstruction.
+
+An exact all-index *scalar* coefficient inequality, for
+`j=0,1,2,3` and `r=a+1`, is
+
+```
+r^(3-j)*w_(a,b+j) / (r^2*(r+1)^2*w_(a+2,b))
+ <= [54 R^2/(r rho^j)] * [25*3^(4-j)/(j+1)^2].
+```
+
+It follows from the previously proved 4-jet/2-lift inequality.
+`leading_profile_pressure_exact.py` passed 72 source-native symbolic
+replays and 41,472 exact rational coefficient inequalities.
+The finite algebra/valuation parts are encoded in
+`LeadingProfilePressure.lean`, with an explicit CI compilation step.
+A new Lean theorem is NOT kernel-verified until the current CI succeeds.
+
+**Open gate:** This is NOT a uniform analytic Banach norm estimate of
+the full leading-profile pressure operator. A proof must still bound
+the convolution with every radial coefficient of the actual v and U0
+profiles, their parameter derivatives and radial commutators, using
+one specified analytic radius. The separate map
+`partial_eta A_X` is not bounded in the underlying induced norm
+and must not be estimated in isolation.
+
+After that, quadratic interior pressure terms and the remaining
+momentum sources must be controlled to derive the actual recurrence
+(53). Theorem 1.1 is still not end-to-end Lean-certified, and this
+work does not establish whole-space unforced Navier--Stokes blow-up.
+The cumulative reader PDF is the original 16-page source unchanged
+plus a 17-page cumulative amendment; do not treat it as a revision
+of the original 16 pages in place.
