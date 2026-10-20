@@ -1,0 +1,185 @@
+\subsubsection*{A one-derivative-loss pressure space}
+\label{subsec:shifted-pressure-repair}
+The isolated delayed-pressure primitive fails to preserve the
+original doubled analytic coefficient norm, as demonstrated above.
+The pressure-to-velocity composition nevertheless admits an exact
+repair: retain the velocity weight $w_{a,b}$ of (37), but place
+the pressure in the weaker norm
+\begin{equation}\label{eq:shifted-P-norm}
+ \|P\|_{\mathcal P}:=\sup_{a,b\ge0}\sup_{\eta\in[-1,1]}
+ \frac{|\partial_\eta^bP_a(\eta)|}{w_{a,b+1}},
+ \qquad P=\sum_{a\ge0}P_a(\eta)X^a .
+\end{equation}
+The additional derivative index is essential: the counterexample
+has an order-four pole at radial degree two, while the shifted
+weight allows its third-degree polynomial derivative growth.
+
+\begin{lemma}[Sharp three-jet compensation]\label{lem:pressure-three-jet}
+For all integers $a,b\ge0$ and $R,\rho>0$,
+\begin{equation}\label{eq:shifted-exact-ratio}
+ \frac{w_{a,b+3}}{(a+1)^2w_{a+1,b+1}}
+ =\frac R{\rho^2}
+ \frac{(2a+1)(2a+2)(a+2)^2}{(a+1)^4}
+ \frac{(b+2)^2}{(b+4)^2}
+ \le\frac{8R}{\rho^2}.
+\end{equation}
+The constant eight is sharp. More generally, if $n\ge2$,
+$a\ge n-2$, and $j=0,1,2,3$, then
+\begin{equation}\label{eq:shifted-four-slot}
+ \frac{(a+n+1)^{3-j}w_{a,b+j}}
+ {(a+1)^2w_{a+1,b+1}}
+ \le32\,3^{3-j}R\rho^{1-j}.
+\end{equation}
+\end{lemma}
+\begin{proof}
+For $0\le j\le3$, the ratio without $(a+n+1)^{3-j}$
+equals
+\[
+ R\rho^{1-j}\frac{(2a+1)(2a+2)(a+2)^2}{(a+1)^4}
+ \frac{(b+2)^2}{(b+j+1)^2}
+ \prod_{\ell=j+1}^{3}(2a+b+\ell)^{-1}.
+\]
+The radial numerator is at most eight times its denominator,
+because
+\[
+8(a+1)^4-(2a+1)(2a+2)(a+2)^2
+=2a^2(a+1)(2a+3)\ge0.
+\]
+The case $a=0,b\to\infty$ gives sharpness for $j=3$.
+For all four jets use $(b+2)/(b+j+1)\le2$,
+$2a+b+\ell\ge a+1$ and $a+n+1\le3(a+1)$.
+\end{proof}
+The norm also admits multiplication by an analytic function
+$g(\eta)$ with $|\partial_\eta^\ell g|\le M_g\ell!$:
+\begin{equation}\label{eq:P-multiplier}
+ \|gP\|_{\mathcal P}\le\frac{80}{27}M_g\|P\|_{\mathcal P},
+ \qquad 0<\rho\le1/4.
+\end{equation}
+Indeed the $\ell$-th Leibniz term has normalized factor at most
+$\rho^\ell(\ell+1)^2$, whose sum is
+$(1+\rho)/(1-\rho)^3\le80/27$.
+
+\begin{theorem}[Complete isolated delayed-pressure primitive]
+\label{thm:shifted-delayed-pressure}
+Let $0<h<1/100$, $R>0$, $0<\rho\le1/4$, $n\ge3$ and
+$F=U_{n-2}\in I_{n-2}$. Let $\Pi_n^{\rm del}$ be the pressure
+primitive produced solely by the
+$-Z_{0,n-2}^{[2]}V_{n-2}$ term of (28), with $V_{n-2}$
+given by (24) and zero axis integration constant. Then
+$\Pi_n^{\rm del}\in\mathcal P\cap I_{n-1}$ and
+\begin{equation}\label{eq:shifted-delayed-bound}
+ \|\Pi_n^{\rm del}\|_{\mathcal P}
+ \le C_{\rm P,del}\|F\|_{\mathcal B},\qquad
+ C_{\rm P,del}=\frac{320000000\,R}{27}
+ \sum_{j=0}^{3}3^{3-j}\rho^{1-j}.
+\end{equation}
+\end{theorem}
+\begin{proof}
+Put $r=a+1$, $q=\lambda_{n-2}$,
+$B=2\eta/L$, $G=(1-\eta^2)/L$, and
+$Z_s^{(r)}=G\partial_\eta+B(s-r)$. The exact coefficient is
+\[
+ (\Pi_n^{\rm del})_{a+1}
+ =\frac1{2r^2}Z_{q-D}^{(r)}Z_q^{(r)}
+ [B(r-D-q)F_a-G\partial_\eta F_a].
+\]
+Its normal form has four channels,
+$\sum_{j=0}^3c_{a,n,j}\partial_\eta^jF_a$.
+Writing $t=a+n+1$, on $|\eta|\le3$ one has
+$|B|<8$, $|G|<13$ and shifts at most $2t$.
+The two $Z$ compositions, with two successive analytic
+radius losses of $1/4$, increase the initial coefficient bound
+by at most $100$ each. Thus on $|\eta|\le5/2$,
+$|c_{a,n,j}|\le250000t^{3-j}$.
+On $[-1,1]$ Cauchy's estimate gives
+$|\partial_\eta^\ell c_{a,n,j}|
+\le250000t^{3-j}\ell!$.
+Combine the shifted four-jet estimate
+\eqref{eq:shifted-four-slot} with the unsigned Leibniz
+factor in \eqref{eq:P-multiplier}; the extra factor
+$1/(2r^2)$ produces the displayed constant.
+\end{proof}
+
+\begin{theorem}[Bounded pressure-to-velocity reconstruction]
+\label{thm:pressure-to-velocity}
+Let $0<h<1/100$, $0<\rho\le1/4$, $R>0$, $n\ge1$.
+For $P\in\mathcal P\cap I_{n-1}$, the actual axial
+momentum pressure term belongs to the original velocity space
+with valuation $I_n$ and
+\begin{equation}\label{eq:P-to-U}
+ \left\|\frac12J_1Z_{-2A,n}P\right\|_{\mathcal B}
+ \le\frac{40}{27}
+ \left(\frac{104R}{\rho^2}+\frac{168R}{\rho}\right)
+ \|P\|_{\mathcal P}.
+\end{equation}
+\end{theorem}
+\begin{proof}
+At input degree $a\ge n-1$, put
+$q=\lambda_n-2A=2h(n-1)-1$.
+Then $-(a+1)\le q-a\le0$. Use the exact commutator
+\[
+ Z_{-2A,n}P
+ =G\partial_\eta P+B(q-D_X)P
+ =\partial_\eta(GP)-G'P+B(q-D_X)P.
+\]
+The original inverse weight-ratio bounds give
+$\|J_1\partial_\eta H\|_{\mathcal B}
+\le8R\rho^{-2}\|H\|_{\mathcal P}$ and
+$\|J_1 H\|_{\mathcal B}
+\le8R\rho^{-1}\|H\|_{\mathcal P}$.
+The factor $|q-a|\le a+1$ cancels the residual inverse
+denominator in the last term. Cauchy bounds on $|\eta|\le3$
+give multiplier constants $M_G\le13$, $M_{G'}\le13$
+and $M_B\le8$. Apply \eqref{eq:P-multiplier} and
+sum the three contributions with prefactor $1/2$.
+\end{proof}
+
+The pressure counterexample is consistent with both theorems.
+For $h=1/200$, $\rho=1/4$, $F=X/(1+4i\eta)$,
+$\Pi_3^{\rm del}$ has a fourth-order pole at $\eta=i/4$
+and belongs to $\mathcal P$ but not $\mathcal B$.
+After applying $\frac12J_1Z_{-2A,3}$, its radial-degree-three
+coefficient has a fifth-order pole with exact nonzero
+coefficient $1044012500000i/19709998099203$. Its derivative
+growth is admissible in the original radial-degree-three
+velocity weight.
+
+\paragraph{The corrected majorant and physical reconstruction.}
+Set $B_n=\|\varphi_n\|_{I_n}+\|U_n\|_{I_n}$.
+The exact coefficient identity $(I-K_n)w_n=S_nf_n$ has the
+following rigorous \emph{conditional} consequence. If
+$\|K_n\|\le C/(n+1)$ and the \emph{complete} regularized
+forcing satisfies
+\[
+\|S_nf_n\|\le c_0(B_{n-1}+B_{n-2})
++c_1\sum_{i=1}^{n-1}B_iB_{n-i},
+\]
+then, for $C/(n+1)\le1/2$,
+\begin{equation}\label{eq:corrected-velocity-recurrence}
+B_n\le2c_0(B_{n-1}+B_{n-2})
++2c_1\sum_{i=1}^{n-1}B_iB_{n-i}.
+\end{equation}
+This velocity-only recurrence no longer assigns the pressure
+primitive the stronger velocity norm, but the displayed
+\emph{full-source} premise has yet to be verified against
+every term of (25)--(28).
+
+For pressure reconstruction, if
+$\Pi_n\in\mathcal P\cap I_{n-1}$ and
+$\|\Pi_n\|_{\mathcal P}\le MT^n$, then for $|X|\le R/8$
+and each fixed integer $b\ge0$,
+\begin{equation}\label{eq:P-derivative-sum}
+|\partial_\eta^b\Pi_n(X,\eta)|
+\le 2^{2-n}MT^n\frac{(b+1)!}{(b+2)^2}
+\left(\frac2\rho\right)^{b+1}.
+\end{equation}
+The binomial bound
+$\binom{2a+b+1}{b+1}\le4^a2^{b+1}$
+and a geometric radial tail prove this directly.
+Thus the pressure series and all fixed parameter derivatives
+converge normally if $|s|T<2$.
+A global geometric $\mathcal P$-bound for the \emph{complete}
+pressure sequence, the actual full forcing estimate and the
+termwise physical-coordinate PDE reconstruction remain
+separate mathematical tasks. Neither Theorem~1.1 nor a
+whole-space unforced singularity follows from this repair alone.
