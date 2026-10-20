@@ -13,19 +13,19 @@
 \begin{document}
 \maketitle
 \begin{abstract}
-The exterior pressure datum in Appendix A of the originating forced
-Navier--Stokes construction depends on moment-matched parameters
-chosen existentially. We derive an exact finite-stage and exterior-tail
-decomposition for this pressure mass, strengthen its source-level
-lower bound using the initial prescribed stages, and give a rigorous
-stagewise interval-enclosure algorithm once the remaining data
-are fixed. The previously established complex axis denominator bounds
-also yield an explicit factorial norm bound for the Appendix-B angular
-linear inverse. We state a conditional threshold for the nonlinear
-contraction in terms of remainder norms that the source has not frozen
-numerically. No certified numerical pressure mass, complete nonlinear
-axis profile, unforced startup corrections, or physical residual
-reconstruction is claimed.
+The remaining quantitative gate in the Appendix-A pulse construction is the
+restoration of the azimuthal moment without changing its pressure increment.
+Using the prescribed smooth-step derivative bumps, we derive the exact
+linear--quadratic two-moment system and prove a uniform inverse bound. The
+uncorrected angular-moment discrepancy is of order $\lambda^{28}$;
+consequently the true two-bump correction has size at most
+$192\lambda^{28}$ and preserves a strictly negative logarithmic slope.
+We give explicit choices for the profile-interpolation length and terminal
+cutoff coefficient, and a parametric choice of the small similarity
+parameters satisfying the local slope and pulse-energy inequalities.
+These estimates do not certify the complete Appendix-A stress cone,
+terminal stopping length, leading-profile fixed point or unforced
+Navier--Stokes reconstruction.
 \end{abstract}
 
 \section{The common weighted space}
@@ -184,6 +184,7 @@ The pointwise weight identity and sharp two-derivative inequality have already b
 \input{Source_Moment_Transport_and_Bump_Correction_Insert.tex}
 
 \input{Pulse_Entrance_Uniform_Source_Envelope_Insert.tex}
+\input{Source_A11_Azimuthal_Moment_Correction_Insert.tex}
 
 \begin{thebibliography}{9}
 \bibitem{newton2026}
