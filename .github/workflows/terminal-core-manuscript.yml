@@ -33,6 +33,7 @@ on:
       - 'TerminalCore2026/Exact_A19_Remainder_and_Quadratic_Amplitude_Insert.tex'
       - 'TerminalCore2026/Source_Moment_Transport_and_Bump_Correction_Insert.tex'
       - 'TerminalCore2026/Pulse_Entrance_Uniform_Source_Envelope_Insert.tex'
+      - 'TerminalCore2026/Source_A11_Azimuthal_Moment_Correction_Insert.tex'
       - '.github/workflows/terminal-core-manuscript.yml'
   workflow_dispatch:
 
