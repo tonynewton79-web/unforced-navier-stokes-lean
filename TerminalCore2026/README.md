@@ -1420,3 +1420,72 @@ physical Navier--Stokes residual proof. Appendix-B (B.2) is only
 one admissibility condition; this round does NOT certify a complete
 leading profile or establish Theorem 1.1. The source's whole-space
 blowup theorem uses smooth compactly supported forcing.
+
+
+## Exact exterior pressure mass and stagewise certification (20 October 2026)
+
+This revision extends the verified source pressure-measure theorem
+by returning to the actual Appendix-A moment-matched schedule.
+It identifies an **exact finite-stage-plus-tail decomposition**
+
+`M0 = (5/2)Pstar^2 + (1/2)int_0^YT c(y)^2 dy
+       + cT^2/[2(1+2h)]`.
+
+The last term is an exact tail integral because the source
+sets `l=-h` and removes all eta dependence beyond YT.
+The first source transition has `0<=l<=3/5`
+for one unit; the following axial transition has `l=0`
+for length `Td=e^Md+10`. Both retain exponent theta=1.
+Thus the sharper **source-specific** inequality holds:
+
+`M0 >= (3 - exp(-1-Td)/2) Pstar^2
+     > (3 - exp(-1-Td)/2) exp(2Td)`.
+
+The pressure positive measure has at least
+`(6-exp(-1-Td))Pstar^2` concentrated at exponent one.
+These bounds are exact and do NOT require arbitrarily selecting
+moment-correction amplitudes.
+
+For a frozen source schedule whose successive lengths and
+logarithmic slopes are independently enclosed, the manuscript
+gives explicit interval formulas for every finite stage and
+the final tail. `outer_schedule_enclosure.py` implements these
+using outward-rounded interval exp arithmetic; the included
+default benchmark is clearly labelled **NOT source-admissible**.
+Its pressure mass numerical interval is NOT a numerical value
+for the actual Appendix-A family.
+
+The previously certified complex denominator gives a
+bound for the source norm (B.4)
+`||chi|| <= 301/sigma_star^2` and its multiplication operator
+`M_chi <=19264/sigma_star^2`. The actual angular
+factorial inverse obeys
+`||(1 + J2*chi/2)^(-1)|| <= exp(770560/sigma_star^2)`.
+This is an explicit linear inverse bound only.
+
+Given independently validated remainder bounds `A1,A2`,
+Lipschitz bounds `L1,L2`, an axis Banach ball radius `r`
+and inverse bound `B`, the source Appendix-B fixed-point map
+is a strict contraction under the sufficient **conditional**
+threshold
+`Lambda >= 2*max(40*B*A1/r,80*A2/r,40*B*L1,80*L2)`.
+The actual numerical `A_i,L_i` and matching schedule do NOT
+appear as a frozen validated dataset in the source, so no
+concrete numerical Lambda, C, or complete leading profile is certified.
+
+The new theorem is in
+`Outer_Pressure_Schedule_Enclosure_Insert.tex`.
+`stagewise_source_checks.py` tests the exact early-stage/tail
+identities, 10,000 Cauchy derivative ratios and conditional
+threshold arithmetic. `SourceScheduleMass.lean` submits only
+finite scalar polynomial/rational gates to CI. The complex,
+interval-stage and PDE conclusions are **not** Lean formalized.
+
+The new reader PDF contains the original 16 pages unchanged
+and a replacement 50-page cumulative amendment (66 pages total).
+The reproducibility ZIP includes 27 source/test/verification entries
+and a SHA-256 manifest. Its sources must be read with the
+explicit release note: NO actual validated M0, no nonlinear
+fixed point, no actual n=1,2 startup corrections, and no
+unforced Navier--Stokes physical residual theorem.
+The original OpenAI result has smooth compactly supported forcing.
