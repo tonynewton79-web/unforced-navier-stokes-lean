@@ -62,3 +62,4 @@ jobs:
           python TerminalCore2026/profile_cauchy_exact.py
           python TerminalCore2026/analytic_reconstruction_exact.py
           python TerminalCore2026/delayed_pressure_fourjet_exact.py
+          python TerminalCore2026/source_native_principal_path.py
