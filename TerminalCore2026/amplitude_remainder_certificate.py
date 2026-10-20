@@ -7,7 +7,7 @@ import argparse,json
 iv.dps=90
 def v(x):
     q=Q(str(x));return iv.mpf(q.numerator)/iv.mpf(q.denominator)
-def audit(lam,mom,bias,beta_l2=Q(5)):
+def audit(lam,mom,bias,beta_l2=Q(640,3)):
     lam,mom,bias,beta_l2=map(Q,(lam,mom,bias,beta_l2))
     assert 0<lam<=Q(1,20) and min(mom,bias,beta_l2)>=0
     L=v(lam);M=v(mom);B=v(beta_l2)
@@ -17,9 +17,9 @@ def audit(lam,mom,bias,beta_l2=Q(5)):
     C=(2/L)*(D0+v(Q(1011,1000))*D1)
     Cp=(2/L)*D1
     Eb=J*C*C;Ea=2*J*C*Cp
-    return {"scope":"CONDITIONAL; pre-pulse moments and exterior energy balance must be source-certified",
+    return {"scope":"CONDITIONAL; true sigma-prime B2<=640/3 used; pre-pulse moments and exterior energy balance must be source-certified",
             "lambda":str(lam),"assumed_moment_bound":str(mom),
-            "assumed_bias_bound":str(bias),
+            "assumed_bias_bound":str(bias), "source_bump_L2_squared_upper":str(beta_l2),
             "bump_error_interval":str(Eb),"A_derivative_interval":str(Ea),
             "value_gate_if_inputs_verified":bool(v(bias)+Eb<v(Q(1,2500))),
             "derivative_gate_if_inputs_verified":bool(Ea<v(Q(1,100)))}
