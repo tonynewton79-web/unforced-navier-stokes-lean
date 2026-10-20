@@ -2053,3 +2053,45 @@ source-generated exterior stress cone, parameter tuple, pulse
 w bound, terminal matching, Appendix B contraction, unforced
 startup profiles and Theorem 1.1 remain **OPEN**. The originating
 OpenAI whole-space construction has compact smooth forcing.
+
+
+## Exact pulse ratio A.29--A.30 and Lean dependency gate (20 October 2026)
+
+The source-native identity from (4.16) is now implemented:
+`w-w0=[q0*(lambda/beta)*R+(D+c_eta)*em-D*eta*m_eta+eN-w0*eQ]/(q0+eQ)`.
+It includes the exact pressure source term, axial and angular cumulative
+moment derivatives and the intrinsic lambda/beta shift; there is no
+assumed numerical Cpre coefficient.
+
+A sufficient **CONDITIONAL** pulse ratio gate is
+`0<lambda<=1e-14`, `0<h<=lambda/10000`,
+`|R|<=12,|w0|<=1500`, with relative source residual bounds
+`|eQ|/q0<=1e-10, |em|/q0<=1e-7,
+ |eta*m_eta|/q0<=2e-7, |eN|/q0<=1e-7`.
+Exact arithmetic gives `|w-w0|<4.51e-7<1e-6`
+IF all four input certificates hold. They have **NOT**
+been checked on any frozen actual exterior.
+
+The old shear-only axial bound `|ci|<=lambda/400000`
+does not suffice: its permitted averaged velocity error after
+division by q0 is O(0.00237), much larger than 1e-6.
+The actual affine two-moment formula and the previously derived
+pre-pulse/amplitude hypotheses imply the stronger
+`|ci|<lambda*1e-40, |em|/q0<3e-8` at
+`lambda<=1e-14`, but this is still conditional on the
+true source moment/amplitude data.
+
+New materials:
+- `A29_A30_Exact_Residual_and_Certification_Insert.tex`
+- `A29A30PulseScalar.lean` (finite scalar proof candidate, NOT PDE Lean)
+- `a29a30_source_exact.py` (source algebra and exact ratio budget)
+- `a29a30_source_interval_gate.py` (requires independently sourced
+  outward-enclosed original moment and pressure fields; no source
+  data supplied)
+- `LEAN_START_TO_FINISH_DEPENDENCY_LEDGER.md` (all open gates).
+
+The original 16-page preprint is unchanged. A cumulative 70-page
+mathematical research amendment accompanies it (86-page reader).
+A full source-certified w ratio, all-stage stress cone, terminal
+matching, Appendix B contraction and the proposed UNFORCED
+Theorem 1.1 remain OPEN.
