@@ -1,0 +1,114 @@
+\section{Delayed pressure: an exact four-jet source ledger}\label{sec:delayed-pressure}
+The last missing step in the local convergence argument is not the abstract
+quadratic majorant. It is the uniform estimate that places the complete
+lower-order right-hand side of the coefficient equations into that majorant.
+In particular, the pressure forcing contains a second-delay term which is
+not covered by applying the two-derivative radial-inverse estimate once.
+Here we isolate its highest-derivative coefficient and establish a sharp
+bound in the original analytic weight. The remaining variable-coefficient
+estimates are stated separately.
+
+Write $\mathcal Z_{a,n}=Z_{a+\lambda_n}$ and
+$\mathcal Z^{[2]}_{a,n}=Z_{a+\lambda_n-D}Z_{a+\lambda_n}$,
+with $Z_a$ as in equation (18) of \cite{newton2026}. Extracting the
+current-order terms (47)--(50) from equations (25)--(27) leaves the
+following \emph{exact} lower-order source decomposition, for $n\ge2$:
+\begin{align}
+ f_n^\varphi={}&-\mathcal Z^{[2]}_{b,n-1}\varphi_{n-1}
+ +\sum_{i=1}^{n-1}\left[
+ V_i\left(\partial_X\varphi_{n-i}+\frac{\varphi_{n-i}}X\right)
+ +U_i\mathcal Z_{b,n-i}\varphi_{n-i}\right],
+ \label{eq:lower-swirl}\\
+ f_n^U={}&-\mathcal Z^{[2]}_{c,n-1}U_{n-1}
+ +\sum_{i=1}^{n-1}\left[V_i\partial_XU_{n-i}
+ +U_i\mathcal Z_{c,n-i}U_{n-i}\right]
+ +\mathcal Z_{-2A,n}\Pi_n^{\mathrm{low}},
+ \label{eq:lower-axial}\\
+ \Pi_n^{\mathrm{low}}={}&\int_0^X\left[
+ C^{-2}\sum_{i=1}^{n-1}\varphi_i\varphi_{n-i}
+ -\frac{\Omega_{n-1}}{2x}\right]dx.
+ \label{eq:lower-pressure}
+\end{align}
+Here $\Omega_{n-1}$ is the \emph{full} expression (28), not an
+independent pressure datum; in particular it includes the delayed
+axial-viscosity term $-\mathcal Z^{[2]}_{0,n-2}V_{n-2}$.
+The radial-velocity reconstruction is precisely
+\begin{equation}\label{eq:V-delay}
+ V_{n-2}=\frac X L\left[2\eta U_{n-2}
+ -2\eta(D+\lambda_{n-2})A_XU_{n-2}
+ -d\,\partial_\eta A_XU_{n-2}\right].
+\end{equation}
+Thus the path through the last term in \eqref{eq:V-delay},
+$\mathcal Z^{[2]}_{0,n-2}$, \eqref{eq:lower-pressure},
+$\mathcal Z_{-2A,n}$, and finally $J_1$ contains four axial
+derivatives. It is exactly the path
+$U_{n-2}\to V_{n-2}\to\Omega_{n-1}\to\Pi_n\to U_n$.
+The first arrow and the final radial inverse each add one radial
+degree. The radial average and pressure primitive provide the
+factor $(a+1)^{-2}$; $J_1$ at input radial index $a+1$ adds
+$(a+2)^{-2}$. This explains the \emph{principal} weight ratio below.
+
+\begin{theorem}[Sharp fourth-jet, two-step radial compensation]
+\label{thm:pressure-fourjet}
+For the coefficient weights $w_{a,b}$ in \eqref{eq:weight}, and
+integers $a,b\ge0$,
+\begin{equation}\label{eq:fourjet-exact}
+ \frac{w_{a,b+4}}{(a+1)^2(a+2)^2 w_{a+2,b}}
+ =\frac{R^2}{\rho^4}
+ \frac{(2a+1)(2a+2)(2a+3)(2a+4)(a+3)^2}
+ {(a+1)^4(a+2)^2}
+ \frac{(b+1)^2}{(b+5)^2}
+ \le\frac{54R^2}{\rho^4}.
+\end{equation}
+The constant $54$ is optimal for this uniform coefficient ratio.
+\end{theorem}
+\begin{proof}
+The factorial representation
+\[
+ w_{a,b}=R^{-a}\rho^{-b}
+ \frac{(2a+b)!}{(2a)!}\frac1{(a+1)^2(b+1)^2}
+\]
+gives the equality in \eqref{eq:fourjet-exact}, since the
+factorials with arguments $2a+b+4$ cancel exactly after a
+radial lift by two degrees. For $a\ge0$, the polynomial identity
+\begin{align*}
+&54(a+1)^4(a+2)^2-(2a+1)(2a+2)(2a+3)(2a+4)(a+3)^2\\
+&\hspace{5mm}=2a(a+1)(a+2)(19a^3+71a^2+69a+9)\ge0
+\end{align*}
+proves the radial bound. The remaining factor
+$(b+1)^2/(b+5)^2$ is at most one. For $a=0$ it gives
+$54(b+1)^2/(b+5)^2$, tending to $54$ as $b\to\infty$.
+\end{proof}
+
+This theorem is an exact estimate for the highest-jet scalar
+multiplier along one source-native composite; it is \emph{not}
+a norm bound for the complete variable-coefficient pressure
+channel. In the latter the factor $(d/L)^4$, its derivatives,
+the similarity shifts, the lower-order differential terms in
+$Z^{[2]}$, and the other contributions to $\Omega_{n-1}$
+produce commutators. Each of those terms must be estimated
+on the same induced analytic space, with constants uniform
+in the expansion order. One cannot replace this step by the
+assertion that individual $\partial_\eta$ or $D_X$ operators
+are bounded there.
+
+There is also no automatic gain $1/n$ in the four-jet
+term: at large $a$ and then large $b$ the dimensionless
+factor in \eqref{eq:fourjet-exact} tends to $16$, not to zero.
+That is consistent with the intended two-step linear forcing
+term $C_0A_{n-2}$ in (53), but it prevents treating this
+channel as a perturbative current-order block. The complete
+recurrence requires a separate uniform bound for
+\eqref{eq:lower-swirl}--\eqref{eq:lower-pressure} including
+all pressure and viscosity contributions. Once that estimate
+is certified, the already proved scalar majorant and
+reconstruction lemmas can be applied to the \emph{actual}
+coefficient sequence.
+
+The factorization and its nonnegativity are encoded in the
+new Lean file \texttt{DelayedPressureFourJet.lean}, submitted
+for kernel checking. An independent SymPy and exact-rational
+script verifies the analytic weight identity and inequality
+for 9,333 nontrivial index and parameter triples and checks
+the asymptotic sharpness. These computational checks do not
+replace a proof of the full operator bound.
