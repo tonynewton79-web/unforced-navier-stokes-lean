@@ -19,6 +19,9 @@ lo=Q('1.009');hi=Q('1.011');err=Q(1,2500)
 assert lo**2*Ku-(1-Q(1,100000000000))/4<-err
 assert hi**2*Q('0.2450478')-Q(1,4)>err
 assert 2*lo*Q('0.2450478')-Q(1,100)>Q('0.48')
+assert Q('1.010045')**2*Ku-(1-Q(1,100000000000))/4<0
+assert Q('1.010055')**2*Q('0.2450478')-Q(1,4)>0
+print('PASS principal source amplitude: 1.010045<A0<1.010055')
 print('PASS conditional source Amp in (1.009,1.011), derivative gap >0.48')
 det=4*Q(37,40)**2
 assert det==Q(1369,400) and det>3
