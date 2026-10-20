@@ -1,0 +1,125 @@
+\subsection*{Exact pulse-end axial-moment cancellation}
+The axial (A.9) corrections are distinct from the subsequent azimuthal
+(A.11) corrections. Their two moment equations admit an exact
+terminal and first-parameter-jet simplification.
+
+\begin{theorem}[Pulse-end moments and their parameter jets]
+\label{thm:pulse-end-annihilation}
+Let $Y=13/\lambda$, $0<\lambda<1/20$, and
+$\alpha=\tfrac12-\lambda$, $\beta=\tfrac12-2\lambda$.
+On the pulse retain the actual source input
+\[
+ a(y,\eta)=A_{\rm pulse}(\eta)R_0(\lambda y)
+       +c_1(\eta)\beta_1(y)+c_2(\eta)\beta_2(y),
+ \qquad \beta_2(y)=\beta_1(y-2).
+\]
+Assume both nonnegative nontrivial axial bump supports are contained
+in $(0,Y)$. Set
+\[
+ k_\kappa=\int_0^Y e^{-\kappa(Y-v)}\beta_1(v)\,dv>0,\quad
+ F_\kappa=\int_0^Y e^{-\kappa(Y-v)}R_0(\lambda v)\,dv,
+ \quad \kappa\in\{\alpha,\beta\}.
+\]
+Then the exact normalized axial moments at pulse exit obey
+\begin{equation}\label{eq:pulse-end-affine}
+ \binom{m(Y)}{j(Y)}
+ =\binom{e^{-\alpha Y}m(0)+A_{\rm pulse}F_\alpha}
+             {e^{-\beta Y}j(0)+A_{\rm pulse}F_\beta}
+ +\mathcal B\binom{c_1}{c_2},\quad
+ \mathcal B=\begin{pmatrix}
+ k_\alpha&e^{2\alpha}k_\alpha\\
+ k_\beta&e^{2\beta}k_\beta
+ \end{pmatrix}.
+\end{equation}
+The determinant is strictly negative:
+\[
+ \det\mathcal B=-k_\alpha k_\beta e^{2\beta}
+                    (e^{2\lambda}-1)<0.
+\]
+Solving the two actual moment conditions gives
+$m(Y)=j(Y)=m_\eta(Y)=j_\eta(Y)=0$ identically.
+These four normalized states remain zero on every subsequent
+stage where the source has $U=0$, including the two A.11
+azimuthal correction supports.
+\end{theorem}
+\begin{proof}
+The pulse transport equations are $m_y+\alpha m=a$ and
+$j_y+\beta j=a$. Apply their exact integrating factors at
+$y=Y$. Translating the second bump by two logarithmic units
+multiplies its kernel by $e^{2\kappa}$, giving the displayed
+matrix and determinant. The latter never vanishes for
+$\lambda>0$; hence $c=-\mathcal B^{-1}r$, with $r$ the first
+vector in \eqref{eq:pulse-end-affine}, is uniquely determined.
+Since $\mathcal B$ is independent of $\eta$, differentiation
+gives $c_\eta=-\mathcal B^{-1}r_\eta$. Therefore the two
+terminal moments and both first parameter jets vanish
+exactly. On later stages $U=0$ implies $M_y=J_y=0$ and
+their parameter derivatives vanish; dividing by positive
+normalizing denominators preserves zero.
+\end{proof}
+
+\begin{corollary}[Six-state post-pulse certification]
+\label{cor:postpulse-six-state}
+After the pulse, four of the eight forward moment states,
+$m,j,m_\eta,j_\eta$, vanish identically. Only
+$(i,s,i_\eta,s_\eta)$ require forward interval propagation,
+whereas $(p,p_\eta)$ still use the independent infinity-gauge
+backward boundary condition. The exact source stresses reduce to
+\begin{align}
+ Q_s&=-1+(1-h)i-D\eta(i_\eta+gi),\label{eq:pulse-end-Q-reduced}\\
+ N_s/E&=E[4h\eta s-d(s_\eta+2gs)+
+       4(\tfrac12+h)\eta p-d(p_\eta+2gp)].
+ \label{eq:pulse-end-N-reduced}
+\end{align}
+It is essential to differentiate the actual coefficients $c_i$:
+dropping $c_{i,\eta}$ invalidates the jet cancellation.
+\end{corollary}
+\begin{proof}
+Insert the exact terminal zeros and $a=U/E=0$
+in \eqref{eq:scale-free-Q}--\eqref{eq:scale-free-N}.
+\end{proof}
+
+\begin{proposition}[A conditional positive pulse-exit $Q_s$ margin]
+\label{prop:pulse-end-Q-positive}
+Suppose $0<\lambda\le1/20$, $0<h\le\lambda/100$ and the
+true source pulse entrance has
+$|i(0,\eta)|,|i_\eta(0,\eta)|\le100$ on $[-1,1]$.
+At $Y=13/\lambda$,
+\[
+ |Q_s(Y,\eta)-q_0(\eta)|
+ \le202e^{-(1-\lambda)Y}
+ \le\frac{775680000}{3722098081}\lambda^4
+ <\lambda/1000,\quad
+ q_0=\frac{\lambda-h-D\eta g}{1-\lambda}.
+\]
+In particular $Q_s(Y,\eta)>\lambda/2$.
+\end{proposition}
+\begin{proof}
+On the pulse $\ell=-\lambda$, $\ell_\eta=0$,
+$i_y+(1-\lambda)i=1$ and
+$(i_\eta)_y+(1-\lambda)i_\eta=0$. Consequently
+\[
+ Q_s(Y)-q_0=e^{-(1-\lambda)Y}
+ [(1-h-D\eta g)(i(0)-(1-\lambda)^{-1})
+          -D\eta i_\eta(0)].
+\]
+Since $-D\eta g=2D\eta^2/(1+\eta^2)\in[0,1/2]$,
+the bracket has absolute value less than
+$\frac32(100+20/19)+50<202$. As
+$(1-\lambda)Y\ge247/(20\lambda)$, use
+$e^x\ge x^4/24$ and the exact rational comparison
+$202\cdot24(20/247)^4\lambda^4<\lambda/1000$.
+Finally $q_0\ge99\lambda/100$, proving the claim.
+\end{proof}
+
+\paragraph{Formalization and mathematical boundary.}
+The independent symbolic tests prove the matrix identities, both
+jet cancellations and the reduced stress formulas; a negative
+control catches omission of the coefficient derivatives.
+The accompanying Lean source proves only the algebraic
+$2\times2$ cancellation and rational inequalities, conditional
+on nonzero determinant. Neither source integral positivity nor
+the pulse-wide A.29--A.30 ratio is Lean-formalized. A single
+admissible exterior tuple, full interval cover, all A.11 cone
+supports, Appendix-B contraction, actual unforced startup
+solutions and the physical zero-force residual remain open.
