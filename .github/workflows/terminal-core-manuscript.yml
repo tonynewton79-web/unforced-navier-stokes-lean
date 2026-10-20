@@ -31,6 +31,7 @@ on:
       - 'TerminalCore2026/Outer_Pressure_Schedule_Enclosure_Insert.tex'
       - 'TerminalCore2026/Pulse_Moment_Matrix_and_Amplitude_Insert.tex'
       - 'TerminalCore2026/Exact_A19_Remainder_and_Quadratic_Amplitude_Insert.tex'
+      - 'TerminalCore2026/Source_Moment_Transport_and_Bump_Correction_Insert.tex'
       - '.github/workflows/terminal-core-manuscript.yml'
   workflow_dispatch:
 
