@@ -1,0 +1,144 @@
+\subsection*{Moment transport from the Appendix-A reference radius}
+The source's reference region (A.7) has
+$U=4\eta$, $E=P_*f(\eta)(X/X_R)^{1/10}$,
+$f=(1+\eta^2)^{-1}$, and $H=\sqrt{2X}E$.
+The cumulative moments are $M=\int_0^XU\,dx$,
+$J=\int_0^XUH\,dx$, and
+$S=\int_0^X(U^2-E^2/2)\,dx$, as in (4.15).
+
+\begin{proposition}[Exact source moment anchor]
+At the first matching radius,
+\begin{equation}\label{eq:source-ref-MJS}
+\begin{aligned}
+M(X_R)&=4\eta X_R,\\
+J(X_R)&=\frac52\eta X_R\sqrt{2X_R}\,P_*f,\\
+S(X_R)&=X_R\left(16\eta^2-\frac5{12}P_*^2f^2\right).
+\end{aligned}
+\end{equation}
+\end{proposition}
+\begin{proof}
+Integrate the source's reference power laws. The three needed
+integrals over $0\le x=X/X_R\le1$ are
+$\int_0^1dx=1$,
+$\int_0^1x^{3/5}dx=5/8$ and
+$\int_0^1x^{1/5}dx=5/6$.
+\end{proof}
+
+Put $y=\log(X/X_R)$,
+$a=U/E$, $\ell=\partial_y\log(\sqrt XE)$,
+and define the scale-invariant moments
+\[
+m=\frac{M}{XE},\qquad j=\frac{J}{XHE},\qquad
+s=\frac{S}{XE^2},\qquad
+d=\frac1{2XE^2}\int_X^\infty E(x,\eta)^2\,dx.
+\]
+\begin{theorem}[Exact four-moment transport]\label{thm:four-moment-transport}
+On every source stage,
+\begin{equation}\label{eq:four-moment-transport}
+\begin{aligned}
+m'&=a-(\ell+\tfrac12)m,&
+j'&=a-(2\ell+\tfrac12)j,\\
+s'&=a^2-\tfrac12-2\ell s,&
+d'&=-\tfrac12-2\ell d.
+\end{aligned}
+\end{equation}
+The forward initial values at $X_R$ are
+$m=4\eta/(P_*f)$,
+$j=5\eta/(2P_*f)$ and
+$s=16\eta^2/(P_*^2f^2)-5/12$.
+At the start $X_T$ of the source's pure power-law tail,
+$d(X_T)=1/(4h)$.
+If $X_p$ is the pulse start and
+$X_{\mathrm{end}}=X_pe^{13/\lambda}$ its end, the
+amplitude-independent remainder from Proposition~\ref{prop:source-exact-A19}
+obeys the exact identity
+\begin{equation}\label{eq:source-bias-transport}
+P_{\mathrm{pre}}-D_{\mathrm{post}}
+=\lambda\bigl(s(X_p)-e^{-26}d(X_{\mathrm{end}})\bigr).
+\end{equation}
+\end{theorem}
+\begin{proof}
+The logarithmic derivatives of $XE$, $XHE$, and $XE^2$
+are $\ell+1/2$, $2\ell+1/2$, and $2\ell$,
+respectively. Use $dM/dy=XU$,
+$dJ/dy=XUH$,
+$dS/dy=X(U^2-E^2/2)$, and
+$d(\frac12\int_X^\infty E^2dx)/dy=-XE^2/2$
+to prove the four transport equations.
+For $X\ge X_T$, $E=E_T(X/X_T)^{-1/2-h}$;
+hence $\frac12\int_{X_T}^\infty E^2dx=X_TE_T^2/(4h)$.
+On the pulse,
+$XE^2/(X_pe_b^2f^2)=e^{-2\lambda\log(X/X_p)}$;
+at $X_{\mathrm{end}}$ this is $e^{-26}$. The bias
+identity follows directly from its definitions.
+\end{proof}
+The first three equations admit forward integrating-factor
+formulas; the last is integrated backward from $d(X_T)=1/(4h)$.
+An interval calculation need only enclose $a(y,\eta)$ and
+$\ell(y,\eta)$ on the \emph{actual} finitely many Appendix-A
+stages. It is not necessary to introduce an artificial
+semi-infinite pre-pulse profile or an approximate terminal tail.
+
+\subsection*{Correction to the prescribed moment-bump estimate}
+Appendix A fixes the positive correction bumps as rescaled copies
+of $\sigma'$ from (A.5), on intervals of width $3/10$.
+The former use of an alternative normalized plateau bump with
+$\int\beta^2\le5$ was not a certificate for this actual
+source shape. For the prescribed bump,
+\[
+\beta(y)=\frac{10}{3}\sigma'\left(
+ \frac{10}{3}(y-y_c)+\frac12\right),\qquad
+\sigma'(t)=\sigma(t)(1-\sigma(t))
+\left(\frac2{t^3}+\frac2{(1-t)^3}\right).
+\]
+\begin{proposition}[Prescribed source-bump norm and corrected error]
+\label{prop:true-source-bump-L2}
+The actual normalized smooth-step-derivative bump satisfies
+\begin{equation}\label{eq:source-bump-correct}
+\frac{27}{5}<B_2:=\int\beta(y)^2\,dy\le\frac{640}{3}.
+\end{equation}
+If the actual transported source moments satisfy
+$\max(|m(X_p)|,|j(X_p)|)\le1$, then for
+$0<\lambda\le1/20$, $|A|\le1.011$ the
+complete amplitude remainder satisfies
+\[
+0\le\mathcal E-(P_{\mathrm{pre}}-D_{\mathrm{post}})
+<5\cdot10^{-17},\qquad
+|\partial_A\mathcal E|<10^{-16}.
+\]
+\end{proposition}
+\begin{proof}
+The symmetry $\sigma(1-t)=1-\sigma(t)$ gives
+$\sigma(1/4)=1/(1+e^{128/9})<1/20$,
+and $\sigma(3/4)>19/20$.
+Cauchy--Schwarz on $[1/4,3/4]$ yields
+$\int_0^1\sigma'^2>2(9/10)^2$.
+On $[1/4,3/4]$ one has $\sigma'\le64$.
+For $0<t\le1/4$,
+$\sigma'\le e^{2-16}(128+128/27)<1$ using
+monotonicity of $t^{-3}e^{-1/t^2}$.
+Symmetry handles the remaining quarter. Hence
+$\int_0^1\sigma'^2\le64\int_0^1\sigma'=64$,
+and scaling by $10/3$ proves the norm bounds.
+
+Insert $B_2\le640/3$ into the already proved
+positive remainder inequalities. With $t=1/\lambda\ge20$,
+$D_0+1.011D_1\le(57605/2000)e^{6/5-4t/5}$.
+The rigorously verified exponential bounds
+$e^{-74/5}<4\cdot10^{-7}$,
+$e^{-5137/200}<10^{-11}$ and monotonicity of
+$t e^{-8t/5+63/(10t)}$ give exact rational upper
+bounds $4.531\cdot10^{-17}$ and
+$8.652\cdot10^{-17}$ for the two errors.
+\end{proof}
+A fully source-admissible amplitude interval therefore requires
+\[
+\max(|m(X_p)|,|j(X_p)|)\le1,\qquad
+\lambda\sup_{|\eta|\le1}
+|s(X_p,\eta)-e^{-26}d(X_{\mathrm{end}},\eta)|
+\le\frac1{2500}-5\cdot10^{-17}.
+\]
+Neither condition has yet been numerically certified for one
+frozen, moment-matched exterior schedule. The corrected
+remainder and transport formulas establish no unforced
+Navier--Stokes solution or physical residual theorem.
