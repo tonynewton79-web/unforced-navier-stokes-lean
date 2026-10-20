@@ -1690,3 +1690,59 @@ amendment); the 32-file ZIP passes integrity checks.
 interval enclosures of a and ell; actual numerical M0, A19
 amplitude, nonlinear Appendix-B contraction, n=1,2 UNFORCED
 corrections and zero physical residual. Theorem 1.1 is open.
+
+
+## Exact source pulse-entrance moment and energy envelopes (20 Oct 2026)
+
+The new cumulative mathematical source
+`Pulse_Entrance_Uniform_Source_Envelope_Insert.tex` proves directly
+from Appendix A.2's prescribed FIRST TWO stages and the exact
+four-moment transport system:
+
+`sup_eta max(|m(Xp,eta)|,|j(Xp,eta)|) < 9/100`,
+
+for `T_d=e^{M_d}+10>10`, `Pstar>e^{T_d}` and
+`0<lambda<=1/20`. This is uniform in the cutoff shape and
+does NOT require freezing its later pulse-end corrections. It
+supersedes the previous *unverified size-one pre-pulse bound*:
+the source's reference pre-pulse stage satisfies a much stronger
+0.09 bound.
+
+A constructive conditional choice
+`0<lambda<=10^-6/(T_d+T_f+1)` yields
+
+`lambda*sup_eta|s(Xp,eta)|<1/10000`.
+
+If the ACTUAL post-pulse azimuthal corrections retain the
+source's claimed slope inequalities (including nonpositive
+slopes through interpolation and the plateau, a 4log(1/h)
+hold at slope -1, and slope <=-3h/4 thereafter), the exact
+exterior-energy representation gives
+
+`d(Xend)<=T_f/2+15log(1/lambda)+3/4+h^7/3`
+and `lambda exp(-26)d(Xend)<1/40000`.
+
+Thus the full amplitude-independent A.19 bias is below
+`1/8000=0.000125`. Combining with the corrected prescribed
+`sigma'` bump result (B2<=640/3, not the invalid plateau
+B2<=5) gives the rigorous *conditional* amplitude gates
+`|E(A,eta)|<0.0004`, `|d_A E|<0.01`. On these
+source-staged hypotheses the genuine A.19 equation has one
+root in (1.009,1.011).
+
+The source's later choice of `T_f`, `lambda` and the
+azimuthal moment-correction coefficients must still be
+shown simultaneously admissible for one explicit parameter
+tuple; the theorem is NOT a fully frozen numerical source
+certificate. We have not computed a numeric pressure mass M0,
+certified the Appendix-B nonlinear fixed point or solved the
+distinct unforced startup correction systems.
+
+`pulse_entrance_exact_certificate.py` passes exact rational
+and exponential-series checks. `PulseEntranceScalar.lean`
+contains only finite scalar gates submitted to GitHub Actions,
+not an end-to-end analytic proof or Lean kernel claim.
+The new 74-page reader retains the deposited 16-page original
+unchanged, followed by a replacement 58-page cumulative
+mathematical amendment; the 33-file ZIP has SHA-256 manifest
+and verified integrity. Theorem 1.1 remains OPEN.
