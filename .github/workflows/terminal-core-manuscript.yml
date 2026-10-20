@@ -15,6 +15,7 @@ on:
       - 'TerminalCore2026/Remaining_Linear_Pressure_and_Nonlinear_Ledger_Insert.tex'
       - 'TerminalCore2026/Leading_Profile_Pressure_Cancellation_Insert.tex'
       - 'TerminalCore2026/Quadratic_Pressure_Symmetrization_Insert.tex'
+      - 'TerminalCore2026/Weighted_Radial_Convolution_Smoothing_Insert.tex'
       - '.github/workflows/terminal-core-manuscript.yml'
   workflow_dispatch:
 
