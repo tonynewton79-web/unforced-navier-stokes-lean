@@ -46,6 +46,24 @@ theorem full_leading_pressure_third_jet
     -(G*(-u*G^2))/(4*r*m*N^2) = u*G^3/(4*r*m*N^2) := by
   ring
 
+/-- Quadratic-pressure inverse denominator dominates two radial
+lifts of the second input, uniformly in the first radial index. -/
+theorem quadratic_pressure_highest_jet_denominator
+    (a b : ℝ) (ha : 0 ≤ a) (hb : 0 ≤ b) :
+    (b+1)*(b+2)^2 ≤ (a+b+1)*(a+b+2)^2 := by
+  have h1 : b+1 ≤ a+b+1 := by linarith
+  have hprod : 0 ≤ a*(2*b+4) :=
+    mul_nonneg ha (by linarith)
+  have h2 : (b+2)^2 ≤ (a+b+2)^2 := by
+    nlinarith [sq_nonneg a, hprod]
+  calc
+    (b+1)*(b+2)^2 ≤ (a+b+1)*(b+2)^2 :=
+      mul_le_mul_of_nonneg_right h1 (sq_nonneg _)
+    _ ≤ (a+b+1)*(a+b+2)^2 :=
+      mul_le_mul_of_nonneg_left h2 (by linarith)
+
+#print axioms quadratic_pressure_highest_jet_denominator
+
 #print axioms full_leading_pressure_parameter_gate
 #print axioms full_leading_pressure_radial_multiplier
 #print axioms full_leading_pressure_third_jet
