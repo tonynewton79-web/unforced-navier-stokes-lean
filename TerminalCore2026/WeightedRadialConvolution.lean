@@ -37,9 +37,25 @@ theorem cubic_radial_multiplier_split (t c : ℝ) :
     (t+c)^3 = t^3+3*t^2*c+3*t*c^2+c^3 := by
   ring
 
+/-- Exact highest-jet coefficient of the leading-pressure channel. -/
+theorem highest_leading_profile_jet_coefficient
+    (r m N G u : ℝ) (hr : r ≠ 0) (hm : m ≠ 0) (hN : N ≠ 0) :
+    -G*(u*G*(-G/r)/m)/(4*N^2) = u*G^3/(4*r*m*N^2) := by
+  field_simp
+  ring
+
+/-- The output radial multiplier index c is absorbed by D_X U₀. -/
+theorem highest_leading_profile_radial_domination
+    (a c : ℝ) (ha : 0 ≤ a) (hc : 0 ≤ c) :
+    a+c+1 ≤ (c+1)*(a+1) := by
+  have hp : 0 ≤ a*c := mul_nonneg ha hc
+  nlinarith
+
 #print axioms radial_convolution_quadratic_gate
 #print axioms two_lift_tame_index_gate
 #print axioms radial_convolution_denominator_gate
+#print axioms highest_leading_profile_jet_coefficient
+#print axioms highest_leading_profile_radial_domination
 #print axioms cubic_radial_multiplier_split
 
 end TerminalCore2026
