@@ -1209,3 +1209,76 @@ Appendix B, Proposition B.2, constructs leading profiles for a broader
 construction whose full-space theorem involves **smooth compactly
 supported forcing**. The local analytic profile does NOT itself
 establish the user's proposed unforced global singularity.
+
+
+## Source-level startup and physical-reconstruction audit — 20 October 2026
+
+The cumulative mathematical amendment now includes
+`Source_Level_Startup_and_Reconstruction_Insert.tex` (source-derived
+from equations (5.2)--(5.6) and Appendix B of OpenAI's
+*Finite Time Blowup for Navier--Stokes*, 2026). The **60-page**
+reader preserves the original deposited 16-page paper unchanged
+and appends a 44-page cumulative amendment. The original
+Zenodo upload is not modified.
+
+**Source leading-profile provenance.** The actual leading
+pressure trace `Pi0(0,eta)` comes from the outer matching
+Lemma A.5; the axis data use `U_*=4eta+j0` with
+`0<j0<=0.05`. Appendix B then chooses regularization
+parameters `delta_*,sigma_*`, a zero-free complex
+neighborhood `Omega`, and `zeta_*=-L H_*/(H_*²+sigma_*²)`,
+`phi_*=exp(Lambda*integral zeta_*)`. Only afterward
+does it choose `Lambda` sufficiently large and `C`
+large enough for the complex supremum of `phi_*`.
+The paper gives existential analytic regularity but no
+independently frozen numerical parameter/norm certificate for
+all those objects. The example `h=1/200,C=3` in symbolic
+test scripts is merely a generic algebraic test, NOT the
+source's certified leading profile.
+
+**Exact order 1 and 2 forcing:** The new note lists
+`Omega_0` and `Omega_1`, the `Pi_1` and `Pi_2`
+pressure primitives, and all swirl/axial lower-order sources.
+The order-1 pressure known source is
+`-1/2 int_0^X Omega_0/x dx`;
+at order 2 it is
+`int_0^X [C^-2 phi_1² - Omega_1/(2x)]dx`.
+`Omega_1` contains `-Z^[2]_(0,0)V_0`.
+The current pressure term `2C^-2 phi_0 phi_n`
+is not double-counted in lower-order forcing.
+Positive-order pressure gauge `Pi_n(0,eta)=0`
+is distinct from prescribed `Pi_0(0,eta)`.
+
+**Exact algebraic verification:**
+`startup_source_symbolic_exact.py` independently checks
+39 source coefficient identities across n=1 and n=2 on
+generic polynomial probes; tests include incompressibility,
+axis-regular Omega, complete pressure derivative,
+current/known split, and both momentum equations.
+`startup_index_exact.py` checks **2,003,000** ordered
+convolution-index pairs over n=1..2000 and the
+triangularity of Omega_(n-1), plus 20 exact rational
+similarity Jacobian/shift examples.
+A nonzero n=1 delayed swirl source is reproduced on
+one generic polynomial probe to demonstrate that the
+startup system is nontrivial; the probe does NOT solve
+the actual leading equations.
+
+**Conditional physical reconstruction.** From
+`tau=q(1-eta²), z=q^D eta, X=r²/(2q)` the exact chain
+rules `T_a,Z_a` and Jacobian `L=1-2h eta²>0` follow.
+If a fixed analytic leading solution, ALL actual positive
+order equations, pressure gauges, and locally normally
+convergent physical derivatives are independently verified,
+then termwise reconstruction has exactly zero unforced PDE
+residual. Those hypotheses are NOT certified in this update.
+
+**Lean scope:** `StartupSourceAudit.lean` proves only
+finite ordered-pair and Jacobian scalar gates if/when the
+pinned GitHub Actions job succeeds. The actual source
+functions, Banach-space inverse and full physical PDE
+are not formalized in Lean. The earlier source whole-space
+result uses smooth compactly supported forcing and its
+own formal higher-order background is made smooth by
+order-dependent cutoffs; this is not an unforced proof.
+Maintain the PR as draft and do not claim Theorem 1.1.
