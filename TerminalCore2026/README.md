@@ -1489,3 +1489,63 @@ explicit release note: NO actual validated M0, no nonlinear
 fixed point, no actual n=1,2 startup corrections, and no
 unforced Navier--Stokes physical residual theorem.
 The original OpenAI result has smooth compactly supported forcing.
+
+
+## Narrow fixed Appendix-A pulse and moment correction certificate (20 Oct 2026)
+
+A source-specific result has been added in
+`Pulse_Moment_Matrix_and_Amplitude_Insert.tex`, using exactly
+Appendix A equations (A.5), (A.9), (A.19)-(A.20), and the
+translated two-bump moment matrix (A.1) of OpenAI's
+*Finite Time Blowup for Navier–Stokes*.
+
+Because the source smooth step satisfies
+`sigma(t)+sigma(1-t)=1`, its integrated pulse shape obeys
+`phi_b(x)=x-1/100` for `x>=1/50`.
+Elementary exponential integration with two controlled
+transition errors gives the **rigorous rational interval**
+
+`0.2450478 < K_b < 0.245052`.
+
+Its principal quadratic source amplitude
+`A0^2 K_b=(1-exp(-26))/4` is therefore
+`1.010045 < A0 < 1.010055`, **independent of the unchosen
+exterior moment-correction amplitudes**.
+
+For the *actual* moment amplitude satisfying
+`F(A,eta)=K_b A^2-(1-exp(-26))/4+E(A,eta)=0`,
+the sufficient validated threshold
+`|E|<=0.0004` and `|d_A E|<=0.01`
+on `[1.009,1.011]x[-1,1]` implies one and only one
+`A(eta) in (1.009,1.011)`, with
+`|d_eta A|<=sup|d_eta E|/0.48`. The actual
+source's `E(A,eta)` has NOT yet been enclosed to this
+threshold for one frozen source-admissible schedule.
+
+The normalized two-bump correction matrix in (A.1), using
+nonnegative unit-mass width-0.3 translates separated by
+`Delta=2`, has for `0<lambda<=1/20`:
+`|det B| >= (1369/400)*lambda>3lambda` and
+`||B^(-1)||_infty<2/lambda`.
+Thus the corrected coefficients can be enclosed once the
+*actual normalized* moment discrepancies are enclosed.
+
+The independent Python Fraction script
+`pulse_moment_exact.py` passes the exact exponential-series,
+fixed-pulse, root-sign and matrix-condition arithmetic.
+`PulseMomentSharp.lean` submits finite rational gates, NOT
+a kernel certificate of the smooth-step integrals. The latest
+GitHub Actions status must be checked separately.
+
+The downloadable research reader has **68 pages** (original
+16 pages unchanged plus one revised 52-page amendment).
+The **30-file** source/verification ZIP includes a
+SHA-256 manifest and a precise proof-status note.
+
+**Still open:** independently freeze the true exterior schedule,
+bound its `E(A,eta)` and normalized moment discrepancies,
+certify the actual pressure mass `M0`, give concrete source
+parameters and Appendix-B nonlinear contraction constants,
+and solve/verify the distinct unforced `n=1,2` systems.
+The originating whole-space theorem includes smooth forcing;
+no unforced theorem or global singularity is established here.
