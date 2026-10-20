@@ -1282,3 +1282,79 @@ result uses smooth compactly supported forcing and its
 own formal higher-order background is made smooth by
 order-dependent cutoffs; this is not an unforced proof.
 Maintain the PR as draft and do not claim Theorem 1.1.
+
+
+## Explicit source axis-data complex fence and first two radial jets (20 October 2026)
+
+A new cumulative scholarly subsection is included as
+`Axis_Profile_Geometric_Fence_and_Jets_Insert.tex`.
+The canonical attached reading PDF is 62 pages: the unchanged original
+16-page preprint and a replacement 46-page mathematical amendment.
+The attached research ZIP (29 entries) contains the complete editable
+TeX, source checker scripts, finite Lean gates and a verification status
+report. These attachments do NOT update the existing Zenodo deposit.
+
+**Proved denominator geometry (universal ranges).** For all
+`0<h<=1/100`, `0<j0<=1/20`, `0<sigma<=1/10`, and
+`Hstar(z)=(1/2-h)z+(1-z²)(4z+j0)`, let
+`Omega_sigma={|Re z|<=11/10, |Im z|<=sigma/100}`.
+The exact proof shows
+`|L(z)|>=607/625`,
+`|Hstar(z)^2+sigma^2|>=9 sigma²/16`,
+and `|zeta_star(z)|<=25/sigma²` for
+`zeta_star=-L Hstar/(Hstar²+sigma²)`.
+For `varphi_star=exp(Lambda integral_0^z zeta_star)`,
+`sup|varphi_star|<=exp(30 Lambda/sigma²)`.
+Thus `C>=exp(30 Lambda/sigma²)` suffices for **only**
+the normalization (B.16), and the degree-zero analytic
+weighted norm of `g=varphi_star/C` is at most one if
+`rho<=sigma/1600`.
+
+**Diagnostic, NOT source-admissible tuple.**
+`h=1/200,j0=1/50,sigma=1/100` produces the exact polynomial
+`Hstar=-4z³-z²/50+(899/200)z+1/50`;
+`Hstar(-1/200)=-99/40000`,
+`Hstar(-1/250)=63123/31250000`, and
+`-Wstar>=14701/5000>2.8` on the real physical strip.
+The rational multiplier is regular on
+`|Re z|<=1.1,|Im z|<=1e-4`, with
+`|zeta_star|<=250000`. This does NOT verify that this
+specific sigma satisfies (B.2) because Zstar depends on
+the un-frozen actual pressure trace.
+
+**Leading-profile radial jet formulas.** Coefficient extraction from
+source (B.12)–(B.15) now gives exact expressions for
+`Phi=1+p1 Y+p2 Y²+...`,
+`u=q1 Y+q2 Y²+...`, with
+`p1=[-chi+(Wstar+h(1-2eta Ustar))/(Lambda L)]/4`,
+`q1=-Zstar/(2L)`, and source-defined explicit
+`p2=(-chi*p1+R11/Lambda)/12`,
+`q2=R21/(8Lambda)`. Also
+`Pi=Pi0+(g²/Lambda)Y+(g²p1/Lambda)Y²+...`.
+All eight generic formal coefficient identities and the
+rational safety constants pass independent SymPy exact replay.
+These are **radial Y coefficients of the leading profile**,
+not solutions of the distinct similarity-order n=1,2 startup
+correction systems.
+
+**Blocking source dependencies.** The actual prescribed pressure
+trace is the Lemma A.5 full exterior-schedule integral
+`Pi0(eta)=-(1/2) int E_id,sched(y,eta)² dy`.
+Until its concrete analytic integral bounds are frozen,
+(B.2) cannot be checked numerically. Further unknown
+thresholds are `Lambda0`, `C0(Lambda)` and the quantitative
+B.2 contraction ball. No actual fully admissible numerical
+leading profile or n=1/n=2 unforced correction solution has
+yet been certified. Theorem 1.1 and whole-space unforced
+singularity remain OPEN.
+
+**Lean and exact replay:** `AxisProfileFence.lean` contains
+finite rational polynomial certificates, while the complex
+zero-free proof is mathematical prose, not Lean-formalized.
+`axis_profile_fence_exact.py` and
+`axis_profile_radial_jets_exact.py` are in the pinned CI
+workflow. Do not call them kernel-certified until a successful
+run is returned. Existing Mathematica/SymPy probes are not
+a numerical enclosure of the originating Appendix-A pressure
+integral and do not turn a forced published construction into
+an unforced proof.
