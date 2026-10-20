@@ -107,6 +107,8 @@ jobs:
         run: lake env lean TerminalCore2026/A5PulseFiniteGates.lean
       - name: Kernel check pulse A29-A30 scalar polynomial budget gates
         run: lake env lean TerminalCore2026/A29A30PulseScalar.lean
+      - name: Check normalized moment algebra Lean candidates
+        run: lake env lean TerminalCore2026/NormalizedMomentPulseScalar.lean
       - name: Independent exact-equation tests
         run: |
           python -m pip install sympy
