@@ -600,3 +600,68 @@ The additional research packet replays **101,968** exact cases
 (99,494 algebra/convolution/smoothing and 2,474 source-specific).
 The 36-page reader consists of 16 original pages and a 20-page
 replacement cumulative scholarly amendment.
+
+## All-four-jets leading-pressure theorem and first quadratic high-jet estimate (20 October 2026)
+
+The cumulative manuscript now includes
+`Full_Leading_Pressure_Normal_Form_Insert.tex` and
+`Quadratic_Highest_Jet_Insert.tex`. The updated reading copy is
+39 pages: the original 16 pages unchanged and one replacement
+23-page mathematical amendment.
+
+**Complete source-specific linear leading-profile pressure bound.**
+For input `F=U_k in I_k`, `a>=k`, and a leading-profile
+Taylor index `c>=0`, define `r=a+1`, `m=a+c+1`,
+`N=m+1`, `alpha=r-D-lambda_k`, `epsilon=lambda_k-r`,
+`theta=lambda_(k+1)-2A-m`. Expanding the complete five-source
+pressure operator yields exactly 27 pair terms, distributed as
+8, 12, 6 and 1 at axial-jet orders 0, 1, 2 and 3:
+`P_(k+1)^lead(F)_(a+c+2) = -1/[4 r m N²] *
+ sum_(j=0)^3 sum_((p,g) in E_j) p*g_c*d_eta^j F_a`.
+The source-defined finite pair sets `E_j` are written explicitly
+in the new manuscript subsection.
+
+The polynomial factors satisfy `|p| <= (N+k)^(3-j)` and
+`m/r <= 1+c`. With finite fixed-multiplier budgets
+`M_j=sum_(E_j)sum_(s=0)^(3-j) binom(3-j,s)
+ ||D_X^s(1+D_X)g||` on one common weighted analytic space,
+the theorem proves
+`||P_(k+1)^lead F|| <= C_lead/(k+1) ||F||`,
+`C_lead=16*sum_(j=0)^3 D_j*M_j`,
+`D_j=675*2^(4-j)*R²/[(j+1)²*rho^j]`.
+This proves the complete **conditional** five-term leading-profile
+operator estimate, including lower jets and multiplier commutators,
+without a finite radial Taylor cutoff. It does NOT verify that
+the particular imported leading profiles satisfy the common
+holomorphic-radius hypotheses.
+
+The exact verification script `full_leading_normal_form_exact.py`
+passes all 27 symbolic normal-form terms, 27 concrete source cases,
+and 45,360 exact-rational polynomial index bounds.
+
+**Quadratic pressure highest-jet component.** For ordered
+positive orders `i+j=k`, input radial degrees `a>=i`,
+`b>=j`, `N=a+b`, its coefficient of
+`partial_eta^3(U_j)_b` is exactly
+`G³ (U_i)_a / [4(b+1)(N+1)(N+2)²]`.
+The inequality
+`(b+1)(N+1)(N+2)² >= (b+1)²(b+2)²`
+and the two-lift theorem prove
+`||Q_ij^(0,3)|| <= 1024*D_3/(j+1) *
+ ||G³|| ||U_i|| ||U_j||`.
+The source symbolic coefficient and 7,569 integer denominator
+comparisons pass in `quadratic_highest_jet_exact.py`.
+
+`FullLeadingPressureNormalForm.lean` includes finite all-index
+parameter bounds, radial multiplier comparisons and the bilinear
+denominator inequality. It is added to pinned CI, but the
+**full Banach operator theorem is not in Lean**. Check the latest
+CI outcome before claiming even these finite Lean lemmas have
+kernel certificates.
+
+**Open mathematical gates:** the remaining ordered quadratic
+pressure terms (mixed derivatives and lower jets); other
+positive-order momentum forcing channels; concrete radii of
+the imported leading profiles; the complete source recurrence (53);
+and the termwise physical PDE reconstruction. Theorem 1.1 and
+a global unforced singularity are NOT proved by this release.
