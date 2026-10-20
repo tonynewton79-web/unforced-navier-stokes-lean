@@ -1,0 +1,117 @@
+\subsection*{Quantitative pulse curvature and the remaining cone error}
+The prescribed axial pulse of Appendix A.5 in \cite{openai2026} has
+$U=ER_b$, $R_b(y,\eta)=A(\eta)R_0(\lambda y)
++c_1(\eta)\beta_1(y)+c_2(\eta)\beta_2(y)$,
+$\beta=1/2-\lambda$ and $\ell=-\lambda$. Here the
+$\beta_i$ are the \emph{axial} moment bumps of (A.9), not the
+later azimuthal corrections of (A.11).
+Put $\phi_b(\xi)=\int_0^\xi\sigma(50v)\,dv$ and
+$R_0(\xi)=\phi_b(\xi)[1-\sigma(\xi-10)]$, with the
+source's smooth endpoint extensions.
+
+\begin{lemma}[Explicit source convolution remainder]
+\label{lem:A5-source-convolution}
+The source's fixed smooth step and main pulse satisfy
+$\|\sigma'\|_\infty\le64$,
+$\|\sigma''\|_\infty\le17152$,
+$\|R_0'\|_\infty\le705$ and
+$\|R_0''\|_\infty\le192000$.
+If $m'+\beta m=A R_0(\lambda y)+\sum_i c_i\beta_i(y)$, then
+\begin{equation}\label{eq:A5-explicit-convolution}
+\left|m(y)-A\left(\frac{R_0(\lambda y)}{\beta}
+-\frac{\lambda R'_0(\lambda y)}{\beta^2}\right)\right|
+\le \frac{192000|A|\lambda^2}{\beta^3}
++|m(0)|e^{-\beta y}+\frac{1280}{3\beta}\max_i|c_i|.
+\end{equation}
+For $|A|\le1011/1000$, the first term is at most
+$2{,}131{,}000\lambda^2$. The source's preceding
+zero-axial-velocity interval of length $60\log(1/\lambda)$
+and the earlier normalized moment bound $|m|<9/100$ imply
+$|m(0)|\le(9/100)\lambda^{27}$.
+\end{lemma}
+\begin{proof}
+For $1/4\le t\le3/4$, logarithmic differentiation of
+$\sigma$ gives $|\sigma'|\le64$ and
+$|\sigma''|\le(256^2+3072)/4=17152$.
+For $0<t\le1/4$, the exponentially decaying boundary
+expression has the upper bound
+$19244e^{-14}<1$; use symmetry at the other endpoint.
+The product rule, $|\phi_b'|\le1$,
+$|\phi_b''|\le3200$ and $\phi_b\le11$ give
+$\|R_0''\|\le3200+128+11(17152)=192000$.
+Extend the flat-start pulse by zero and apply Taylor's
+formula inside its causal exponential convolution.
+The second-order remainder is bounded by
+$|A|\lambda^2\|R_0''\|/\beta^3$, since
+$\int_0^\infty v^2e^{-\beta v}dv=2/\beta^3$.
+Each prescribed bump has supremum at most $640/3$;
+the two bump convolutions and the entrance homogeneous
+term give the other terms. Use $\beta\ge9/20$ and
+exact rational substitution for the final constants.
+\end{proof}
+
+\begin{proposition}[Source pulse stress-cone acceptance criterion]
+\label{prop:A5-quantified-source-cone}
+Assume the genuine A.19 amplitude satisfies
+$1.009<A<1.011$ and
+\[
+0<\lambda\le(2\cdot10^9)^{-1},\quad
+0<h\le\lambda/10^4,\quad
+\max_i|c_i|\le\lambda/400000,
+\]
+where $c_i$ are the \emph{A.9 axial} end-bump coefficients.
+Writing $R=AR_0$, $c_\eta\ge0$ as in (A.27), and
+\[
+ C_d=\frac{\lambda(D+c_\eta)(1-\lambda)}
+ {\beta^2(\lambda-h+c_\eta)},\qquad
+ b_0=-R,\quad w_0=2R-C_dR'_0A,
+\]
+the source shear is exactly
+\[
+ b_s=-(1+2\lambda)R_b+2\lambda\,\partial_\xi R_b,\qquad
+ |b_s-b_0|<10^{-6}.
+\]
+If, moreover, the actual (A.29)--(A.30) moment and pressure
+calculation yields
+$Q_s>0$ and $|w-w_0|\le10^{-6}$ throughout the pulse,
+where $w=N_s/(EQ_s)$, then
+\begin{equation}\label{eq:A5-quantified-cone}
+ b_sw<74/100,\qquad
+ 2b_sw+b_s^2/a+(a-2)w^2<168/100<2,\quad a=2+2\lambda.
+\end{equation}
+The full cone follows after the independent radial-scale
+criterion of Lemma 4.5 is met.
+\end{proposition}
+\begin{proof}
+The original bump has $\|\beta_i'\|_\infty<200000$.
+Thus $|R_b-R|\le(1280/3)\max_i|c_i|$ and
+$|\partial_\xi(R_b-R)|\le400000\max_i|c_i|/\lambda$.
+Since $|R|<12$ and $|R'|<713$,
+$|b_s+R|<1453\lambda<10^{-6}$.
+For $h\le\lambda/10^4$ and $c_\eta\ge0$,
+$0<C_d\le[(1/2)(10000/9999)]/(1/2-\lambda)^2
+<2.001$. Hence $|w_0|<1500$ and $R'\le1.2$.
+Completing the squares gives
+\[
+ \sup_{R\ge0}(-2R^2+2.41R)=58081/80000,\qquad
+ \sup_{R\ge0}(-\tfrac72R^2+4.82R)=58081/35000.
+\]
+If the changes in $b_s$ and $w$ are at most
+$\varepsilon=10^{-6}$, the changes in the two cone
+polynomials are bounded by
+$1512\varepsilon+\varepsilon^2$ and
+$3336\varepsilon+4\varepsilon^2$.
+The second has in addition the base nonnegative term
+$2\lambda(1500)^2\le0.00225$.
+The exact rational bounds are strictly less than
+$0.74$ and $1.68$ respectively, proving the result.
+\end{proof}
+
+The explicit convolution control closes one of the $O(\lambda^2)$
+channels in (A.28). The remaining $10^{-6}$ estimate for
+$w-w_0$ involves $Q_s,N_s$, the $\eta$-derivatives
+of the axial moments, the pressure and the $S$-moment
+in (A.29)--(A.30). Its source-dependent constants have not
+yet been interval-certified on a single actual parameter
+tuple. Neither the other stage cones, terminal matching,
+Appendix-B contraction nor an unforced PDE theorem follows.
