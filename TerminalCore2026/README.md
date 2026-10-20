@@ -743,3 +743,67 @@ imported leading profiles, and physical PDE reconstruction.
 The complete lower-order recurrence (53) and Theorem 1.1
 are NOT proved by the quadratic-pressure result alone.
 No whole-space finite-energy unforced singularity follows.
+
+
+## Direct momentum closure and a pressure-norm counterexample (20 October 2026)
+
+**Mathematical advance:** Both positive-order momentum products in source
+equations (25) and (26) admit a common uniform estimate after the
+regular-singular inverse. With `B=2eta/L`, `G=d/L`,
+`V_i=X W_i` and `alpha_(i,a)=1-(D+lambda_i)/(a+1)`,
+the complete source is
+`S_ij=(W_i(D_X+delta)F_j)+U_i[G d_eta+B(beta+lambda_j-D_X)]F_j`.
+The paper proves, in the exact induced analytic norm,
+`||(1/2)J_nu S_ij|| <= C_mom ||U_i|| ||F_j||`,
+`C_mom=51200R(20+16/rho)`, valid for both swirl and axial
+momentum, independent of i,j. It uses unsigned Leibniz
+convolution and applies J_nu BEFORE bounding derivatives.
+
+Both *complete* direct delayed momentum sources are also
+uniformly bounded:
+`||(1/2)J_nu Z^[2]_(beta,n-1)F||
+  <= C_delay_mom ||F||`,
+`C_delay_mom=1280000R(48+56/rho+8/rho^2)`.
+The full normal form has coefficients
+`c0=theta G B'+theta(theta-D)B^2`,
+`c1=GG'+(2theta-D)GB`, `c2=G^2`.
+The Cauchy radius and multiplier estimates include all derivatives
+of B and G.
+
+**Crucial counterexample/correction:** The pressure primitive
+alone is NOT bounded in the unchanged pressure norm used by
+amplitude (52). At h=1/200, rho=1/4,
+`U_1=X/(1+4i eta)` belongs to I_1 with norm <=8R;
+the isolated pressure component of the source-native
+`U_1->V_1->-Z^[2] V_1->Pi_3` path is
+`Pi_3^del=X^2 P(eta)`, with a fourth-order pole at
+eta=i/4 whose exact Laurent coefficient is
+`-921187500*i/4103684801` (nonzero).
+Its derivative norm at radial degree two diverges in B:
+`w_(1,b+3)/[4w_(2,b)] =
+ (27R/(4rho^3)) (b+5)((b+1)/(b+4))^2 -> infinity`.
+This refutes a general pressure-primitive boundedness claim in
+the specified norm. It DOES NOT refute a particular local solution.
+
+**Research status correction:** Although the momentum products
+and direct delayed sources are now bounded, the existing full
+amplitude A_n contains `||Pi_n||/(n+1)` in that same space.
+Therefore the proposed recurrence (53) and the claimed
+normal-convergence proof DO NOT FOLLOW without a repair.
+An appropriate next target is a pressure-free coefficient
+majorant using only the fully regularised pressure-to-velocity
+composite, together with a separate weaker pressure space
+(weight `w_(a,b+1)` is one possible candidate), followed by
+independent physical-coordinate derivative control.
+
+Reproducibility: `Direct_Momentum_and_Pressure_Norm_Insert.tex`
+is included in the cumulative manuscript. The exact script
+`momentum_pressure_obstruction_exact.py` verifies 432 ordered
+momentum coefficient cases, 104 full Z-squared cases,
+72,450 rational inverse multipliers, 12,880 unsigned Leibniz
+comparisons, 100 exact pressure-ratio polynomial identities
+and the nonzero analytic Laurent coefficient.
+`MomentumAndPressureNorm.lean` submits finite scalar gates to
+pinned GitHub Actions. They are NOT kernel-certified unless the
+current workflow reports completion and success. No end-to-end
+Lean formalization of the Banach estimates or Theorem 1.1 is claimed.
