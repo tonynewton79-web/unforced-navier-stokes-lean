@@ -2095,3 +2095,44 @@ mathematical research amendment accompanies it (86-page reader).
 A full source-certified w ratio, all-stage stress cone, terminal
 matching, Appendix B contraction and the proposed UNFORCED
 Theorem 1.1 remain OPEN.
+
+
+## 21 Oct 2026: Exact ten-state interval tubes and closed pulse transfer
+
+The manuscript now separates the normalized source hierarchy into
+**eight forward states** (m,i,j,s and their eta jets) and **two
+backward pressure states** (p,p_eta). It establishes a conditional,
+all-index exact-rational affine interval ODE comparison theorem, with
+a strict cell criterion Delta*L<1 and a rigorous Picard-enclosure
+refinement. The new test passes exact source-native positive controls
+in the reference power-law region and the pure exterior pressure tail,
+and rejects unsafe stage lengths/invalid dimensions.
+
+The actual Appendix-A axial pulse (A.9) retains
+ell=-lambda, ell_eta=0, g=-2eta/(1+eta^2) exactly. Consequently
+i,i_eta,p,p_eta have elementary closed transfer formulas, while
+m,j and their jets and s,s_eta have exact integrating-factor
+convolutions on the fixed shape interval xi=lambda*y in [0,13].
+The source's A.9 axial bumps are not the later A.11 azimuthal
+moment corrections.
+
+GitHub sources: Ten_State_Affine_Interval_Tubes_Insert.tex,
+Pulse_Exact_Integrating_Factors_Insert.tex,
+ten_state_interval_tubes.py, pulse_transfer_exact.py,
+TenStateAffineTubes.lean, PulseTransferScalar.lean,
+LEAN_TEN_STATE_TO_UNFORCED_THEOREM_LEDGER.md.
+The accompanying complete local research packet also contains
+the full 8+2 rational tube checker and source-native controls.
+The new cumulative reader has 91 pages (original 16 unchanged;
+75-page mathematical amendment).
+
+**Critical scope:** The exact checker accepts bounds supplied by
+a source verifier; it does not certify the actual Appendix-A profile
+or source inputs. Naive Delta*L stepping over 13/lambda would be
+prohibitively expensive at tiny lambda; the exact pulse transfers
+give a better route but the A.28 convolution and the full
+source-specific interval covering remain open. No source ratio
+10^-6, complete stress cone, Appendix-B contraction, unforced
+startup systems, physical zero-force PDE residual or full Lean
+Theorem 1.1 proof has been established. Do not mark the Lean
+candidate declarations as kernel certified without completed CI.
