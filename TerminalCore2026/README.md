@@ -1883,3 +1883,64 @@ verified moment-matched pressure mass M0, Appendix-B
 nonlinear fixed point, unforced n=1,2 corrections and
 complete unforced Navier-Stokes PDE residual. The
 originating OpenAI whole-space construction includes forcing.
+
+
+## Appendix-A stress cone: strict A.11 support criterion (20 October 2026)
+
+The original OpenAI *Finite Time Blowup for Navier--Stokes* source
+requires the relaxed stress-cone condition (4.21) on some
+inner/joining stages and the FULL condition (4.22) on designated
+outer stages. Negative corrected azimuthal slope does NOT by
+itself imply cone admissibility. The earlier A.11 theorem supplied
+bounds on the correction amplitudes, eta derivatives and terminal
+matching length, but did not verify the cone.
+
+New mathematics in `A11_Cone_Certificate_Insert.tex`:
+
+- On both A.11 azimuthal-bump supports, the source has U=M=J=0,
+  hence the axial shear b_s=0. Existing source slope bounds give
+  2+lambda <= a=2-2ell <= 2+3lambda <= 43/20.
+- The direct full-cone sufficient certificate is
+  Q_s>=lambda/4, |N_s|/E<=lambda/4, X>=18/lambda.
+  It yields p_s1>=9/2>=2a and the exact STRICT normalized
+  margin 2(1-a/p_s1)^2-(a-2)w^2>=7/20, w=N_s/(E Q_s).
+- Using the previously proved first parameter-derivative and
+  corrector bounds, the exact r=I/(XH) ODE implies
+  |r-(1-lambda)^(-1)|<3e8 lambda^28,
+  |r_eta|<2e7 lambda^28, and
+  |I_eta/(XH)|<2.1e7 lambda^28.
+  Under h<=lambda/100,
+  Q_s >= (lambda-h)/(1-lambda)-3.2e8 lambda^28
+      >= lambda/2, UNIFORMLY on the two bumps.
+- Accordingly the remaining sufficient SUPPORT tests reduce to
+  |N_s|/E <= lambda/2 and X >= 9/lambda.
+  The radial condition can be reached by scaling X_R only AFTER
+  the other choices; |N_s|/E is not yet source-certified.
+- A quantitative perturbation bound for the two A.24 scalar
+  margins gives an interval-transfer route on every other stage.
+  The source's pulse O(1) and o(1) bounds are not replaced with
+  fabricated explicit constants; the actual pulse stress cone
+  still requires its uniform remainder certificate.
+
+The exact Python checker `a11_cone_exact.py` includes a
+general rational interval cone evaluator and a negative control.
+Its demonstrations are SYNTHETIC and are **not** numerical
+enclosures of the actual corrected exterior. The new Lean file
+`A11ConeMargin.lean` contains only finite real-algebra and
+rational-constant lemmas. A successful GitHub Actions run is
+required before those lemmas can be called kernel-certified;
+the analytic moment ODE comparison and physical equations have
+NOT been fully translated into Lean.
+
+The new 80-page research reader preserves the original deposited
+16-page manuscript unchanged and appends the revised 64-page
+cumulative mathematical amendment. A separate end-to-end Lean
+dependency ledger is `LEAN_A11_TO_THEOREM11_DEPENDENCIES.md`.
+Even a complete certificate of the FORCED source stress cone
+would not prove the proposed UNFORCED local Theorem 1.1.
+
+**Remaining main gaps:** source-verified N_s/E intervals, complete
+stagewise strict stress-cone margins and parameter tuple, the
+numerical moment-matched exterior pressure datum, Appendix-B
+analytic contraction, true unforced n=1 and n=2 corrections,
+all-order convergence and exact unforced Navier--Stokes residual.
