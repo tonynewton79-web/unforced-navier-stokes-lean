@@ -1549,3 +1549,75 @@ parameters and Appendix-B nonlinear contraction constants,
 and solve/verify the distinct unforced `n=1,2` systems.
 The originating whole-space theorem includes smooth forcing;
 no unforced theorem or global singularity is established here.
+
+
+## Exact Appendix A (A.19) quadratic remainder (20 October 2026)
+
+**New source-level identity.** The fixed main pulse is zero by
+`xi=11`, whereas the two correction bumps start after
+`xi>=13-(63/20)*lambda>11` for `0<lambda<=1/20`.
+Therefore pulse-bump and bump-bump cross terms in the actual
+S-moment vanish EXACTLY. With the source normalizations,
+
+`E(A,eta) = P_pre(eta)-D_post(eta)
+             + J1*c1(A,eta)^2 + J2*c2(A,eta)^2`,
+
+where `J_i=lambda*int exp(-2lambda y)*beta_i(y)^2 dy >0`,
+`P_pre=lambda*S(Xp)/(Xp*eb^2*f^2)` and
+`D_post=lambda/(2*Xp*eb^2*f^2)*int_(Xend)^infty E^2 dX`.
+The source constructs post-pulse E independently of Amp.
+
+The M and J moment constraints are linear in U; with the
+normalized (A.1) matrix, `c_i=a_i(eta)+Amp*b_i` exactly.
+The `b_i` depend on the fixed pulse and matrix but not eta.
+Thus the FULL amplitude equation is a quadratic polynomial
+in Amp, with positive leading coefficient
+`K_b + J1*b1^2+J2*b2^2`; in particular
+`partial_A^2 E=2*(J1*b1^2+J2*b2^2)>=0`.
+If the constant polynomial coefficient is negative, there is
+exactly one positive root, expressed by the quadratic formula.
+
+**Explicit quantitative bump control.** For a permissible
+normalized smooth plateau bump supported in [-0.15,0.15],
+`int beta^2<=5`. Let `D0` bound the two transported
+pre-pulse normalized M/J discrepancies and `D1` bound the
+main-pulse weighted moment discrepancies. Then
+`D1<=(55/2)*exp[-(2/5)*(2/lambda-3)]` and
+`J1+J2<=10lambda*exp[-26+6.3lambda]`.
+The new theorem gives independent all-lambda bounds on
+the value and A derivative of the bump-energy remainder.
+
+If the ACTUAL source pre-pulse normalized moment budget is
+independently verified to be <=1, the bounds imply for
+`0<lambda<=1/20` and `|Amp|<=1.011`:
+`0 <= E-(P_pre-D_post)<2e-18` and
+`|partial_A E|<4e-18`.
+This condition has NOT been verified for any frozen exterior schedule.
+In particular the source's true exterior bias `P_pre-D_post`
+has NOT yet been enclosed at 0.0004. The numerical
+Appendix-A amplitude, M0 and Appendix-B fixed point are OPEN.
+
+**Reproducibility:** `Exact_A19_Remainder_and_Quadratic_Amplitude_Insert.tex`
+is incorporated into the cumulative manuscript. Finite
+scalar checks in `ExactA19RemainderScalar.lean` are submitted
+to pinned GitHub CI (no kernel PASS claimed before completion).
+`remainder_quadratic_exact.py` replays the exact symbolic
+polynomial, disjoint-support gap, finite-series exponential
+bounds and conditional error certificate.
+`amplitude_remainder_certificate.py --demo` runs outward
+interval arithmetic on explicitly ASSUMED example bounds;
+it is NOT a source numerical certificate.
+
+The downloadable 70-page reading PDF preserves the original
+16-page source preprint unchanged and appends a revised 54-page
+mathematical amendment. The 35-entry ZIP contains the editable
+LaTeX, full theorem, scalar Lean source, exact scripts,
+interval demo and hash manifest.
+
+**Next source gate:** independently freeze the actual
+pre-pulse moments `M(Xp),J(Xp)`, the source parameters and the
+amplitude-independent normalized balance `P_pre-D_post`.
+Only then is it legitimate to turn the quadratic formula into
+a verified TRUE source moment-matched amplitude. The originating
+OpenAI global Navier--Stokes construction has smooth forcing;
+the proposed unforced theorem remains unproved.
