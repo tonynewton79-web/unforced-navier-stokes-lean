@@ -1068,3 +1068,70 @@ radii, the full current-order feedback and actual closed velocity
 recurrence, the physical-coordinate chain-rule/pressure
 reconstruction, and an end-to-end Lean certification of Theorem 1.1.
 No whole-space finite-energy Navier--Stokes singularity is claimed.
+
+
+## Source-derived leading radius and current pressure feedback — 20 October 2026
+
+The new `Leading_Profile_Radius_and_Current_Feedback_Insert.tex` in the
+cumulative manuscript studies three distinct issues.
+
+**Imported leading-profile regularity.** Appendix B, Proposition B.2
+of OpenAI, *Finite Time Blowup for Navier–Stokes* (2026), supplies
+analyticity of the chosen source leading profile with Y=Lambda X on
+a common complex neighborhood; its proof selects a radial coefficient
+radius S in (4.1,20). If one freezes an admissible Lambda,C and
+exhibits a δ-neighborhood and uniform complex bound M for the
+actual profile, then R<=S/(8 Lambda), rho<=δ/8 yield
+||F(ΛX,eta)||_B<=M. The same Cauchy transfer proves finite
+norms of every fixed D_X^p ∂eta^q leading multiplier on smaller
+radii. This is **qualitative/existential** from the source, not
+a numerical fixed-parameter interval certificate. The source
+does not provide a chosen numeric Lambda,C,δ,M quadruple.
+
+**Current-order pressure gain.** For every F in I_n(B),
+`||int_0^X F||_P <=8R*rho/(n+1)^2 ||F||_B`.
+Proof: the exact weight ratio is maximal at b=0; its
+polynomial radial bound is
+`2(a+1)(2a+3)-(a+2)^2=3a^2+6a+2>=0`.
+The two ordered source pairs (0,n),(n,0) in (27) contribute
+`Pi_n^cur=(2/C²)int_0^X phi0 phi_n dx` and therefore
+`||Pi_n^cur||_P <=
+1024 R*rho*||phi0||_B/(|C|²(n+1)^2)*||phi_n||_B`.
+Applying the pressure-to-velocity operator adds its fixed
+norm C_E. This remains a **current-order K_Uphi block**,
+never part of lower-order source forcing.
+
+**Conditional pressure reconstruction.** Given
+`B_n=||phi_n||+||U_n||<=M*T^n/(n+1)^2`, the complete shifted-P
+ledger yields `||Pi_n||_P<=Gamma*T^n/(n+1)^2`, with an explicit
+Gamma in the paper. If all velocity and pressure bounds hold,
+the physical-coordinate transformation has nonzero Jacobian
+`L=1-2h eta²` on the inner real core, and differentiated
+series can be reconstructed termwise on compact q>0 regions.
+The geometric velocity bound is still a hypothesis, not proved
+by this implication.
+
+**Noncircular startup-radius issue.** The earlier suggestion
+'choose rho below the radii of finitely many startup orders
+below N*(rho)' is not generally valid without a uniformity
+theorem, because N* grows when rho shrinks. The model
+radii rho_n=exp(-n), cutoff N*(rho)=ceil(1/rho)+1,
+all rho_n>0, admit no self-consistent 0<rho<=1.
+This is a counterexample to that radius-selection logic,
+not to the actual Navier–Stokes hierarchy.
+
+**Reproducibility.** Script `current_order_feedback_exact.py`
+passes 43,200 rational source-weight identities, 45 symbolic
+current-swirl pressure checks, and six finite Euler/Cauchy envelope
+checks. `CurrentPressureFeedback.lean` contains only finite scalar
+polynomial and coordinate identities; a completed successful Actions
+job, not merely submission, is required before calling them
+kernel-certified. The full Banach/PDE theorem is not encoded there.
+
+**Remaining gates:** certify one fixed admissible leading-profile
+complex enclosure; establish a *noncircular common analytic width*
+including every startup coefficient; audit the entire velocity
+forcing and current feedback in the induced norm; then derive
+the closed recurrence and justify all physical derivatives.
+Theorem 1.1 remains unproved; this is not a global unforced
+Navier–Stokes blow-up proof.
