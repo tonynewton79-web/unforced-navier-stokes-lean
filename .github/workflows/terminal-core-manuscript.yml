@@ -40,6 +40,8 @@ on:
       - 'TerminalCore2026/A5_Pulse_Quantified_Cone_Insert.tex'
       - 'TerminalCore2026/A29_A30_Exact_Residual_and_Certification_Insert.tex'
       - 'TerminalCore2026/Normalized_Moment_Jet_and_Ratio_Insert.tex'
+      - 'TerminalCore2026/Ten_State_Affine_Interval_Tubes_Insert.tex'
+      - 'TerminalCore2026/Pulse_Exact_Integrating_Factors_Insert.tex'
       - '.github/workflows/terminal-core-manuscript.yml'
   workflow_dispatch:
 
