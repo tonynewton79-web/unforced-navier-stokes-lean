@@ -339,3 +339,42 @@ leading-profile analytic radii must still be controlled to derive
 recurrence (53). The four-block theorem remains conditional on the
 leading-profile hypotheses. No end-to-end Lean proof of the local
 Navier--Stokes Theorem 1.1 or whole-space unforced blow-up is claimed.
+
+
+## Remaining two direct linear pressure terms — cumulative paper revision (20 October 2026)
+
+The cumulative manuscript source now inputs
+`Remaining_Linear_Pressure_and_Nonlinear_Ledger_Insert.tex`.
+The printed reading copy is the deposited 16-page source followed by
+one updated 15-page mathematical amendment (31 pages combined).
+The source paper is retained unchanged and this PR remains in draft.
+
+Equations (17),(18),(24),(26)–(28) produce **different radial
+valuations** for the two direct sources in `Omega_(n-1)`:
+* `-2 X V_(n-1),XX` gives `I_(n-1) -> I_n`, with
+  `||L_n|| <= (1157/2)*(80/27)*R*(4+8/rho+8/rho^2)`.
+* `T_(0,n-1)V_(n-1)` gives `I_(n-1) -> I_(n+1)`, with
+  `||T_n|| <= (9256/4)*(80/27)*54*R^2/n *
+    sum_(j=0)^3 25*3^(4-j)/[(j+1)^2*rho^j]`.
+
+These are derived in the induced weighted coefficient norm for
+`0<h<1/100`, `0<rho<=1/4`, and `E=[-1,1]`. The proof controls
+the *complete* variable-coefficient `Z T H` and `Z H`
+compositions, including commutators, using explicit Cauchy discs,
+a Leibniz-series factor `80/27`, and the existing radial weights.
+
+`RemainingLinearPressure.lean` encodes only finite scalar
+pressure integration identities and order-index lemmas.
+`remaining_linear_pressure_exact.py` independently checks
+36 source-native full symbolic compositions and 79,380 exact-rational
+weight/shift bounds. The new Lean kernel check is pending successful
+execution of its specific GitHub Actions job; earlier successful jobs
+do not certify it.
+
+**Remaining pressure source:** after these two contributions and the
+previously studied delayed-viscosity operator, the exact `Omega_k`
+has five leading-profile interaction terms and a positive-order
+quadratic interior sum. The entire lower-order forcing recurrence
+(53), actual profile radii, quadratic pressure bounds, and physical
+PDE reconstruction remain OPEN. No end-to-end Lean proof of
+Theorem 1.1 or global unforced blow-up has been obtained.
