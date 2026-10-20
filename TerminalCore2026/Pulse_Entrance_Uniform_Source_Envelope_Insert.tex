@@ -1,0 +1,132 @@
+\subsection*{A uniform pulse-entrance envelope from the prescribed source stages}
+Write $P=P_*$, $T=T_d=e^{M_d}+10>10$ and $f=(1+\eta^2)^{-1}$. Retain the normalized moment notation
+$a=U/E$, $m=M/(XE)$, $j=J/(XHE)$,
+$s=S/(XE^2)$ and $d=(2XE^2)^{-1}\int_X^\infty E^2\,dx$.
+These satisfy the exact four transport equations
+\[
+m'=a-(\ell+\tfrac12)m,\quad j'=a-(2\ell+\tfrac12)j,\quad
+s'=a^2-\tfrac12-2\ell s,\quad d'=-\tfrac12-2\ell d.
+\]
+The prime is differentiation in $\log(X/X_R)$.
+
+\begin{proposition}[Source-native pre-pulse moment bound]\label{prop:uniform-source-prepulse}
+For the Appendix-A reference stages (A.7)--(A.9), $P>e^T$ and
+$0<\lambda\le1/20$ imply
+\[
+\sup_{|\eta|\le1}\max\{|m(X_p,\eta)|,|j(X_p,\eta)|\}<\frac9{100}.
+\]
+\end{proposition}
+\begin{proof}
+The exact reference integrals at $X_R$ yield
+$|m|\le8/P$, $|j|\le5/P$. On the first unit interval,
+$U=4\eta$, $0\le\ell\le3/5$, and
+$E\ge Pf e^{-y/2}$; consequently $|a|<16/P$.
+Both moment equations have damping at least $1/2$, giving
+$|m|,|j|\le40/P$ at the end.
+During the following axial interval of length $T$,
+$0\le U/\eta\le4$, $\ell=0$, and
+$|a(y)|\le8e^{(1+y)/2}/P$. Integrating the two equations gives
+\[
+\max(|m|,|j|)
+\le\frac{40e^{-T/2}}P+
+\frac{8e^{1/2-T/2}}P(e^T-1)
+<40e^{-3T/2}+8e^{(1-T)/2}.
+\]
+Since $T>10$, the last expression is bounded by
+$40e^{-15}+8e^{-9/2}<9/100$.
+The final inequality uses exact rational exponential-series lower
+bounds $e^{15}>10^6$, $e^{9/2}>90$.
+Thereafter $U=0$, while $-\lambda\le\ell\le0$ through the
+one-unit transition and intermediate power-law interval.
+Both damping coefficients remain positive, so neither absolute
+moment increases.
+\end{proof}
+
+\begin{proposition}[Explicit smallness of the forward $S$-moment]
+\label{prop:source-forward-s-explicit}
+Let $T_f>0$ be the source's angular interpolation length and
+$k=T+T_f+1$. If
+\[
+0<\lambda\le\frac{10^{-6}}k,
+\]
+then $\lambda\sup_{|\eta|\le1}|s(X_p,\eta)|<10^{-4}$.
+\end{proposition}
+\begin{proof}
+At $X_R$, $|s|\le5/12+64/P^2$. The first unit interval has
+nonnegative damping $2\ell$ and $|a|<16/P$, giving
+$|s|<11/12+320/P^2<1$. On the axial interval,
+$\int_0^T a^2\,dy\le64e(e^T-1)/P^2<64e^{1-T}<1$,
+hence $|s|<T/2+2$. On the one-unit slope transition,
+$|s|<e^{2\lambda}(T/2+5/2)<(9/8)(T/2+5/2)$.
+For the subsequent constant slope $-\lambda$ lasting
+$W=60\log(1/\lambda)$, one has exactly
+\[
+s(X_p)=q s_{\rm in}-\frac{q-1}{4\lambda},\qquad
+q=e^{120\lambda\log(1/\lambda)}.
+\]
+For $k\ge11$, monotonicity and $e^{17}>11\cdot10^6$ imply
+$120\lambda\log(1/\lambda)<1/5000$, so $q<5000/4999$.
+Also $(T+5)/k\le15/11$. Therefore
+\[
+\lambda|s(X_p)|
+<10^{-6}\frac{5000}{4999}\frac9{16}\frac{15}{11}
++\frac1{4\cdot4999}<10^{-4}.
+\]
+\end{proof}
+
+\begin{proposition}[Conditional backward exterior envelope and A.19 root]
+\label{prop:source-full-bias-explicit}
+Suppose the actual azimuthal moment corrections meet the source's
+stated post-pulse slope bounds: $\ell\le0$ on the angular
+interpolation and its following $30\log(1/\lambda)$ plateau,
+$\ell$ decreases to $-1$ over one further unit interval,
+then equals $-1$ for $4\log(1/h)$, and satisfies
+$\ell\le-3h/4$ afterward. For $0<h\le1/100$,
+\[
+0\le d(X_{\rm end})
+\le\frac{T_f}{2}+15\log(1/\lambda)+\frac34+\frac{h^7}{3}.
+\]
+If also $\lambda\le10^{-6}/(T+T_f+1)$, then
+\[
+\lambda\sup_{|\eta|\le1}
+|s(X_p,\eta)-e^{-26}d(X_{\rm end},\eta)|<\frac1{8000}.
+\]
+Together with the corrected fixed-$\sigma'$ bump estimate and
+Proposition~\ref{prop:uniform-source-prepulse}, the true A.19
+remainder satisfies $|\mathcal E|<1/2500$ and
+$|\partial_A\mathcal E|<1/100$ on the proposed amplitude interval.
+Thus the genuine moment equation has a unique root
+$1.009<A(\eta)<1.011$ under these simultaneous stage hypotheses.
+\end{proposition}
+\begin{proof}
+Write $R(v)=XE^2/(X_{\rm end}E_{\rm end}^2)$ for
+$v=\log(X/X_{\rm end})$. Then $R(0)=1$, $R'=2\ell R$ and
+$d(X_{\rm end})=\tfrac12\int_0^\infty R(v)\,dv$.
+The first stages contribute at most
+$T_f/2+15\log(1/\lambda)+1/2$; the $-1$ hold contributes at most
+$1/4$. At its end $R\le h^8$, and the remaining
+$\ell\le-3h/4$ tail contributes at most $h^7/3$.
+Set $c=10^{-6}$ and $k=T+T_f+1\ge11$.
+The elementary inequalities $\lambda T_f\le c$ and
+$\lambda\log(1/\lambda)\le17c/11$ yield
+\[
+\lambda e^{-26}d(X_{\rm end})\le\lambda d(X_{\rm end})
+<\frac c2+\frac{255c}{11}
++\frac c{11}\left(\frac34+\frac1{3\cdot100^7}\right)
+<\frac1{40000}.
+\]
+Together with the preceding forward bound this gives
+$1/10000+1/40000=1/8000$. The source-specific corrected
+bump contribution is $<5\cdot10^{-17}$ and its amplitude
+derivative $<10^{-16}$, because $|m|,|j|<9/100<1$.
+Apply the previously established A.19 endpoint signs and
+strict derivative inequality.
+\end{proof}
+
+The estimate is a theorem about stage bounds, not a fully
+frozen numerical source realization. In particular, compatibility
+of the choice of $\lambda$ with the source's later selection of $T_f$
+and the corrected azimuthal moment bumps must be verified. The
+exterior pressure mass, Appendix-B nonlinear contraction,
+unforced $n=1,2$ corrections and physical Navier--Stokes residual
+remain unverified.
