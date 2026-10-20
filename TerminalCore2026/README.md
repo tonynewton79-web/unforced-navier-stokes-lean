@@ -1746,3 +1746,69 @@ The new 74-page reader retains the deposited 16-page original
 unchanged, followed by a replacement 58-page cumulative
 mathematical amendment; the 33-file ZIP has SHA-256 manifest
 and verified integrity. Theorem 1.1 remains OPEN.
+
+
+## Source-native (A.11) two-bump azimuthal moment certification — 20 October 2026
+
+This release advances the post-pulse angular-moment corrections in
+OpenAI's *Finite Time Blowup for Navier–Stokes*, Appendix A.2–A.3,
+equations (A.10)–(A.11). It uses only the **prescribed** normalized
+width-3/10 bumps, scaled translates of the actual smooth-step
+derivative sigma', not the invalid alternative plateau bump.
+
+**Exact corrected source system.** In log-radius centered on the first
+bump, `E_new=E_base(1+c1*beta(y)+c2*beta(y-2))`. The two exact
+conditions are
+`u(c1+x*c2)=DeltaI`,
+`2v(c1+z*c2)+w(c1^2+z*c2^2)=0`, with
+`u=int exp((1-lambda)t)beta(t)dt`,
+`v=int exp(-(1+2lambda)t)beta(t)dt`,
+`w=int exp(-(1+2lambda)t)beta(t)^2dt`,
+`x=exp(2(1-lambda))`, `z=exp(-2(1+2lambda))`,
+`DeltaI=1/(1-lambda)-I(X1)/(X1H(X1))`.
+An exact scalar quadratic formula follows by eliminating c1.
+
+**Proved all-index estimates for 0<lambda<=1/20:**
+- The exact Jacobian inverse in infinity norm is <3/2; the
+  quadratic correction norm is <320. This **angular** inverse is
+  uniform as lambda→0, unlike the earlier inverse bound
+  for a distinct AXIAL correction matrix.
+- Source rI=I/(XH) obeys rI'+(1+ell)rI=1. From its exact
+  reference value 5/8, the prescribed interpolation and the
+  30log(1/lambda) constant-slope interval give
+  `|DeltaI|<64lambda^28`.
+- Applying source Lemma A.2 yields the unique small pair
+  `max(|c1|,|c2|)<=192lambda^28`.
+- Exact smooth-step derivative envelopes
+  `||sigma'||<=64`, `||sigma''||<=17152`
+  imply `||beta||<=640/3` and `||beta'||<200000`.
+  The edited E is positive and
+  `-3lambda/2<=ell_corrected<=-lambda/2`
+  on the correction supports; elsewhere ell=-lambda.
+  Thus the earlier qualitative post-pulse nonpositive-slope
+  condition is quantitatively verified for these corrections.
+
+**Partial parameter selection:** `Tf=512` certifies the
+(A.10) interpolation slope
+`-lambda-7/80<=ell<=-lambda`.
+The terminal (A.12) cutoff can use `co=1/256` with
+`0<=fo'/fo<h/4` for h<=1/100.
+For every source `Td>10`, one explicit local-smallness
+family is `lambda=10^-6/(Td+513)`,
+`h=lambda*exp(-Td)/10^6`.
+This is NOT a frozen *globally source-admissible* tuple:
+the stress-cone inequalities, outer stopping length,
+large Md and Pstar thresholds, Appendix-B fixed point and
+unforced startup PDE remain to be checked.
+
+**Reproducibility and formalization:** The mathematical theorem
+is in `Source_A11_Azimuthal_Moment_Correction_Insert.tex`,
+the independent exact rational/symbolic replay is
+`A11_exact_certificate.py`, and the finite scalar Lean gates
+are `A11FiniteGates.lean`.
+Latest 76-page reading PDF is 16-page unchanged original plus
+a replacement 60-page cumulative amendment. The 41-entry
+editable source ZIP passed the integrity test. GitHub CI has
+been updated, but the full theorem is NOT kernel-certified:
+the Lean file concerns rational scalar gates only.
+The proposed unforced Theorem 1.1 remains unproved.
