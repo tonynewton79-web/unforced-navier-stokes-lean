@@ -11,6 +11,7 @@ on:
       - 'TerminalCore2026/CauchyProfileBridge_Insert.tex'
       - 'TerminalCore2026/AnalyticReconstruction_Insert.tex'
       - 'TerminalCore2026/Delayed_Pressure_Source_Ledger_Insert.tex'
+      - 'TerminalCore2026/DelayedPressureBanach_Insert.tex'
       - '.github/workflows/terminal-core-manuscript.yml'
   workflow_dispatch:
 
