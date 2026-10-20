@@ -127,3 +127,4 @@ jobs:
           python TerminalCore2026/outer_schedule_enclosure.py
           python TerminalCore2026/pulse_moment_exact.py
           python TerminalCore2026/remainder_quadratic_exact.py
+          python TerminalCore2026/amplitude_remainder_certificate.py --demo
