@@ -1944,3 +1944,58 @@ stagewise strict stress-cone margins and parameter tuple, the
 numerical moment-matched exterior pressure datum, Appendix-B
 analytic contraction, true unforced n=1 and n=2 corrections,
 all-order convergence and exact unforced Navier--Stokes residual.
+
+
+## A.11 exterior-tail certificate (20 October 2026)
+
+The exact source equations (4.15), (4.16), (A.11), (A.19)
+yield a new analytic control of the axial cone component on
+both azimuthal correction supports. AFTER solving the true A.19
+moment equation S(infinity,eta)=0, with pressure normalized at
+infinity and U=0 at all later radii, one has exactly
+
+  S(X)=1/2 integral_X^infty E(x)^2 dx,
+  Pi(X)=-1/2 integral_X^infty E(x)^2 dx/x.
+
+Define D_s=S/(X E²), P_s=-Pi/E² and g=d_eta log E.
+Then equation (4.16) gives
+  N_s/E = E {4eta(h D_s-A P_s)
+             -(1-eta²)[2g(D_s-P_s)+D_s,eta-P_s,eta]}.
+Under future slopes ell<=0 and |g|<=eps, this implies
+  |N_s|/E <= E[4h D_s+2A+2eps(D_s+1/2)].
+
+Using the actual sigma-prime correction's first-eta bounds,
+eps<=5120 lambda^28. The source transition/terminal bounds
+give P_s<=1/2 and
+D_s<=T_f/2+15log(1/lambda)+3+h^7/3.
+
+With T_f=512, T_d>10, Pstar>exp(T_d), choose
+  lambda<=min(10^-6/(T_d+513),
+              1/[10(1+log Pstar)],1/20),
+  h<=lambda/100.
+The fixed source-stage inequalities give
+  E_support<=Pstar exp(4-13/(2lambda))<lambda/4,
+while the remaining bracket is less than two. Consequently
+  sup_{two A.11 supports,eta in [-1,1]} |N_s|/E<lambda/2.
+
+Combined with the earlier analytical Q_s>=lambda/2,
+corrected slope and X>=9/lambda, the source's strict stress
+cone inequality is satisfied on the two A.11 supports,
+CONDITIONALLY on exact global S(infinity)=0, pressure gauge,
+and the source's post-pulse slope hypotheses.
+
+New sources: A11_Actual_Ns_Exterior_Tail_Certificate_Insert.tex,
+A11NsExteriorTail.lean, a11_ns_tail_exact.py.
+The exact rational checker has passing positive/negative controls;
+it does NOT create source-derived interval inputs. Scalar Lean
+statements are submitted, NOT certified by a local Lean kernel.
+The mathematical note has a complete conventional proof of this
+conditional support lemma, NOT of the proposed unforced PDE theorem.
+
+The 82-page cumulative PDF includes the unchanged 16-page
+original and a revised 66-page mathematical amendment.
+The full source packet is accompanied by a fresh hash manifest.
+Remaining: jointly frozen Appendix A realization and all other
+stagewise cone checks, the pulse o(1) margins, Appendix B nonlinear
+profile, true n=1,2 unforced corrections and the physical zero
+forcing residual. Theorem 1.1 is still OPEN.
