@@ -10,6 +10,7 @@ on:
       - 'TerminalCore2026/Four_Block_and_Majorant_Insert.tex'
       - 'TerminalCore2026/CauchyProfileBridge_Insert.tex'
       - 'TerminalCore2026/AnalyticReconstruction_Insert.tex'
+      - 'TerminalCore2026/Delayed_Pressure_Source_Ledger_Insert.tex'
       - '.github/workflows/terminal-core-manuscript.yml'
   workflow_dispatch:
 
