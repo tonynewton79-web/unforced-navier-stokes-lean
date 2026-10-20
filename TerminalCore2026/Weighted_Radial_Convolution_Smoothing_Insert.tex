@@ -1,0 +1,96 @@
+\subsection{Radial convolution after two inverse lifts}
+\label{subsec:two-lift-convolution}
+
+The preceding pressure cancellations reduce the remaining estimates to products of analytic multipliers with regularized derivatives. A coefficientwise bound on an individual Taylor monomial is not enough for this purpose: the leading profiles have infinitely many radial coefficients, and differentiation distributes among them. We establish here an operator estimate that includes the complete radial convolution, without imposing a finite-degree cutoff. It also records which normal-form reduction is still needed to apply the estimate to the actual pressure source.
+
+\begin{theorem}[A uniform multiplication constant]\label{thm:algebra64}
+For the doubled coefficient weight \eqref{eq:weight}, the induced norm \eqref{eq:norm} satisfies
+\begin{equation}\label{eq:algebra64}
+ \|fg\|_{R,\rho;E}\le 64\|f\|_{R,\rho;E}\|g\|_{R,\rho;E}
+\end{equation}
+for all coefficient series for which these norms are finite. Moreover, $I_mI_p\subseteq I_{m+p}$, with the same constant. This improves the admissible coefficient-algebra constant in Appendix B.1 of \cite{newton2026}.
+\end{theorem}
+\begin{proof}
+Write $N=i+j$ and $b=u+v$. Leibniz's rule and Vandermonde's inequality give
+\[
+ \binom b u\frac{w_{i,u}w_{j,v}}{w_{N,b}}
+ \le \frac{(N+1)^2}{(i+1)^2(j+1)^2}
+       \frac{(b+1)^2}{(u+1)^2(v+1)^2},
+\]
+since $\binom{2i+u}{u}\binom{2j+v}{v}\le\binom{2N+b}{b}$.
+For each $N\ge0$,
+\[
+ (N+1)^2\sum_{i=0}^N\frac1{(i+1)^2(N-i+1)^2}
+ \le4\sum_{r=1}^{N+1}\frac1{r^2}\le8.
+\]
+Indeed $(N+1)^2\le 2[(i+1)^2+(N-i+1)^2]$, while
+$\sum_{r=1}^{N+1}r^{-2}\le1+\sum_{r=2}^{N+1}[r(r-1)]^{-1}<2$.
+The same estimate applies to the Leibniz derivative index $b$. Their product is $64$, uniformly in both indices. The valuation assertion follows directly from coefficient convolution.
+\end{proof}
+
+The next result allows multiplication by a nonpolynomial analytic profile \emph{before} the radial inverses act. Let $D_X=X\partial_X$ and $n\ge1$. For $0\le j\le3$ and $F\in I_n$, define the two-lift jet operator
+\begin{equation}\label{eq:regularized-jet}
+ (\mathcal R_{n,j}F)_{a+2}
+ =\frac{(a+n+2)^{3-j}}{(a+1)^2(a+2)^2}\,\partial_\eta^j F_a,
+ \qquad a\ge n.
+\end{equation}
+For a multiplier $g=\sum_{c\ge0}g_c(\eta)X^c$, define the convolution-inverse operator coefficientwise by
+\begin{equation}\label{eq:radial-convolution}
+ (\mathcal C_{n,j}(g,F))_{N}
+ =\sum_{\substack{a\ge n,\ c\ge0\\a+c+2=N}}
+ \frac{(N+n)^{3-j}}{(N-1)^2N^2}\,
+ g_c\,\partial_\eta^jF_a,
+ \qquad N\ge n+2.
+\end{equation}
+No restriction is placed on the number of nonzero Taylor coefficients of $g$.
+
+\begin{theorem}[Tame analytic radial-convolution smoothing]\label{thm:convolution-smoothing}
+Let $0\le j\le3$, $n\ge1$, $R,\rho>0$, and put
+\begin{equation}\label{eq:tame-constant}
+ D_j(R,\rho)=\frac{675\,2^{4-j}R^2}{(j+1)^2\rho^j}.
+\end{equation}
+Then
+\begin{equation}\label{eq:tame-basic}
+ \|\mathcal R_{n,j}F\|_{R,\rho;E}
+ \le\frac{D_j(R,\rho)}{n+1}\|F\|_{R,\rho;E}.
+\end{equation}
+If $g,D_Xg,\ldots,D_X^{3-j}g$ belong to the same weighted space, then $\mathcal C_{n,j}(g,F)\in I_{n+2}$ and
+\begin{equation}\label{eq:tame-convolution}
+ \|\mathcal C_{n,j}(g,F)\|_{R,\rho;E}
+ \le\frac{64D_j(R,\rho)}{n+1}
+ \left(\sum_{s=0}^{3-j}\binom{3-j}{s}\|D_X^sg\|_{R,\rho;E}\right)
+ \|F\|_{R,\rho;E}.
+\end{equation}
+Both constants are independent of $n$ and of the radial Taylor support of $g$.
+\end{theorem}
+\begin{proof}
+Set $t=a+n+2$. Since $a\ge n$, one has
+$2(n+1)\le t\le2(a+1)$. The exact fourth-jet weight identity
+\eqref{eq:fourjet-exact} implies, for $0\le j\le3$,
+\[
+ \frac{t^{4-j}w_{a,b+j}}{(a+1)^2(a+2)^2w_{a+2,b}}
+ \le \frac{54R^2}{\rho^j}\frac{25\,2^{4-j}}{(j+1)^2}.
+\]
+To obtain this, divide the $j$-jet ratio by the fourth-jet ratio. The quotient is
+$\rho^{4-j}(b+5)^2/(b+j+1)^2$ times the reciprocal of
+$\prod_{m=j+1}^4(2a+b+m)$, where the first fraction is at most
+$25\rho^{4-j}/(j+1)^2$ and each denominator is at least $a+1$.
+Dividing by $t\ge2(n+1)$ gives \eqref{eq:tame-basic}, with
+$54\cdot25/2=675$.
+
+For the full convolution, write $p=3-j$, $N=a+c+2$, and
+$t=a+n+2$. The elementary facts
+\[
+ (N+n)^p=(t+c)^p=\sum_{s=0}^p\binom p s t^{p-s}c^s,
+ \qquad (N-1)^2N^2\ge(a+1)^2(a+2)^2,
+\]
+show that each coefficient and each parameter derivative of
+$\mathcal C_{n,j}(g,F)$ is dominated term by term by the nonnegative
+Leibniz majorants of
+\[\sum_{s=0}^p\binom p s(D_X^sg)\,\mathcal R_{n,j}F.\]
+Here we used $t\ge1$ to replace $t^{p-s}$ by $t^p$; no derivative is moved between $g$ and $F$ without the corresponding Leibniz terms. Apply the multiplication estimate
+\eqref{eq:algebra64} to these majorants and then
+\eqref{eq:tame-basic}. This proves \eqref{eq:tame-convolution}.
+\end{proof}
+
+This result is directly applicable whenever a term of the source operator can be normal-ordered into a finite sum of the coefficients in \eqref{eq:radial-convolution}, with multipliers in the stated common analytic space. In particular, it removes the need to truncate a leading profile's radial series and controls the additional factors of $c$ generated by $D_X$ commutators. It does \emph{not} prove that the complete pressure operators \eqref{eq:leading-pressure-operator} and \eqref{eq:quad-reconstruct} have yet been reduced to such finite sums with a uniform multiplier budget. Their exact symbolic normal forms include intermediate radial averages and, in the quadratic case, two separate unknown inputs. The required source-specific reduction and the bilinear estimate for $H_k$ remain the next proof obligations. The complete recurrence (53) and Theorem~1.1 therefore remain open.
