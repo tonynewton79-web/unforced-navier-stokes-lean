@@ -1,0 +1,191 @@
+\subsubsection*{The remaining pressure primitives in the shifted space}
+\label{subsec:remaining-bare-pressure}
+The regularized pressure estimates above cannot replace estimates for the
+bare primitive. Two elementary properties of the one-derivative-loss space
+allow the remaining sources to be controlled without a separate norm for
+$D_XU_i$. The key is to integrate radial transport by parts before
+applying the coefficient norms.
+
+\begin{lemma}[Mixed velocity--pressure algebra and primitives]
+\label{lem:BP-multiplier}
+Let $\mathcal B$ denote the doubled velocity coefficient space and
+$\mathcal P$ the shifted space \eqref{eq:shifted-P-norm}. Then
+\begin{equation}\label{eq:BP-algebra}
+ \|fP\|_{\mathcal P}\le64\|f\|_{\mathcal B}\|P\|_{\mathcal P}.
+\end{equation}
+For $P\in I_m(\mathcal P)$, $m\ge0$,
+\begin{align}
+ \|XP\|_{\mathcal P}&\le4R\|P\|_{\mathcal P},&
+ \left\|\int_0^X P\,dx\right\|_{\mathcal P}
+   &\le\frac{4R}{m+1}\|P\|_{\mathcal P},\label{eq:P-radial-ops}\\
+ \left\|\int_0^X\partial_\eta P\,dx\right\|_{\mathcal P}
+   &\le\frac{8R}{\rho}\|P\|_{\mathcal P},&
+ \|f\|_{\mathcal P}&\le4\rho\|f\|_{\mathcal B}.\notag
+\end{align}
+The same bounds apply to unsigned coefficientwise Leibniz majorants.
+\end{lemma}
+\begin{proof}
+For radial indices $i+j=N$ and derivative indices $u+v=b$,
+Vandermonde's inequality and factorial cancellation bound the
+mixed-product coefficient by
+\[
+ \binom bu\frac{w_{i,u}w_{j,v+1}}{w_{N,b+1}}
+ \le\frac{(N+1)^2}{(i+1)^2(j+1)^2}
+      \frac{(b+2)^2}{(u+1)^2(v+1)^2}.
+\]
+The two split-index sums on the right are each at most $8$, by
+$(N+1)^2\le2[(i+1)^2+(j+1)^2]$ and
+$(b+2)^2\le2[(u+1)^2+(v+1)^2]$. This proves the constant $64$,
+including infinitely many radial coefficients.
+The remaining assertions follow from the exact ratios
+\[
+ \frac{w_{a,b}}{w_{a,b+1}}\le4\rho,\quad
+ \frac{w_{a,b+1}}{w_{a+1,b+1}}\le4R,\quad
+ \frac{w_{a,b+2}}{(a+1)w_{a+1,b+1}}\le\frac{8R}{\rho},
+\]
+and the extra $(a+1)^{-1}\le(m+1)^{-1}$ in the ordinary primitive.
+\end{proof}
+
+With $B=2\eta/L$, $G=(1-\eta^2)/L$ and $\lambda_k=2hk$,
+the radial-velocity coefficient $W_k=V_k/X$ equals
+\[
+ (W_k)_a=\left[1-\frac{D+\lambda_k}{a+1}\right]
+ B(U_k)_a-\frac G{a+1}\partial_\eta(U_k)_a.
+\]
+The bracket lies in $[0,1]$ for $a\ge k\ge1$.
+By the lemma and the uniform analytic norms of $B,G$,
+\begin{equation}\label{eq:CW}
+ \|W_k\|_{\mathcal P}\le C_W\|U_k\|_{\mathcal B},\qquad
+ C_W=64(4\rho\|B\|_{\mathcal B}+\|G\|_{\mathcal B})
+ \le1600(4\rho+1).
+\end{equation}
+In particular $W_k\in I_k(\mathcal P)$.
+
+\begin{theorem}[Complete leading-profile bare pressure]
+\label{thm:leading-bare-P}
+Assume that $U_0$, $D_XU_0$, $v=V_0/X$ and $D_Xv$,
+together with $K_0=G\partial_\eta v-B(v+D_Xv)$,
+belong to one common weighted velocity space with finite norms.
+Then for every $k\ge1$ the full five-interaction primitive
+\eqref{eq:leading-primitive} satisfies
+\[
+ \|\Pi_{k+1}^{\mathrm{lead}}\|_{\mathcal P}
+ \le C_{\mathrm{lead},P}\|U_k\|_{\mathcal B},
+ \qquad \Pi_{k+1}^{\mathrm{lead}}\in I_{k+1}(\mathcal P),
+\]
+where the order-independent constant is
+\begin{align}\label{eq:lead-P-constant}
+ C_{\mathrm{lead},P}={}&32RC_W
+ \biggl[4\|v-BU_0\|_{\mathcal B}
+ +\frac8\rho\|U_0G\|_{\mathcal B}
+ +4\left(\frac1{50}\|BU_0\|_{\mathcal B}
+      +\|BD_XU_0\|_{\mathcal B}\right)\biggr]\notag\\
+ &+\frac{512}{3}R\rho\|K_0\|_{\mathcal B}.
+\end{align}
+\end{theorem}
+\begin{proof}
+The identity
+$\int_0^X gD_XW\,dx=XgW-\int_0^X(D_Xg+g)W\,dx$
+applied to \eqref{eq:leading-primitive} gives exactly
+\begin{equation}\label{eq:lead-P-IBP}
+ -2\Pi_{k+1}^{\mathrm{lead}}
+ =X(v-BU_0)W_k+
+ \int_0^X\bigl[
+ U_0G\partial_\eta W_k+
+ B(\lambda_kU_0+D_XU_0)W_k+U_kK_0\bigr]dx.
+\end{equation}
+The first term has bound
+$4R\cdot64\|v-BU_0\|\|W_k\|_{\mathcal P}$.
+For the second, the positive Leibniz coefficients of
+$\int g\partial_\eta W_k$ are dominated by those of
+$g\int\partial_\eta W_k$, since
+$(a+c+1)^{-1}\le(a+1)^{-1}$ for multiplier radial degree $c\ge0$;
+its bound is $64(8R/\rho)\|U_0G\|\|W_k\|_{\mathcal P}$.
+For the third, use \eqref{eq:P-radial-ops} on $I_k$ and
+$\lambda_k/(k+1)\le1/50$ to obtain
+$64(4R)(\|BU_0\|/50+\|BD_XU_0\|)\|W_k\|_{\mathcal P}$.
+The remaining term is bounded by
+$(16/3)R\rho\cdot64\|K_0\|\|U_k\|$ using the original
+velocity product algebra. Apply \eqref{eq:CW} and the factor $1/2$.
+\end{proof}
+
+\begin{theorem}[Complete positive-order quadratic bare pressure]
+\label{thm:quadratic-bare-P}
+For $i,j\ge1$, the ordered-pair pressure contribution
+from the $V_iV_j$ and $U_iZ_{0,j}V_j$ sources belongs to
+$I_{i+j+1}(\mathcal P)$ and satisfies
+\[
+ \|\Pi_{i+j+1}^{\mathrm{quad},ij}\|_{\mathcal P}
+ \le C_{\mathrm{quad},P}\|U_i\|_{\mathcal B}\|U_j\|_{\mathcal B},
+\]
+where, uniformly in both orders,
+\begin{align}\label{eq:quad-P-constant}
+ C_{\mathrm{quad},P}={}&1024R
+ \left[\frac{16}{3}\rho\|B^2\|_{\mathcal B}
+ +8\|BG\|_{\mathcal B}+\frac8\rho\|G^2\|_{\mathcal B}\right]\notag\\
+ &+2048C_W\left[\frac{8R}{\rho}\|G\|_{\mathcal B}
+                        +8R\|B\|_{\mathcal B}\right].
+\end{align}
+For $0<h<1/100$, $0<\rho\le1/4$, $E=[-1,1]$, the fixed norms
+satisfy $\|B^2\|\le64$, $\|BG\|\le104$, $\|G^2\|\le169$.
+No norm of $D_XU_i$ or of a bare axial derivative is required.
+\end{theorem}
+\begin{proof}
+By the exact ordered quadratic symmetrization
+\eqref{eq:quad-pi}, integrating the radial derivative of $W_j$
+by parts gives
+\begin{equation}\label{eq:quad-P-IBP}
+ \begin{split}
+ -2\Pi_{i+j+1}^{\mathrm{quad},ij}
+ ={}&\frac12XW_iW_j-XBU_iW_j\\
+ &+\int_0^X U_iG\partial_\eta W_j\,dx
+ +\int_0^X B(\lambda_jU_i+D_XU_i)W_j\,dx .
+ \end{split}
+\end{equation}
+For $XW_iW_j$, the four input derivative allocations have
+total orders $0,1,1,2$. The two radial averages obey
+$(a+1)(b+1)\ge a+b+1$ for $a,b\ge0$.
+The positive velocity-product majorant has constant $64$.
+At output radial degree $N+1$, the three strong-to-shifted
+weight ratios for zero, one and two derivatives are bounded by
+$16R\rho/3$, $4R$, and $8R/\rho$, respectively.
+Multiplication by $B^2$, $BG$ or $G^2$ contributes a second
+factor $64$. The outer $1/4$ gives the first line of
+\eqref{eq:quad-P-constant}.
+
+For $\int U_iG\partial_\eta W_j$, compare its positive
+Leibniz coefficients to those of
+$(U_iG)\int\partial_\eta W_j$;
+the denominator $(a+b+1)^{-1}$ is no larger than
+$(b+1)^{-1}$. Its bound is
+$64^2(8R/\rho)\|G\|\|U_i\|\|W_j\|_{\mathcal P}$.
+In the last integral, $\lambda_j=2hj\le j/50\le b$
+for every coefficient of $W_j$ at degree $b\ge j$; hence
+$0\le(a+\lambda_j)/(a+b+1)\le1$ for every coefficient
+of $U_i$ at radial degree $a\ge i$.
+This term is bounded by the positive majorant of $XBU_iW_j$,
+and both have bound $64^2(4R)\|B\|\|U_i\|\|W_j\|_{\mathcal P}$.
+Restore the outer factor $1/2$ and use \eqref{eq:CW}.
+The resulting constant is \eqref{eq:quad-P-constant}.
+\end{proof}
+
+\paragraph{The resulting full shifted-pressure ledger.}
+With $B_n=\|\varphi_n\|_{\mathcal B}+\|U_n\|_{\mathcal B}$
+and $P_n=\|\Pi_n\|_{\mathcal P}$, the source equations
+and the preceding direct-pressure estimates imply, for $n\ge3$,
+\begin{align}\label{eq:complete-two-space-P-ledger}
+ P_n\le{}& C_{\rm sw}\sum_{i+j=n}B_iB_j
+ +(C_{\rm P,time}+C_{\rm P,lap}+C_{\rm lead,P})B_{n-1}
+ +C_{\rm P,del}B_{n-2}\notag\\
+ &+C_{\rm quad,P}\!\!\sum_{\substack{i+j=n-1\\i,j\ge1}}
+ B_iB_j,\qquad
+ C_{\rm sw}=\frac{1024}{3}R\rho |C|^{-2}.
+\end{align}
+The constants depend only on the fixed analytic radii and
+stated leading-profile norms. The term involving
+$\varphi_0\varphi_n$ remains current-order feedback and must
+be handled within the velocity system; this ledger does not
+by itself close its recurrence. The actual imported leading
+profiles have not yet been certified on the required common
+complex domain, and a complete physical-coordinate
+termwise PDE reconstruction remains to be proved.
