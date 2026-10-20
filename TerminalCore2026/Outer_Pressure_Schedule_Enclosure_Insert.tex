@@ -1,0 +1,145 @@
+\subsection*{What can be certified before freezing the exterior schedule}
+\label{subsec:stagewise-pressure-enclosure}
+The pressure datum of Lemma~A.5 depends on the reference exterior
+\emph{after} its moment corrections. Appendix~A.2 selects $M_d$,
+$T_d=e^{M_d}+10$, $P_*>e^{T_d}$, followed by sufficiently small
+$\lambda,h$; pulse amplitudes and correction coefficients are then
+defined by nonlinear moment equations. These prescriptions define
+an existence family, not one published numerical pressure mass.
+
+Let $Y_T$ denote the start of the final pure exterior power law
+in the global logarithmic radial variable $y$. Omitting only the
+pressure-neutral azimuthal corrections prescribed by Lemma~A.5,
+write $E(y,\eta)=c(y)f(\eta)^{\vartheta(y)}$ on $0\le y\le Y_T$,
+where $f(\eta)=(1+\eta^2)^{-1}$ and $0\le\vartheta\le1$.
+
+\begin{proposition}[Exact source pressure decomposition and strengthened lower bound]
+\label{prop:source-pressure-finite-tail}
+With $c_T=c(Y_T)$ and $0<h<1/100$,
+\begin{align}
+\Pi_0(\eta)={}&-\frac52P_*^2f(\eta)^2
+-\frac12\int_0^{Y_T}c(y)^2f(\eta)^{2\vartheta(y)}dy
+-\frac{c_T^2}{2(1+2h)},\label{eq:pressure-finite-decomp}\\
+\mathfrak p:=-\Pi_0(0)={}&\frac52P_*^2+
+\frac12\int_0^{Y_T}c(y)^2dy+\frac{c_T^2}{2(1+2h)}.
+\label{eq:pressure-mass-decomp}
+\end{align}
+In particular, the source's first two transitions imply
+\begin{equation}\label{eq:source-early-mass}
+\mathfrak p\ge (3-\tfrac12e^{-1-T_d})P_*^2
+>(3-\tfrac12e^{-1-T_d})e^{2T_d}.
+\end{equation}
+The positive measure in Proposition~\ref{prop:exact-pressure-measure}
+has an atom at exponent one with mass at least
+$(6-e^{-1-T_d})P_*^2$.
+\end{proposition}
+\begin{proof}
+The inner reference $y\le0$ has
+$E=P_*f(\eta)e^{y/10}$ and thus squared integral
+$5P_*^2f^2$. For $y\ge Y_T$, the source prescribes
+$\ell=\partial_y\log(\sqrt X E)=-h$ and no $\eta$-dependence.
+Thus $E=c_Te^{-(1/2+h)(y-Y_T)}$; integration gives
+$c_T^2/(1+2h)$. This proves the decomposition.
+On the unit transition following $y=0$,
+$\ell=\frac35(1-\sigma(y))\in[0,3/5]$.
+For the following axial transition $\ell=0$ over length $T_d$.
+Both retain $\vartheta=1$; since
+$\partial_y\log c=\ell-\tfrac12\ge-\tfrac12$,
+we have $c(y)\ge P_*e^{-y/2}$ on $[0,1+T_d]$.
+Its squared integral is at least
+$P_*^2(1-e^{-1-T_d})$.
+Add the reference inner stage, use positivity of the remaining
+integral, and finally use $P_*>e^{T_d}$.
+\end{proof}
+For the conservative B.2 choice
+$\sigma_*=j_0/[72000(1+\mathfrak p)]$,
+this proves
+\[
+\sigma_*<
+\frac{j_0}{72000(3-\frac12e^{-1-T_d})e^{2T_d}}.
+\]
+This is a consequence of that \emph{sufficient} choice, not a
+universal upper bound on every admissible $\sigma_*$.
+
+\paragraph{A rigorous stage-envelope algorithm.}
+Suppose the actual moment-corrected reference profile has been
+frozen and subdivided into finitely many stages
+$0=y_0<\cdots<y_s=Y_T$ with lengths $d_j$.
+Assume each stage has independently certified bounds
+$\ell_j^-\le\ell(y)\le\ell_j^+$.
+Let $s_j^\pm=\ell_j^\pm-\tfrac12$ and define
+\[
+F(s,d)=\int_0^d e^{2st}dt=
+\begin{cases}(e^{2sd}-1)/(2s),&s\ne0,\\d,&s=0.\end{cases}
+\]
+Initialize $c_0^-=c_0^+=P_*$ and propagate
+$c_{j+1}^\pm=c_j^\pm e^{s_j^\pm d_j}$.
+Comparison of the exact ODE $c'=(\ell-\tfrac12)c$
+then gives
+\begin{equation}\label{eq:source-stage-enclosure}
+\begin{split}
+\mathfrak p_-&=\frac52P_*^2+
+\frac12\sum_{j=0}^{s-1}(c_j^-)^2F(s_j^-,d_j)
++\frac{(c_s^-)^2}{2(1+2h)},\\
+\mathfrak p_+&=\frac52P_*^2+
+\frac12\sum_{j=0}^{s-1}(c_j^+)^2F(s_j^+,d_j)
++\frac{(c_s^+)^2}{2(1+2h)},\qquad
+\mathfrak p_-\le\mathfrak p\le\mathfrak p_+.
+\end{split}
+\end{equation}
+These interval bounds require genuinely certified inputs for all
+stage slopes, matching amplitudes and lengths. The accompanying
+outward-rounded program demonstrates the enclosure on a clearly
+marked \emph{non-source} constant-slope fixture. It does not
+choose or validate the source's missing moment-correction data.
+
+\paragraph{An explicit angular linear inverse.}
+The zero-free rectangle of Proposition~\ref{prop:axis-data-zero-free}
+gives $|H_*|\le13$ and
+$|H_*^2+\sigma_*^2|\ge9\sigma_*^2/16$. Therefore
+\[
+|\chi|=\left|\frac{H_*^2}{H_*^2+\sigma_*^2}\right|
+\le\frac{2704}{9\sigma_*^2}<\frac{301}{\sigma_*^2}.
+\]
+For disks of radius $\sigma_*/200$ about $[-1,1]$ and
+$\rho\le\sigma_*/1600$, Cauchy's inequality yields
+$\|\chi\|_{\mathcal B_\rho}\le301/\sigma_*^2$
+for a degree-zero coefficient of the source norm (B.4).
+The source's product coefficient argument admits the constant
+$64$, hence multiplication by $\chi$ has norm
+$M_\chi\le19264/\sigma_*^2$.
+Its factorial estimate for $T=\frac12J_2\chi$ gives
+\begin{equation}\label{eq:source-explicit-linear-resolvent}
+\|(1+T)^{-1}\|\le
+\sum_{k\ge0}\frac{(40M_\chi)^k}{k!(k+1)!}
+\le\exp(770560/\sigma_*^2).
+\end{equation}
+This very conservative estimate is for the angular
+\emph{linear} inverse, not the full nonlinear problem.
+
+For clarity, a sufficient numerical contraction criterion can be
+written entirely in terms of the missing remainder norms.
+Suppose on a ball of radius $r>0$ the exact remainders
+$R_1,R_2$ in (B.15) have bounds $A_1,A_2$ and Lipschitz
+constants $L_1,L_2$, uniformly in the remaining parameters.
+If $B$ bounds the angular inverse above, the fixed-point map
+is invariant and has Lipschitz constant at most $1/4$
+provided
+\begin{equation}\label{eq:source-Lambda-conditional}
+\Lambda\ge
+2\max\{40BA_1/r,\ 80A_2/r,\ 40BL_1,\ 80L_2\}.
+\end{equation}
+Indeed $J_2$ and $J_1$ have norms at most $40$ and $80$
+in the source's space. This formula is conditional:
+the original text proves the remainder bounds qualitatively
+but does not freeze numerical $A_i,L_i$ on a selected ball.
+
+\paragraph{Outstanding physical source data.}
+The reference schedule must be fixed with compatible values of
+$M_d,P_*,\lambda,h,T_f,c_o,\mathrm{Amp}$ and its exact
+moment-correction coefficients, including the root of
+(A.19)--(A.20). Without those data, neither
+\eqref{eq:source-stage-enclosure} nor
+\eqref{eq:source-Lambda-conditional} is a numerical certificate.
+The actual similarity-order $n=1,2$ unforced corrections and the
+physical residual have not been reconstructed.
