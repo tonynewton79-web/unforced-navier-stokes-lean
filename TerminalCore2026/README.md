@@ -564,3 +564,39 @@ This normal-ordering is NOT claimed by the new abstract theorem.
 The physical full recurrence (53), normal convergence and
 Theorem 1.1 remain open; no full Lean or global singularity
 claim follows.
+
+
+### Exact leading-pressure highest derivative — added source-native corollary
+
+The updated cumulative paper now proves a sharper **source-specific**
+piece of the pressure estimate. Writing the full five-interaction
+leading-pressure operator with input F=U_k, at radial input a>=k and
+leading-profile index c>=0, r=a+1, m=a+c+1, N=m+1, its exact third-
+eta-derivative coefficient is
+
+`[u_c G^3/(4 r m N^2)] * d_eta^3 F_a`,
+
+where `u_c` is the c-th radial coefficient of U0 and
+`G=(1-eta^2)/(1-2h eta^2)`.
+The complete infinite radial sum of this **one** high-jet channel
+obeys, conditionally on finite `||g||`, the induced-norm estimate
+
+`||P_lead^(3)F|| <= [64 D_3/(k+1)] ||g|| ||F||`,
+with `g=G^3 (U0+D_X U0)/4`.
+
+The proof uses `m/r<=1+c` and the full convolution theorem;
+there is no truncation of leading-profile Taylor coefficients.
+It does NOT bound the remaining j=0,1,2 channels, which need their
+own normal-form coefficient estimates. Nor is actual imported
+profile regularity independently established.
+
+`leading_pressure_normal_form_exact.py` verifies 24 exact rational
+source-native jet expansions and 2,450 radial-index majorizations.
+The Lean finite algebra/index claims are submitted in
+`WeightedRadialConvolution.lean`; a green latest CI result, not
+the PR's historic status, is needed for a kernel certification.
+
+The additional research packet replays **101,968** exact cases
+(99,494 algebra/convolution/smoothing and 2,474 source-specific).
+The 36-page reader consists of 16 original pages and a 20-page
+replacement cumulative scholarly amendment.
