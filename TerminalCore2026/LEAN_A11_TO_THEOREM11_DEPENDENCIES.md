@@ -18,9 +18,14 @@ hypotheses that merely assume the PDE or profile existence.
    The exact checker tests implications of input intervals; it does NOT
    generate or validate source data.
 5. For the two (A.11) azimuthal corrections, retain the established
-   slope and first-eta bounds. The new paper proves conditionally
-   (Q_sgelambda/2); the outstanding support inputs are
-   (|N_s|/Elelambda/2) and (Xge9/lambda).
+   slope and first-eta bounds. The analytic source-tail theorem now reduces and proves
+   |N_s|/E < lambda/2 on both supports, under source-stage assumptions
+   and lambda <= min(10^-6/(T_d+513), 1/[10(1+log P_*)],1/20),
+   with h <= lambda/100, and the genuine S(infinity)=Pi(infinity)=0
+   normalizations. Together with the prior Q_s >= lambda/2 and a
+   selectable radial scale X >=9/lambda, this closes the scalar cone
+   implication ON THESE SUPPORTS ONLY. Independently freezing a source
+   schedule and verifying those source-stage hypotheses remains open.
 6. Certify the pulse's source-specific (o(1)) errors, positive
    stress-direction margins, terminal endpoint factorization,
    pressure-neutral moment corrections and exact exterior tail.
@@ -43,3 +48,10 @@ PDE residual may be represented as a completed proof.
 
 Source: https://cdn.openai.com/pdf/32d9f210-8b73-45e0-91bc-82a30aef8a9a/navier-stokes.pdf
 Sections 4.2--4.3 and Appendix A.5.
+
+## Remaining proof tasks after the A.11 axial-tail reduction
+
+- Kernel-certify `A11NsExteriorTail.lean` finite scalar gates. The complete tail integrals and parameter-domain proof are still conventional mathematics, not formalized Lean definitions.
+- Formalize the source-compliant (A.11) smooth-step-derivative correction, pressure-neutrality, S(infinity)=0 and future-stage nonpositive slope bounds; the interval script accepts but does not manufacture source bounds.
+- Validate one compatible parameter tuple, entire source stage map and all cone margins, including pulse o(1) remainders and endpoints. The A.11 result alone does not imply them.
+- Finish Appendix B complex analytic fixed point and actual separate unforced n=1,2 correction systems; then all-index coefficient estimates, convergence and physical unforced PDE equality. Never use `axiom`/`sorry` to disguise any missing obligation.
