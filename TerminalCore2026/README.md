@@ -665,3 +665,81 @@ positive-order momentum forcing channels; concrete radii of
 the imported leading profiles; the complete source recurrence (53);
 and the termwise physical PDE reconstruction. Theorem 1.1 and
 a global unforced singularity are NOT proved by this release.
+
+
+## Complete positive-order quadratic pressure estimate (20 October 2026)
+
+The cumulative mathematical manuscript now inputs
+`Complete_Bilinear_Pressure_Insert.tex` in its ninth
+section. The merged reader is the unchanged original 16-page
+preprint followed by one updated 26-page analytic supplement.
+
+**Exact H_k normal form.** For an ordered pair i,j>=1, i+j=k,
+input radial degrees a>=i,b>=j, N=a+b, r=b+1, and
+B=2eta/L, G=d/L, the actual H_ij pressure contribution
+after the pressure primitive, shifted Z, and J1 inverse is
+a seven-channel sum of mixed derivatives
+`d_eta^p U_i * d_eta^q U_j`. The exact seven pairs are
+(0,0),(1,0),(0,1),(1,1),(0,2),(1,2),(0,3).
+The normal form is given in the paper, including all derivatives
+falling on B and G.
+
+**Weighted bilinear majorant.** For d=p+q<=3 and
+t=N+k+2 the two-lift scalar weight ratio obeys
+
+`t^(3-d)*w(N,beta+d)/[(N+1)(N+2)^2*w(N+2,beta)]
+ <= E_d=2304*2^(3-d)*R^2/rho^d`.
+
+Instead of bounding bare derivatives of either U_i or U_j,
+the proof uses the nonnegative unsigned Leibniz majorant
+`M_(N,s)=sum_(a+b=N)sum_(u+v=s) binom(s,u)
+ abs(d_eta^u U_i,a) abs(d_eta^v U_j,b)`,
+bounded by `64||U_i||||U_j|| w_(N,s)`.
+The complete multiplier derivatives are estimated by the
+same 64-factor algebra bound, uniformly in both indices.
+
+For E=[-1,1], 0<h<1/100, and 0<rho<=1/4, explicit Cauchy
+estimates give simultaneous norm bounds
+`||B||,||G||,||B'||,||G'||,||B''||,||G''|| <=25`.
+This yields a uniform analytic bilinear bound
+`||H_ij|| <= C_H ||U_i||||U_j||`,
+`C_H=(64^2/4) A_H (E_0+2E_1+2E_2+2E_3)`,
+`A_H=11*64^2*25^3=704000000`.
+
+**Complete symmetrized W_i W_j contribution.**
+The second quadratic pressure branch contains eight
+mixed derivative splits. The two radial averages satisfy
+`(a+1)(b+1)>=a+b+1` and absorb the high-jet
+denominator, giving uniform bounds also for this branch.
+Let `F_d=2304*2^max(2-d,0)*R^2/rho^d`
+and `A_Q=32*64^2*25^3=2048000000`.
+Then `||Q_ij|| <= C_Q ||U_i||||U_j||`, where
+`C_Q=(64^2/8) A_Q*(F_0+2F_1+3F_2+2F_3)`.
+The full ordered-pair **quadratic pressure**
+contribution is bounded with `C_quad,p=C_H+C_Q`,
+uniformly in i,j, with no radial Taylor truncation and no
+new imported leading-profile hypothesis.
+
+**Independent tests:** Local exact replay of the full H
+source returned 216 cases, H smoothing 21,576 cases, mixed
+Leibniz comparisons 28,665 cases and index constraints
+10,404 cases. The Q source replay passed 96 cases,
+Q smoothing 21,600 cases and the double-average inequalities
+8,427 cases. Total 90,984 exact reproducible cases.
+GitHub CI independently reruns seven/eight normal forms
+and the scalar exact tests using
+`complete_quadratic_pressure_exact.py`.
+
+**Lean boundary:** `CompleteQuadraticPressureScalar.lean`
+formalizes finite scalar index, denominator and coefficient
+identities. Only a successful completed GitHub Actions job
+can certify those finite declarations. The full Banach-space
+majorant proof is provided in the mathematical manuscript,
+NOT formalized end-to-end in Lean.
+
+**Remaining:** other interior axial/swirl momentum products,
+direct delayed forcing, concrete complex analytic radii of
+imported leading profiles, and physical PDE reconstruction.
+The complete lower-order recurrence (53) and Theorem 1.1
+are NOT proved by the quadratic-pressure result alone.
+No whole-space finite-energy unforced singularity follows.
