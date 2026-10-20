@@ -1135,3 +1135,77 @@ forcing and current feedback in the induced norm; then derive
 the closed recurrence and justify all physical derivatives.
 Theorem 1.1 remains unproved; this is not a global unforced
 Navier–Stokes blow-up proof.
+
+
+## Fixed-radius factorial feedback resolvent and two-shift majorant (20 October 2026)
+
+The cumulative manuscript now inputs
+\`Fixed_Radius_Volterra_and_Two_Space_Majorant_Insert.tex\`. The updated
+research reader has **58 pages**: original deposited 16-page source
+unchanged plus one replacement 42-page cumulative mathematical amendment.
+The work stays on draft PR #1; do not merge the original source or claim
+its Theorem 1.1 proved.
+
+**Mathematical theorem.** With all fixed leading-profile multiplier
+norms finite on the same selected analytic coefficient space, the actual
+four current-order block maps \(K_n\) raise radial valuation and satisfy
+\`K_n(I_m^2) subset I_(m+1)^2\`,
+\`||K_n F|| <= C_*||F||/(m+1)\`
+for all \`m>=n>=1\`. The source similarity shift \`lambda_n=2hn\`
+does not spoil this because \`n<=m\`. The factorial iteration yields
+\`||K_n^ell|| <= C_*^ell*n!/(n+ell)! <= C_*^ell/ell!\`.
+Hence the Neumann series converges for EVERY n, independently of whether
+\`||K_n||\` is less than one, with
+\`||(I-K_n)^(-1)|| <= exp(C_*)\`.
+This eliminates the earlier *radius-dependent finite-startup cutoff*
+for the current-order inversion, on a fixed common analytic domain.
+
+**Two-shift quadratic majorant.** The full source ledger contains
+\`sum_(i+j=n)B_i B_j\` and \`sum_(i+j=n-1)B_i B_j\`.
+A constructive majorant with both present is proved: if
+\`B_n <= H[B_(n-1)+B_(n-2)+Q_n+Q_(n-1)]\`,
+then taking \`M=1/[32(1+H)]\` and sufficiently large T as stated
+in the manuscript gives \`B_n<= M T^n/(n+1)^2\`.
+The Q_(n-1) term is not silently merged into Q_n.
+
+**Source-to-majorant reduction, strictly conditional.** Combining
+previously proved source-specific momentum and shifted-pressure operator
+norms yields conservative budgets
+\`L1=2*C_del,mom+C_E*C_L\`,
+\`L2=C_E*C_D\`,
+\`Q0=2*C_mom+C_E*C_sw\`,
+\`Q1=C_E*C_quad,P\`.
+If the proposed *unforced* coefficient equations and startup
+normalization match the exact ledger on ONE independently selected
+common analytic domain, the source estimate together with the factorial
+inverse yields the above majorant with
+\`H=exp(C_*)*max(1,L1,L2,Q0,Q1)\`.
+This is a **conditional local reconstruction criterion**,
+not a proof that those source and profile hypotheses hold.
+
+**Independent exact replay:** \`fixed_radius_volterra_exact.py\`
+passed 20,520 rational shift/index comparisons, 4,410 factorial
+comparisons, 1,588 two-shift convolution bounds, six majorant budget
+settings, and nine finite triangular inverses even at strong startup
+feedback C=80. Scalar comparison total: **26,524 passed**, plus
+nine finite inverse checks. This does not replace the analytic proof
+or verify physical Navier--Stokes.
+
+**Lean status:** \`FixedRadiusVolterra.lean\` contains only elementary
+scalar radial/index and delayed-ratio gates. The GitHub workflow was
+updated to invoke it. It is NOT kernel-certified until the corresponding
+run finishes successfully; the Banach operator resolvent and the PDE
+source hierarchy are not formalized end-to-end.
+
+**Open gates:** (i) freeze and independently verify a specific
+admissible tuple of source parameters and common complex profile radius,
+(ii) check the correspondence of every actual n=1,2 startup and
+n>=3 unforced coefficient equation and pressure datum with the
+source-specific norm lemmas, (iii) prove physical-coordinate termwise
+reconstruction and residual zero, (iv) formalize these in Lean.
+
+**Source provenance:** OpenAI, *Finite Time Blowup for Navier--Stokes*,
+Appendix B, Proposition B.2, constructs leading profiles for a broader
+construction whose full-space theorem involves **smooth compactly
+supported forcing**. The local analytic profile does NOT itself
+establish the user's proposed unforced global singularity.
