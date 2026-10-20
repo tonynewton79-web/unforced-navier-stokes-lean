@@ -109,6 +109,10 @@ jobs:
         run: lake env lean TerminalCore2026/A29A30PulseScalar.lean
       - name: Check normalized moment algebra Lean candidates
         run: lake env lean TerminalCore2026/NormalizedMomentPulseScalar.lean
+      - name: Check ten-state affine scalar Lean proof candidates
+        run: |
+          lake env lean TerminalCore2026/TenStateAffineTubes.lean
+          lake env lean TerminalCore2026/PulseTransferScalar.lean
       - name: Independent exact-equation tests
         run: |
           python -m pip install sympy
@@ -156,3 +160,5 @@ jobs:
           python TerminalCore2026/a5_pulse_cone_exact.py
           python TerminalCore2026/a5_pulse_source_gate.py --demo
           python TerminalCore2026/a29a30_source_exact.py
+          python TerminalCore2026/ten_state_interval_tubes.py
+          python TerminalCore2026/pulse_transfer_exact.py
