@@ -31,7 +31,7 @@ jobs:
       - name: Reject admitted or axiomatic replacements
         shell: bash
         run: |
-          if grep -nE '^[[:space:]]*(sorry|admit|axiom)([[:space:]]|$)' TerminalCore2026.lean TerminalCore2026/FirstDerivativeChannel.lean TerminalCore2026/TwoDerivativeWeight.lean TerminalCore2026/SwirlDiagonal.lean TerminalCore2026/MajorantBounds.lean TerminalCore2026/CauchyProfileBridge.lean TerminalCore2026/AnalyticReconstruction.lean TerminalCore2026/DelayedPressureFourJet.lean TerminalCore2026/DelayedPressureBanachLemmas.lean TerminalCore2026/RemainingLinearPressure.lean TerminalCore2026/LeadingProfilePressure.lean TerminalCore2026/QuadraticPressureCancellation.lean TerminalCore2026/WeightedRadialConvolution.lean TerminalCore2026/FullLeadingPressureNormalForm.lean TerminalCore2026/CompleteQuadraticPressureScalar.lean; then
+          if grep -nE '^[[:space:]]*(sorry|admit|axiom)([[:space:]]|$)' TerminalCore2026.lean TerminalCore2026/FirstDerivativeChannel.lean TerminalCore2026/TwoDerivativeWeight.lean TerminalCore2026/SwirlDiagonal.lean TerminalCore2026/MajorantBounds.lean TerminalCore2026/CauchyProfileBridge.lean TerminalCore2026/AnalyticReconstruction.lean TerminalCore2026/DelayedPressureFourJet.lean TerminalCore2026/DelayedPressureBanachLemmas.lean TerminalCore2026/RemainingLinearPressure.lean TerminalCore2026/LeadingProfilePressure.lean TerminalCore2026/QuadraticPressureCancellation.lean TerminalCore2026/WeightedRadialConvolution.lean TerminalCore2026/FullLeadingPressureNormalForm.lean TerminalCore2026/CompleteQuadraticPressureScalar.lean TerminalCore2026/MomentumAndPressureNorm.lean; then
             echo 'Prohibited admitted or axiomatic proof found'
             exit 1
           fi
@@ -67,6 +67,8 @@ jobs:
         run: lake env lean TerminalCore2026/FullLeadingPressureNormalForm.lean
       - name: Kernel check complete quadratic-pressure scalar gates
         run: lake env lean TerminalCore2026/CompleteQuadraticPressureScalar.lean
+      - name: Kernel check direct momentum and pressure-norm scalar gates
+        run: lake env lean TerminalCore2026/MomentumAndPressureNorm.lean
       - name: Independent exact-equation tests
         run: |
           python -m pip install sympy
@@ -87,3 +89,4 @@ jobs:
           python TerminalCore2026/full_leading_normal_form_exact.py
           python TerminalCore2026/quadratic_highest_jet_exact.py
           python TerminalCore2026/complete_quadratic_pressure_exact.py
+          python TerminalCore2026/momentum_pressure_obstruction_exact.py
