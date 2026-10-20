@@ -83,3 +83,4 @@ jobs:
           python TerminalCore2026/radial_convolution_smoothing_exact.py
           python TerminalCore2026/leading_pressure_normal_form_exact.py
           python TerminalCore2026/full_leading_normal_form_exact.py
+          python TerminalCore2026/quadratic_highest_jet_exact.py
