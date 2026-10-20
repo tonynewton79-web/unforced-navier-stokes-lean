@@ -92,6 +92,29 @@ $(b+1)^2/(b+5)^2$ is at most one. For $a=0$ it gives
 $54(b+1)^2/(b+5)^2$, tending to $54$ as $b\to\infty$.
 \end{proof}
 
+The same two radial lifts also compensate for lower jet orders
+when the unused derivatives are replaced by similarity-shift or radial
+Euler factors. More precisely, for $0\le k\le4$, $a\ge n-2$, and
+$n\ge2$, one has
+\begin{equation}\label{eq:alljet}
+ \frac{(n+1)^{4-k}w_{a,b+k}}
+ {(a+1)^2(a+2)^2w_{a+2,b}}
+ \le \frac{54R^2}{\rho^k}\,
+ \frac{25}{(k+1)^2}\,3^{4-k}.
+\end{equation}
+To see this, divide the exact weight ratio for $k$ by the
+four-jet ratio in \eqref{eq:fourjet-exact}; the quotient is
+$\rho^{4-k}(b+5)^2/(b+k+1)^2$ divided by
+$\prod_{j=k+1}^4(2a+b+j)$. Since $b\ge0$,
+$[(b+5)/(b+k+1)]^2\le25/(k+1)^2$, each denominator
+factor is at least $a+1$, and $n+1\le a+3\le3(a+1)$.
+These estimates give \eqref{eq:alljet}. In particular, an
+abstract polynomial of total differential/similarity degree four
+has a uniform coefficient multiplier after two radial lifts,
+provided its remaining analytic multipliers and commutators are
+controlled. The estimate makes no claim that the actual
+coefficient operators have already been placed in that class.
+
 This theorem is an exact estimate for the highest-jet scalar
 multiplier along one source-native composite; it is \emph{not}
 a norm bound for the complete variable-coefficient pressure
@@ -124,5 +147,7 @@ script verifies the analytic weight identity and inequality
 for 9,333 nontrivial index and parameter triples and checks
 the asymptotic sharpness. A second replay expands the complete
 variable-coefficient shifted operators and confirms the fourth-jet
-coefficient in 48 exact symbolic cases. These computational checks do not
+coefficient in 48 exact symbolic cases. A third exact-rational
+replay verifies 15,345 cases of the mixed-derivative bound
+\eqref{eq:alljet}. These computational checks do not
 replace a proof of the full operator bound.
