@@ -31,7 +31,7 @@ jobs:
       - name: Reject admitted or axiomatic replacements
         shell: bash
         run: |
-          if grep -nE '^[[:space:]]*(sorry|admit|axiom)([[:space:]]|$)' TerminalCore2026.lean TerminalCore2026/FirstDerivativeChannel.lean TerminalCore2026/TwoDerivativeWeight.lean TerminalCore2026/SwirlDiagonal.lean TerminalCore2026/MajorantBounds.lean TerminalCore2026/CauchyProfileBridge.lean TerminalCore2026/AnalyticReconstruction.lean TerminalCore2026/DelayedPressureFourJet.lean TerminalCore2026/DelayedPressureBanachLemmas.lean TerminalCore2026/RemainingLinearPressure.lean TerminalCore2026/LeadingProfilePressure.lean TerminalCore2026/QuadraticPressureCancellation.lean TerminalCore2026/WeightedRadialConvolution.lean TerminalCore2026/FullLeadingPressureNormalForm.lean TerminalCore2026/CompleteQuadraticPressureScalar.lean TerminalCore2026/MomentumAndPressureNorm.lean TerminalCore2026/ShiftedPressureRepair.lean TerminalCore2026/ShiftedPressureSourceGates.lean TerminalCore2026/RemainingShiftedPressure.lean TerminalCore2026/CurrentPressureFeedback.lean TerminalCore2026/FixedRadiusVolterra.lean TerminalCore2026/StartupSourceAudit.lean TerminalCore2026/AxisProfileFence.lean TerminalCore2026/OuterPressureB2Scalar.lean; then
+          if grep -nE '^[[:space:]]*(sorry|admit|axiom)([[:space:]]|$)' TerminalCore2026.lean TerminalCore2026/FirstDerivativeChannel.lean TerminalCore2026/TwoDerivativeWeight.lean TerminalCore2026/SwirlDiagonal.lean TerminalCore2026/MajorantBounds.lean TerminalCore2026/CauchyProfileBridge.lean TerminalCore2026/AnalyticReconstruction.lean TerminalCore2026/DelayedPressureFourJet.lean TerminalCore2026/DelayedPressureBanachLemmas.lean TerminalCore2026/RemainingLinearPressure.lean TerminalCore2026/LeadingProfilePressure.lean TerminalCore2026/QuadraticPressureCancellation.lean TerminalCore2026/WeightedRadialConvolution.lean TerminalCore2026/FullLeadingPressureNormalForm.lean TerminalCore2026/CompleteQuadraticPressureScalar.lean TerminalCore2026/MomentumAndPressureNorm.lean TerminalCore2026/ShiftedPressureRepair.lean TerminalCore2026/ShiftedPressureSourceGates.lean TerminalCore2026/RemainingShiftedPressure.lean TerminalCore2026/CurrentPressureFeedback.lean TerminalCore2026/FixedRadiusVolterra.lean TerminalCore2026/StartupSourceAudit.lean TerminalCore2026/AxisProfileFence.lean TerminalCore2026/OuterPressureB2Scalar.lean TerminalCore2026/SourceScheduleMass.lean; then
             echo 'Prohibited admitted or axiomatic proof found'
             exit 1
           fi
@@ -85,6 +85,8 @@ jobs:
         run: lake env lean TerminalCore2026/AxisProfileFence.lean
       - name: Kernel check outer-pressure rational separation gates
         run: lake env lean TerminalCore2026/OuterPressureB2Scalar.lean
+      - name: Kernel check source pressure mass scalar gates
+        run: lake env lean TerminalCore2026/SourceScheduleMass.lean
       - name: Independent exact-equation tests
         run: |
           python -m pip install sympy
@@ -116,3 +118,6 @@ jobs:
           python TerminalCore2026/axis_profile_fence_exact.py
           python TerminalCore2026/axis_profile_radial_jets_exact.py
           python TerminalCore2026/outer_pressure_measure_B2_exact.py
+          python -m pip install mpmath
+          python TerminalCore2026/stagewise_source_checks.py
+          python TerminalCore2026/outer_schedule_enclosure.py
