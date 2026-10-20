@@ -441,3 +441,71 @@ work does not establish whole-space unforced Navier--Stokes blow-up.
 The cumulative reader PDF is the original 16-page source unchanged
 plus a 17-page cumulative amendment; do not treat it as a revision
 of the original 16 pages in place.
+
+## Leading- and quadratic-pressure exact cancellations (20 October 2026)
+
+The current cumulative paper has a new part of Section 9:
+`Leading_Profile_Pressure_Cancellation_Insert.tex` and
+`Quadratic_Pressure_Symmetrization_Insert.tex`.
+The 34-page reading PDF consists of the original 16-page source, unchanged,
+followed by a single 18-page cumulative mathematical amendment.
+
+**All five leading-profile terms**, with `v=V0/X`, `F=Uk`,
+`Vk=XWk`, `B=2eta/L`, `G=d/L`, `K0=G d_eta v-B(v+D_X v)`,
+obey the EXACT identity
+
+```
+S_k/X = (D_X+1)(v Wk)
+      +U0[G d_eta+B(lambda_k-1-D_X)]Wk
+      +F K0.
+```
+
+The first three original contributions form the radial total derivative
+`X(D_X+1)(vWk)`; its pressure primitive is exactly `XvWk`.
+After the physical pressure equation and `J1 Z` reconstruction the
+full five-term contribution has radial valuation at least `I_(k+2)`.
+The three grouped contributions have at most 2, 3, and 1 derivatives
+of the unknown `F`, respectively.
+
+The all-index **scalar** two-radial-lift inequality is, for
+`0<=j<=3`, `a,b>=0` and `r=a+1`,
+
+```
+r^(3-j) w_(a,b+j) / [r^2(r+1)^2 w_(a+2,b)]
+  <= [54 R^2 / (r rho^j)] * [25*3^(4-j)/(j+1)^2].
+```
+
+The non-leading positive-order quadratic velocity source ALSO
+symmetrizes exactly over ordered pairs. Writing
+`Q_k=sum_(i+j=k, i,j>=1) Wi Wj` and
+`H_k=sum_(i+j=k) Ui[G d_eta+B(lambda_j-1-D_X)]Wj`,
+
+```
+Omega_k^(quad) = (X/2)(D_X+1) Q_k + X H_k,
+Pi_(k+1)^(quad) = -(X/4) Q_k - (1/2) int_0^X H_k dx.
+```
+
+Its full contribution after pressure reconstruction also lies in
+`I_(k+2)` coefficientwise. No general analytic operator norm
+is inferred solely from these identities.
+
+**Independent replay:** `leading_profile_pressure_exact.py` passed
+72 exact symbolic source/pressure cases and 41,472 rational scalar
+weight checks. `quadratic_pressure_exact.py` passed 120 symbolic
+ordered-source/pressure cases and 29,106 rational ordered-pair
+coefficient checks. Total: **70,770 independent exact test cases**.
+
+**Lean proof scope:** `LeadingProfilePressure.lean` and
+`QuadraticPressureCancellation.lean` contain finite algebraic
+cancellation, primitive-factor, and valuation lemmas; the GitHub
+workflow has been updated to compile both. They must not be
+described as kernel-certified until the current run actually passes.
+
+**Open gate, explicitly:** Prove the uniform induced Banach norm for
+the complete `P_(k+1)^lead`, including all radial coefficients and
+derivatives of the actual leading multipliers, and for the remaining
+bilinear `H_k` operator. Then certify the other positive-order
+momentum terms and full source-to-norm hypotheses before applying
+recurrence (53) to the actual hierarchy. Theorem 1.1 remains open
+as an end-to-end Lean/PDE assertion. Do not present these
+finite source identities as a full Navier--Stokes singularity proof.
