@@ -218,3 +218,51 @@ The reader PDF is the original 16-page preprint unchanged with a
 nine-page cumulative amendment attached. The editable amendment is
 in the GitHub source; do not treat it as a replacement for the
 original deposited manuscript's unavailable LaTeX project.
+
+
+## Source-native delayed-pressure forcing attack (20 October 2026)
+
+The cumulative manuscript now includes `Delayed_Pressure_Source_Ledger_Insert.tex`
+as its **ninth mathematical section**. The original deposited
+16-page PDF remains unchanged; the replacement cumulative amendment
+adds the exact lower-order source decomposition (25)--(27) and the
+full `Omega_(n-1)` term from (28), including
+`-Z^[2]_(0,n-2) V_(n-2)`.
+
+The especially difficult two-step linear path is
+`U_(n-2) -> V_(n-2) -> Omega_(n-1) -> Pi_n -> U_n`.
+It differentiates four times in eta and lifts radial degree by
+two, with scalar coefficient denominator
+`(a+1)^2 (a+2)^2`. For the exact (37) weight, the
+all-index principal ratio satisfies
+
+`w_(a,b+4) / [((a+1)^2 (a+2)^2) w_(a+2,b)] <= 54 R^2/rho^4`.
+
+The constant 54 is sharp as `a=0,b->infinity`. The exact
+polynomial numerator certificate is
+
+`54(a+1)^4(a+2)^2 - (2a+1)(2a+2)(2a+3)(2a+4)(a+3)^2
+ = 2a(a+1)(a+2)(19a^3+71a^2+69a+9) >=0`.
+
+This is formalized in `DelayedPressureFourJet.lean` (source submitted;
+kernel validation awaits a completed successful GitHub Actions run).
+`delayed_pressure_fourjet_exact.py` independently passed 9,333
+exact-rational factor checks for three radius choices.
+`source_native_principal_path.py` symbolically composed the **full**
+variable-coefficient operators from (22),(24),(26)--(28) and
+confirmed 48 exact instances of the highest-jet coefficient
+
+`-(d/L)^4/[4(a+1)^2(a+2)^2]`.
+
+These are new coefficient-level bounds and exact source-level checks.
+They **do not establish** the complete lower-order forcing recurrence
+(53). Remaining: norm bounds for all lower-jet variable-coefficient
+commutators; the complete `Omega_(n-1)` source; every other delayed
+and interior quadratic term; fixed leading-profile holomorphic radii;
+and the differentiated physical PDE reconstruction. In particular
+the highest-jet channel is O(1), not automatically O(1/n), so it
+belongs in the two-step `A_(n-2)` forcing bound, not in the current
+feedback block.
+
+The full normal convergence statement (Theorem 1.1) is **not**
+independently end-to-end Lean-certified. Keep PR #1 in draft.
