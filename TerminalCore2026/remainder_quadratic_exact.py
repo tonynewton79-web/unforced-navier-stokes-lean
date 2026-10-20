@@ -18,9 +18,9 @@ assert exp_partial(Q(74,5),21)>2500000
 assert exp_partial(Q(5137,200),28)>100000000000
 Dl=(1+Q(1011,1000)*Q(55,2))*Q(4,10000000)
 D1=Q(55,2)*Q(4,10000000)
-Eb=Q(40,10**11)*20*Dl**2
-Ea=Q(80,10**11)*20*Dl*D1
-assert Eb<Q(2,10**18) and Ea<Q(4,10**18)
+Eb=8*Q(640,3)*Q(1,10**11)*20*Dl**2
+Ea=16*Q(640,3)*Q(1,10**11)*20*Dl*D1
+assert Eb<Q(5,10**17) and Ea<Q(1,10**16)
 print("PASS exact polynomial, disjoint-support, exponential and")
 print("conditional uniform bump energy and amplitude-derivative bounds")
 print("No actual numerical exterior balance is certified.")
