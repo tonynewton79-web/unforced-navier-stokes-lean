@@ -13,16 +13,19 @@
 \begin{document}
 \maketitle
 \begin{abstract}
-The local terminal-core expansion requires the actual pressure trace
-of the exterior radial schedule. An exact positive-measure representation
-implicit in source Lemma~A.5 yields uniform real derivative bounds and
-a common complex analytic neighborhood for this trace. The same structure
-gives explicit constructive choices of the separation parameters in
-Appendix~B condition (B.2), in terms of the scalar pressure mass
-$-\Pi_0(0)$ rather than an invented surrogate pressure. The mass remains
-dependent on the outer moment-matching schedule; the complete numerical
-leading profile, nonlinear contraction, startup corrections and unforced
-physical reconstruction remain unresolved.
+The exterior pressure datum in Appendix A of the originating forced
+Navier--Stokes construction depends on moment-matched parameters
+chosen existentially. We derive an exact finite-stage and exterior-tail
+decomposition for this pressure mass, strengthen its source-level
+lower bound using the initial prescribed stages, and give a rigorous
+stagewise interval-enclosure algorithm once the remaining data
+are fixed. The previously established complex axis denominator bounds
+also yield an explicit factorial norm bound for the Appendix-B angular
+linear inverse. We state a conditional threshold for the nonlinear
+contraction in terms of remainder norms that the source has not frozen
+numerically. No certified numerical pressure mass, complete nonlinear
+axis profile, unforced startup corrections, or physical residual
+reconstruction is claimed.
 \end{abstract}
 
 \section{The common weighted space}
@@ -171,6 +174,8 @@ The pointwise weight identity and sharp two-derivative inequality have already b
 \input{Axis_Profile_Geometric_Fence_and_Jets_Insert.tex}
 
 \input{Outer_Pressure_Measure_and_Admissibility_Insert.tex}
+
+\input{Outer_Pressure_Schedule_Enclosure_Insert.tex}
 
 \begin{thebibliography}{9}
 \bibitem{newton2026}
