@@ -940,3 +940,59 @@ recurrence including finite startup data; and prove differentiated
 physical-coordinate PDE reconstruction. Neither Theorem 1.1
 nor a global unforced finite-energy singularity has been
 proved in this release.
+
+
+## Direct source closure in the shifted pressure space — 20 October 2026
+
+This checkpoint extends the pressure-norm repair to the **other direct
+sources**, retaining the original velocity space `B` and the weaker
+one-derivative-shifted pressure space `P` with
+`||Pi||_P = sup |partial_eta^b Pi_a|/w_(a,b+1)`.
+
+The updated cumulative paper inputs
+`Shifted_Pressure_Source_Closure_Insert.tex` as a continuation of
+`Shifted_Pressure_Repair_Insert.tex`. It is distributed as one
+**50-page reader**: the deposited original 16 pages unchanged, plus
+one replacement 34-page cumulative mathematical amendment.
+
+- **Sharp axis primitive:** `||int_0^X F dx||_P <=
+  (16/3) R*rho ||F||_B`. Equality of the coefficient constant
+  occurs at radial and axial indices `(a,b)=(0,0)`.
+  The swirl-square pressure source consequently has bound
+  `(1024/3)R*rho*|C|^-2*sum_(i+j=n)||phi_i||||phi_j||`.
+- **Exact radial-Laplacian cancellation:** the isolated source
+  `-2X V_(k,XX)` contributes `Pi_(k+1)^lap=d_X V_k`
+  with axis integration constant zero, and
+  `||Pi_(k+1)^lap||_P <=
+  (80/27)(32*rho+13)||U_k||_B`.
+- **Full direct time pressure:** the source `T_(0,k)V_k`
+  has a six-term, 0/1/2-derivative normal form including
+  all `B,G,L` multiplier derivatives, and
+  `||Pi_(k+1)^time||_P <=
+  (1280R/27)*[(32/3)rho+12+8/rho]||U_k||_B`,
+  independently of k and the radial Taylor cutoff.
+- **Previously proved isolated delayed pressure:** the direct
+  `-Z^[2]_(0,k-1)V_(k-1)` primitive is bounded into the
+  same shifted pressure space.
+
+Reproducibility: the new
+`ShiftedPressureSourceGates.lean` contains scalar arithmetic
+and source identities; `shifted_pressure_sources_exact.py`
+replays the source and analytic-weight comparisons. Independently
+executed local tests passed **108,375 exact coefficient comparisons**
+(21,675 axis primitive, 21,675 Laplacian, 65,025 time pressure)
+and **24 symbolic source-normal-form cases**.
+New Lean declarations are only submitted to the pinned GitHub
+workflow; do not report a kernel PASS until the relevant CI run
+finishes successfully. The written Banach-space theorems are not
+end-to-end Lean formalized.
+
+**Remaining critical gates:** Establish shifted-`P` norm
+bounds for the bare leading-profile pressure interactions and the
+positive-order quadratic pressure primitives; then jointly prove
+the full simultaneous two-space recurrence, certify the imported
+leading-profile analytic radii, and reconstruct the physical PDE
+with termwise derivative justification. Estimates for pressure
+*after* final `J1 Z` reconstruction do not by themselves bound
+the bare pressure primitive. The full Theorem 1.1 remains unproved
+and no whole-space unforced finite-energy blow-up follows.
