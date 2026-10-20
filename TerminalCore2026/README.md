@@ -294,3 +294,48 @@ The actual complete variable-coefficient forcing recurrence (53)
 still lacks a uniform all-channel Banach-norm certificate and
 remains **open**. Exact-rational replay is not Lean kernel validation;
 watch the new workflow run for its conclusion.
+
+
+## Full variable-coefficient delayed-viscosity pressure bound (20 October 2026)
+
+The cumulative manuscript now contains the *complete* linear delayed-viscosity
+pressure path from U_(n-2) to U_n, including all derivatives falling on the
+rational eta-dependent multipliers. Source proof:
+`DelayedPressureBanach_Insert.tex` (subsection of the ninth section);
+the 29-page revised reading copy is the unchanged 16-page source preprint
+with a single 13-page cumulative mathematical amendment.
+
+For 0<h<1/100, on E=[-1,1], R>0, 0<rho<=1/4, and all n>=2,
+the operator induced by the **specific** source path
+`U_(n-2) -> V_(n-2) -> -Z^[2]_(0,n-2)V_(n-2) -> Pi_n -> U_n`
+maps `I_(n-2) -> I_n` with uniform bound
+
+`||P_n|| <= (14487066/4)*(80/27)*54*R^2 * sum_(j=0)^4 [25*3^(4-j)/((j+1)^2*rho^j)]`.
+
+The proof writes the exact composition of three shifted Z factors
+applied to the full first-order radial-velocity operator; the
+coefficients of the normal form `sum_j c_(a,n,j)(eta)*partial_eta^j`
+are bounded by
+`|partial_eta^ell c_(a,n,j)| <= 14487066*(a+n+1)^(4-j)*ell!`.
+This follows from uniform rational-multiplier bounds on complex
+|eta|<=3, three nested Cauchy radius losses of 1/4, and the
+explicit normal-form induction factor 87. The strengthened
+all-slot weight inequality controls `(a+n+1)^(4-j)`, rather than
+only `(n+1)^(4-j)`. The analytic multiplication commutator
+factor is <= sum_(ell>=0)(ell+1)^2 rho^ell <= 80/27.
+
+Independent exact replay: 48 full-variable-coefficient SymPy symbol
+compositions and **64,800** exact-rational all-slot checks passed;
+the exact composition majorant `22*87^3=14487066` also passed.
+File: `full_delayed_pressure_banach_exact.py`.
+Finite Lean lemmas for the index, Leibniz and composition budget are
+in `DelayedPressureBanachLemmas.lean` and included in the GitHub Actions
+workflow. Confirm an actual successful latest run before reporting them
+as Lean kernel-certified.
+
+**Critical boundary:** This is NOT the full Omega_(n-1) source in (28);
+other linear forcing terms, all quadratic products, and the imported
+leading-profile analytic radii must still be controlled to derive
+recurrence (53). The four-block theorem remains conditional on the
+leading-profile hypotheses. No end-to-end Lean proof of the local
+Navier--Stokes Theorem 1.1 or whole-space unforced blow-up is claimed.
