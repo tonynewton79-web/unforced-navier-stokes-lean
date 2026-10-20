@@ -1,0 +1,113 @@
+\subsection*{Parameter derivatives and explicit terminal matching}
+\label{subsec:A11-deriv-stop}
+The previous source-native theorem controls the two relative
+azimuthal bumps in (A.11). The dependence on the parameter $\eta$
+is also tame, and the final constant-slope stopping length can be
+determined without a numerical shooting argument.
+
+\begin{proposition}[First-parameter-derivative bounds]
+\label{prop:A11-eta-derivative}
+Assume the exact Appendix-A stages and Theorem~\ref{thm:A11-true-corrections},
+with $T_f=512$ and $0<\lambda\le1/20$. For the actual two correction
+coefficients and the corrected azimuthal logarithmic slope,
+\[
+ \max_i\|\partial_\eta c_i\|_{L^\infty([-1,1])}
+ <12\lambda^{28},\qquad
+ \|\partial_\eta\ell_c\|_{L^\infty}<5\cdot10^6\lambda^{28}.
+\]
+The pressure-neutrality and angular-moment identities also
+hold after differentiating in $\eta$, since the correction equations
+hold identically and the bump integrals have compact support.
+\end{proposition}
+\begin{proof}
+Write $r=I/(XH)$. It satisfies $r'+(1+\ell)r=1$ in logarithmic
+radial coordinates. The reference value is $r=5/8$ and is
+independent of $\eta$; all preceding unedited slopes are also
+$\eta$-independent. During the interpolation (A.10),
+\[
+ \partial_\eta\ell
+ =\frac{\sigma'(y/T_f)}{T_f}\frac{2\eta}{1+\eta^2},
+ \quad |\partial_\eta\ell|\le64/T_f=1/8.
+\]
+Since $0\le r\le20/17$ and $1+\ell\ge17/20$, the
+equation for $v=\partial_\eta r$ gives $|v|\le50/289$.
+On the following $30\log(1/\lambda)-3$ unedited units,
+$v$ decays at rate $1-\lambda$. Thus the moment discrepancy
+$\Delta_I$ defined in \eqref{eq:A11-two-exact} obeys
+\[
+ |\partial_\eta\Delta_I|\le\frac{50}{289}
+ e^{3(1-\lambda)}\lambda^{30(1-\lambda)}
+ <\frac{1050}{289}\lambda^{28}<4\lambda^{28}.
+\]
+The exact nonlinear correction system is $B_{11}c+Q(c,c)
+=(\Delta_I,0)^T$. By Theorem~\ref{thm:A11-matrix-bound}
+and \eqref{eq:A11-c-coeff},
+\[
+ \|B_{11}^{-1}DQ(c)\|_\infty
+ \le(3/2)(640)(192)\lambda^{28}<1/2.
+\]
+Differentiate the system and invert its Jacobian to obtain
+$\|c_\eta\|_\infty\le3|\partial_\eta\Delta_I|
+<12\lambda^{28}$.
+
+Put $g=\sum c_i\beta_i$. On the two disjoint supports
+$\ell_c=-\lambda+g_y/(1+g)$.
+Using $|g|<1/2$, $\|\beta\|_\infty\le640/3$ and
+$\|\beta'\|_\infty<200000$ yields
+\[
+ |\partial_\eta\ell_c|\le
+ 2(200000)(12)\lambda^{28}
+ +4(200000)(192)(640/3)(12)\lambda^{56}
+ <5\cdot10^6\lambda^{28}.
+\]
+\end{proof}
+
+\begin{proposition}[Quantitative terminal stopping length]
+\label{prop:A11-terminal-stop}
+Assume the actual (A.11) correction and the subsequent
+source-prescribed one-unit transition to $\ell=-1$, the hold
+$\ell=-1$ for $4\log(1/h)$, and one-unit transition to
+$\ell=-h$, with $h<\lambda\le1/20$ and $0<h\le1/100$.
+For the terminal cutoff (A.12), fix $c_o=1/256$.
+Let $Q_{\rm start}$ denote the value of the source $Q_s$
+at the start of the last $\ell=-h$ hold, and $Q_p$ the
+cutoff matching value (A.13). Then
+\begin{equation}\label{eq:A11-terminal-Q-bounds}
+ Q_{\rm start}\ge\frac4e(1-h)\log(1/h)>5,\qquad
+ \frac{c_oh}{1-c_oh}\le Q_p
+ \le\frac{e^{3(1-h)}c_oh}{1-c_oh}<\frac h{10}.
+\end{equation}
+In particular the unique positive holding length is
+\begin{equation}\label{eq:A11-stop-exact}
+ L_{\rm stop}=\frac1{1-h}\log\frac{Q_{\rm start}}{Q_p}>0.
+\end{equation}
+It is independent of $\eta$.
+\end{proposition}
+\begin{proof}
+The restored angular moment implies
+$Q_s=(\lambda-h)/(1-\lambda)>0$ at the exit of (A.11).
+The source ODE is $Q_s'+(1+\ell)Q_s=-\ell-h$.
+The first transition has nonnegative right-hand side;
+on the $\ell=-1$ hold, $Q_s'=1-h$, so its exit value is
+at least $4(1-h)\log(1/h)$. During the following unit transition
+the right-hand side remains nonnegative and $0\le1+\ell\le1$,
+giving the stated lower bound on $Q_{\rm start}$.
+For the terminal cutoff $f_o=1-c_oh\psi_o$ of (A.12),
+$f_o(0)=1-c_oh$, $f_o(3)=1$, and $f_o'\ge0$.
+The integrating factor in (A.13) simplifies exactly to
+\[
+ Q_p=\frac1{f_o(0)}\int_0^3e^{(1-h)v}f_o'(v)\,dv.
+\]
+Integration of $f_o'$ gives the displayed interval for $Q_p$.
+The numerical inequalities follow from $e^3<21$, $e<3$,
+$\log100>4$ and $h\le1/100$. Finally on $\ell=-h$
+the equation is $Q_s'=-(1-h)Q_s$; the unique positive length
+at which $Q_s$ reaches $Q_p$ is \eqref{eq:A11-stop-exact}.
+The exit moment and all later prescribed slopes are
+$\eta$-independent, so the length is as well.
+\end{proof}
+
+These estimates quantify source constructions that were previously
+given qualitatively. They do not certify all of the source's
+stress-cone inequalities, the full moment-matched numerical exterior,
+Appendix-B contraction or the unforced $n=1,2$ correction systems.
