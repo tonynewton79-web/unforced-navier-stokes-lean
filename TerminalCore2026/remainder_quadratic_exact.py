@@ -8,7 +8,7 @@ A,K,J1,J2,P,D,a1,a2,b1,b2=s.symbols("A K J1 J2 P D a1 a2 b1 b2")
 F=s.expand(K*A**2+P-D+J1*(a1+b1*A)**2+J2*(a2+b2*A)**2)
 assert s.expand(F-(K+J1*b1**2+J2*b2**2)*A**2-
  2*(J1*a1*b1+J2*a2*b2)*A-(P-D+J1*a1*a1+J2*a2*a2))==0
-assert s.diff(F-K*A*A,A,2)==2*(J1*b1**2+J2*b2**2)
+assert s.simplify(s.diff(F-K*A*A,A,2)-2*(J1*b1**2+J2*b2**2))==0
 for lam in [Q(1,20),Q(1,40),Q(1,100)]:
  assert 13-Q(63,20)*lam>11
  assert 13/lam-1-Q(3,20)>13/lam-3+Q(3,20)
