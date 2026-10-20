@@ -31,7 +31,7 @@ jobs:
       - name: Reject admitted or axiomatic replacements
         shell: bash
         run: |
-          if grep -nE '^[[:space:]]*(sorry|admit|axiom)([[:space:]]|$)' TerminalCore2026.lean TerminalCore2026/FirstDerivativeChannel.lean TerminalCore2026/TwoDerivativeWeight.lean TerminalCore2026/SwirlDiagonal.lean TerminalCore2026/MajorantBounds.lean TerminalCore2026/CauchyProfileBridge.lean TerminalCore2026/AnalyticReconstruction.lean TerminalCore2026/DelayedPressureFourJet.lean TerminalCore2026/DelayedPressureBanachLemmas.lean TerminalCore2026/RemainingLinearPressure.lean; then
+          if grep -nE '^[[:space:]]*(sorry|admit|axiom)([[:space:]]|$)' TerminalCore2026.lean TerminalCore2026/FirstDerivativeChannel.lean TerminalCore2026/TwoDerivativeWeight.lean TerminalCore2026/SwirlDiagonal.lean TerminalCore2026/MajorantBounds.lean TerminalCore2026/CauchyProfileBridge.lean TerminalCore2026/AnalyticReconstruction.lean TerminalCore2026/DelayedPressureFourJet.lean TerminalCore2026/DelayedPressureBanachLemmas.lean TerminalCore2026/RemainingLinearPressure.lean TerminalCore2026/LeadingProfilePressure.lean; then
             echo 'Prohibited admitted or axiomatic proof found'
             exit 1
           fi
@@ -57,6 +57,8 @@ jobs:
         run: lake env lean TerminalCore2026/DelayedPressureBanachLemmas.lean
       - name: Kernel check direct linear-pressure radial integration identities
         run: lake env lean TerminalCore2026/RemainingLinearPressure.lean
+      - name: Kernel check leading-profile pressure algebra and valuation
+        run: lake env lean TerminalCore2026/LeadingProfilePressure.lean
       - name: Independent exact-equation tests
         run: |
           python -m pip install sympy
@@ -70,3 +72,4 @@ jobs:
           python TerminalCore2026/fourjet_symbol_bounds_exact.py
           python TerminalCore2026/full_delayed_pressure_banach_exact.py
           python TerminalCore2026/remaining_linear_pressure_exact.py
+          python TerminalCore2026/leading_profile_pressure_exact.py
