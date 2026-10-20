@@ -13,19 +13,16 @@
 \begin{document}
 \maketitle
 \begin{abstract}
-We examine the analytic convergence problem for an axisymmetric
-Navier--Stokes terminal-core coefficient hierarchy. Previous sections
-develop a strong velocity space, a weaker pressure space and a
-valuation-dependent inverse for current-order feedback. The source-level
-audit checks the first two coefficient equations and their pressure
-normalizations against the originating formal hierarchy, and derives
-the exact physical similarity chain rules. It records the dependent
-leading-profile parameter choices and the complex-norm data that are
-needed for a numerical certificate. Conditional on a common analytic
-domain, complete coefficient identities and differentiated normal
-convergence, the reconstructed field satisfies the unforced equations
-locally. The required numerical profile certificate and convergence
-of the unmodified infinite series are not established here.
+The local terminal-core expansion requires the actual pressure trace
+of the exterior radial schedule. An exact positive-measure representation
+implicit in source Lemma~A.5 yields uniform real derivative bounds and
+a common complex analytic neighborhood for this trace. The same structure
+gives explicit constructive choices of the separation parameters in
+Appendix~B condition (B.2), in terms of the scalar pressure mass
+$-\Pi_0(0)$ rather than an invented surrogate pressure. The mass remains
+dependent on the outer moment-matching schedule; the complete numerical
+leading profile, nonlinear contraction, startup corrections and unforced
+physical reconstruction remain unresolved.
 \end{abstract}
 
 \section{The common weighted space}
@@ -172,6 +169,8 @@ The pointwise weight identity and sharp two-derivative inequality have already b
 \input{Source_Level_Startup_and_Reconstruction_Insert.tex}
 
 \input{Axis_Profile_Geometric_Fence_and_Jets_Insert.tex}
+
+\input{Outer_Pressure_Measure_and_Admissibility_Insert.tex}
 
 \begin{thebibliography}{9}
 \bibitem{newton2026}
