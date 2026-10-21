@@ -1,0 +1,95 @@
+\subsection*{Cancellation of the A.11 local-normalization derivatives}
+\label{subsec:A11-local-derivative-cancellation}
+On and after the two source (A.11) corrections, write
+$E_c(y,\eta)=E_b(y)[1+u(y,\eta)]$, where
+$u=\sum_{i=1}^2c_i(\eta)\beta(y-y_i)$ and
+$E_b$ is independent of $\eta$. The two disjoint corrected supports
+have total logarithmic length $3/5$. This permits an exact
+cancellation in the axial source (4.16), stronger than the previous
+separate estimates for the parameter derivatives of the tails.
+
+\begin{theorem}[Exact future-support formula]\label{thm:A11-local-cancel}
+Assume the \emph{genuine} source normalization
+$S(\infty,\eta)=\Pi(\infty,\eta)=0$, and let
+$D_c=S/(XE_c^2)$, $P_c=-\Pi/E_c^2$,
+$g=\partial_\eta\log E_c$,
+$R_b(y,t)=\exp[2\int_0^t\ell_b(y+v)\,dv]$.
+Then on either A.11 support,
+\begin{equation}\label{eq:A11-local-cancel}
+2g(D_c-P_c)+\partial_\eta D_c-\partial_\eta P_c
+=\frac{\int_0^\infty R_b(y,t)(1-e^{-t})
+ [1+u(y+t)]u_\eta(y+t)\,dt}{[1+u(y)]^2}.
+\end{equation}
+The right-hand integrand vanishes outside the future portions
+of the two corrected supports. If $\ell_b\le0$ at all future
+radii, $0<\lambda\le1/20$,
+$|c_i|\le192\lambda^{28}$,
+$|c_{i,\eta}|\le12\lambda^{28}$ and
+$\|\beta\|_\infty\le640/3$, then, with
+$\delta=40960\lambda^{28}$,
+\begin{equation}\label{eq:A11-local-cancel-bound}
+|2g(D_c-P_c)+D_{c,\eta}-P_{c,\eta}|
+\le1536\lambda^{28}\frac{1+\delta}{(1-\delta)^2}
+<\frac1{1000}.
+\end{equation}
+\end{theorem}
+\begin{proof}
+Both source tails are positive integrals. At the current radial
+position put $v=1+u(y)$ and write their unnormalized numerators
+$A_D,A_P$, so $D_c=A_D/(2v^2)$ and
+$P_c=A_P/(2v^2)$. Since the base field is $\eta$-independent,
+$g=v_\eta/v$. Direct differentiation gives
+$\partial_\eta(A/(2v^2))+2g A/(2v^2)=
+A_\eta/(2v^2)$, canceling all local-normalization derivatives.
+After changing radial integration variable $x=Xe^t$, the
+difference $A_D-A_P$ has the kernel $R_b(y,t)(1-e^{-t})$
+times $[1+u(y+t)]^2$, proving \eqref{eq:A11-local-cancel}.
+Because $\ell_b\le0$, $0\le R_b\le1$; because the supports
+are disjoint, $|u_\eta|\le2560\lambda^{28}$ and
+their total future length is at most $3/5$. Divide by
+$v^2\ge(1-\delta)^2$ to obtain the bound.
+\end{proof}
+
+\begin{corollary}[Improved strict stress and cone margins]
+\label{cor:A11-local-cancel-cone}
+Assume also $D_c<233/100$, $0<h\le\lambda/100$,
+$E_c\le\lambda/4$ on both supports, and the future \emph{baseline}
+slope is nonpositive. The source axial stress obeys
+\begin{equation}\label{eq:A11-new-margin}
+\frac{|N_s|}{E_c}<\frac{63}{250}\lambda,\qquad
+\frac{\lambda}{2}-\frac{|N_s|}{E_c}>
+\frac{31}{125}\lambda.
+\end{equation}
+This conclusion does not require a separate assumption that the
+\emph{corrected} future slope be nonpositive. If additionally
+$Q_s\ge\lambda/2$, $-3\lambda/2\le\ell_c\le-\lambda/2$
+and $X\ge9/\lambda$, the normalized cone inequality satisfies
+\begin{equation}\label{eq:A11-new-cone}
+2(1-a/p_1)^2-(a-2)w^2
+\ge\frac{144343}{312500}>\frac9{20},
+\quad a=2-2\ell_c,\quad
+p_1=\frac{XQ_s}{1-2h\eta^2},\quad
+w=\frac{N_s}{E_cQ_s}.
+\end{equation}
+\end{corollary}
+\begin{proof}
+The future baseline slope gives $P_b\le1/2$; positive tail
+comparison gives $P_c\le(1+8\delta)/2$. Thus
+$4AP_c<1002/1000$, $4hD_c<1/200$ and the
+derivative term is $<1/1000$. The source (4.16) formula
+bounds $|N_s|/E_c$ by $E_c$ times their sum,
+which is less than $E_c(1008/1000)\le(63/250)\lambda$.
+The exact slack is $31\lambda/125$. With the
+extra cone hypotheses, $a/p_1\le1/2$,
+$a-2\le3/20$ and $|w|\le63/125$. Hence
+$2(1-a/p_1)^2-(a-2)w^2
+\ge1/2-(3/20)(63/125)^2=144343/312500$.
+\end{proof}
+
+The statements are **conditional mathematical implications**, not
+a source-authenticated interval for one completely frozen Appendix-A
+parameter tuple. The terminal moment/pressure gauges, coefficient
+enclosures, complete exterior and pulse stress gates, nonlinear
+Appendix-B profile, distinct unforced $n=1,2$ coefficient solutions
+and the zero-force physical PDE remain unverified. The originating
+OpenAI global Theorem~1.1 includes smooth forcing.
