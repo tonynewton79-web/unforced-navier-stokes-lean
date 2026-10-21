@@ -2552,3 +2552,46 @@ contraction and UNFORCED startup/physical residual.
 The interval gate deliberately returns NOT_CERTIFIED for
 its synthetic default example. Neither the complete Lean
 proof nor the proposed unforced Theorem 1.1 exists yet.
+
+
+## 21 October 2026 — joint scalar feasibility and sharper A.11 cone implication
+
+The new A11 joint-parameter theorem takes any fixed Td>10 and Pstar>exp(Td),
+with source-permitted Tf=512, and sets
+  Q=1+Td+Tf+log(Pstar), lambda=10^(-20)/Q,
+  h=lambda*exp(-Td)/10^6.
+It proves that the specific published *scalar smallness budgets*
+(lambda<1e-14; lambda<1e-6/(Td+Tf+1);
+lambda<1/[10(1+log Pstar)]; h<lambda/1e4;
+h<exp(-Td)/100; lambda*Tf<1e-6) coexist.
+It additionally proves lambda*log(1/lambda)<61e-20.
+This is a **nonempty smallness wedge**, not a source-admissible Appendix A
+moment-corrected exterior profile.
+
+Given independently authenticated source support bounds
+|Ns|/E<2lambda/25, Qs>=49lambda/50,
+-3lambda/2<=ell<=-lambda/2, X>=9/lambda and
+0<L<=1, the normalized full cone is strictly
+  2(1-a/p1)^2-(a-2)w^2 > 107949/96040 > 1 > 9/20.
+The numeric consequence uses rational inequalities only.
+It does NOT authenticate any of the source premises.
+
+- PAPER: A11_Joint_Parameter_Wedge_and_Strict_Cone_20261021_Insert.tex
+- LEAN: A11JointParameterScalar.lean (finite diagnostic rational gates;
+  GitHub kernel outcome must be verified, no end theorem)
+- EXACT: a11_joint_parameter_exact.py (48 grid instances and cone rational)
+- STATUS: scalar theorem proof in manuscript; source A.11 joint
+  certification OPEN; all downstream analytic/PDE Lean steps OPEN.
+
+### Remaining release-critical source checks
+Actual Md/Td/Pstar choice; source-permitted Tf=512; true A.9
+moment/amplitude; A.11 delta and eta-jet; true sigma-prime u,p,w;
+isolated quadratic root and its derivative; S/Pi infinity gauges;
+two complete A.11 support covers for Ns/E, Qs and X; full axial pulse
+(A.29)-(A.30), all exterior transition/terminal cone cells; Appendix B
+analytic nonlinear contraction; unforced n=1,2 coefficient solutions;
+higher-order recurrence; Cartesian zero-force residual; and eventual
+Lean kernel proof of those complete mathematical statements.
+
+The originating published global theorem uses forcing; this programme
+has NOT produced an unforced finite-time blowup theorem.
