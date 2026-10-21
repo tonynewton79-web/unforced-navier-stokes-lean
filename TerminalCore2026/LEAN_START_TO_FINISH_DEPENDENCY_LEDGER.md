@@ -100,3 +100,62 @@ unforced systems, and physical residual zero.
 **External result:** rigorously derived fixed-pulse source
 enclosures and replayable cell certificates, not a new
 unforced Navier–Stokes singularity or end-to-end Lean proof.
+
+
+## 21 Oct 2026 — terminal-gauge source audit (NEW)
+
+Source (4.15)--(4.16), A.11, A.19 and A.21--A.23 show that
+`S(infinity,eta)=0` and `Pi(infinity,eta)=0` are INDEPENDENT
+terminal requirements. A.11 preserves a pressure increment; the
+unmodified source axis datum and pressure-neutrality enforce the
+absolute pressure terminal condition. Only the COMPLETE true A.19
+amplitude root for the same profile enforces `S(infinity)=0`.
+
+On A.11 supports, where U=M=J=0, setting
+`sigma=S(infinity)`, `pi=Pi(infinity)` gives the exact identity
+
+`Ns=Ns_tail+[4h eta sigma-(1-eta^2)sigma_eta]/X
+           +4(1/2+h)eta pi-(1-eta^2)pi_eta.`
+
+After both terminal conditions are established, the actual
+`Ns/E` has a SINGLE future-tail integral kernel
+`E(x)^2*[2h eta/X -2(1/2+h)eta/x
+ +(1-eta^2)*partial_eta(log E(x))*(1/x-1/X)]/E(X)`.
+This strengthens the logical provenance of the future-tail test:
+without both terminal roots this integral is only `Ns_tail/E`.
+
+An independent exact SymPy replay and Fraction audit prove the
+following **conditional implication**, requiring true future
+slope <=0, source E<=lambda/4, D_s<=233/100,
+future |partial_eta log E|<=1/1000, h<=lambda/100 and
+lambda<=1/20, as well as exact terminal gauges:
+
+`|Ns|/E < 253 lambda/1000 < lambda/2.`
+
+For nonzero terminal defects, the same strict conclusion holds
+if their two explicit error ratios sum to less than
+`247 lambda/1000`.
+The source-scale calculation reveals opposing conditioning:
+the S-defect normalized contribution decays as
+`exp(-(1/2-lambda)*y)`, while the pressure-defect one
+grows as `exp((1/2+lambda)*y)` for increasing y.
+An approximate pressure integral cannot silently be treated
+as a zero terminal gauge.
+
+Files:
+`A11_Terminal_Gauge_and_Tail_20261021_Insert.tex`,
+`A11TerminalGaugeScalar.lean`,
+`a11_terminal_gauge_exact.py`,
+`a11_terminal_fail_closed.py`.
+The standalone 4-page mathematical proof note and combined
+78-page baseline reader are supplied in the conversation packet.
+The 78-page reader is the last locally assembled 74-page baseline
+plus this note; the living GitHub cumulative master contains
+additional intervening A11 inputs, so it is NOT a fresh verified
+complete build of every current GitHub input.
+
+**Status:** Full source matching, actual pressure and S terminal roots,
+both corrected-support interval hulls, full exterior cone,
+Appendix B, unforced n=1/2 startup, physical force-free residual
+and a complete trusted Lean proof remain OPEN. The finite Lean module
+has been submitted but is NOT claimed kernel-certified.
