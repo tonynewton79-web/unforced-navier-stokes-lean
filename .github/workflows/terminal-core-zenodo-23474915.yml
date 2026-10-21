@@ -151,6 +151,8 @@ jobs:
         run: lake env lean TerminalCore2026/A11TerminalGaugeScalar.lean
       - name: Kernel check terminal pressure-rigidity scalar lemmas
         run: lake env lean TerminalCore2026/A11TerminalRigidityScalar.lean
+      - name: Kernel-check A11 exact-root full-hull scalar lemma
+        run: lake env lean TerminalCore2026/A11GapTerminalBridge.lean
       - name: Independent exact-equation tests
         run: |
           python -m pip install sympy
@@ -226,3 +228,4 @@ jobs:
           python TerminalCore2026/a11_terminal_gauge_exact.py
           python TerminalCore2026/a11_terminal_fail_closed.py
           python TerminalCore2026/a11_terminal_rigidity_exact.py
+          python TerminalCore2026/a11_root_hull_bridge_exact.py
