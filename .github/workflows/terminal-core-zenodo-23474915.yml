@@ -137,6 +137,8 @@ jobs:
         run: lake env lean TerminalCore2026/A11ScalarGates.lean
       - name: Kernel check strong A11 scalar stress gates
         run: lake env lean TerminalCore2026/A11SupportStrongScalar.lean
+      - name: Kernel check A11 stress rational certificate
+        run: lake env lean TerminalCore2026/A11StressScalar.lean
       - name: Independent exact-equation tests
         run: |
           python -m pip install sympy
@@ -202,3 +204,6 @@ jobs:
           python TerminalCore2026/a11_entrance_jet_exact.py
           python TerminalCore2026/a11_source_gates.py
           python TerminalCore2026/a11_support_strong_exact.py
+          python TerminalCore2026/a11_stress_exact.py
+          python TerminalCore2026/a11_quadratic_exact.py
+          python TerminalCore2026/a11_interval_gate.py
