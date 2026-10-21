@@ -13,7 +13,18 @@
 \begin{document}
 \maketitle
 \begin{abstract}
-The originating Navier--Stokes source supplies five normalized cumulative moments and their parameter derivatives. We split the exact ten-state system into eight forward equations and a two-state backward pressure problem and establish an exact-rational interval-tube theorem with explicit source-bound premises. The original axial pulse has constant logarithmic slope and no slope derivative in the parameter; its normalized moment states admit exact integrating-factor expressions on the fixed shape coordinate \(\xi=\lambda y\in[0,13]\). Independent source-native reference and pressure-tail tests validate the conditional interval arithmetic. The missing jointly admissible source realization, complete pulse covering, strict stress cone, analytic inner reconstruction and proposed unforced singularity theorem remain unproved.
+The current pulse analysis gives exact terminal cancellation of two axial
+moments and their parameter jets but not uniform stress estimates on
+the pulse interior. We derive a complete rational rectangle-cover
+soundness criterion for the remaining A.29--A.30 residual inequalities
+on $[0,13]\times[-1,1]$ and implement a fail-closed rational interval
+checker with adversarial negative tests. A necessary consistency check
+preserves $H^2=2XE^2$ and the same parameter values on all cells.
+The current project contains no authenticated full-pulse interval
+enclosures, complete exterior cone certificate, actual Appendix-B
+nonlinear fixed point, unforced startup corrections or verified
+physical zero-force Navier--Stokes residual. The proposed unforced
+Theorem~1.1 remains unproved.
 \end{abstract}
 
 \section{The common weighted space}
@@ -191,6 +202,8 @@ The pointwise weight identity and sharp two-derivative inequality have already b
 \input{Pulse_Exact_Integrating_Factors_Insert.tex}
 
 \input{Pulse_End_Exact_Moment_Cancellation_Insert.tex}
+
+\input{Full_Pulse_Coverage_and_Proof_Gates_Insert.tex}
 
 \begin{thebibliography}{9}
 \bibitem{newton2026}
