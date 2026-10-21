@@ -1,0 +1,89 @@
+\subsection*{Actual-source interval enclosures for the fixed pulse}
+The full-pulse checker is conditional until the submitted boxes are
+proved to enclose the prescribed source functions. We certify a first
+genuine layer: the fixed Appendix-A smooth step and pulse, not the
+coupled physical moments or stress.
+
+The source's smooth step and fixed pulse are
+\[
+\sigma(t)=\begin{cases}0&t\le0,\\
+\displaystyle\frac{e^{-1/t^2}}{e^{-1/t^2}+e^{-1/(1-t)^2}}&0<t<1,\\
+1&t\ge1,\end{cases}\quad
+\phi_b(\xi)=\int_0^\xi\sigma(50v)\,dv,\quad
+R_0(\xi)=\phi_b(\xi)(1-\sigma(\xi-10)).
+\]
+The source identity $\sigma(t)+\sigma(1-t)=1$ gives
+$\phi_b(\xi)=\xi-1/100$ for $\xi\ge1/50$. Moreover
+\[
+R_0'=\sigma(50\xi)(1-\sigma(\xi-10))
+-\phi_b(\xi)\sigma'(\xi-10),\quad
+\partial_\eta R_0=\partial_\eta R_0'=0.
+\]
+The actual main pulse $A(\eta)R_0(\xi)$ generally has a nonzero
+parameter derivative and is not covered by this identity.
+
+\begin{lemma}[Exact exponential and short-primitive enclosures]
+For rational $0\le x\le80$ and $x/(N+2)<1$, set
+$P_N(x)=\sum_{k=0}^N x^k/k!$. Then
+\[
+P_N(x)\le e^x\le
+P_N(x)+\frac{x^{N+1}}{(N+1)!}\frac1{1-x/(N+2)}.
+\]
+For $x\ge80$, $e^x>2^{80}$. Also $0\le\sigma'\le64$,
+$\sigma$ is nondecreasing, and for rational
+$0\le\xi\le1/50$, $h=\xi/N$,
+\[
+h\sum_{j=0}^{N-1}\sigma(50jh)
+\le\phi_b(\xi)\le
+h\sum_{j=1}^{N}\sigma(50jh).
+\]
+\end{lemma}
+\begin{proof}
+The exponential series has nonnegative terms; successive omitted
+terms have ratio no larger than $x/(N+2)$. The inequality $e>2$
+follows from the first three Taylor terms. Differentiating the
+exact smooth step gives
+\[
+\sigma'=\sigma(1-\sigma)\left(2/t^3+2/(1-t)^3\right)\ge0.
+\]
+On $1/4\le t\le3/4$ its value is at most $64$.
+On $0<t\le1/4$ it is at most
+$(128+128/27)e^{-128/9}<1$; the other end follows by
+symmetry. The primitive inequalities are the monotone left and
+right Riemann sums.
+\end{proof}
+\begin{proposition}[Forty actual-source rational pulse boxes]
+The source-derived exact-rational implementation generates twenty
+$\xi$ cells and two parameter cells covering the closed rectangle
+$[0,13]\times[-1,1]$. On all forty cells it encloses $R_0$, $R_0'$,
+$\partial_\eta R_0$ and $\partial_\eta R_0'$, as well as $\phi_b$
+and $1-\sigma(\xi-10)$. Every interval has a rational containment
+guard $2^{-120}$ beyond the derived bounds. On $1\le\xi\le10$,
+\[
+R_0(\xi)=\xi-1/100\ge99/100,\qquad R_0'(\xi)=1.
+\]
+\end{proposition}
+\begin{proof}
+Evaluate source $\sigma$ at rational endpoints with the preceding
+Taylor inequalities; bound the initial primitive by monotone
+quadrature and the remaining primitive exactly. Propagate
+the enclosures through the displayed pulse and derivative identities
+using exact rational interval arithmetic. Extend each bound by the
+stated guard; test coverage on the induced rational rectangle grid.
+The source function is independent of $\eta$. The plateau identity
+is immediate from $\sigma(50\xi)=1$ and
+$\sigma(\xi-10)=0$ for $1\le\xi\le10$.
+\end{proof}
+
+The reproducible source generator and companion verifier recompute
+all forty formula layers, check rational covering, and reject
+adversarially corrupted data. Their shared arithmetic implementation
+is not a substitute for an independent Lean proof of the analytic
+enclosure lemma. The strict guard here is a \emph{containment}
+margin, not a physical stress-cone margin or a guarantee of adequate
+width for the $10^{-24}$ centerline normalized residual.
+No source-derived full-cell intervals have yet been established for
+$E,U,M,J,S,\Pi,Q_s,N_s$ and their parameter jets under one admissible
+Appendix-A parameter tuple. The A.11 correction supports, all-stage
+cone, Appendix B contraction, actual unforced $n=1,2$ solutions,
+PDE reconstruction and Theorem~1.1 remain open.
