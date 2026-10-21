@@ -145,6 +145,8 @@ jobs:
         run: lake env lean TerminalCore2026/A11FinalGate.lean
       - name: Kernel check A11 full hull arithmetic implications
         run: lake env lean TerminalCore2026/A11FullPatchGapScalar.lean
+      - name: Kernel check A11 parity and normalized stress algebra
+        run: lake env lean TerminalCore2026/A11ParityAndTailArithmetic.lean
       - name: Independent exact-equation tests
         run: |
           python -m pip install sympy
