@@ -1,0 +1,94 @@
+\subsection*{Terminal normalization and exact axial parity on A.11}
+\label{subsec:A11-parity-terminal-20261021}
+The source equation (4.16) reads on the complete A.11 two-bump hull,
+where $U=M=J=0$,
+\[
+N_s={4h\eta S-(1-\eta^2)S_\eta\over X}
+ +4A\eta\Pi-(1-\eta^2)\Pi_\eta,\qquad A=\tfrac12+h.
+\]
+The moment-neutral condition in (A.11) preserves the global pressure
+increment $\frac12\int E^2d\log X$. Combined with the actual axis
+pressure datum (A.21), it yields $\Pi(\infty,\eta)=0$. The
+separate \emph{complete} A.19 amplitude equation, including the
+corrected post-pulse field, is needed for $S(\infty,\eta)=0$.
+Neither conclusion follows from the local two-bump equations alone.
+
+\begin{lemma}[Exact A.11 equatorial cancellation]
+\label{lem:A11-exact-parity-20261021}
+Assume the genuine source's unique small branch of the two-bump
+system, and the two terminal normalizations above. Its incoming
+moment discrepancy is even in $\eta$, and the bump weights are
+$\eta$-independent. Hence $c_i(-\eta)=c_i(\eta)$.
+The corrected $E,S,\Pi$ are even and $N_s$ is odd, including on
+the gap between the two supports. In particular $N_s(X,0)=0$
+and $N_s(X,0)/E(X,0)=0$.
+\end{lemma}
+\begin{proof}
+The uncorrected field and the A.10 angular interpolation depend
+on $\eta$ through $1+\eta^2$. Reflection in $\eta$ leaves
+both moment equations unchanged; uniqueness identifies the reflected
+coefficients. Source future-tail integrals preserve evenness.
+In the displayed formula the derivative terms are odd, and
+all other terms contain an explicit factor $\eta$.
+\end{proof}
+
+\begin{theorem}[Sharpened A.11 local parameter-derivative term]
+\label{thm:A11-parity-tail-improvement-20261021}
+Write $E_c(y,\eta)=E_b(y)(1+u(y,\eta))$ after A.10, where
+$u=\sum_i c_i(\eta)\beta_i(y)$ has disjoint supports of combined
+logarithmic length $3/5$. Suppose the actual terminal
+normalizations hold, $0<\lambda\le1/20$,
+$|c_i|\le54\lambda^{28}$,
+$|c_{i,\eta}|\le6\lambda^{28}$,
+$\|\beta_i\|_\infty\le640/3$, and future baseline
+$\ell_b\le0$. Put $\delta=11520\lambda^{28}$ and
+$D=S/(XE_c^2)$, $P=-\Pi/E_c^2$,
+$g=\partial_\eta\log E_c$. Then
+\[
+\mathcal T:=2g(D-P)+D_\eta-P_\eta
+=\frac{\int_0^\infty R_b(y,t)(1-e^{-t})
+(1+u(y+t))u_\eta(y+t)\,dt}{(1+u(y))^2},
+\]
+where $R_b(y,t)=\exp(2\int_0^t\ell_b(y+v)dv)$, and
+\[
+|\mathcal T|\le768\lambda^{28}
+ \frac{1+\delta}{(1-\delta)^2}<769\lambda^{28}.
+\]
+If additionally $E_b\le\lambda/[4(1+\delta)]$,
+$D_b\le233/100$, $P_b\le1/2$ on the complete
+two-support convex hull, and $0<h\le\lambda/100$, then
+\[
+\frac{|N_s|}{E_c}<\frac{503}{2000}\lambda<\frac\lambda2,
+\qquad
+\frac\lambda2-\frac{|N_s|}{E_c}>
+\frac{497}{2000}\lambda.
+\]
+\end{theorem}
+\begin{proof}
+In the future-tail integrals for $D,P$, differentiation
+of $(1+u(y))^{-2}$ cancels identically against $2g(D-P)$.
+The remaining derivative is supported in the future portions
+of the two bumps. Thus $R_b\le1$,
+$|u|\le\delta$, $|u_\eta|\le1280\lambda^{28}$
+and support length $\le3/5$ prove the $\mathcal T$ bound.
+Tail comparison gives $D,P\le\kappa^2 D_b,\kappa^2 P_b$
+with $\kappa=(1+\delta)/(1-\delta)$. Source (4.16) implies
+$|N_s|/E_c\le E_c(4hD+4AP+|\mathcal T|)$.
+The stated result follows from an exact rational comparison
+at $\lambda=1/20$, which is the maximum of the positive
+upper terms.
+\end{proof}
+
+On the uncorrected plateau $\ell_b=-\lambda$,
+the normalized tails satisfy
+$D_b'=2\lambda D_b-\frac12$ and
+$P_b'=(1+2\lambda)P_b-\frac12$.
+Both are monotone or constant on the convex hull. Hence the
+needed upper bounds reduce to the two outer endpoints,
+and $E_b$ is maximal at the first endpoint. This is an
+\emph{endpoint reduction}, not an authenticated source interval
+certificate. One source-compatible parameter tuple, terminal
+moment/pressure integrals, strict $Q_s$ and radial bounds,
+the full pulse/exterior cone, Appendix-B contraction and the
+unforced coefficient/PDE hierarchy remain to be certified.
+The originating OpenAI Theorem 1.1 has smooth external forcing.
