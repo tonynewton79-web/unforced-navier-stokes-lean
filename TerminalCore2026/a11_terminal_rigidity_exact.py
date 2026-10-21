@@ -15,11 +15,11 @@ N=s.expand(N/E).subs(s.diff(E,eta),g*E)
 want=E*(4*eta*(h*D-A*P)-d*(2*g*(D-P)+s.diff(D,eta)-s.diff(P,eta)))
 want+=(4*h*eta*sig-d*s.diff(sig,eta))/(X*E)+(4*A*eta*pi-d*s.diff(pi,eta))/E
 assert s.simplify(N-want)==0
-f=1/(1+eta*eta);F=s.Function('F')(eta)
-sigma=Xp*eb**2*f**2*F/lam
+f=1/(1+eta*eta);Fr=s.Function('A19Residual')(eta)
+sigma=Xp*eb**2*f**2*Fr/lam
 got=(4*h*eta*sigma-d*s.diff(sigma,eta))/(X*E)
 expected=Xp*eb**2*f**2/(lam*X*E)*(
- (4*h*eta+4*eta*d/(1+eta**2))*F-d*s.diff(F,eta))
+ (4*h*eta+4*eta*d/(1+eta**2))*Fr-d*s.diff(Fr,eta))
 assert s.simplify(got-expected)==0
 assert s.simplify((1+eta**2)-2*eta*(1-eta**2)-(1-eta)**2-2*eta**3)==0
 assert F(1,2)-F(253,1000)==F(247,1000)
