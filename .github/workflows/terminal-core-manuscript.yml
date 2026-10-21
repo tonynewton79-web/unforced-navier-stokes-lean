@@ -64,6 +64,7 @@ on:
       - 'TerminalCore2026/A11_Local_Parameter_Derivative_Cancellation_Insert.tex'
       - 'TerminalCore2026/A11_Qs_Eta_Derivative_Improved_Cone_Insert.tex'
       - 'TerminalCore2026/A11_Exact_Entrance_Angular_Jet_Insert.tex'
+      - 'TerminalCore2026/A11_Robust_Whole_Hull_20261021_Insert.tex'
       - '.github/workflows/terminal-core-manuscript.yml'
   workflow_dispatch:
 
