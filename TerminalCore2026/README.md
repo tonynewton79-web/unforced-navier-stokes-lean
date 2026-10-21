@@ -2759,3 +2759,49 @@ source A19 root, pressure normalization correspondence, the full
 exterior cone, Appendix B, the unforced coefficient hierarchy and
 Theorem 1.1 remain OPEN. No complete trusted Lean theorem is
 claimed, and the originating OpenAI global result uses forcing.
+
+
+## 21 October 2026: authentic A11 root and angular-jet certificate
+
+The source Appendix A.10 interpolation with Tf=512, eta-independent
+moment ratio before interpolation, and 0<lambda<=1/100 gives the
+actual first-bump mismatch bounds
+`|DeltaI|<0.63*lambda^28` and
+`|partial_eta DeltaI|<0.25*lambda^28`.
+The exact A.11 two-bump nonlinear moment system and its uniform
+matrix inverse then give **one uniquely determined small branch**
+`max|c_i|<2lambda^28` and
+`max|partial_eta c_i|<lambda^28`.
+The fixed-point contraction bound is <0.01 on the source parameter
+range. The corresponding corrected E and its angular derivative
+have hull budgets (1280/3)lambda^28 and (640/3)lambda^28,
+improving earlier conditional 54/6 coefficient hypotheses.
+
+New sources:
+- `A11_Authentic_Root_Jet_20261021_Insert.tex`
+- `A11RootJetBounds.lean` (finite scalar/polynomial gates only)
+- `a11_rootjet_improved_exact.py` (independent exact replay)
+- `A11_ROOT_JET_TO_UNFORCED_LEAN_LEDGER_20261021.md`
+- `A11_ONE_DATASET_REQUIRED_20261021.json` (intentionally incomplete).
+
+The GitHub cumulative master TeX now inputs this theorem, and the pinned
+Lean/algebra workflows include the new source file and checks.
+A submitted Lean source is NOT a completed kernel certificate unless
+Actions actually reports success.
+
+The previously proved **conditional** two-support+gap consequence
+`|Ns|/E<503lambda/2000<lambda/2` can use these improved authentic
+bump-value/jet bounds. Still OPEN and not silently assumed:
+source-verified terminal S(infinity)=Pi(infinity)=0 on the SAME profile,
+full future-tail interval bounds, Qs and E endpoint constraints,
+entire exterior/terminal stress cone, exact Appendix B contraction,
+genuine unforced n=1,2 profiles, all-order convergence and physical
+zero-force Navier--Stokes residual.
+
+Release reader: a verified 78-page historical PDF consisting of the
+earlier 74-page combined preprint/amendment and the new 4-page annex.
+It is NOT a typeset snapshot of ALL 21-Oct intervening GitHub inserts:
+the latest cumulative source on this branch is authoritative.
+The separate ZIP includes the Lean source, exact code, source manifest,
+dependency ledger and a nested previous research packet.
+The proposed unforced Theorem 1.1 remains unproved.
