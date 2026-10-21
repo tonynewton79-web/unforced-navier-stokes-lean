@@ -39,3 +39,7 @@ Checker: a11_robust_hull_exact.py --selftest (exact conditional arithmetic, ten 
 The comprehensive standalone research PDF and proof pack are supplied to the user. The live GitHub cumulative manuscript contains all prior A.11 inserts.
 
 The next decisive work is to fix one genuine source-corrected parameter tuple, certify its root and terminal gauges, and produce fully authenticated outward interval cells with all derivative bounds. No complete unforced theorem has been established.
+
+## 21 October independent uploaded stress audit integrated
+
+The canonical cumulative TeX now includes `A11_Consolidated_Independent_Audit_20261021_Insert.tex` after the whole-hull robustness theorem. It cross-checks the exact future-integral source stress on the two supports, retains the essential angular derivative and terminal gauges, and distinguishes the separate gap-covering theorem. The newest portable 81-page research reader appends a four-page theorem amendment and the author's original independent three-page audit to the available 74-page cumulative snapshot; additional GitHub A11 source inserts reside in the canonical branch. The exact-rational verifier rejects 11 adversarial corruptions. The true source interval profiles, common parameter tuple, whole exterior certificate and start-to-finish Lean theorem remain OPEN.
