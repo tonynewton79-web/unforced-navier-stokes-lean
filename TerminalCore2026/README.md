@@ -2413,3 +2413,25 @@ intervening A.11 amendments is on this draft branch.
 A 40-file reproducibility ZIP contains the previous working
 sources and the new theorem, Python, Lean and dependency ledger.
 No full unforced theorem has been proved.
+
+
+## Appendix A.11 exact entrance derivative and two-support stress bound (21 October 2026)
+
+The mathematical insert `A11_Entrance_Derivative_and_Ns_Certificate_Insert.tex` is now included in the master cumulative paper. This is a sharpening of the source's A.10/A.11 interpolation and the previously recorded A11 endpoint/tail gates.
+
+**Entrance derivative.** The source pre-interpolation profile has the common factor `(1+eta²)^(-1)`, so `r_p=I_p/(Xp Hp)` has `partial_eta r_p=0`. Differentiating the exact A.10 moment solution and using smooth-step symmetry yields
+`r_f,eta=-J0'(eta)[2r_p e^(-aTf)/(1+eta²)+ integral_0^Tf e^(-a u)(2/(1+eta²))^sigma(u/Tf) sigma(u/Tf) du]`,
+with `a=1-lambda`. It has sign opposite to eta, and the split at Tf/4 gives `sup|r_f,eta|<1.41e-6` for `Tf>=512`, `0<lambda<=1/20`, and `r_p<=1/a`.
+
+**ACTUAL two-bump moments.** The two source `sigma'` bumps centered 3 and 1 logarithmic units before the end of the 30log(1/lambda) plateau satisfy an EXACT two-equation moment system: one linear I-row and one pressure-neutral row with positive quadratic bump energy. The explicit linear part has `|det|>5`, `||inverse||_infty<7`, and the nonlinear pressure coefficient `kappa<150`. A Banach contraction on the small coefficient ball yields
+`||c||_infty<=42 lambda^(30(1-lambda))`,
+`||c_eta||_infty<=70 lambda^(30(1-lambda))`.
+These imply `|q|<1/4`, `|q_eta|<1`, `|q_y|<3lambda/8` and preserve the corrected slope `ell<=-lambda/2`.
+
+**Necessary distinction: entrance r_eta does not itself bound N_s.**
+Using the source integrated five-moment identity (4.16) together with the completed source constraints `S(infinity)=0` and `Pi(infinity)=0` gives the exact future energy/pressure representation of `N_s`. Under the stated post-pulse nonpositive slopes, the 4log(1/h) steep hold and final slope <=-3h/4, it gives `|N_s|/E<=4 E_base` simultaneously on both true A11 supports, and then the source pulse decay yields
+`|N_s|/E<=40 Pstar lambda^15 exp(-13/(2lambda))`.
+Therefore the requested target `sup |N_s|/E<=lambda/2` follows from the single explicit sufficient inequality
+`80 Pstar lambda^14 exp(-13/(2lambda))<=1`.
+
+**Status.** This is a rigorous, conditional SOURCE-FAMILY sufficient criterion, not an independent interval certification of one full moment-matched exterior. A diagnostic parameter check in `a11_source_gates.py` is NOT an admissible whole-profile certificate. The source amplitude constraint `S(infinity)=0`, all later corrected exterior slopes, global stress-cone endpoint margins, Appendix-B contraction, unforced n=1,2 startup equations and the unforced physical PDE residual remain separately open. No complete start-to-finish Lean theorem has been claimed. `A11ScalarGates.lean` formalizes only algebraic/rational pieces; GitHub CI must complete before even those can be called kernel-certified.
