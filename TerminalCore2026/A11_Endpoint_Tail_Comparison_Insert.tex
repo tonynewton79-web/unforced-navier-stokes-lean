@@ -1,0 +1,118 @@
+\subsection*{Endpoint reduction for the two true A.11 correction supports}
+After the angular interpolation the unedited source azimuthal profile
+$E_b(y)$, $y=\log X$, is independent of $\eta$. On the interval
+$[y_-,y_+]$ between the extreme support endpoints of the two
+width-$3/10$ A.11 correction bumps, its logarithmic slope is
+$\ell_b=\partial_y\log(\sqrt X E_b)=-\lambda$. Write the actual
+corrected profile as
+\[
+ E_c(y,\eta)=E_b(y)(1+u(y,\eta)),\qquad
+ u=\sum_{i=1}^2c_i(\eta)\beta(y-y_i).
+\]
+The two source bumps have disjoint supports and differ from the
+axial moment corrections (A.9).
+
+\begin{proposition}[Full-support corrected-field bounds]
+\label{prop:a11-endpoint-jets}
+Suppose the genuine moment-correction coefficients obey the source
+bounds $|c_i|\le192\lambda^{28}$ and
+$|c_{i,\eta}|\le12\lambda^{28}$ and the prescribed smooth-step
+derivative satisfies $|\beta|\le640/3$, $|\beta'|\le200000$.
+For $0<\lambda\le1/20$ put
+$\delta=40960\lambda^{28}<10^{-31}$. Then, simultaneously at
+every point of both supports and for every $|\eta|\le1$,
+\begin{align*}
+ (1-\delta)E_b&\le E_c\le(1+\delta)E_b,\\
+ |\partial_\eta\log E_c|&\le
+     2560\lambda^{28}/(1-\delta),\\
+ |\ell_c+\lambda|&\le38400000\lambda^{28}/(1-\delta)
+     <\lambda/2,\\
+ |\partial_\eta\ell_c|&\le
+     2400000\lambda^{28}/(1-\delta)^2.
+\end{align*}
+\end{proposition}
+\begin{proof}
+At most one bump is active at a given radius.
+For its coefficient $c$ and bump $\beta$, the exact formulas are
+\[
+ \partial_\eta\log E_c=\frac{c_\eta\beta}{1+c\beta},
+ \quad \ell_c=-\lambda+\frac{c\beta'}{1+c\beta},
+ \quad\partial_\eta\ell_c=\frac{c_\eta\beta'}{(1+c\beta)^2}.
+\]
+The last identity includes an exact numerator cancellation.
+Insert the specified source bounds and
+$40960/20^{28}<10^{-31}$.
+\end{proof}
+
+\begin{theorem}[Positive-tail comparison and endpoint extrema]
+\label{thm:a11-endpoint-tails}
+Assume the actual terminal $S(\infty)=0$ moment condition and
+pressure gauge $\Pi(\infty)=0$, and define
+\[
+ D_k=\frac1{2XE_k^2}\int_X^\infty E_k(x)^2dx,\qquad
+ P_k=\frac1{2E_k^2}\int_X^\infty\frac{E_k(x)^2}{x}dx,
+ \quad k=b,c.
+\]
+For any $y$ on either correction support, with
+$\kappa=(1+\delta)/(1-\delta)$,
+\[
+ \kappa^{-2}D_b(y)\le D_c(y,\eta)\le\kappa^2D_b(y),
+ \quad
+ \kappa^{-2}P_b(y)\le P_c(y,\eta)\le\kappa^2P_b(y).
+\]
+Here $\kappa^2\le1+8\delta$. Moreover
+\[
+ D_b'=2\lambda D_b-\tfrac12,\qquad
+ P_b'=(1+2\lambda)P_b-\tfrac12
+\]
+on all of $[y_-,y_+]$; hence the maximum of each uncorrected
+tail moment on both supports occurs at an extreme endpoint.
+Writing $D_*=\max(D_b(y_-),D_b(y_+))$ and
+$P_*=\max(P_b(y_-),P_b(y_+))$, one obtains
+\[
+ E_c\le(1+\delta)E_b(y_-),\quad
+ D_c\le(1+8\delta)D_*,\quad
+ P_c\le(1+8\delta)P_*.
+\]
+If the \emph{entire corrected future} has $\ell_c\le0$, its
+positive pressure kernel gives the independent $P_c\le1/2$.
+\end{theorem}
+\begin{proof}
+The quotient of corrected and uncorrected normalized future
+tail kernels is exactly
+$\bigl[(1+u(y+t,\eta))/(1+u(y,\eta))\bigr]^2$.
+It lies in $[\kappa^{-2},\kappa^2]$ because
+$|u|\le\delta$ at every future radius. Positivity of the
+integrals gives the comparison. Differentiating the unedited
+tails gives $D_b'=-1/2-2\ell_bD_b$ and
+$P_b'=-1/2+(1-2\ell_b)P_b$. With $\ell_b=-\lambda$,
+their solutions are monotone or constant. Also $E_b$ decreases
+strictly on $[y_-,y_+]$ and
+$\kappa^2=1+4\delta/(1-\delta)^2\le1+8\delta$.
+\end{proof}
+
+\begin{corollary}[A three-value conditional source gate]
+\label{cor:a11-three-values}
+Let $\varepsilon=2560\lambda^{28}/(1-\delta)$.
+If the same actual admissible source tuple and true terminal
+normalizations additionally establish
+\[
+\frac{(1+\delta)E_b(y_-)}{\lambda}\le\frac14,\quad
+4h(1+8\delta)D_*\le\frac{61}{100},\quad
+2\varepsilon((1+8\delta)D_*+\tfrac12)\le\frac1{100},\quad
+2A\le\frac{1001}{1000},
+\]
+and all corrected future slopes are nonpositive, then
+$|N_s|/E_c\le1621\lambda/4000<\lambda/2$ with
+exact slack $379\lambda/4000$ on both supports. The further
+stress-cone statement needs separate $Q_s$ and radius bounds.
+\end{corollary}
+
+\paragraph{Source authentication remains open.}
+This reduces the supportwise task to $E_b(y_-)$,
+$D_b(y_-),D_b(y_+)$ and the true coefficient and
+terminal conditions. It does not supply certified endpoint
+values for a single actual Appendix-A tuple, nor prove the
+outer stress cone, Appendix-B contraction, distinct unforced
+startup solutions or physical zero-force residual. Finite
+rational or synthetic interval tests do not fill these gaps.
