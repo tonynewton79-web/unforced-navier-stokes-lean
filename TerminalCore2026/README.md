@@ -2492,3 +2492,63 @@ The local reproducible release packet and 78-page cumulative reader
 are also available as conversation attachments; the 78-page file
 contains the previous 74-page reader followed by one self-contained
 four-page research addition, not a re-upload to Zenodo.
+
+
+## Appendix A.11 stress-support certificate — 21 October 2026
+
+This update appends `A11_Stress_Support_Certificate_Insert.tex`
+to the cumulative paper and adds `A11StressScalar.lean`,
+`a11_stress_exact.py`, `a11_quadratic_exact.py`,
+`a11_interval_gate.py`, and `A11_Lean_Dependency_Ledger.md`.
+The available combined reading copy is **77 pages** (original
+16-page deposited paper unchanged, plus a revised 61-page amendment);
+the reproducibility ZIP contains **40 files**.
+
+**Analytic conditional theorem, actual source equations.**
+On the two A.11 azimuthal correction supports, the exact
+cumulative formula (4.16) and terminal S/Pi gauges give
+
+  Ns(y,eta) = integral_y^infty [
+    2eta(h exp(v-y)-A) E(v,eta)^2 +
+    (1-eta²)(1-exp(v-y)) E(v,eta) E_eta(v,eta)
+  ] dv.
+
+The piecewise slope argument, crucially including the long
+ell=-1 hold and the eventual ell~=-h tail, yields
+`E(y)^(-2) integral_y^infty exp(v-y) E(v)^2 dv
+  <= 83/20 + 1/2 + (2/3)h^7 < 47/10`.
+
+For the prescribed bump, validated analytic envelope
+`B0<=640/3`, `B1<=2000000/9`.
+If the TRUE A.11 relative coefficients satisfy
+`gamma<=min(3/1280,9 lambda/8000000)`,
+`gamma_eta<=3lambda/10240`,
+the unedited source amplitude on the supports is <=lambda/30,
+and all source gauges and future slopes hold, then
+`|Ns|/E<lambda/2` on both supports.
+Additional explicit assumptions on the interpolation-exit Qs,
+an unedited plateau and `X>=35/lambda` imply
+`Qs>=lambda/4`, `p1>=4a` and
+`2(p1-a)^2-(a-2)p2^2 >=21 p1^2/40>0`.
+This verifies the **support cone conditionally**, not the
+complete pulse/exterior cone certificate.
+
+**Exact nonlinear coefficient elimination.** For source-normalized
+positive bump integrals u,v0,w and translation factors x,z,
+the true A.11 equations are
+`u(c1+x c2)=DeltaI`,
+`2v0(c1+z c2)+w(c1²+z c2²)=0`.
+Eliminating c1 gives an exact scalar quadratic in c2,
+with an explicit derivative formula for interval propagation
+of the actual `DeltaI_eta`.
+
+**Decisive outstanding gates:** Independently enclose the
+source-specific `DeltaI,DeltaI_eta,u,v0,w,c_i,c_i_eta`,
+verify source Ebase and Qs data and S/Pi endpoint gauges
+for ONE common choice of Td,Tf,Pstar,lambda,h and all moment
+corrections, then certify the pulse region, terminal
+transitions, all cone endpoints, Appendix-B nonlinear
+contraction and UNFORCED startup/physical residual.
+The interval gate deliberately returns NOT_CERTIFIED for
+its synthetic default example. Neither the complete Lean
+proof nor the proposed unforced Theorem 1.1 exists yet.
