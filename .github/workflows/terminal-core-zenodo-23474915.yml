@@ -157,6 +157,8 @@ jobs:
         run: lake env lean TerminalCore2026/A11DirectStressAlternative.lean
       - name: Verify authentic A11 root-jet arithmetic in Lean
         run: lake env lean TerminalCore2026/A11RootJetBounds.lean
+      - name: Kernel check A11 robust whole-hull rational margins
+        run: lake env lean TerminalCore2026/A11RobustHullScalar.lean
       - name: Independent exact-equation tests
         run: |
           python -m pip install sympy
@@ -235,3 +237,4 @@ jobs:
           python TerminalCore2026/a11_root_hull_bridge_exact.py
           python TerminalCore2026/a11_direct_stress_alternative_exact.py
           python TerminalCore2026/a11_rootjet_improved_exact.py
+          python TerminalCore2026/a11_robust_hull_exact.py --selftest
