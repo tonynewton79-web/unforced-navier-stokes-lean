@@ -2231,3 +2231,46 @@ A.29/A.30 and |Ns|/E<=lambda/2 margins across EVERY closed
 physical cell, then close all later cone stages, Appendix-B
 contraction, actual unforced startup PDE and end-to-end Lean
 kernel proof. Theorem 1.1 remains UNPROVED.
+
+
+## 21 October 2026: exact A.11 N_s/E slack and Lean dependency checkpoint
+
+The new source-derived Appendix A.11 tail theorem is in
+`A11_Ns_Quantitative_Slack_Insert.tex`. Subject to the
+simultaneous source budgets `E<=lambda/4`,
+`4hD_s<=61/100`, `P_s<=1/2`,
+`2A<=1001/1000`, and
+`2epsilon(D_s+1/2)<=1/100` on both COMPLETE A.11 supports,
+the exact source tail formula gives
+
+  `|N_s|/E <= 1621*lambda/4000 < lambda/2`,
+
+with explicit strict slack `379*lambda/4000`. Combining
+the separately assumed `Q_s>=lambda/2`, source slope
+bounds, `lambda<=1/20` and `X>=9/lambda` gives
+normalized strict cone margin
+
+  `>=32117077/80000000 > 2/5`
+
+(stronger than the previous conditional 7/20 margin).
+
+`A11NsQuantitativeSlack.lean` submits elementary real
+inequalities to GitHub Actions and is NOT a complete Lean
+proof of the tail integrals, the actual source fields, the
+full stress cone or the unforced theorem. Its kernel status
+is PENDING until a completed successful run. The exact
+`a11_ns_quantitative_slack_exact.py` replay tests rational
+bounds and fails deliberately incomplete and bad-budget cells.
+Inputs are NOT source-authenticated.
+
+The 98-page cumulative reading PDF retains the original
+16-page source unchanged; the updated analytic amendment is
+82 pages. The attached 97-file packet includes a full
+start-to-finish Lean dependency ledger, all known source
+checks and the exact-rational conditional validation gate.
+**Open:** the actual A.11 source interval premise,
+joint Appendix-A parameter certification, full pulse A.29/A.30,
+all exterior stages, Appendix-B contraction, n=1,2 unforced
+corrections, physical zero-force residual and complete Lean proof.
+The original OpenAI Theorem 1.1 constructs a smooth-FORCED flow;
+no unforced Millennium-problem solution is claimed here.
