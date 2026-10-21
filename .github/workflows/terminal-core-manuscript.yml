@@ -44,6 +44,7 @@ on:
       - 'TerminalCore2026/Pulse_Exact_Integrating_Factors_Insert.tex'
       - 'TerminalCore2026/Pulse_End_Exact_Moment_Cancellation_Insert.tex'
       - 'TerminalCore2026/Full_Pulse_Coverage_and_Proof_Gates_Insert.tex'
+      - 'TerminalCore2026/Pulse_Precision_and_Proof_Provenance_Insert.tex'
       - '.github/workflows/terminal-core-manuscript.yml'
   workflow_dispatch:
 
