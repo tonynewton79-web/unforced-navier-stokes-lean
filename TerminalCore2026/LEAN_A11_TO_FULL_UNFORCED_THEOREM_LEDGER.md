@@ -59,3 +59,59 @@ extension cannot inherit its proof.
 A sharper **conditional** normalized A.11 stress inequality and an exact
 verification-design improvement. NOT a certified source interval instance,
 NOT a completed Lean PDE proof, and NOT an unforced Navier--Stokes blowup.
+
+
+## 21 October 2026: local tail-derivative cancellation
+
+The exact A.11 corrected field is `Ec=Eb*(1+u)`, where
+`Eb` is independent of eta after interpolation and
+`u=sum_i c_i(eta)*beta(y-yi)` is supported on two disjoint
+logarithmic intervals of total length `3/5`.
+
+**New proof component, source-conditional:**
+For `D=S/(X Ec^2)`, `P=-Pi/Ec^2`, `g=(log Ec)_eta`,
+and source gauges `S(infinity)=Pi(infinity)=0`, the
+combination `2*g*(D-P)+D_eta-P_eta` has an exact future-support
+representation:
+
+`[1+u(y)]^-2 * integral_0^infinity Rb(y,t)*(1-exp(-t))
+*(1+u(y+t))*u_eta(y+t) dt`.
+
+The *local* normalization derivative cancels. If the baseline
+future slope `ell_b<=0`, source coefficients satisfy
+`|c_i|<=192*lambda^28`, `|c_i_eta|<=12*lambda^28`,
+and the actual smooth-step derivative bump satisfies
+`|beta|<=640/3`, the absolute value is
+`<=1536 lambda^28 (1+delta)/(1-delta)^2 <1/1000`,
+with `delta=40960 lambda^28` and `lambda<=1/20`.
+
+Paired with the earlier positive baseline tail comparison
+`D_c<233/100`, `E_c<=lambda/4`,
+`0<h<=lambda/100`, this proves the improved
+**conditional** source stress bound
+
+`|Ns|/Ec < (63/250)*lambda`,
+strict slack `lambda/2-|Ns|/Ec>(31/125)*lambda`.
+
+It no longer needs a separate assumption that *corrected*
+future slopes are nonpositive (only the baseline future slope).
+With the actual `Qs>=lambda/2`, slope and radial gates,
+the strict cone is `>=144343/312500>9/20`.
+
+**Submitted to GitHub:**
+`A11_Local_Parameter_Derivative_Cancellation_Insert.tex`;
+`A11LocalDerivativeCancel.lean` (scalar cancellation/rational
+margins ONLY);
+`a11_local_derivative_exact.py` (symbolic plus exact Fraction
+conditional tests). The cumulative manuscript and GitHub CI
+inputs have been updated. No Lean kernel PASS for the new module
+is claimed until the relevant CI run succeeds.
+
+**Still NOT source-authenticated:** one frozen true tuple and
+interval enclosures for corrected c_i/c_i_eta, terminal
+S(infinity)=Pi(infinity)=0, Eb/lambda, Dc, Qs,
+radial lower bounds, full stress stages, Appendix-B nonlinear
+contraction, the different unforced n=1,2 correction solutions,
+common-radius convergence, or the Cartesian zero-force PDE.
+Do NOT mark the full 10-stage Lean dependency ledger as done.
+The originating OpenAI Theorem 1.1 is a **forced** result.
