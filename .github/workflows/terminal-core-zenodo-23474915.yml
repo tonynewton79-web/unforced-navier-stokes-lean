@@ -133,6 +133,8 @@ jobs:
         run: lake env lean TerminalCore2026/A11QsEtaDerivativeImproved.lean
       - name: Kernel check genuine A11 entrance moment scalar inequalities
         run: lake env lean TerminalCore2026/A11EntranceJetScalar.lean
+      - name: Kernel check Appendix A11 scalar derivative and cone gates
+        run: lake env lean TerminalCore2026/A11ScalarGates.lean
       - name: Independent exact-equation tests
         run: |
           python -m pip install sympy
@@ -196,3 +198,4 @@ jobs:
           python TerminalCore2026/a11_local_derivative_exact.py
           python TerminalCore2026/a11_qs_eta_source_gate.py --selftest
           python TerminalCore2026/a11_entrance_jet_exact.py
+          python TerminalCore2026/a11_source_gates.py
