@@ -2595,3 +2595,51 @@ Lean kernel proof of those complete mathematical statements.
 
 The originating published global theorem uses forcing; this programme
 has NOT produced an unforced finite-time blowup theorem.
+
+
+## 21 October 2026 — A.11 whole-patch stress, including the gap
+
+The cumulative manuscript now inputs
+`A11_Full_Patch_Gap_20261021_Insert.tex`.
+The proof is based on the authentic source (4.16), not a surrogate
+stress. Under the genuine terminal gauges `S(infinity)=Pi(infinity)=0`,
+and with the corrected azimuthal profile
+`E=Eb(1+sum_i c_i(eta) beta_i(y))`,
+the perturbation is an integral over the **remaining bump support**.
+It is valid everywhere from the first support's start to the second
+support's end, including the non-overlapping gap.
+
+The gap matters: it is not enough to check only the two supports when
+releasing a complete exterior cone certificate.
+
+For the prescribed source two bumps, the source-conditional jet estimates
+`|c_i|<=54 lambda^28`, `|d_eta c_i|<=6 lambda^28`
+give `delta<=11520 lambda^28`,
+`epsilon<=1280 lambda^28`, both below 0.0001 for
+`lambda<=1/20`. If the true source also satisfies
+`h<=lambda/100`, `Eb<=lambda/4`, unedited slope
+`ell_b=-lambda` on the hull and `ell_b<=0` afterward,
+plus the **actual future energy** bound
+`Eb(y)^(-2) int_y^infty exp(v-y)*Eb(v)^2 dv<=47/10`,
+the exact full-patch result is
+
+`sup_(y on 2 supports AND gap, |eta|<=1) |Ns|/E
+     <=101*lambda/400 < lambda/2`,
+
+with strict slack at least `99*lambda/400`.
+
+The term `Ns_b^tail` is an **auxiliary future-tail functional**,
+not necessarily the stress of a globally moment-matched unedited
+solution. The A.11 conditions alone do not prove the terminal
+`S(infinity)=0` gauge, which must be source-authenticated.
+
+`A11FullPatchGapScalar.lean` and
+`a11_full_patch_gap_exact.py` are now CI inputs, but they prove/test
+finite scalar inequalities only. The complete future-tail integral,
+interval-cover soundness, true moment-correction roots, other cone
+intervals, Appendix B construction, unforced startups and zero-force
+physical PDE theorem are still OPEN. The separate full dependency ledger is
+`A11_FULL_HULL_TO_UNFORCED_LEAN_ROADMAP_20261021.md`.
+
+The original OpenAI whole-space result is for Navier--Stokes **with
+forcing**; no unforced blowup theorem follows from this A.11 lemma.
