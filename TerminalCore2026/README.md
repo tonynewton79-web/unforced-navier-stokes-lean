@@ -2435,3 +2435,60 @@ Therefore the requested target `sup |N_s|/E<=lambda/2` follows from the single e
 `80 Pstar lambda^14 exp(-13/(2lambda))<=1`.
 
 **Status.** This is a rigorous, conditional SOURCE-FAMILY sufficient criterion, not an independent interval certification of one full moment-matched exterior. A diagnostic parameter check in `a11_source_gates.py` is NOT an admissible whole-profile certificate. The source amplitude constraint `S(infinity)=0`, all later corrected exterior slopes, global stress-cone endpoint margins, Appendix-B contraction, unforced n=1,2 startup equations and the unforced physical PDE residual remain separately open. No complete start-to-finish Lean theorem has been claimed. `A11ScalarGates.lean` formalizes only algebraic/rational pieces; GitHub CI must complete before even those can be called kernel-certified.
+
+
+## A.11 refined supportwise axial-stress theorem — 21 October 2026
+
+A new standalone, source-derived subsection is integrated into the cumulative
+LaTeX as `A11_Support_Stress_Improved_20261021_Insert.tex`.
+It builds on the previously established A.10 entrance-moment derivative identity
+and **does not** assume that this entrance derivative alone controls stress.
+
+With source `Tf=512`, `a=1-lambda`, the two prescribed `sigma'`
+bumps centred at `30log(1/lambda)-3` and `30log(1/lambda)-1`,
+the exact A.11 angular-moment/pressure-neutral system is
+`u(c1+x*c2)=delta`,
+`2p(c1+z*c2)+w(c1^2+z*c2^2)=0`.
+The proof gives
+`|delta|<=50lambda^28`,
+`|delta_eta|<=3e-5lambda^28`,
+`max|c_i|<=|delta|`,
+`max|c_i,eta|<=|delta_eta|`,
+and preserves `ell<=-lambda/2` on the full supports.
+The **actual** prescribed smooth-step derivative bump is used;
+there is no substitution of an inadmissible smooth plateau.
+
+Under the source-final moment/pressure gauges
+`S(infinity)=Pi(infinity)=0`, source post-correction nonpositive
+slopes, the `4log(1/h)` slope-`-1` hold and tail
+`ell<=-3h/4`, equation (4.16) gives an exact future-energy formula
+for `Ns`. The future-energy factor is <3 and
+`|Ns|/E<2E`. The explicit *additional sufficient* parameter
+restrictions
+`lambda<=min(1/20,1/(1+log(Pstar)))` and
+`h<=min(1/10000,lambda/100,exp(-Td)/100)`
+make `E<lambda/25` on both complete supports. Consequently,
+
+`sup_(two A.11 supports, |eta|<=1) |Ns|/E<2lambda/25<lambda/2.`
+
+This is a conditional improvement on the earlier bound
+`63lambda/250`. The extra `Pstar`-dependent condition can be
+imposed after fixing `Pstar`, but has **not** been reconciled with
+every other selected source parameter. The proof still assumes the
+final pressure and S gauges and the specified following exterior
+stages. It does not certify the full stress cone on the whole
+exterior, full Appendix-B contraction, unforced startup/PDE residual,
+or unforced Theorem 1.1.
+
+`a11_support_strong_exact.py` runs exact rational/finite exponential
+comparison tests and outward-interval diagnostic examples.
+`A11SupportStrongScalar.lean` is finite scalar arithmetic ONLY.
+These files are hooked into GitHub Actions; wait for successful
+CI before calling even the scalar lemmas kernel-checked. Neither
+the analytic source integrals nor the full Navier-Stokes theorem
+have a Lean formalization in this release.
+
+The local reproducible release packet and 78-page cumulative reader
+are also available as conversation attachments; the 78-page file
+contains the previous 74-page reader followed by one self-contained
+four-page research addition, not a re-upload to Zenodo.
