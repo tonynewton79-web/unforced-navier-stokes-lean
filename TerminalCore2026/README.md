@@ -2274,3 +2274,35 @@ all exterior stages, Appendix-B contraction, n=1,2 unforced
 corrections, physical zero-force residual and complete Lean proof.
 The original OpenAI Theorem 1.1 constructs a smooth-FORCED flow;
 no unforced Millennium-problem solution is claimed here.
+
+
+## 21 October 2026: A.11 endpoint-tail source proof gate
+
+A new theorem reduces the whole two-support azimuthal stress
+certificate to actual correction coefficient bounds and only
+the uncorrected base profile's endpoint amplitude and tail
+moments. With `delta=40960 lambda^28`, the multiplicative
+future-tail distortion factor is at most `1+8delta`, and
+`delta<10^-31` for `0<lambda<=1/20`.
+
+Because the uncorrected slope is exactly `-lambda` between
+the two extreme bump endpoints, its normalized tail ODEs are
+`Db'=2lambda Db-1/2` and
+`Pb'=(1+2lambda)Pb-1/2`, making the endpoint reduction
+exact rather than sampled. Under independently certified
+terminal, future-slope, leading-amplitude and endpoint
+budgets, the earlier `|Ns|/E<=1621 lambda/4000` and
+strict cone-margin arithmetic are recovered.
+
+See `A11_Endpoint_Tail_Comparison_Insert.tex`,
+`A11EndpointScalar.lean`, `a11_endpoint_exact.py`,
+`a11_endpoint_gate.py`, and
+`A11_Endpoint_Proof_Obligations.md`.
+The arithmetic checker ALWAYS outputs a conditional,
+non-source-authenticated status. A genuine frozen Appendix-A
+source and outward enclosure of the endpoint values are still
+missing. The original OpenAI theorem is FORCED; the proposed
+UNFORCED theorem remains unproved, as does any complete Lean
+proof. The downloadable 100-page research reader preserves
+the original 16-page paper and appends a cumulative 84-page
+amendment; the complete accompanying ZIP is supplied by email.
