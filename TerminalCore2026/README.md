@@ -2805,3 +2805,63 @@ the latest cumulative source on this branch is authoritative.
 The separate ZIP includes the Lean source, exact code, source manifest,
 dependency ledger and a nested previous research packet.
 The proposed unforced Theorem 1.1 remains unproved.
+
+
+## Backward angular-moment A.11 full-hull reduction — 21 October 2026
+
+The cumulative manuscript now includes
+`A11_Backward_Angular_Endpoint_20261021_Insert.tex`. This
+derives a stronger conditional A.11 whole-hull bound directly
+from the true right-end angular moment in (A.11), without an
+independent grid of `Q_s` or slope values on the two bumps
+and intervening gap.
+
+**Source identity (do not omit the angular derivative):**
+`Q_s=-1+(1-h)*I/(XH)-(1/2-h)*eta*I_eta/(XH)`.
+With `r=I/(XH)`, `g=partial_eta log E`, the full derivative is
+`I_eta/(XH)=r_eta+r*g`. The A.11 endpoint target, together
+with the subsequent unedited `ell=-lambda` plateau, yields
+`r(yR)=1/(1-lambda)` and `r_eta(yR)=0` at the right edge
+of the second bump. Both are propagated BACKWARD.
+
+Assuming the prior authentic root jets
+`|c_i|<=54 lambda^28, |d_eta c_i|<=6 lambda^28`,
+the source sigma-prime envelopes and
+`0<lambda<=1/100,0<h<=lambda/100`, one obtains across
+the full **23/10** closed hull (including the **17/10 gap**):
+
+`|r-1/(1-lambda)| < 6e8 lambda^28`,
+`|r_eta| < 1.3e8 lambda^28`,
+`|I_eta/(XH)| < 1.31e8 lambda^28`,
+`-3lambda/2<ell<-lambda/2`, and
+`Q_s >= (lambda-h)/(1-lambda)-7e8 lambda^28
+    >49lambda/50`.
+
+If the SAME corrected source profile has exact infinity
+S/pressure gauges and independently certified future-tail
+bound `|Ns|/E<=503lambda/2000`, and `X>=9/lambda`,
+then the strict cone is at least
+`85676973/76832000>11/10>9/20` across the full hull.
+The source-correct angular derivative term is retained.
+
+The exact-rational checker
+`a11_backward_angular_exact.py` and finite scalar Lean module
+`A11BackwardAngularScalar.lean` are included in GitHub Actions.
+The **local** checker passed. The new GitHub Lean run remains
+queued, not kernel-certified. The manuscript integral/ODE theorem
+is NOT formalized end-to-end in Lean.
+
+A three-page standalone PDF and a seven-file source packet were
+created locally and attached to the research correspondence.
+The `exterior_cell_gate.py` program rejects missing gauges,
+uncovered cells and incomplete exterior stages; its demonstration
+is synthetically assumed and prints a CONDITIONAL status only.
+
+**Not finished:** authenticate all source root/terminal inputs,
+the same-profile A.19 S and pressure gauges, actual future-tail
+enclosures and the pulse/release/hold/terminal/far-tail stress
+cells for one admissible tuple. Appendix B contraction,
+the distinct unforced startup coefficient systems, the
+unforced physical Navier--Stokes residual and the proposed
+Theorem 1.1 remain OPEN. The OpenAI published whole-space
+construction is forced.
