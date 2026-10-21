@@ -147,6 +147,8 @@ jobs:
         run: lake env lean TerminalCore2026/A11FullPatchGapScalar.lean
       - name: Kernel check A11 parity and normalized stress algebra
         run: lake env lean TerminalCore2026/A11ParityAndTailArithmetic.lean
+      - name: Kernel check terminal gauge algebra and strict rational margin
+        run: lake env lean TerminalCore2026/A11TerminalGaugeScalar.lean
       - name: Independent exact-equation tests
         run: |
           python -m pip install sympy
@@ -219,3 +221,5 @@ jobs:
           python TerminalCore2026/a11_final_source_gate_exact.py
           python TerminalCore2026/a11_full_patch_gap_exact.py
           python TerminalCore2026/a11_parity_tail_exact.py
+          python TerminalCore2026/a11_terminal_gauge_exact.py
+          python TerminalCore2026/a11_terminal_fail_closed.py
