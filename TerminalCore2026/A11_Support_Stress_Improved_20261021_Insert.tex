@@ -1,0 +1,117 @@
+\subsection*{A stronger local axial-stress margin on the two A.11 supports}
+\label{subsec:A11-strong-20261021}
+Write $a=1-\lambda$, $b=1+2\lambda$, $T_f=512$ and
+$L_p=30\log(1/\lambda)$. Use the actual normalized source
+$\sigma'$ bumps $\beta_i$ centered at $L_p-3$ and $L_p-1$.
+After the parameter-flattening interpolation the unedited
+azimuthal field $E_0$ is independent of $\eta$.
+Set $E=E_0(1+\gamma)$,
+$\gamma=\sum_{i=1}^{2}c_i(\eta)\beta_i$.
+The incoming moment ratio $r_p=I_p/(X_pH_p)$ is independent
+of $\eta$ and obeys $0\le r_p\le1/a$.
+The exact A.10 entrance formula (proved above) now gives
+\[
+ 0\le r_f\le(a-1/10)^{-1},\qquad
+ \sup_{|\eta|\le1}|r_{f,\eta}|<1/700000.
+\]
+The angular-moment deficit, normalized at the first bump center,
+is $\delta=(a^{-1}-r_f)e^{-a(L_p-3)}$. Hence
+\begin{equation}\label{eq:A11-strong-delta}
+ |\delta|\le50\lambda^{28},\qquad
+ |\delta_\eta|\le3\cdot10^{-5}\lambda^{28},
+ \qquad0<\lambda\le1/20.
+\end{equation}
+To retain the actual nonlinear pressure-neutral constraint, define
+\[
+ u=\int e^{at}\beta(t)\,dt,\quad
+ p=\int e^{-bt}\beta(t)\,dt,\quad
+ w=\int e^{-bt}\beta(t)^2\,dt,\quad
+ x=e^{2a},\quad z=e^{-2b}.
+\]
+Both exact A.11 equations are
+\[
+ u(c_1+xc_2)=\delta,\qquad
+ 2p(c_1+zc_2)+w(c_1^2+zc_2^2)=0.
+\]
+The source bump satisfies $1/2<u,p<2$, $6<x<8$,
+$0<z<1/4$, $w<427$,
+$\|\beta\|_\infty\le640/3$ and
+$\|\beta'\|_\infty<250000$. Solving the first linear
+equation and then the second by contraction on
+$\|c\|_\infty\le|\delta|$ gives a map with
+\[
+ \|\mathcal F(c)\|_\infty
+ \le(8/23)|\delta|+743\|c\|_\infty^2,\qquad
+ \operatorname{Lip}\mathcal F\le1485|\delta|<1/100.
+\]
+Thus this ball contains a unique solution, and
+differentiation of the \emph{exact} two-dimensional system yields
+\[
+ \|c\|_\infty\le|\delta|,\quad
+ \|c_\eta\|_\infty\le|\delta_\eta|,\quad
+ |\gamma|<1/1000,\quad |\gamma_y|<\lambda/4,\quad
+ |\partial_\eta\log E|<1/100.
+\]
+In particular the corrected slope satisfies
+$\ell=-\lambda+\partial_y\log(1+\gamma)\le-\lambda/2$.
+
+\begin{theorem}[Improved conditional A.11 axial-stress bound]
+\label{thm:A11-support-strong-20261021}
+Assume the full source terminal gauges
+$S(\infty,\eta)=\Pi(\infty,\eta)=0$ and the prescribed
+post-correction stage slopes, including the one-unit
+release transition, a $4\log(1/h)$ slope-$-1$ hold,
+and $\ell\le-3h/4$ thereafter. Take
+\[
+ T_f=512,\quad0<\lambda\le
+ \min\{1/20,(1+\log P_*)^{-1}\},\qquad
+ 0<h\le\min\{1/10000,\lambda/100,e^{-T_d}/100\}.
+\]
+For both full source-corrected A.11 supports,
+\begin{equation}\label{eq:A11-strong-support-cone-20261021}
+\sup_{\substack{y\in\operatorname{supp}\beta_1
+ \cup\operatorname{supp}\beta_2\\|\eta|\le1}}
+  \frac{|N_s(y,\eta)|}{E(y,\eta)}
+ <\frac{2}{25}\lambda<\frac\lambda2.
+\end{equation}
+\end{theorem}
+\begin{proof}
+Because $U=M=J=0$ on these supports, (4.16) and the
+genuine terminal gauges give the exact future-energy formula
+\[
+ N_s=\int_y^\infty\left[
+ 2\eta(he^{v-y}-A)E(v)^2+
+ (1-\eta^2)(1-e^{v-y})E(v)E_\eta(v)\right]dv,
+ \qquad A=\tfrac12+h.
+\]
+Put $\mathfrak d=(2XE^2)^{-1}\int_X^\infty E^2dx$.
+The remaining support-to-plateau distance is at most $63/20$.
+The release transition, steep hold and final decay imply
+$\mathfrak d\le(63/20+1)/2+1/4+h^7/3<3$.
+After interpolation the only $\eta$ dependence occurs on the
+two bumps, whose combined span is $23/10<3$.
+Every later slope is nonpositive, so
+\[
+ |N_s|/E\le E[4h\mathfrak d+2A+
+ 3\sup|\partial_\eta\log E|]<2E.
+\]
+The source reference, pulse and intermediate-stage decay
+give, on both corrected supports,
+\[
+ E<20P_*e^{-13/(2\lambda)}\lambda^{15}.
+\]
+Since $\lambda\le(1+\log P_*)^{-1}$,
+$P_*e^{-13/(2\lambda)}\le e^{-13/2}<1/500$;
+therefore $E<\lambda^{15}/25\le\lambda/25$.
+Combining the last two inequalities proves the theorem.
+\end{proof}
+
+This improves the previous \emph{conditional} A.11 bound
+$|N_s|/E<63\lambda/250$ with an explicit sufficient
+smallness condition on $\lambda$ relative to $P_*$.
+The full global correction parameter order and compatibility
+of the terminal gauges remain to be certified; the theorem
+does not establish the Appendix-B contraction, unforced
+startup solutions or the proposed unforced Navier--Stokes
+singularity. The accompanying Lean file proves only finite
+scalar inequalities; no complete Lean proof is claimed.
