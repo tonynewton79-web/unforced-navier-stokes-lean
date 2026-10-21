@@ -2702,3 +2702,60 @@ both corrected-support interval hulls, full exterior cone,
 Appendix B, unforced n=1/2 startup, physical force-free residual
 and a complete trusted Lean proof remain OPEN. The finite Lean module
 has been submitted but is NOT claimed kernel-certified.
+
+
+## 21 October 2026 — pressure rigidity and exact total A.19 derivative
+
+A new cumulative subsection
+`A11_Terminal_Rigidity_and_A19_Residual_20261021_Insert.tex`
+extends the source-exact A.11 terminal-gauge analysis.
+
+**Global necessity:** On the pure source exterior with
+`E=c_inf X^(-A)`, `A=1/2+h<1`, the future-tail
+terms in `N_s` cancel exactly. For terminal defects
+`sigma=S(infty,eta)`, `pi=Pi(infty,eta)`,
+`N_s/E = X^(A-1)/c_inf *[4h eta sigma -d sigma_eta]
+       + X^A/c_inf *[4A eta pi-d pi_eta]`.
+A bounded normalized stress on the *whole pure tail* forces
+`d pi_eta=4A eta pi`, hence
+`pi=C(1-eta²)^(-2A)`; smoothness at the similarity endpoints
+forces `C=0`. Thus an approximate pressure gauge is insufficient
+for global bounded normalized exterior stress. This is a source
+algebra / ODE theorem, NOT an unforced PDE theorem.
+
+**Exact A19 residual gate:** The *total* normalized residual
+`F(eta)=lambda*S(infty,eta)/(Xp*eb²*f(eta)²)` satisfies
+`(N_s-N_tail)/E = K[(4h eta +4eta d/(1+eta²))*F-d F_eta]`
+when the true source pressure gauge is fixed exactly, with
+`K=Xp eb² f²/(lambda X E)`.
+On [-1,1], `|4eta d/(1+eta²)|<=2`.
+Thus existing source-conditional tail bound `<0.253 lambda`
+and the newly specified strict gate
+`Ksup*[(2+4h)*||F||+||F_eta(total)||]<0.247lambda`
+imply the desired support `|N_s|/E<lambda/2`.
+The chosen amplitude derivative must be included in F_eta.
+
+**Source support factor:** On the two A.11 bumps, writing
+`t` for the post-interpolation uniform-stage coordinate,
+`B=1+sum c_i(eta) beta_i(t)>0`, one obtains
+`K=2eb*f²/(lambda*B)*exp[-(1/2-lambda)
+    *(13/lambda+Tf+t)]`,
+with `t>=30log(1/lambda)-63/20`.
+This is an explicit route to an interval value of Ksup once
+true source enclosures of eb and B positivity are available.
+
+**Normalized energy derivative correction:** If
+`Ds=S_tail/(X E²)`, `Ps=-Pi_tail/E²`,
+they generally depend on eta. The complete local stress formula
+includes `-(1-eta²)*E*(Ds_eta-Ps_eta)`. The earlier
+symbolic check treating Ds,Ps as constants was a special-case
+identity; the full source-exact future-integral formula remains valid.
+The new SymPy replay audits the general derivative terms.
+
+**Release scope:** A separately compiled three-page theorem note,
+finite Lean scalar candidate and exact symbolic/fail-closed scripts
+are in this checkpoint. The true corrected-profile interval covers,
+source A19 root, pressure normalization correspondence, the full
+exterior cone, Appendix B, the unforced coefficient hierarchy and
+Theorem 1.1 remain OPEN. No complete trusted Lean theorem is
+claimed, and the originating OpenAI global result uses forcing.
