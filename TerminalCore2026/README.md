@@ -2180,3 +2180,54 @@ The local checkpoint includes a 95-page cumulative reading PDF
 and a 90-entry research/proof audit ZIP. File integrity and paper
 rendering pass, but the raw source PDF was not byte-downloadable into
 this execution environment; no fresh source-PDF hash was asserted.
+
+
+## Actual source-to-interval proof layer — 21 October 2026
+
+The A.5 fixed-pulse interval source issue now has a concrete partial
+certificate, not merely input-syntax validation. The new
+`Fixed_Pulse_Source_Interval_Certification_Insert.tex` proves an
+analytic enclosure theorem for the actual source
+`sigma(t)=exp(-1/t^2)/(exp(-1/t^2)+exp(-1/(1-t)^2))`,
+`phi_b(xi)=int_0^xi sigma(50v)dv`,
+`R0(xi)=phi_b(xi)(1-sigma(xi-10))`, and its first xi and eta
+derivatives. The implementation
+`source_pulse_exact_boxes.py` uses only Python Fraction:
+positive Taylor polynomial and geometric remainder for exp,
+monotone sigma endpoints, 16-panel initial phi integration,
+exact phi=xi-1/100 after xi=1/50, and sigma'<=64.
+
+**Replayed exact source coverage:** 20 xi cells x 2 eta cells =
+40 closed rectangles cover [0,13]x[-1,1]. Every submitted
+R0, R0_xi, R0_eta and R0_xi_eta range has a rigorously
+derived interval plus a strict rational guard 2^-120.
+The central plateau [1,10] has exact R0=xi-1/100>=99/100
+and R0_xi=1. `verify_fixed_pulse_boxes.py` recomputes the
+source arithmetic, tests rational cover completeness and rejects
+negative controls. This is an **actual fixed-pulse source**
+certificate, not a synthetic physical Qs/Ns cell claim.
+
+**Crucial distinction:** the containment guard is NOT a stress
+cone margin, and broad cells can be far too wide for the
+10^-24-scale centerline normalized residual. NO source-authenticated
+full cell intervals exist yet for the transported fields
+E,U,M,J,S,Pi,Qs,Ns or their eta derivatives, the true A.9 and
+A.11 corrections on one simultaneous frozen parameter tuple, or
+the complete physical source stress cone.
+
+`FixedPulseSourceScalar.lean` holds only finite plateau/rational
+gates; the exp-Taylor, integral soundness and full 40-cell
+certificate remain analytic manuscript proofs with Python exact
+rational replay, NOT Lean kernel proofs. A 97-page reading PDF
+retains the 16-page original unchanged and appends an updated
+81-page cumulative scholarly amendment. The supplied full
+reproducibility ZIP includes the generator, 40-cell data,
+verifier, proof source, sample negative controls, and SHA-256 manifest.
+
+NEXT: Certify source a, a_eta, ell, ell_eta for actual A.9/A.11
+supports, propagate ten-state interval enclosures using exact
+moment-cancellation and integrating-factor estimates, verify strict
+A.29/A.30 and |Ns|/E<=lambda/2 margins across EVERY closed
+physical cell, then close all later cone stages, Appendix-B
+contraction, actual unforced startup PDE and end-to-end Lean
+kernel proof. Theorem 1.1 remains UNPROVED.
