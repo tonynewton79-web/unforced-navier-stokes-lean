@@ -149,6 +149,8 @@ jobs:
         run: lake env lean TerminalCore2026/A11ParityAndTailArithmetic.lean
       - name: Kernel check terminal gauge algebra and strict rational margin
         run: lake env lean TerminalCore2026/A11TerminalGaugeScalar.lean
+      - name: Kernel check terminal pressure-rigidity scalar lemmas
+        run: lake env lean TerminalCore2026/A11TerminalRigidityScalar.lean
       - name: Independent exact-equation tests
         run: |
           python -m pip install sympy
@@ -223,3 +225,4 @@ jobs:
           python TerminalCore2026/a11_parity_tail_exact.py
           python TerminalCore2026/a11_terminal_gauge_exact.py
           python TerminalCore2026/a11_terminal_fail_closed.py
+          python TerminalCore2026/a11_terminal_rigidity_exact.py
