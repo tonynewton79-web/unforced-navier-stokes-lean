@@ -153,6 +153,8 @@ jobs:
         run: lake env lean TerminalCore2026/A11TerminalRigidityScalar.lean
       - name: Kernel-check A11 exact-root full-hull scalar lemma
         run: lake env lean TerminalCore2026/A11GapTerminalBridge.lean
+      - name: Check independent A11 future stress arithmetic
+        run: lake env lean TerminalCore2026/A11DirectStressAlternative.lean
       - name: Independent exact-equation tests
         run: |
           python -m pip install sympy
@@ -229,3 +231,4 @@ jobs:
           python TerminalCore2026/a11_terminal_fail_closed.py
           python TerminalCore2026/a11_terminal_rigidity_exact.py
           python TerminalCore2026/a11_root_hull_bridge_exact.py
+          python TerminalCore2026/a11_direct_stress_alternative_exact.py
