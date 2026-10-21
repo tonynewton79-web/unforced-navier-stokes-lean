@@ -49,6 +49,7 @@ on:
       - 'TerminalCore2026/A11_Ns_Quantitative_Slack_Insert.tex'
       - 'TerminalCore2026/A11_Endpoint_Tail_Comparison_Insert.tex'
       - 'TerminalCore2026/A11_Entrance_Derivative_and_Ns_Certificate_Insert.tex'
+      - 'TerminalCore2026/A11_Support_Stress_Improved_20261021_Insert.tex'
       - 'TerminalCore2026/A11_Local_Short_Tail_Insert.tex'
       - 'TerminalCore2026/A11_Local_Parameter_Derivative_Cancellation_Insert.tex'
       - 'TerminalCore2026/A11_Qs_Eta_Derivative_Improved_Cone_Insert.tex'
