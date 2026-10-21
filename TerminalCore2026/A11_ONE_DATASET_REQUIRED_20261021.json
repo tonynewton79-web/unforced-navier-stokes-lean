@@ -1,0 +1,18 @@
+{
+  "status": "INCOMPLETE_NOT_SOURCE_CERTIFIED",
+  "source_equations": ["A.5","A.10","A.11","A.19","4.16"],
+  "analytic_subrange": {
+    "Tf": 512,
+    "lambda": "0 < lambda <= 1/100",
+    "root_value_bound": "2*lambda^28",
+    "root_eta_jet_bound": "lambda^28"
+  },
+  "one_source_authenticated_parameter_tuple": null,
+  "same_corrected_profile_terminal_S_and_Pi_gauges": null,
+  "full_A11_hull_and_gap_interval_cover": null,
+  "entire_exterior_cone_and_pressure_proofs": null,
+  "Appendix_B_contraction": null,
+  "unforced_startup_and_physical_PDE_residual": null,
+  "trusted_full_Lean_kernel_proof": null,
+  "note": "Unfilled items are REQUIRED proof inputs. The analytic A11 root-jet theorem is a conditional source-derived result, not a source interval dataset."
+}
