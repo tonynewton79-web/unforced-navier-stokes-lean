@@ -216,3 +216,4 @@ jobs:
           python TerminalCore2026/a11_interval_gate.py
           python TerminalCore2026/a11_final_source_gate_exact.py
           python TerminalCore2026/a11_full_patch_gap_exact.py
+          python TerminalCore2026/a11_parity_tail_exact.py
