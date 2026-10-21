@@ -2306,3 +2306,59 @@ UNFORCED theorem remains unproved, as does any complete Lean
 proof. The downloadable 100-page research reader preserves
 the original 16-page paper and appends a cumulative 84-page
 amendment; the complete accompanying ZIP is supplied by email.
+
+
+## A.11 corrected angular moment derivative and stronger cone gate — 21 Oct 2026
+
+**Source correction:** On the two A.11 azimuthal correction supports,
+the exact source (4.16) has
+`Qs=-1+(1-h)*I/(XH)-D*eta*I_eta/(XH)` when U=M=J=0.
+The I_eta term is generally nonzero INSIDE the corrections; the
+equilibrium expression without it is valid only where I_eta=0.
+
+Assuming the true first-bump-center C¹ entrance errors
+`|rb-1/(1-lambda)|,|rb_eta|<=64lambda^28` and genuine
+source-prescribed bump corrections
+`|ci|<=192lambda^28, |ci_eta|<=12lambda^28`,
+the positive angular moment comparison yields on BOTH full
+supports
+`|rc-rb|<=327680lambda^28` and
+`|Ic_eta/(XHc)|<=10400lambda^28`.
+Therefore for 0<lambda<=1/20 and h<=lambda/100,
+`Qs>49lambda/50`.
+This explicitly retains the moment derivative and removes
+the earlier independent Qs>lambda/2 interval obligation
+**conditional on the real entrance and bump jet bounds**.
+
+With the separately required genuine infinity gauges,
+`Ec<=lambda/4`, `Ds<233/100`,
+`Ps<=(1+8delta)/2`, baseline future slope <=0 and the
+local derivative cancellation <1/1000, the previous source
+Ns identity then gives `|Ns|/Ec<63lambda/250<lambda/2`.
+If the corrected radial slope and X>=9/lambda are proved,
+the companion cone exceeds `55743/50000>9/20`.
+
+Files:
+`A11_Qs_Eta_Derivative_Improved_Cone_Insert.tex`,
+`A11QsEtaDerivativeImproved.lean`, and
+`a11_qs_eta_source_gate.py --selftest`.
+The exact script rejects missing I_eta, terminal-gauge, future
+slope, positivity and radius inputs (eight negative controls).
+Its positive case is MATHEMATICAL-FIXTURE INPUT, not a
+source-authenticated interval calculation. The Lean module
+proves conditional scalar consequences only, not source
+integral/interval-soundness or the unforced Navier--Stokes PDE.
+
+The standalone addendum and verification packet are attached
+in the current conversation. The locally concatenated
+78-page convenience reader uses an archived 74-page base and
+therefore omits some INTERVENING A.11 GitHub manuscript
+chapters. The living cumulative LaTeX on this branch now
+includes the new A.11 source theorem; its CI manuscript
+build is the appropriate full up-to-date manuscript route.
+
+Open: independent complete source boxes for one frozen
+Appendix-A schedule, terminal gauges, full exterior cone,
+Appendix B, distinct unforced startup coefficients,
+physical zero-force residual and a kernel-checked end-to-end
+Lean proof. The original OpenAI theorem has smooth forcing.
