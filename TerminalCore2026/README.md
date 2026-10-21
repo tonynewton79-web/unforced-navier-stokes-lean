@@ -2136,3 +2136,47 @@ source-specific interval covering remain open. No source ratio
 startup systems, physical zero-force PDE residual or full Lean
 Theorem 1.1 proof has been established. Do not mark the Lean
 candidate declarations as kernel certified without completed CI.
+
+
+## 21 October 2026: centerline precision and proof provenance audit
+
+The source A.29--A.30 residual ratio now has an independently replayed
+denominator-cleared polynomial identity. At eta=0:
+`q0=(lambda-h)/(1-lambda)`; when 0<h<=lambda/10000,
+0<lambda<=1e-14, the requested |eQ/q0|<=1e-10 and
+|eN/q0|<=1e-7 budgets require absolute enclosures of
+approximately 1e-24 and 1e-21 at lambda=1e-14.
+For smaller lambda, the requirement tightens further.
+A plain 1e-16 cancellation-error estimate cannot suffice.
+
+New files:
+- `Pulse_Precision_and_Proof_Provenance_Insert.tex` — scholarly
+  statement and proof of the precision bound, exact identity, and
+  remaining source certification conditions.
+- `pulse_precision_and_identity_exact.py` — passed exact SymPy
+  and Fraction rational identities, plus a negative precision control.
+- `PulseResidualPrecision.lean` — a **candidate** Lean proof of the
+  cleared polynomial identity and finite rational gates. The
+  analytic-source, enclosure, and unforced PDE theorems are NOT
+  formalized; kernel status requires a successful completed CI run.
+- `pulse_provenance_replay_gate.py` — binds source, derivation, and
+  interval-proof file paths to their true byte digests; its selftest
+  rejects empty covers, forged hashes, changed bytes and path traversal.
+  A matching hash still does NOT prove mathematical interval enclosure
+  validity.
+- `PULSE_SOURCE_EVIDENCE_REQUIRED_V2.json` — empty input template;
+  deliberately contains NO fabricated source interval cells.
+
+The full source-derived covering of
+`[0,13] x [-1,1]`, all A.11 and exterior stress cones,
+Appendix-B nonlinear fixed point, unforced n=1/n=2 correction
+solutions, and physical zero-force PDE residual are OPEN.
+The starting OpenAI manuscript/theorem and its Lean repository
+concern forced Navier--Stokes; they do not prove this new
+unforced terminal-core theorem.
+
+The local checkpoint includes a 95-page cumulative reading PDF
+(original deposited 16 pages unchanged + corrected 79-page amendment)
+and a 90-entry research/proof audit ZIP. File integrity and paper
+rendering pass, but the raw source PDF was not byte-downloadable into
+this execution environment; no fresh source-PDF hash was asserted.
