@@ -7,24 +7,23 @@
 \newtheorem{corollary}[theorem]{Corollary}
 \newtheorem{proposition}[theorem]{Proposition}
 \newtheorem{lemma}[theorem]{Lemma}
-\title{Radial-Inverse Estimates and the Analytic-Norm Choice\\in a Navier--Stokes Terminal-Core Expansion}
+\title{Analytic Estimates and Source-Level Certificates\\for a Terminal-Core Navier--Stokes Expansion}
 \author{Tony Newton}
 \date{}
 \begin{document}
 \maketitle
 \begin{abstract}
-The current pulse analysis gives exact terminal cancellation of two axial
-moments and their parameter jets but not uniform stress estimates on
-the pulse interior. We derive a complete rational rectangle-cover
-soundness criterion for the remaining A.29--A.30 residual inequalities
-on $[0,13]\times[-1,1]$ and implement a fail-closed rational interval
-checker with adversarial negative tests. A necessary consistency check
-preserves $H^2=2XE^2$ and the same parameter values on all cells.
-The current project contains no authenticated full-pulse interval
-enclosures, complete exterior cone certificate, actual Appendix-B
-nonlinear fixed point, unforced startup corrections or verified
-physical zero-force Navier--Stokes residual. The proposed unforced
-Theorem~1.1 remains unproved.
+We reassess the proposed unforced terminal-core Navier--Stokes expansion
+against the source's pulse residuals and forced global theorem. Existing
+algebra and interval-comparison methods reduce parts of the problem,
+but no complete source-derived pulse intervals have been produced.
+We prove an exact centerline precision requirement and a polynomial
+cancellation formula suitable for high-accuracy interval evaluation.
+A strengthened fail-closed verifier distinguishes actual file-hash
+replay from proof that the intervals enclose the prescribed smooth
+fields. The full pulse stress cone, Appendix-B contraction, unforced
+correction hierarchy and physical zero-force residual remain open.
+The proposed unforced Theorem~1.1 is not established.
 \end{abstract}
 
 \section{The common weighted space}
@@ -204,6 +203,8 @@ The pointwise weight identity and sharp two-derivative inequality have already b
 \input{Pulse_End_Exact_Moment_Cancellation_Insert.tex}
 
 \input{Full_Pulse_Coverage_and_Proof_Gates_Insert.tex}
+
+\input{Pulse_Precision_and_Proof_Provenance_Insert.tex}
 
 \begin{thebibliography}{9}
 \bibitem{newton2026}
