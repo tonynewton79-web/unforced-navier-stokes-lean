@@ -1,0 +1,117 @@
+\subsection*{The A.11 terminal pressure gauge is rigid}
+The exact stress identity (4.16) on the two A.11 supports, where
+$U=M=J=0$, is
+\[
+N_s=\frac{4h\eta S-(1-\eta^2)S_\eta}{X}
++4A\eta\Pi-(1-\eta^2)\Pi_\eta,\qquad A=\tfrac12+h.
+\]
+Writing $\sigma=S(\infty,\eta)$ and $\pi=\Pi(\infty,\eta)$
+and substituting the future-tail integrals gives the exact defect
+decomposition
+\[
+N_s=N_s^{\mathrm{tail}}+
+\frac{4h\eta\sigma-(1-\eta^2)\sigma_\eta}{X}
++4A\eta\pi-(1-\eta^2)\pi_\eta.
+\]
+The A.11 edit restores only a pressure \emph{increment}.
+The actual source normalization (A.21)--(A.23) must be imposed
+for the \emph{same} corrected profile to obtain $\pi=0$.
+Independently, the genuine A.19 amplitude equation sets $\sigma=0$.
+
+\begin{proposition}[Pure-power exterior pressure rigidity]
+Assume the exact terminal profile is
+$E(X,\eta)=c_\infty X^{-A}$, where $c_\infty>0$ is independent
+of $\eta$, and $\sigma,\pi\in C^1([-1,1])$.
+If $N_s/E$ is bounded as $X\to\infty$ for each
+$\eta\in(-1,1)$, then $\pi\equiv0$.
+\end{proposition}
+\begin{proof}
+On the pure tail the future integrals are
+$S_t=XE^2/(4h)$ and
+$\Pi_t=-E^2/[2(1+2h)]$. Their contribution to
+$N_s$ cancels exactly. Hence
+\[
+\frac{N_s}{E}=
+\frac{X^{A-1}}{c_\infty}
+[4h\eta\sigma-(1-\eta^2)\sigma_\eta]
++\frac{X^A}{c_\infty}
+[4A\eta\pi-(1-\eta^2)\pi_\eta].
+\]
+Since $A>0$ and $A<1$, boundedness forces
+$(1-\eta^2)\pi_\eta=4A\eta\pi$.
+Thus $(1-\eta^2)^{2A}\pi$ is constant and, by
+continuity at $\eta=\pm1$, the constant vanishes.
+\end{proof}
+
+\subsection*{An exact A.19 total-residual stress certificate}
+Let $f=(1+\eta^2)^{-1}$ and define the complete A.19
+residual along the selected smooth amplitude by
+\[
+\mathcal F(\eta)=
+\frac{\lambda S(\infty,\eta)}{X_p e_b^2 f(\eta)^2}.
+\]
+Here $\mathcal F_\eta$ is the \emph{total} parameter derivative,
+including the derivative of the chosen amplitude.
+Under the exact pressure gauge $\pi=0$,
+\[
+\frac{N_s-N_s^{\mathrm{tail}}}{E}=
+K(X,\eta)\left[
+\left(4h\eta+\frac{4\eta(1-\eta^2)}{1+\eta^2}\right)
+\mathcal F-(1-\eta^2)\mathcal F_\eta\right],
+\quad
+K=\frac{X_p e_b^2 f^2}{\lambda XE}.
+\]
+The elementary factorization
+$(1+t^2)-2t(1-t^2)=(1-t)^2+2t^3\ge0$
+for $0\le t\le1$ gives
+$|4\eta(1-\eta^2)/(1+\eta^2)|\le2$.
+If an independently certified future-tail bound on
+both actual A.11 supports is
+$\sup|N_s^{\mathrm{tail}}|/E<253\lambda/1000$,
+then the strict sufficient certificate
+\[
+K_s[(2+4h)\|\mathcal F\|_\infty+
+\|\mathcal F_\eta\|_\infty]<247\lambda/1000
+\]
+implies $\sup|N_s|/E<\lambda/2$.
+The old value-only residual check does not suffice.
+
+For $t$ measured from the end of (A.10)'s profile
+interpolation, the exact source support has
+$X=X_p\exp(13/\lambda+T_f+t)$ and
+$E=(e_b/2)\exp[-(1/2+\lambda)(13/\lambda+T_f+t)]B$,
+where $B=1+\sum_i c_i(\eta)\beta_i(t)>0$.
+Thus
+\[
+K=\frac{2e_b f^2}{\lambda B}
+\exp[-(\tfrac12-\lambda)(13/\lambda+T_f+t)].
+\]
+Both support intervals satisfy
+$t\ge30\log(1/\lambda)-63/20$.
+Certified $e_b\le e_*$, $B\ge b_*>0$ imply the explicit
+$K_s$ upper bound obtained by replacing $t$ by this
+lower endpoint. The actual enclosures remain to be supplied.
+
+\subsection*{Required normalized-tail derivative}
+For $D_s=S_t/(XE^2)$, $P_s=-\Pi_t/E^2$, and
+$g=\partial_\eta\log E$, the exact local form is
+\[
+\frac{N_s^{\mathrm{tail}}}{E}
+=E[4\eta(hD_s-AP_s)
+ -(1-\eta^2)\{2g(D_s-P_s)
+ +(D_s)_\eta-(P_s)_\eta\}].
+\]
+The derivatives $(D_s)_\eta-(P_s)_\eta$ do not vanish
+for an arbitrary A.11 correction.
+The full future-integral kernel in the previous
+A.11 terminal-gauge manuscript remains valid, but a
+symbolic replay treating $D_s,P_s$ as parameter constants
+is only a special-case check.
+
+\paragraph{Scope.}
+The identities above are exact. They do not verify the
+A.19 root, the two support/gap interval covers, the
+whole future-tail slope and parameter jets, the exterior cone,
+Appendix B, the unforced startup recurrence or a full Lean
+proof of Theorem 1.1. The originating OpenAI theorem has
+smooth forcing.
