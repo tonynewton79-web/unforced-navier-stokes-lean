@@ -1,0 +1,13 @@
+{
+  "_status": "INPUT CONTRACT ONLY: no source-derived interval cells supplied",
+  "domain": "full_pulse_xi_0_13_eta_-1_1",
+  "source_pdf_file": null,
+  "source_pdf_sha256": null,
+  "coefficient_derivation_file": null,
+  "coefficient_derivation_file_sha256": null,
+  "interval_proof_file": null,
+  "interval_proof_file_sha256": null,
+  "frozen_source_parameters": null,
+  "cells": [],
+  "_important": "Authentic file hashes are not mathematical proof that cells enclose source profiles. Interval soundness and physical theorem remain open."
+}
