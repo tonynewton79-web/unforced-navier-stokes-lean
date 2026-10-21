@@ -143,6 +143,8 @@ jobs:
         run: lake env lean TerminalCore2026/A11StressScalar.lean
       - name: Kernel check conditional final A11 scalar gates
         run: lake env lean TerminalCore2026/A11FinalGate.lean
+      - name: Kernel check A11 full hull arithmetic implications
+        run: lake env lean TerminalCore2026/A11FullPatchGapScalar.lean
       - name: Independent exact-equation tests
         run: |
           python -m pip install sympy
@@ -213,3 +215,4 @@ jobs:
           python TerminalCore2026/a11_quadratic_exact.py
           python TerminalCore2026/a11_interval_gate.py
           python TerminalCore2026/a11_final_source_gate_exact.py
+          python TerminalCore2026/a11_full_patch_gap_exact.py
