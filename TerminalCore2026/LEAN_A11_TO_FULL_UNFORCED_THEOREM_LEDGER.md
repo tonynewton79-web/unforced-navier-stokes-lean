@@ -115,3 +115,58 @@ contraction, the different unforced n=1,2 correction solutions,
 common-radius convergence, or the Cartesian zero-force PDE.
 Do NOT mark the full 10-stage Lean dependency ledger as done.
 The originating OpenAI Theorem 1.1 is a **forced** result.
+
+
+## 21 October 2026 — exact interpolation derivative and true two-bump jets
+
+The Appendix-A baseline azimuthal field is exactly separable
+`E(X,eta)=e(X)/(1+eta²)` through the axial pulse, including
+its two U-only corrections. Hence the entrance normalized
+angular moment `r_p=I_p/(Xp Hp)` is **eta independent**,
+not merely C¹-bounded. On the actual A.10 interpolation,
+with `a=1-lambda`, `theta=1-sigma(t/Tf)`,
+`J0=log(1+eta²)`, and
+`G=exp[(1-theta)(J0-log2)]`, direct differentiation
+of `I_y=XH` gives
+
+`r_f = e^(-a Tf)/G(Tf) * [r_p+int_0^Tf e^(at) G(t)dt]`,
+`r_f_eta = -J0_eta e^(-a Tf)/G(Tf) *
+   [r_p+int_0^Tf theta(t)e^(at)G(t)dt]`.
+
+From `r_p<=20/17`, `Tf>0`, and
+`0<lambda<=1/20`, one obtains
+`0<=r_f<=40/17`, `|r_f_eta|<=40/17`.
+Across BOTH full width-3/10 A.11 correction supports,
+the source's subsequent `30 log(1/lambda)` plateau
+then gives uniformly
+
+`|r_b-1/(1-lambda)|<18 lambda^28`,
+`|r_b_eta|<12 lambda^28`.
+
+The exponential maximum is certified by the monotonicity
+of `exp[(1-lambda)63/20]*lambda^(30(1-lambda)-28)`
+and the exact finite Taylor/geometric remainder bound
+`exp(1197/400)<20`.
+
+The genuine A.11 two-bump matrix has
+`||B^-1||∞<3/2`, but its **first column** has norm
+at most `35/164`. Differentiating the exact
+`B c+Q(c)=(Delta_I,0)` system with eta-independent
+weights yields the improved small-branch estimates
+
+`|c_i|<=54 lambda^28`, `|c_i_eta|<6 lambda^28`.
+
+This **discharges the four imported entrance/correction
+eta-jet numerical premises** in the prior conditional Qs and
+Ns source theorem, without synthetic entrance intervals.
+
+**Still outstanding:** one simultaneous source-admissible
+parameter realization; the terminal S and pressure gauges,
+tail/energy bounds and stress-cone endpoints outside these
+supports; Appendix B contraction; the entire unforced
+similarity hierarchy and physical zero-force PDE residual.
+The attached short paper proves the source analytic lemmas;
+the GitHub Lean module `A11EntranceJetScalar.lean`
+formalizes only finite rational inequalities (CI must pass
+before any kernel claim). The full start-to-finish Lean proof
+and proposed unforced Theorem 1.1 remain OPEN.
