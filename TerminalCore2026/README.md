@@ -2362,3 +2362,54 @@ Appendix-A schedule, terminal gauges, full exterior cone,
 Appendix B, distinct unforced startup coefficients,
 physical zero-force residual and a kernel-checked end-to-end
 Lean proof. The original OpenAI theorem has smooth forcing.
+
+
+## 21 October 2026 — source-native entrance angular-moment derivative and A.11 jet closure
+
+A new manuscript insertion `A11_Exact_Entrance_Angular_Jet_Insert.tex`
+derives the angular-moment **eta derivative through the ACTUAL A.10
+interpolation** from the source's separable pre-interpolation
+azimuthal field `E(X,eta)=e(X)/(1+eta²)`. Thus
+`(I/(XH))_eta=0` before interpolation. For
+`a=1-lambda, J0=log(1+eta²), theta(t)=1-sigma(t/Tf),
+ G=exp[(1-theta)(J0-log2)]`, the full exact derivative at
+the end of interpolation is
+
+`r_f_eta = -J0_eta*exp(-a*Tf)/G(Tf)*
+   [r_p+int_0^Tf theta(t)*exp(a*t)*G(t)dt]`.
+
+For source `0<lambda<=1/20` and pre-interpolation
+`1+ell>=17/20`, `r_f` and `|r_f_eta|` are both
+at most `40/17`. Propagating through the genuine
+`30log(1/lambda)` plateau gives on BOTH complete
+width-3/10 A.11 supports:
+
+`|r_b-1/(1-lambda)|<18 lambda^28`,
+`|r_b_eta|<12 lambda^28`.
+
+The true nonlinear two-bump moment matrix (NOT a substitute bump)
+has a particularly small first inverse column. Differentiating
+its exact equations proves `|c_i|<=54lambda^28` and
+`|c_i_eta|<6lambda^28` on the small source correction branch.
+These are sufficient to discharge the earlier four IMPORTED
+entrance/eta-jet upper assumptions in the conditional A.11
+Qs, Ns/E, and cone source theorem. The actual terminal S and
+pressure gauges, future energy/pressure tail certificates,
+whole exterior stress cone, Appendix B contraction, and
+unforced n=1,2 startup/PDE remain OPEN.
+
+`a11_entrance_jet_exact.py` replays the exponential upper
+bound `exp(1197/400)<20`, symbolic derivative cancellation,
+and all scalar inequalities with exact Fraction arithmetic.
+`A11EntranceJetScalar.lean` is a scalar-only formalization
+candidate; GitHub Actions is triggered on commit, not proof
+of a Lean kernel PASS until its jobs complete.
+
+A verified standalone 4-page mathematical note and a 78-page
+reading copy (the latest available 74-page baseline plus the
+4-page new note) were created on 21 October 2026.
+The FULL living integrated cumulative TeX with all
+intervening A.11 amendments is on this draft branch.
+A 40-file reproducibility ZIP contains the previous working
+sources and the new theorem, Python, Lean and dependency ledger.
+No full unforced theorem has been proved.
