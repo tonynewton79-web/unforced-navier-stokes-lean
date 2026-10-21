@@ -1,0 +1,86 @@
+\subsection*{A source-geometric short-tail estimate for both A.11 supports}
+The two azimuthal corrections in source (A.11) are supported in intervals
+of width $3/10$ centered three and one logarithmic radial units before
+the end of the $-\lambda$ plateau. Write
+\[
+D(y,\eta)=\frac{1}{2XE(y,\eta)^2}\int_X^\infty E(x,\eta)^2\,dx.
+\]
+\begin{proposition}[Remaining exterior tail]\label{prop:a11-short-tail-new}
+Assume the source's unedited plateau $\ell_b=-\lambda$, followed by
+a one-unit transition with $\ell_b\le0$, a $-1$ hold of length
+$4\log(1/h)$, and a remaining tail with $\ell_b\le-3h/4$.
+For every point of either support,
+\[
+D_b(y)\le\frac{93}{40}+\frac{h^7}{3}.
+\]
+If $E_c=E_b(1+u)$ and $|u|\le\delta<1$ at every later radius,
+then
+\[
+D_c\le\left(\frac{1+\delta}{1-\delta}\right)^2
+ \left(\frac{93}{40}+\frac{h^7}{3}\right).
+\]
+For $0<\lambda\le1/20$, $h\le\lambda/100$ and
+$\delta=40960\lambda^{28}$ this is strictly less than $233/100$.
+\end{proposition}
+\begin{proof}
+Use $D_b=\frac12\int_0^\infty
+\exp(2\int_0^v\ell_b(y+t)dt)\,dv$.
+The remainder of the plateau is at most $63/20$ units and
+contributes at most $63/40$; the next transition contributes
+$1/2$. The $-1$ hold contributes at most $1/4$ and reduces
+the energy factor by $h^8$. Its remaining tail contributes
+at most $h^8/(3h)=h^7/3$.
+The corrected-to-base kernel ratio lies in
+$[((1-\delta)/(1+\delta))^2,
+((1+\delta)/(1-\delta))^2]$.
+Finally $\delta<10^{-31}$ and the explicit rational bound
+$(1+8/10000)(93/40+1/1000)<233/100$ completes the proof.
+\end{proof}
+
+\begin{theorem}[Improved conditional A.11 axial stress and cone]
+\label{thm:a11-short-tail-new}
+Assume the genuine source moment and pressure gauges
+$S(\infty)=0$, $\Pi(\infty)=0$, together with
+$|c_i|\le192\lambda^{28}$,
+$|\partial_\eta c_i|\le12\lambda^{28}$,
+the source bump sup bounds, nonpositive corrected future slopes,
+and $E_c\le\lambda/4$ throughout the two supports.
+For $0<\lambda\le1/20$ and $0<h\le\lambda/100$,
+\[
+\frac{|N_s|}{E_c}<\frac{51}{200}\lambda<\frac{\lambda}{2},
+\qquad \frac{\lambda}{2}-\frac{|N_s|}{E_c}>
+ \frac{49}{200}\lambda.
+\]
+If additionally $Q_s\ge\lambda/2$,
+$-3\lambda/2\le\ell_c\le-\lambda/2$ and $X\ge9/\lambda$,
+then with $a=2-2\ell_c$,
+$p_1=XQ_s/(1-2h\eta^2)$ and $w=N_s/(E_cQ_s)$,
+\[
+2(1-a/p_1)^2-(a-2)w^2\ge
+\frac{92197}{200000}>\frac9{20}.
+\]
+\end{theorem}
+\begin{proof}
+The exact source stress-tail identity (4.16) gives
+\[
+\frac{|N_s|}{E_c}\le E_c\{
+4hD_c+4AP_c+2\varepsilon(D_c+P_c)\},
+\quad A=\tfrac12+h,\quad
+\varepsilon=\frac{2560\lambda^{28}}{1-\delta},
+\]
+where $P_c=-\Pi/E_c^2$. The future slope ensures
+$0\le P_c\le1/2$. The proposition gives $D_c<233/100$,
+so $4hD_c<1/200$, $4AP_c\le1001/1000$ and
+$2\varepsilon(D_c+P_c)<1/200$.
+The bracket is smaller than $51/50$, yielding the first
+strict margin. For the cone,
+$|w|\le51/100$, $a\le43/20$, and $p_1\ge9/2>2a$.
+Thus its left side is at least
+$1/2-(3/20)(51/100)^2=92197/200000$.
+\end{proof}
+These are conditional source-stage inequalities, not a certified
+numerical realization of an entire Appendix-A parameter tuple.
+They do not check the other stress-cone stages, Appendix B's
+contraction, unforced startup equations, or a zero-force physical
+Navier--Stokes residual. The originating OpenAI theorem includes
+smooth external forcing.
