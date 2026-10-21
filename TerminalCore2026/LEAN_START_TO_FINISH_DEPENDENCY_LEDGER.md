@@ -65,3 +65,38 @@ Appendix-A stage, sound interval ODE continuation, an actual
 source stress-cone proof, Appendix-B contraction, distinct n=1,2
 unforced systems, and physical residual zero.
 **No full Lean proof of proposed unforced Theorem 1.1 is claimed.**
+
+
+## Update: first actual formula-derived pulse cells (21 October 2026)
+
+- [x] Algebraic derivation of the fixed A.5 smooth step and its
+  first xi derivative, plus exact zero eta jets for R0 alone.
+- [x] Rational Taylor/geometric-exp bounds and monotone 16-panel
+  quadrature with a written analytic enclosure proof.
+- [x] 40 source-derived rectangles covering xi=[0,13],
+  eta=[-1,1], with 2^-120 positive containment guard and
+  strict R0>=99/100 on [1,10].
+- [x] Fail-closed exact rational replay and eight negative
+  controls in the local proof packet (GitHub equivalent checks
+  supplied). Mathematical field scope is only fixed pulse.
+- [ ] Formalize sigma (including flat endpoints), its derivative,
+  exponential remainder bounds, phi integration, R0 and source
+  interval soundness in Lean; current scalar lemmas are insufficient.
+- [ ] Freeze one valid Appendix-A tuple and independently derive
+  first eta jets for actual A.9/A.11 corrected source coefficients.
+- [ ] Supply source-backed ten-state ODE cells for E,U,M,J,S,Pi
+  and their eta derivatives, not synthetic assumed bounds.
+- [ ] Verify Q_s,N_s, e_Q,e_N and every strict physical stress
+  margin for every closed pulse cell with the necessary cancellation
+  precision (centerline may require ~1e-24 absolute control).
+- [ ] Verify the complete exterior transitions, terminal
+  stress-cone and pressure gauge under that same parameter tuple.
+- [ ] Establish Appendix-B nonlinear contraction, separate
+  n=1,2 UNFORCED corrections, all-order recurrence, PDE residual,
+  axis regularity and exact theorem statement.
+- [ ] Complete kernel verification of every analytic and physical
+  implication; examine #print axioms and absence of sorry/axiom.
+
+**External result:** rigorously derived fixed-pulse source
+enclosures and replayable cell certificates, not a new
+unforced Navier–Stokes singularity or end-to-end Lean proof.
