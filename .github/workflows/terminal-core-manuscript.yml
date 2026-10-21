@@ -37,6 +37,7 @@ on:
       - 'TerminalCore2026/A11_Final_Rational_Stress_Gate_20261021_Insert.tex'
       - 'TerminalCore2026/A11_Full_Patch_Gap_20261021_Insert.tex'
       - 'TerminalCore2026/A11_Terminal_Parity_And_Improved_Tail_20261021_Insert.tex'
+      - 'TerminalCore2026/A11_Terminal_Gauge_and_Tail_20261021_Insert.tex'
       - 'TerminalCore2026/Source_A11_Azimuthal_Moment_Correction_Insert.tex'
       - 'TerminalCore2026/A11_Derivatives_and_Explicit_Terminal_Stop_Insert.tex'
       - 'TerminalCore2026/A11_Cone_Certificate_Insert.tex'
