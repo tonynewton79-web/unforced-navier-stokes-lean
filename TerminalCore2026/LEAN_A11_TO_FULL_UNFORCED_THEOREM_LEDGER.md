@@ -213,3 +213,55 @@ Lean kernel proof of those complete mathematical statements.
 
 The originating published global theorem uses forcing; this programme
 has NOT produced an unforced finite-time blowup theorem.
+
+
+## 21 October 2026 — A.19 exact-root derivative and entire A.11 hull bridge
+
+**New logical result:** Let the complete source A.19 moment residual
+include the actual, jointly corrected A.11 amplitudes. If the true
+amplitude branch A(eta) is C1 and solves the exact full residual
+F(A(eta),eta)=0 for all eta, then the required TOTAL derivative is
+F_A A_eta+F_eta=0 identically. This is not an estimate of F_eta at
+fixed A and DOES NOT follow from merely |F| being small. The even
+counterexample 1e-5*cos(1e5 eta) has small value but derivative
+size one.
+
+If, independently, the source's prescribed terminal pressure gauge
+Pi(infinity,eta)=0 holds for the SAME corrected exterior, both terminal
+defect contributions to N_s/E vanish. Then only the full future-tail
+kernel remains. This is an exact mathematical reduction, but the
+actual C1 root and source gauge have not been authenticated.
+
+**Full hull including gap:** The two sigma-prime correction supports
+have total measure 3/5 while their convex hull has length 23/10
+and gap length 17/10. The exact parameter-normalization cancellation
+gives the future-support integral for
+2*g*(D-P)+D_eta-P_eta at every point of this hull, including the gap.
+The future derivative support is still at most 3/5.
+The uncorrected plateau ODEs for D_b and P_b are autonomous, so
+their extrema on the hull are endpoint values. IMPORTANT: **both**
+endpoint D_b bounds must be independently established; monotonicity
+alone and a left-end bound are insufficient.
+Under the earlier coefficient jets, baseline slopes, both endpoint
+tail bounds, amplitude E<=lambda/4, same-profile C1 A.19 root
+and pressure gauge, the revised theorem proves uniformly
+  |N_s|/E < (503/2000)*lambda < lambda/2,
+with strict slack > (497/2000)*lambda.
+
+**New artefacts:**
+- A11_Exact_Root_Entire_Hull_Bridge_20261021_Insert.tex: conditional
+  mathematical theorem integrated in the cumulative manuscript.
+- A11GapTerminalBridge.lean: finite derivative-zero and scalar
+  inequality Lean candidates only; must be kernel checked.
+- a11_root_hull_bridge_exact.py: SymPy and Fraction regression;
+  does not verify source intervals.
+- Standalone companion PDF/LaTeX and strict fail-closed
+  certification checker sent separately in the research packet.
+
+**Full unforced proof remains open** at source parameter freeze,
+corrected terminal moment and pressure gauges, future-tail endpoint
+authentication, global stress cone (all remaining stages),
+Appendix B nonlinear profile, n=1,2 unforced corrections,
+normal convergence, Cartesian zero-force PDE and independent
+Lean/mathlib verification. The original OpenAI global
+Navier--Stokes theorem includes forcing.
