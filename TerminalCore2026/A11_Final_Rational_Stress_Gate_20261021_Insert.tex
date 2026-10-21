@@ -1,0 +1,81 @@
+\subsection*{A source-gated final A.11 ratio and an integration-data obstruction}
+\label{subsec:a11-source-gated-ratio-20261021}
+On both A.11 correction supports the source has $U=M=J=0$.
+Its exact stress identity (4.16) consequently reads
+\[
+N_s=\frac{4h\eta S-(1-\eta^2)S_\eta}{X}
++4A\eta\Pi-(1-\eta^2)\Pi_\eta,\qquad A=\tfrac12+h.
+\]
+The formulas
+$S=\frac12\int_X^\infty E^2\,dx$ and
+$\Pi=-\frac12\int_X^\infty E^2\,dx/x$
+require, respectively, the true source conditions
+$S(\infty)=\Pi(\infty)=0$. They are not implied by the
+two A.11 moment-correction equations alone.
+With $D_s=S/(XE^2)$, $P_s=-\Pi/E^2$, nonpositive
+future logarithmic slopes and
+$\sup_{x\ge X}|\partial_\eta\log E(x,\eta)|\le\varepsilon$,
+the source identities yield
+\[
+0\le P_s\le\tfrac12,\qquad
+|N_s|/E\le E\{4hD_s+4AP_s+2\varepsilon(D_s+P_s)\}.
+\]
+\begin{proposition}[Sharpened exact-rational sufficient stress gate]
+\label{prop:a11-final-gate-20261021}
+Suppose on BOTH complete A.11 supports and every $|\eta|\le1$
+that the above genuine source tails hold and
+\[
+0<\lambda\le\tfrac1{20},\quad0<h\le\lambda/100,\quad
+0<E\le\lambda/4,\quad0\le D_s\le233/100,\quad
+0\le P_s\le1/2,\quad
+\varepsilon\le\frac{2560\lambda^{28}}{1-40960\lambda^{28}}.
+\]
+Then $|N_s|/E<(503/2000)\lambda<\lambda/2$.
+If also $Q_s\ge(49/50)\lambda$, $X\ge9/\lambda$,
+$-3\lambda/2\le\ell\le-\lambda/2$ and
+$0<L=1-2h\eta^2\le1$, then with
+$a=2-2\ell$, $p_1=XQ_s/L$ and $w=N_s/(EQ_s)$,
+\[
+2(1-a/p_1)^2-(a-2)w^2>
+\frac{85676973}{76832000}>\frac9{20}.
+\]
+\end{proposition}
+\begin{proof}
+The tail bracket is bounded by
+\[
+\frac{233}{50000}+1+\frac1{1000}
++\frac{283}{50}\frac{2560\,20^{-28}}{1-40960\,20^{-28}}
+<\frac{503}{500}.
+\]
+Multiplication by $E\le\lambda/4$ proves the first claim.
+The other hypotheses give
+$|w|<503/1960$, $p_1\ge441/50$ and
+$2\le a\le43/20$, so $a/p_1<1/4$.
+The displayed cone bound follows from
+$2(3/4)^2-(3/20)(503/1960)^2
+=85676973/76832000$.
+\end{proof}
+\begin{proposition}[Why terminal normalization is indispensable]
+\label{prop:a11-gauge-obstruction-20261021}
+The A.11 bump equations alone do not imply any uniform
+bound on $|N_s|/E$ unless the source's accumulated moment
+and pressure data are fixed. Formally replacing
+$S$ by $S+C_S(\eta)$ and $\Pi$ by $\Pi+C_\Pi(\eta)$
+changes $N_s$ by
+\[
+\Delta N_s=
+\frac{4h\eta C_S-(1-\eta^2)C_S'}{X}
++4A\eta C_\Pi-(1-\eta^2)C_\Pi'.
+\]
+For $C_S=K\eta$, $C_\Pi=0$, this becomes
+$\Delta N_s(0)=-K/X$, unbounded as $|K|\to\infty$.
+\end{proposition}
+This algebraic separation is NOT a counterexample to the
+complete source, whose moments and pressure have fixed physical
+integral definitions. It proves why genuine terminal gauges and
+one independently authenticated A.11 interval covering are
+necessary proof inputs. The strict arithmetic gate alone
+does not certify any actual source tuple, full exterior cone,
+Appendix-B contraction, unforced startup system or
+Theorem~1.1. The accompanying finite Lean statements likewise
+do not formalize the source integral/PDE arguments.
