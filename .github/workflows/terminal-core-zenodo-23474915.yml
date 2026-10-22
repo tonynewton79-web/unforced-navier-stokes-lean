@@ -193,6 +193,8 @@ jobs:
         run: lake env lean TerminalCore2026/A11A19CoupledScalar.lean
       - name: Check A11 pressure integral equality and terminal gauge implications
         run: lake env lean TerminalCore2026/A11PressureIntegralGate.lean
+      - name: Check signed heat-pressure and energy no-go scalar gates
+        run: lake env lean TerminalCore2026/A7HeatPressureScalar.lean
       - name: Kernel-check source-fixed A10/A11 scalar implications
         run: lake env lean TerminalCore2026/A11SourceFixedStageScalar.lean
       - name: Independent exact-equation tests
@@ -231,6 +233,7 @@ jobs:
           python TerminalCore2026/outer_pressure_measure_B2_exact.py
           python -m pip install mpmath
           python TerminalCore2026/verify_a11_pressure_source.py
+          python TerminalCore2026/a7_heat_pressure_exact.py
           python TerminalCore2026/stagewise_source_checks.py
           python TerminalCore2026/outer_schedule_enclosure.py
           python TerminalCore2026/pulse_moment_exact.py
