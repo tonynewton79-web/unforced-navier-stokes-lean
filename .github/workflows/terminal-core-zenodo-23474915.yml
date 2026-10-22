@@ -191,6 +191,8 @@ jobs:
         run: lake env lean TerminalCore2026/A11MovingPlateauJetScalar.lean
       - name: Check coupled A11 A19 scalar identities
         run: lake env lean TerminalCore2026/A11A19CoupledScalar.lean
+      - name: Check A11 pressure integral equality and terminal gauge implications
+        run: lake env lean TerminalCore2026/A11PressureIntegralGate.lean
       - name: Kernel-check source-fixed A10/A11 scalar implications
         run: lake env lean TerminalCore2026/A11SourceFixedStageScalar.lean
       - name: Independent exact-equation tests
