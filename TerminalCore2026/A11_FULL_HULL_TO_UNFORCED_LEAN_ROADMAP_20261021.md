@@ -50,3 +50,37 @@ genuine c_i/eta-jet source authentication, Q_s/ell/X throughout
 the full corrected hull, stress cone on other stages, Appendix B
 contraction, unforced n=1,n=2, zero physical residual, and an
 entire trusted Lean/mathlib proof.
+
+
+## 22 October 2026 — Terminal-gauge interval acceptance gate
+
+For the same corrected A.11 profile, let C_S=S(infinity,eta) and
+C_Pi=Pi(infinity,eta). Exact source (4.16) says
+DeltaNs=(4h eta C_S-(1-eta²)C_S')/X
+       +4A eta C_Pi-(1-eta²)C_Pi'.
+
+On the complete 23/10 hull, assuming the previous conditional
+zero-gauge bound sup |Ns0|/E < 11lambda/10000,
+0<lambda<=1/100, E=E0(1+u), sup|u|<=a<=1/1000,
+E0(yL)=E_star>0, the source interval condition
+
+  (4h||C_S||+||C_S'||)/X_L +
+  4A||C_Pi||+||C_Pi'|| <= (1-a)E_star lambda/400
+
+ensures sup |Ns|/E < 111lambda/10000, with slack below
+lambda/2 exceeding 4889lambda/10000. Under the certified
+Qs, slope, X and L bounds in the accompanying addendum the
+normalized strict cone margin is >1124/1000.
+
+**A11TerminalGaugeRobust.lean** proves arithmetic transfer under
+premises; it does not formalize source integrals, the nonlinear
+A.11 moment root, full external stress, or the physical Navier-Stokes
+equations. **a11_terminal_gauge_robust_exact.py** performs exact
+rational regression with adversarial missing-gauge controls.
+CI success must be explicitly confirmed, not inferred.
+
+**Remaining:** one authenticated parameter dataset, same-profile
+C¹ terminal interval enclosures, all exterior cone patches, Appendix
+B fixed point, unforced startup/source identities, full analytic
+recurrence, differentiated zero-force PDE and complete Lean theorem.
+The originating OpenAI whole-space result has smooth forcing.
