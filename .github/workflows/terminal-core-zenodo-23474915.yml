@@ -167,6 +167,8 @@ jobs:
         run: lake env lean TerminalCore2026/A11ExplicitProfileSizeScalar.lean
       - name: Kernel check A11 robust terminal gauge scalar implications
         run: lake env lean TerminalCore2026/A11TerminalGaugeRobust.lean
+      - name: Kernel check A11 exact terminal residual algebra
+        run: lake env lean TerminalCore2026/A11TerminalResidualScalar.lean
       - name: Independent exact-equation tests
         run: |
           python -m pip install sympy
@@ -250,3 +252,4 @@ jobs:
           python TerminalCore2026/a11_explicit_profile_size_exact.py
           python TerminalCore2026/a11_source_local_future_exact.py
           python TerminalCore2026/a11_terminal_gauge_robust_exact.py
+          python TerminalCore2026/a11_terminal_residual_exact.py
