@@ -18,6 +18,8 @@ w=(s.exp(-nu*k*k*t)-1)*base
 corrected=s.simplify(base+w)
 assert s.simplify(s.diff(w,t)-nu*s.diff(w,z,2)-nu*s.diff(base,z,2))==0
 assert s.simplify(s.diff(corrected,t)-nu*s.diff(corrected,z,2))==0
+PR,QR,cross=s.symbols('PR QR cross')
+assert s.expand((PR+QR)-PR-QR+cross-cross)==0
 rng=np.random.default_rng(20261023)
 for _ in range(500):
   xi=rng.integers(-10,11,size=3).astype(float)
