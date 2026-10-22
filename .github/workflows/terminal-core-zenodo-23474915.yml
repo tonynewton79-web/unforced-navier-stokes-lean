@@ -185,6 +185,8 @@ jobs:
           echo "PASS: missing authentic source produces HOLD exit=2"
       - name: Kernel-check extra A11 source-gate arithmetic
         run: lake env lean TerminalCore2026/A11FullSourceGateScalar.lean
+      - name: Kernel-check A11 two-coordinate interval-net and strict margin
+        run: lake env lean TerminalCore2026/A11RectangularNetScalar.lean
       - name: Independent exact-equation tests
         run: |
           python -m pip install sympy
