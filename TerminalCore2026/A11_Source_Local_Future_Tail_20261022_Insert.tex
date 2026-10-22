@@ -1,0 +1,74 @@
+\subsection*{Source-local stress without a separate future-tail input (22 October 2026)}
+Let \(y\) denote the source's logarithmic radial coordinate and let the unedited azimuthal profile \(E_0(y)\) be independent of \(\eta\) on and after the A.11 hull of length \(23/10\). The actual two-bump correction has
+\(E=E_0g\), \(g=1+\sum_{i=1}^2 c_i(\eta)\beta_i(y)\).
+Since the prescribed supports are disjoint and
+\(\|\beta_i\|_\infty\le640/3\), put
+\(a=(640/3)\max_i\|c_i\|_\infty\) and
+\(b=(640/3)\max_i\|\partial_\eta c_i\|_\infty\).
+Then \(|g-1|\le a\), \(|g_\eta|\le b\), including on the intervening gap.
+
+Under the \emph{exact same-profile} terminal gauges
+\(S(\infty,\eta)=\Pi(\infty,\eta)=0\), source (4.16) reads
+\[
+N_s=2\eta(hF_1-AF_0)-\tfrac{1-\eta^2}{2}
+\partial_\eta(F_1-F_0),\quad A=\tfrac12+h,
+\]
+with \(F_0=\int_y^\infty E(v)^2\,dv\) and
+\(F_1=\int_y^\infty e^{v-y}E(v)^2\,dv\).
+The prescribed future slopes give
+\(\ell_0=\partial_y\log(\sqrt X E_0)\le0\) and
+\(F_{1,0}/E_0(y)^2\le93/20+2h^7/3<5\);
+also \(F_{0,0}/E_0(y)^2\le1\).
+Crucially \(E_0\) is independent of \(\eta\) on the entire future;
+thus \(\partial_\eta(F_1-F_0)\) is supported only between
+the current point and the right A.11 support edge, and
+\[
+|\partial_\eta(F_1-F_0)|
+\le2(1+a)b E_0(y)^2
+\int_0^{23/10}(1-e^{-t})dt
+\le(46/10)(1+a)bE_0(y)^2.
+\]
+Consequently the complete closed hull satisfies
+\begin{equation}\label{eq:A11new-tail}
+\sup_{y,\eta}\frac{|N_s|}{E}
+\le\frac{E_*}{1-a}
+\left[2(1+a)^2(A+5h)+(23/10)(1+a)b\right],
+\quad E_*=\sup_{\mathrm{hull}}E_0.
+\end{equation}
+This retains the angular derivative, and requires no isolated
+numerical future-tail \(N_s/E\) input.
+
+The source stage order yields
+\(E_*\le e^{47/40}P_*e^{-T_d/2}\lambda^{45}
+e^{-13/(2\lambda)}
+<8P_*e^{-T_d/2}\lambda^{45}e^{-13/(2\lambda)}\).
+After choosing the already source-permitted small parameter
+\[
+0<\lambda\le\min\{1/100,[100(1+\log P_*)]^{-1}\},
+\qquad 0<h\le\lambda/100,
+\]
+this implies \(E_*<\lambda/1000\). If the authentic A.11 root and
+parameter derivative have been independently verified to obey
+\(|c_i|\le2\lambda^{28}\),
+\(|c_{i,\eta}|\le\lambda^{28}\),
+then \(a,b<1/1000\) and
+\[
+\frac{2(1001/1000)^2(2503/5000)
+ +(23/10)(1001/1000)(1/1000)}{999/1000}
+=\frac{2513764253}{2497500000}<\frac{11}{10}.
+\]
+Equation \eqref{eq:A11new-tail} therefore proves
+\[
+\sup_{\mathrm{entire\ A.11\ hull},|\eta|\le1}|N_s|/E
+<11\lambda/10000<\lambda/500<\lambda/2.
+\]
+
+\paragraph{Dependency boundary.}
+This improves the \emph{conditional} whole-hull stress theorem,
+but the authentic moment root and exact same-profile infinity
+\(S,\Pi\) gauges remain prerequisites. It does not certify all
+exterior stress patches, Appendix-B nonlinear contraction,
+the unforced similarity-order startup equations or the physical
+PDE. The originating OpenAI whole-space construction has forcing.
+The complete proof with definitions, integration and source
+references is in the standalone 22 October addendum.
