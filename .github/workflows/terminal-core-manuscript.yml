@@ -75,6 +75,7 @@ on:
       - 'TerminalCore2026/A11_Interval_Net_and_Release_Margin_20261022_Insert.tex'
       - 'TerminalCore2026/A11_Transport_Jet_Reduction_20261022_Insert.tex'
       - 'TerminalCore2026/A11_A10_Exact_Fixed_Stage_Closure_20261022_Insert.tex'
+      - 'TerminalCore2026/A11_A19_Coupled_Gauge_Edition_V_20261022_Insert.tex'
       - '.github/workflows/terminal-core-manuscript.yml'
   workflow_dispatch:
 
