@@ -22,7 +22,6 @@ theorem projected_startup_dual
     (hpressure : gradientPair = 0)
     (hjet : initialJet = -projectedPair) :
     initialJet = -backgroundPair := by
-  rw [hsplit, hpressure] at *
   linarith
 
 theorem first_step_abstract_remainder_budget
