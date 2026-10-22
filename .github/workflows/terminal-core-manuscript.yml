@@ -81,6 +81,7 @@ on:
       - 'TerminalCore2026/N1_First_Order_Collar_Obstruction_Edition_VIII_20261022_Insert.tex'
       - 'TerminalCore2026/N1_Swirl_Compatibility_Edition_IX_20261022_Insert.tex'
       - 'TerminalCore2026/N1_Coupled_Vorticity_Edition_X_20261022_Insert.tex'
+      - 'TerminalCore2026/N1_Pressure_Free_Witness_Edition_XI_20261023_Insert.tex'
       - '.github/workflows/terminal-core-manuscript.yml'
   workflow_dispatch:
 
