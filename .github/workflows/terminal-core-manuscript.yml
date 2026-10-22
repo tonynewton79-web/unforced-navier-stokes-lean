@@ -83,6 +83,7 @@ on:
       - 'TerminalCore2026/N1_Coupled_Vorticity_Edition_X_20261022_Insert.tex'
       - 'TerminalCore2026/N1_Pressure_Free_Witness_Edition_XI_20261023_Insert.tex'
       - 'TerminalCore2026/N1_Nonflat_Startup_Edition_XII_20261023_Insert.tex'
+      - 'TerminalCore2026/N1_Projected_Stokes_First_Step_Edition_XIII_20261023_Insert.tex'
       - '.github/workflows/terminal-core-manuscript.yml'
   workflow_dispatch:
 
