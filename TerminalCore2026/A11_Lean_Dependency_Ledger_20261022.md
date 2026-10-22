@@ -44,3 +44,37 @@ Still absent: a jointly admissible numerical corrected profile, actual alpha
 and beta, independently validated full-hull zero-gauge source bound and
 stress patches, nonlinear Appendix B profile, unforced startup hierarchy,
 physical PDE residual and Theorem 1.1. Do not promote the theorem.
+
+
+## Cumulative continuation: two-coordinate interval-net release gate (22 October 2026)
+
+The full A.11 support-and-gap hull is indexed by both pulse coordinate `y` and
+angular parameter `eta`. The previous 1D eta-only Bernstein/fixed-y
+Lipschitz tests are legitimate scalar tools, but do **not** cover the
+physical 2D hull on their own.
+
+A new source-conditional theorem uses a finite rectangular covering with
+radii `r_y,r_eta` and validated coordinatewise Lipschitz envelopes for
+`E`, `G_plus=lambda E+2Ns` and `G_minus=lambda E-2Ns`.
+At each grid node the energy must exceed a strictly positive reserve, and
+both signed stress expressions must exceed their 2D derivative-remainder
+budgets. This implies `E>0` and `|Ns|/E<=lambda/2` uniformly over the hull.
+
+A separate exact release margin strengthens the existing
+`b0<=lambda/500` and source-gauge residual lift: if the authentic same-profile
+residual bracket `R<=4979 lambda/10000`, then
+`sup_hull |Ns|/E<=lambda/2-lambda/10000`.
+Neither numerical source premise is claimed true without authenticated
+interval data and total root derivatives.
+
+New source insert:
+`A11_Interval_Net_and_Release_Margin_20261022_Insert.tex`.
+New Lean candidate:
+`A11RectangularNetScalar.lean`.
+The exact-rational local test of the scalar release implication and
+2D affine transfer completed 10,000 trials each, plus three negative
+controls; these are synthetic checks, **not** authentic source evidence.
+GitHub CI must confirm any claim of kernel checking.
+
+Status: **SCALAR_MATHEMATICS_PROVED / AUTHENTIC_SOURCE_HOLD /
+UNFORCED_THEOREM_OPEN**. Do not mark the full theorem solved.
