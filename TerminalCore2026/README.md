@@ -2911,3 +2911,44 @@ pulse/release/hold/terminal cone stages, Appendix B fixed point,
 the distinct UNFORCED n=1,2 hierarchy, and the Cartesian
 PDE residual. Theorem 1.1 remains open; the originating
 OpenAI whole-space theorem has smooth forcing.
+
+
+## A.11 robust terminal-gauge stress certificate (22 October 2026)
+
+New manuscript insert:
+`A11_Terminal_Gauge_Robust_20261022_Insert.tex`.
+
+For the **same corrected source profile**, and only if the previous
+zero-gauge full-hull result is independently authenticated:
+`sup |Ns0|/E<11lambda/10000`, the exact source (4.16) gives
+a certified acceptance tolerance for imperfect terminal moments:
+
+`(4h||S(infty)||+||d_eta S(infty)||)/X_L
+ +4A||Pi(infty)||+||d_eta Pi(infty)|| <=
+       (1-a)E_star lambda/400`,
+
+where the whole 23/10 logarithmic hull has
+`E=E0(1+u)`, `|u|<=a<=1/1000`,
+`E0(yL)=E_star` and `0<lambda<=1/100`.
+Using an exact rational upper bound for `exp(6/5)`, one gets
+`E>(1-a)E_star/4` on BOTH supports AND THE GAP.
+Therefore
+
+`sup |Ns|/E <111lambda/10000`,
+`lambda/2-sup|Ns|/E >4889lambda/10000`.
+
+With certified `Qs>=97lambda/100`, `ell` in
+`[-151lambda/100,-49lambda/100]`, `X>=9/lambda`,
+and `L in (0,1]`, the normalized cone bound is
+`>1124/1000`.
+
+The independent Fraction checker verifies the exact constants and
+an adversarial nonzero terminal-moment witness. The scalar Lean
+candidate `A11TerminalGaugeRobust.lean` is included in CI but
+DOES NOT prove any of the missing source integrals or unforced PDE.
+Latest CI status should be checked before quoting a kernel PASS.
+
+**FAIL CLOSED:** no actual source A.11 small-root/jet dataset, no
+same-profile terminal C¹ residual enclosure, and no complete
+Appendix-A to unforced Theorem 1.1 formal proof have been supplied.
+The original OpenAI whole-space result allows smooth forcing.
