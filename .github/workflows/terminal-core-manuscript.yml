@@ -70,8 +70,10 @@ on:
       - 'TerminalCore2026/A11_Backward_Angular_Endpoint_20261021_Insert.tex'
       - 'TerminalCore2026/A11_Source_Local_Future_Tail_20261022_Insert.tex'
       - 'TerminalCore2026/A11_Terminal_Gauge_Robust_20261022_Insert.tex'
-      - 'TerminalCore2026/A11_Terminal_Gauge_Residual_Lift_20261022_Insert.tex
+      - 'TerminalCore2026/A11_Terminal_Gauge_Residual_Lift_20261022_Insert.tex'
       - 'TerminalCore2026/A11_Explicit_Profile_Size_20261022_Insert.tex'
+      - 'TerminalCore2026/A11_Interval_Net_and_Release_Margin_20261022_Insert.tex'
+      - 'TerminalCore2026/A11_Transport_Jet_Reduction_20261022_Insert.tex'
       - '.github/workflows/terminal-core-manuscript.yml'
   workflow_dispatch:
 
