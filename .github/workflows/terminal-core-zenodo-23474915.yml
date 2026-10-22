@@ -197,6 +197,7 @@ jobs:
         run: |
           python -m pip install sympy
           python TerminalCore2026/a11_moving_endpoint_jet_exact.py
+          python TerminalCore2026/a11_a19_coupled_exact.py
           python TerminalCore2026/a11_source_fixed_stage_exact.py
           python TerminalCore2026/check_equations.py
           python TerminalCore2026/exact_radial_channels.py
