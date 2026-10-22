@@ -68,6 +68,7 @@ on:
       - 'TerminalCore2026/A11_Consolidated_Independent_Audit_20261021_Insert.tex'
       - 'TerminalCore2026/A11_Backward_Angular_Endpoint_20261021_Insert.tex'
       - 'TerminalCore2026/A11_Source_Local_Future_Tail_20261022_Insert.tex'
+      - 'TerminalCore2026/A11_Explicit_Profile_Size_20261022_Insert.tex'
       - '.github/workflows/terminal-core-manuscript.yml'
   workflow_dispatch:
 
