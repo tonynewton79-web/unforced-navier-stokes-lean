@@ -21,14 +21,12 @@ theorem n1_young_scalar (a b : ℝ) :
 theorem n1_curl_radial_source
     (r UwZ : ℝ) (hr : r ≠ 0) :
     r * (2 * UwZ / r) = 2 * UwZ := by
-  field_simp
-  ring
+  field_simp [hr] <;> ring
 
 theorem n1_pressure_radial_source
     (r UwR : ℝ) (hr : r ≠ 0) :
     r * (2 * UwR / r) = 2 * UwR := by
-  field_simp
-  ring
+  field_simp [hr] <;> ring
 
 theorem n1_nonzero_coupling (r x : ℝ)
     (hr : 0 < r) (hx : x ≠ 0) :
