@@ -1,0 +1,66 @@
+\subsection*{Proof Attack 5 (Edition X): compulsory coupled meridional vorticity at order one}
+\label{subsec:n1-coupled-vorticity-edition-X}
+This is an exact diagnostic for an axisymmetric \emph{pure-swirl}
+leading field $u_0=U_0(r,z,t)e_\theta$, and is not a proof that
+the originating exterior source is itself a force-free solution.
+Put $\mathcal L=\partial_{rr}+r^{-1}\partial_r+\partial_{zz}$,
+$\mathcal L_\theta=\mathcal L-r^{-2}$ and perturb by
+$V_r e_r+W e_\theta+V_z e_z$, with pressure increment $\pi$.
+Denote the residual of the \emph{uncorrected} leading field
+by $R^0=(R^0_r,R^0_\theta,R^0_z)$.
+Direct substitution into unforced cylindrical Navier--Stokes yields
+\begin{align*}
+(\partial_t-\nu\mathcal L_\theta)V_r+\pi_r
+&=(2U_0W+W^2)/r-V_rV_{r,r}-V_zV_{r,z}-R^0_r,\\
+(\partial_t-\nu\mathcal L)V_z+\pi_z
+&=-V_rV_{z,r}-V_zV_{z,z}-R^0_z,\\
+(\partial_t-\nu\mathcal L_\theta)W
++V_r(U_{0,r}+U_0/r)+V_zU_{0,z}
+&=-V_rW_r-V_zW_z-V_rW/r-R^0_\theta,\\
+(rV_r)_r+rV_{z,z}&=0.
+\end{align*}
+At linear order in the perturbation, \emph{if} $R^0$ vanishes
+at that order, the first-order meridional vorticity
+$\omega_\theta=V_{r,z}-V_{z,r}$ obeys
+\begin{equation}\label{eq:n1-coupled-vorticity-X}
+\boxed{(\partial_t-\nu\mathcal L_\theta)\omega_\theta
+       =\frac2r\partial_z(U_0W),}
+\end{equation}
+and the pressure obeys
+\begin{equation}\label{eq:n1-pressure-poisson-X}
+\boxed{\mathcal L\pi=\frac2r\partial_r(U_0W).}
+\end{equation}
+These follow by taking the meridional curl and divergence,
+using the exact vector-Laplacian commutator and solenoidality.
+If the leading profile carries a nonzero source residual, its curl
+and divergence must appear on the right side at the correct order,
+rather than being silently discarded.
+
+With $\psi$ the meridional streamfunction,
+$V_r=-\psi_z/r$, $V_z=\psi_r/r$, and
+$\omega_\theta=-[\psi_{rr}-\psi_r/r+\psi_{zz}]/r$.
+This makes explicit the additional elliptic axis and matching
+boundary problem. In the homogeneous linearized system, for a smooth
+base and vanishing energy boundary fluxes, writing
+$\mathsf E=\tfrac12(\|V\|_2^2+\|W\|_2^2)$ gives
+\[
+\mathsf E'(t)+\nu\mathsf D(t)
+=\int W[V_r(U_0/r-U_{0,r})-V_zU_{0,z}]\,dx,
+\quad\mathsf D\ge0.
+\]
+With $M(t)=\|(U_0/r-U_{0,r},-U_{0,z})\|_\infty$,
+$\mathsf E'\le M\mathsf E$; homogeneous data $\mathsf E(0)=0$
+therefore imply $V=W=0$. This is a conditional standard energy
+estimate and does not prohibit \emph{inhomogeneous} collar correction.
+
+Independent SymPy replay passed the cylindrical divergence,
+streamfunction, Laplacian-commutator, pressure-Poisson, curl
+and energy cancellation identities for explicit Gaussian manufactured
+fields, together with 10,000 exact rational Young-inequality tests.
+The manufactured field has $\partial_z(U_0W)|_{z=0}
+=r^2e^{-2r^2-t}\ne0$, a constructive coupling positive control.
+No source-specific true order-one force-free correction,
+nonlinear fixed point, all-order convergence, or physical
+zero-forcing theorem has been established.
+The associated Lean file verifies finite algebraic scalar
+consequences only, subject to actual kernel compilation.
