@@ -78,6 +78,7 @@ on:
       - 'TerminalCore2026/A11_A19_Coupled_Gauge_Edition_V_20261022_Insert.tex'
       - 'TerminalCore2026/A11_Pressure_Gauge_Source_Closure_Edition_VI_20261022_Insert.tex'
       - 'TerminalCore2026/A7_Heat_Pressure_Compensation_Edition_VII_20261022_Insert.tex'
+      - 'TerminalCore2026/N1_First_Order_Collar_Obstruction_Edition_VIII_20261022_Insert.tex'
       - '.github/workflows/terminal-core-manuscript.yml'
   workflow_dispatch:
 
