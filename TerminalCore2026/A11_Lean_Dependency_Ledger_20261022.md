@@ -78,3 +78,41 @@ GitHub CI must confirm any claim of kernel checking.
 
 Status: **SCALAR_MATHEMATICS_PROVED / AUTHENTIC_SOURCE_HOLD /
 UNFORCED_THEOREM_OPEN**. Do not mark the full theorem solved.
+
+
+## Moving-endpoint A.11 coefficient/root jet reduction (22 October 2026, Edition III)
+
+The source-prescribed two-moment system is differentiated using its full
+nonlinear Jacobian, not the linearized coefficients alone. On the
+previously established small branch, the matrix perturbation obeys
+`||B11^{-1} DQ(c)|| < 184320 lambda^28 < 1/4` for `lambda<=1/20`.
+Thus `||c_eta||_infty <= 2 |Delta_I_eta|`.
+
+When the source plateau endpoints `a(eta), b(eta)` move, the correct
+identity is
+`Delta_I_eta = -exp(-(1-lambda)L) [D_eta r(a(eta),eta) - (1-lambda)L_eta(r(a(eta),eta)-1/(1-lambda))]`,
+with `L=b-a`. In particular, the total derivative of the entrance
+value includes the chain-rule term `a_eta r_y`.
+
+**Conditional strengthened root bounds.** Suppose source-justified
+`0<=r(a,eta)<=20/17`,
+`L>=30 log(1/lambda)-3`,
+`|D_eta r(a(eta),eta)|<=1/4`, and `|L_eta|<=1/8` hold
+uniformly with a single fixed lambda in `(0,1/20]`. Then
+`||c||<=315/19 lambda^28<17 lambda^28` and
+`||c_eta||<=609/152 lambda^28<5 lambda^28`.
+The stronger values satisfy earlier conditional A.11 full-hull gates
+which requested `54 lambda^28` and `6 lambda^28` respectively.
+
+**HOLD:** The real source profile has not yet been shown to satisfy the
+`1/4` total entrance derivative and `1/8` moving-plateau derivative
+bounds. The separate A.19 amplitude root and same-profile terminal
+pressure/swirl gauges, other pulse/exterior stress cones, Appendix B,
+unforced startup, physical zero-force residual and final Lean theorem
+remain open. The exact-rational/symbolic verification is synthetic.
+`A11MovingPlateauJetScalar.lean` contains only conditional scalar facts
+and must be checked by a completed Lean run.
+
+Files: `A11_Transport_Jet_Reduction_20261022_Insert.tex`,
+`A11MovingPlateauJetScalar.lean`,
+`a11_moving_endpoint_jet_exact.py`.
