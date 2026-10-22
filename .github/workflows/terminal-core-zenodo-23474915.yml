@@ -203,6 +203,8 @@ jobs:
         run: lake env lean TerminalCore2026/N1CoupledVorticityScalar.lean
       - name: Check pressure-independent collar witness scalar lemmas
         run: lake env lean TerminalCore2026/N1PressureFreeWitnessScalar.lean
+      - name: Check nonflat startup finite scalar lemmas
+        run: lake env lean TerminalCore2026/N1NonflatStartupScalar.lean
       - name: Kernel-check source-fixed A10/A11 scalar implications
         run: lake env lean TerminalCore2026/A11SourceFixedStageScalar.lean
       - name: Independent exact-equation tests
@@ -246,6 +248,7 @@ jobs:
           python TerminalCore2026/n1_swirl_meridional_exact.py
           python TerminalCore2026/verify_n1_coupled_vorticity.py
           python TerminalCore2026/verify_n1_pressure_free_witness_exact.py
+          python TerminalCore2026/verify_n1_nonflat_start_exact.py
           python TerminalCore2026/stagewise_source_checks.py
           python TerminalCore2026/outer_schedule_enclosure.py
           python TerminalCore2026/pulse_moment_exact.py
