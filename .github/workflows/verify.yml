@@ -39,6 +39,12 @@ jobs:
       - name: Compile abstract closure source
         run: lake env lean UnforcedClosure.lean
 
+      - name: Compile conditional A.11 Bernstein stress-cone lemmas
+        run: lake env lean A11BernsteinCone.lean
+
+      - name: Compile conditional A.11 Lipschitz-net lemmas
+        run: lake env lean A11LipschitzCone.lean
+
       - name: Build local Lake target
         run: lake build
 
