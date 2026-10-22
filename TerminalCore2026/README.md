@@ -2865,3 +2865,49 @@ the distinct unforced startup coefficient systems, the
 unforced physical Navier--Stokes residual and the proposed
 Theorem 1.1 remain OPEN. The OpenAI published whole-space
 construction is forced.
+
+
+## 22 October 2026: Source-local A.11 future-tail theorem
+
+The cumulative manuscript now imports
+`A11_Source_Local_Future_Tail_20261022_Insert.tex`. Its
+source-local proof retains the parameter-derivative term in
+the exact 4.16 future-integral formula and applies to both
+actual A.11 correction supports **and the intervening gap**.
+
+If the same corrected source has authentic A.11 root jets
+`|c_i|<=2lambda^28`, `|d_eta c_i|<=lambda^28`,
+the exact S/Pi infinity gauges, and the original prescribed
+negative-slope future stages, the whole-hull estimate is
+
+`|Ns|/E <= E_star/(1-a) * [2(1+a)^2*(A+5h)
+                                  + (23/10)*(1+a)*b]`,
+`a=(640/3)max|c_i|`, `b=(640/3)max|d_eta c_i|`.
+
+An explicit sequential small choice
+`0<lambda<=min(1/100, 1/[100(1+log Pstar)])`,
+`0<h<=lambda/100`
+makes the actual *unedited* stage amplitude
+`E_star<8Pstar exp(-Td/2)lambda^45 exp(-13/(2lambda))
+       <lambda/1000`.
+The authenticated root jets then give
+`a,b<1/1000`, so the exact rational corner
+coefficient is `2513764253/2497500000<11/10`,
+and `sup_hull |Ns|/E < 11lambda/10000 <lambda/500`.
+This removes the need for an independent numerical
+future-tail N_s bound **once those same-profile inputs are met**.
+
+Finite exact Fraction checks passed; the candidate scalar
+Lean file is `A11SourceLocalTailScalar.lean`.
+The proof dependencies are listed in
+`A11_Lean_Dependency_Ledger_20261022.md`.
+The entire future-integral/ODE statement is NOT yet
+formalized end-to-end in Lean, and CI success must be
+independently confirmed.
+
+**Unresolved:** genuinely joint A.11 and A.19 roots,
+same-profile exact terminal S and pressure gauges, full
+pulse/release/hold/terminal cone stages, Appendix B fixed point,
+the distinct UNFORCED n=1,2 hierarchy, and the Cartesian
+PDE residual. Theorem 1.1 remains open; the originating
+OpenAI whole-space theorem has smooth forcing.
