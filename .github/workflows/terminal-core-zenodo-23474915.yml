@@ -199,6 +199,8 @@ jobs:
         run: lake env lean TerminalCore2026/N1FirstOrderCollarScalar.lean
       - name: Check first-order meridional compatibility scalar lemmas
         run: lake env lean TerminalCore2026/N1MeridionalCompatibilityScalar.lean
+      - name: Check first-order coupled vorticity scalar lemmas
+        run: lake env lean TerminalCore2026/N1CoupledVorticityScalar.lean
       - name: Kernel-check source-fixed A10/A11 scalar implications
         run: lake env lean TerminalCore2026/A11SourceFixedStageScalar.lean
       - name: Independent exact-equation tests
@@ -240,6 +242,7 @@ jobs:
           python TerminalCore2026/a7_heat_pressure_exact.py
           python TerminalCore2026/verify_n1_terminal_collar.py
           python TerminalCore2026/n1_swirl_meridional_exact.py
+          python TerminalCore2026/verify_n1_coupled_vorticity.py
           python TerminalCore2026/stagewise_source_checks.py
           python TerminalCore2026/outer_schedule_enclosure.py
           python TerminalCore2026/pulse_moment_exact.py
