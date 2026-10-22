@@ -7,6 +7,7 @@ on:
     paths:
       - 'TerminalCore2026/Sharp_Weight_Ratio_Manuscript_Update.tex'
       - 'TerminalCore2026/Terminal_Core_Cumulative_Analytic_Amendment.tex'
+      - 'TerminalCore2026/A11_Full_Unforced_Source_Gate_20261022_Insert.tex'
       - 'TerminalCore2026/Four_Block_and_Majorant_Insert.tex'
       - 'TerminalCore2026/CauchyProfileBridge_Insert.tex'
       - 'TerminalCore2026/AnalyticReconstruction_Insert.tex'
