@@ -189,6 +189,8 @@ jobs:
         run: lake env lean TerminalCore2026/A11RectangularNetScalar.lean
       - name: Kernel-check A11 moving-plateau sensitivity scalars
         run: lake env lean TerminalCore2026/A11MovingPlateauJetScalar.lean
+      - name: Check coupled A11 A19 scalar identities
+        run: lake env lean TerminalCore2026/A11A19CoupledScalar.lean
       - name: Kernel-check source-fixed A10/A11 scalar implications
         run: lake env lean TerminalCore2026/A11SourceFixedStageScalar.lean
       - name: Independent exact-equation tests
