@@ -21,3 +21,26 @@ This is a live **dependency ledger**, not a full Lean certificate. The source-lo
 GitHub module A11SourceLocalTailScalar.lean proves only rational scalar gates IF its CI run succeeds. The companion a11_source_local_future_exact.py checks these gates with exact rational arithmetic. Their successful execution is not a proof of the missing infinite-dimensional integral, analytic, or PDE theorems.
 
 The original OpenAI theorem is a forced whole-space Navier–Stokes construction; it does not establish the proposed distinct unforced theorem.
+
+## Update: same-profile terminal residual lift (22 October 2026)
+
+A new analytic implication translates the A.19 normalized residual F and A.11
+pressure-neutrality residual G, including their TOTAL eta derivatives, into
+an exact terminal stress correction. The authentic source zero-gauge
+|N_s|/E<lambda/500 conditional bound transfers to the true stress if
+
+ alpha[(2+4h)|F|_sup+|F_eta|_sup]
+ + beta[(1+2h)|G|_sup+|G_eta|_sup/2] < 249 lambda/500,
+
+where alpha>=sup_hull[K/(XE)], beta>=sup_hull[1/E], K=Xp eb^2 f(eta)^2/lambda.
+The input derivatives must be TOTAL derivatives along one common C1 corrected
+A.11/A.19 root. Exact solutions for all eta make F=F_eta=G=G_eta=0.
+The new fail-closed script checks the rational implication and REFUSES
+missing inputs. Its passing example is synthetic, not an authenticated
+interval source realization. The Lean module formalizes finite scalar
+identities only and is NOT yet kernel certified unless CI succeeds.
+
+Still absent: a jointly admissible numerical corrected profile, actual alpha
+and beta, independently validated full-hull zero-gauge source bound and
+stress patches, nonlinear Appendix B profile, unforced startup hierarchy,
+physical PDE residual and Theorem 1.1. Do not promote the theorem.
