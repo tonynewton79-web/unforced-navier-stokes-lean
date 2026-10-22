@@ -116,3 +116,42 @@ and must be checked by a completed Lean run.
 Files: `A11_Transport_Jet_Reduction_20261022_Insert.tex`,
 `A11MovingPlateauJetScalar.lean`,
 `a11_moving_endpoint_jet_exact.py`.
+
+
+## Edition IV — actual fixed A.10 source stage closes provisional moving-endpoint inputs
+
+The source Appendix A.10 interpolates for a fixed `T_f=512`, followed by an
+`eta`-independent azimuthal plateau of length `30 log(1/lambda)`.
+The two A.11 corrections are centered three and one units before that
+plateau ends, independently of `eta`. Thus `L1_eta=0` exactly,
+not merely `|L1_eta|<=1/8`.
+
+The exact A.10 integrating-factor formula and source smooth-step symmetry
+give `r_f=2 r_p e^(-a Tf)/(1+eta^2)+int_0^Tf e^(-a v)
+(2/(1+eta^2))^sigma(v/Tf) dv`, with `a=1-lambda`.
+The `eta` derivative includes a `sigma(v/Tf)` factor in the integral.
+Finite rational Taylor proofs establish
+`sigma(1/4)<1e-6` and `e^(-a Tf/4)<1e-10`;
+hence `sup |r_f_eta|<3e-6` for `0<lambda<=1/100`
+and source input `0<=r_p<=20/17`.
+The fixed plateau then gives
+`|Delta_I| <= (21/95) lambda^28` and
+`|Delta_I_eta| < 63e-6 lambda^29`.
+Using the existing genuine small A.11 root/Jacobian estimates yields
+`||c|| <= (63/95)lambda^28` and
+`||c_eta|| < lambda^28/100000`.
+
+This specifically closes the TWO provisional Edition III derivative
+**assumptions** for the exact source schedule (subject to the already
+documented earlier stage/moment estimates). It is a strengthening of
+earlier A.10 results in this same cumulative manuscript, not a new global
+Navier-Stokes or A.19 theorem.
+
+Files: `A11_A10_Exact_Fixed_Stage_Closure_20261022_Insert.tex`,
+`A11SourceFixedStageScalar.lean`,
+`a11_source_fixed_stage_exact.py`.
+The separate full profile parameter compatibility, same-profile A.19
+root, S/Pi terminal gauge, all other stress-cone patches,
+Appendix B contraction, unforced startup, physical zero-force PDE
+residual and whole-theorem Lean formalization remain **HOLD/OPEN**.
+New Lean kernel status must be read from completed CI, not inferred.
