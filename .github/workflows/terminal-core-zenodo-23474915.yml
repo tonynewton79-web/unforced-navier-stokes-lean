@@ -169,6 +169,22 @@ jobs:
         run: lake env lean TerminalCore2026/A11TerminalGaugeRobust.lean
       - name: Kernel check A11 exact terminal residual algebra
         run: lake env lean TerminalCore2026/A11TerminalResidualScalar.lean
+      - name: A11 single-source fail-closed proof-audit tests
+        run: |
+          python TerminalCore2026/full_unforced_source_gate.py --self-test
+          python TerminalCore2026/full_unforced_source_gate.py --template > /tmp/unforced_missing_source.json
+          set +e
+          python TerminalCore2026/full_unforced_source_gate.py /tmp/unforced_missing_source.json > /tmp/unforced_hold.log
+          status=$?
+          set -e
+          cat /tmp/unforced_hold.log
+          if [ "$status" -ne 2 ]; then
+            echo "ERROR: unauthenticated source input was not refused"
+            exit 1
+          fi
+          echo "PASS: missing authentic source produces HOLD exit=2"
+      - name: Kernel-check extra A11 source-gate arithmetic
+        run: lake env lean TerminalCore2026/A11FullSourceGateScalar.lean
       - name: Independent exact-equation tests
         run: |
           python -m pip install sympy
