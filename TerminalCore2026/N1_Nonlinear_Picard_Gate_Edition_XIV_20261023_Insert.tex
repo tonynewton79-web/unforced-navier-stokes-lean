@@ -1,0 +1,78 @@
+\subsection*{Proof Attack 9 (Edition XIV): nonlinear projected Picard closure and terminal scaling}
+\label{subsec:n1-XIV-picard}
+Let $u_B\in C([t_0,t_0+T];H^3_\sigma(\mathbb R^3))$ be a
+smooth solenoidal background, with its \emph{complete physical}
+momentum residual $R_B=\partial_tu_B-\nu\Delta u_B+
+(u_B\cdot\nabla)u_B+\nabla p_B\in C_tH^3$.
+Define
+$A=\sup\|u_B\|_{H^3}$, $F=\sup\|\mathbb PR_B\|_{H^3}$.
+Choose a valid tensor-product constant $C_3\ge1$ with
+$\|u\otimes v\|_{H^3}\le C_3\|u\|_{H^3}\|v\|_{H^3}$.
+For the free-space Leray projection $\mathbb P$,
+\[
+\|e^{\nu\tau\Delta}\mathbb P\nabla\cdot Q\|_{H^3}
+\le(2e\nu\tau)^{-1/2}\|Q\|_{H^3}.
+\]
+Set $M=2TF$ and $\gamma=2C_3\sqrt{T/(2e\nu)}$.
+\begin{theorem}[Exact short-time nonlinear unforced closure]
+If
+\begin{equation}\label{eq:XIV-contraction-condition}
+\boxed{\gamma(2A+2M)=
+2C_3\sqrt{\frac{T}{2e\nu}}(2A+4TF)\le\frac12,}
+\end{equation}
+then the projected mild map
+\[
+\mathcal Tw(t)=
+-\int_{t_0}^te^{\nu(t-s)\Delta}\mathbb P R_B(s)\,ds
+-\int_{t_0}^te^{\nu(t-s)\Delta}\mathbb P\nabla\cdot
+(u_B\otimes w+w\otimes u_B+w\otimes w)(s)\,ds
+\]
+has a unique fixed point in the ball
+$\|w\|_{C_tH^3}\le M$, with $w(t_0)=0$.
+The field $u=u_B+w$ solves \emph{the full unforced}
+Navier--Stokes equations in the mild sense on this interval,
+with initial datum $u_B(t_0)$, after reconstructing
+\[
+\nabla\pi=-(I-\mathbb P)
+[R_B+\nabla\cdot(u_B\otimes w+w\otimes u_B+w\otimes w)].
+\]
+For smooth compatible data this is classical for positive times.
+This theorem guarantees no terminal blow-up or exterior matching.
+\end{theorem}
+\begin{proof}
+The heat semigroup and $\mathbb P$ contract on $H^3$, and
+$\int_0^T(2e\nu s)^{-1/2}ds=2\sqrt{T/(2e\nu)}$.
+For $\|w\|\le M$,
+$\|\mathcal Tw\|\le TF+\gamma(2AM+M^2)\le M$.
+For $w,v$ in the same ball,
+$\|\mathcal Tw-\mathcal Tv\|
+\le\gamma(2A+2M)\|w-v\|\le\frac12\|w-v\|$.
+Banach's theorem yields the fixed point. The complementary
+gradient projection determines $\pi$ and eliminates every
+remaining physical momentum-residual component.
+\end{proof}
+\begin{proposition}[Terminal-scale boundary of this sufficient test]
+With $\varepsilon=1-t_0$, $T=\theta\varepsilon$
+for fixed $0<\theta<1$, and authentic two-sided envelopes
+$A_\varepsilon\asymp\varepsilon^{-\alpha}$,
+$F_\varepsilon\asymp\varepsilon^{-\beta}$, the two
+nonnegative contributions to \eqref{eq:XIV-contraction-condition}
+scale as $\varepsilon^{1/2-\alpha}$ and
+$\varepsilon^{3/2-\beta}$. For $\alpha>1/2$ or
+$\beta>3/2$, this particular fixed-fraction sufficient
+criterion eventually fails. Failure of a sufficient criterion
+is \emph{not} nonexistence of an unforced solution.
+\end{proposition}
+The result is a quantitative statement of \emph{classical local
+Navier--Stokes well-posedness}. The Leray projector and heat kernel
+are nonlocal and do not certify retention of the prescribed compact
+collar, pressure/axis matching or source symmetry. Even if
+$\|u_B(t)\|_{H^3}\to\infty$, its singularity is not inherited without
+a single matched correction with
+$\|w(t)\|_{H^3}=o(\|u_B(t)\|_{H^3})$, or an equivalent
+lower bound through $t\uparrow1$. No such result is proved.
+Exact symbolic algebra, 10,000 rational contraction-envelope
+tests, an intentional failed-gate negative control and a
+known decaying-shear positive control passed. The Lean file
+checks only scalar implications; infinite-dimensional semigroup
+and PDE formalization remain OPEN/HOLD.
