@@ -1,0 +1,92 @@
+\subsection*{Proof Attack 11 (Edition XVI): source-exact exterior third radial derivative}
+\label{subsec:editionXVI-exterior-derivative}
+Unlike the Gaussian surrogate in Edition XV, the original OpenAI
+\emph{forced} source gives an exact exterior heat profile in
+Theorem 4.6(v), equation (4.29). Put $\tau=1-t$,
+$A=1/2+h$, $D=1/2-h$, $0<h<1/100$, $X_b<\infty$ and $c_\infty>0$.
+For $X=r^2/(2q)\ge X_b$ the source asserts
+\[
+E(X,\eta)=c_\infty X^{-A}\mathcal H(2(1-\eta^2)/X),\quad
+\mathcal H(Z)=\frac1{\Gamma(1+h)}
+\int_0^\infty e^{-v}v^h(1+Zv)^{-h}dv.
+\]
+Using $\tau=q(1-\eta^2)$ yields the physical axially independent
+exterior swirl
+\[
+u_\theta^{(0)}=c_\infty(r^2/2)^{-A}\mathcal H(4\tau/r^2).
+\]
+With $R=r/\sqrt\tau$ and $f(R)=\tau^Au_\theta^{(0)}$,
+\begin{equation}\label{eq:XVI-mixture}
+\boxed{ f(R)=c_\infty2^A\int_0^\infty
+\frac{e^{-v}v^h}{\Gamma(1+h)}
+\frac{dv}{R(R^2+4v)^h}. }
+\end{equation}
+\begin{proposition}[Strict source-exterior third radial derivative]
+For $a\ge0$, $h>0$, $R>0$ and $g_{a,h}(R)=R^{-1}(R^2+a)^{-h}$,
+\[
+-g'''_{a,h}(R)=\frac{P_h(a,R)}{R^4(R^2+a)^{h+3}}>0,
+\]
+\[
+P_h=6a^3+(6h+18)a^2R^2+(12h+18)aR^4+
+(1+2h)(2+2h)(3+2h)R^6.
+\]
+In particular $f'''(R)<0$ at every exterior rescaled radius.
+\end{proposition}
+\begin{proof}
+Three direct differentiations give the displayed polynomial.
+All its coefficients are positive, and the gamma density in
+\eqref{eq:XVI-mixture} is positive. Dominated differentiation
+on fixed compact $R$ intervals gives strict negativity.
+\end{proof}
+\begin{proposition}[Explicit source-parameter $H^3$ lower bound]
+Fix $\zeta=1/4$ and $b>a\ge2\sqrt{X_b}$, and put
+\[
+m_{a,b}=
+\frac{c_\infty2^Ae^{-1}}{\Gamma(h+2)}
+\frac{(1+2h)(2+2h)(3+2h)a^2}{(b^2+4)^{h+3}}>0.
+\]
+On the physical exterior slab
+$a\le R=r/\sqrt\tau\le b$,
+$|Z|=|z|/\tau^D\le\zeta$,
+$-f'''(R)\ge m_{a,b}$. The genuine \emph{leading field}
+therefore satisfies
+\begin{equation}\label{eq:XVI-source-H3-lower}
+\boxed{\|u^{(0)}(t)\|_{H^3(\mathbb R^3)}
+\ge m_{a,b}\sqrt{\frac{\pi(b^2-a^2)}{12}}\,
+\tau^{-5/4-3h/2}.}
+\end{equation}
+\end{proposition}
+\begin{proof}
+The source relation for $Q=q/\tau$ is
+$Q-Z^2Q^{2h}=1$; on $|Z|\le1/4$ it gives $1\le Q<2$.
+Hence $X=R^2/(2Q)\ge R^2/4\ge X_b$.
+Retain only the last positive term in $P_h$ and integrate
+\[
+\frac1{\Gamma(1+h)}\int_0^1e^{-v}v^h\,dv
+\ge \frac{e^{-1}}{\Gamma(h+2)}.
+\]
+The radial third derivative of physical swirl is
+$\tau^{-A-3/2}f'''(R)e_\theta$; it is a unit-directional
+contraction of the third Cartesian derivative tensor.
+Its square is at most six times the standard sum of
+third-order Cartesian derivative squares. Integrate over
+the slab using $r\,dr\,d\theta\,dz=
+\tau^{1+D}R\,dR\,d\theta\,dZ$ to obtain
+\eqref{eq:XVI-source-H3-lower}.
+\end{proof}
+This removes the derivative-nondegeneracy \emph{premise} of
+Edition XV for the actual \emph{leading exterior field}.
+No numerical freeze of $h,c_\infty,X_b$ is asserted;
+the illustrative $h=1/200,c_\infty=1,X_b=2,a=4,b=5$
+gives $m\approx0.00205353$ and $C_{\rm ext}\approx0.00315216$
+only as a mathematical example, not authentic source constants.
+The positive exterior lower bound makes Edition XIV's
+fixed-fraction \emph{sufficient} isotropic $H^3$ Picard gate fail
+near $\tau=0$ for the unmodified leading exterior profile.
+It does not prove that later source oscillations, cutoffs, a
+new unforced correction or the final physical field preserve
+this bound. The complete Leray-projected residual and
+force-free PDE remain OPEN/HOLD, as does the end-to-end Lean proof.
+Exact symbolic polynomial, 10,000 rational sign tests, and
+independent high-precision gamma-integral checks passed.
+The candidate Lean file formalizes only finite scalar consequences.
