@@ -88,6 +88,7 @@ on:
       - 'TerminalCore2026/N1_Terminal_H3_Scaling_Edition_XV_20261023_Insert.tex'
       - 'TerminalCore2026/N1_Source_Axis_Third_Jet_Edition_XVI_20261023_Insert.tex'
       - 'TerminalCore2026/N1_Cauchy_Jet_Radius_Edition_XVII_20261023_Insert.tex'
+      - 'TerminalCore2026/N1_Exterior_Derivative_Certificate_Edition_XVIII_20261023_Insert.tex'
       - '.github/workflows/terminal-core-manuscript.yml'
   workflow_dispatch:
 
