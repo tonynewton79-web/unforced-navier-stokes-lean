@@ -211,6 +211,8 @@ jobs:
         run: lake env lean TerminalCore2026/N1NonlinearPicardScalar.lean
       - name: Check terminal anisotropic H3 exponent scalar lemmas
         run: lake env lean TerminalCore2026/N1TerminalH3ScalingScalar.lean
+      - name: Check Cauchy jet radius scalar inequality
+        run: lake env lean TerminalCore2026/N1CauchyJetScalar.lean
       - name: Check source-native Appendix B third Cartesian jet scalars
         run: lake env lean TerminalCore2026/N1SourceAxisThirdJetScalar.lean
       - name: Kernel-check source-fixed A10/A11 scalar implications
