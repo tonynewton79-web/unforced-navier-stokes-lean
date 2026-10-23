@@ -211,6 +211,8 @@ jobs:
         run: lake env lean TerminalCore2026/N1NonlinearPicardScalar.lean
       - name: Check terminal anisotropic H3 exponent scalar lemmas
         run: lake env lean TerminalCore2026/N1TerminalH3ScalingScalar.lean
+      - name: Check source-native Appendix B third Cartesian jet scalars
+        run: lake env lean TerminalCore2026/N1SourceAxisThirdJetScalar.lean
       - name: Kernel-check source-fixed A10/A11 scalar implications
         run: lake env lean TerminalCore2026/A11SourceFixedStageScalar.lean
       - name: Independent exact-equation tests
@@ -258,6 +260,7 @@ jobs:
           python TerminalCore2026/verify_n1_projected_stokes_exact.py
           python TerminalCore2026/verify_n1_nonlinear_picard_exact.py
           python TerminalCore2026/verify_n1_terminal_H3_scaling.py
+          python TerminalCore2026/verify_n1_source_axis_jet.py
           python TerminalCore2026/stagewise_source_checks.py
           python TerminalCore2026/outer_schedule_enclosure.py
           python TerminalCore2026/pulse_moment_exact.py
