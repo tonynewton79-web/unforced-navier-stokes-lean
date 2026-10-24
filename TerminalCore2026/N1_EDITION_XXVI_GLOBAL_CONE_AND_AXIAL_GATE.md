@@ -59,3 +59,18 @@ An independently authored SymPy implementation gives six exact universal tensor 
 The repository source certificate remains FAIL_CLOSED_MISSING_SOURCE_DATA: real A.11/A.19 corrections and hashes, source interval bounds, physical pressure and collars, H8 small-stress and virtual-work dual, full all-harmonic inverse, nonzero smooth initial datum with **zero forcing**, singularity survival, and end-to-end Lean declaration are not proved. OpenAI's source theorem proves blow-up with smooth forcing for Navier–Stokes and unforced Euler; it is not the requested unforced Navier–Stokes theorem.
 
 **Next mathematically decisive attack**: derive a support-compatible *two- or four-field* compensating gauge for the compact axial source shell (not pure radial alone), with explicit size and derivatives; simultaneously authenticate its source residual. On the torus, a cheaper carrier/pressure gauge satisfying the original H8 quantitative scale is the alternative route. Until then, local/global cone algebra alone is not evidence of an unforced singularity.
+
+## Sharp whole-space affine virtual-work gate (independent third check)
+
+For a compact smooth seven-ray stress S=sum d_j v_j⊗v_j on R³, d_j≥0, and compact Q with div(S-Q)=grad p, test against the divergence-free affine field psi=(x,y,-2z). Its diagonal strain in Cartesian coordinates is diag(1,1,-2), and its exact values on rays (1)–(7) are
+\[
+1,\ 17/16,\ 17/16,\ 7/8,\ 7/8,\ 15/16,\ 15/16.
+\]
+After integration by parts (normalizing p=0 outside the support), any compact whole-space realization requires
+\[
+\boxed{\int_{\mathbb R^3}(Q_{xx}+Q_{yy}-2Q_{zz})\,dx
+\ge(7/8)\int_{\mathbb R^3}\sum_{j=1}^7d_j\,dx.}
+\]
+The 7/8 coefficient is sharp for this ray family. No *nonzero* compact seven-ray cone tensor with nonnegative coefficients can have gradient-only divergence on R³ if Q=0. This strengthens the earlier pure-radial no-go and instantiates the established H8 virtual-work dual with an explicit affine witness.
+
+The periodic-axial global cone construction is not contradicted, because this affine psi is not a periodic axial test field. On a compact actual R³ source shell the inequality is an unavoidable global moment gate and may reject inadequate stress/source configurations before any all-harmonic PDE work. All seven ray strain factors are independently verified with exact Fraction arithmetic, and the new finite Lean scalar inequality is committed but GitHub kernel certification is queued.
