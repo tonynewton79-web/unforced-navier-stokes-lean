@@ -72,7 +72,7 @@ theorem normalized_jet_transport_bounded
     (nu M : ℝ) (hnu : 1 ≤ nu) (hM : 0 ≤ M)
     (jets : ℕ → ℕ → ℝ)
     (hjets : ∀ a b, |jets a b| ≤ M) :
-    ∀ a b,
+    ∀ (a b : ℕ),
       |twoDerivativeRatio (a : ℝ) (b : ℝ) nu *
         jets a (b+2)| ≤ 8*M := by
   intro a b
