@@ -1,0 +1,128 @@
+\section{Authentic Fourier-shell witness and independent correction energy bound}
+\label{sec:xxxi-shell}
+The estimates below are for OpenAI's actual Section~10 localized forced velocity
+\cite{openai2026}, not an invented profile. Its source is the complete
+force in (10.5), including every space--time cutoff derivative.
+
+\begin{lemma}[Zero mean of the authentic source]
+For every $0\le t<1$, the velocity in (10.4),
+$u_B=\operatorname{curl}(c\mathcal A)+c\mathcal B e_\theta$,
+is compactly supported, divergence-free and has exactly zero spatial mean.
+Its support is contained in $\{r<r_0,\ |z|<z_0\}$.
+One may take $V=2\pi r_0^2z_0$ and $R=\sqrt{r_0^2+z_0^2}$.
+\end{lemma}
+\begin{proof}
+The compact curl integrates to zero. The azimuthal scalar factor is
+independent of $\theta$; integrating $e_\theta=(-\sin\theta,\cos\theta,0)$
+over one rotation also gives zero. The support follows from the
+explicit cutoff conditions immediately before (10.4).
+\end{proof}
+
+\begin{theorem}[Quantitative guaranteed Fourier shell for the actual source]
+Fix $t<1$ at which $m=\|u_B(t)\|_2>0$, and put
+$G=\|\nabla u_B(t)\|_2$. For unitary Fourier transform define
+\[
+L=\left(\frac{5\pi^2}{4R^2V}\right)^{1/5},\quad
+H=\max\{2L,4G/m\},\quad N=\lceil\log_2(H/L)\rceil,\quad K_j=2^jL.
+\]
+For at least one $0\le j<N$ the whole-space Fourier shell satisfies
+\begin{equation}\label{eq:xxxi-lower}
+\boxed{\quad \|\mathbf1_{K_j\le|\xi|\le2K_j}\widehat u_B(t)\|_2
+\ge m\sqrt{\frac{13}{16N}}>0.\quad}
+\end{equation}
+Moreover, from the actual source asymptotic (10.21), for sufficiently
+small $\tau>0$ define $J_\tau=\frac12e_0\tau^{-1/2-h}$ and
+$D_\tau=\|\nabla u_B(1-\tau)\|_\infty$. Then
+\begin{equation}\label{eq:xxxi-source-mass}
+\boxed{\quad
+m(1-\tau)\ge\frac{J_\tau}{2}\sqrt{\frac{4\pi}{3}}
+\left(\frac{J_\tau}{2D_\tau}\right)^{3/2}>0.\quad}
+\end{equation}
+These bounds are explicit in source-defined quantities, not numerical
+certificates of a uniquely fixed profile.
+\end{theorem}
+\begin{proof}
+Zero mean and compact support imply
+$|\widehat u_B(\xi)|\le(2\pi)^{-3/2}|\xi|R\sqrt V\,m$.
+Integrating over $|\xi|<L$ gives at most
+$R^2VL^5m^2/(10\pi^2)=m^2/8$.
+Plancherel bounds the energy above $H$ by $G^2/H^2\le m^2/16$.
+Hence the disjoint dyadic shells from $L$ through $2^NL$ carry at
+least $13m^2/16$, and pigeonholing proves the claim.
+The source's positive azimuthal amplitude at $x_\tau$ is at least
+$J_\tau$; the global Lipschitz constant $D_\tau$ keeps its
+magnitude above $J_\tau/2$ in a ball of radius
+$J_\tau/(2D_\tau)$. Integrating over this ball gives the last bound.
+\end{proof}
+
+\begin{theorem}[Independent physical correction shell upper bound]
+Let $u=u_B+w$ be a smooth finite-energy exactly unforced
+Navier--Stokes comparison solution on $[0,t]$ and $\nu>0$.
+Write $x=\|w(0)\|_2$, $f_B$ for the full source (10.5),
+\[
+\begin{gathered}
+U=\sup_{s\le t}\|u_B(s)\|_2,\quad
+A=\int_0^t\|\nabla u_B(s)\|_\infty ds,\quad
+F=\int_0^t\|\mathbb P f_B(s)\|_2ds,\quad W=e^A(x+F),\\
+F_{K,t}=\int_0^t e^{-\nu K^2(t-s)}
+\|\mathbf1_{K\le|\xi|\le2K}\widehat{\mathbb P f_B}(s)\|_2ds,\quad
+a_K=e^{-\nu K^2t},\quad c_K=\frac{\sqrt K}{\sqrt2\pi\nu}.
+\end{gathered}
+\]
+Then
+\begin{equation}\label{eq:xxxi-upper}
+\boxed{\quad
+\sup_{s\le t}\|w(s)\|_2\le W,\qquad
+\delta_K(t)\le a_Kx+F_{K,t}+c_K(2UW+W^2).\quad}
+\end{equation}
+Combining with the Edition~XXX unforced shell estimate yields
+\begin{equation}\label{eq:xxxi-tradeoff}
+\boxed{\quad
+b_K(t)\le2a_Kx+c_Kx^2+F_{K,t}+c_K(2UW+W^2).\quad}
+\end{equation}
+\end{theorem}
+\begin{proof}
+Subtract the forced PDE for $u_B$ from the unforced PDE for $u$.
+Testing the correction equation against $w$ eliminates the
+$(u\cdot\nabla)w$ term and bounds the cross-advection
+by $\|\nabla u_B\|_\infty\|w\|_2^2$.
+Gronwall proves $\|w\|_2\le W$.
+Projected Duhamel applied to the three tensors
+$u_B\otimes w$, $w\otimes u_B$, $w\otimes w$ yields
+\[
+\|\mathcal B_Kw(t)\|_2\le a_Kx+F_{K,t}
++\frac{2UW+W^2}{(2\pi)^{3/2}\nu}
+\left(\int_{K\le|\xi|\le2K}|\xi|^{-2}d\xi\right)^{1/2}.
+\]
+The annular integral is $4\pi K$. The last claim follows
+from the triangle inequality and Edition~XXX.
+\end{proof}
+
+\begin{corollary}[Conditional retention-based initial-data test]
+Assume in addition that the correction actually preserves a
+fraction of the selected shell:
+$\delta_{K_j}(t)\le\kappa b_{K_j}(t)$ for some $\kappa<1$.
+Put $B=m\sqrt{13/(16N)}$. Then every unforced comparison flow
+satisfies
+\begin{equation}\label{eq:xxxi-retention}
+\boxed{\quad x\ge\min_{0\le j<N}
+\frac{2(1-\kappa)B}
+{a_{K_j}+\sqrt{a_{K_j}^2+4c_{K_j}(1-\kappa)B}}.\quad}
+\end{equation}
+\end{corollary}
+\begin{proof}
+At the shell selected by the lower theorem, retention and the
+Edition~XXX unforced bound give $(1-\kappa)B\le a_{K_j}x+c_{K_j}x^2$.
+Solve this quadratic and take the minimum over the finite list.
+\end{proof}
+
+\paragraph{Limitations and release gate.}
+The authentic source gives neither frozen numerical values of
+$(e_0,r_0,z_0,D_\tau,G,F_{K,t})$ nor the independent spectral
+retention inequality. The unconditional correction upper bound
+may be very weak near the singular time; in particular $x=0$,
+$u=0$, $w=-u_B$ satisfies it while cancelling the entire blowup.
+Thus the source-backed shell lower bound and independently proved
+correction upper bound do not by themselves reject a specific
+nonzero initial-data budget. They are a test protocol, not a
+complete unforced Navier--Stokes construction or Lean PDE proof.
