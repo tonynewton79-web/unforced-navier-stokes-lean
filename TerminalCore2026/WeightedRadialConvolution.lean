@@ -41,8 +41,7 @@ theorem cubic_radial_multiplier_split (t c : ℝ) :
 theorem highest_leading_profile_jet_coefficient
     (r m N G u : ℝ) (hr : r ≠ 0) (hm : m ≠ 0) (hN : N ≠ 0) :
     -G*(u*G*(-G/r)/m)/(4*N^2) = u*G^3/(4*r*m*N^2) := by
-  field_simp
-  ring
+  field_simp <;> ring
 
 /-- The output radial multiplier index c is absorbed by D_X U₀. -/
 theorem highest_leading_profile_radial_domination
