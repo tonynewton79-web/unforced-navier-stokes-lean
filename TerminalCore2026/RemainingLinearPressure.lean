@@ -16,8 +16,7 @@ theorem laplacian_pressure_radial_factor (r : ℝ)
     (hr : r ≠ 0) (hr1 : r - 1 ≠ 0) :
     (-2*r*(r-1)) * (-1/(2*(r-1))) *
     (1/2) * (1/r^2) = 1/(2*r) := by
-  field_simp
-  ring
+  field_simp <;> ring
 
 /-- The T_(0,n-1) V pressure path maps radial exponent a
 to a+2, rather than a+1. -/
@@ -25,8 +24,7 @@ theorem time_pressure_radial_factor (r : ℝ)
     (hr : r ≠ 0) (hr1 : r+1 ≠ 0) :
     (-1/(2*r))*(1/2)*(1/(r+1)^2)*(1/r) =
       -1/(4*r^2*(r+1)^2) := by
-  field_simp
-  ring
+  field_simp <;> ring
 
 theorem pressure_order_radial_index (a n : ℝ)
     (ha : n-1 ≤ a) : n ≤ a+1 := by linarith
