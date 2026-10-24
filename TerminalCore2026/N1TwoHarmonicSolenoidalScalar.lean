@@ -23,6 +23,16 @@ theorem two_harmonic_identity_determinant :
     (2 : ℚ) * 2 * 2 = 8 := by
   norm_num
 
+/-- A conservative rational lower bound for the two-frequency
+strict covariance fixture on its annular plateau. Scalar only. -/
+theorem two_mode_strict_floor_fraction :
+    ((3 / 2 : ℚ) * (1 - (1 / 16) * (5 / 4) ^ 2) -
+      2 * (1 / 16) * (5 / 4) * (1 / 2)) =
+        653 / 512 := by
+  norm_num
+
+#print axioms two_mode_strict_floor_fraction
+
 #print axioms two_harmonic_covariance_determinant
 #print axioms two_harmonic_identity_determinant
 end TerminalCore2026
