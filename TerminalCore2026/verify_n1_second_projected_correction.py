@@ -45,3 +45,22 @@ assert s.simplify(s.diff(amplification,t)-K*(1-t)**(-1-h))==0
 assert s.simplify(s.limit(amplification,h,0,dir="+")-K*(s.log(1-ss)-s.log(1-t)))==0
 print(f"PASS: {n}/{n} rational cases, missing-term negative controls, periodic PDE-mode algebra, and exact amplification check")
 print("HOLD: genuine source, full pressure, corrected PDE and terminal singularity.")
+
+
+# Full Cartesian NSE positive control, not just a scalar convection identity.
+# Domain: R^2 x S^1 (axial period one), NOT the paper's T^3 singularity.
+xx, yy, tt, visc = s.symbols("xx yy tt visc", positive=True)
+H = 1 + 4 * visc * tt
+rho2 = xx**2 + yy**2
+k = s.exp(-rho2/H)/H**2
+vortex = s.Matrix([-yy*k, xx*k, 0])
+pressure = (1-s.exp(-2*rho2/H))/(4*H**3)
+assert s.simplify(s.diff(vortex[0],xx)+s.diff(vortex[1],yy)) == 0
+for i in range(3):
+    conv = vortex[0]*s.diff(vortex[i],xx)+vortex[1]*s.diff(vortex[i],yy)
+    lap = s.diff(vortex[i],xx,2)+s.diff(vortex[i],yy,2)
+    gradp = s.diff(pressure,(xx,yy)[i]) if i<2 else 0
+    assert s.simplify(s.diff(vortex[i],tt)+conv+gradp-visc*lap)==0
+E=s.pi/(4*H**2)
+assert s.simplify(-s.diff(E,tt)-2*s.pi*visc/H**3)==0
+print("PASS: full Cartesian unforced Gaussian vortex, exact pressure and finite energy on R^2 x S^1")
