@@ -77,19 +77,21 @@ theorem xxvii_floor_2 (tt rt mu M : ℝ)
   linarith
 
 theorem xxvii_floor_3 (tt rt mu M : ℝ)
-    (htt : -M ≤ tt) (hrt : rt ≤ M) (hM : 0 ≤ M) :
+    (htt : -M ≤ tt) (hrt : rt ≤ M) (hmu : 0 ≤ mu) (hM : 0 ≤ M) :
     mu ≤ xxviiD3 tt rt mu M := by
   unfold xxviiD3
   linarith
 
 theorem xxvii_floor_4 (zz rz tz mu M : ℝ)
-    (hzz : -M ≤ zz) (hrz : -M ≤ rz) (htz : tz ≤ M) :
+    (hzz : -M ≤ zz) (hrz : -M ≤ rz) (htz : tz ≤ M)
+    (hmu : 0 ≤ mu) :
     mu ≤ xxviiD4 zz rz tz mu M := by
   unfold xxviiD4
   linarith
 
 theorem xxvii_floor_5 (zz rz tz mu M : ℝ)
-    (hzz : -M ≤ zz) (hrz : rz ≤ M) (htz : -M ≤ tz) :
+    (hzz : -M ≤ zz) (hrz : rz ≤ M) (htz : -M ≤ tz)
+    (hmu : 0 ≤ mu) :
     mu ≤ xxviiD5 zz rz tz mu M := by
   unfold xxviiD5
   linarith
