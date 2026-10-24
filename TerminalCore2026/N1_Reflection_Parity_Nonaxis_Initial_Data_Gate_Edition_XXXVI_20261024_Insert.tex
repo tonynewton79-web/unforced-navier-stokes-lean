@@ -1,0 +1,230 @@
+
+\section{A reflection-symmetry barrier beyond axisymmetry}
+\label{sec:xxxvi-reflection}
+
+We seek a genuinely nonaxisymmetric, nonzero-initial-data,
+exactly unforced comparison which retains the positive azimuthal
+velocity of the original \emph{forced} Section~10 source
+\cite{openai2026} at its distinguished shrinking trajectory.
+The earlier circulation and averaged-torque estimates do not
+distinguish angular oscillations that vanish at that trajectory.
+Here we identify an additional, elementary but decisive discrete
+symmetry barrier. It applies irrespective of the initial critical
+norm and is verified on an explicitly prescribed large-data,
+globally smooth nonaxisymmetric comparison. The symmetry principle
+is classical; its specialization to the source trajectory is
+the result of this section.
+
+Put $R=\operatorname{diag}(1,-1,1)$ and introduce the
+orthogonal reflection operator
+\[
+(\mathscr Ru)(x,y,z)=R\,u(x,-y,z),\qquad
+u^{+}=\tfrac12(u+\mathscr Ru),\quad
+u^{-}=\tfrac12(u-\mathscr Ru).
+\]
+The superscripts denote \emph{reflection parity}, not
+Fourier signs or the axial no-swirl condition.
+
+\begin{theorem}[Exact reflection barrier for the published shrinking-core swirl]
+\label{thm:xxxvi-reflection}
+Let $u$ be any smooth finite-energy, exactly unforced
+Navier--Stokes solution on $\mathbb R^3\times[0,T)$,
+whose smooth divergence-free initial datum is invariant
+under $\mathscr R$. Then $u=\mathscr Ru$ for as long as
+the smooth solution exists. In particular, for every $r>0$,
+$z$ and $t<T$,
+\begin{equation}\label{eq:xxxvi-reflection-node}
+\boxed{\quad u_\theta(r,0,z,t)=u_y(r,0,z,t)=0,\quad}
+\end{equation}
+and its relative-to-$z$ angular momentum
+$\Gamma=ru_\theta=xu_y-yu_x$ satisfies
+\[
+\boxed{\quad
+\bar\Gamma=0,\qquad
+\overline{u'_r\Gamma'}=\overline{u'_z\Gamma'}=0,
+\qquad \mathcal T=0,\quad}
+\]
+where $\mathcal T$ is the exact nonaxisymmetric
+mean-transport source of Edition~XXXV.
+Such a flow cannot retain the original forced
+source's positive azimuthal amplitude along
+$x_\tau=(\sqrt{2X_{\rm in}\tau},0,0)$.
+This holds for arbitrarily large smooth initial data
+with the stated symmetry.
+\end{theorem}
+\begin{proof}
+The Navier--Stokes equations and Leray projection
+commute with simultaneous spatial/vector reflection
+$\mathscr R$, and pressure transforms as
+$p(x,y,z)\mapsto p(x,-y,z)$.
+Smooth finite-energy uniqueness implies that
+$\mathscr Ru(t)$ and $u(t)$ agree when their initial
+data agree. On $y=0$, vector invariance forces $u_y=0$.
+Since $e_\theta=e_y$ at $x=r>0,y=0$, this is
+\eqref{eq:xxxvi-reflection-node}.
+In cylindrical coordinates, reflection maps
+$\theta\mapsto-\theta$, with $u_r,u_z$ even
+and $u_\theta,\Gamma$ odd.
+Every angular mean of an odd function vanishes;
+$u_r\Gamma$ and $u_z\Gamma$ are odd as well.
+The exact flux formula of Edition~XXXV therefore
+has both covariance terms zero and $\mathcal T=0$.
+The published source has positive
+$u_{B,\theta}(x_\tau,1-\tau)\sim
+e_0\tau^{-1/2-h}$, incompatible with the zero trace.
+\end{proof}
+
+\begin{theorem}[Evolution equation and quantitative necessary parity breaking]
+\label{thm:xxxvi-odd-transport}
+For a general smooth unforced solution $u$ (without
+any reflection assumption), its parity-odd part obeys
+the \emph{exact} projected linearized equation
+\begin{equation}\label{eq:xxxvi-odd-pde}
+\boxed{\quad
+\partial_tu^{-}-\nu\Delta u^{-}
++\mathbb P\big[(u^{+}\cdot\nabla)u^{-}
++(u^{-}\cdot\nabla)u^{+}\big]=0.
+\quad}
+\end{equation}
+If $q=\|u^{-}(0)\|_2$ and
+$J(t)=\int_0^t\|\nabla u^{+}(s)\|_\infty\,ds$,
+then
+\begin{equation}\label{eq:xxxvi-odd-energy}
+\boxed{\quad\|u^{-}(t)\|_2\le q e^{J(t)}.\quad}
+\end{equation}
+Suppose at the original positive-$x$ source trajectory
+\[
+|u_\theta(x_\tau,1-\tau)|
+\ge c\,\tau^{-A},\quad
+c>0,\quad A=1/2+h,\quad h>0.
+\]
+Then necessarily $q>0$, and at every sufficiently
+small $\tau>0$ the parity-odd velocity satisfies
+\begin{align}
+\boxed{\quad
+\|\nabla u^{-}(1-\tau)\|_\infty
+&\ge\left(\frac{\pi c^5}
+{24q^2e^{2J(1-\tau)}}\right)^{1/3}
+\tau^{-5A/3},\quad}
+\label{eq:xxxvi-odd-gradient}\\
+\boxed{\quad
+\|\Delta u^{-}(1-\tau)\|_2
+&\ge\left(\frac{c}
+{C_2q^{1/4}e^{J(1-\tau)/4}}\right)^{4/3}
+\tau^{-4A/3},\quad}
+\label{eq:xxxvi-odd-h2}
+\end{align}
+where $C_2=4/(\pi\sqrt2\,3^{7/8})$ is an
+admissible explicit whole-space interpolation constant.
+For the published swirl-retention test one can set
+$c=e_0/4$. These are \emph{necessary}
+quantitative costs, not existence estimates.
+\end{theorem}
+\begin{proof}
+Write $u=u^{+}+u^{-}$,
+$\mathscr Ru=u^{+}-u^{-}$.
+Subtract the two projected unforced equations
+and divide by two. The quadratic terms
+$(u^+\cdot\nabla)u^+$ and
+$(u^-\cdot\nabla)u^-$ cancel, yielding
+\eqref{eq:xxxvi-odd-pde}.
+Both parts remain divergence-free.
+Its $L^2$ pairing with $u^-$ eliminates
+$(u^+\cdot\nabla)u^-$ and controls the other
+advection by $\|\nabla u^{+}\|_\infty$.
+Gronwall proves \eqref{eq:xxxvi-odd-energy}.
+On the plane $y=0$, the parity-even part has
+zero $y$-component and $(u^{-})_y=u_y=u_\theta$.
+Hence $\|u^{-}(1-\tau)\|_\infty\ge c\tau^{-A}$.
+If $q=0$, the Gronwall bound implies $u^-=0$,
+contradicting this inequality. For $q>0$ apply
+the two whole-space interpolation estimates
+of Edition~XXXIII to $u^-$,
+using its $L^2$ bound $qe^J$:
+\[
+\|u^-\|_\infty^5\le
+(24/\pi)\|u^-\|_2^2\|\nabla u^-\|_\infty^3,\qquad
+\|u^-\|_\infty\le
+C_2\|u^-\|_2^{1/4}\|\Delta u^-\|_2^{3/4}.
+\]
+Rearranging gives the asserted lower bounds.
+\end{proof}
+
+\begin{theorem}[Explicit large-data nonaxisymmetric global regular control]
+\label{thm:xxxvi-shifted}
+Fix $\nu>0$ and $d=1$, and set
+\[
+\boxed{
+v_0(x,y,z)=2\nu e^{-((x-d)^2+y^2+z^2)}
+\bigl((x-d)z,\ yz,\ 1-(x-d)^2-y^2\bigr).
+}
+\]
+This is a smooth, Schwartz, divergence-free
+initial velocity that is \emph{nonaxisymmetric}
+relative to the source's $z$ axis.
+It has the same exact large critical Fourier norm
+as Edition~XXXV, since translation multiplies the
+Fourier transform by a unit-modulus phase:
+\[
+\frac{(2\pi)^{-3/2}}{\nu}
+\|v_0\|_{\mathcal X^{-1}}
+=\frac{\sqrt\pi}{2}>\frac1{16}.
+\]
+The global axisymmetric-no-swirl existence theorem
+applies around the displaced parallel axis $x=d,y=0$.
+Its unique smooth exactly unforced solution
+satisfies the reflection invariance of
+Theorem~\ref{thm:xxxvi-reflection} for all time.
+At $t=0$, its relative-to-source-axis angular momentum is
+\begin{equation}\label{eq:xxxvi-shifted-gamma}
+\boxed{\quad
+\Gamma_0=2\nu d\,r z\,
+e^{-(r^2+d^2-2dr\cos\theta+z^2)}\sin\theta.\quad}
+\end{equation}
+In particular, at $(r,z,\theta)=(1,1,\pi/2)$,
+$\Gamma_0=2\nu e^{-3}\ne0$, and the sharp angular
+trace estimate implies
+\[
+\|\partial_\theta\Gamma_0(1,\cdot,1)\|_{L^2_\theta}
+\ge 2\nu e^{-3}\sqrt{6/\pi}>0.
+\]
+Nevertheless $\mathcal T=0$ identically throughout
+the exact unforced evolution, and
+$v_\theta(r,0,z,t)=0$. This explicitly refutes
+the inference that large data, nonaxisymmetry and
+nonzero angular oscillation suffice for growth
+$\sim\tau^{-h}$ or retention of the source singularity.
+\end{theorem}
+\begin{proof}
+Translate the globally regular no-swirl solution
+of Edition~XXXV by the fixed vector $(d,0,0)$.
+Navier--Stokes is translation invariant; its pressure
+translates as well, with zero external forcing.
+Its global smoothness and exact critical norm are unchanged.
+The displayed datum is reflection invariant across
+$y=0$, so Theorem~\ref{thm:xxxvi-reflection}
+applies for all time. Direct Cartesian algebra gives
+$\operatorname{div}v_0=0$ and
+$\Gamma_0=x(v_0)_y-y(v_0)_x
+=2\nu d y z e^{-((x-d)^2+y^2+z^2)}$,
+which is \eqref{eq:xxxvi-shifted-gamma}.
+The angular trace bound and torque conclusion
+follow from its odd reflection parity.
+\end{proof}
+
+\paragraph{Implication for the full zero-force construction.}
+A candidate retaining the original source's
+positive swirl \emph{must} break $y$-reflection
+already in its initial data. Its parity-odd
+component must subsequently meet the
+quantitative bounds \eqref{eq:xxxvi-odd-gradient}
+and \eqref{eq:xxxvi-odd-h2} (or its parity-even
+strain integral must grow sufficiently fast).
+Such symmetry breaking is necessary but
+not sufficient for unforced blowup.
+The translated Gaussian control is an
+actual zero-force whole-space solution,
+not merely a kinematic stress or velocity.
+No source-matched singular nonaxisymmetric
+correction or end-to-end Lean PDE
+formalization has been obtained.
