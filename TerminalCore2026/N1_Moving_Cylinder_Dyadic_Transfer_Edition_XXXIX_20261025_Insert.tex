@@ -1,0 +1,249 @@
+
+\section{Exact moving-cylinder angular-momentum budget and dyadic transfer}
+\label{sec:xxxix-moving}
+Our task is to test a \emph{single} smooth, finite-energy, exactly
+unforced three-dimensional Navier--Stokes evolution, not a family
+of separately rescaled initial data. We retain viscosity, axial
+leakage, a moving cylinder boundary, and angular Fourier truncation
+errors. These balance identities and bounds do not prove finite-time
+blowup or source-specific singularity inheritance.
+
+Let $\partial_tu+\operatorname{div}(u\otimes u)+\nabla p
+=\nu\Delta u$, $\operatorname{div}u=0$ on $\mathbb R^3$,
+$\nu>0$, and set
+$\Gamma=ru_\theta=xu_y-yu_x$,
+$\bar f=(2\pi)^{-1}\int_0^{2\pi}f(r,\theta,z)d\theta$.
+
+\begin{theorem}[Exact angular-momentum conservation on moving cylinders]
+\label{thm:xxxix-cylinder}
+For $r>0$, every smooth unforced solution satisfies
+\begin{equation}\label{eq:xxxix-divergence}
+\boxed{
+\partial_t(r\bar\Gamma)
++\partial_r\bigl[r\overline{u_r\Gamma}
+-\nu(r\partial_r\bar\Gamma-2\bar\Gamma)\bigr]
++\partial_z\bigl[r\overline{u_z\Gamma}
+-\nu r\partial_z\bar\Gamma\bigr]=0.
+}
+\end{equation}
+For an axial weight $\eta\in C_c^\infty(\mathbb R)$
+and a positive $C^1$ radius $R(t)$, put
+$\mathcal M_{R,\eta}(t)=
+2\pi\int_0^{R(t)}r\int\eta(z)\bar\Gamma(r,z,t)\,dz\,dr$.
+Then exactly
+\begin{equation}\label{eq:xxxix-cylinder-balance}
+\boxed{
+\mathcal M'_{R,\eta}
+=-F_R^{\rm adv}-F_R^{\rm visc}
+ +F_R^{\rm axial}+F_R^{\rm sweep},
+}
+\end{equation}
+where
+\begin{align*}
+F_R^{\rm adv}
+ &=2\pi R\int\eta\,\overline{u_r\Gamma}(R,z)\,dz,\\
+F_R^{\rm visc}
+ &=-2\pi\nu R\int\eta
+ (\partial_r\bar\Gamma-2\bar\Gamma/R)(R,z)\,dz,\\
+F_R^{\rm axial}
+ &=2\pi\int_0^Rr\int\eta'
+  (\overline{u_z\Gamma}-\nu\partial_z\bar\Gamma)
+ \,dz\,dr,\\
+F_R^{\rm sweep}
+ &=2\pi RR'(t)\int\eta\bar\Gamma(R,z)\,dz.
+\end{align*}
+The angularly integrated pressure derivative vanishes.
+Pressure may still affect the evolving velocity indirectly.
+\end{theorem}
+\begin{proof}
+The Cartesian angular momentum is $xu_y-yu_x$.
+Take the rotational moment of the full conservative
+momentum equation; the pressure and symmetric Newtonian
+stress have no net torque over a full angular period.
+Angular averaging of the cylindrical scalar equation gives
+$\partial_t\bar\Gamma+
+r^{-1}\partial_r(r\overline{u_r\Gamma})
++\partial_z\overline{u_z\Gamma}
+=\nu(\partial_{rr}-r^{-1}\partial_r+\partial_{zz})
+\bar\Gamma$.
+Use
+$r(\partial_{rr}-r^{-1}\partial_r)\bar\Gamma
+=\partial_r(r\partial_r\bar\Gamma-2\bar\Gamma)$.
+This proves \eqref{eq:xxxix-divergence}.
+Multiply by $\eta$, integrate, use axial integration
+by parts, and apply the moving-boundary transport rule.
+The axis boundary term vanishes by Cartesian smoothness.
+\end{proof}
+
+\begin{theorem}[A finite energy budget summed across all dyadic radial bands]
+\label{thm:xxxix-dyadic}
+Let $E_0=\|u(0)\|_2^2$ and $R_j=2^{-j}R_0$.
+For every $0<T_*<T$,
+\begin{equation}\label{eq:xxxix-energy-sum}
+\boxed{
+\sum_{j=0}^\infty\int_0^{T_*}
+\int_{R_{j+1}}^{R_j}
+\frac{|F_\rho^{\rm adv}(t)|}{\rho}\,d\rho\,dt
+\le\frac{T_*}{2}\|\eta\|_\infty E_0.
+}
+\end{equation}
+For any finite-time unforced candidate smooth on $[0,1)$,
+the same bound holds with $T_*\uparrow1$.
+Hence the time-integrated \emph{radial-band-averaged}
+nonlinear flux tends to zero as $j\to\infty$.
+This does not rule out concentrated flux at a single
+moving radius or time.
+\end{theorem}
+\begin{proof}
+Because $\Gamma=\rho u_\theta$,
+$F_\rho^{\rm adv}=
+\rho^2\int\int \eta u_r u_\theta\,d\theta\,dz$.
+Using $2|u_ru_\theta|\le u_r^2+u_\theta^2\le|u|^2$,
+\[
+\sum_j\int_{R_{j+1}}^{R_j}
+\frac{|F_\rho^{\rm adv}|}{\rho}\,d\rho
+\le\frac12\int_{r<R_0}|\eta|\,|u|^2dx.
+\]
+The unforced energy identity bounds this by
+$\|\eta\|_\infty E_0/2$ at each time. Integrate in
+time and use Tonelli. A nonnegative summable series
+has terms tending to zero.
+\end{proof}
+
+\begin{proposition}[Explicit axial leakage and radial viscous shear costs]
+\label{prop:xxxix-losses}
+For any $R>0$ the full axial term obeys
+\begin{equation}\label{eq:xxxix-axial-bound}
+\boxed{
+|F_R^{\rm axial}|
+\le\frac{R}{2}\|\eta'\|_\infty E_0+
+\nu\sqrt{\frac{\pi}{2}}R^2\|\eta''\|_2\sqrt{E_0}.
+}
+\end{equation}
+For $0<a<b$, with $\mathcal A_{a,b}=\{a<r<b\}$,
+\begin{equation}\label{eq:xxxix-visc-bound}
+\boxed{
+\int_a^b\frac{|F_\rho^{\rm visc}|}{\rho}d\rho
+\le\nu\sqrt{\pi(b^2-a^2)}\|\eta\|_2
+\left\|\partial_ru_\theta-\frac{u_\theta}{r}
+\right\|_{L^2(\mathcal A_{a,b})}.
+}
+\end{equation}
+For the annulus $a=R,b=2R$, the front factor is
+$\nu\sqrt{3\pi}R\|\eta\|_2$.
+The kinetic energy alone is not claimed to control
+the displayed radial shear norm.
+\end{proposition}
+\begin{proof}
+Write the axial term in Cartesian volume measure as
+$\int_{r<R}\eta' u_z\Gamma\,dx+
+\nu\int_{r<R}\eta''\Gamma\,dx$.
+Bound the first by
+$(R/2)\|\eta'\|_\infty E_0$ and use
+$\int_{r<R}r^2|\eta''|^2dx
+=(\pi/2)R^4\|\eta''\|_2^2$ for the second.
+In the viscous term substitute
+$\partial_r\Gamma-2\Gamma/r
+=r(\partial_ru_\theta-u_\theta/r)$.
+Take absolute values and integrate $d\rho/\rho$;
+Cauchy--Schwarz over the physical annulus gives
+the stated expression.
+\end{proof}
+
+\begin{proposition}[Exact angular-mode leakage certificate]
+\label{prop:xxxix-leakage}
+Let $a_m,b_m$ be angular Fourier coefficients of
+$u_r,\Gamma$ at fixed $r,z,t$.
+Then
+$\overline{u'_r\Gamma'}=\sum_{m\ne0}a_m b_{-m}$.
+The error on restricting to $1\le|m|\le N$ satisfies
+\begin{equation}\label{eq:xxxix-spectral-tail}
+\boxed{
+\left|\sum_{|m|>N}a_m b_{-m}\right|
+\le\frac{\|\partial_\theta u_r\|_{L^2_\theta}
+\|\partial_\theta\Gamma\|_{L^2_\theta}}
+{2\pi(N+1)^2}.
+}
+\end{equation}
+The same bound holds with $u_z$ in place of $u_r$,
+and it yields an error in the radial covariance flux
+of at most
+$R(N+1)^{-2}\int|\eta|\,
+\|\partial_\theta u_r\|_2\|\partial_\theta\Gamma\|_2dz$.
+\end{proposition}
+\begin{proof}
+Use angular orthogonality to identify the zero mode
+of the product. Apply Cauchy--Schwarz and Parseval
+to both tails, exploiting $|m|\ge N+1$.
+Multiply by the exact $2\pi R$ cylinder-flux factor.
+\end{proof}
+
+\begin{proposition}[Exact Gaussian benchmark; moving-boundary warning]
+\label{prop:xxxix-bench}
+For the exactly unforced Gaussian solution of Edition~XXXVII,
+$\overline{\Gamma}(0)=0$, $u_z(0)=0$ and
+$\overline{u_r'\Gamma'}(0,r,z)
+=\varepsilon^2r^3e^{-2(r^2+z^2)}$.
+Choosing the rapidly decaying axial weight
+$\eta(z)=e^{-z^2}$ gives at each fixed $R$
+\begin{equation}\label{eq:xxxix-gaussian}
+\boxed{
+\mathcal M'_{R,\eta}(0)=
+-2\pi\varepsilon^2R^4e^{-2R^2}\sqrt{\frac\pi3}.
+}
+\end{equation}
+At $R=1/2$ this equals
+$-\pi^{3/2}\varepsilon^2e^{-1/2}/(8\sqrt3)\ne0$,
+matching the full nonlinear PDE.
+
+For a moving similarity radius
+$R(t)=\sqrt{2X(1-t)}$, $RR'=-X$, hence
+\begin{equation}\label{eq:xxxix-sweep}
+\boxed{F_R^{\rm sweep}
+=-2\pi X\int\eta\bar\Gamma(R,z,t)dz.}
+\end{equation}
+A source-like surface value $\bar\Gamma\sim(1-t)^{-h}$
+could therefore make this \emph{kinematic} term
+grow at that rate without a corresponding lower bound
+on nonlinear Reynolds transport.
+\end{proposition}
+\begin{proof}
+At initial time the mean and its radial/axial
+derivatives vanish, so only the advective radial flux
+contributes. Integrate the Gaussian in $z$ exactly.
+The moving-boundary formula is differentiation of $R$.
+\end{proof}
+
+\begin{proposition}[Integrated moments cannot certify pointwise blowup]
+\label{prop:xxxix-moment-bound}
+Every smooth finite-energy unforced flow obeys
+\begin{equation}\label{eq:xxxix-moment-bound}
+\boxed{
+|\mathcal M_{R,\eta}(t)|
+\le\sqrt{\frac{\pi}{2}}R^2\|\eta\|_2\sqrt{E_0}.
+}
+\end{equation}
+At $R(t)\asymp\sqrt{1-t}$ this is $O(1-t)$,
+even if angular momentum at a single distinguished
+point were to grow as $(1-t)^{-h}$.
+\end{proposition}
+\begin{proof}
+Apply Cauchy--Schwarz to $\eta\Gamma$
+using $|\Gamma|\le r|u|$ and
+$\int_{r<R}r^2|\eta|^2dx
+=(\pi/2)R^4\|\eta\|_2^2$.
+Then use the energy inequality.
+\end{proof}
+
+\paragraph{What has and has not been established.}
+The energy inequality forces the \emph{scale-averaged}
+advective transfer across dyadic bands to be summable.
+It does not preclude narrow radial/time flux spikes,
+or supply a lower bound on pointwise swirl. Viscosity,
+axial leakage, geometric sweep and angular Fourier
+modes remain independently measured obligations.
+The Gaussian test is a globally regular unforced
+negative control, not a singularity construction.
+A genuine source-matched positive nonlinear cascade
+and the full unforced Navier--Stokes Lean PDE proof
+remain open.
