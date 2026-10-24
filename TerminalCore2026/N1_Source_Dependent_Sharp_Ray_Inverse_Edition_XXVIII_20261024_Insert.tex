@@ -149,3 +149,75 @@ and zero-force singularity theorem remain \emph{unproved}.
 A finite Lean scalar dual is supplied; the 64-corner
 interpolation and physical PDE are not yet formalized in
 Lean. The fully unforced Navier--Stokes problem remains open.
+
+
+\begin{proposition}[Exact $C^1$ derivative cost of the smooth selection]
+\label{prop:xxviii-derivative-cost}
+In Theorem~\ref{thm:xxviii-sharp-universal}, keep $M$ and
+$\mu$ fixed over the coordinate/time slab of interest.
+Let $D$ be a scalar partial derivative (radial, axial, or
+time, with a correspondingly fixed radial cutoff).
+Define
+$G_D=\max_{1\le i\le6}|Dq_i|$.
+For the constructed source-dependent isotropic gauge and
+seven ray coefficients,
+\begin{equation}\label{eq:xxviii-derivative-cost}
+\boxed{\begin{aligned}
+|Da|&\le\frac{11}{4}G_D+
+ \left(\frac38\mu+\frac{13}{4}M\right)|D\chi|,\\
+\max_{1\le j\le7}|Dd_j|
+&\le\frac{225}{4}G_D+
+ \left(3\mu+\frac{99}{2}M\right)|D\chi|.
+\end{aligned}}
+\end{equation}
+These bounds are source-independent \emph{co-rotating scalar
+coefficient} estimates, not full Cartesian stress derivative
+bounds: differentiating the moving ray basis adds geometric
+terms proportional to $1/r$, and actual source parameter
+dependence must be checked separately.
+\end{proposition}
+\begin{proof}
+For $M>0$, differentiate the barycentric weights
+$w_s(x)=2^{-6}\prod_i(1+s_ix_i)$ in the stress variable
+$x_i=q_i/M$. For any scalar vertex data $c_s$,
+\[
+\frac{\partial}{\partial q_i}
+\left(M\sum_s w_s(q/M)c_s\right)
+=\frac12\sum_{s_{-i}}w_{s_{-i}}
+\bigl(c_{+,s_{-i}}-c_{-,s_{-i}}\bigr).
+\]
+This derivative has absolute value at most one-half of the
+largest \emph{signed-corner difference} on edges in direction
+$i$. The frozen rational table gives the following exact
+half-edge-difference vectors, in the coordinate ordering
+$(rr,\theta\theta,zz,r\theta,rz,\theta z)$:
+\[
+\begin{array}{c|c|c}
+&(\text{six half-edge bounds})&\text{sum}\\\hline
+a_s&(0,1,1,1/4,1/4,1/4)&11/4\\
+d_{s,1}&(1,16,16,31/4,31/4,31/4)&225/4\\
+d_{s,2}&(0,8,8,2,2,2)&22\\
+d_{s,3}&(0,8,8,4,2,2)&24\\
+d_{s,4},d_{s,5}&(0,8,8,2,4,10)&32\\
+d_{s,6},d_{s,7}&(0,0,0,0,0,8)&8
+\end{array}
+\]
+The largest frozen corner coefficients are
+$a_s\le13/4$ and
+$(d_{s,j})_{\max}\le(99/2,20,36,36,36,16,16)$.
+Differentiate the product with $\chi$ and use
+the chain rule and these maxima. The $M=0$ case follows
+from the source-free formulas. All $48$ half-edge maxima
+and coefficient extrema are checked exactly in
+\texttt{verify\_xxviii\_derivative\_cost.py}.
+\end{proof}
+
+\paragraph{Important remaining analytic gate.}
+The improved pointwise stress size $90M+11\mu$ is not
+a complete weighted Banach or H8 stress bound. Even this
+smooth selection can amplify source gradients by $225/4$
+in a ray coefficient, and the cylindrical frame and radial
+cutoff contribute additional derivative costs. The authentic
+A.11/A.19 derivative budget and space--time residual are
+still required before unforcing or full Lean PDE closure
+can be asserted.
