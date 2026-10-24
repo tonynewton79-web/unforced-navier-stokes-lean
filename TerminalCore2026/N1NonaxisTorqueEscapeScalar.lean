@@ -33,17 +33,13 @@ theorem xxxv_core_exponent (h : ℝ) :
     (1/2+h)-(1/2:ℝ) = h := by
   ring
 
-theorem xxxv_flux_radial_derivative (r : ℝ) :
-    (4:ℝ)*r^3 / r = 4*r^2 := by
-  by_cases hr : r=0
-  · subst r
-    norm_num
-  · field_simp
-    ring
+theorem xxxv_flux_radial_polynomial (r : ℝ) :
+    (4:ℝ)*r^3 = r*(4*r^2) := by
+  ring
 
 #print axioms xxxv_escape_budget
 #print axioms xxxv_no_both_small
 #print axioms xxxv_no_swirl_correction
 #print axioms xxxv_core_exponent
-#print axioms xxxv_flux_radial_derivative
+#print axioms xxxv_flux_radial_polynomial
 end TerminalCore2026
