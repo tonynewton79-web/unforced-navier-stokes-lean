@@ -248,3 +248,43 @@ or an end-to-end Lean PDE certificate.
 The global existence ingredient is classical
 small-data theory, and the exact vortex formula
 is a constructed test case, not a regularity breakthrough.
+
+
+\begin{proposition}[Nonzero early torque cannot satisfy the required late-time escape]
+\label{prop:xxxvii-no-late-escape}
+For the exact global solution in
+Theorem~\ref{thm:xxxvii-global}, let $r_\tau=
+\sqrt{2X_{\rm in}\tau}$ be the authentic source
+trajectory, with $z_\tau=0$. Then
+\begin{equation}\label{eq:xxxvii-no-late-escape}
+\boxed{\quad
+\int_0^{1-\tau}\|\mathcal T(s)\|_\infty ds=O(1),
+\qquad
+\|\partial_\theta\Gamma(r_\tau,\cdot,0,1-\tau)
+\|_{L^2_\theta}=O(\tau^{1/2}).\quad}
+\end{equation}
+Neither contribution reaches the compulsory
+$\tau^{-h}$ rate of Edition~XXXV.
+\end{proposition}
+\begin{proof}
+Smooth rapidly decreasing initial data and the
+globally smooth mild solution yield finite bounds on
+the derivatives used to define $\mathcal T$ on the
+fixed compact time interval $[0,1]$; cylindrical
+axis compatibility removes the apparent $1/r$
+singularity. This bounds its time integral.
+For the angular derivative, write
+$\Gamma=xu_y-yu_x$ and parametrize
+$x=r\cos\theta$, $y=r\sin\theta$.
+Cartesian differentiation gives
+\[
+|\partial_\theta\Gamma|
+\le r\|u\|_\infty+r^2\|\nabla u\|_\infty.
+\]
+The globally smooth solution has a uniform gradient
+bound on $[0,1]$. Integrate in $\theta$ and substitute
+$r=r_\tau=O(\sqrt\tau)$ to obtain the
+second estimate. Since $h>0$, $O(1)+
+O(\sqrt\tau)=o(\tau^{-h})$, so the necessary
+late-time escape condition cannot hold.
+\end{proof}
