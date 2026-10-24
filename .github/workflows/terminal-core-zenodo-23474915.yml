@@ -265,6 +265,7 @@ jobs:
           python TerminalCore2026/verify_n1_nonlinear_picard_exact.py
           python TerminalCore2026/verify_n1_terminal_H3_scaling.py
           python TerminalCore2026/verify_n1_exterior_derivative_exact.py
+          python TerminalCore2026/verify_n1_second_order_dual.py
           python TerminalCore2026/verify_n1_source_axis_jet.py
           python TerminalCore2026/stagewise_source_checks.py
           python TerminalCore2026/outer_schedule_enclosure.py
