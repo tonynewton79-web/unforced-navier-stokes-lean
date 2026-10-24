@@ -154,3 +154,62 @@ in the real H8 source, prove the physical A.11/A.19 residual,
 produce a time-dependent unforced solution, or verify a terminal
 singularity. The original forced Navier--Stokes construction
 cannot be made unforced by this algebra alone.
+
+
+\begin{proposition}[Sharp affine virtual-work obstruction for compact whole-space rays]
+\label{prop:xxvi-global-virtual-work}
+Let $S=\sum_{j=1}^7d_jv_j\otimes v_j$ be a smooth
+compactly supported seven-ray tensor on $\mathbb R^3$, with
+$d_j\ge0$, using the local cylindrical ray frame away from
+the axis. Suppose $Q$ is a smooth compactly supported symmetric
+tensor and
+\[
+\nabla\cdot(S-Q)=\nabla p
+\]
+for a smooth scalar $p$ whose gradient is compactly supported.
+Then necessarily
+\begin{equation}\label{eq:xxvi-virtual-work}
+\boxed{\quad
+\int_{\mathbb R^3}(Q_{xx}+Q_{yy}-2Q_{zz})\,dx
+\ge\frac78\int_{\mathbb R^3}\sum_{j=1}^7 d_j\,dx.\quad}
+\end{equation}
+The factor $7/8$ is sharp among the seven ray strain values.
+In particular, no nonzero compact seven-ray tensor with
+nonnegative coefficients can have purely gradient divergence
+when $Q=0$.
+\end{proposition}
+\begin{proof}
+Use the globally divergence-free affine test field
+$\psi(x,y,z)=(x,y,-2z)$, with
+$D\psi=\operatorname{diag}(1,1,-2)$.
+The tensor difference is compactly supported; its divergence
+is a gradient, which is itself compactly supported. Therefore
+$p$ is constant outside a compact set and can be normalized
+to be compactly supported. Integration by parts gives
+\[
+\int_{\mathbb R^3}(S-Q):D\psi\,dx
+=-\int_{\mathbb R^3}\psi\cdot\nabla p\,dx
+=\int_{\mathbb R^3}p\,\nabla\cdot\psi\,dx=0.
+\]
+At every point, in the rotating frame,
+$v_j^TD\psi\,v_j=v_{j,r}^2+v_{j,\theta}^2-2v_{j,z}^2$.
+The seven exact values are
+\[
+1,\quad17/16,\quad17/16,\quad
+7/8,\quad7/8,\quad15/16,\quad15/16.
+\]
+Hence $S:D\psi\ge(7/8)\sum_jd_j$ pointwise.
+Substituting into the integrated identity proves the claim.
+\end{proof}
+
+\paragraph{Meaning for the source-specific H8 route.}
+The affine virtual-work inequality is the simplest necessary
+global dual test for a compact source. The constructive
+periodic-axial gauges of Theorem~\ref{thm:xxvi-global-cone}
+do not contradict it: $\psi=(x,y,-2z)$ is not a periodic
+axial test field. For an authentic whole-space A.11/A.19
+source this test must be applied to the complete physical
+stress and forcing before claiming any compact seven-ray
+realization. The general virtual-work principle is established
+prior art; the $7/8$ factor follows exactly from the particular
+aperture-$1/4$ ray family.
