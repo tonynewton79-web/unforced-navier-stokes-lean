@@ -6,6 +6,7 @@ on:
       - 'TerminalCore2026/N1SharpCornerDualScalar.lean'
       - 'TerminalCore2026/XXVIII_64_CORNER_EXACT_CERTIFICATES.txt'
       - 'TerminalCore2026/verify_xxviii_sharp_cone.py'
+      - 'TerminalCore2026/verify_xxviii_derivative_cost.py'
       - '.github/workflows/n1-sharp-64-corner.yml'
   workflow_dispatch:
 permissions:
@@ -16,7 +17,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Exact 64 corner and interpolation replay
-        run: python TerminalCore2026/verify_xxviii_sharp_cone.py
+        run: |
+          python TerminalCore2026/verify_xxviii_sharp_cone.py
+          python TerminalCore2026/verify_xxviii_derivative_cost.py
       - name: Install pinned Lean toolchain
         run: |
           curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
