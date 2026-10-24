@@ -73,6 +73,25 @@ theorem xxv_rational_c4_floor :
 theorem xxv_carrier_positive_rational :
     (0 : ℚ) < 85/8-30*(1/256)*(625/256) := by norm_num
 
+/-- Exact 20-carrier tensor rr component; the remaining five
+components are unchanged from the variable-carrier identity. -/
+theorem xxv_constant_rr (r l s c : ℝ) :
+    (21 - xxvCarrier r l s c)+
+      xxvC2 r l c+xxvC3 r l c+
+      xxvC4 r l s c+xxvC5 r l s c+
+      xxvC6 r l s c+xxvC7 r l s c =
+    2*c^2+20+xxvPi r l c := by
+  unfold xxvCarrier xxvC2 xxvC3 xxvC4 xxvC5 xxvC6 xxvC7 xxvPi
+  ring
+
+/-- Rational bound on the adjusted radial-ray coefficient. -/
+theorem xxv_constant_ray_floor :
+    (21 : ℚ)-(85/8+8+25/512) = 1191/512 := by
+  norm_num
+
+#print axioms xxv_constant_rr
+#print axioms xxv_constant_ray_floor
+
 #print axioms xxv_rr
 #print axioms xxv_tt
 #print axioms xxv_zz
