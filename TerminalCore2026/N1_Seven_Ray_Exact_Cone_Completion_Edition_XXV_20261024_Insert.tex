@@ -1,0 +1,133 @@
+
+\section{Exact seven-ray cone completion and the compulsory carrier}
+\label{sec:seven-ray-cone-XXV}
+We now test the smooth two-frequency covariance of Edition XXIV
+against the actual H8 seven-ray geometry. These are exact
+source-independent tensor identities in a local co-rotating frame,
+not an unforced Navier--Stokes construction.
+
+\begin{theorem}[Direct seven-ray cone obstruction]
+\label{thm:ray-direct-XXV}
+Let $t=1/4$, and in the local frame
+$(e_1,e_2,e_3)=(e_r,e_\theta,e_z)$ put
+\[
+v_1=e_1,\qquad v_{2,3}=e_1\pm te_2,\qquad
+v_{4,5}=e_1\pm te_3,\qquad
+v_{6,7}=e_1+t(e_2\pm e_3).
+\]
+For $d_j\ge\mu>0$, the stress
+$S=\sum_{j=1}^7d_jv_j\otimes v_j$ obeys
+\[
+\boxed{S_{rr}-S_{\theta\theta}\ge 105\mu/16>0.}
+\]
+On the Edition XXIV annular plateau, its manufactured two-frequency
+Reynolds covariance has
+$Q_{rr}-Q_{\theta\theta}=-2\lambda^2r^4\cos^2z\le0$.
+Hence $Q+\pi I$ is not directly in the strict seven-ray cone for
+any scalar gauge $\pi$.
+\end{theorem}
+\begin{proof}
+Each ray satisfies $(v_j)_r=1$ and
+$|(v_j)_\theta|\le1/4$. Consequently
+$S_{rr}-S_{\theta\theta}
+=\sum_jd_j(1-(v_j)_\theta^2)
+\ge(15/16)\sum_jd_j\ge105\mu/16$.
+The manufactured $Q$ has $Q_{rr}=2\cos^2z$ and
+$Q_{\theta\theta}=2\cos^2z(1+\lambda^2r^4)$.
+An isotropic gauge does not change their difference.
+\end{proof}
+
+\begin{theorem}[Strict seven-ray completion with a positive carrier]
+\label{thm:ray-carrier-XXV}
+On $3/4\le r\le5/4$, $|z|\le\pi/6$ and
+$|\lambda|\le1/16$, write $s=\sin z$ and $c=\cos z$.
+Define
+\begin{align*}
+d_1&=1,&
+d_2&=1+4\lambda r^2c^2,&
+d_3&=3-4\lambda r^2c^2,\\
+d_4&=2+16s^2+16\lambda^2(r^2s^2-r^4c^2)
+  +16\lambda rcs,\\
+d_5&=2+16s^2+16\lambda^2(r^2s^2-r^4c^2)
+  -16\lambda rcs,\\
+d_6&=1-16\lambda rcs,&
+d_7&=1+16\lambda rcs,\\
+\pi&=\frac38-2c^2(1+\lambda^2r^4),\\
+K&=\frac{85}{8}+32s^2+32\lambda^2r^2s^2
+                     -30\lambda^2r^4c^2.
+\end{align*}
+For the complete co-rotating covariance tensor $Q$ of the
+two-frequency field in Edition XXIV, the following holds exactly:
+\begin{equation}\label{eq:ray-completion-XXV}
+\boxed{Q+K e_r\otimes e_r+\pi I
+=\sum_{j=1}^7 d_jv_j\otimes v_j,\qquad
+d_j\ge\frac38>0,\quad K>0.}
+\end{equation}
+\end{theorem}
+\begin{proof}
+The covariance in the plateau is
+\[
+Q=2\begin{pmatrix}
+c^2&\lambda r^2c^2&0\\
+\lambda r^2c^2&c^2(1+\lambda^2r^4)&-\lambda rcs\\
+0&-\lambda rcs&1+\lambda^2r^2s^2
+\end{pmatrix}.
+\]
+The seven-ray synthesis identities are
+\begin{align*}
+S_{rr}&=\sum_jd_j,&
+S_{\theta\theta}&=(d_2+d_3+d_6+d_7)/16,\\
+S_{zz}&=(d_4+d_5+d_6+d_7)/16,&
+S_{r\theta}&=(d_2-d_3+d_6+d_7)/4,\\
+S_{rz}&=(d_4-d_5+d_6-d_7)/4,&
+S_{\theta z}&=(d_6-d_7)/16.
+\end{align*}
+Substitution verifies all six symmetric tensor components.
+Using $r\le5/4$, $|s|\le1/2$, $|c|\le1$ and
+$|\lambda|\le1/16$ yields
+\[
+d_1=1,\quad d_2\ge39/64,\quad d_3\ge167/64,\quad
+d_{4,5}\ge5007/4096,\quad d_{6,7}\ge3/8.
+\]
+Also $K\ge85/8-30(1/256)(625/256)>0$.
+\end{proof}
+
+\begin{proposition}[Non-gauge carrier curl]
+\label{prop:ray-carrier-curl-XXV}
+The spatially varying radial carrier in
+\eqref{eq:ray-completion-XXV} has
+\[
+\nabla\cdot(K e_r\otimes e_r)=(K_r+K/r)e_r,
+\]
+and
+\[
+\boxed{\bigl[\nabla\times\nabla\cdot
+(K e_r\otimes e_r)\bigr]_\theta
+=\left(\frac{64}{r}+192\lambda^2r+300\lambda^2r^3\right)
+\sin z\cos z.}
+\]
+The curl is nonzero on open subpatches with $0<|z|<\pi/6$.
+Thus this carrier is not a pressure-gauge adjustment.
+\end{proposition}
+\begin{proof}
+The cylindrical divergence of an axisymmetric pure radial
+tensor gives $(K_r+K/r)e_r$.
+Take its axial derivative and use the displayed formula for $K$.
+A gradient has zero curl.
+\end{proof}
+
+\paragraph{Physical and independent-verification limits.}
+This is an exact local positive cone completion, not the full
+H8 four-field stress or a source-matched unforced PDE solution.
+A positive radial carrier has a physical projected-divergence
+effect and its construction must be justified; a pressure gauge
+alone cannot supply it. The co-rotating ray frame also generates
+spatial derivative terms. Source A.11/A.19, collar matching,
+the seven-ray virtual-work dual, time evolution, all-mode
+convergence and singularity inheritance remain unproved.
+Independent symbolic reconstruction of all six tensor entries,
+the rank-six tensor map with coefficient kernel
+$(2,-2,0,-1,-1,1,1)$, five thousand exact rational parameter
+replays, and an independent carrier-curl derivative audit pass.
+The accompanying Lean declarations cover only finite scalar
+identities, not the full PDE theorem.
