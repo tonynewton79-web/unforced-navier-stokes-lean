@@ -6,6 +6,7 @@ on:
       - 'TerminalCore2026/N1GlobalRayQuotientScalar.lean'
       - 'TerminalCore2026/verify_global_seven_ray_xxvi.py'
       - 'TerminalCore2026/verify_axial_localization_xxvi.py'
+      - 'TerminalCore2026/verify_virtual_work_dual_xxvi.py'
       - '.github/workflows/n1-global-ray-quotient.yml'
   pull_request:
   workflow_dispatch:
@@ -38,3 +39,4 @@ jobs:
           python -m pip install sympy
           python TerminalCore2026/verify_global_seven_ray_xxvi.py
           python TerminalCore2026/verify_axial_localization_xxvi.py
+          python TerminalCore2026/verify_virtual_work_dual_xxvi.py
