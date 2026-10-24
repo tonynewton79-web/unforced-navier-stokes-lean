@@ -1,0 +1,156 @@
+
+\section{A global annular seven-ray quotient-cone completion and the axial localization obstruction}
+\label{sec:xxvi-global-ray}
+
+The exact seven-ray synthesis of Edition XXV has a stronger
+source-independent consequence on a periodic-axial cylinder. It
+also has a sharp limitation when one tries to use a compact
+three-dimensional H8 source shell. Neither statement proves a
+zero-force Navier--Stokes singularity.
+
+\begin{theorem}[Global smooth positive seven-ray completion modulo pressure]
+\label{thm:xxvi-global-cone}
+Work on $\Omega=\mathbb R^2\times\mathbb S^1$ in cylindrical
+coordinates $(r,\theta,z)$, or inside an embedded transverse
+disk of $\mathbb T^3$. Let $Q(r,z)$ be any smooth symmetric
+$3\times3$ co-rotating tensor, independent of $\theta$, with
+its radial support contained in a compact annulus
+$0<r_0\le r\le r_1<\infty$.
+Choose $\chi\in C_c^\infty((0,\infty);[0,1])$ equal to one
+in a neighborhood of the radial projection of $\operatorname{supp}Q$.
+Let
+\[
+M=\max_{i,j}\|Q_{ij}\|_\infty,\qquad
+A=16M+1,\qquad B=29A+64M+1.
+\]
+For the same seven rays $v_j$ of
+Theorem~\ref{thm:ray-direct-XXV} (with $t=1/4$), define
+\begin{align*}
+d_1&=Q_{rr}-16(Q_{\theta\theta}+Q_{zz})+(B-29A)\chi,\\
+d_2&=8Q_{\theta\theta}+6A\chi+2Q_{r\theta},\\
+d_3&=8Q_{\theta\theta}+8A\chi-2Q_{r\theta},\\
+d_4&=8Q_{zz}+7A\chi+2Q_{rz}-8Q_{\theta z},\\
+d_5&=8Q_{zz}+7A\chi-2Q_{rz}+8Q_{\theta z},\\
+d_6&=A\chi+8Q_{\theta z},\\
+d_7&=A\chi-8Q_{\theta z}.
+\end{align*}
+Then all coefficients are smooth and radially compactly supported,
+\begin{equation}\label{eq:xxvi-cone}
+\boxed{\quad d_j\ge\chi\ge0\ (1\le j\le7),\qquad
+\sum_{j=1}^7d_jv_j\otimes v_j
+=Q+A\chi I+B\chi e_r\otimes e_r.\quad}
+\end{equation}
+The resulting tensor $S$ is globally smooth and radially compactly
+supported, and its physical Cartesian tensor divergence satisfies
+\begin{equation}\label{eq:xxvi-pressure-quotient}
+\boxed{\quad
+\nabla\cdot S=\nabla\cdot Q+\nabla\Phi,\qquad
+\Phi(r)=(A+B)\chi(r)+B\int_0^r\frac{\chi(s)}s\,ds.\quad}
+\end{equation}
+In particular $\mathbb P\nabla\cdot S
+=\mathbb P\nabla\cdot Q$ in the periodic-axial or periodic-torus
+Leray quotient.
+\end{theorem}
+\begin{proof}
+For the seven rays of Edition XXV the six components satisfy
+\[
+S_{rr}=\sum d_j,\quad
+16S_{\theta\theta}=d_2+d_3+d_6+d_7,\quad
+16S_{zz}=d_4+d_5+d_6+d_7,
+\]
+\[
+4S_{r\theta}=d_2-d_3+d_6+d_7,\quad
+4S_{rz}=d_4-d_5+d_6-d_7,\quad
+16S_{\theta z}=d_6-d_7.
+\]
+Direct substitution of the displayed coefficients yields exactly
+\eqref{eq:xxvi-cone} in all six components.
+
+Where $Q\ne0$ one has $\chi=1$.
+Using $|Q_{ij}|\le M$ gives
+\[
+d_1\ge31M+1,\quad d_2\ge86M+6,\quad
+d_3\ge118M+8,\quad
+d_{4,5}\ge94M+7,\quad
+d_{6,7}\ge8M+1.
+\]
+Where $\chi\ne1$, $Q=0$, and the seven coefficients are
+$(64M+1)\chi$, $6A\chi$, $8A\chi$, $7A\chi$,
+$7A\chi$, $A\chi$, $A\chi$, respectively.
+Every coefficient is therefore at least $\chi$.
+The co-rotating frame causes no axis singularity because $\chi$
+and $Q$ vanish near $r=0$.
+
+Finally, on the full cylindrical domain
+\[
+\nabla\cdot(B\chi e_r\otimes e_r)
+=B(\chi'+\chi/r)e_r
+=\nabla\left(B\chi+B\int_0^r\chi(s)/s\,ds\right).
+\]
+The isotropic term contributes $\nabla(A\chi)$.
+The scalar potential is smooth at the axis, becomes constant
+outside the outer radial support, and patches to a periodic
+potential on the embedded-disk three-torus.
+This proves \eqref{eq:xxvi-pressure-quotient}.
+\end{proof}
+
+\begin{proposition}[Necessary carrier amplitude in any strict representation]
+\label{prop:xxvi-gauge-cost}
+If, at a point with $\chi>0$,
+\[
+Q+A\chi I+B\chi e_r\otimes e_r
+=\sum_{j=1}^7d_jv_j\otimes v_j,
+\qquad d_j\ge\mu\chi,
+\]
+then
+\begin{equation}\label{eq:xxvi-gauge-cost}
+\boxed{\quad B\chi\ge Q_{\theta\theta}-Q_{rr}
+                  +\frac{105}{16}\mu\chi.\quad}
+\end{equation}
+Thus the free choice of large $A,B$ in
+Theorem~\ref{thm:xxvi-global-cone} cannot be replaced by
+an asserted source-compatible H8 gain or coefficient-size budget.
+\end{proposition}
+\begin{proof}
+Each ray satisfies $(v_j)_r=1$ and
+$|(v_j)_\theta|\le1/4$. Therefore
+$S_{rr}-S_{\theta\theta}\ge(15/16)\sum_jd_j
+\ge(105/16)\mu\chi$.
+The isotropic gauge cancels from the left side, leaving
+$Q_{rr}-Q_{\theta\theta}+B\chi$.
+\end{proof}
+
+\begin{proposition}[No compact axially localized pure-radial gauge on $\mathbb R^3$]
+\label{prop:xxvi-axial-no-go}
+Let $k(r,z)$ be smooth and compactly supported in both $r$
+(away from the axis) and $z$ on $\mathbb R^3$.
+If $\nabla\cdot(k e_r\otimes e_r)$ is curl-free, then
+$k\equiv0$. In particular, simply multiplying the gradient-neutral
+carrier of Theorem~\ref{thm:xxvi-global-cone} by a compact axial
+cutoff introduces a non-gradient force unless it vanishes.
+\end{proposition}
+\begin{proof}
+The carrier divergence is $(k_r+k/r)e_r$ and the
+azimuthal component of its curl is
+$\partial_z(k_r+k/r)$.
+Curl-freeness and compact axial support imply
+$k_r+k/r=0$ for every $(r,z)$.
+Thus $\partial_r(rk)=0$, so $rk=C(z)$.
+Compact radial support forces $C(z)=0$.
+\end{proof}
+
+\paragraph{Independent double verification and release boundary.}
+Six general tensor component identities were recomputed symbolically
+and $10{,}000$ exact rational tests included arbitrary symmetric
+tensors (not only covariance matrices), the active support,
+and the cutoff collar. An independent Cartesian derivative check
+verified a radial carrier's divergence is a gradient. A separate
+axial-cutoff calculation found an explicit nonzero curl and
+reproduced Proposition~\ref{prop:xxvi-axial-no-go}.
+This global quotient-cone representation is mathematically exact
+but uses large unconstrained gauges: $B=29(16M+1)+64M+1$.
+It does \emph{not} give the small coefficient/stress norms required
+in the real H8 source, prove the physical A.11/A.19 residual,
+produce a time-dependent unforced solution, or verify a terminal
+singularity. The original forced Navier--Stokes construction
+cannot be made unforced by this algebra alone.
