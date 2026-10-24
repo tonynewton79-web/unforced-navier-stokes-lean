@@ -100,6 +100,30 @@ The normalized nonnegative cutoff then yields
 \eqref{eq:xl-common-interval}.
 \end{proof}
 
+\begin{proposition}[Positive angular-momentum accumulation under the full PDE]
+\label{prop:xl-moment-production}
+For the exact solution of Theorem~\ref{thm:xl-single-flow},
+the complete weighted cylinder moment of Edition~XXXIX
+satisfies, at every fixed $R>0$,
+\begin{equation}\label{eq:xl-moment-production}
+\boxed{\quad
+\mathcal M'_{R,\eta}(0)
+=-\mathcal F(R,0)
+=2\pi\varepsilon^2R^4e^{-2R^2}
+\int\eta(z)e^{-2z^2}dz>0.\quad}
+\end{equation}
+The identity remains true for an initially moving radius,
+because its geometric sweep contribution is zero at $t=0$.
+\end{proposition}
+\begin{proof}
+The mean initial angular momentum $\bar\Gamma(0,r,z)$
+and all its derivatives vanish, and $u_z(0)=0$.
+Thus the mean radial viscous, axial and moving-boundary
+terms in the complete cylinder identity vanish at $t=0$.
+The only remaining term is the explicitly signed
+advective flux $-\mathcal F(R,0)$.
+\end{proof}
+
 \begin{theorem}[Energy localization of amplified radial-flux spikes]
 \label{thm:xl-concentration}
 Let $u$ be any smooth finite-energy exactly unforced
