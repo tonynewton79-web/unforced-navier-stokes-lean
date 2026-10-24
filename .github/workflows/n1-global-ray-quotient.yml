@@ -1,0 +1,40 @@
+name: Audit global seven-ray quotient cone
+on:
+  push:
+    branches: [feature/zenodo-23474915-lean]
+    paths:
+      - 'TerminalCore2026/N1GlobalRayQuotientScalar.lean'
+      - 'TerminalCore2026/verify_global_seven_ray_xxvi.py'
+      - 'TerminalCore2026/verify_axial_localization_xxvi.py'
+      - '.github/workflows/n1-global-ray-quotient.yml'
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  global-cone:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean toolchain
+        shell: bash
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          elan toolchain install "$(cat lean-toolchain)"
+          lake update
+          lake exe cache get
+      - name: Reject local admitted declarations
+        shell: bash
+        run: |
+          if grep -nE '^[[:space:]]*(sorry|admit|axiom)([[:space:]]|$)' TerminalCore2026/N1GlobalRayQuotientScalar.lean; then exit 1; fi
+      - name: Kernel-check finite seven-ray algebra
+        run: lake env lean TerminalCore2026/N1GlobalRayQuotientScalar.lean
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Independent global tensor and axial-support checks
+        run: |
+          python -m pip install sympy
+          python TerminalCore2026/verify_global_seven_ray_xxvi.py
+          python TerminalCore2026/verify_axial_localization_xxvi.py
