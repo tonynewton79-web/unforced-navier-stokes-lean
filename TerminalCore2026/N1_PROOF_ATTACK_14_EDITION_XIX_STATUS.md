@@ -1,8 +1,12 @@
-# Edition XIX / Proof Attack 14: second projected correction
+# Independent formal/algebraic replay of existing Edition XIX
 
-**24 October 2026 — finite algebra independently checked; full unforced PDE OPEN.**
+**24 October 2026 — independent confirmation of the already committed Edition XIX, not a new proof attack or a new theorem.**
 
-This extends the Edition XIII first Stokes correction and Edition XIV local Picard analysis. It neither derives nor asserts a full unforced finite-time Navier–Stokes singularity. The original OpenAI Navier–Stokes source profile comes from a **forced** construction.
+The branch already contains `N1_SECOND_ORDER_LERAY_AND_DUAL_WITNESS_20261024.md` and `N1_Projected_Second_Order_And_Dual_Witness_Edition_XIX_20261024_Insert.tex`, with the complete two-step construction and a Gaussian dual witness. This addendum provides a distinct nonsymmetric finite-dimensional exact test, a finite Lean algebra module, and a relative-energy diagnostic. The subsequent original Editions XX and XXI establish the heat-exterior identity and analytic no-exact-gluing restriction; these remain separate and take precedence in planning source matching.
+
+**Full unforced PDE remains OPEN.**
+
+This independently replays the previously committed Edition XIX two-step correction, which itself extends Editions XIII and XIV. It neither derives nor asserts a full unforced finite-time Navier–Stokes singularity. The original OpenAI Navier–Stokes source profile comes from a **forced** construction.
 
 ## The exact two-stage residual
 
