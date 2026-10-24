@@ -69,3 +69,18 @@ The requested singularity-preserving nonzero-data unforced correction would solv
 
 ## Research next gate
 Any candidate construction must exploit a nontrivial dynamical mechanism beyond choosing an unforced comparison solution. The source-matched correction must satisfy its full projected equation AND gain a pointwise, high-frequency, or H² upper bound preventing core cancellation. The Gaussian comparison is a concrete benchmark rejecting proof claims based on initial data, Fourier energy, or a formal zero-force identity alone.
+
+
+## Universal necessary critical datum gate
+
+The same self-contained Fourier Picard contraction holds for **any**
+smooth rapidly decreasing divergence-free datum with
+((2\pi)^{-3/2}\|u_0\|_{\mathcal X^{-1}}/\nu<1/16).
+Therefore, if a smooth-data exactly unforced comparison really preserves
+the forced source singularity, its initial datum (w(0)=u(0)) must satisfy
+[
+\boxed{\|w(0)\|_{\mathcal X^{-1}}\ge\nu(2\pi)^{3/2}/16.}
+]
+The given Gaussian is strictly below this barrier: its dimensionless
+ratio is 1/400. This is a **necessary lower bound only**, not a
+prediction that larger data produce blowup.
