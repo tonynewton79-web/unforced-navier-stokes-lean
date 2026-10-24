@@ -43,7 +43,7 @@ for i in range(50000):
     assert gain*f <=2*(M+J)
     assert e<=M/gain-f
 for k in (1,2,3,4,8,12):
-    gain=Q(4)*2**k # h=1/100, tau=2^(-100k)
+    gain=Q(4)*2**k # h=1/200, tau=2^(-200k)
     f=Q(1,3); M=Q(10)
     emax=M/gain-f
     assert gain*(f+emax)==M
