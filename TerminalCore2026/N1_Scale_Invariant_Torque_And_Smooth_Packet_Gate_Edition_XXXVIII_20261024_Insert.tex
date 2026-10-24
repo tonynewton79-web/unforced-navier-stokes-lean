@@ -1,0 +1,154 @@
+
+\section{Scale-invariant torque, angular-momentum compensation and smooth packet stacks}
+\label{sec:xxxviii-scale}
+The exact nonaxisymmetric zero-force Gaussian vortex of Edition~XXXVII has
+\[
+J(r,z)=\overline{u'_r\Gamma'}=\varepsilon^2r^3e^{-2(r^2+z^2)},\qquad
+\mathcal T=-r^{-1}\partial_r(rJ)
+=4\varepsilon^2r^2(r^2-1)e^{-2(r^2+z^2)}.
+\]
+Here $\Gamma=ru_\theta$ and $\varepsilon=\nu/1000$.
+Although its initial torque is nonzero, it redistributes angular momentum
+without generating a nonzero total.
+
+\begin{proposition}[Exact interior--exterior angular-momentum compensation]
+\label{prop:xxxviii-compensation}
+For each $R>0$ and $z$,
+\begin{equation}\label{eq:xxxviii-balance}
+\boxed{\quad\int_0^R\mathcal T(0,r,z)\,r\,dr
+=-\varepsilon^2R^4e^{-2(R^2+z^2)}.\quad}
+\end{equation}
+In particular, $\int_0^\infty\mathcal T(0,r,z)r\,dr=0$.
+For any sufficiently decaying smooth unforced solution,
+the global $z$-angular momentum
+$\int_{\mathbb R^3}(xu_y-yu_x)\,dx$ is conserved.
+\end{proposition}
+\begin{proof}
+Integrate $r\mathcal T=-\partial_r(rJ)$;
+the boundary term at $r=0$ vanishes as $r^4$ and the
+infinite boundary term is zero by Gaussian decay.
+Testing the full physical Navier--Stokes momentum equation
+against the rotational Killing field $(-y,x,0)$ proves global
+angular-momentum conservation by the symmetry of the nonlinear
+and viscous stresses. The pressure contributes no torque.
+\end{proof}
+
+\begin{theorem}[Arbitrarily large instantaneous torque without singularity]
+\label{thm:xxxviii-scaling}
+Let $u$ be the globally smooth zero-force
+solution of Edition~XXXVII and define the exact
+Navier--Stokes rescaling
+$u_\lambda(x,t)=\lambda u(\lambda x,\lambda^2t)$,
+$\lambda>0$. Then every $u_\lambda$ is itself
+globally smooth and unforced, and
+\[
+\boxed{\quad
+\Gamma_\lambda(x,t)=\Gamma(\lambda x,\lambda^2t),
+\qquad
+\mathcal T_\lambda(x,t)=\lambda^2\mathcal T(\lambda x,\lambda^2t).
+\quad}
+\]
+At its rescaled radial sample,
+\begin{equation}\label{eq:xxxviii-instantaneous}
+\boxed{\quad
+\mathcal T_\lambda(0,1/(2\lambda),0)
+=-\frac34\varepsilon^2\lambda^2e^{-1/2}.\quad}
+\end{equation}
+Nevertheless
+\[
+\boxed{\quad
+\|u_\lambda(0)\|_2^2=\lambda^{-1}\|u(0)\|_2^2,
+\qquad
+\|u_\lambda(0)\|_{\mathcal X^{-1}}
+=\|u(0)\|_{\mathcal X^{-1}}.\quad}
+\]
+For each fixed $\lambda$, the time-integrated
+$\|\mathcal T_\lambda\|_\infty$ is bounded up to
+$t=1$ and angular variation on the shrinking source
+circle $r_\tau=O(\sqrt\tau)$ is $O_\lambda(\sqrt\tau)$.
+These bounds need not be uniform in $\lambda$.
+\end{theorem}
+\begin{proof}
+Directly substitute the parabolic scaling into the
+unforced PDE, cylindrical angular-momentum definition
+and radial/axial covariance flux. The unitary
+Fourier scaling
+$\widehat{u_\lambda}(\xi)=\lambda^{-2}
+\widehat u(\xi/\lambda)$ proves the critical
+$\mathcal X^{-1}$ invariance. Change variables
+in the spatial $L^2$ norm for the kinetic-energy relation.
+The sample torque follows from the exact Gaussian formula.
+Fixed-scale global smoothness supplies bounded derivatives
+on the compact interval $[0,1]$ and hence the finite
+torque integral. The identity
+$\Gamma=xu_y-yu_x$ gives
+$|\partial_\theta\Gamma|
+\le r\|u\|_\infty+r^2\|\nabla u\|_\infty$,
+and proves the angular-variation assertion.
+Letting $\lambda$ vary with $\tau$ does not define
+a single initial-value evolution.
+\end{proof}
+
+\begin{theorem}[Smoothness obstruction for a direct infinite packet cascade]
+\label{thm:xxxviii-packets}
+Choose a nonzero solenoidal compact field
+$\phi=\nabla\times[\chi e^{-\rho^2}(x+(x^2+y^2)y)e_z]$
+supported in the unit ball, with $\chi=1$
+near $(r,z)=(1/2,0)$. Take
+$\lambda_n=16^n$, $c_n=(0,0,4^{-n})$ and
+$U_n(x)=a_n\lambda_n\phi(\lambda_n(x-c_n))$.
+The packet supports are disjoint and accumulate at the origin.
+Then $U_0=\sum_{n\ge1}U_n$ extends as a
+$C^\infty$ velocity across the origin if and only if
+\begin{equation}\label{eq:xxxviii-smoothness}
+\boxed{\quad
+|a_n|\lambda_n^{k+1}\to0
+\qquad\text{for every fixed integer }k\ge0.\quad}
+\end{equation}
+At the packet sample $(r,z)=(1/(2\lambda_n),4^{-n})$
+the exact initial torque is
+\begin{equation}\label{eq:xxxviii-stack-torque}
+\boxed{\quad
+\mathcal T_{U_0}(0,1/(2\lambda_n),4^{-n})
+=-\frac34 a_n^2\lambda_n^2e^{-1/2}
+=o(\lambda_n^{-2}).\quad}
+\end{equation}
+Thus fixed critical-amplitude copies or coefficients
+decaying by one fixed power of $\lambda_n$ do
+not provide smooth initial data for this direct stack.
+\end{theorem}
+\begin{proof}
+The support radii $\lambda_n^{-1}=16^{-n}$
+are smaller than the gaps between the centers $4^{-n}$.
+On the $n$th packet the order-$k$ derivative supremum is
+$|a_n|\lambda_n^{k+1}\|\nabla^k\phi\|_\infty$.
+For every fixed $k$ this derivative norm of a nonzero
+compact smooth field is positive, since otherwise it
+would be a compactly supported polynomial.
+Derivatives of any smooth extension must vanish at the
+accumulation point, as they vanish on nearby support gaps.
+Continuity proves necessity of the displayed jet condition;
+the same decay proves sufficiency by extension through zero.
+On the local plateau the quadratic Reynolds torque
+scales by $a_n^2\lambda_n^2$; other packets vanish there.
+Finally the $k=1$ condition yields
+$a_n\lambda_n^2\to0$, so
+$a_n^2\lambda_n^2=o(\lambda_n^{-2})$.
+\end{proof}
+
+\paragraph{Near-axis consequence and the remaining open dynamics.}
+For uniformly $C^4$ Cartesian velocity fields near the axis,
+angular Taylor expansion and parity imply
+$\overline{u'_r\Gamma'}=O(r^3)$,
+$\overline{u'_z\Gamma'}=O(r^2)$
+and $\mathcal T=O(r^2)$.
+These constants need not remain bounded near an
+unknown singular time. The three theorems rule out
+large \emph{instantaneous} torque, global angular-momentum
+redistribution and the naive initial packet stack
+as substitutes for nonlinear terminal amplification.
+They do not bound dynamically transferred energy into
+smaller scales at later times. The original OpenAI
+Navier--Stokes source includes forcing, and no smooth-data
+zero-force singularity or full Lean PDE proof
+is established by this edition.
