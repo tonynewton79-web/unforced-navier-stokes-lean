@@ -1,0 +1,28 @@
+name: Rank two Fourier gate
+on:
+  push:
+    branches: [feature/zenodo-23474915-lean]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  finite-rank:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Lean
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Kernel-check rank gate
+        run: |
+          elan toolchain install "$(cat lean-toolchain)"
+          lake update
+          lake exe cache get
+          lake env lean TerminalCore2026/N1RankTwoFourierScalar.lean
+      - uses: actions/setup-python@v5
+      - name: Independent replay
+        run: |
+          python -m pip install sympy
+          python TerminalCore2026/verify_rank_two_fourier_xxiv.py
