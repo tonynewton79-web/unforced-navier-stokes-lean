@@ -38,5 +38,10 @@ theorem m_two_curl_witness_components :
 #print axioms nonaxis_mode_gram_minor
 #print axioms nonaxis_mode_gram_minor_nonneg
 #print axioms gaussian_slice_torque_algebra
+theorem two_shell_torque_rational_cancel :
+    (29 / 1847560 : ℚ) + (-261 / 3269) * (3269 / 16628040) = 0 := by
+  norm_num
+
 #print axioms m_two_curl_witness_components
+#print axioms two_shell_torque_rational_cancel
 end TerminalCore2026
