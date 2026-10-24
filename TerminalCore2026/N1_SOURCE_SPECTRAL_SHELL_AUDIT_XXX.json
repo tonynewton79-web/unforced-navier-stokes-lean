@@ -1,0 +1,20 @@
+{
+  "edition": "XXX",
+  "source_url": "https://cdn.openai.com/pdf/32d9f210-8b73-45e0-91bc-82a30aef8a9a/navier-stokes.pdf",
+  "source_location": "Section 10 equations (10.4)-(10.5), PDF page index 117",
+  "original_problem": "Forced NSE: the full source residual does not vanish",
+  "source_initial_velocity": "zero",
+  "proof_scope": "A source-independent smooth finite-energy Fourier/Duhamel necessary inequality, not a regularity theorem",
+  "whole_space_shell_tradeoff": "[bK-deltaK]_+ <= exp(-nu*K^2*t)*x + sqrt(K)/(sqrt(2)*pi*nu)*(x+R)^2 + R",
+  "valid_domain": "R^3 with unitary Fourier transform, smooth finite-energy decay conditions",
+  "periodic_mode_improved": "Mean-zero 2pi torus: G_k(t)=|k|(exp(-2nu t)-exp(-nu|k|^2t))/(nu(|k|^2-2)); at |k|^2=2 use |k|t exp(-2nu t)",
+  "source_profile_sha256": null,
+  "actual_source_shell_norm_bK": null,
+  "actual_correction_shell_norm_deltaK": null,
+  "actual_nonzero_initial_norm_x": null,
+  "actual_projected_residual_budget": null,
+  "end_to_end_lean_PDE_certificate": null,
+  "zero_force_singularity_proved": false,
+  "exact_verification": "SymPy heat kernels and R3 shell; 40000 exact rational Cauchy fixtures; 1200 finite Fourier fields x 4 modes",
+  "status": "HOLD_NO_AUTHENTIC_SHELL_DATA_OR_COMPLETE_LEAN_UNFORCED_PDE"
+}
