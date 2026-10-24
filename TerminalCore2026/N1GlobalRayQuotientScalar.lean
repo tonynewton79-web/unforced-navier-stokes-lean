@@ -67,6 +67,22 @@ theorem xxvi_fixed_gauge_budget (M : ℝ) :
     (29*(16*M+1)+64*M+1 : ℝ) = 528*M+30 := by
   ring
 
+
+/-- Algebraic sharp 7/8 affine dual for positive seven-ray weights.
+The whole-space integration-by-parts theorem is not formalized. -/
+theorem xxvi_affine_virtual_work_floor
+    (d1 d2 d3 d4 d5 d6 d7 : ℝ)
+    (h1 : 0 ≤ d1) (h2 : 0 ≤ d2) (h3 : 0 ≤ d3)
+    (h4 : 0 ≤ d4) (h5 : 0 ≤ d5)
+    (h6 : 0 ≤ d6) (h7 : 0 ≤ d7) :
+    (7/8 : ℝ)*(d1+d2+d3+d4+d5+d6+d7) ≤
+      d1+(17/16 : ℝ)*d2+(17/16 : ℝ)*d3+
+      (7/8 : ℝ)*d4+(7/8 : ℝ)*d5+
+      (15/16 : ℝ)*d6+(15/16 : ℝ)*d7 := by
+  linarith
+
+#print axioms xxvi_affine_virtual_work_floor
+
 #print axioms xxvi_rr
 #print axioms xxvi_tt
 #print axioms xxvi_zz
