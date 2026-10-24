@@ -1,0 +1,37 @@
+name: Audit torque scaling and smooth packet gate XXXVIII
+on:
+  push:
+    branches: [feature/zenodo-23474915-lean]
+    paths:
+      - 'TerminalCore2026/N1TorqueScalingPacketScalar.lean'
+      - 'TerminalCore2026/verify_scale_angular_balance_xxxviii.py'
+      - 'TerminalCore2026/verify_smooth_packet_stack_xxxviii.py'
+      - '.github/workflows/n1-torque-scale-packets-xxxviii.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  exact-scale:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Independent symbolic and exact-rational verification
+        run: |
+          python -m pip install sympy
+          python TerminalCore2026/verify_scale_angular_balance_xxxviii.py
+          python TerminalCore2026/verify_smooth_packet_stack_xxxviii.py
+      - name: Install pinned Lean
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          elan toolchain install "$(cat lean-toolchain)"
+          lake update
+          lake exe cache get
+      - name: Reject admitted scalar proofs
+        run: |
+          if grep -nE '^[[:space:]]*(sorry|admit|axiom)([[:space:]]|$)' TerminalCore2026/N1TorqueScalingPacketScalar.lean; then exit 1; fi
+      - name: Lean kernel check for scalar identities only
+        run: lake env lean TerminalCore2026/N1TorqueScalingPacketScalar.lean
