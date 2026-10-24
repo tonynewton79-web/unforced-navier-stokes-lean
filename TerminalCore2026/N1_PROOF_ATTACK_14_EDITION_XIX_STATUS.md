@@ -96,3 +96,28 @@ alone cannot be promoted to a finite-energy global singular solution;
 a successful new route needs a nonzero analytic correction tail,
 full meridional/pressure matching, and a quantified nonlinear
 terminal continuation.
+
+## Quantitative finite-energy mismatch for the unpatched exterior
+
+A restricted corollary of Edition XX's positive axis coefficient is an
+explicit logarithmic norm obstruction. At fixed \(t<1\),
+\(\tau=1-t\), set \(c_*=c_\infty 2^{1/2-h}/\Gamma(1+h)>0\).
+Since \(r|u_{\rm ext}(r,t)|\to c_*\tau^{-h}\), there is a small
+\(r_0>0\) such that \(|u_{\rm ext}|\ge c_*\tau^{-h}/(2r)\)
+for \(0<r<r_0\). On an axial interval \(I_z\) of length \(L>0\)
+and \(0<\epsilon<r_0\),
+\[
+\|u_{\rm ext}\|_{L^2(\epsilon<r<r_0,I_z)}
+\ge \frac{c_*}{2}\tau^{-h}\sqrt{2\pi L\log(r_0/\epsilon)}.
+\]
+For every finite-energy comparison field \(u(t)\), the triangle
+inequality implies
+\[
+\|u-u_{\rm ext}\|_{L^2(\epsilon<r<r_0,I_z)}
+\ge \frac{c_*}{2}\tau^{-h}\sqrt{2\pi L\log(r_0/\epsilon)}
+-\|u(t)\|_2 \to +\infty.
+\]
+Thus no globally \(L^2\)-small correction of the **unpatched**
+axis-singular exterior can produce finite-energy data. This says
+nothing against perturbing a fully *pre-matched* smooth finite-energy
+source, which remains the real problem.
