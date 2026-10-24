@@ -69,3 +69,30 @@ It tends to \(K_0\log((1-s)/(1-t))\) as \(h\to0^+\). This is a **possibly weak u
 **Unproved next gates:** actual full source \(F=\mathbb P R_B\) on all transition collars; pressure matching; weighted source-compatible \(L^{-1}\) and nonlinear bilinear constants; \(Q_2\) genuinely small on shrinking terminal slabs; further iteration and convergence; Appendix A/B source data, 3D unforced residual exactly zero, nonzero smooth initial data, singularity persistence and a final no-escape-hatch Lean theorem.
 
 The separate \`TwoDerivativeWeight.lean\` natural-index fix is already on the research branch, but its full terminal-core CI completion must be assessed independently. A green finite-algebra job is **not** an end-to-end PDE proof.
+
+## Further independent source / physical controls (24 October)
+
+The already-committed Edition XX heat-exterior identity was independently
+re-derived two ways: differentiating the gamma-mixture integrand directly
+and differentiating the exact gamma-weight integration-by-parts flux.
+Both symbolic equalities hold. The claimed axis coefficient
+`c_inf 2^(1/2-h)/Gamma(1+h)` follows independently from the gamma moment,
+and the resulting `1/r` velocity makes the exterior-only field
+non-square-integrable at the axis. This corroborates the **restricted**
+Edition XXI no-exact-open-annulus-gluing theorem, assuming established
+positive-time spatial analyticity; it does not prohibit approximate matching.
+
+As an independent pressure-sign/PDE positive control, the exact **smooth
+unforced** Cartesian Gaussian vortex on R^2 x S^1 of axial period one is
+`u=(-y,x,0)*exp(-(x^2+y^2)/H)/H^2`,
+`p=(1-exp(-2(x^2+y^2)/H))/(4H^3)`, `H=1+4 nu t`.
+Its full 3D Cartesian divergence and momentum residual vanish identically;
+its kinetic L2 mass is `pi/(4H^2)`. The test script now checks all
+these identities symbolically. It is a *regular known positive control*
+on a different domain, not a singularity construction or a T^3 theorem.
+
+**Scientific interpretation:** exact local exterior heat dynamics
+alone cannot be promoted to a finite-energy global singular solution;
+a successful new route needs a nonzero analytic correction tail,
+full meridional/pressure matching, and a quantified nonlinear
+terminal continuation.
