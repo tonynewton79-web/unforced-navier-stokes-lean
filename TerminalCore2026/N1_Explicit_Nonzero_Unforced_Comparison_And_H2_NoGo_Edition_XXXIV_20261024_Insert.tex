@@ -306,3 +306,36 @@ $\|\Delta u_B(1-\tau)\|_2$ diverges at least like
 $\tau^{-4A/3}$. Divide the two-sided estimate by this
 diverging source norm to obtain the ratio limit.
 \end{proof}
+
+
+\begin{corollary}[An explicit necessary critical initial-data threshold]
+\label{cor:xxxiv-any-blowup-critical}
+Suppose a smooth-data exactly unforced comparison flow
+$v=u_B+w$ on $\mathbb R^3$ \emph{really preserves}
+the finite-time velocity singularity at $t=1$,
+and $w(0)=v(0)\in\mathcal X^{-1}$ is smooth,
+rapidly decreasing and divergence-free.
+Then necessarily
+\begin{equation}\label{eq:xxxiv-nonlinearity-threshold}
+\boxed{\quad
+\frac{(2\pi)^{-3/2}}{\nu}
+\|w(0)\|_{\mathcal X^{-1}}\ge\frac1{16},
+\qquad
+\|w(0)\|_{\mathcal X^{-1}}
+\ge\frac{\nu(2\pi)^{3/2}}{16}.\quad}
+\end{equation}
+This is a conservative explicit threshold from the
+self-contained contraction estimate, not the optimal
+small-data Navier--Stokes regularity threshold.
+The necessary inequality does \emph{not} imply blowup.
+\end{corollary}
+\begin{proof}
+If the left side were strictly less than $1/16$,
+the Fourier iteration in the proof of
+Theorem~\ref{thm:xxxiv-gaussian} would be a contraction
+on the radius-$4X_0$ ball for those arbitrary smooth
+solenoidal data. Parabolic regularity and the $L^\infty$
+continuation criterion then give a global smooth
+unforced flow, incompatible with the claimed
+finite-time singularity.
+\end{proof}
