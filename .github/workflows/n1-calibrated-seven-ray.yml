@@ -1,0 +1,40 @@
+name: Audit calibrated seven-ray inverse
+on:
+  push:
+    branches:
+      - feature/zenodo-23474915-lean
+    paths:
+      - 'TerminalCore2026/N1CalibratedConeScalar.lean'
+      - 'TerminalCore2026/verify_calibrated_cone_xxvii.py'
+      - 'TerminalCore2026/verify_xxvii_independent_lp.py'
+      - '.github/workflows/n1-calibrated-seven-ray.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  exact-calibration:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean toolchain
+        shell: bash
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          elan toolchain install "$(cat lean-toolchain)"
+          lean --version
+          lake update
+          lake exe cache get
+      - name: Reject admitted proofs in the new file
+        run: |
+          if grep -nE '^[[:space:]]*(sorry|admit|axiom)([[:space:]]|$)' TerminalCore2026/N1CalibratedConeScalar.lean; then exit 1; fi
+      - name: Kernel-check six components and fixed inverse inequalities
+        run: lake env lean TerminalCore2026/N1CalibratedConeScalar.lean
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Independent exact-rational and LP replays
+        run: |
+          python -m pip install sympy scipy
+          python TerminalCore2026/verify_calibrated_cone_xxvii.py
+          python TerminalCore2026/verify_xxvii_independent_lp.py
