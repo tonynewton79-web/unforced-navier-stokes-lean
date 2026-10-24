@@ -159,3 +159,51 @@ both corrected-support interval hulls, full exterior cone,
 Appendix B, unforced n=1/2 startup, physical force-free residual
 and a complete trusted Lean proof remain OPEN. The finite Lean module
 has been submitted but is NOT claimed kernel-certified.
+
+
+## 24 Oct 2026 — Attacks 14–15 and current Lean status (NEW)
+
+**Source-level Lean repairs:**
+- \`TwoDerivativeWeight.lean\`: natural-number index binders repaired for the
+  actual bounded jet array. Previous CI advanced beyond this module.
+- \`RemainingLinearPressure.lean\`: the two field_simp/ring proof scripts
+  changed to \`field_simp <;> ring\` to avoid an extra tactic after closure.
+  Subsequent GitHub CI progressed beyond this file.
+- \`WeightedRadialConvolution.lean\`: the same redundant tactic was
+  corrected. A fresh GitHub kernel replay is required.
+**Do not label the entire terminal-core Lean workflow PASS unless its latest
+run succeeds and the relevant #print axioms outputs are reviewed.**
+
+**Attack 14:**
+- [x] Source-independent two-step Leray–Stokes parametrix and exact
+  projected residual identity; second residual norm estimate in H^(s-1).
+- [x] Pressure-independent meridional witness for a smooth Gaussian
+  pure-swirl positive control on R^3, with explicit positive lower bound.
+- [ ] Instantiate on the real source-matched first-order residual
+  (not a Gaussian substitute).
+- [ ] Build a correction with source-compatible terminal control.
+
+**Attack 15:**
+- [x] Exact source-leading exterior Gamma-mixture radial heat identity
+  via integration by parts in the gamma variable.
+- [x] Exact local annular force-free pure-swirl positive control, including
+  its centrifugal pressure reconstruction.
+- [x] Exhibit the 1/r axis singularity of the exterior-only extension at
+  every preterminal time, so this is NOT a global smooth solution.
+- [ ] Prove and certify exact projected force cancellation in axis
+  replacement, transition, collar, meridional and matching regions.
+
+**Geometry distinction:** the original forced construction and these
+local cylindrical diagnostics live on R^3; the separate abstract closure
+repository's headline theorem is periodic on T^3. A claimed end-to-end
+proof must specify one exact geometry and prove all localization,
+periodization or matching bridges. Do NOT conflate the two settings.
+
+Finite scripts: \`verify_n1_second_order_dual.py\` and
+\`verify_n1_heat_exterior.py\`. They test algebra/numerical controls,
+not the missing whole-source PDE, exact gluing, terminal contraction
+or kernel-checked final theorem.
+
+**Release remains HOLD:** source-matched unforced PDE construction,
+full pressure and axis recovery, global-to-terminal regularity,
+singularity preservation, and a final hypothesis-free Lean theorem.
