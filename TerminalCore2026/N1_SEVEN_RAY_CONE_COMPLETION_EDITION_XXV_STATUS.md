@@ -74,3 +74,32 @@ This is generally nonzero and **cannot be eliminated by pressure**. Spatial deri
 The original OpenAI Navier–Stokes theorem and its Lean formalization allow smooth forcing; unforced Euler is separate. The source-authentication ledger still reports **FAIL_CLOSED_MISSING_SOURCE_DATA** for A.11/A.19 matching, all collars, complete physical unforced PDE and end-to-end Lean theorem. No actual H8 source-specific four-field/virtual-work dual test, flow evolution, higher-harmonic convergence, physical singularity or full Lean result is proved.
 
 **Next decisive target:** freeze the real source's projected radial and angular residual and solve the non-gradient carrier compensation together with the seven-ray source tensor and H8 virtual-work dual in one true physical coordinate system. Exact coefficient positivity alone is not enough.
+
+## Independent second-pass promotion: constant radial carrier is a gradient gauge
+
+The variable carrier \(K(r,z)e_r\otimes e_r\) used in the first certificate has a nonzero curl of its divergence, but this does **not** rule out a better carrier. The \(v_1=e_r\) ray provides an exact repair without disturbing the other five tensor components.
+
+Replace \(d_1=1\) by
+\[
+\widetilde d_1=21-K(r,z),\qquad \widetilde d_j=d_j \ (j\ge2).
+\]
+Then **exactly**
+\[
+\boxed{\sum_j\widetilde d_jv_j\otimes v_j
+=Q+20e_r\otimes e_r+\pi I,\quad
+\widetilde d_j\ge3/8.}
+\]
+Indeed \(K\le 85/8+8+25/512=9561/512\), whence
+\(\widetilde d_1\ge1191/512\). Thus the entire strict floor is retained.
+
+Unlike the original variable carrier, the constant radial tensor has divergence \(20e_r/r=\nabla(20\log r)\) on the annulus. Its divergence is an exact gradient and vanishes after Leray projection in the local pressure quotient. More strongly, choose a smooth radial bump \(k(r)=20\chi(r)\), equal to 20 on the annular patch, vanishing near the axis and outside a larger radius. On \(\mathbb R^2\times S^1_z\), or on a three-torus with the radial support inside an embedded transverse disk,
+\[
+\boxed{\nabla\cdot(k(r)e_r\otimes e_r)
+=\nabla\Phi(r),\quad
+\Phi(r)=k(r)+\int_0^r k(s)/s\,ds.}
+\]
+This potential is smooth, constant beyond the carrier support, and globally admissible up to an irrelevant additive constant. Therefore the **carrier itself is globally pressure-neutral** on these domains, while strict seven-ray membership has been proved only on the annular patch.
+
+The local tensor and projected-divergence compatibility represent a genuine strengthening of the first Edition XXV attack. They do **not** prove a global seven-ray cone certificate for the actual A.11/A.19 source, any physical realization of the Reynolds covariance by a time-evolving zero-force Navier–Stokes solution, or the higher-harmonic/infinite-order bounds. The cone coefficients' frame and boundary derivatives still require exact source-level accounting. The mathematical result is source-independent and the unforced theorem is **OPEN**.
+
+Independent second check: exact symbolic rearrangement, rational upper bound \(1191/512\), radial fundamental-theorem-of-calculus identity, direct countercheck of the variable-carrier curl; all pass. Separate finite Lean scalar identities were added but a completed kernel CI pass is not yet verified.
