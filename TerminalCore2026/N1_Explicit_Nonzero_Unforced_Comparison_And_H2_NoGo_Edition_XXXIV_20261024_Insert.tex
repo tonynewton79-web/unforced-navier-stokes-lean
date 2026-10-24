@@ -228,3 +228,81 @@ The Fourier smallness constants, contraction factor,
 uniform amplitude, and $H^2$ time-divergence have been
 independently recomputed; finite Lean scalar dependencies
 are separate from a full PDE formalization.
+
+
+\begin{proposition}[A genuine uniform two-sided $H^2$ estimate for the explicit correction]
+\label{prop:xxxiv-two-sided}
+For the exact nonzero-data unforced comparison in
+Theorem~\ref{thm:xxxiv-gaussian}, the standard ordered-derivative
+$H^2$ norm satisfies for every $t\ge0$
+\[
+\boxed{\quad
+\|v(t)\|_{H^2}\le
+C_{H,\nu}:=
+\frac{\nu\sqrt{82}}{100\pi}
+\left(\frac\pi2\right)^{3/4}e^{3/10}.\quad}
+\]
+Consequently for its actual source correction $w=v-u_B$,
+\begin{equation}\label{eq:xxxiv-h2-two-sided}
+\boxed{\quad
+\max\{0,\|\Delta u_B(t)\|_2-C_{H,\nu}\}
+\le\|\Delta w(t)\|_2
+\le\|\Delta u_B(t)\|_2+C_{H,\nu}.\quad}
+\end{equation}
+Moreover, as $t\uparrow1$,
+\begin{equation}\label{eq:xxxiv-h2-ratio}
+\boxed{\quad
+\frac{\|\Delta w(t)\|_2}{\|\Delta u_B(t)\|_2}
+\longrightarrow1.\quad}
+\end{equation}
+This is an actual $H^2$ upper bound for an exact nonzero-data
+unforced correction, but it is \emph{not} the desired
+little-$o$ upper bound: it proves that this comparison
+inherits essentially all of the forced source's $H^2$
+divergence.
+\end{proposition}
+\begin{proof}
+Use the equivalent squared $H^2$ norm
+$\|v\|_2^2+\sum_i\|\partial_iv\|_2^2+
+\sum_{i,j}\|\partial_i\partial_jv\|_2^2$.
+In each derivative energy identity, the leading
+$v\cdot\nabla\partial^\alpha v$ term vanishes because
+$\nabla\cdot v=0$.
+For one derivative, the only remaining product is
+$(\partial_iv)\cdot\nabla v$. For an ordered pair of
+derivatives, there are exactly three Leibniz cross-products,
+each bounded using
+$\|\nabla v\|_\infty$ and the full $H^2$ energy.
+Bounding each by the latter energy and summing the three
+first-order and nine ordered second-order identities gives
+\[
+\frac12\frac d{dt}\|v(t)\|_{H^2}^2
+\le30\|\nabla v(t)\|_\infty\|v(t)\|_{H^2}^2.
+\]
+The critical Fourier estimate established in
+Theorem~\ref{thm:xxxiv-gaussian} gives
+\[
+\int_0^\infty\|\nabla v(t)\|_\infty dt
+\le C_{\rm F}\int_0^\infty\|v(t)\|_{\mathcal X^1}dt
+\le 4C_{\rm F}X_0/\nu=1/100.
+\]
+Thus $\|v(t)\|_{H^2}\le e^{3/10}\|v_0\|_{H^2}$.
+A separate exact Gaussian integration gives
+\[
+\|\nabla\times(\psi e_z)\|_2^2=
+2(\pi/2)^{3/2},\quad
+\|\nabla(\nabla\times(\psi e_z))\|_2^2=
+10(\pi/2)^{3/2},\quad
+\|\Delta(\nabla\times(\psi e_z))\|_2^2=
+70(\pi/2)^{3/2},
+\]
+so the initial $H^2$ squared norm is
+$(\nu/(100\pi))^2\,82(\pi/2)^{3/2}$.
+The triangle and reverse triangle inequalities for
+$\Delta w=\Delta v-\Delta u_B$ give the two-sided estimate.
+By the source (10.21), its uniform $L^2$ bound and
+Lemma~\ref{lem:xxxiii-agn},
+$\|\Delta u_B(1-\tau)\|_2$ diverges at least like
+$\tau^{-4A/3}$. Divide the two-sided estimate by this
+diverging source norm to obtain the ratio limit.
+\end{proof}
