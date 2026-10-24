@@ -1,0 +1,36 @@
+name: Audit source freeze and retention no-go XXXII
+on:
+  push:
+    branches: [feature/zenodo-23474915-lean]
+    paths:
+      - 'TerminalCore2026/N1SourceFreezeRetentionScalar.lean'
+      - 'TerminalCore2026/N1_SOURCE_NUMERICAL_FREEZE_GATE_XXXII.json'
+      - 'TerminalCore2026/verify_source_interval_xxxii.py'
+      - 'TerminalCore2026/verify_source_retention_counterexample_xxxii.py'
+      - '.github/workflows/n1-source-freeze-retention-xxxii.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  exact-fail-closed:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: |
+          python -m pip install sympy
+          python TerminalCore2026/verify_source_interval_xxxii.py
+          python TerminalCore2026/verify_source_retention_counterexample_xxxii.py
+      - name: Install pinned Lean and cache
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          elan toolchain install "$(cat lean-toolchain)"
+          lake update
+          lake exe cache get
+      - name: Reject admitted local proofs
+        run: |
+          if grep -nE '^[[:space:]]*(sorry|admit|axiom)([[:space:]]|$)' TerminalCore2026/N1SourceFreezeRetentionScalar.lean; then exit 1; fi
+      - run: lake env lean TerminalCore2026/N1SourceFreezeRetentionScalar.lean
