@@ -28,8 +28,7 @@ theorem quadratic_mixed_theta_domination (a b k : ℝ)
 theorem quadratic_H_third_jet (r m N u G : ℝ)
     (hr : r ≠ 0) (hm : m ≠ 0) (hN : N ≠ 0) :
     -(G*(u*(-G^2/r)))/(4*m*N^2) = u*G^3/(4*r*m*N^2) := by
-  field_simp
-  ring
+  field_simp <;> ring
 
 theorem complete_bilinear_multiplier_budgets :
     11*(64:ℕ)^2*25^3 = 704000000 ∧
