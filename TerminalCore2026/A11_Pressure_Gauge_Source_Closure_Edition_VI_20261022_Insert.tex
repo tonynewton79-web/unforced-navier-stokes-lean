@@ -1,0 +1,47 @@
+\subsection*{Proof Attack 1: exact A.11 pressure normalization (Edition VI, 22 October 2026)}
+\label{subsec:a11-pressure-editionVI}
+The original source Lemma A.5 (A.21) sets
+\[
+\Pi_0(\eta)=-\frac12\int_{\mathbb R}E_{\mathrm{id,sched}}(y,\eta)^2\,dy
+\]
+for the exact reference schedule with the pressure-neutral A.11
+corrections omitted. Its pressure equation is
+$\Pi_y=E^2/2$, $y=\log(X/X_R)$.
+For the actual two translated smooth-step derivative bumps
+$\beta_1(y)=\beta(y-y_1)$ and
+$\beta_2(y)=\beta(y-y_1-2)$, each supported
+on an interval of length $3/10$, write
+\[
+E_c=E_b(1+q_1\beta_1+q_2\beta_2),\qquad
+E_b(y)^2=C(\eta)e^{-b(y-y_1)},\quad b=1+2\lambda.
+\]
+Define $v=\int e^{-bt}\beta(t)dt$,
+$w=\int e^{-bt}\beta(t)^2dt$, $z=e^{-2b}$.
+Disjoint support and weighted translation yield
+\begin{equation}\label{eq:editionVI-pressure-factor}
+\int(E_c^2-E_b^2)dy
+=C(\eta)\bigl[2v(q_1+zq_2)+w(q_1^2+zq_2^2)\bigr]
+=C(\eta)R_2(\eta).
+\end{equation}
+Off the two supports the corrected and reference profiles agree.
+Hence the actual second A.11 condition $R_2=0$ gives
+\begin{equation}\label{eq:editionVI-pressure-zero}
+\boxed{\Pi(\infty,\eta)=\Pi_0(\eta)+\frac12
+\int E_c^2dy=\frac12 C(\eta)R_2(\eta)=0.}
+\end{equation}
+On a $C^1$ exact A.11 root branch the \emph{total}
+angular derivative of this identically zero function also vanishes.
+
+\paragraph{Provenance and boundary.}
+This pressure identity is explicitly part of the originating
+source's Lemma A.5, equations (A.21)--(A.23); this is
+an independent verification and a resolved redundant
+numerical-proof gate, not a novel global theorem.
+The existence of one full source-compatible A.11/A.19 branch,
+later pressure-preserving edits, other stress-cone patches,
+Appendix B, all unforced corrections, the physical zero-force
+Navier--Stokes residual, and full Lean formalization remain OPEN.
+Independent symbolic, prescribed-bump 68-digit numerical,
+and negative-control checks passed; the new Lean code
+contains only conditional scalar/integral-equality implications
+and requires CI compilation.

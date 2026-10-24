@@ -1,0 +1,117 @@
+\subsection*{Coupled A.11/A.19 root compatibility and terminal-gauge identity (22 October 2026)}
+\label{subsec:a11-a19-coupled-gauge-20261022}
+Distinguish the two azimuthal corrections $q_1,q_2$ in (A.11)
+from the separate pulse-velocity moment corrections in (A.9)/(A.19).
+The source orders the stages so the later azimuthal field
+$E_c=E_b(1+q_1\beta_1+q_2\beta_2)$ is independent of the
+pulse amplitude $A$, while the pulse changes $U$ and its two
+velocity-moment corrections are affine in $A$.
+The exact common-profile residuals are
+\[
+R_1=u(q_1+xq_2)-\Delta_I(\eta),\quad
+R_2=2v(q_1+zq_2)+w(q_1^2+zq_2^2),
+\]
+\[
+R_3=k_2(q,\eta)A^2+k_1(q,\eta)A+k_0(q,\eta).
+\]
+The $k_i$ may depend on the genuinely corrected azimuthal profile.
+At fixed $\lambda$, $u,v,w,x,z$ are independent of $\eta$.
+
+\begin{proposition}[Exact block-triangular Jacobian]
+The Jacobian in unknowns $(q_1,q_2,A)$ is
+\[
+\begin{pmatrix}
+u&ux&0\\
+2(v+wq_1)&2z(v+wq_2)&0\\
+\partial_{q_1}R_3&\partial_{q_2}R_3&2k_2A+k_1
+\end{pmatrix},
+\]
+with determinant
+\begin{equation}\label{eq:joint-A11-A19-jac-20261022}
+\boxed{2u[z(v+wq_2)-x(v+wq_1)](2k_2A+k_1).}
+\end{equation}
+If the small A.11 root has nonsingular Jacobian, $k_2>0$
+and $k_0<0$ at a positive A.19 root, then
+\[
+2k_2A+k_1=\sqrt{k_1^2-4k_2k_0}>0.
+\]
+Thus the combined root is locally unique and $C^1$ when the
+coefficients are $C^1$. If the needed roots are unique for every
+$\eta\in[-1,1]$, the local branches paste to a common $C^1$ family.
+\end{proposition}
+\begin{proof}
+Expand the determinant along its third column. For
+$k_2>0,k_0<0$, the quadratic has exactly one positive
+root, with a strictly positive derivative given by the square
+root of its discriminant. Apply the implicit function theorem.
+\end{proof}
+
+\begin{proposition}[Exact pressure-neutrality factor]
+On the source plateau,
+$E_b(y)^2=E_b(y_1)^2e^{-(1+2\lambda)(y-y_1)}$,
+with the two disjoint translated bumps centered two units apart.
+Therefore
+\begin{equation}\label{eq:joint-A11-pressure-factor-20261022}
+\boxed{\ \int(E_c^2-E_b^2)\,dy=E_b(y_1)^2R_2(q,\eta).\ }
+\end{equation}
+Consequently the exact A.11 second equation forces the pressure
+increment and its \emph{total} $\eta$ derivative to vanish identically.
+If the prescribed unedited reference already satisfies its
+terminal pressure normalization, the same corrected profile
+inherits $\Pi(\infty,\eta)=0$. This baseline gauge is a distinct
+source assumption; A.11 neutrality alone merely preserves it.
+\end{proposition}
+\begin{proof}
+Expand the square. Disjointness removes all mixed bump terms.
+The first support contributes the linear and quadratic weights
+$v,w$; translation of the second support multiplies both by
+$z=e^{-2(1+2\lambda)}$. This yields exactly $R_2$.
+Differentiate along the common $C^1$ root and use the source
+pressure convention
+$\Pi(\infty)-\Pi^{\rm base}(\infty)=\frac12\int(E_c^2-E_b^2)\,dy$.
+\end{proof}
+
+\begin{proposition}[Exact total-amplitude sensitivity]
+Along a common $C^1$ positive root of $R_3=0$, let a dot
+denote the total $\eta$ derivative through $q_1,q_2$.
+Then
+\[
+\boxed{\quad
+ A_\eta=-\frac{\dot k_2A^2+\dot k_1A+\dot k_0}
+ {2k_2A+k_1}
+ =-\frac{\dot k_2A^2+\dot k_1A+\dot k_0}
+ {\sqrt{k_1^2-4k_2k_0}}.
+\quad}
+\]
+A source-certified lower bound $2k_2A+k_1\ge m_A>0$
+therefore gives
+$|A_\eta|\le
+(A^2|\dot k_2|+A|\dot k_1|+|\dot k_0|)/m_A$.
+If $R_3$ is the genuine normalized terminal $S$ equation,
+then $S(\infty,\eta)$ and its \emph{total} derivative vanish
+on this root. With the preceding exact A.11 pressure equation
+and a certified baseline gauge, all four terminal-residual variables
+$\mathcal F,\mathcal F_\eta,\mathcal G,\mathcal G_\eta$ vanish.
+The terminal-gauge contribution to $N_s$ is then identically zero;
+the separate future-tail, other stress cones and physical PDE
+remain to be proved.
+\end{proposition}
+\begin{proof}
+Differentiate $R_3=0$ along the joint branch and divide
+by the positive $A$ derivative. Apply the total derivative
+to the two identical-zero terminal residual functions.
+\end{proof}
+
+\paragraph{Adversarial negative control and release boundary.}
+At $q_1=1/10$, $q_2=0$, $u=v=1$, $x=7$, $z=1/8$,
+$w=20$, $\Delta_I=1/10$, and $R_3=A^2-1$, the
+values $A=1$, $R_1=R_3=0$ coexist with $R_2=2/5\ne0$.
+Thus an A.19 root \emph{alone} does not establish
+pressure neutrality. Independent symbolic and 10,000 rational
+synthetic checks confirm the displayed finite-dimensional
+identities; they do not authenticate a single source-admissible
+parameter tuple or the true terminal baseline pressure.
+The global originating source theorem has forcing.
+Appendix B, unforced similarity startups, exterior stress
+certification, zero-force physical PDE residual and proposed
+unforced Theorem~1.1 all remain OPEN/HOLD.

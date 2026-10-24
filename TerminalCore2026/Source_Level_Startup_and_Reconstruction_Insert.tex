@@ -1,0 +1,127 @@
+\subsection*{Startup coefficients and the remaining source certification}
+The fixed-radius inverse and two-space majorant reduce the analytic argument
+to a common-domain problem, but they do not by themselves identify the actual
+leading datum or verify the first two source equations. Here we audit those
+equations against (5.2)--(5.6) of \cite{openai2026}.
+
+\paragraph{Leading data and quantitative radius.}
+Appendix B starts with a pressure-axis datum $\Pi_0(0,\eta)$ from its
+Lemma A.5 and $U_*(\eta)=4\eta+j_0$, $0<j_0\le0.05$. Its choices
+$\delta_*,\sigma_*>0$ and a simply connected neighborhood $\Omega$ obey
+nonvanishing conditions for $L$ and $H_*^2+\sigma_*^2$. It sets
+\[
+\zeta_*=-\frac{LH_*}{H_*^2+\sigma_*^2},\qquad
+\varphi_*(\eta)=\exp\left(\Lambda\int_0^\eta\zeta_*(w)\,dw\right),
+\]
+then chooses $\Lambda$ sufficiently large and $C$ sufficiently large
+relative to the complex supremum of $\varphi_*$. Proposition B.2
+provides a local analytic solution after those dependent choices.
+No particular numerical values for all these objects and their
+common complex suprema are supplied. Thus a numerical frozen-profile
+certificate cannot be inferred from the existence construction alone.
+
+\paragraph{Exact source startup.}
+For $n\ge1$, put $\lambda_n=2hn$ and adopt the source's convention
+that negative-index fields vanish. Write
+\[
+\Pi_n^{\rm cur}=2C^{-2}\int_0^X\varphi_0\varphi_n\,dx,\qquad
+\Pi_n^{\rm low}=\int_0^X\left[
+ C^{-2}\sum_{i=1}^{n-1}\varphi_i\varphi_{n-i}
+ -\frac{\Omega_{n-1}}{2x}\right]dx.
+\]
+The positive-order gauge is $\Pi_n(0,\eta)=0$, whereas the
+order-zero trace $\Pi_0(0,\eta)$ is prescribed separately. The
+complete first two radial-momentum sources are
+\[
+\begin{aligned}
+\Omega_0={}&T_{0,0}V_0+
+ V_0(V'_0-V_0/(2X))+U_0Z_{0,0}V_0-2XV''_0,\\
+\Omega_1={}&T_{0,1}V_1+
+ V_0(V'_1-V_1/(2X))+V_1(V'_0-V_0/(2X))\\
+ &+U_0Z_{0,1}V_1+U_1Z_{0,0}V_0
+ -2XV''_1-Z^{[2]}_{0,0}V_0.
+\end{aligned}
+\]
+
+\begin{proposition}[Exact first- and second-order forcing]
+\label{prop:startup-source-check}
+Let $\mathcal K_n$ be the four current-order blocks (47)--(50),
+$\mathcal R_\varphi=\tfrac12J_2$, $\mathcal R_U=\tfrac12J_1$
+and $w_n=(\varphi_n,U_n)^\top$. Then
+\[
+w_n=\mathcal K_nw_n+
+\begin{pmatrix}\mathcal R_\varphi F_n^\varphi\\
+\mathcal R_U F_n^U\end{pmatrix}\qquad(n=1,2),
+\]
+with exact lower-order sources
+\begin{align*}
+F_1^\varphi={}&-Z_{b,0}^{[2]}\varphi_0,\\
+F_1^U={}&-Z_{c,0}^{[2]}U_0+
+ Z_{-2A,1}\left[-\frac12\int_0^X\frac{\Omega_0}{x}\,dx\right],\\
+F_2^\varphi={}&-Z_{b,1}^{[2]}\varphi_1+
+ V_1(\varphi_1'+\varphi_1/X)+U_1Z_{b,1}\varphi_1,\\
+F_2^U={}&-Z_{c,1}^{[2]}U_1+V_1U'_1+U_1Z_{c,1}U_1\\
+&+Z_{-2A,2}\int_0^X
+  \left(C^{-2}\varphi_1^2-\frac{\Omega_1}{2x}\right)dx .
+\end{align*}
+In particular $\Omega_0$ has no negative-index delayed viscosity,
+$\Omega_1$ includes $-Z^{[2]}_{0,0}V_0$, and the current pressure
+factor $2C^{-2}\varphi_0\varphi_n$ is not counted as lower forcing.
+\end{proposition}
+\begin{proof}
+The ordered-pair set $i+j=1$ consists of $(0,1),(1,0)$ and
+has no positive-positive pair. At $n=2$ the single positive-positive
+pair is $(1,1)$. In both cases $\Omega_{n-1}$ is known at the
+beginning of order $n$ and the source convention removes $V_{-1}$.
+Separating these pairs in (25)--(28) gives the displayed terms.
+The incompressibility formula (24) implies $V_j=O(X)$, so the
+pressure integrands are axis-regular. Apply (34)--(35) with zero
+positive-order axis integration constants.
+\end{proof}
+
+\paragraph{The physical-coordinate identity.}
+With $q$ defined implicitly by
+$\tau=1-t=q(1-\eta^2)$, $z=q^D\eta$, $X=r^2/(2q)$,
+and $L=1-2h\eta^2$, $d=1-\eta^2$, exact differentiation at
+fixed physical coordinates yields
+\[
+\begin{gathered}
+q_t=-L^{-1},\quad q_z=2\eta q^{1-D}L^{-1},\quad
+\eta_t=D\eta(qL)^{-1},\quad \eta_z=q^{-D}dL^{-1},\\
+X_t=X(qL)^{-1},\qquad X_z=-2\eta Xq^{-D}L^{-1}.
+\end{gathered}
+\]
+Thus $\partial_t(q^aF)=q^{a-1}T_aF$ and
+$\partial_z(q^aF)=q^{a-D}Z_aF$ exactly, with $L>0$ for
+$0<h<1/100$ and $|\eta|\le1$.
+
+\begin{lemma}[Conditional physical residual reconstruction]
+\label{lem:conditional-physical-residual}
+Assume one fixed leading profile satisfies the order-zero inner
+balances, every positive-order coefficient satisfies (23)--(28)
+with the exact gauges, and the physical velocity/pressure series
+and every derivative entering the Navier--Stokes residual converge
+locally uniformly on compact preterminal subcores. Then the
+reconstructed field is divergence-free and satisfies the unforced
+Navier--Stokes equations pointwise there, including across the axis.
+\end{lemma}
+\begin{proof}
+On each such compact set, $q>0$ and $L>0$ have uniform positive
+lower bounds. The displayed exact chain rules permit termwise
+physical differentiation. Absolute convergence and the assumed
+derivative bounds justify product convolution. At every expansion
+order, the physical divergence and momentum residual coefficients
+are (23)--(28), and vanish by hypothesis; hence the residual
+vanishes. Axis regularity follows from $V_n=O(X)$, the explicit
+factor $r$ in $u_\theta$, and analyticity in $X=r^2/(2q)$.
+\end{proof}
+
+The source's own higher-order existence lemma permits
+order-dependent analytic neighborhoods. Its subsequent smooth
+summation uses order-dependent cutoffs and does not assert
+convergence of the unmodified infinite series. In addition,
+its whole-space theorem has smooth compactly supported forcing.
+The outstanding unforced verification requires an explicit common
+profile-radius certificate, genuine solutions of the startup
+equations above, the complete higher-order convergence estimate,
+and a source-specific physical residual check.

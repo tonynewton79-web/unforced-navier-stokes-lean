@@ -1,0 +1,322 @@
+name: Verify local terminal-core algebra
+
+on:
+  push:
+    branches:
+      - feature/zenodo-23474915-lean
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  terminal-core-lean:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install elan
+        shell: bash
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Install pinned toolchain
+        run: |
+          elan toolchain install "$(cat lean-toolchain)"
+          lean --version
+      - name: Resolve pinned dependencies
+        run: lake update
+      - name: Fetch Mathlib cache
+        run: lake exe cache get
+      - name: Reject admitted or axiomatic replacements
+        shell: bash
+        run: |
+          if grep -nE '^[[:space:]]*(sorry|admit|axiom)([[:space:]]|$)' TerminalCore2026.lean TerminalCore2026/FirstDerivativeChannel.lean TerminalCore2026/TwoDerivativeWeight.lean TerminalCore2026/SwirlDiagonal.lean TerminalCore2026/MajorantBounds.lean TerminalCore2026/CauchyProfileBridge.lean TerminalCore2026/AnalyticReconstruction.lean TerminalCore2026/DelayedPressureFourJet.lean TerminalCore2026/DelayedPressureBanachLemmas.lean TerminalCore2026/RemainingLinearPressure.lean TerminalCore2026/LeadingProfilePressure.lean TerminalCore2026/QuadraticPressureCancellation.lean TerminalCore2026/WeightedRadialConvolution.lean TerminalCore2026/FullLeadingPressureNormalForm.lean TerminalCore2026/CompleteQuadraticPressureScalar.lean TerminalCore2026/MomentumAndPressureNorm.lean TerminalCore2026/ShiftedPressureRepair.lean TerminalCore2026/ShiftedPressureSourceGates.lean TerminalCore2026/RemainingShiftedPressure.lean TerminalCore2026/CurrentPressureFeedback.lean TerminalCore2026/FixedRadiusVolterra.lean TerminalCore2026/StartupSourceAudit.lean TerminalCore2026/AxisProfileFence.lean TerminalCore2026/OuterPressureB2Scalar.lean TerminalCore2026/SourceScheduleMass.lean TerminalCore2026/PulseMomentSharp.lean TerminalCore2026/ExactA19RemainderScalar.lean TerminalCore2026/SourceMomentBumpScalar.lean TerminalCore2026/PulseEntranceScalar.lean TerminalCore2026/A11FiniteGates.lean TerminalCore2026/A11ParameterAndStopping.lean TerminalCore2026/A11ConeMargin.lean TerminalCore2026/A11NsExteriorTail.lean TerminalCore2026/A5PulseFiniteGates.lean TerminalCore2026/PulseEndMomentCancel.lean TerminalCore2026/FullPulseCoverageGates.lean TerminalCore2026/PulseResidualPrecision.lean TerminalCore2026/FixedPulseSourceScalar.lean TerminalCore2026/A11NsQuantitativeSlack.lean TerminalCore2026/A11EndpointScalar.lean TerminalCore2026/A11LocalTailSharp.lean TerminalCore2026/A11LocalDerivativeCancel.lean TerminalCore2026/A11QsEtaDerivativeImproved.lean TerminalCore2026/A11JointParameterScalar.lean TerminalCore2026/A11RobustHullScalar.lean TerminalCore2026/A11BackwardAngularScalar.lean; then
+            echo 'Prohibited admitted or axiomatic proof found'
+            exit 1
+          fi
+      - name: Kernel check finite mathematical lemmas
+        run: lake env lean TerminalCore2026.lean
+      - name: Kernel check radial gain and first-zero barrier
+        run: lake env lean TerminalCore2026/RadialGainAndBarrier.lean
+      - name: Kernel check all-index two-derivative coefficient bound
+        run: lake env lean TerminalCore2026/TwoDerivativeWeight.lean
+      - name: Kernel check first-derivative order-decay bound
+        run: lake env lean TerminalCore2026/FirstDerivativeChannel.lean
+      - name: Kernel check exact swirl-diagonal source identity
+        run: lake env lean TerminalCore2026/SwirlDiagonal.lean
+      - name: Kernel check constructive majorant scalar budget
+        run: lake env lean TerminalCore2026/MajorantBounds.lean
+      - name: Kernel check Cauchy profile bridge
+        run: lake env lean TerminalCore2026/CauchyProfileBridge.lean
+      - name: Kernel check binomial envelope and geometric tail
+        run: lake env lean TerminalCore2026/AnalyticReconstruction.lean
+      - name: Kernel check delayed-pressure four-jet coefficient theorem
+        run: lake env lean TerminalCore2026/DelayedPressureFourJet.lean
+      - name: Kernel check delayed-pressure Banach scalar gates
+        run: lake env lean TerminalCore2026/DelayedPressureBanachLemmas.lean
+      - name: Kernel check direct linear-pressure radial integration identities
+        run: lake env lean TerminalCore2026/RemainingLinearPressure.lean
+      - name: Kernel check leading-profile pressure algebra and valuation
+        run: lake env lean TerminalCore2026/LeadingProfilePressure.lean
+      - name: Kernel check ordered quadratic pressure algebra
+        run: lake env lean TerminalCore2026/QuadraticPressureCancellation.lean
+      - name: Kernel check radial convolution index and polynomial gates
+        run: lake env lean TerminalCore2026/WeightedRadialConvolution.lean
+      - name: Kernel check all-jet leading-pressure scalar proof gates
+        run: lake env lean TerminalCore2026/FullLeadingPressureNormalForm.lean
+      - name: Kernel check complete quadratic-pressure scalar gates
+        run: lake env lean TerminalCore2026/CompleteQuadraticPressureScalar.lean
+      - name: Kernel check direct momentum and pressure-norm scalar gates
+        run: lake env lean TerminalCore2026/MomentumAndPressureNorm.lean
+      - name: Kernel check shifted pressure scalar polynomial gates
+        run: lake env lean TerminalCore2026/ShiftedPressureRepair.lean
+      - name: Kernel check direct shifted-pressure source gates
+        run: lake env lean TerminalCore2026/ShiftedPressureSourceGates.lean
+      - name: Kernel check remaining shifted-pressure transport identities
+        run: lake env lean TerminalCore2026/RemainingShiftedPressure.lean
+      - name: Kernel check current pressure feedback scalar gates
+        run: lake env lean TerminalCore2026/CurrentPressureFeedback.lean
+      - name: Kernel check fixed-radius inverse scalar inequalities
+        run: lake env lean TerminalCore2026/FixedRadiusVolterra.lean
+      - name: Kernel check startup ordered-source and Jacobian gates
+        run: lake env lean TerminalCore2026/StartupSourceAudit.lean
+      - name: Kernel check Appendix B axis-fence scalar gates
+        run: lake env lean TerminalCore2026/AxisProfileFence.lean
+      - name: Kernel check outer-pressure rational separation gates
+        run: lake env lean TerminalCore2026/OuterPressureB2Scalar.lean
+      - name: Kernel check source pressure mass scalar gates
+        run: lake env lean TerminalCore2026/SourceScheduleMass.lean
+      - name: Kernel check pulse amplitude rational gates
+        run: lake env lean TerminalCore2026/PulseMomentSharp.lean
+      - name: Kernel check exact A19 amplitude scalar gates
+        run: lake env lean TerminalCore2026/ExactA19RemainderScalar.lean
+      - name: Kernel check true source-bump and reference-moment scalar gates
+        run: lake env lean TerminalCore2026/SourceMomentBumpScalar.lean
+      - name: Kernel check finite pulse entrance scalar gates
+        run: lake env lean TerminalCore2026/PulseEntranceScalar.lean
+      - name: Kernel check actual A11 moment matrix scalar gates
+        run: lake env lean TerminalCore2026/A11FiniteGates.lean
+      - name: Kernel check A11 parameter and terminal Q stopping scalar gates
+        run: lake env lean TerminalCore2026/A11ParameterAndStopping.lean
+      - name: Kernel check source cone scalar margin module
+        run: lake env lean TerminalCore2026/A11ConeMargin.lean
+      - name: Kernel check A11 exterior-tail scalar gates
+        run: lake env lean TerminalCore2026/A11NsExteriorTail.lean
+      - name: Kernel check quantified axial pulse scalar gates
+        run: lake env lean TerminalCore2026/A5PulseFiniteGates.lean
+      - name: Kernel check pulse A29-A30 scalar polynomial budget gates
+        run: lake env lean TerminalCore2026/A29A30PulseScalar.lean
+      - name: Check normalized moment algebra Lean candidates
+        run: lake env lean TerminalCore2026/NormalizedMomentPulseScalar.lean
+      - name: Check ten-state affine scalar Lean proof candidates
+        run: |
+          lake env lean TerminalCore2026/TenStateAffineTubes.lean
+          lake env lean TerminalCore2026/PulseTransferScalar.lean
+      - name: Kernel check pulse-end moment and first-jet scalar lemmas
+        run: lake env lean TerminalCore2026/PulseEndMomentCancel.lean
+      - name: Kernel check pulse-cover scalar certificate gates
+        run: lake env lean TerminalCore2026/FullPulseCoverageGates.lean
+      - name: Kernel check exact pulse residual cancellation and precision arithmetic
+        run: lake env lean TerminalCore2026/PulseResidualPrecision.lean
+      - name: Scalar kernel gates for source fixed-pulse plateau
+        run: lake env lean TerminalCore2026/FixedPulseSourceScalar.lean
+      - name: Kernel check A11 quantitative N_s scalar gates
+        run: lake env lean TerminalCore2026/A11NsQuantitativeSlack.lean
+      - name: Kernel check A11 endpoint scalar and correction-derivative gates
+        run: lake env lean TerminalCore2026/A11EndpointScalar.lean
+      - name: Kernel check source A11 short-tail rational margin gates
+        run: lake env lean TerminalCore2026/A11LocalTailSharp.lean
+      - name: Kernel check localized A11 derivative-cancellation scalar proof
+        run: lake env lean TerminalCore2026/A11LocalDerivativeCancel.lean
+      - name: Kernel check corrected A11 angular-moment-jet scalar gates
+        run: lake env lean TerminalCore2026/A11QsEtaDerivativeImproved.lean
+      - name: Kernel check genuine A11 entrance moment scalar inequalities
+        run: lake env lean TerminalCore2026/A11EntranceJetScalar.lean
+      - name: Kernel check Appendix A11 scalar derivative and cone gates
+        run: lake env lean TerminalCore2026/A11ScalarGates.lean
+      - name: Kernel check strong A11 scalar stress gates
+        run: lake env lean TerminalCore2026/A11SupportStrongScalar.lean
+      - name: Kernel check joint smallness and sharper scalar A11 cone
+        run: lake env lean TerminalCore2026/A11JointParameterScalar.lean
+      - name: Kernel check A11 stress rational certificate
+        run: lake env lean TerminalCore2026/A11StressScalar.lean
+      - name: Kernel check conditional final A11 scalar gates
+        run: lake env lean TerminalCore2026/A11FinalGate.lean
+      - name: Kernel check A11 full hull arithmetic implications
+        run: lake env lean TerminalCore2026/A11FullPatchGapScalar.lean
+      - name: Kernel check A11 parity and normalized stress algebra
+        run: lake env lean TerminalCore2026/A11ParityAndTailArithmetic.lean
+      - name: Kernel check terminal gauge algebra and strict rational margin
+        run: lake env lean TerminalCore2026/A11TerminalGaugeScalar.lean
+      - name: Kernel check terminal pressure-rigidity scalar lemmas
+        run: lake env lean TerminalCore2026/A11TerminalRigidityScalar.lean
+      - name: Kernel-check A11 exact-root full-hull scalar lemma
+        run: lake env lean TerminalCore2026/A11GapTerminalBridge.lean
+      - name: Check independent A11 future stress arithmetic
+        run: lake env lean TerminalCore2026/A11DirectStressAlternative.lean
+      - name: Verify authentic A11 root-jet arithmetic in Lean
+        run: lake env lean TerminalCore2026/A11RootJetBounds.lean
+      - name: Kernel check A11 robust whole-hull rational margins
+        run: lake env lean TerminalCore2026/A11RobustHullScalar.lean
+      - name: Kernel check A11 backward angular-moment scalar certificate
+        run: lake env lean TerminalCore2026/A11BackwardAngularScalar.lean
+      - name: Scalar Lean gate for source-local A11 future bound
+        run: lake env lean TerminalCore2026/A11SourceLocalTailScalar.lean
+      - name: Kernel check A11 profile-size scalar gates
+        run: lake env lean TerminalCore2026/A11ExplicitProfileSizeScalar.lean
+      - name: Kernel check A11 robust terminal gauge scalar implications
+        run: lake env lean TerminalCore2026/A11TerminalGaugeRobust.lean
+      - name: Kernel check A11 exact terminal residual algebra
+        run: lake env lean TerminalCore2026/A11TerminalResidualScalar.lean
+      - name: A11 single-source fail-closed proof-audit tests
+        run: |
+          python TerminalCore2026/full_unforced_source_gate.py --self-test
+          python TerminalCore2026/full_unforced_source_gate.py --template > /tmp/unforced_missing_source.json
+          set +e
+          python TerminalCore2026/full_unforced_source_gate.py /tmp/unforced_missing_source.json > /tmp/unforced_hold.log
+          status=$?
+          set -e
+          cat /tmp/unforced_hold.log
+          if [ "$status" -ne 2 ]; then
+            echo "ERROR: unauthenticated source input was not refused"
+            exit 1
+          fi
+          echo "PASS: missing authentic source produces HOLD exit=2"
+      - name: Kernel-check extra A11 source-gate arithmetic
+        run: lake env lean TerminalCore2026/A11FullSourceGateScalar.lean
+      - name: Kernel-check A11 two-coordinate interval-net and strict margin
+        run: lake env lean TerminalCore2026/A11RectangularNetScalar.lean
+      - name: Kernel-check A11 moving-plateau sensitivity scalars
+        run: lake env lean TerminalCore2026/A11MovingPlateauJetScalar.lean
+      - name: Check coupled A11 A19 scalar identities
+        run: lake env lean TerminalCore2026/A11A19CoupledScalar.lean
+      - name: Check A11 pressure integral equality and terminal gauge implications
+        run: lake env lean TerminalCore2026/A11PressureIntegralGate.lean
+      - name: Check signed heat-pressure and energy no-go scalar gates
+        run: lake env lean TerminalCore2026/A7HeatPressureScalar.lean
+      - name: Check first-order n1 collar obstruction scalar lemmas
+        run: lake env lean TerminalCore2026/N1FirstOrderCollarScalar.lean
+      - name: Check first-order meridional compatibility scalar lemmas
+        run: lake env lean TerminalCore2026/N1MeridionalCompatibilityScalar.lean
+      - name: Check first-order coupled vorticity scalar lemmas
+        run: lake env lean TerminalCore2026/N1CoupledVorticityScalar.lean
+      - name: Check pressure-independent collar witness scalar lemmas
+        run: lake env lean TerminalCore2026/N1PressureFreeWitnessScalar.lean
+      - name: Check nonflat startup finite scalar lemmas
+        run: lake env lean TerminalCore2026/N1NonflatStartupScalar.lean
+      - name: Check projected-Stokes first correction scalar lemmas
+        run: lake env lean TerminalCore2026/N1ProjectedStokesScalar.lean
+      - name: Check nonlinear projected Picard scalar lemmas
+        run: lake env lean TerminalCore2026/N1NonlinearPicardScalar.lean
+      - name: Check terminal anisotropic H3 exponent scalar lemmas
+        run: lake env lean TerminalCore2026/N1TerminalH3ScalingScalar.lean
+      - name: Check exact exterior derivative polynomial scalar gates
+        run: lake env lean TerminalCore2026/N1ExteriorDerivativeScalar.lean
+      - name: Check Cauchy jet radius scalar inequality
+        run: lake env lean TerminalCore2026/N1CauchyJetScalar.lean
+      - name: Check source-native Appendix B third Cartesian jet scalars
+        run: lake env lean TerminalCore2026/N1SourceAxisThirdJetScalar.lean
+      - name: Kernel-check source-fixed A10/A11 scalar implications
+        run: lake env lean TerminalCore2026/A11SourceFixedStageScalar.lean
+      - name: Independent exact-equation tests
+        run: |
+          python -m pip install sympy
+          python TerminalCore2026/a11_moving_endpoint_jet_exact.py
+          python TerminalCore2026/a11_a19_coupled_exact.py
+          python TerminalCore2026/a11_source_fixed_stage_exact.py
+          python TerminalCore2026/check_equations.py
+          python TerminalCore2026/exact_radial_channels.py
+          python TerminalCore2026/four_block_and_majorant_exact.py
+          python TerminalCore2026/profile_cauchy_exact.py
+          python TerminalCore2026/analytic_reconstruction_exact.py
+          python TerminalCore2026/delayed_pressure_fourjet_exact.py
+          python TerminalCore2026/source_native_principal_path.py
+          python TerminalCore2026/fourjet_symbol_bounds_exact.py
+          python TerminalCore2026/full_delayed_pressure_banach_exact.py
+          python TerminalCore2026/remaining_linear_pressure_exact.py
+          python TerminalCore2026/leading_profile_pressure_exact.py
+          python TerminalCore2026/quadratic_pressure_exact.py
+          python TerminalCore2026/radial_convolution_smoothing_exact.py
+          python TerminalCore2026/leading_pressure_normal_form_exact.py
+          python TerminalCore2026/full_leading_normal_form_exact.py
+          python TerminalCore2026/quadratic_highest_jet_exact.py
+          python TerminalCore2026/complete_quadratic_pressure_exact.py
+          python TerminalCore2026/momentum_pressure_obstruction_exact.py
+          python TerminalCore2026/shifted_pressure_exact.py
+          python TerminalCore2026/shifted_pressure_sources_exact.py
+          python TerminalCore2026/remaining_shifted_pressure_exact.py
+          python TerminalCore2026/current_order_feedback_exact.py
+          python TerminalCore2026/fixed_radius_volterra_exact.py
+          python TerminalCore2026/startup_index_exact.py
+          python TerminalCore2026/startup_source_symbolic_exact.py
+          python TerminalCore2026/axis_profile_fence_exact.py
+          python TerminalCore2026/axis_profile_radial_jets_exact.py
+          python TerminalCore2026/outer_pressure_measure_B2_exact.py
+          python -m pip install mpmath
+          python TerminalCore2026/verify_a11_pressure_source.py
+          python TerminalCore2026/a7_heat_pressure_exact.py
+          python TerminalCore2026/verify_n1_terminal_collar.py
+          python TerminalCore2026/n1_swirl_meridional_exact.py
+          python TerminalCore2026/verify_n1_coupled_vorticity.py
+          python TerminalCore2026/verify_n1_pressure_free_witness_exact.py
+          python TerminalCore2026/verify_n1_nonflat_start_exact.py
+          python TerminalCore2026/verify_n1_projected_stokes_exact.py
+          python TerminalCore2026/verify_n1_nonlinear_picard_exact.py
+          python TerminalCore2026/verify_n1_terminal_H3_scaling.py
+          python TerminalCore2026/verify_n1_exterior_derivative_exact.py
+          python TerminalCore2026/verify_n1_second_order_dual.py
+          python TerminalCore2026/verify_n1_heat_exterior.py
+          python TerminalCore2026/verify_n1_source_axis_jet.py
+          python TerminalCore2026/stagewise_source_checks.py
+          python TerminalCore2026/outer_schedule_enclosure.py
+          python TerminalCore2026/pulse_moment_exact.py
+          python TerminalCore2026/remainder_quadratic_exact.py
+          python TerminalCore2026/amplitude_remainder_certificate.py --demo
+          python TerminalCore2026/source_bump_exact_audit.py
+          python TerminalCore2026/source_moment_transport_exact.py
+          python TerminalCore2026/pulse_entrance_exact_certificate.py
+          python TerminalCore2026/A11_exact_certificate.py
+          python TerminalCore2026/A11_stopping_and_eta_exact.py
+          python TerminalCore2026/a11_cone_exact.py
+          python TerminalCore2026/a11_ns_tail_exact.py --demo
+          python TerminalCore2026/a5_pulse_cone_exact.py
+          python TerminalCore2026/a5_pulse_source_gate.py --demo
+          python TerminalCore2026/a29a30_source_exact.py
+          python TerminalCore2026/ten_state_interval_tubes.py --selftest
+          python TerminalCore2026/pulse_transfer_exact.py
+          python TerminalCore2026/pulse_end_moment_cancellation_exact.py
+          python TerminalCore2026/pulse_end_Q_positive_exact.py
+          python TerminalCore2026/full_pulse_cover_gate.py --selftest
+          python TerminalCore2026/pulse_precision_and_identity_exact.py
+          python TerminalCore2026/pulse_provenance_replay_gate.py --selftest
+          python TerminalCore2026/source_pulse_exact_boxes.py
+          python TerminalCore2026/verify_fixed_pulse_boxes.py
+          python TerminalCore2026/a11_ns_quantitative_slack_exact.py
+          python TerminalCore2026/a11_endpoint_exact.py
+          python TerminalCore2026/a11_endpoint_gate.py
+          python TerminalCore2026/a11_local_tail_exact.py
+          python TerminalCore2026/a11_local_derivative_exact.py
+          python TerminalCore2026/a11_qs_eta_source_gate.py --selftest
+          python TerminalCore2026/a11_entrance_jet_exact.py
+          python TerminalCore2026/a11_source_gates.py
+          python TerminalCore2026/a11_support_strong_exact.py
+          python TerminalCore2026/a11_joint_parameter_exact.py
+          python TerminalCore2026/a11_stress_exact.py
+          python TerminalCore2026/a11_quadratic_exact.py
+          python TerminalCore2026/a11_interval_gate.py
+          python TerminalCore2026/a11_final_source_gate_exact.py
+          python TerminalCore2026/a11_full_patch_gap_exact.py
+          python TerminalCore2026/a11_parity_tail_exact.py
+          python TerminalCore2026/a11_terminal_gauge_exact.py
+          python TerminalCore2026/a11_terminal_fail_closed.py
+          python TerminalCore2026/a11_terminal_rigidity_exact.py
+          python TerminalCore2026/a11_root_hull_bridge_exact.py
+          python TerminalCore2026/a11_direct_stress_alternative_exact.py
+          python TerminalCore2026/a11_rootjet_improved_exact.py
+          python TerminalCore2026/a11_robust_hull_exact.py --selftest
+          python TerminalCore2026/a11_backward_angular_exact.py
+          python TerminalCore2026/a11_explicit_profile_size_exact.py
+          python TerminalCore2026/a11_source_local_future_exact.py
+          python TerminalCore2026/a11_terminal_gauge_robust_exact.py
+          python TerminalCore2026/a11_terminal_residual_exact.py

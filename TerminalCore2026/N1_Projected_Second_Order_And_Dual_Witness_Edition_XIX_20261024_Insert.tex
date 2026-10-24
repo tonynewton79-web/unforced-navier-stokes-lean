@@ -1,0 +1,96 @@
+
+\section{A second-order Leray correction and a meridional dual witness}
+\label{sec:second-order-leray}
+This section concerns a smooth background and does not establish unforced
+finite-time blowup. Its short-time scheme is an explicit instance of standard
+Leray--Stokes perturbation theory, not an originality claim.
+Let $s>5/2$, $\nu>0$, and let $u_B$ be a smooth divergence-free field on
+$\mathbb T^3$, with complete residual
+\[
+R_B=\partial_tu_B-\nu\Delta u_B+(u_B\cdot\nabla)u_B+\nabla p_B.
+\]
+Let $\mathbb P$ denote the Leray projection,
+$S(t)=e^{\nu t\Delta}$ and
+$B(a,b)=\mathbb P[(a\cdot\nabla)b]$.
+For a slab $[t_0,t_0+T]$ put
+$A=\sup_t\|u_B(t)\|_{H^s}$,
+$F=\sup_t\|\mathbb P R_B(t)\|_{H^s}$.
+Define
+\begin{align*}
+w_1(t)&=-\int_{t_0}^tS(t-v)\mathbb P R_B(v)\,dv,\\
+N_1&=B(u_B,w_1)+B(w_1,u_B)+B(w_1,w_1),\\
+w_2(t)&=-\int_{t_0}^t S(t-v)N_1(v)\,dv.
+\end{align*}
+\begin{proposition}[Exact residual after two projected corrections]
+With $w=w_1+w_2$, the projected unforced residual is precisely
+\[
+\mathcal E_2=B(u_B,w_2)+B(w_2,u_B)+B(w_1,w_2)
++B(w_2,w_1)+B(w_2,w_2).
+\]
+If $\|B(a,b)\|_{H^{s-1}}\le C_s\|a\|_{H^s}\|b\|_{H^s}$,
+and
+\[
+H_\nu(T)=T+\sqrt{\frac{2T}{e\nu}},\quad
+W_1=TF,\quad W_2=C_sH_\nu(T)(2AW_1+W_1^2),
+\]
+then
+\[
+\|w_1\|_{CH^s}\le W_1,\quad
+\|w_2\|_{CH^s}\le W_2,\quad
+\|\mathcal E_2\|_{CH^{s-1}}
+\le C_s(2AW_2+2W_1W_2+W_2^2).
+\]
+The full unprojected residual equals $\mathcal E_2$ upon taking
+\[
+\pi=-\Delta^{-1}\nabla\cdot
+\{R_B+(u_B\cdot\nabla)w+(w\cdot\nabla)u_B+(w\cdot\nabla)w\}
+\]
+as the correction pressure, with zero spatial mean.
+\end{proposition}
+\begin{proof}
+The defining Duhamel equations give
+$(\partial_t-\nu\Delta)w_1=-\mathbb P R_B$ and
+$(\partial_t-\nu\Delta)w_2=-N_1$. Expand the full quadratic
+nonlinearity and cancel the terms containing $w_1$ alone.
+The Fourier multiplier inequality
+$\sqrt{1+|k|^2}e^{-\nu t|k|^2}
+\le1+(2e\nu t)^{-1/2}$
+and time integration prove the stated $H_\nu(T)$ bound.
+The bilinear estimate then yields all three inequalities.
+Finally, the Poisson pressure removes the gradient component of the
+total forcing; crucially, it retains $\nabla\cdot R_B$.
+\end{proof}
+For fixed $A,F$ the resulting residual bound is $O(T^{3/2})$;
+there is no claim of exact zero residual or terminal continuation.
+
+\begin{proposition}[Explicit meridional dual witness on $\mathbb R^3$]
+Let $u_B=r e^{-(r^2+z^2)}e_\theta$ be a stationary Gaussian
+pure-swirl background. Define
+$\chi(x)=(x-\frac12)^4(1-x)^4$ for $x\in[\frac12,1]$ and
+$\chi(x)=0$ otherwise, and put
+$\psi(r,z)=\chi(r)\chi(z)$, $\Phi=\nabla\times(\psi e_\theta)$.
+Then $\Phi$ is compactly supported and divergence-free, and
+\[
+\langle R_B,\Phi\rangle
+=8\pi\int_{1/2}^1\!\int_{1/2}^1
+r^2 z e^{-2(r^2+z^2)}\chi(r)\chi(z)\,dr\,dz
+>\frac{\pi e^{-4}}{322560^2}>0.
+\]
+Consequently a smooth unforced correction vanishing at $t_0$
+must satisfy
+$\langle\partial_t w(t_0),\Phi\rangle
+<-\pi e^{-4}/322560^2$.
+\end{proposition}
+\begin{proof}
+The meridional centrifugal residual has
+$(R_B)_r=-r e^{-2(r^2+z^2)}$, $(R_B)_z=0$
+modulo any pressure gradient. Thus
+$(\nabla\times R_B)_\theta=4rz e^{-2(r^2+z^2)}$.
+Use integration by parts, the cylindrical volume element
+$2\pi r\,dr\,dz$, and the exact beta integral
+$\int_{1/2}^1\chi(x)\,dx=1/322560$.
+The initial-time identity follows by testing the correction equation
+with the solenoidal $\Phi$.
+\end{proof}
+The Gaussian witness is a pressure-independent \emph{positive control},
+not a computation on the source's fully corrected field.

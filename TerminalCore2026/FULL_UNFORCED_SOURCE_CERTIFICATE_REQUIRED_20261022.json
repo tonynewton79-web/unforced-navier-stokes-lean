@@ -1,0 +1,51 @@
+{
+  "source_identity": {
+    "profile_sha256": null,
+    "source_pdf_sha256": null,
+    "source_equations_revision": null
+  },
+  "lambda": null,
+  "h": null,
+  "stage_intervals": {
+    "inner_axis": null,
+    "first_transition": null,
+    "axial_transition": null,
+    "intermediate_power_law": null,
+    "axial_pulse": null,
+    "A10_interpolation": null,
+    "A11_both_supports_and_gap": null,
+    "exterior_release": null,
+    "steep_decay": null,
+    "terminal_collaring": null,
+    "heat_exterior": null,
+    "joining_patches": null
+  },
+  "A11_same_profile_gauge": {
+    "profile_sha256": null,
+    "proof_input_sha256": null,
+    "total_eta_derivatives_proved": null,
+    "alpha_K_over_XE": null,
+    "beta_inverse_E": null,
+    "zero_gauge_Ns_over_E_bound": null,
+    "F_sup": null,
+    "F_eta_sup": null,
+    "G_sup": null,
+    "G_eta_sup": null
+  },
+  "analytic_lean_gates": {
+    "source_A11_root_and_eta_derivative": null,
+    "source_A19_amplitude_and_eta_derivative": null,
+    "same_profile_terminal_S_gauge": null,
+    "same_profile_terminal_Pi_gauge": null,
+    "normalized_ten_state_interval_ODE": null,
+    "weighted_velocity_pressure_Banach_recurrence": null,
+    "actual_leading_profile_and_Appendix_B_contraction": null,
+    "unforced_n1_n2_startup": null,
+    "unforced_all_order_source_correspondence": null,
+    "physical_coordinate_zero_force_residual": null,
+    "Cartesian_axis_regularity": null,
+    "blowup_and_energy_conditions": null,
+    "full_Lean_kernel_declarations_and_build": null
+  },
+  "status": "FAIL_CLOSED_MISSING_SOURCE_DATA"
+}

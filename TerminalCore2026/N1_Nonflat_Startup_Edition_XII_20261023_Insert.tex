@@ -1,0 +1,97 @@
+\subsection*{Proof Attack 7 (Edition XII, 23 October 2026): a nonflat source-correction startup theorem}
+\label{subsec:n1-nonflat-start-XII}
+Let $u_B$ be any smooth divergence-free background with its
+\emph{full physical} unforced momentum residual
+\[
+R_B=\partial_tu_B-\nu\Delta u_B+
+(u_B\cdot\nabla)u_B+\nabla p_B.
+\]
+For a genuinely force-free corrected velocity $u=u_B+w$,
+the exact nonlinear perturbation identity is
+\begin{equation}\label{eq:XII-full-correction}
+\partial_tw-\nu\Delta w+(u_B\cdot\nabla)w+
+(w\cdot\nabla)u_B+(w\cdot\nabla)w+\nabla\pi=-R_B,
+\qquad \nabla\cdot w=0.
+\end{equation}
+\begin{theorem}[Nonflat response to an active solenoidal residual]
+Fix $t_0$ and suppose a compactly supported smooth
+divergence-free $\Phi$ satisfies
+$B_\Phi:=\langle R_B(t_0),\Phi\rangle>0$.
+If $w(t_0,\cdot)=0$ and the corrected field solves the
+unforced equations with sufficient regularity, then
+\begin{equation}\label{eq:XII-no-flat-start}
+\boxed{\langle\partial_tw(t_0),\Phi\rangle=-B_\Phi<0.}
+\end{equation}
+If $w:[t_0,t_0+\epsilon)\to L^2$ is $C^1$,
+there exists $\delta>0$ such that
+\begin{equation}\label{eq:XII-quantitative-start}
+\boxed{\|w(t)\|_2\ge\frac{B_\Phi}{2\|\Phi\|_2}(t-t_0),
+\qquad t_0<t<t_0+\delta.}
+\end{equation}
+Thus an order-one correction that is flat in time at
+$t_0$ cannot cancel an active source residual.
+\end{theorem}
+\begin{proof}
+At $t_0$, $w$ and all its spatial derivatives vanish.
+Pair \eqref{eq:XII-full-correction} with $\Phi$;
+all convection and viscosity terms vanish at $t_0$.
+Pressure vanishes by solenoidality and integration by parts.
+This yields \eqref{eq:XII-no-flat-start}.
+Set $F(t)=\langle w(t),\Phi\rangle$; then
+$F(t_0)=0$ and $F'(t_0)=-B_\Phi$. By continuity of
+$F'$, $F'(t)\le-B_\Phi/2$ for short positive times.
+Integrate and use Cauchy--Schwarz to prove
+\eqref{eq:XII-quantitative-start}.
+\end{proof}
+\paragraph{Application to the terminal collar.}
+Edition XI found an exactly positive azimuthal first-order
+source residual at the collar midpoint and, by continuity,
+a compactly supported solenoidal witness $\Phi=\zeta e_\theta$.
+\emph{If} that prescribed source residual remains the complete
+pressure-free order-one residual of the final selected background
+at a matching time $t_0$, the above theorem forces a nonzero
+instantaneous correction derivative. This does not prove
+the existence or nonexistence of a fully matched correction.
+No appeal to pressure adjustment can remove the witness.
+
+\begin{proposition}[Exact manufactured smooth positive control]
+For the globally smooth finite-energy divergence-free
+background $u_B=r e^{-r^2-z^2}e_\theta$, $p_B=0$, $\nu=1$,
+\[
+R_{B,\theta}=
+2r(5-2r^2-2z^2)e^{-r^2-z^2}.
+\]
+On $1/2\le r\le1$, $|z|\le1/2$ this is
+at least $(5/2)e^{-5/4}>0$.
+With
+$\zeta=(r-1/2)^4(1-r)^4(1/4-z^2)^4$
+on this rectangle, zero outside, the axisymmetric test
+$\Phi=\zeta e_\theta$ is divergence-free and has
+\[
+\int\zeta r\,dr\,dz=\frac{1}{270950400},\qquad
+\boxed{B_\Phi\ge
+\frac{5\pi e^{-5/4}}{270950400}>0.}
+\]
+The displayed polynomial bump is $C^3$, sufficient for the
+weak test; it may be approximated by a positive $C_c^\infty$
+bump without losing strict positivity.
+\end{proposition}
+\paragraph{Adversarial global-neutrality control.}
+A local positive residual is not a global net-torque
+obstruction: for $g(z)=e^{-z^2}$,
+$-g''(0)=2>0$ but
+$\int_{\mathbb R}-g''(z)\,dz=0$ exactly.
+Thus source-specific matching cannot be excluded using a
+local sign alone.
+
+\paragraph{Verification boundary.}
+Independent symbolic Gaussian vector-Laplacian and
+divergence tests, exact rational support mass, high-precision
+positive pairing with a strict analytic lower bound, a
+zero-torque negative control and $10{,}000$ exact-rational
+scalar checks passed. The true source-specific coupled
+inhomogeneous annular problem, physical residual authentication,
+all-order convergence, nonzero smooth data and complete
+unforced Navier--Stokes theorem remain OPEN/HOLD.
+The companion Lean candidate formalizes \emph{finite scalar
+consequences only}, not the field-theoretic arguments.

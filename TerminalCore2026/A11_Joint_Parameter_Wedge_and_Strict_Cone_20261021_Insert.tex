@@ -1,0 +1,93 @@
+\subsection*{A simultaneous small-parameter choice and a sharper conditional cone margin}
+\label{subsec:a11-joint-smallness-20261021}
+The local A.11 support estimates require a single order of parameter choices. We distinguish the scalar feasibility of the previously derived smallness inequalities from the stronger assertion that all the source integral, moment and stress conditions hold for the same exterior profile.
+
+\begin{proposition}[Nonempty simultaneous smallness wedge]
+\label{prop:a11-smallness-wedge}
+Fix $T_d>10$, $P_*>e^{T_d}$ and assume the originating construction permits $T_f=512$. Set
+\[
+Q=1+T_d+T_f+\log P_*,\qquad
+\lambda=\frac{10^{-20}}{Q},\qquad
+h=\frac{\lambda e^{-T_d}}{10^6}.
+\]
+Then, simultaneously,
+\[
+0<\lambda<
+\min\left\{\frac1{20},10^{-14},
+\frac{10^{-6}}{T_d+T_f+1},
+\frac1{10(1+\log P_*)}\right\},
+\]
+\[
+0<h<\min\left\{\frac{\lambda}{10^4},
+\frac{e^{-T_d}}{100},\frac1{10^4}\right\},
+\qquad \lambda T_f<10^{-6},\qquad
+\lambda\log(1/\lambda)<61\cdot10^{-20}<10^{-18}.
+\]
+\end{proposition}
+\begin{proof}
+Since $T_d>10$ and $P_*>e^{T_d}$, $Q>T_d+T_f+1>1$ and $Q>1+\log P_*$. The displayed rational comparisons for $\lambda$ follow. As $0<e^{-T_d}<1$, the bounds on $h$ follow, and $\lambda T_f<10^{-20}$ because $Q>T_f$.
+Finally, $\log 10<3$ and $\log Q\le Q-1$, so
+\[
+\lambda\log(1/\lambda)
+=\frac{10^{-20}}Q(20\log10+\log Q)
+<10^{-20}\frac{60+Q-1}Q\le60\cdot10^{-20}.
+\]
+\end{proof}
+This proves feasibility of the \emph{listed scalar} inequalities only.
+Unquantified source-specific thresholds may require further decreases
+of $\lambda$, and no moment, pressure, slope or stress-cone gate is
+verified by this construction.
+
+\begin{proposition}[Sharpened conditional A.11 strict cone]
+\label{prop:a11-joint-cone}
+Assume on both complete A.11 correction supports of the \emph{same}
+source profile that
+\[
+|N_s|/E<2\lambda/25,\qquad
+Q_s\ge49\lambda/50,\qquad
+-3\lambda/2\le\ell\le-\lambda/2,\qquad
+X\ge9/\lambda,
+\quad0<\lambda\le1/20,
+\]
+and $0<L=1-2h\eta^2\le1$, $|\eta|\le1$, $U=M=J=0$.
+With $a=2-2\ell$, $p_1=XQ_s/L$ and $w=N_s/(EQ_s)$,
+\[
+2(1-a/p_1)^2-(a-2)w^2>
+\frac{107949}{96040}>1>\frac9{20}.
+\]
+\end{proposition}
+\begin{proof}
+The stated source hypotheses give $|w|<4/49$,
+$p_1\ge441/50$ and $2<a\le43/20$, so $a/p_1<1/4$.
+Since $0<a-2\le3/20$, the normalized cone admits the explicit strict lower estimate
+\[
+2(3/4)^2-\frac3{20}(4/49)^2=\frac{107949}{96040}.
+\]
+\end{proof}
+The hypotheses $|N_s|/E<2\lambda/25$ and
+$Q_s\ge49\lambda/50$ are conditional in the source programme:
+their proofs require the actual nonlinear A.11 moment roots and
+parameter derivatives, terminal $S$ and pressure gauges,
+positive tail integrability, and angular-moment entrance data.
+The result is therefore a conditional improvement of the stress
+margin on the two correction supports, not a certificate of the
+full exterior stress cone.
+
+\paragraph{Joint source and Lean proof obligations.}
+The exact fixed $\sigma'$ correction moments $u,p,w$,
+the deficit $\delta(\eta)$ and its derivative, and both roots
+of
+\[
+u(c_1+xc_2)=\delta,\qquad
+2p(c_1+zc_2)+w(c_1^2+zc_2^2)=0
+\]
+must be enclosed on the entire source support, with
+$x=e^{2(1-\lambda)}$, $z=e^{-2(1+2\lambda)}$.
+The small root must be isolated uniformly in $\eta$.
+The same frozen source must verify $S(\infty)=\Pi(\infty)=0$,
+(A.29)--(A.30) on the entire axial pulse, every exterior
+stress-cone stage and the terminal matching conditions.
+Subsequently, a source-compatible Appendix B nonlinear profile,
+unforced $n=1,2$ corrections, analytic coefficient convergence
+and an exact zero-force physical residual are required.
+The finite scalar Lean file is not an end-to-end formalization.

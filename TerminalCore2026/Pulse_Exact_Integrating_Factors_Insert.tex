@@ -1,0 +1,58 @@
+\subsection*{Exact pulse transfers on a fixed shape domain}
+Appendix A.9 prescribes on its entire axial pulse, including the
+two \emph{axial} moment bumps,
+\[
+E(y,\eta)=e_b(1+\eta^2)^{-1}e^{-(1/2+\lambda)y},
+\quad 0\le y\le13/\lambda.
+\]
+Consequently $\ell=-\lambda$, $\ell_\eta=0$ and
+$g=-2\eta/(1+\eta^2)$ exactly. The axial source is
+$a=A(\eta)R_0(\lambda y)+c_1(\eta)\beta_1(y)+c_2(\eta)\beta_2(y)$,
+with $a_\eta$ obtained by differentiating only these coefficients
+at fixed $y$. The bumps in this formula are not the later,
+distinct azimuthal A.11 correction bumps.
+\begin{proposition}[Exact source-pulse variation of constants]
+\label{prop:source-pulse-exact-transfer}
+Let $\alpha=1/2-\lambda$, $\beta=1/2-2\lambda$,
+$\gamma=1-\lambda$, $\kappa=1+2\lambda$,
+and $y_1=13/\lambda$.
+For $q\in\{m,j\}$, with corresponding decay exponent
+$d_q\in\{\alpha,\beta\}$,
+\[
+q(y)=e^{-d_q y}q(0)+\int_0^ye^{-d_q(y-v)}a(v)\,dv,\quad
+q_\eta(y)=e^{-d_q y}q_\eta(0)+
+\int_0^ye^{-d_q(y-v)}a_\eta(v)\,dv.
+\]
+Moreover
+\[
+i(y)=\gamma^{-1}+(i(0)-\gamma^{-1})e^{-\gamma y},
+\quad i_\eta(y)=i_\eta(0)e^{-\gamma y},
+\]
+\[
+p(y)=-(2\kappa)^{-1}+
+(p(y_1)+(2\kappa)^{-1})e^{-\kappa(y_1-y)},
+\quad p_\eta(y)=p_\eta(y_1)e^{-\kappa(y_1-y)}.
+\]
+The remaining energy states satisfy
+\[
+s(y)=e^{2\lambda y}s(0)+\int_0^y e^{2\lambda(y-v)}
+(a(v)^2-\tfrac12)\,dv,\quad
+s_\eta(y)=e^{2\lambda y}s_\eta(0)+
+2\int_0^y e^{2\lambda(y-v)}a(v)a_\eta(v)\,dv.
+\]
+\end{proposition}
+\begin{proof}
+The pulse has constant $\ell=-\lambda$ and
+$\ell_\eta=0$, so each transport equation is solved
+exactly by its integrating factor; the pressure is
+integrated backward from the post-pulse source value.
+\end{proof}
+In the fixed coordinate $\xi=\lambda y\in[0,13]$ the
+$s,s_\eta$ integrals are over a compact interval with
+kernel $e^{2(\xi-v)}$. The $m,j$ kernels are sharply
+localized on $\xi$-scale $\lambda$, for which (A.28)'s
+controlled convolution method is appropriate.
+These exact transfers avoid a prohibitive $1/\lambda$
+number of generic ODE cells; certified source amplitudes,
+correction coefficients, full pulse coverage and the
+$10^{-6}$ stress-ratio proof are still outstanding.

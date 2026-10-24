@@ -1,0 +1,116 @@
+\subsection*{An exact quadratic form of the Appendix-A pulse remainder}
+\label{subsec:exact-A19-quad}
+Let $0<\lambda\le1/20$, $X_{\rm end}=X_pe^{13/\lambda}$, and
+$E(X_p,\eta)=e_bf(\eta)$, $f=(1+\eta^2)^{-1}$. On the pulse,
+$E(X_pe^y,\eta)=e_bf e^{-(1/2+\lambda)y}$ and
+$U=E\{AR_0(\lambda y)+c_1\beta_1(y)+c_2\beta_2(y)\}$.
+The two translated nonnegative normalized bumps of width $3/10$
+are centered at $y_1=13/\lambda-3$ and $y_2=y_1+2$.
+Define
+\[
+P_-=\frac{\lambda S(X_p)}{X_pe_b^2f^2},\quad
+D_+=\frac{\lambda}{2X_pe_b^2f^2}\int_{X_{\rm end}}^\infty E^2\,dX,
+\quad J_i=\lambda\int_0^{13/\lambda}e^{-2\lambda y}\beta_i(y)^2dy.
+\]
+The source constructs $E$ after the pulse independently of $A$,
+and $U$ vanishes there; hence $P_-,D_+$ are independent of $A$.
+
+\begin{proposition}[Exact remainder and quadratic amplitude equation]
+\label{prop:source-exact-A19}
+The remainder in (A.19) of \cite{openai2026} is exactly
+\begin{equation}\label{eq:A19-exact-remainder}
+ \mathcal E(A,\eta)=P_-(\eta)-D_+(\eta)+
+              J_1c_1(A,\eta)^2+J_2c_2(A,\eta)^2.
+\end{equation}
+Let $s_1=1/2-\lambda$, $s_2=1/2-2\lambda$,
+and let $\mathcal B$ be the normalized (A.1) two-bump matrix.
+Set $m_M=M(X_p)/(X_pe_bf)$ and
+$m_J=J(X_p)/(X_pH(X_p)e_bf)$, where $J(X)$ here denotes
+the source's accumulated $UH$-moment.
+With
+\[
+g_i=\int_0^{11/\lambda}e^{s_i(y-y_1)}R_0(\lambda y)\,dy,\quad
+a=-\mathcal B^{-1}\binom{e^{-s_1y_1}m_M}{e^{-s_2y_1}m_J},
+\quad b=-\mathcal B^{-1}\binom{g_1}{g_2},
+\]
+one has $c_i=a_i+A b_i$ exactly, and $b$ does not depend on $\eta$.
+The complete moment equation is
+\[
+k_2A^2+k_1A+k_0=0,\quad
+k_2=K_b+\sum_iJ_ib_i^2>0,\quad k_1=2\sum_iJ_ia_ib_i,
+\]
+\[
+k_0=P_--D_++\sum_iJ_ia_i^2-(1-e^{-26})/4.
+\]
+In particular $\partial_A^2\mathcal E=2\sum_iJ_ib_i^2\ge0$.
+If $k_0<0$, its unique positive root is
+$A_*=(-k_1+\sqrt{k_1^2-4k_2k_0})/(2k_2)$.
+\end{proposition}
+\begin{proof}
+The substitution $\xi=\lambda y$, $dX=X_pe^y\,dy$ in the
+source definition $S=\int(U^2-E^2/2)\,dX$ gives its
+normalized pulse contribution as
+$\int_0^{13}e^{-2\xi}\{(AR_0(\xi)+c_1\beta_1(\xi/\lambda)
++c_2\beta_2(\xi/\lambda))^2-1/2\}\,d\xi$.
+The principal pulse vanishes for $\xi\ge11$, while the
+first bump begins at $\xi\ge13-(63/20)\lambda>11$.
+The bumps are disjoint. Thus every pulse--bump and
+bump--bump cross term is identically zero. The remaining
+pre-pulse and post-pulse contributions give
+\eqref{eq:A19-exact-remainder}. The two normalized $M,J$
+moments are affine in the pulse amplitude, with weights
+$e^{s_1y}$ and $e^{s_2y}$, giving $c=a+Ab$.
+Expansion gives the quadratic coefficients and the root criterion.
+\end{proof}
+
+\begin{proposition}[Explicit amplitude-sensitive error]
+\label{prop:A19-error-budget}
+Let $B_2=\int\beta^2$, $D_0=\max(|e^{-s_1y_1}m_M|,
+|e^{-s_2y_1}m_J|)$ and $D_1=\max(|g_1|,|g_2|)$.
+For $0<\lambda\le1/20$,
+\[
+D_0\le e^{-(2/5)(13/\lambda-3)}\max(|m_M|,|m_J|),\quad
+D_1\le\frac{55}{2}e^{-(2/5)(2/\lambda-3)},\quad
+J_1+J_2\le2\lambda B_2 e^{-26+(63/10)\lambda}.
+\]
+Consequently, for $|A|\le A_{\max}$,
+\begin{align*}
+0\le\mathcal E-(P_--D_+)&\le
+\frac{8B_2}{\lambda}e^{-26+(63/10)\lambda}
+(D_0+A_{\max}D_1)^2,\\
+|\partial_A\mathcal E|&\le
+\frac{16B_2}{\lambda}e^{-26+(63/10)\lambda}
+(D_0+A_{\max}D_1)D_1.
+\end{align*}
+The source-prescribed correction bump is a width-$3/10$ rescaling
+of the fixed step derivative $\sigma'$ in (A.5), not a freely chosen
+plateau. Its exact analytic envelope is $27/5<B_2\le640/3$;
+see Proposition~\ref{prop:true-source-bump-L2}.
+If, in addition, the \emph{actual} pre-pulse moments satisfy
+$\max(|m_M|,|m_J|)\le1$, then uniformly for
+$0<\lambda\le1/20$, $|A|\le1.011$,
+\[
+0\le\mathcal E-(P_--D_+)<5\cdot10^{-17},
+\qquad |\partial_A\mathcal E|<10^{-16}.
+\]
+\end{proposition}
+\begin{proof}
+Since $s_i\ge2/5$ and $0\le R_0(\xi)\le11$ is supported
+on $[0,11]$,
+$|g_i|\le(11/s_i)e^{-s_i(2/\lambda-3)}$.
+The left bump endpoint gives the displayed $J_i$ bound.
+The inverse estimate \eqref{eq:two-bump-inverse} yields
+$\|a\|_\infty\le2D_0/\lambda$ and
+$\|b\|_\infty\le2D_1/\lambda$. Substitution proves both bounds.
+For the numerical consequence, $t=1/\lambda\ge20$ and
+$t e^{-8t/5}$ decreases with $t$. Exact finite rational
+exponential series imply $e^{-74/5}<4\cdot10^{-7}$ and
+$e^{-5137/200}<10^{-11}$, which prove the asserted
+strict numerical inequalities.
+\end{proof}
+
+The actual normalized $m_M,m_J$ and the independent balance
+$P_--D_+$ are not yet enclosed for one source-admissible
+exterior schedule. This exact polynomial reduction therefore
+does not certify a numerical amplitude, the nonlinear
+Appendix-B profile or any unforced Navier--Stokes singularity.

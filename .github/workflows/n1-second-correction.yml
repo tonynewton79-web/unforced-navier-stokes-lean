@@ -1,0 +1,48 @@
+name: Audit second projected correction
+on:
+  push:
+    branches:
+      - feature/zenodo-23474915-lean
+    paths:
+      - "TerminalCore2026/N1SecondProjectedCorrection.lean"
+      - "TerminalCore2026/verify_n1_second_projected_correction.py"
+      - ".github/workflows/n1-second-correction.yml"
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  second-projected:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install elan
+        shell: bash
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Install pinned Lean toolchain
+        run: |
+          elan toolchain install "$(cat lean-toolchain)"
+          lean --version
+      - name: Resolve dependencies and obtain Mathlib cache
+        run: |
+          lake update
+          lake exe cache get
+      - name: Fail closed on admitted local declarations
+        shell: bash
+        run: |
+          if grep -nE '^[[:space:]]*(sorry|admit|axiom)([[:space:]]|$)' TerminalCore2026/N1SecondProjectedCorrection.lean; then
+            echo "Forbidden proof escape hatch"; exit 1
+          fi
+      - name: Kernel-check second-correction algebra
+        run: lake env lean TerminalCore2026/N1SecondProjectedCorrection.lean
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run independent rational, symbolic and adversarial tests
+        run: |
+          python -m pip install sympy
+          python TerminalCore2026/verify_n1_second_projected_correction.py

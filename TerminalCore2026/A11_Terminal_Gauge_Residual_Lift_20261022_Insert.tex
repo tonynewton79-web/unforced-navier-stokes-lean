@@ -1,0 +1,78 @@
+\subsection*{Terminal A.11/A.19 residuals as exact stress-gauge defects (22 October 2026)}
+\label{subsec:A11-source-terminal-residual-lift}
+Let \(\mathcal H\) be the full A.11 two-support hull and intervening gap.
+On the source region \(U=M=J=0\), write
+\[
+ N_s=\frac{4h\eta S-(1-\eta^2)S_\eta}{X}
+       +4A\eta\Pi-(1-\eta^2)\Pi_\eta,\quad A=\tfrac12+h.
+\]
+Fix the \emph{same} corrected source profile throughout and define
+\[
+ \mathcal F(\eta)=\frac{\lambda S(\infty,\eta)}
+  {X_pe_b^2(1+\eta^2)^{-2}},\qquad
+ \mathcal G(\eta)=\int_{\text{two A.11 bumps}}(E_c^2-E_b^2)\,dy.
+\]
+The source baseline pressure trace is chosen to cancel the baseline
+terminal pressure. Thus, with
+\(K(\eta)=X_pe_b^2/[\lambda(1+\eta^2)^2]\),
+the genuine terminal errors are \(C_S=K\mathcal F\),
+\(C_\Pi=\mathcal G/2\). Differentiating \emph{totally} in \(\eta\)
+along the actual A.19 amplitude and A.11 coefficient branches gives
+the exact identity
+\begin{equation}\label{eq:a11-source-residual-lift-20261022}
+\boxed{\begin{aligned}
+ \Delta N_s={}&\frac{K}{X}
+  \left[\left(4h\eta+
+   \frac{4\eta(1-\eta^2)}{1+\eta^2}\right)\mathcal F
+          -(1-\eta^2)\mathcal F_\eta\right]\\
+ &+2A\eta\mathcal G-\frac{1-\eta^2}{2}\mathcal G_\eta.
+\end{aligned}}
+\end{equation}
+This follows from \(K_\eta/K=-4\eta/(1+\eta^2)\).
+Disjoint A.11 bumps with eta-independent baseline give
+\(\mathcal G=\sum_{i=1}^2(2v_ic_i+w_ic_i^2)\) and
+\(\mathcal G_\eta=2\sum_i(v_i+w_ic_i)c_{i,\eta}\),
+with \(v_i=\int E_b^2\beta_i\,dy\), \(w_i=\int E_b^2\beta_i^2\,dy\).
+Consequently, \emph{exact} \(C^1\) simultaneous solutions of the
+A.19 and A.11 source equations imply
+\(\mathcal F=\mathcal F_\eta=\mathcal G=\mathcal G_\eta=0\);
+small residual values alone do not control their total derivatives.
+
+\begin{proposition}[Fail-closed two-support-and-gap stress gate]
+Suppose the authentic zero-gauge estimate on the \emph{same}
+corrected profile is \(b_0\ge\sup_{\mathcal H}|N_s^{(0)}|/E\).
+Assume \(E>0\) and that independently authenticated nonnegative
+source bounds satisfy
+\[
+ \alpha\ge\sup_{\mathcal H}\frac{K}{XE},\qquad
+ \beta\ge\sup_{\mathcal H}\frac1E,\qquad
+ \epsilon_F\ge\|\mathcal F\|_\infty,\quad
+ \epsilon_{F'}\ge\|\mathcal F_\eta\|_\infty,
+\]
+and analogously \(\epsilon_G,\epsilon_{G'}\).
+For \(0<\lambda\le1/20,\;0<h\le\lambda/100\), one has
+\[
+ \sup_{\mathcal H}\frac{|N_s|}{E}\le b_0+
+ \alpha[(2+4h)\epsilon_F+\epsilon_{F'}]
+ +\beta[2A\epsilon_G+\epsilon_{G'}/2].
+\]
+If \(b_0\le\lambda/500\) and the two residual brackets total
+strictly less than \(249\lambda/500\), then
+\(\sup_{\mathcal H}|N_s|/E<\lambda/2\).
+\end{proposition}
+\begin{proof}
+Use \(|\eta|\le1\), \(0\le1-\eta^2\le1\), and the exact identity
+\(2(1+u^2)-4u(1-u^2)=2[(1-u)^2+2u^3]\ge0\)
+for \(u=|\eta|\le1\). Hence
+\(4|\eta|(1-\eta^2)/(1+\eta^2)\le2\).
+Divide the terminal correction by \(E>0\), apply the sup bounds,
+and add \(b_0\).
+\end{proof}
+The code \texttt{a11\_residual\_certificate.py} checks the
+rational implication and refuses missing interval inputs.
+A positive synthetic test is NOT an authenticated source certificate.
+The common A.11/A.19 source roots, full-hull future-tail bound,
+other exterior stress cones, Appendix B fixed point, unforced startup
+systems, physical PDE residual, and the proposed unforced
+Theorem 1.1 remain unproved. Lean code in this tranche covers
+only finite scalar identities, not the source integrals or PDE.

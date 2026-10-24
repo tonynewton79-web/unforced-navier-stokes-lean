@@ -1,0 +1,112 @@
+\section{Normalized source moments and the remaining pulse certificate}
+The exact source integrals (4.15)--(4.16) of \cite{openai2026} can be
+transported without the very large radial factors appearing in the
+unnormalized variables. Write $y=\log(X/X_R)$, $H=\sqrt{2X}E$,
+$a=U/E$, $\ell=(\log H)_y$, $g=(\log E)_\eta$, and
+\[
+ m=\frac{M}{XE},\quad i=\frac{I}{XH},\quad
+ j=\frac{J}{XHE},\quad s=\frac{S}{XE^2},\quad
+ p=\frac{\Pi}{E^2}.
+\]
+\begin{proposition}[Ten normalized source transport equations]
+\label{prop:norm-source-ten}
+On every source stage with $E>0$, the five exact moment equations are
+\[
+\begin{aligned}
+m_y&=a-(\ell+\tfrac12)m,&i_y&=1-(\ell+1)i,\\
+j_y&=a-(2\ell+\tfrac12)j,&
+s_y&=a^2-\tfrac12-2\ell s,&
+p_y&=\tfrac12+(1-2\ell)p.
+\end{aligned}
+\]
+The five parameter-sensitivity equations are
+\[
+\begin{aligned}
+(m_\eta)_y&=a_\eta-(\ell+\tfrac12)m_\eta-\ell_\eta m,\\
+(i_\eta)_y&=-(\ell+1)i_\eta-\ell_\eta i,\\
+(j_\eta)_y&=a_\eta-(2\ell+\tfrac12)j_\eta-2\ell_\eta j,\\
+(s_\eta)_y&=2aa_\eta-2\ell s_\eta-2\ell_\eta s,\\
+(p_\eta)_y&=(1-2\ell)p_\eta-2\ell_\eta p.
+\end{aligned}
+\]
+Also $g_y=\ell_\eta$. At the reference radius $X_R$, with
+$P=P_*$, the four forward data are
+\[
+(m,i,j,s)=\left(\frac{4\eta(1+\eta^2)}P,\frac58,
+\frac{5\eta(1+\eta^2)}{2P},
+\frac{16\eta^2(1+\eta^2)^2}{P^2}-\frac5{12}\right),
+\]
+with parameter jets
+\[
+(m_\eta,i_\eta,j_\eta,s_\eta)=
+\left(\frac{4(1+3\eta^2)}P,0,
+\frac{5(1+3\eta^2)}{2P},
+\frac{32\eta(1+\eta^2)(1+3\eta^2)}{P^2}\right).
+\]
+The pressure uses the source's radial-infinity gauge, not a free
+axis constant. At the beginning $X_T$ of its final power-law tail,
+\[
+ p(X_T)=-\frac{1}{2(1+2h)},\qquad p_\eta(X_T)=0.
+\]
+Consequently $|\eta m_\eta(X_R,\eta)|\le16/P_*<16e^{-T_d}$.
+\end{proposition}
+\begin{proof}
+The source definitions give
+$M_y=XU$, $I_y=XH$, $J_y=XUH$,
+$S_y=X(U^2-E^2/2)$, and $\Pi_y=E^2/2$.
+Their four denominators have logarithmic derivatives
+$\ell+1/2,\ell+1,2\ell+1/2,2\ell$; $E^2$ has logarithmic
+derivative $2\ell-1$. Apply the quotient and parameter
+product rules. Reference data follow from exact integration of
+the source power laws. On the terminal tail
+$E=E_T(X/X_T)^{-1/2-h}$, and radial-infinity normalization
+gives $\Pi=-E^2/[2(1+2h)]$.
+\end{proof}
+
+\begin{proposition}[Scale-free pulse numerator and denominator]
+\label{prop:normalized-source-stress}
+Put $D=1/2-h$, $A=1/2+h$, $d=1-\eta^2$ and
+$W=1-E[2D\eta m+d(m_\eta+gm)]$. Then (4.16) becomes
+\[
+ Q_s=-W+(1-h)i-D\eta(i_\eta+gi)
+ -dE(j_\eta+2gj)+2(h-D)\eta Ej
+\]
+and
+\[
+ \frac{N_s}{E}=-Wa+D[m-\eta(m_\eta+gm)]
+ +E[4h\eta s-d(s_\eta+2gs)+4A\eta p-d(p_\eta+2gp)].
+\]
+With $B_{\rm ax}=a-R$, $q_0=(\lambda-h-D\eta g)/(1-\lambda)$,
+the exact unclosed residuals are
+\[
+\begin{aligned}
+e_Q={}&-W+(1-h)i-D\eta(i_\eta+gi)
+ -dE(j_\eta+2gj)+2(h-D)\eta Ej-q_0,\\
+e_N={}&(1-W)R-WB_{\rm ax}
+ +E[4h\eta s-d(s_\eta+2gs)+4A\eta p-d(p_\eta+2gp)].
+\end{aligned}
+\]
+The third residual is $\eta m_\eta$ from the sensitivity
+system above. These are exact identities, not asymptotic expansions.
+\end{proposition}
+\begin{proof}
+Substitute $M=XEm$, $I=XHi$, $J=XHEj$, $S=XE^2s$ and
+$\Pi=E^2p$, with their first parameter derivatives, into (4.16).
+For $e_N$, the terms involving $D(m-\eta(m_\eta+gm))$
+cancel against $(D-D\eta g)m-D\eta m_\eta$.
+\end{proof}
+
+\paragraph{Numerical and formal verification boundary.}
+For $\lambda=10^{-14}$ near $\eta=0$, the target
+$|e_Q|/q_0\le10^{-10}$ corresponds to an absolute
+accuracy of roughly $10^{-24}$, while
+$|e_N|/q_0\le10^{-7}$ requires roughly $10^{-21}$.
+A credible certificate needs validated arbitrary-precision
+source-stage enclosures, including $\ell_\eta,a_\eta$ and the
+actual A.9 axial corrections, on a finite exhaustive pulse
+cover. The attached exact-rational interval checker accepts only
+externally supplied cell bounds and does not certify their
+provenance or full coverage. Its default positive and negative
+controls are synthetic. Full source realization, strict
+stress-cone certification, Appendix-B contraction, unforced
+startup solutions and Theorem~1.1 remain open.

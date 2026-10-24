@@ -1,0 +1,47 @@
+\section{A quantitative source-to-norm criterion}
+\label{sec:cauchy-bridge}
+The four-block estimates above assume that the leading-profile multipliers and a finite number of their derivatives lie in one fixed weighted coefficient space. This assumption can be reduced to a quantitative holomorphic-extension test. The reduction is particularly useful here because it avoids an order-dependent loss of analytic radius, although it does not by itself verify the extension for the particular imported profiles.
+
+\begin{theorem}[Cauchy embedding in the doubled analytic weight]
+\label{thm:cauchy-embed}
+Let $E\subset\mathbb R$ be compact. Let
+\(F(X,\eta)=\sum_{a\ge0}F_a(\eta)X^a\) be jointly holomorphic for $|X|<S$ and for every complex $\eta$ at distance less than $\delta$ from $E$. Suppose that $|F|\le M$ on this domain, where $S,\delta,M>0$. For any $R,\rho>0$ satisfying
+\[
+    R\le \frac S4,\qquad \rho\le \frac\delta4,
+\]
+the induced coefficient norm \eqref{eq:norm} satisfies
+\[
+                         \|F\|_{R,\rho;E}\le M.
+\]
+As usual, one can take slightly smaller $S$ and $\delta$ if the original holomorphic extension is given only on open domains without a uniform boundary bound.
+\end{theorem}
+\begin{proof}
+Two applications of Cauchy's integral estimate, first in $X$ and then on each $\eta$-disc centered at a point of $E$, give
+\[
+    |\partial_\eta^bF_a(\eta)|\le M S^{-a}\delta^{-b}b!,
+    \qquad \eta\in E.
+\]
+Consequently the coefficient divided by the manuscript weight \eqref{eq:weight} is at most
+\[
+ M\frac{(a+1)^2(b+1)^2}{\binom{2a+b}{b}}
+     \left(\frac R S\right)^a
+     \left(\frac\rho\delta\right)^b.
+\]
+For each integer $j\ge0$ and $0\le q\le1/4$ one has
+\begin{equation}\label{eq:poly-geom}
+                         (j+1)^2q^j\le1.
+\end{equation}
+Indeed the assertion is an equality at $j=0$, and the induction step follows from $(j+2)^2\le4(j+1)^2$. Since $\binom{2a+b}{b}\ge1$, applying \eqref{eq:poly-geom} to the radial and parameter indices proves the claim.
+\end{proof}
+
+\begin{corollary}[Concrete leading-multiplier criterion]
+\label{cor:source-to-norm}
+Suppose the leading profiles $\varphi_0,U_0,V_0$ of the imported system admit a jointly holomorphic extension to a complex product neighborhood of a compact terminal-core rectangle; suppose also that $V_0(0,\eta)=0$, and that $L(\eta)=1-2h\eta^2$ has no zero in that neighborhood. On a smaller product neighborhood, each fixed multiplier appearing in \eqref{eq:leadingmult}, the pressure multipliers $s_1,s_2,s_3$, and every finite-order derivative of those multipliers is uniformly bounded and holomorphic. For sufficiently small common $R,\rho>0$, all those multipliers therefore belong to the \emph{same} weighted space $\mathcal B$ required by Theorem~\ref{thm:fourblock}.
+\end{corollary}
+\begin{proof}
+The quotient $V_0/X$ extends holomorphically across $X=0$ by its removable singularity. Every other multiplier is assembled from the leading profiles and their finite derivatives by addition, multiplication, and division by the nonvanishing analytic function $L$. All such functions are holomorphic on the assumed product neighborhood and bounded on any smaller compact product neighborhood. Apply Theorem~\ref{thm:cauchy-embed} separately to the finite list, taking a single pair $R,\rho$ small enough for every entry.
+\end{proof}
+
+For the paper's parameter range $0<h<1/100$, the specific denominator $L$ is easily controlled in a moderate complex axial disc. For instance $|\eta|\le2$ implies $|2h\eta^2|<2/25$ and hence $|L(\eta)|>23/25$. This explicitly removes one potential source of singularity, but does not establish that the \emph{leading profiles themselves} extend to the requisite complex neighborhood.
+
+The polynomial-geometric bound \eqref{eq:poly-geom}, its two-index product, and the resulting normalized jet-array inequality have been encoded in \texttt{CauchyProfileBridge.lean}. These are elementary kernel-checkable prerequisites, not a Lean formalization of Cauchy's integral theorem or of the imported Navier--Stokes profiles. The full claim that the specific source leading profiles meet the extension hypothesis still requires an independently checked source theorem and a concrete domain/radius extraction. Once that step is supplied, the preceding corollary turns the profile regularity required by the four-block estimate into a consequence rather than an additional assumption.

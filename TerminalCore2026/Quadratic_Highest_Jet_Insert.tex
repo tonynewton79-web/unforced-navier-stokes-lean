@@ -1,0 +1,36 @@
+\paragraph{The highest jet of the ordered quadratic pressure operator.}
+The preceding two-lift estimate also controls the most differentiated component of the genuinely bilinear pressure source. In the ordered source term $U_iZ_{0,j}V_j$ of \eqref{eq:quad-reconstruct}, fix $i+j=k$, and radial indices $a\ge i$, $b\ge j$. Put $N=a+b$ and $r=b+1$. The coefficient of $\partial_\eta^2(U_j)_b$ in
+$U_i[G\partial_\eta+B(\lambda_j-1-D_X)]W_j$
+is $-(U_i)_aG^2/r$. The outer shifted $Z$ gives the third derivative, the pressure primitive gives $1/(N+1)$, and the regular-singular inverse gives $1/(N+2)^2$. Hence the exact coefficient of $\partial_\eta^3(U_j)_b$ is
+\begin{equation}\label{eq:quad-highest-jet}
+\frac{G^3(U_i)_a}{4(b+1)(N+1)(N+2)^2}
+\partial_\eta^3(U_j)_b.
+\end{equation}
+This is one derivative channel, not the full bilinear $H_k$.
+Since $N\ge b$,
+\[
+(b+1)(N+1)(N+2)^2\ge(b+1)^2(b+2)^2.
+\]
+The inverse-denominator comparison is independent of $\eta$ and therefore persists under every axial derivative.
+
+\begin{corollary}[Uniform highest-jet bilinear pressure bound]
+\label{cor:quad-highest}
+If $G^3$ has finite norm in the same weighted analytic algebra, the complete radial convolution of this $(0,3)$ jet component satisfies
+\begin{equation}\label{eq:quad-highest-bound}
+\|\mathcal Q_{ij}^{(0,3)}(U_i,U_j)\|_{R,\rho;E}
+\le\frac{1024D_3(R,\rho)}{j+1}
+\|G^3\|_{R,\rho;E}\|U_i\|_{R,\rho;E}\|U_j\|_{R,\rho;E}.
+\end{equation}
+\end{corollary}
+\begin{proof}
+The absolute coefficients and their Leibniz derivatives are dominated by those of
+$\tfrac14(G^3U_i)\mathcal R_{j,3}U_j$.
+Apply the multiplication theorem \eqref{eq:algebra64} twice and then
+$\|\mathcal R_{j,3}U_j\|\le D_3\|U_j\|/(j+1)$.
+The constant is $64^2/4=1024$.
+\end{proof}
+The bound fits the quadratic-convolution budget because $1/(j+1)\le1$.
+Mixed input derivatives, the lower jets and the remaining quadratic
+pressure/momentum contributions are not covered. The full coefficient
+recurrence (53) remains open. Exact symbolic checks reproduce the
+highest-jet coefficient, and 7,569 exact denominator comparisons passed.

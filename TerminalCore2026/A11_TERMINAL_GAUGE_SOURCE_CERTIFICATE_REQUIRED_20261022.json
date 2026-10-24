@@ -1,0 +1,22 @@
+{
+  "status": "FAIL_CLOSED_MISSING_SOURCE_DATA",
+  "source": "OpenAI 2026 Navier-Stokes (4.16),(A.11),(A.19)",
+  "theorem": "conditional full-hull terminal-gauge robust stress and cone",
+  "required": {
+    "source_authenticated_parameter_tuple": null,
+    "same_source_A11_small_root_and_eta_jet": null,
+    "source_E_star_and_relative_correction": null,
+    "full_hull_zero_gauge_Ns_E_bound": null,
+    "same_profile_S_infinity_C1_intervals": null,
+    "same_profile_Pi_infinity_C1_intervals": null,
+    "full_hull_Qs_ell_X_and_L_intervals": null,
+    "original_data_hashes_and_provenance": null
+  },
+  "acceptance": "(4h||C_S||+||C_S'||)/X_L+4A||C_Pi||+||C_Pi'|| <= (1-a)E_star lambda/400",
+  "conditional_outputs": {
+    "stress_bound": "<111lambda/10000",
+    "stress_slack": ">4889lambda/10000",
+    "cone_margin": ">1124/1000"
+  },
+  "lean_scope": "scalar inequalities only, no complete source, integral or unforced PDE formal proof"
+}

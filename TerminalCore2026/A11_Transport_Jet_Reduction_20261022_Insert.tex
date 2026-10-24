@@ -1,0 +1,99 @@
+\subsection*{Moving-endpoint transport and a quantitative A.11 root-jet reduction (22 October 2026)}
+\label{subsec:a11-moving-endpoint-jet-20261022}
+For the \emph{actual source-prescribed} translated $\sigma'$ bumps, the angular coefficients satisfy
+\[
+u(c_1+xc_2)=\Delta_I(\eta),\qquad
+2v(c_1+zc_2)+w(c_1^2+zc_2^2)=0.
+\]
+Here $u,v,w,x,z$ are independent of $\eta$ at fixed $\lambda$.
+The exact nonlinear Jacobian and determinant are
+\[
+J(c)=\begin{pmatrix}u&ux\\2(v+wc_1)&2z(v+wc_2)\end{pmatrix},
+\quad
+\det J=2u[z(v+wc_2)-x(v+wc_1)].
+\]
+From the source's $\|B_{11}^{-1}\|_\infty<3/2$,
+$\|Q\|<320$ and prior small-root $\|c\|_\infty\le192\lambda^{28}$,
+\[
+\|B_{11}^{-1}DQ(c)\|_\infty
+<184320\lambda^{28}<\frac14
+\quad(0<\lambda\le1/20).
+\]
+Thus $J(c)$ is invertible, and along a genuine $C^1$ root branch,
+\begin{equation}\label{eq:a11-jet-reduction-20261022}
+\boxed{\ \|c_\eta\|_\infty\le2|\Delta_{I,\eta}|.\ }
+\end{equation}
+
+\begin{proposition}[Moving-endpoint transport formula]
+Let $r=I/(XH)$ satisfy $r_y+(1+\ell)r=1$.
+Assume the source plateau on $[a(\eta),b(\eta)]$ has
+$\ell=-\lambda$ and $\lambda$ independent of $\eta$.
+For $\alpha=1-\lambda$, $L=b-a$, and differentiable endpoints,
+\[
+\Delta_I=\frac1\alpha-r(b,\eta)
+=-e^{-\alpha L}\left[r(a,\eta)-\frac1\alpha\right],
+\]
+and the exact \emph{total} angular derivative is
+\begin{equation}\label{eq:a11-moving-endpoint-identity-20261022}
+\boxed{\ \Delta_{I,\eta}=-e^{-\alpha L}
+\left[\frac{d}{d\eta}r(a(\eta),\eta)
+-\alpha L_\eta\left(r(a(\eta),\eta)-\frac1\alpha\right)\right].\ }
+\end{equation}
+\end{proposition}
+\begin{proof}
+Solve the constant-slope linear ODE on the plateau, then differentiate
+the resulting scalar transport identity. The first derivative contains
+the moving endpoint term $a_\eta r_y(a,\eta)$; the second
+contains $L_\eta=b_\eta-a_\eta$.
+\end{proof}
+
+\begin{theorem}[Conditional strengthened A.11 source-root bounds]
+Suppose the earlier small-branch existence hypotheses hold, with
+$0<\lambda\le1/20$, and for all $|\eta|\le1$,
+\[
+0\le r(a(\eta),\eta)\le\frac{20}{17},\qquad
+L(\eta)\ge30\log(1/\lambda)-3,\quad
+\left|\frac{d}{d\eta}r(a(\eta),\eta)\right|\le\frac14,\quad
+|L_\eta|\le\frac18.
+\]
+Then on that true $C^1$ A.11 root branch,
+\begin{equation}\label{eq:a11-new-jet-quantitative-20261022}
+\boxed{\ 
+\|c\|_\infty\le\frac{315}{19}\lambda^{28}<17\lambda^{28},
+\qquad
+\|c_\eta\|_\infty\le\frac{609}{152}\lambda^{28}<5\lambda^{28}.
+\ }
+\end{equation}
+\end{theorem}
+\begin{proof}
+Put $d=r(a,\eta)-1/\alpha$. Since
+$1\le1/\alpha\le20/19$ and $0\le r(a)\le20/17$,
+one has $|d|\le20/19$. The plateau length bound gives
+$e^{-\alpha L}\le e^3\lambda^{57/2}
+<21\lambda^{57/2}$, and $\sqrt\lambda<1/4$.
+Therefore
+$|\Delta_I|\le (105/19)\lambda^{28}$ and the previously
+proved root bound $\|c\|\le3|\Delta_I|$ gives the
+first assertion. Likewise
+\[
+|\Delta_{I,\eta}|
+\le21\lambda^{57/2}
+\left(\frac14+\frac{20}{19}\frac18\right)
+=\frac{609}{76}\lambda^{57/2}.
+\]
+Apply \eqref{eq:a11-jet-reduction-20261022} and
+$\sqrt\lambda<1/4$ to obtain the jet bound.
+\end{proof}
+
+\paragraph{Proof boundary.}
+This reduces the earlier $54\lambda^{28}$ and
+$6\lambda^{28}$ A.11 input gates to two earlier
+\emph{moving-endpoint} source derivative tests.
+No real A.10/A.11 profile has yet been certified to satisfy
+these $1/4$ and $1/8$ bounds. The separate A.19 root,
+same-profile terminal $S$ and $\Pi$ gauges, other cone stages,
+Appendix B contraction, unforced startup and zero-force PDE
+reconstruction all remain OPEN/HOLD.
+The companion rational/symbolic program tests the algebra
+and synthetic examples, not source authentication.
+The Lean module contains conditional scalar implications only.

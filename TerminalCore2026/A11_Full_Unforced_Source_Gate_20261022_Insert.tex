@@ -1,0 +1,43 @@
+\subsection*{A fail-closed full-unforced source-certificate gate (22 October 2026)}
+\label{subsec:a11-full-unforced-fail-closed}
+The existing conditional A.11 support-measure bound does not itself certify one
+actual corrected source profile. On the full two-support hull, the exact
+same-profile residual lift is
+\[
+\Delta N_s=\frac KX\left[
+\left(4h\eta+\frac{4\eta(1-\eta^2)}{1+\eta^2}\right)\mathcal F
+ -(1-\eta^2)\mathcal F_\eta\right]
++2A\eta\mathcal G-\frac{1-\eta^2}{2}\mathcal G_\eta,
+\]
+where $\mathcal F$ and $\mathcal G$ are the terminal $S$ and pressure
+residuals of the \emph{same} corrected profile and the derivatives are
+\emph{total} derivatives along its A.19/A.11 roots.
+Let $b_0\ge\sup|N_s^{(0)}|/E$, $\alpha\ge\sup K/(XE)$ and
+$\beta\ge\sup1/E$. Then the exact triangle inequality gives
+\[
+\sup_{\mathcal H}\frac{|N_s|}{E}\le b_0+
+\alpha[(2+4h)\|\mathcal F\|_\infty+\|\mathcal F_\eta\|_\infty]
++\beta[(1+2h)\|\mathcal G\|_\infty+
+                   \tfrac12\|\mathcal G_\eta\|_\infty].
+\]
+Therefore $b_0\le\lambda/500$ and a strict total residual budget
+$<249\lambda/500$ give $\sup_{\mathcal H}|N_s|/E<\lambda/2$.
+This conditional implication is not a new global Navier--Stokes theorem.
+
+The executable \texttt{full\_unforced\_source\_gate.py} uses exact rational
+input intervals, checks equality of source-profile hashes across all
+stages, rejects absent total $\eta$ derivatives, demands positive
+source-backed cone/Qs lower bounds and refuses missing independent
+analytic/Lean proof evidence. Fourteen adversarial negative cases must
+return \texttt{HOLD}; an artificial arithmetic-positive case is labelled
+\texttt{CONDITIONAL} and is \emph{never} source-authenticated.
+
+\paragraph{Missing end-to-end proof.}
+One validated parameter tuple must satisfy the actual A.11 and A.19
+moment equations simultaneously and certify both terminal gauges.
+The full exterior/heat/patch cone, Appendix-B nonlinear leading profile,
+the true unforced $n=1,2$ and higher-order source equations,
+differentiated physical zero-force residual, and trusted Lean
+formalization remain unproved. OpenAI's originating Theorem 1.1
+contains smooth compactly supported forcing and cannot be used to
+claim an unforced singularity.

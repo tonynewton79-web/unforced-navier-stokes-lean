@@ -1,0 +1,72 @@
+\subsection*{An exact entrance angular-moment parameter derivative}
+\label{subsec:a11-entrance-jet-20261021}
+The unedited Appendix-A profile has $E(X,\eta)=e(X)(1+\eta^2)^{-1}$
+through the axial pulse (the pulse modifies $U$, not $E$).
+Thus $I=\int_0^XH\,dx$ and $XH$ share the same angular factor,
+so $r_p=I_p/(X_pH_p)$ is independent of $\eta$.
+This supplies an exact entrance cancellation previously treated as
+a source-dependent interval input.
+
+During the actual source interpolation (A.10), put
+$a=1-\lambda$, $J_0=\log(1+\eta^2)$,
+$\theta(t)=1-\sigma(t/T_f)$ and
+$G(t,\eta)=\exp[(1-\theta(t))(J_0(\eta)-\log2)]$.
+The integrated equation $I_y=XH$ gives
+\begin{align}
+ r_f(\eta)&=\frac{e^{-aT_f}}{G(T_f,\eta)}
+   \left(r_p+\int_0^{T_f}e^{at}G(t,\eta)\,dt\right),\\
+ r_{f,\eta}(\eta)&=-J'_0(\eta)\frac{e^{-aT_f}}{G(T_f,\eta)}
+   \left(r_p+\int_0^{T_f}\theta(t)e^{at}G(t,\eta)\,dt\right).
+ \label{eq:a11-new-entrance-eta}
+\end{align}
+The last formula retains the parameter derivative of the complete
+angular moment. In particular, $|r_{f,\eta}|\le r_f\le40/17$
+on $|\eta|\le1$ when $0<\lambda\le1/20$ and the actual
+pre-interpolation source slope has $1+\ell\ge17/20$.
+
+The unedited source then has $\ell=-\lambda$ on a plateau of
+length $30\log(1/\lambda)$. Both entire A.11 correction supports
+lie at least $30\log(1/\lambda)-63/20$ after interpolation.
+The exact plateau transport, together with
+$e^{1197/400}<20$ and the monotonicity of
+$e^{(1-\lambda)63/20}\lambda^{30(1-\lambda)-28}$,
+gives the **uniform all-support bounds**
+\begin{equation}\label{eq:a11-new-rbjet}
+  \left|r_b-\frac1{1-\lambda}\right|<18\lambda^{28},
+  \qquad |r_{b,\eta}|<12\lambda^{28}.
+\end{equation}
+
+For the source's prescribed distinct smooth-step derivative
+bumps (A.11), use its exact nonlinear system
+$Bc+Q(c)=(\Delta_I,0)^\top$ with
+$B=\begin{psmallmatrix}u&ux\\2v&2vz\end{psmallmatrix}$,
+$\Delta_I=(1-\lambda)^{-1}-r_b(y_1)$.
+Previous source estimates give
+$\|B^{-1}\|_\infty<3/2$, $\|Q\|<320$,
+$u\ge4/5$, $x\ge6$, $z\le1/7$.
+The new $|\Delta_I|<18\lambda^{28}$ and
+$|\Delta_{I,\eta}|<12\lambda^{28}$ produce a unique
+small correction branch satisfying
+\begin{equation}\label{eq:a11-new-cjet}
+ \|c\|_\infty\le54\lambda^{28},
+ \qquad \|c_\eta\|_\infty<6\lambda^{28}.
+\end{equation}
+For the derivative, differentiate the *actual* system:
+$(B+DQ(c))c_\eta=(\Delta_{I,\eta},0)^\top$.
+The first column of $B^{-1}$ is
+$(z,-1)^\top/[u(z-x)]$, whose infinity norm is
+at most $35/164$. Since
+$\|B^{-1}DQ(c)\|<\tfrac12$,
+$\|c_\eta\|_\infty\le2(35/164)|\Delta_{I,\eta}|
+<6\lambda^{28}$.
+
+The new estimates imply the four previously stated conditional
+moment and coefficient $\eta$-jet assumptions in
+Theorem~\ref{thm:A11-Q-eta-improved}. The latter's supportwise
+$|N_s|/E<63\lambda/250<\lambda/2$ and stress-cone conclusions
+**remain conditional** on source-authenticated terminal $S$ and
+pressure gauges, normalized future tail bounds, other exterior-stage
+bounds and compatible source parameter choices. This is a proof of
+a sharper source-specific analytic ingredient, not a complete unforced
+Navier--Stokes theorem. The accompanying finite Lean arithmetic gates
+do not formalize these integrals or the PDE.

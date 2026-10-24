@@ -1,0 +1,223 @@
+
+\section{An optimal universal radial carrier by source-dependent seven-ray splitting}
+\label{sec:xxviii-sharp-source-dependent}
+The linear-programming optimum of Edition XXVII concerns a
+source-independent \emph{fixed} coefficient splitting. Allowing the
+isotropic gauge and the redundant seven-ray coefficient to depend
+smoothly on the source tensor yields a smaller universal radial-carrier
+cost. This result is purely a symmetric-tensor pressure-quotient
+lemma on a periodic-axial annulus, not a source-matched unforced
+Navier--Stokes theorem.
+
+\begin{theorem}[Sharp universal annular carrier and smooth seven-ray selection]
+\label{thm:xxviii-sharp-universal}
+Let $Q(r,z)$ be a smooth symmetric co-rotating $3\times3$ tensor
+with compact radial support away from the symmetry axis on
+$\mathbb R^2\times\mathbb S^1_z$, or in an embedded transverse
+disk on $\mathbb T^3$. Let
+\[
+M=\max_{i,j}\|Q_{ij}\|_\infty,\qquad \mu>0,
+\]
+and take a smooth radial cutoff $0\le\chi\le1$ equal to one
+on a neighborhood of the full radial support of $Q$.
+There exist \emph{explicit smooth} coefficients $d_1,\ldots,d_7$
+and a smooth scalar $a=a(r,z)$, all radially compactly
+supported, such that
+\begin{equation}\label{eq:xxviii-exact-stress}
+\boxed{
+d_j\ge\mu\chi,\qquad
+S:=\sum_{j=1}^7d_jv_j\otimes v_j
+=Q+aI+B\chi e_r\otimes e_r,\quad
+B=\frac{85}{8}\mu+\frac{343}{4}M.
+}
+\end{equation}
+The rays have aperture $1/4$, exactly as in Editions XXV--XXVII.
+The reconstructed stress satisfies the explicit bound
+\begin{equation}\label{eq:xxviii-supbound}
+\boxed{\quad
+\|S\|_{L^\infty,\mathrm{entry}}\le90M+11\mu.\quad}
+\end{equation}
+Moreover,
+\begin{equation}\label{eq:xxviii-projected}
+\nabla\cdot(S-Q)
+=\nabla\left[a+B\chi+B\int_0^r\frac{\chi(s)}s\,ds\right],
+\qquad
+\mathbb P\nabla\cdot S=\mathbb P\nabla\cdot Q.
+\end{equation}
+The carrier coefficient $343/4$ is \emph{sharp} for the universal
+independent-entry box $|Q_{ij}|\le M$, when the radial coefficient
+$B$ is uniform over the source family and the isotropic scalar
+$a(Q)$ and all seven ray coefficients may depend on $Q$.
+It is not claimed sharp for the smaller class of positive
+semidefinite Reynolds covariance matrices or for a fixed
+physical A.11/A.19 source.
+\end{theorem}
+
+\begin{proof}[Constructive exact-rational proof]
+Represent the independent symmetric entries of $Q$ by
+$q=(Q_{rr},Q_{\theta\theta},Q_{zz},
+Q_{r\theta},Q_{rz},Q_{\theta z})$.
+Write $s=(s_1,\ldots,s_6)\in\{-1,+1\}^6$, with the
+$64$ vertices ordered lexicographically.
+For each $s$ the accompanying frozen table
+\texttt{XXVIII\_64\_CORNER\_EXACT\_CERTIFICATES.txt}
+gives rational numbers
+$(a_s,d_{s,1},\ldots,d_{s,7})$ with
+$d_{s,j}\ge0$, $a_s\le13/4$, and the six \emph{exact} identities
+\begin{equation}\label{eq:xxviii-vertices}
+\sum_{j=1}^7d_{s,j}v_j\otimes v_j
+=Q_s+a_sI+\frac{343}{4}e_r\otimes e_r,
+\end{equation}
+where $Q_s$ is the symmetric matrix with independent
+entries $s_i$. These are not floating-point certificates:
+all $64$ rows are independently checked with rational
+arithmetic by \texttt{verify\_xxviii\_sharp\_cone.py}.
+
+For $M>0$ put $x_i=q_i/M\in[-1,1]$ and use the nonnegative
+multilinear barycentric polynomials
+\[
+w_s(x)=2^{-6}\prod_{i=1}^6(1+s_i x_i),\qquad
+\sum_s w_s=1,\qquad
+\sum_s w_s s_i=x_i.
+\]
+Let
+$d^0=(1,1,3,2,2,1,1)$ be the source-free ray
+coefficient vector. It obeys
+\[
+\sum_j d_j^0v_j\otimes v_j
+=\frac38 I+\frac{85}{8}e_r\otimes e_r.
+\]
+Define
+\begin{align*}
+a(r,z)&=\chi(r)\left[\frac38\mu+
+ M\sum_s w_s(q/M)a_s\right],\\
+d_j(r,z)&=\chi(r)\left[\mu d_j^0+
+ M\sum_s w_s(q/M)d_{s,j}\right].
+\end{align*}
+All functions are smooth, because each $w_s$ is a polynomial
+and $Q$ is smooth, and the radial cutoff is identically one
+where $Q\ne0$. Weighted addition of
+\eqref{eq:xxviii-vertices} proves
+\eqref{eq:xxviii-exact-stress} everywhere, including the
+radial collar where $Q=0$ and $0<\chi<1$.
+The nonnegative weights and certificates prove $d_j\ge\mu\chi$.
+For $M=0$, use only the source-free formula. Since
+$0\le a_s\le13/4$, one has
+$0\le a\le(3\mu/8+13M/4)\chi$.
+Combining with $B$ proves
+\eqref{eq:xxviii-supbound}; all off-diagonal entries
+of $S$ equal those of $Q$. The pressure-equivalence
+formula follows by direct tensor differentiation of the
+radial-only carrier and the isotropic tensor.
+
+For \emph{sharpness}, define a dual linear functional on
+symmetric matrices by
+\[
+L(H)=-H_{rr}-15H_{\theta\theta}+16H_{zz}
+-\frac{31}{4}H_{r\theta}-46H_{\theta z}.
+\]
+Then $L(I)=0$, $L(e_r\otimes e_r)=-1$, and the exact
+seven ray values are
+\[
+L(v_j\otimes v_j)
+=\left(-1,-\frac{31}{8},0,0,0,-\frac{23}{4},0\right).
+\]
+Hence every strict ray tensor with $d_j\ge\mu$
+satisfies $L(S)\le-85\mu/8$. If
+$S=Q+aI+B e_r\otimes e_r$, it follows that
+\[
+B\ge L(Q)+\frac{85}{8}\mu.
+\]
+Take the admissible signed box corner
+$q=(-M,-M,M,-M,-M,-M)$: then
+$L(Q)=343M/4$. This proves that the displayed
+$B$ is the smallest possible universal radial coefficient,
+with a matching feasible exact rational corner certificate.
+\end{proof}
+
+\paragraph{Interpretation and remaining source theorem.}
+The improvement is from the Edition XXVII $471M/4$
+carrier slope to $343M/4$---a $27.2\%$ reduction---and
+from $122M+11\mu$ to $90M+11\mu$ in the displayed
+entrywise stress bound. Unlike a single local LP solution,
+the multilinear formula constructs smooth globally
+cutoff-compatible coefficients. However, the original
+OpenAI source's actual A.11/A.19 profiles, physical forcing,
+three-dimensional compact shell virtual-work conditions,
+space--time stress budget, nonlinear all-harmonic correction
+and zero-force singularity theorem remain \emph{unproved}.
+A finite Lean scalar dual is supplied; the 64-corner
+interpolation and physical PDE are not yet formalized in
+Lean. The fully unforced Navier--Stokes problem remains open.
+
+
+\begin{proposition}[Exact $C^1$ derivative cost of the smooth selection]
+\label{prop:xxviii-derivative-cost}
+In Theorem~\ref{thm:xxviii-sharp-universal}, keep $M$ and
+$\mu$ fixed over the coordinate/time slab of interest.
+Let $D$ be a scalar partial derivative (radial, axial, or
+time, with a correspondingly fixed radial cutoff).
+Define
+$G_D=\max_{1\le i\le6}|Dq_i|$.
+For the constructed source-dependent isotropic gauge and
+seven ray coefficients,
+\begin{equation}\label{eq:xxviii-derivative-cost}
+\boxed{\begin{aligned}
+|Da|&\le\frac{11}{4}G_D+
+ \left(\frac38\mu+\frac{13}{4}M\right)|D\chi|,\\
+\max_{1\le j\le7}|Dd_j|
+&\le\frac{225}{4}G_D+
+ \left(3\mu+\frac{99}{2}M\right)|D\chi|.
+\end{aligned}}
+\end{equation}
+These bounds are source-independent \emph{co-rotating scalar
+coefficient} estimates, not full Cartesian stress derivative
+bounds: differentiating the moving ray basis adds geometric
+terms proportional to $1/r$, and actual source parameter
+dependence must be checked separately.
+\end{proposition}
+\begin{proof}
+For $M>0$, differentiate the barycentric weights
+$w_s(x)=2^{-6}\prod_i(1+s_ix_i)$ in the stress variable
+$x_i=q_i/M$. For any scalar vertex data $c_s$,
+\[
+\frac{\partial}{\partial q_i}
+\left(M\sum_s w_s(q/M)c_s\right)
+=\frac12\sum_{s_{-i}}w_{s_{-i}}
+\bigl(c_{+,s_{-i}}-c_{-,s_{-i}}\bigr).
+\]
+This derivative has absolute value at most one-half of the
+largest \emph{signed-corner difference} on edges in direction
+$i$. The frozen rational table gives the following exact
+half-edge-difference vectors, in the coordinate ordering
+$(rr,\theta\theta,zz,r\theta,rz,\theta z)$:
+\[
+\begin{array}{c|c|c}
+&(\text{six half-edge bounds})&\text{sum}\\\hline
+a_s&(0,1,1,1/4,1/4,1/4)&11/4\\
+d_{s,1}&(1,16,16,31/4,31/4,31/4)&225/4\\
+d_{s,2}&(0,8,8,2,2,2)&22\\
+d_{s,3}&(0,8,8,4,2,2)&24\\
+d_{s,4},d_{s,5}&(0,8,8,2,4,10)&32\\
+d_{s,6},d_{s,7}&(0,0,0,0,0,8)&8
+\end{array}
+\]
+The largest frozen corner coefficients are
+$a_s\le13/4$ and
+$(d_{s,j})_{\max}\le(99/2,20,36,36,36,16,16)$.
+Differentiate the product with $\chi$ and use
+the chain rule and these maxima. The $M=0$ case follows
+from the source-free formulas. All $48$ half-edge maxima
+and coefficient extrema are checked exactly in
+\texttt{verify\_xxviii\_derivative\_cost.py}.
+\end{proof}
+
+\paragraph{Important remaining analytic gate.}
+The improved pointwise stress size $90M+11\mu$ is not
+a complete weighted Banach or H8 stress bound. Even this
+smooth selection can amplify source gradients by $225/4$
+in a ray coefficient, and the cylindrical frame and radial
+cutoff contribute additional derivative costs. The authentic
+A.11/A.19 derivative budget and space--time residual are
+still required before unforcing or full Lean PDE closure
+can be asserted.

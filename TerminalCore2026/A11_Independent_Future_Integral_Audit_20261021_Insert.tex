@@ -1,0 +1,51 @@
+\subsection*{Independent future-integral comparison on the true A.11 supports}
+\label{subsec:a11-direct-future-audit}
+This is a second derivation of the existing conditional A.11 stress
+gate, useful as an independent check. The stronger full-hull
+estimate of the preceding section remains the primary bound.
+Let $E=E_0g$, where $E_0$ is the actual parameter-independent
+unedited azimuthal profile after interpolation and
+$g=1+c_1(\eta)\beta_1(y)+c_2(\eta)\beta_2(y)$.
+Set $A=1/2+h$, $d=1-\eta^2$ and
+$F_0=\int_y^\infty E(v,\eta)^2dv$,
+$F_1=\int_y^\infty e^{v-y}E(v,\eta)^2dv$.
+If the same corrected source profile has
+$U=M=J=0$, $S(\infty)=0$ and $\Pi(\infty)=0$,
+then (4.16) gives
+\[
+N_s=2\eta(hF_1-AF_0)-\tfrac d2\partial_\eta(F_1-F_0).
+\]
+The second term is generally nonzero: the A.11 coefficients
+$c_i(\eta)$ can depend on $\eta$. It equals
+\[
+-d\int_y^\infty(e^{v-y}-1)E_0(v)^2
+g(v,\eta)\partial_\eta g(v,\eta)\,dv.
+\]
+For the actual rescaled fixed $\sigma'$ bump, the elementary
+bounds $\|\beta\|_\infty\le B_0=640/3$ and
+$\|\beta'\|_\infty\le B_1=1715200/9$ are valid.
+Given certified $|c_i|\le C_0$, $|c_i'|\le C_\eta$,
+and $E_0\le E_*$ on the two supports, put
+$q_\pm=1\pm B_0C_0$, $\delta_\eta=B_0C_\eta$
+and $D_*=93/20+2h^7/3$. If $q_->0$ then
+\[
+\frac{|N_s|}{E}\le\frac{E_*}{q_-}
+ [\,2q_+^2(A+hD_*)+q_+\delta_\eta D_*\,],
+\qquad
+\ell_{\rm corrected}\le-\lambda+\frac{B_1 C_0}{q_-}.
+\]
+The future-integral comparison uses only source stages:
+at most $63/20$ units remain on the plateau, then one
+transition, the $-1$ hold contributing at most $1/2$,
+and the exponentially suppressed tail at most $2h^7/3$.
+Thus the two right sides being $\le\lambda/2$ proves both
+the requested $N_s/E$ inequality and the exterior slope
+condition on BOTH supports.
+
+This is a weaker, independently derived sufficient certificate,
+not a new source-authenticated interval cover. An exact Fraction
+test at $\lambda=1/20$, $h=10^{-6}$, $E_*=10^{-6}$,
+$C_0=C_\eta=10^{-8}$ passes; these input numbers are an explicitly
+NON-SOURCE fixture. Neither that test nor the auxiliary scalar
+Lean lemmas establishes a true A.11 moment-correction root,
+the terminal gauges, or the proposed unforced Theorem~1.1.

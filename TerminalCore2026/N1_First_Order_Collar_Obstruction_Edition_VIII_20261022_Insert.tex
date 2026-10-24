@@ -1,0 +1,69 @@
+\subsection*{Proof Attack 3: exact first-order outer collar obstruction (Edition VIII)}
+\label{subsec:n1-outer-collar-obstruction-VIII}
+The original forced construction's positive-order similarity equations
+(5.2)--(5.6) are linear in each new correction. The later radial
+extension supplies a nonzero annular stress $T_1$; merely solving
+the inner $n=1$ equations does not make the outer residual vanish.
+At the terminal collar where the exterior heat cutoff equals one,
+the source gives
+\[
+u_{\theta,0}=K(r,t)f_o(y),\quad
+f_o(y)=1-\rho_o[1-\sigma((y-1)/2)],\quad1<y<3,
+\]
+with $\rho_o=c_oh>0$ and $K(r,t)>0$, and the only remaining first-order
+exterior angular term (with the source's compact-support schedule)
+is $-\partial_{zz}u_{\theta,0}$. Its exact physical formula is
+\[
+\partial_{zz}(Kf_o)=Kq^{-2D}
+[a_z(\eta)^2f_o''(y)+b_z(\eta)f_o'(y)],
+\]
+\[
+D=\tfrac12-h,\ d=1-\eta^2,\ L=1-2h\eta^2,\quad
+a_z=-2\eta/L,\quad
+b_z=(-2D\eta a_z+d\partial_\eta a_z)/L.
+\]
+\begin{proposition}[Strict first-order slow-field collar residual]
+With the genuine source smooth-step
+$\sigma(s)=1/(1+\exp[s^{-2}-(1-s)^{-2}])$, on the symmetry plane
+$\eta=0$ at the collar midpoint $y=2$,
+\begin{equation}\label{eq:n1-outer-collar-obstruction-VIII}
+\boxed{-\partial_{zz}(Kf_o)=8Kq^{-2D}\rho_o>0.}
+\end{equation}
+Thus the prescribed slow-field coefficient sequence cannot satisfy
+the unforced $n=1$ angular residual on this entire collar if its
+order-one annular stress is simply suppressed and the other source
+support assumptions are unchanged.
+\end{proposition}
+\begin{proof}
+At $\eta=0$, $a_z=0$ and $b_z=-2$.
+At $s=1/2$, $\sigma=1/2$ and its logistic defining exponent
+has derivative $32$, so $\sigma'(1/2)=8$.
+Therefore $f_o'(2)=(\rho_o/2)8=4\rho_o$ and the displayed
+physical chain rule gives $\partial_{zz}(Kf_o)
+=-8Kq^{-2D}\rho_o$, strictly negative.
+\end{proof}
+\begin{corollary}[Nonzero source annular stress]
+The source's equation
+$(\partial_R+2/R)T_{1,\theta}=-r_{\theta,1}$
+implies that $T_{1,\theta}$ is not identically zero on this
+collar under the preceding source stage and support assumptions.
+\end{corollary}
+This is a local obstruction for the unchanged slow-field profile,
+not a nonexistence proof for every unforced alternative.
+An oscillatory stress-realization, a redesigned exterior,
+or a new order-one correction supported on the collar may modify
+the residual. The original paper explicitly retains oscillatory
+stress and eventually smooth external forcing. A genuine unforced
+theorem would need to prove total force-free cancellation for the
+physical reconstructed velocity and nonzero initial data.
+
+\paragraph{Independent proof audit.}
+The companion symbolic verifier checks $a_z(0)=0$,
+$b_z(0)=-2$, $\sigma'(1/2)=8$, the strict midpoint formula,
+and 18 physical-coordinate finite-difference comparisons with
+maximum relative error below $10^{-5}$.
+Setting $\rho_o=0$ makes the obstruction vanish, a negative control.
+The finite Lean candidate proves only exact scalar and positivity
+consequences, not the source's full physical-coordinate calculus
+or the Navier--Stokes PDE. Kernel compilation remains a separate
+GitHub CI gate. The full unforced theorem is OPEN.

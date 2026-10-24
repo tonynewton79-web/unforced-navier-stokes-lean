@@ -1,0 +1,73 @@
+
+\subsection{A rank defect of one angular Fourier pair}
+\label{subsec:angular-rank-defect-XXIV}
+The preceding slice-flux budget does not guarantee feasibility of
+a positive-definite H8 stress. A second, independent algebraic
+gate is the rank of an angularly averaged covariance.
+
+\begin{proposition}[One-pair rank obstruction]
+\label{prop:single-pair-rank-XXIV}
+At a fixed $(r,z)$, let a real cylindrical velocity consist
+of one angular Fourier pair,
+\[
+v(\theta)=e^{i\theta}c+e^{-i\theta}\overline c,
+\qquad c=a+ib\in\mathbb C^3,\quad a,b\in\mathbb R^3,
+\]
+with vectors expressed in the co-rotating orthonormal
+$(e_r,e_\theta,e_z)$ frame. Then its angularly averaged covariance
+is
+\[
+\boxed{Q=\langle v\otimes v\rangle_\theta
+=2(aa^{\mathsf T}+bb^{\mathsf T}),\qquad
+\operatorname{rank}Q\le2,\quad\det Q=0.}
+\]
+Thus on a region with $\mu\rho>0$ the \emph{direct stress
+realization} $Q\succeq\mu\rho I_3$ is impossible using only
+this one angular pair. Adding two disjoint radial shells at the
+\emph{same} Fourier frequency does not remove this obstruction:
+at each point their combined mode is still one complex
+three-vector.
+\end{proposition}
+\begin{proof}
+The angular mean removes the $m=\pm2$ exponentials in
+$v\otimes v$ and retains $c\bar c^{\mathsf T}
++\bar c c^{\mathsf T}=2(aa^{\mathsf T}+bb^{\mathsf T})$.
+Its range lies in $\operatorname{span}\{a,b\}$.
+When $a,b$ are independent, the nonzero vector $a\times b$
+is in its kernel; when dependent, its rank is at most one.
+Every strictly positive-definite $3\times3$ matrix has rank three.
+\end{proof}
+
+\begin{proposition}[Two-frequency algebraic repair]
+\label{prop:two-frequency-PSD-XXIV}
+For independent angular frequencies $m=1$ and $m=2$, a
+\emph{pointwise algebraic} covariance can be strictly positive:
+take $c_1=(1,i,0)$ and $c_2=(0,0,1)$. Then
+\[
+v(\theta)=2\operatorname{Re}(e^{i\theta}c_1+
+e^{2i\theta}c_2),\qquad
+\boxed{\langle v\otimes v\rangle_\theta=2I_3.}
+\]
+\end{proposition}
+\begin{proof}
+Orthogonality of the different angular Fourier frequencies
+eliminates their cross terms. The real and imaginary
+polarizations of $c_1$ provide the first two Cartesian
+coordinates and $c_2$ the third. Each contributes $2$ to its
+diagonal entry, giving the identity.
+\end{proof}
+
+\paragraph{What is and is not repaired.}
+The two-frequency example is \emph{finite-dimensional algebra},
+not a globally smooth, incompressible, axis-regular wave with a
+source-compatible heat, transport or pressure equation.
+Furthermore, the H8 target is constrained by the projected
+divergence and pressure-gauge equivalence; a pointwise rank
+obstruction to \emph{direct} covariance equality does not rule
+out all projected-stress representations with gauge freedom.
+The seven-ray strict cone, virtual-work dual inequalities,
+angular-mode coupling and $m=3,4$ leakage remain to be
+verified for an actual flow. Independent symbolic determinant,
+cross-product null-vector and $5{,}000$ exact-rational tests
+pass; the finite Lean scalar cross-product certificate is not
+a PDE or full cone proof.

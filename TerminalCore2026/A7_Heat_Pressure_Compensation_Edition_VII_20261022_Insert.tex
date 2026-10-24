@@ -1,0 +1,85 @@
+\subsection*{Proof Attack 2: heat pressure sign, compensation, and unforced-from-rest obstruction (Edition VII, 22 October 2026)}
+\label{subsec:heat-pressure-compensation-VII}
+The source heat profile replaces the classical tail
+$E_{\rm cl}$ by $E_{\rm new}=E_{\rm cl}[1+\chi_K(y)(\mathcal H(2d/X)-1)]$,
+where $d=1-\eta^2$, $0\le\chi_K\le1$, and
+\[
+\mathcal H(Z)=\Gamma(1+h)^{-1}\int_0^\infty
+  e^{-v}v^h(1+Zv)^{-h}\,dv,\quad Z\ge0,\quad h>0.
+\]
+\begin{proposition}[Strict signed source heat defect]
+For every $Z\ge0$, $0<\mathcal H(Z)\le1$ and
+$0\le1-\mathcal H(Z)\le h(1+h)Z$.
+Set $q=\chi_K(1-\mathcal H(2d/X))$.
+Then $0\le q<1$ and
+$E_{\rm new}^2-E_{\rm cl}^2=-E_{\rm cl}^2q(2-q)\le0$.
+For $\Delta P_{\rm heat}=\frac12\int(E_{\rm new}^2-E_{\rm cl}^2)d\log X$,
+\begin{equation}\label{eq:heat-defect-VII}
+\boxed{-2h(1+h)d\int\frac{E_{\rm cl}^2\chi_K}{X}d\log X
+\le\Delta P_{\rm heat}\le0.}
+\end{equation}
+It is strictly negative for $|\eta|<1$ if the heat cutoff
+is nonzero on a positive-measure set and zero at $\eta=\pm1$.
+\end{proposition}
+\begin{proof}
+The normalized integrand defining $\mathcal H$ is a
+probability measure with mean $1+h$.
+Integrate $0\le1-(1+Zv)^{-h}\le hZv$.
+Then $E_{\rm new}=E_{\rm cl}(1-q)$,
+and $q(2-q)\le2q\le4h(1+h)d\chi_K/X$.
+\end{proof}
+The heat edit alone therefore is NOT pressure-neutral.
+As already proved qualitatively in source Proposition A.7,
+three ordered nonnegative disjoint E-bumps on the earlier
+$U=0$ patch compensate the changes in
+$\frac12\int E^2d\log X$,
+$-\frac12\int E^2dX$, and
+$\int\sqrt{2X}(E-E_{\rm pow})dX$.
+The remaining two channels $M,J$ are unchanged since $U=0$.
+The normalized linearized radial weights are
+\[
+f(\eta)x^{-3/2-\lambda},\quad
+-f(\eta)x^{-1/2-\lambda},\quad \sqrt{2x},\quad x=X/X_*.
+\]
+They have distinct exponents, so their generalized
+Vandermonde determinant has fixed nonzero sign for
+three ordered distinct points. Integration against
+ordered disjoint positive bumps preserves that sign;
+hence the actual three-moment Jacobian is nonsingular.
+\begin{lemma}[Explicit quantitative inverse gate]
+For $F(c)=Lc+Q(c)+d$ on $\mathbb R^3$ suppose
+$m\ge\|L^{-1}\|_\infty$, $\delta=\|d\|_\infty$,
+$\|Q(c)\|_\infty\le K\|c\|_\infty^2$, and
+$\|Q(c)-Q(c')\|_\infty\le
+K(\|c\|_\infty+\|c'\|_\infty)\|c-c'\|_\infty$.
+If $4m^2K\delta<1/2$, $F(c)=0$ has a unique root in
+$\|c\|_\infty\le2m\delta$.
+\end{lemma}
+\begin{proof}
+The map $-L^{-1}(d+Q(c))$ takes this ball into itself
+and has Lipschitz constant at most $4m^2K\delta<1/2$.
+\end{proof}
+The real source still needs authenticated $m,K,\delta$
+and complete stress-cone intervals. This is an
+explicit quantitative version of the local inverse gate,
+not a replacement for source Proposition A.7.
+\paragraph{Unforced-from-rest obstruction.}
+For a smooth finite-energy decaying unforced incompressible
+Navier--Stokes solution with $\nu>0$ and $u(\cdot,0)=0$,
+the classical identity
+\[
+\frac12\|u(t)\|_2^2+
+\nu\int_0^t\|\nabla u(s)\|_2^2\,ds=0
+\]
+forces $u\equiv0$. The originating theorem has smooth forcing
+and starts from rest; an unforced blow-up claim must not keep
+zero initial data under the above regularity assumptions.
+\paragraph{Release boundary.}
+Exact symbolic, generalized Vandermonde, 10,000 rational and
+eight high-precision actual heat-kernel checks passed.
+The signed heat deficit, three-bump restoration and no-go
+constraint are source-compatible or classical, not a new
+global blow-up theorem. The fully frozen corrected source,
+complete cone, Appendix B, unforced correction hierarchy
+and zero-force physical PDE remain OPEN/HOLD.
+Lean verification covers only conditional scalar identities.

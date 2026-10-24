@@ -1,0 +1,53 @@
+\subsection*{Edition XVI: source-native third Cartesian jet of the analytic leading swirl (23 October 2026)}
+\label{subsec:editionXVI-source-axis-jet}
+Unlike the Gaussian surrogate in Edition XV, this calculation uses the originating forced construction's \emph{actual} Appendix B.1--B.3 axis profile. Let $0<h\le1/100$, $D=\frac12-h$, $A=\frac12+h$, and $j_0,\sigma_*,\Lambda,C>0$. Its prescribed data are
+\[
+U_*=4\eta+j_0,\quad H_*=D\eta+(1-\eta^2)U_*,
+\quad W_*=1-(1-\eta^2)U_*'-2D\eta U_*,
+\]
+\[
+L=1-2h\eta^2,\quad\chi=\frac{H_*^2}{H_*^2+\sigma_*^2},
+\quad E(X,\eta)=\sqrt{2X}\,\varphi(X,\eta)/C,\quad
+\varphi=\varphi_*(\eta)\Phi(\Lambda X,\eta).
+\]
+The exact Appendix B radial equation at $Y=0$ implies
+\[
+p_1(\eta)=\partial_Y\Phi(0,\eta)
+=\frac14\left[-\chi(\eta)+
+\frac{W_*(\eta)+h(1-2\eta U_*(\eta))}{\Lambda L(\eta)}\right].
+\]
+This same first coefficient was independently derived in the cumulative axis-jet section.
+
+\begin{theorem}[Genuine source-leading swirl nondegeneracy]
+Let $u_{\rm swirl}^{(0)}(x,t)=\tau^{-A}\mathcal U(x_1/\sqrt\tau,x_2/\sqrt\tau,z/\tau^D)$, $\tau=1-t$. Then the source's exact axis field obeys
+\begin{equation}\label{eq:XVI-source-axis-jet}
+\boxed{\partial_{R_1}^3\mathcal U_2(0,0,0)=
+-\frac3{4C}\left(\Lambda\frac{j_0^2}{j_0^2+\sigma_*^2}+3-h\right)<0,}
+\end{equation}
+and in particular
+\[
+\boxed{|\partial_{R_1}^3\mathcal U_2(0)|\ge897/(400C)>0.}
+\]
+Consequently the actual analytic \emph{leading} profile has a fixed positive-volume compact chart $\mathcal K$ about the similarity axis with $C_*=\|\partial_{R_1}^3\mathcal U_2\|_{L^2(\mathcal K)}>0$.
+\end{theorem}
+\begin{proof}
+At $\eta=0$ the source has $U_*(0)=H_*(0)=j_0$, $W_*(0)=1-4=-3$, $L(0)=1$, $\varphi_*(0)=1$. Hence $\Lambda p_1(0)=-(\Lambda j_0^2/(j_0^2+\sigma_*^2)+3-h)/4$. Along $Z=R_2=0$, the exact similarity variables give $q=\tau$, $X=R_1^2/2$, and
+$\mathcal U_2(R_1,0,0)=R_1\Phi(\Lambda R_1^2/2,0)/C$.
+The cubic coefficient is $\Lambda p_1(0)/(2C)$, whose third derivative is $3\Lambda p_1(0)/C$. Because $3-h\ge299/100$, the strict lower bound follows. Continuity gives the positive local $L^2$ coefficient.
+\end{proof}
+
+\begin{corollary}[Explicit missing modulus and final-correction gates]
+If $M_4$ bounds the gradient of the third derivative on a similarity ball $B_{r_0}$, $a=897/(400C)$ and $0<\delta\le r_0$ satisfies $M_4\delta\le a/2$, then
+\[
+C_*\ge(a/2)\sqrt{4\pi\delta^3/3}.
+\]
+For the \emph{complete} velocity $u=u_{\rm swirl}^{(0)}+v$, define $V_\tau(R,Z)=\tau^A v(\sqrt\tau R,\tau^D Z,1-\tau)$. If
+$\|\partial_{R_1}^3(V_\tau)_2\|_{L^2(\mathcal K)}\le C_*/2$,
+the triangular inequality yields
+\[
+\|u(t)\|_{H^3}\ge(C_*/2)\tau^{-5/4-3h/2}.
+\]
+The needed $M_4$ and \emph{full oscillatory/higher-order correction} estimate are not certified here.
+\end{corollary}
+\paragraph{Verification and scope.}
+Independent symbolic Cartesian Taylor calculations, 10,000 exact-rational source-parameter sign/lower comparisons, and 75-digit diagnostic third finite differences passed. This establishes the missing \emph{leading-profile} nondegeneracy assumption from Edition XV. It is a deduction from prior-source Appendix B equations, not a new singularity theorem. Actual source-admissible parameter calibration, later correction stability, the global physical zero-forcing equation and full Lean proof are still \textbf{OPEN/HOLD}.

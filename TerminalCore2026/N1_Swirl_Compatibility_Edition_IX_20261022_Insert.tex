@@ -1,0 +1,92 @@
+\subsection*{Proof Attack 4 (Edition IX): swirl-only collar compatibility and linear Stokes repair}
+\label{subsec:n1-swirl-compatibility-edition-IX}
+Attack 3 showed that the original terminal collar retains the nonzero
+first-order azimuthal viscous residual
+$-\partial_{zz}(Kf_o)|_{\eta=0,y=2}
+=8Kq^{-2D}\rho_o>0$. We now test a different, limited
+repair without promoting it to a solution of the unforced PDE.
+
+\begin{theorem}[Frozen-meridional swirl compatibility no-go]
+Let $(u_r,U,u_z)$ be a smooth axisymmetric velocity whose radial
+and axial Navier--Stokes momentum equations already vanish on a
+connected open region with $r>0$. Replace the azimuthal velocity
+$U$ by $U+W$ without changing $u_r,u_z$, and allow a pressure
+change $\delta p$. Then the two meridional equations require
+\[
+\partial_r\delta p=\frac{2UW+W^2}{r},
+\qquad\partial_z\delta p=0,
+\quad\Longrightarrow\quad
+\partial_z\frac{2UW+W^2}{r}=0.
+\]
+If, for a fixed $(r,t)$, $U(r,z,t)>0$ for all $z$ and
+$W(r,\cdot,t)$ is continuous with compact axial support,
+these equations force $W(r,z,t)\equiv0$. The same holds on
+a connected axial interval containing a zero of $W$,
+provided $U>0$ on the interval.
+\end{theorem}
+\begin{proof}
+The swirl contribution to radial convection is $-U^2/r$,
+while the axial momentum equation has no swirl term.
+Equality of mixed pressure partial derivatives proves the
+compatibility equation. Compact support yields a point with
+$W=0$; the bracket is independent of $z$ and hence vanishes.
+Thus $W(2U+W)=0$. Since $U>0$, the continuous ratio $W/U$
+takes values in $\{0,-2\}$ and equals zero at the exterior
+point. By connectedness it is identically zero.
+\end{proof}
+This theorem assumes the original meridional residuals
+already vanish. It is NOT a theorem about all modifications
+of the source collar; allowing nonzero corrections to $u_r$
+or $u_z$, or altering the leading profile, changes the question.
+
+\begin{proposition}[Exact linear solenoidal response]
+Let $v_0=U_0(r,z,t)e_\theta$ be smooth axisymmetric swirl and
+$\chi$ a smooth axisymmetric cutoff. Put
+$g=\nu\chi\partial_{zz}v_0\in L^1([0,T];L^2(\mathbb R^3))$.
+Then
+\[
+w(t)=\int_0^t e^{\nu(t-s)\Delta}g(s)\,ds
+\]
+is axisymmetric, purely azimuthal, divergence-free, and solves
+$\partial_tw-\nu\Delta w=g$, $w(0)=0$, in the mild sense,
+with
+\[
+\|w(t)\|_2\le\int_0^t\|g(s)\|_2\,ds,\qquad
+\|\nabla w(t)\|_2\le
+\int_0^t\frac{\|g(s)\|_2}{\sqrt{2e\nu(t-s)}}\,ds
+\]
+when the latter is finite.
+\end{proposition}
+\begin{proof}
+An axisymmetric azimuthal vector field has zero divergence.
+The vector heat semigroup commutes with divergence and rotations,
+and preserves the azimuthal axisymmetric subspace. Apply the
+Duhamel identity and the exact Fourier multiplier maxima
+$\sup_{\xi}e^{-\nu\tau|\xi|^2}=1$ and
+$\sup_\xi|\xi|e^{-\nu\tau|\xi|^2}=(2e\nu\tau)^{-1/2}$.
+\end{proof}
+The linear repair does not in general solve the nonlinear PDE:
+the projected residual still contains
+$\mathbb P[(u_0\cdot\nabla)w+(w\cdot\nabla)u_0+(w\cdot\nabla)w]$
+and any uncancelled background residual. It need not retain
+compact radial/axial support.
+
+As a known positive control, the exact decaying shear
+$u=Ae^{-\nu k^2t}\sin(kz)e_x$ on a periodic domain solves
+unforced Navier--Stokes with zero pressure; it is obtained
+by correcting stationary $A\sin(kz)e_x$. This is not blowup.
+An independent negative control is
+$U=re^{-r^2-z^2}$, $W=\varepsilon rz e^{-r^2-z^2}$:
+for $F=(2UW+W^2)/r$,
+$\partial_z F(r,0)=2\varepsilon r e^{-2r^2}\ne0$ when
+$\varepsilon\ne0$, so no pressure with $\partial_z\delta p=0$
+can compensate on a neighborhood of that point.
+
+\paragraph{Release boundary.}
+The source-specific coupled annular $n=1$ force-free correction,
+meridional and pressure equations, all later corrections,
+physical zero-force residual and all-order convergence are
+OPEN/HOLD. Symbolic verification establishes the elementary
+axisymmetric algebra, the negative control and the known shear
+positive control. A Lean file tests finite scalar consequences
+only, not the full cylindrical PDE or heat-semigroup theory.

@@ -1,0 +1,101 @@
+
+\subsection{Simultaneous local strict covariance and nonzero slice torque}
+\label{subsec:two-mode-torque-XXIV}
+The preceding two-frequency field has zero mean angular torque in
+the special choice $\lambda=0$. A small additional first-harmonic
+polarization produces an explicitly nonzero torque without losing
+the positive covariance floor.
+
+\begin{proposition}[Divergence-free two-harmonic torque shaper]
+\label{prop:two-mode-torque-XXIV}
+Fix real $f,g\in C_c^\infty((1/2,3/2))$ such that
+$f=g=1$ on $[3/4,5/4]$. Let $|\lambda|\le1/16$.
+Use the $m=+1$ cylindrical amplitudes
+\[
+a=f(r)\cos z,\quad
+b=ia+\lambda r^2f(r)\cos z,\quad
+c=-f'(r)\sin z-i\lambda rf(r)\sin z
+\]
+and the independent $m=+2$ amplitude
+$(a_2,b_2,c_2)=(0,0,g(r))$; add complex-conjugate modes
+to make the field real. On $\mathbb R^2\times\mathbb S^1$
+of axial period $2\pi$, the resulting smooth finite-energy
+velocity is divergence-free. Its co-rotating azimuthal stress
+$Q=\langle v\otimes v\rangle_\theta$ satisfies
+\[
+\boxed{\det Q=8 f(r)^4g(r)^2\cos^4z.}
+\]
+On the plateau
+$3/4\le r\le5/4,\ |z|\le\pi/6$,
+\begin{equation}\label{eq:strict-positive-torque-XXIV}
+\boxed{\quad Q\succeq\frac{653}{512}I_3
+             \succ I_3.\quad}
+\end{equation}
+Moreover, the radial-slice angular flux and torque are
+\[
+\boxed{
+T(z)=\lambda I_f\sin 2z,\qquad
+m(z)=2\lambda I_f\cos2z,\qquad
+I_f=\int_0^\infty r^3 f(r)^2\,dr>0.
+}
+\]
+In particular, the torque is nonzero when $\lambda\ne0$.
+\end{proposition}
+\begin{proof}
+The first-harmonic divergence vanishes because
+$a_r+a/r+ib/r+c_z=0$; the second mode has axial
+velocity independent of $z$, and therefore also has zero
+divergence. Compact annular support gives Cartesian
+smoothness and finite energy.
+
+Writing the real and imaginary first-harmonic polarizations as
+\[
+p=(f\cos z,\,\lambda r^2 f\cos z,\,-f'\sin z),\qquad
+q=(0,\,f\cos z,\,-\lambda r f\sin z)
+\]
+and the independent second-harmonic polarization as
+$s=(0,0,g)$ gives $Q=2(pp^{\mathsf T}+qq^{\mathsf T}
++ss^{\mathsf T})$. Since the determinant of the
+three-column matrix $(p,q,s)$ is $f^2g\cos^2z$,
+$\det Q=8f^4g^2\cos^4z$, independently of $\lambda$.
+
+On the plateau the diagonal entries satisfy
+$Q_{11}=2\cos^2z,\ Q_{22}\ge2\cos^2z,\ Q_{33}\ge2$.
+The only nonzero off-diagonal terms are
+$Q_{12}=2\lambda r^2\cos^2z$ and
+$Q_{23}=-2\lambda r\sin z\cos z$.
+Using $2|xy|\le x^2+y^2$ in the quadratic form gives a
+uniform lower bound equal to the smallest of
+\[
+2\cos^2z(1-|\lambda|r^2),\quad
+2\cos^2z(1-|\lambda|r^2)-2|\lambda|r|\sin z\cos z|,
+\quad
+2-2|\lambda|r|\sin z\cos z|.
+\]
+The hypotheses imply these are respectively bounded below
+by $693/512$, $653/512$ and $123/64$, giving the stated
+positive floor.
+
+Angular Fourier orthogonality removes all mixed $m=1,m=2$
+terms in $Q_{\theta z}$. The first pair contributes
+\[
+Q_{\theta z}=-\lambda r(rff'+f^2)\sin 2z.
+\]
+Integrating $r^2Q_{\theta z}$ in $r$ and using
+$\int r^4ff'=-2\int r^3f^2$ proves
+$T=\lambda I_f\sin2z$; differentiating yields the torque.
+\end{proof}
+
+\paragraph{Release boundary.}
+The construction simultaneously passes three \emph{local}
+kinematic gates---solenoidality, strict covariance positivity
+and nonzero slice torque---but remains a manufactured field,
+not a solution of the time-dependent unforced Navier--Stokes
+equations. In particular it is not certified to lie in the
+specific H8 seven-ray positive-coefficient cone, is not matched
+to the A.11/A.19 source, and does not cancel $m=3,4$
+quadratic mode leakage. Strict local covariance cannot
+replace the global anti-divergence, pressure, source and
+singularity-preservation proof obligations.
+Independent symbolic determinant, full modal divergence,
+angular torque and rational covariance-floor calculations pass.

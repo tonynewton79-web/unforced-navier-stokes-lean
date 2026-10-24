@@ -1,0 +1,92 @@
+\subsection*{Two-coordinate A.11 interval-net certification and a strict rational margin (22 October 2026)}
+\label{subsec:a11-two-coordinate-net-and-margin}
+This checkpoint supplements the previously derived exact terminal-gauge
+residual lift. The full corrected A.11 hull \(\mathcal H\) contains
+both azimuthal supports \emph{and} the intervening gap and depends on
+the pulse coordinate \(y\) and angular coordinate \(\eta\).
+An angular grid alone at fixed \(y\) is insufficient to establish a
+uniform estimate on \(\mathcal H\).
+
+Fix the \emph{same} authentic corrected A.11/A.19 profile and define
+\[
+G_\pm(y,\eta)=\lambda E(y,\eta)\pm 2N_s(y,\eta).
+\]
+When \(E>0\), the exact desired source stress criterion is equivalent to
+\(G_+\ge0\) and \(G_-\ge0\). There is no need to assume that
+the physical source integrals are polynomial in \(\eta\).
+
+\begin{proposition}[Two-coordinate interval-net gate]
+Let \(V\subseteq\mathcal H\) be finite. Suppose every
+\(z=(y,\eta)\in\mathcal H\) has a node \(v=(y_i,\eta_j)\in V\) with
+\[
+|y-y_i|\le r_y,\qquad|\eta-\eta_j|\le r_\eta.
+\]
+For each \(f\in\{E,G_+,G_-\}\), suppose independently certified
+nonnegative constants \(L_{f,y},L_{f,\eta}\) satisfy
+\[
+|f(z)-f(v)|\le L_{f,y}|y-y_i|+
+                    L_{f,\eta}|\eta-\eta_j|.
+\]
+If for a common \(\delta>0\) every node satisfies
+\[
+E(v)\ge\delta+L_{E,y}r_y+L_{E,\eta}r_\eta,\qquad
+G_\pm(v)\ge L_{\pm,y}r_y+L_{\pm,\eta}r_\eta,
+\]
+then \(E(z)\ge\delta>0\) and \(G_\pm(z)\ge0\)
+for every \(z\in\mathcal H\). In particular
+\(\sup_{\mathcal H}|N_s|/E\le\lambda/2\).
+\end{proposition}
+\begin{proof}
+For each point choose a covering node and subtract the
+two coordinatewise Lipschitz-remainder envelopes. The two signed
+inequalities imply \(2|N_s|\le\lambda E\), and \(E>0\)
+permits division.
+\end{proof}
+The \(\eta\)-derivative inputs must be \emph{total} derivatives along the
+same genuine A.11/A.19 source root, while \(y\)-derivative inputs must
+cover support boundaries, the gap, and applicable stage transitions.
+A grid scan without authenticated derivative/remainder bounds is
+\emph{not} a uniform certificate.
+
+\begin{proposition}[Explicit release margin for the residual lift]
+Assume the earlier exact same-profile residual inequality
+\(\sup_{\mathcal H}|N_s|/E\le b_0+\mathcal R\),
+\(E>0\), and \(\lambda>0\), where
+\[
+\mathcal R=\alpha[(2+4h)\|\mathcal F\|_\infty+
+\|\mathcal F_\eta\|_\infty]+
+\beta[(1+2h)\|\mathcal G\|_\infty+
+\tfrac12\|\mathcal G_\eta\|_\infty]
+\]
+with the same definitions and authenticated premises as in the
+preceding source-gauge residual section. If
+\[
+b_0\le\frac{\lambda}{500},\qquad
+\mathcal R\le\frac{4979\lambda}{10000},
+\]
+then the source stress ratio has the strict spare margin
+\[
+\boxed{\quad
+\sup_{\mathcal H}\frac{|N_s|}{E}
+\le\frac{\lambda}{2}-\frac{\lambda}{10000}
+<\frac{\lambda}{2}.\quad}
+\]
+\end{proposition}
+\begin{proof}
+Exactly \(1/500+4979/10000=4999/10000
+=1/2-1/10000\). Positivity of \(\lambda\) gives strictness.
+\end{proof}
+
+\paragraph{Source authentication and limits.}
+Both propositions are complete conditional scalar arguments.
+They do not supply the true \((y,\eta)\) intervals or root derivatives.
+The companion exact-rational verifier replays
+10,000 scalar budgets and 10,000 two-coordinate affine controls and
+rejects three negative controls. The Lean source
+\texttt{A11RectangularNetScalar.lean} formalizes the corresponding
+finite implications subject to independent CI success; it does not
+prove the actual PDE-specific source bounds. The authentic joint
+parameter tuple and A.11/A.19 roots, full stress cones, Appendix B
+contraction, unforced startup hierarchy, physical zero-force
+Navier--Stokes residual and the proposed Theorem~1.1 all remain
+OPEN/HOLD. The original OpenAI construction has smooth forcing.

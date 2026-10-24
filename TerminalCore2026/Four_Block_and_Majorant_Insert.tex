@@ -1,0 +1,202 @@
+
+\section{Composite derivatives and the four current-order blocks}
+The estimates of Theorem~\ref{thm:ratios} must be applied to complete
+operators, not to naked derivatives. Indeed, in the induced coefficient
+norm \eqref{eq:norm}, the series $F_m=w_{m,0}X^m$ has norm one, whereas
+$\|D_XF_m\|=m$. Likewise $\partial_\eta$ is unbounded, as shown by
+coefficients $e^{ik\eta}$. Consequently a proof of the current-order
+feedback bound cannot treat $T_{a,n}$ or $\partial_\eta A_X$ as bounded
+before the regular-singular inverse is applied.
+
+Write $\mathcal B$ for the analytic coefficient space with the induced
+norm and $I_m\subset\mathcal B$ for its radial-valuation ideals.
+We use the bounded multiplication estimate
+$\|fg\|\le Q\|f\|\|g\|$, $Q=16\pi^4/9$, from the original coefficient
+algebra argument. The commutators
+\[
+ g\partial_\eta F=\partial_\eta(gF)-(\partial_\eta g)F,\qquad
+ gD_XF=D_X(gF)-(D_Xg)F
+\]
+and Corollary~\ref{cor:ambient} give, when the indicated multipliers
+and derivatives belong to $\mathcal B$,
+\begin{align}
+ \|J_\nu(gF)\|&\le\frac{4RQ\|g\|}{(m+1)^2}\|F\|,\label{eq:cmp0}\\
+ \|J_\nu(g\partial_\eta F)\|&\le RQ
+ \left(\frac{8\|g\|}{\rho(m+1)}
+ +\frac{4\|\partial_\eta g\|}{(m+1)^2}\right)\|F\|,\label{eq:cmp1}\\
+ \|J_\nu(gD_XF)\|&\le RQ
+ \left(\frac{4\|g\|}{m+1}
+ +\frac{4\|D_Xg\|}{(m+1)^2}\right)\|F\|.\label{eq:cmpX}
+\end{align}
+Direct coefficient division proves
+\[
+ \|A_XF\|_{I_m}\le\frac{\|F\|_{I_m}}{m+1},\qquad
+ \left\|\int_0^X F(x,\eta)\,dx\right\|_{I_{m+1}}
+ \le\frac{4R}{m+1}\|F\|_{I_m}.
+\]
+These are statements about a concrete induced analytic norm, not an
+unquantified order ledger.
+
+Use the leading profiles $\varphi_0,U_0,V_0$ and the notation
+$A=1/2+h$, $D=1/2-h$, $d=1-\eta^2$, $L=1-2h\eta^2$,
+$\lambda_n=2hn$, $b=-A-1/2$, $c=-A$. Define fixed multipliers
+\begin{equation}\label{eq:mult}
+ v=\frac{V_0}{X},\quad g=\frac{-1+2\eta U_0}{L},\quad
+ H=\frac{D\eta+dU_0}{L},\quad
+ k=\frac{1-2\eta U_0}{L}+v,\quad
+ m_\varphi=\frac{D_X\varphi_0+\varphi_0}{L},\quad
+ m_U=\frac{D_XU_0}{L}.
+\end{equation}
+Also put $q_\varphi=Z_{b,0}\varphi_0$ and $q_U=Z_{c,0}U_0$.
+Substitution of the exact $T$ and $Z$ operators into the
+current swirl equation yields
+\begin{equation}\label{eq:phiphi}
+ K_n^{\varphi\varphi}F=\frac12 J_2
+ [(b+\lambda_n)gF+vF+H\partial_\eta F+kD_XF].
+\end{equation}
+Using \eqref{eq:cmp0}--\eqref{eq:cmpX} proves
+\begin{equation}\label{eq:cpp}
+ \|K_n^{\varphi\varphi}\|\le\frac{C_{\varphi\varphi}}{n+1},\quad
+ C_{\varphi\varphi}=2RQ[(|b|+2h)\|g\|+\|v\|
+ +\|\partial_\eta H\|+\|k\|+\|D_Xk\|]
+ +\frac{4RQ}{\rho}\|H\|.
+\end{equation}
+
+For either $\nu=1$ or $2$, define the complete radial-transport
+channel
+\[
+ \mathcal V_{n,\nu}^{m,q}F=\frac12J_\nu
+ [(2\eta m+q)F-(D+\lambda_n)(2\eta m)A_XF
+ -(dm)\partial_\eta A_XF].
+\]
+Commuting $\partial_\eta$ through the full product $(dm)A_XF$
+and using the radial average estimate gives
+\begin{equation}\label{eq:CV}
+ \|\mathcal V_{n,\nu}^{m,q}\|\le\frac{C_V(m,q)}{(n+1)^2},\qquad
+ C_V(m,q)=2RQ[\|2\eta m+q\|+
+ (|D|+2h)\|2\eta m\|+\|\partial_\eta(dm)\|]
+ +\frac{4RQ}{\rho}\|dm\|.
+\end{equation}
+This proof does not require the generally false assertion that
+$\partial_\eta A_X$ is bounded by itself on the analytic coefficient
+space. The two velocity blocks are exactly
+\begin{align}
+ K_n^{\varphi U}F&=\mathcal V_{n,2}^{m_\varphi,q_\varphi}F,
+ \label{eq:offphi}\\
+ K_n^{UU}F&=\frac12 J_1[(c+\lambda_n)gF+H\partial_\eta F+
+ kD_XF+q_UF]+\mathcal V_{n,1}^{m_U,0}F.
+ \label{eq:uu}
+\end{align}
+Consequently
+\[
+ \|K_n^{\varphi U}\|\le\frac{C_V(m_\varphi,q_\varphi)}
+ {(n+1)^2},\quad
+ \|K_n^{UU}\|\le\frac{C_{UU}}{n+1},
+\]
+where
+\[
+ C_{UU}=2RQ[(|c|+2h)\|g\|+\|q_U\|+
+ \|\partial_\eta H\|+\|k\|+\|D_Xk\|]
+ +\frac{4RQ}{\rho}\|H\|+C_V(m_U,0).
+\]
+
+For pressure set $\gamma=2C^{-2}$, using $C$ for the source
+azimuthal normalization, and let
+$P_F=\gamma\int_0^X\varphi_0(x,\eta)F(x,\eta)\,dx$.
+With $C_P=4R\gamma Q\|\varphi_0\|$ one has
+$\|P_F\|\le C_P\|F\|/(n+1)$. Put
+$s_1=2\eta/L$, $s_2=d/L$, and $s_3=-2\eta/L$.
+The fourth block is precisely
+\[
+ K_n^{U\varphi}F=\frac12J_1[
+ (-2A+\lambda_n)s_1P_F+s_2\partial_\eta P_F+s_3D_XP_F].
+\]
+The same commutator estimates, now applied at ideal index $n+1$,
+give
+\begin{align}
+ \|K_n^{U\varphi}\|&\le\frac{C_{U\varphi}}{(n+1)^2},
+ \label{eq:offpress}\\
+ C_{U\varphi}&=2RQC_P[
+ (2|A|+2h)\|s_1\|+\tfrac{2}{\rho}\|s_2\|
+ +\|\partial_\eta s_2\|+\|s_3\|+\|D_Xs_3\|].\notag
+\end{align}
+In fact $D_Xs_3=0$.
+
+\begin{theorem}[Four-block bound under explicit profile regularity]
+\label{thm:fourblock}
+Assume the analytic coefficient multiplication estimate above and
+that all fixed leading multipliers and their derivatives appearing
+in \eqref{eq:cpp}, \eqref{eq:CV}, and \eqref{eq:offpress}
+belong to the \emph{same} space $\mathcal B$. Define the four blocks
+by the exact equations (47)--(50) of \cite{newton2026} on the
+induced-norm ideals $I_n$. Then, for all $n\ge1$,
+\[
+ \|K_n\|_{(I_n\oplus_1 I_n)\to(I_n\oplus_1 I_n)}
+ \le\frac{C_K}{n+1},\qquad
+ C_K=\max\{C_{\varphi\varphi}+C_{U\varphi},
+ C_{UU}+C_V(m_\varphi,q_\varphi)\}.
+\]
+\end{theorem}
+\begin{proof}
+The four exact block rearrangements and the commutator bounds
+establish \eqref{eq:cpp}, \eqref{eq:CV} and \eqref{eq:offpress}.
+The sum-norm bound of a two-by-two block operator is at most the
+maximum of its two column sums. Finally,
+$(n+1)^{-2}\le(n+1)^{-1}$.
+\end{proof}
+This is a conditional concrete-space theorem, not yet a Lean proof of
+the full PDE statement. A separate check must verify that the actual
+imported leading profiles and all required multiplier derivatives lie
+in one fixed analytic norm. Holomorphy on a strictly larger complex
+polydisc is a sufficient route, but the precise source-to-norm
+verification remains to be completed.
+
+\section{A constructive scalar convergence majorant}
+The lower-order forcing is bounded in the source manuscript by the
+recurrence
+\begin{equation}\label{eq:recur}
+ A_n\le C_0(A_{n-1}+A_{n-2})+
+ C_1\sum_{i=1}^{n-1}A_iA_{n-i}\quad(n\ge3).
+\end{equation}
+The scalar summation step can be made fully explicit.
+\begin{proposition}[Constructive geometric majorant]\label{prop:maj}
+Let $A_n,C_0,C_1\ge0$ satisfy \eqref{eq:recur}. Set
+\[
+ M=\frac{1}{16(1+C_1)},\qquad
+ R\ge\max\{1,8C_0,4\sqrt{C_0},
+ 4A_1/M,3\sqrt{A_2/M}\}.
+\]
+Then $A_n\le MR^n/(n+1)^2$ for every $n\ge1$.
+An arbitrary finite number of exceptional starting indices
+can be absorbed by enlarging $R$.
+\end{proposition}
+\begin{proof}
+For $x=i+1$, $y=n-i+1$, one has $x+y=n+2$ and
+\[
+ \frac{1}{x^2y^2}\le\frac{2}{(n+2)^2}
+ \left(\frac1{x^2}+\frac1{y^2}\right).
+\]
+Summing and using $1/k^2\le1/[k(k-1)]$ for $k\ge2$
+gives
+\[
+ \sum_{i=1}^{n-1}\frac1{(i+1)^2(n-i+1)^2}
+ \le\frac4{(n+2)^2}.
+\]
+The claims at $n=1,2$ follow from the choice of $R$.
+Assuming the conclusion below $n\ge3$ and applying the
+recurrence shows
+\[
+ \frac{A_n}{MR^n/(n+1)^2}\le
+ \frac{C_0}{R}\frac{(n+1)^2}{n^2}
+ +\frac{C_0}{R^2}\frac{(n+1)^2}{(n-1)^2}
+ +4C_1M
+ \le \frac{2C_0}{R}+\frac{4C_0}{R^2}+4C_1M
+ \le\frac34.
+\]
+This closes induction; a later recurrence starting index only
+changes the finite base conditions.
+\end{proof}
+This proposition establishes exponential summability from
+\eqref{eq:recur}; deriving that recurrence uniformly from the
+\emph{complete} Navier--Stokes lower-order forcing and formalizing
+the differentiated PDE reconstruction remain distinct tasks.

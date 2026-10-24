@@ -1,0 +1,126 @@
+\subsection*{A stress-cone criterion for the two corrected azimuthal stages}
+
+The Appendix-A condition is not merely a sign restriction on
+$\ell=\partial_{\log X}\log(\sqrt X E)$. The source's equations
+(4.11), (4.20)--(4.22) give
+\[
+a=2-2\ell,\quad b_s=2D_XU/E,\quad
+p_1=XQ_s/L,\quad w=N_s/(EQ_s).
+\]
+For $a>0$ put $t_s=-b_s/a$,
+$v_s=a+b_s^2/a$, $P_c=p_1(1-b_sw/a)$ and
+$J_c=p_1(w+b_s/a)$. When $v_s>2$, the full cone reads
+$P_c>v_s$ and $(v_s-2)J_c^2<2(P_c-v_s)^2$.
+
+\begin{proposition}[Uniform corrected-support sufficient condition]
+\label{prop:A11-cone-source}
+On the two genuine (A.11) azimuthal-bump supports,
+$U=M=J=0$ and hence $b_s=0$. Assume the corrected slope
+$-3\lambda/2\le\ell\le-\lambda/2$, $0<\lambda\le1/20$.
+If throughout those supports
+\[
+Q_s\ge\lambda/4,\quad |N_s|\le E\lambda/4,
+\quad X\ge18/\lambda,
+\]
+then $a>2$, $p_1\ge2a$ and the normalized cone margin obeys
+\[
+2(1-a/p_1)^2-(a-2)w^2\ge7/20.
+\]
+\end{proposition}
+\begin{proof}
+The slope gives $2+\lambda\le a\le2+3\lambda\le43/20$.
+As $L\le1$, $p_1=XQ_s/L\ge9/2>2a$.
+Also $|w|\le1$. Therefore
+$2(1-a/p_1)^2-(a-2)w^2\ge1/2-3/20=7/20$.
+Multiply by $p_1^2>0$ and invoke (4.22).
+\end{proof}
+
+\begin{proposition}[Conditional source lower bound for $Q_s$]
+\label{prop:A11-cone-Qs}
+Retain the previously proved A.11 bounds for $c$, $c_\eta$,
+$\ell_c+\lambda$, $\partial_\eta\ell_c$ and the initial
+first-bump discrepancy:
+\[
+\|c\|\le192\lambda^{28},\quad
+\|c_\eta\|<12\lambda^{28},\quad
+|\ell_c+\lambda|<76800000\lambda^{28},\quad
+|\ell_{c,\eta}|<5000000\lambda^{28},
+\]
+and at the first bump center
+$|r-(1-\lambda)^{-1}|<64\lambda^{28}$,
+$|r_\eta|<4\lambda^{28}$ for $r=I/(XH)$.
+If $0<h\le\lambda/100$, then $Q_s\ge\lambda/2$ on both
+supports and the intervening constant-slope interval.
+\end{proposition}
+\begin{proof}
+Moving to the left endpoint of the first support enlarges
+the initial discrepancies to $80\lambda^{28}$ and
+$5\lambda^{28}$. The total interval is shorter than three
+logarithmic units. Solve the damped equation
+$r'+(1+\ell_c)r=1$, using $0\le r\le20/17$:
+\[
+|r-(1-\lambda)^{-1}|<3\cdot10^8\lambda^{28},
+\qquad |r_\eta|<2\cdot10^7\lambda^{28}.
+\]
+On either correction support $E=E_{\rm base}(1+c_i\beta_i)$,
+with $E_{\rm base}$ independent of $\eta$.
+Since $\|\beta_i\|_\infty\le640/3$,
+$|H_\eta/H|\le5120\lambda^{28}$, giving
+$|I_\eta/(XH)|<2.1\cdot10^7\lambda^{28}$.
+The exact identity (4.16) at $U=M=J=0$ is
+\[
+Q_s=-1+(1-h)r-D\eta I_\eta/(XH).
+\]
+Hence $Q_s\ge(\lambda-h)/(1-\lambda)-
+3.2\cdot10^8\lambda^{28}\ge\lambda/2$, using
+$3.2\cdot10^8(1/20)^{27}<49/100$.
+\end{proof}
+
+The remaining sufficient support conditions thus reduce to
+$|N_s|\le E\lambda/2$ and $X\ge9/\lambda$.
+The radial condition can be imposed by increasing $X_R$
+after the other source parameters. The first condition is an
+unverified source-specific interval requirement on the actual
+corrected $N_s$.
+
+From the source's (4.16), on these supports
+\[
+Q_s=-1+\frac{(1-h)I-D\eta I_\eta}{XH},\quad
+N_s=\frac{4h\eta S-(1-\eta^2)S_\eta}{X}
+ +4A\eta\Pi-(1-\eta^2)\Pi_\eta .
+\]
+Thus a genuine interval certificate needs the six cumulative
+moment/pressure fields and their indicated $\eta$ derivatives.
+
+\begin{lemma}[Quantitative stability of the A.24 margins]
+If both the uncorrected and corrected triples $(a,b_s,w)$
+satisfy $a\ge a_0>0$, $|a|\le A_0$, $|b_s|\le B_0$,
+$|w|\le W_0$ and corresponding component differences
+at most $\epsilon$, then for
+$m_1=a-b_sw$ and
+$m_2=2-2b_sw-b_s^2/a-(a-2)w^2$,
+\[
+|\Delta m_1|\le(1+B_0+W_0)\epsilon,
+\]
+\[
+|\Delta m_2|\le
+\left[2(B_0+W_0)+2B_0/a_0+B_0^2/a_0^2+
+W_0^2+2(A_0+2)W_0\right]\epsilon.
+\]
+\end{lemma}
+\begin{proof}
+Expand the products, use
+$|\Delta(b_s^2)|\le2B_0\epsilon$,
+$|\Delta(a^{-1})|\le\epsilon/a_0^2$, and
+$|\Delta(w^2)|\le2W_0\epsilon$.
+\end{proof}
+
+On the earlier joining stages the source requires only the
+relaxed cone (4.21); the full condition $v_s>2$ applies on
+the designated outer intervals. Strict pulse margins from
+Appendix A.5 require separate interval bounds on the
+source's $o(1)$ errors. The exact checker supplied with this
+insert verifies scalar cone implications from externally
+certified input intervals, not the actual exterior schedule.
+The complete source stress cone and the proposed unforced
+Theorem~1.1 remain unproved.

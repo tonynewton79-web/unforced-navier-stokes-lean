@@ -1,0 +1,126 @@
+\paragraph{The remaining positive-order momentum sources.}
+The positive-order convection terms in the swirl and axial equations have the common form
+\[
+ {\cal S}^{\delta,\beta}_{ij}(U_i,F_j)
+ =W_i(D_X+\delta)F_j+
+ U_i[G\partial_\eta+B(\beta+\lambda_j-D_X)]F_j,\qquad
+ V_i=XW_i,\quad
+ W_{i,a}=\alpha_{i,a}B(U_i)_a-\frac G{a+1}\partial_\eta(U_i)_a,
+\]
+where $\alpha_{i,a}=1-(D+\lambda_i)/(a+1)$,
+$B=2\eta/L$, $G=(1-\eta^2)/L$, $i+j=n$,
+and $(\delta,\beta)=(1,b)$ in swirl or $(0,c)$ in axial
+momentum. Here $b=-A-\frac12$, $c=-A$. For $a\ge i$,
+$0\le\alpha_{i,a}\le1$; furthermore $|\beta|<2$.
+
+\begin{theorem}[Uniform positive-order momentum products]
+For $0<h<1/100$, $R>0$, $E=[-1,1]$ and $0<\rho\le1/4$,
+\[
+ \left\|\frac12J_\nu {\cal S}_{ij}^{\delta,\beta}(U_i,F_j)\right\|_{I_{n+1}}
+ \le C_{\rm mom}\|U_i\|_{I_i}\|F_j\|_{I_j},
+ \qquad C_{\rm mom}=\frac{64^2\,25\,R}{2}
+ \left(20+\frac{16}{\rho}\right).
+\]
+This includes both $\nu=1$ and $\nu=2$, with a constant
+independent of the two expansion orders.
+\end{theorem}
+\begin{proof}
+The analytic coefficient algebra has multiplication constant $64$.
+The radial-degree-zero functions $B,G$ have norms at most $25$:
+on $|\eta|\le3$, $|B|\le300/41$ and $|G|\le500/41$;
+Cauchy's inequality on radius-two discs about $[-1,1]$ and
+$(m+1)^3/8^m\le1$ also bound $B',G'$ by $25$.
+Use the unsigned Leibniz convolution of $U_i,F_j$.
+A source with one derivative on either factor is dominated
+by the total first-derivative convolution because
+$\binom{s}{u}\le\binom{s+1}{u+1}$ and
+$\binom{s}{u}\le\binom{s+1}{u}$.
+An Euler derivative on one factor costs at most the total
+radial degree $N$. The exact regular-singular inverse
+multipliers satisfy
+\[
+ T_0\le 4R/(N+1)^2,\quad T_1\le8R/[\rho(N+1)],
+ \quad NT_0\le4R,\quad (N+1)T_1\le8R/\rho.
+\]
+The bound $|\beta+\lambda_j-a_j|\le
+(1+|\beta|)(N+1)$ holds for $a_j\ge j$.
+Multiplication by $B$ or $G$ commutes with $J_\nu$ because
+they do not depend on $X$, and costs a second factor $64$.
+The four source types give, before the factor $1/2$,
+$64^2\,25 R[4(1+\delta)+16/\rho+4(1+|\beta|)]$,
+which is bounded as stated.
+\end{proof}
+
+\paragraph{Complete two-shift delayed momentum forcing.}
+For $\beta\in\{b,c\}$, $n\ge2$, $a\ge n-1$, put
+$r=a+1$, $\theta=\beta+\lambda_{n-1}-a$, $\theta_2=\theta-D$.
+The \emph{full} variable-coefficient normal form is
+\[
+ Z_{\beta,n-1}^{[2]}F_a=
+ (\theta GB'+\theta\theta_2B^2)F_a+
+ [GG'+(\theta+\theta_2)GB]F'_a+G^2F''_a.
+\]
+Since $|\theta|,|\theta_2|\le3r$, its three
+radial-normalized coefficient norms are bounded by
+$12(64)25^2$, $7(64)25^2$ and $64\,25^2$.
+Using $r^2T_0\le4R$, $rT_1\le8R/\rho$ and
+$T_2\le8R/\rho^2$ gives, for $\nu=1,2$,
+\begin{equation}\label{eq:direct-mom-uniform}
+ \left\|\frac12J_\nu Z_{\beta,n-1}^{[2]}F\right\|_{I_n}
+ \le\frac{64^2\,25^2R}{2}
+ \left(48+\frac{56}{\rho}+\frac8{\rho^2}\right)
+ \|F\|_{I_{n-1}}.
+\end{equation}
+This proves an $n$-independent bound for the complete
+\emph{direct} delayed swirl and axial momentum terms.
+
+\paragraph{A pressure-norm obstruction to the stated majorant.}
+The preceding theorems bound the velocity forcing. They do
+not justify the unchanged normalized amplitude in equation
+(52), which includes $\|\Pi_n\|_{I_{n-1}}/(n+1)$.
+The isolated delayed-viscosity pressure primitive is not
+a bounded map on that same weighted space.
+
+\begin{proposition}[Explicit pressure-primitive counterexample]
+Take $h=1/200$, $\rho=1/4$ and $R>0$.
+With input $F=X/(1+4i\eta)\in I_1$,
+the isolated delayed pressure source produces
+$\Pi_3^{\rm del}=X^2P(\eta)$ where
+$\|F\|\le8R$ but $\|\Pi_3^{\rm del}\|_{I_2}=\infty$.
+\end{proposition}
+\begin{proof}
+Put $r=2$, $\lambda=2h$,
+$W=B(r-D-\lambda)f/r-Gf'/r$,
+$f=(1+4i\eta)^{-1}$, and
+$Z_q^{(r)}=G\partial_\eta+B(q-r)$.
+The exact pressure primitive from (24), (28), (27) is
+\[
+ P=\frac1{2r}Z_{\lambda-D}^{(r)}Z_\lambda^{(r)}W.
+\]
+At $\zeta=i/4$ the coefficient of its fourth-order pole is
+\[
+ \lim_{\eta\to\zeta}(\eta-\zeta)^4P(\eta)
+ =-921187500i/4103684801\ne0.
+\]
+All other coefficient singularities are farther from the
+origin. Thus $|P^{(m)}(0)|\asymp4^m m!\,m^3$.
+But $w_{2,m}\asymp R^{-2}4^m m!\,m^2$, whereas
+$w_{1,m}=R^{-1}4^m m!(m+2)/[8(m+1)]$.
+In particular the precise scalar gap is
+\[
+ \frac{w_{1,m+3}}{4w_{2,m}}
+ =\frac{27R}{4\rho^3}(m+5)
+       \left(\frac{m+1}{m+4}\right)^2\longrightarrow\infty.
+\]
+This establishes the claimed unboundedness.
+\end{proof}
+This operator-level counterexample does not rule out the
+specific recursively generated solution. A possible repair is
+to eliminate the bare pressure norm from (52), use the
+regularised pressure-to-velocity composite throughout the
+induction, and reconstruct $\Pi_n$ in a weaker pressure
+space, for example using $w_{a,m+1}$ in place of $w_{a,m}$.
+The full recurrence (53) and Theorem~1.1 remain unproved
+until that repair and all physical-coordinate reconstructions
+are independently verified.
+\input{Shifted_Pressure_Repair_Insert.tex}

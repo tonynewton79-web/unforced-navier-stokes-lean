@@ -1,0 +1,129 @@
+\subsection*{Backward angular-moment certification from the A.11 endpoint}
+\label{subsec:a11-backward-angular-endpoint-20261021}
+The source's original stress expression on the corrected azimuthal hull is
+\[
+Q_s=-1+(1-h)\frac{I}{XH}-D\eta\frac{I_\eta}{XH},
+\qquad D=\tfrac12-h.
+\]
+The last term is essential within a correction support: the moment
+and correction coefficients need not be independent of \(\eta\).
+
+On the full closed A.11 hull, of logarithmic length \(23/10\), set
+\(E=E_b(1+u)\), \(u=\sum_i c_i(\eta)\beta_i(y)\).
+The unedited profile is independent of \(\eta\) there, with
+\(\ell_b=-\lambda\). The two smooth-step-derivative bumps are
+disjoint and satisfy
+\(\|\beta_i\|_\infty\le640/3\) and
+\(\|\beta_i'\|_\infty\le1715200/9\).
+Assume the authentic root-jet inputs already derived for
+\(T_f=512\), \(0<\lambda\le1/100\):
+\[
+|c_i|\le54\lambda^{28},\qquad
+|c_{i,\eta}|\le6\lambda^{28},\qquad
+0<h\le\lambda/100.
+\]
+Let \(y_R\) be the right edge of the second support. The
+source's exact A.11 correction makes \(I/(XH)=(1-\lambda)^{-1}\)
+at the end of the corrected plateau. From \(y_R\) to that
+endpoint there is no edit and \(\ell=-\lambda\). Uniqueness for
+\(r_y+(1-\lambda)r=1\), \(r=I/(XH)\), therefore gives the
+*backward terminal data*
+\[
+r(y_R,\eta)=\frac1{1-\lambda},\qquad
+r_\eta(y_R,\eta)=0.
+\]
+This is stronger than merely bounding the entrance moment.
+
+\begin{theorem}[Whole-hull \(Q_s\) without a pointwise mesh]
+\label{thm:a11-backward-angular-20261021}
+Under the preceding authentic coefficient-jet and terminal-moment
+hypotheses, the following hold throughout both correction supports
+and the \(17/10\) intervening gap:
+\[
+\left|r-\frac1{1-\lambda}\right|<6\cdot10^8\lambda^{28},
+\quad |r_\eta|<13\cdot10^7\lambda^{28},
+\quad \left|\frac{I_\eta}{XH}\right|<131\cdot10^6\lambda^{28},
+\]
+\[
+-\frac{3\lambda}{2}<\ell<-\frac\lambda2,\qquad
+Q_s\ge\frac{\lambda-h}{1-\lambda}
+-7\cdot10^8\lambda^{28}>\frac{49}{50}\lambda.
+\]
+\end{theorem}
+\begin{proof}
+Disjointness and the source bounds imply
+\[
+|u|\le11520\lambda^{28}<1/100,\quad
+|u_y|\le10291200\lambda^{28},\quad
+|u_\eta|\le1280\lambda^{28},\quad
+|u_{y\eta}|\le(10291200/9)\lambda^{28}.
+\]
+Because \(\ell+\lambda=u_y/(1+u)\),
+\(g:=\partial_\eta\log E=u_\eta/(1+u)\), and
+\(\ell_\eta=u_{y\eta}/(1+u)-u_yu_\eta/(1+u)^2\),
+exact rational comparisons at \(\lambda=1/100\) give
+\[
+|\ell+\lambda|<11\cdot10^6\lambda^{28},\quad
+|g|<1300\lambda^{28},\quad
+|\ell_\eta|<13\cdot10^5\lambda^{28}.
+\]
+The moment ratio satisfies \(r_y+(1+\ell)r=1\).
+Writing \(r_*=(1-\lambda)^{-1}\), integrate this equation
+backward from \(r(y_R)=r_*\):
+\[
+r(y)-r_*
+=r_*\int_y^{y_R}\exp\left(\int_y^t(1+\ell(v))\,dv\right)
+(\ell(t)+\lambda)\,dt.
+\]
+The hull length \(23/10\) and \(e^3<21\) imply
+\[
+|r-r_*|<\frac{100}{99}\frac{23}{10}
+21\cdot11\cdot10^6\lambda^{28}
+<6\cdot10^8\lambda^{28}.
+\]
+In particular \(0<r<2\). Differentiating the transport
+equation and integrating backward from \(r_\eta(y_R)=0\)
+gives
+\[
+|r_\eta|<2\frac{23}{10}21\cdot13\cdot10^5\lambda^{28}
+<13\cdot10^7\lambda^{28}.
+\]
+Since \(I_\eta/(XH)=r_\eta+rg\), its bound follows.
+Substitution into the *full* source formula for \(Q_s\)
+gives an error below \(7\cdot10^8\lambda^{28}\).
+Finally \(700000000(1/100)^{27}<1/100\), and
+\(h\le\lambda/100\). The slope interval follows from
+the first derivative bound.
+\end{proof}
+
+\begin{corollary}[Strict cone from a separate \(N_s/E\) tail gate]
+\label{cor:a11-backward-cone-20261021}
+In addition assume *for this same corrected profile* that
+the exact \(S(\infty)=\Pi(\infty)=0\) gauges and authenticated
+future-integral bounds give \(|N_s|/E\le503\lambda/2000\),
+and \(X\ge9/\lambda\) on the hull. Then, with
+\(a=2-2\ell\), \(p_1=XQ_s/(1-2h\eta^2)\) and
+\(w=N_s/(EQ_s)\),
+\[
+|N_s|/E<\lambda/2,\qquad
+2(1-a/p_1)^2-(a-2)w^2\ge
+\frac{85676973}{76832000}>\frac{11}{10}>\frac9{20}.
+\]
+\end{corollary}
+\begin{proof}
+The theorem gives \(p_1\ge441/50\),
+\(a\le43/20\), \(a/p_1<1/4\),
+\(|w|\le503/1960\), and \(a-2\le3/20\).
+The displayed value is the exact rational consequence.
+\end{proof}
+
+The advance removes the need to separately interval-sample
+\(Q_s\) or the corrected slope on the A.11 hull,
+*conditional on the same authentic root and terminal moment
+gauge*. It does **not** authenticate the A.19 \(S\)-root,
+the terminal pressure gauge, the future \(N_s\)-tail,
+the full exterior stage covering, Appendix B's nonlinear
+contraction, the unforced startup hierarchy, or Theorem~1.1.
+The companion Python checker verifies exact rational consequences;
+the new Lean module contains only scalar gates and does not
+formalize these source integral/ODE/PDE arguments.

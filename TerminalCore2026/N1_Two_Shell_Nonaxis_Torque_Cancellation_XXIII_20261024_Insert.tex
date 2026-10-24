@@ -1,0 +1,77 @@
+
+\subsection{Exact two-shell compensation of the first-harmonic slice torque}
+\label{subsec:nonaxis-two-shell-XXIII}
+The preceding Gaussian $m=\pm1$ model produces a nonzero radial-slice
+torque. Its scalar obstruction can be removed constructively at the
+level of smooth, solenoidal manufactured fields, without claiming
+that the authentic physical source has been reconstructed.
+
+\begin{proposition}[Two-shell exact radial-slice torque cancellation]
+\label{prop:two-shell-XXIII}
+Let $f_1,f_2$ be nonzero real $C^\infty$ compactly supported
+radial functions whose supports lie in disjoint annuli in $(0,\infty)$.
+Put $I_j=\int_0^\infty r^3f_j(r)^2\,dr>0$.
+For each $j$ use the $m=+1$ amplitudes
+\[
+a_j=f_j\cos z,\quad
+b_j=ia_j+\lambda_j r^2f_j\cos z,\quad
+c_j=-f_j'\sin z-i\lambda_j rf_j\sin z
+\]
+and add their conjugate $m=-1$ fields.
+If $\lambda_1\ne0$ and
+\[
+\boxed{\lambda_2=-\lambda_1 I_1/I_2},
+\]
+the resulting real velocity is smooth, divergence-free, finite-energy,
+and its averaged nonlinear angular source satisfies
+\[
+\boxed{\int_0^\infty r^2g_\theta(r,z)\,dr=0}
+\qquad\text{for every }z,
+\]
+while $g_\theta$ does not vanish identically on either of the two
+annular supports.
+\end{proposition}
+\begin{proof}
+Each modal divergence vanishes by direct differentiation.
+The disjoint radial supports eliminate all cross products of
+the two profiles. For an arbitrary one of the radial amplitudes
+$f=f_j$, Fourier averaging gives
+\[
+Q_{z\theta}
+=-2\lambda(r^2ff'+rf^2)\sin z\cos z.
+\]
+The cylindrical torque identity is
+$r^2g_\theta=\partial_r(r^2Q_{r\theta})
++\partial_z(r^2Q_{z\theta})$.
+The radial boundary term is zero because $f$ is compactly supported.
+Integration by parts yields
+\[
+\int_0^\infty (r^4ff'+r^3f^2)\,dr
+=-\int_0^\infty r^3f^2\,dr=-I.
+\]
+Thus the first shell contributes $2\lambda_1I_1\cos2z$
+and the second $2\lambda_2I_2\cos2z$.
+The displayed choice cancels their sum exactly.
+If the local source were identically zero on a support, setting
+$z=\pi/2$ would force $r^2ff'+rf^2=0$ throughout the
+support, hence $f\propto r^{-1}$ wherever $f\ne0$,
+contradicting smooth compact support of a nonzero annular profile.
+\end{proof}
+
+\paragraph{Independent rational fixture and scope.}
+For the piecewise-polynomial comparison profiles
+$f_1=(r-1)^4(2-r)^4$ on $[1,2]$ and
+$f_2=(r-3)^4(4-r)^4$ on $[3,4]$ (zero outside),
+exact integration gives
+\[
+ I_1=\frac{29}{1847560},\qquad
+ I_2=\frac{3269}{16628040},\qquad
+ \lambda_1=1,\quad \lambda_2=-\frac{261}{3269}.
+\]
+These specific test profiles are $C^3$, not $C^\infty$; the
+preceding theorem concerns genuine smooth compact bumps.
+An independent Fraction/SymPy calculation reproduces all rational
+values and exactly zero slice torque. No claim is made that the
+two-shell model solves the full original A.11/A.19 source, the
+seven-ray H8 cone, the $m=\pm2$ nonlinear residual, the infinite
+Fourier hierarchy, or the unforced Navier--Stokes blow-up problem.

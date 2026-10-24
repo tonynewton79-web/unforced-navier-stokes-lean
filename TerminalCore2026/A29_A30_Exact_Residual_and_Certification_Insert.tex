@@ -1,0 +1,139 @@
+\subsection*{Exact source residual behind the pulse ratio (A.29)--(A.30)}
+\label{subsec:pulse-source-actual-ratio}
+The originating manuscript \cite{openai2026} asserts that
+$w=N_s/(E Q_s)=2R-C_dR'+o(1)$ on its axial pulse.
+Its equations (4.15)--(4.16) give an exact, non-asymptotic
+certificate that isolates the errors to be enclosed.
+Let $D=1/2-h$, $A=1/2+h$, $\beta=1/2-\lambda$,
+$d=1-\eta^2$, $R=A_{\rm pulse}R_0(\lambda y)$ and
+$B_{\rm ax}=U/E-R$. On the pulse,
+$E=e_b(1+\eta^2)^{-1}e^{-(1/2+\lambda)y}$, so
+\[
+g=\partial_\eta\log E=-2\eta/(1+\eta^2),\qquad
+c_\eta=-D\eta g=2D\eta^2/(1+\eta^2).
+\]
+Set
+\[
+q_0=\frac{\lambda-h+c_\eta}{1-\lambda},\quad
+C_d=\frac{\lambda(D+c_\eta)(1-\lambda)}
+ {\beta^2(\lambda-h+c_\eta)},\quad
+w_0=2R-C_dR',\quad m=M/(XE).
+\]
+Define exact residuals
+\[
+e_m=m-R/\beta+\lambda R'/\beta^2,\quad
+e_Q=Q_s-q_0,\quad
+e_N=N_s/E+R-(D+c_\eta)m+D\eta m_\eta.
+\]
+\begin{proposition}[Exact pulse stress-ratio error identity]
+\label{prop:A29A30-exact-residual}
+Where $Q_s>0$,
+\begin{equation}\label{eq:A29A30-exact-ratio}
+\boxed{\displaystyle
+w-w_0=\frac{q_0(\lambda/\beta)R+(D+c_\eta)e_m
+      -D\eta m_\eta+e_N-w_0e_Q}{q_0+e_Q}.}
+\end{equation}
+In the source's radial-infinity pressure gauge,
+\begin{align}
+e_Q={}&-W+
+ \frac{(1-h)I-D\eta I_\eta-dJ_\eta
+       +2(h-D)\eta J}{XH}-q_0,\label{eq:A29A30-eq}\\
+e_N={}&(1-W)R-WB_{\rm ax}
++\frac{4h\eta S-dS_\eta}{XE}
++\frac{4A\eta\Pi-d\Pi_\eta}{E},
+\label{eq:A29A30-en}
+\end{align}
+where $H=\sqrt{2X}E$ and
+$W=1-(2D\eta M+dM_\eta)/X$.
+\end{proposition}
+\begin{proof}
+The two residual formulas are immediate from the exact
+source identities (4.16) after differentiating $M=XEm$:
+$M_\eta=XE(m_\eta+gm)$. The identity
+$D+c_\eta-\beta=\lambda-h+c_\eta$ gives
+\[
+-R+(D+c_\eta)(R/\beta-\lambda R'/\beta^2)
+-q_0(2R-C_dR')=q_0(\lambda/\beta)R.
+\]
+Now write $N_s/E$ using the residual definition, divide
+by $Q_s=q_0+e_Q$ and subtract $w_0$.
+\end{proof}
+
+\begin{corollary}[Rational sufficient $10^{-6}$ acceptance budget]
+\label{cor:A29A30-budget}
+Suppose $0<\lambda\le10^{-14}$,
+$0<h\le\lambda/10^4$, $|\eta|\le1$,
+$|R|\le12$, $|w_0|\le1500$. If on the complete
+pulse, including both axial end-bump supports,
+\[
+|e_Q|/q_0\le10^{-10},\quad
+|e_m|/q_0\le10^{-7},\quad
+|\eta m_\eta|/q_0\le2\cdot10^{-7},\quad
+|e_N|/q_0\le10^{-7},
+\]
+then $Q_s>0$ and $\sup|w-w_0|<10^{-6}$.
+\end{corollary}
+\begin{proof}
+Since $c_\eta\ge0$,
+$q_0\ge(9999/10000)\lambda$,
+$0<D<1/2$ and $0<D+c_\eta\le1$.
+Formula \eqref{eq:A29A30-exact-ratio} bounds the error
+by
+\[
+\frac{12\lambda/\beta+3\cdot10^{-7}
+       +1500\cdot10^{-10}}{1-10^{-10}}
+<4.51\cdot10^{-7}<10^{-6}.
+\]
+\end{proof}
+
+The previous bound $|c_i|\le\lambda/400000$ on the
+axial correction bumps suffices for the $b_s$ shear,
+but the existing source (A.28) bound permits its
+contribution to $|e_m|$ to reach
+$1280\max|c_i|/(3\beta)\le(8/3375)\lambda$.
+Thus the old assumption does not certify the new
+relative $10^{-7}$ error gate.
+
+\begin{lemma}[Conditional stronger axial coefficient estimate]
+\label{lem:A29A30-actual-bump}
+Assume the actual affine two-moment formula of
+Appendix A, $1.009\le A_{\rm pulse}\le1.011$,
+the source pre-pulse moment envelope $\max(|m_M|,|m_J|)
+\le9/100$ and $|m(0)|\le(9/100)\lambda^{27}$.
+For $0<\lambda\le10^{-14}$,
+\[
+ \max_i|c_i|<10^{-40}\lambda,\qquad
+ \sup_{\rm pulse}|e_m|/q_0<3\cdot10^{-8}.
+\]
+\end{lemma}
+\begin{proof}
+The source discrepancy formulas and the normalized inverse
+estimate $2/\lambda$ give
+\[
+D_0\le(9/100)e^{-(2/5)(13/\lambda-3)},\qquad
+D_1\le(55/2)e^{-(2/5)(2/\lambda-3)}.
+\]
+Writing $t=1/\lambda$, the bound $e^{6/5}<4$ yields
+$\max|c_i|<240t e^{-4t/5}$.
+The sixth term of the exponential series implies
+\[
+ \max|c_i|/\lambda
+ \le(10546875/16)t^{-4}<10^{-40}
+ \quad(t\ge10^{14}).
+\]
+The previously established complete (A.28) residual bound is
+$|e_m|\le2{,}131{,}000\lambda^2+
+(9/100)\lambda^{27}+(1280/(3\beta))\max|c_i|$.
+Divide by $q_0\ge(9999/10000)\lambda$ and apply
+$\beta\ge9/20$.
+\end{proof}
+
+The remaining source verification is therefore concentrated in
+$e_Q$, $e_N$, and $\eta m_\eta$ and their \emph{simultaneous}
+interval enclosures. The accompanying exact symbolic checker,
+rational interval engine and finite Lean scalar gates do not
+supply those source enclosures or a complete theorem proof.
+The full stress cone on every radial stage, source-admissible
+parameter freeze, Appendix B contraction, unforced correction
+hierarchy and physical unforced Navier--Stokes reconstruction
+remain open.

@@ -1,0 +1,174 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{hyperref}
+\usepackage{microtype}
+\setlength{\textwidth}{6.15in}
+\setlength{\oddsidemargin}{0.17in}
+\setlength{\evensidemargin}{0.17in}
+\setlength{\textheight}{8.8in}
+\setlength{\topmargin}{-0.28in}
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{remark}[theorem]{Remark}
+\title{A Sharp Weight-Ratio Bound for the Anisotropic\\
+Navier--Stokes Terminal-Core Expansion}
+\author{Tony Newton}
+\date{}
+\begin{document}
+\maketitle
+\begin{abstract}
+The convergence argument for the terminal-core coefficient hierarchy in
+\emph{Exact Local Unforced Terminal-Core Dynamics in Three-Dimensional
+Navier--Stokes} uses a radial regular-singular inverse to compensate for
+two derivatives in an axial similarity parameter.  The original analytic
+estimate bounded the relevant weight ratio by $16R/\rho^2$.  Here we obtain
+the sharp coefficient bound $8R/\rho^2$, uniformly in both derivative
+indices and for each of the two radial inverses.  We derive the associated
+operator inequality on the explicitly defined weighted coefficient space
+and distinguish this estimate from the coupled higher-order inverse
+needed for convergence of the complete Navier--Stokes series.
+\end{abstract}
+
+\section{The regular-singular estimate}
+The local unforced construction in \cite{newton2026} introduces formal
+coefficients of a terminal similarity expansion.  Its higher-order
+equations contain two derivatives in the axial similarity coordinate
+$\eta$.  A useful bound must therefore account for the \emph{same}
+analytic norm at every expansion order, rather than successively
+reducing a strip of analyticity.
+
+For a formal radial series
+$F(X,\eta)=\sum_{\alpha\geq0}F_\alpha(\eta)X^\alpha$, and fixed $R,\rho>0$,
+write
+\[
+ w_{\alpha,\beta}
+ =\frac{R^{-\alpha}\rho^{-\beta}\beta!
+   \binom{2\alpha+\beta}{\beta}}
+ {(\alpha+1)^2(\beta+1)^2},\qquad
+ \|F\|_{R,\rho}
+ =\sup_{\alpha,\beta\geq0}
+ \frac{\lvert\partial_\eta^\beta F_\alpha\rvert}
+ {w_{\alpha,\beta}}.
+\]
+When the coefficient derivatives exist and this supremum is finite,
+we consider the axis-regular inverse of
+\[
+ XG_{XX}+\nu G_X=F,\qquad G(0,\eta)=0,
+ \qquad \nu\in\{1,2\}.
+\]
+Coefficientwise it is
+\[
+ (J_\nu F)_{\alpha+1}
+  =\frac{F_\alpha}{(\alpha+1)(\alpha+\nu)}.
+\]
+The factor with which $J_\nu\partial_\eta^2$ changes the weighted
+coefficient seminorm is exactly
+\begin{equation}\label{eq:ratio}
+ \frac{w_{\alpha,\beta+2}}
+ {(\alpha+1)(\alpha+\nu)\,w_{\alpha+1,\beta}}
+ =\frac{R}{\rho^2}
+ \frac{2(\alpha+2)^2(2\alpha+1)(\beta+1)^2}
+ {(\alpha+1)^2(\alpha+\nu)(\beta+3)^2}.
+\end{equation}
+The estimate in the original paper takes the dimensionless last
+fraction to be at most $16$.  The optimal uniform bound is $8$.
+
+\begin{theorem}[Sharp uniform two-derivative ratio]\label{thm:sharp}
+For all real $a,b\geq0$ and $\nu\geq1$,
+\begin{equation}\label{eq:sharp}
+ \frac{2(a+2)^2(2a+1)(b+1)^2}
+ {(a+1)^2(a+\nu)(b+3)^2}\leq8.
+\end{equation}
+No smaller constant works uniformly for nonnegative integral indices
+$a,b$ and $\nu\in\{1,2\}$.
+\end{theorem}
+
+\begin{proof}
+The identity
+\[
+ 4(a+1)^3-(a+2)^2(2a+1)=a^2(2a+3)
+\]
+has nonnegative right-hand side for $a\geq0$.  Since
+$a+\nu\geq a+1$ and $(b+1)^2\leq(b+3)^2$, the fraction in
+\eqref{eq:sharp} is at most
+\[
+ \frac{2\cdot4(a+1)^3}{(a+1)^3}
+ \frac{(b+1)^2}{(b+3)^2}
+ \leq8.
+\]
+For $a=0$ and $\nu=1$ the fraction is precisely
+$8(b+1)^2/(b+3)^2$, which tends to $8$ as $b\to\infty$
+through the nonnegative integers.
+\end{proof}
+
+\begin{corollary}[Two-derivative inverse]\label{cor:inverse}
+In the weighted coefficient space above,
+\[
+ \|J_\nu\partial_\eta^2F\|_{R,\rho}
+ \leq \frac{8R}{\rho^2}\|F\|_{R,\rho},
+ \qquad \nu\in\{1,2\},
+\]
+whenever the coefficientwise operation is defined.
+\end{corollary}
+
+\begin{proof}
+The $\beta$th derivative of the $(\alpha+1)$st coefficient of
+$J_\nu\partial_\eta^2F$ equals
+$\partial_\eta^{\beta+2}F_\alpha/
+ ((\alpha+1)(\alpha+\nu))$. Divide by $w_{\alpha+1,\beta}$,
+apply \eqref{eq:ratio} and Theorem~\ref{thm:sharp}, and take
+the supremum over both indices.  The constant radial
+coefficient of the image vanishes.
+\end{proof}
+
+\section{Relation to the full hierarchy}
+Corollary~\ref{cor:inverse} improves the constant in
+Lemma~4.2 and Appendix~B.2 of \cite{newton2026}.  The improvement
+does not change the analytic space, the two-derivative allowance,
+or the radial valuation assigned to each expansion order.
+
+There are further hypotheses in the passage from the scalar inverse
+to the Navier--Stokes coefficient hierarchy.  In particular, the
+current-order feedback $K_n$ is a coupled operator involving the
+radial and axial velocity coefficients, the similarity shifts,
+and pressure integration.  The estimate
+\[
+ \|K_n\|_{I_n\times I_n\to I_n\times I_n}\leq \frac{C}{n}
+\]
+depends on controlling all four current-order blocks on a common
+analytic space.  Neither Theorem~\ref{thm:sharp} nor
+Corollary~\ref{cor:inverse} supplies those four block estimates
+by itself.  The exponential majorant and exact unforced physical
+reconstruction consequently remain separate steps in a formal
+verification of the main convergence theorem.
+
+\section{Formal verification}
+The inequality \eqref{eq:sharp}, stated for all real
+$a,b\geq0$ and $\nu\geq1$, is formalized in Lean~4 as
+\texttt{TerminalCore2026.two\_derivative\_ratio\_le\_eight}.
+This is stronger than checking finitely many triples of indices:
+its proof relies on the polynomial identity used above and
+ordered-real arithmetic.  The accompanying Lean modules also
+check coefficientwise radial inversion, scaling-exponent identities,
+and a conditional first-zero obstruction for the axial derivative.
+The source, pinned toolchain, and GitHub Actions jobs appear at
+\begin{center}
+\small
+\url{https://github.com/tonynewton79-web/unforced-navier-stokes-lean/pull/1}.
+\end{center}
+The Lean theorem directly certifies the universal
+\emph{ratio inequality}.  A separate Lean implementation of the
+weighted coefficient space and the operators remains necessary
+to kernel-check Corollary~\ref{cor:inverse} as a function-space result.
+
+\begin{thebibliography}{9}
+\bibitem{newton2026}
+T. Newton,
+\emph{Exact Local Unforced Terminal-Core Dynamics in
+Three-Dimensional Navier--Stokes: Anisotropic Concentration and Swirl
+Reversals}, Zenodo (2026),
+\url{https://doi.org/10.5281/zenodo.23474915}.
+\end{thebibliography}
+\end{document}

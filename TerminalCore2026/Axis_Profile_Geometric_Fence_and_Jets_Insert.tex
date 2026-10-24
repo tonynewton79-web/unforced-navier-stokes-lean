@@ -1,0 +1,125 @@
+\subsection*{An explicit complex fence for the axis data and the first two radial jets}
+\label{subsec:axis-fence-jets}
+The outstanding source certificate must start with Appendix B.1 of \cite{openai2026}. We isolate a zero-free domain for the rational axis multiplier without replacing the prescribed outer pressure trace by a surrogate.
+
+For $0<h\le1/100$, $0<j_0\le1/20$, $0<\sigma\le1/10$, put
+\[
+ D=\tfrac12-h,\quad L(z)=1-2hz^2,\quad d(z)=1-z^2,\quad
+ U_*(z)=4z+j_0,\quad H_*(z)=Dz+d(z)U_*(z)
+\]
+and $\mathcal R_\sigma=\{z=x+iy:|x|\le11/10,\ |y|\le\sigma/100\}$.
+
+\begin{proposition}[Explicit zero-free axis-data neighborhood]
+\label{prop:axis-data-zero-free}
+On $\mathcal R_\sigma$,
+\[
+ |L(z)|\ge607/625,\qquad |H_*(z)^2+\sigma^2|\ge9\sigma^2/16.
+\]
+Thus $\zeta_*=-LH_*/(H_*^2+\sigma^2)$ is holomorphic on the interior of $\mathcal R_\sigma$, with
+\[
+ \sup|\zeta_*|\le25/\sigma^2,\qquad
+ \sup_{z\in\mathcal R_\sigma}\left|\exp\left(\Lambda\int_0^z\zeta_*(w)\,dw\right)\right|
+ \le\exp(30\Lambda/\sigma^2)
+ \quad(\Lambda\ge0).
+\]
+In particular $C\ge\exp(30\Lambda/\sigma^2)$ suffices for condition (B.16) on this rectangle, but not automatically for the other conditions of Proposition B.2.
+\end{proposition}
+\begin{proof}
+Since $|z|\le6/5$, one has
+$|L-1|\le(2/100)(6/5)^2=18/625$. Furthermore
+\[
+ H_*'=D+4-12z^2-2j_0z,\qquad
+ |H_*'|\le219/10<22\quad (|z|\le6/5).
+\]
+For real $x$, $H_*(x)$ is real. Integrating vertically gives
+$|\operatorname{Im}H_*(x+iy)|\le22|y|\le11\sigma/50<\sigma/4$.
+Consequently $|H_*\pm i\sigma|\ge3\sigma/4$. The bounds
+$|L|\le643/625<103/100$ and $|H_*|\le6217/500<13$
+give $|\zeta_*|\le(103/100)13\cdot16/(9\sigma^2)<25/\sigma^2$.
+A path from $0$ first horizontally and then vertically has length
+less than $6/5$ and stays inside the rectangle. Integrate and exponentiate.
+\end{proof}
+
+Cauchy's estimate on parameter disks of radius $\sigma/200$ shows that, if $C$ meets the displayed requirement, the normalized axis datum $g=\varphi_*/C$ satisfies
+$|\partial_\eta^m g|\le m!(200/\sigma)^m$ on $[-1,1]$.
+The degree-zero doubled coefficient norm therefore obeys
+$\|g\|_{\mathcal B}\le1$ for $\rho\le\sigma/1600$.
+
+For the \emph{diagnostic} tuple $h=1/200$, $j_0=1/50$,
+$\sigma=1/100$, the polynomial is
+\[
+ H_*=-4\eta^3-\eta^2/50+(899/200)\eta+1/50.
+\]
+It obeys $H_*(-1/200)=-99/40000<0$,
+$H_*(-1/250)=63123/31250000>0$ and
+$\inf_{[-1,1]}(-W_*)\ge14701/5000>2.8$.
+The denominator is zero-free on
+$|\operatorname{Re}\eta|\le1.1$, $|\operatorname{Im}\eta|\le10^{-4}$,
+with $|\zeta_*|\le250000$. This geometric diagnostic is
+\emph{not} a source-admissible parameter tuple: condition (B.2)
+requires the actual $Z_*$ and pressure trace.
+
+\paragraph{The first two radial jets in the source profile.}
+Use the exact rescaled radial equations (B.12)--(B.15). Write
+\[
+ \Phi=1+p_1Y+p_2Y^2+O(Y^3),\qquad
+ u=q_1Y+q_2Y^2+O(Y^3),\qquad
+ g=\varphi_*/C,
+\]
+with $\chi=H_*^2/(H_*^2+\sigma^2)$ and $\zeta_*=-LH_*/(H_*^2+\sigma^2)$. Define
+\[
+ A_0=W_*+h(1-2\eta U_*),\quad
+ B_1=-D\eta q_1-\tfrac12d q_1',
+\]
+\[
+ \mathcal R_{1,1}=
+ \frac{(2W_*+h(1-2\eta U_*))p_1+H_*p_1'
+       +\Lambda^{-1}(B_1-2h\eta q_1)+dq_1\zeta_*}{L},
+\]
+\[
+ \mathcal R_{2,1}=
+ [A(1-4\eta U_*)+dU_*'+W_*]q_1+H_*q_1'
+       +d(g^2)'-(4A+2)\eta g^2.
+\]
+\begin{proposition}[Two exact rescaled radial coefficients]
+\label{prop:axis-first-jets}
+Every analytic solution with the prescribed Appendix-B data satisfies
+\[
+ p_1=\frac14\left(-\chi+\frac{A_0}{\Lambda L}\right),\quad
+ q_1=-\frac{Z_*}{2L},\quad
+ p_2=\frac{-\chi p_1+\Lambda^{-1}\mathcal R_{1,1}}{12},\quad
+ q_2=\frac{\mathcal R_{2,1}}{8\Lambda}.
+\]
+The first pressure coefficients are
+\[
+ \Pi(Y,\eta)=\Pi_0(\eta)
+ +\frac{g^2}{\Lambda}Y+\frac{g^2p_1}{\Lambda}Y^2+O(Y^3).
+\]
+\end{proposition}
+\begin{proof}
+Equation (B.14) gives
+$W=W_*+\Lambda^{-1}[-2D\eta A_Yu-d\partial_\eta A_Yu]$,
+$A_Yu=q_1Y/2+O(Y^2)$, and $H_c=H_*+\Lambda^{-1}du$.
+The constant and linear coefficients in
+$2(Y\Phi_{YY}+2\Phi_Y)=-\chi\Phi+\Lambda^{-1}R_1$
+are $4p_1=-\chi+A_0/(\Lambda L)$ and
+$12p_2=-\chi p_1+\Lambda^{-1}\mathcal R_{1,1}$.
+In $2(Yu_{YY}+u_Y)=-Z_*/L+\Lambda^{-1}R_2$
+they are $2q_1=-Z_*/L$ and
+$8q_2=\mathcal R_{2,1}/\Lambda$.
+Integrate $\Pi_Y=\Lambda^{-1}g^2\Phi^2$.
+\end{proof}
+
+\paragraph{The missing admissibility certificate.}
+The source's $\Pi_0$ is the specific exterior-schedule integral
+$\Pi_0(\eta)=-\frac12\int_{-\infty}^{\infty}
+ E_{\mathrm{id,sched}}(y,\eta)^2\,dy$ of Lemma A.5.
+A complete numerical certificate must freeze and interval-enclose
+that entire schedule and integral; verify (B.2) for
+$\delta_*,\sigma_*$; and provide concrete thresholds for
+$\Lambda$, $C$, and the nonlinear contraction ball.
+The rational zero-free domain alone proves none of these.
+The displayed $Y$-jets of the \emph{leading} profile are not
+the distinct similarity-order $n=1,2$ correction fields.
+Neither their construction nor the unforced PDE reconstruction
+is completed by this note.

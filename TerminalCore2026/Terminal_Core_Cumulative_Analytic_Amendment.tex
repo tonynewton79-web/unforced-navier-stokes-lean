@@ -1,0 +1,343 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,microtype,hyperref}
+\usepackage[margin=0.95in]{geometry}
+\hypersetup{colorlinks=true,linkcolor=black,urlcolor=blue,citecolor=black}
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\title{Analytic Estimates and Source-Level Certificates\\for a Terminal-Core Navier--Stokes Expansion}
+\author{Tony Newton\\Newton Astro Labs\thanks{Newton Astro Labs is the trading name under which Tony Newton conducts independent computational research in the United Kingdom; it is not a limited company.}\\London, UK\\\texttt{tony.newton79@gmail.com}}
+\date{}
+\begin{document}
+\maketitle
+\begin{abstract}
+We reassess the proposed unforced terminal-core Navier--Stokes expansion
+against the source's pulse residuals and forced global theorem. Existing
+algebra and interval-comparison methods reduce parts of the problem,
+but no complete source-derived pulse intervals have been produced.
+We prove an exact centerline precision requirement and a polynomial
+cancellation formula suitable for high-accuracy interval evaluation.
+A strengthened fail-closed verifier distinguishes actual file-hash
+replay from proof that the intervals enclose the prescribed smooth
+fields. The full pulse stress cone, Appendix-B contraction, unforced
+correction hierarchy and physical zero-force residual remain open.
+The proposed unforced Theorem~1.1 is not established.
+\end{abstract}
+
+\section{The common weighted space}
+The central analytic question in \cite{newton2026} is whether all orders of a formal inner correction hierarchy can be estimated on one terminal similarity core. For $R,\rho>0$, let
+\begin{equation}\label{eq:weight}
+ w_{a,b}=\frac{R^{-a}\rho^{-b}\,b!\binom{2a+b}{b}}{(a+1)^2(b+1)^2},
+ \qquad a,b\in\mathbb N_0.
+\end{equation}
+For $F(X,\eta)=\sum_{a\ge0}F_a(\eta)X^a$ with analytic coefficient functions on a fixed parameter domain $E$, put
+\begin{equation}\label{eq:norm}
+ \|F\|_{R,\rho;E}=\sup_{a,b\ge0}\ \sup_{\eta\in E}
+ \frac{|\partial_\eta^b F_a(\eta)|}{w_{a,b}},
+\end{equation}
+whenever the right-hand side is finite. The estimate below applies equally to an algebra of complex analytic germs provided the chosen coefficient norm is finite. The radial regular-singular inverse is defined coefficientwise by
+\begin{equation}\label{eq:radinv}
+ X(J_\nu F)_{XX}+\nu(J_\nu F)_X=F,\quad (J_\nu F)(0,\eta)=0,
+ \qquad (J_\nu F)_{a+1}=\frac{F_a}{(a+1)(a+\nu)},
+\end{equation}
+with $\nu=1$ or $2$. We use the ideal $I_m=\{F:F_a=0\text{ for }a<m\}$ with the \emph{induced} norm $\|F\|_{I_m}:=\|F\|_{R,\rho;E}$.
+
+\section{Three inverse channels}
+For $k\in\{0,1,2\}$ define the normalized weight ratio
+\begin{equation}\label{eq:ratio_def}
+ T_k(a,b,\nu):=\frac{w_{a,b+k}}{(a+1)(a+\nu)w_{a+1,b}}.
+\end{equation}
+Direct factorial cancellation yields, for $a,b\in\mathbb N_0$ and $\nu\ge1$,
+\begin{align}
+ T_0&=R\frac{2(a+2)^2(2a+1)}{(a+1)^2(a+\nu)(2a+b+1)(2a+b+2)},\label{eq:t0}\\
+ T_1&=\frac R\rho\frac{2(a+2)^2(2a+1)(b+1)^2}{(a+1)^2(a+\nu)(2a+b+2)(b+2)^2},\label{eq:t1}\\
+ T_2&=\frac R{\rho^2}\frac{2(a+2)^2(2a+1)(b+1)^2}{(a+1)^2(a+\nu)(b+3)^2}.\label{eq:t2}
+\end{align}
+These identities match the two-derivative multiplier in equation (45) of \cite{newton2026}; the zero- and one-derivative ratios are included here because the linear current-order channels contain at most one $\eta$-derivative.
+
+\begin{theorem}[Radial valuation gains]\label{thm:ratios}
+For all integers $a,b\ge0$, all $\nu\ge1$, and $R,\rho>0$,
+\begin{equation}\label{eq:bounds}
+ 0\le T_0\le \frac{4R}{(a+1)^2},\qquad
+ 0\le T_1\le \frac{8R}{\rho(a+1)},\qquad
+ 0\le T_2\le \frac{8R}{\rho^2}.
+\end{equation}
+The constant $8$ in the last inequality is optimal as a uniform bound over $a,b\in\mathbb N_0$ and $\nu\in\{1,2\}$.
+\end{theorem}
+\begin{proof}
+For the first estimate, both factors in $(2a+b+1)(2a+b+2)$ are nondecreasing in $b$. Hence
+\[
+ T_0\le R\frac{(a+2)^2}{(a+1)^3(a+\nu)}
+ \le R\frac{(a+2)^2}{(a+1)^4}\le\frac{4R}{(a+1)^2},
+\]
+where $a+\nu\ge a+1$ and $a+2\le2(a+1)$. For the second, we use $(2a+1)/(2a+b+2)\le1$, $(b+1)^2/(b+2)^2\le1$, and $(a+2)^2/(a+1)^2\le4$; thus
+\[
+ T_1\le\frac{8R}{\rho(a+\nu)}\le\frac{8R}{\rho(a+1)}.
+\]
+For the third, the polynomial identity
+\[
+ 4(a+1)^3-(a+2)^2(2a+1)=a^2(2a+3)\ge0
+\]
+gives
+\[
+ T_2\le\frac{8R}{\rho^2}\frac{(b+1)^2}{(b+3)^2}
+ \le\frac{8R}{\rho^2}.
+\]
+At $a=0$, $\nu=1$ this last ratio is exactly $8R(b+1)^2/[\rho^2(b+3)^2]$, which approaches $8R/\rho^2$ as $b\to\infty$.
+\end{proof}
+
+\begin{corollary}[Ambient weighted inverse estimates]\label{cor:ambient}
+For each $m\ge0$, for $F\in I_m$ on which the indicated operations are defined,
+\begin{align}
+ \|J_\nu F\|_{I_{m+1}}&\le\frac{4R}{(m+1)^2}\|F\|_{I_m},\label{eq:zero}\\
+ \|J_\nu\partial_\eta F\|_{I_{m+1}}&\le\frac{8R}{\rho(m+1)}\|F\|_{I_m},\label{eq:one}\\
+ \|J_\nu\partial_\eta^2F\|_{I_{m+1}}&\le\frac{8R}{\rho^2}\|F\|_{I_m}.\label{eq:two}
+\end{align}
+In particular, with $D_X=X\partial_X$ and $\lambda_n=2hn$ for $h>0$, one has for $F\in I_n$,
+\begin{equation}\label{eq:shift}
+ \big\|J_\nu(\lambda_n F+D_XF+\partial_\eta F)\big\|_{I_{n+1}}
+ \le \frac{8hR+4R+8R/\rho}{n+1}\,\|F\|_{I_n}.
+\end{equation}
+\end{corollary}
+\begin{proof}
+For each output pair $(a+1,b)$ the corresponding weighted coefficient is bounded by $T_k(a,b,\nu)\|F\|_{I_m}$; taking suprema proves \eqref{eq:zero}--\eqref{eq:two}. The multiplier $D_X$ contributes a factor $a$ to the $a$th coefficient. Thus $aT_0\le4Ra/(a+1)^2\le4R/(n+1)$ for $a\ge n$. Also $\lambda_nT_0\le8hRn/(n+1)^2\le8hR/(n+1)$. Applying the triangle inequality with \eqref{eq:one} gives \eqref{eq:shift}.
+\end{proof}
+
+\section{Why the ideal norm must be specified}
+Writing $I_m=X^m\mathcal B$ leaves open two inequivalent choices of norm. The \emph{induced} norm is the restriction of \eqref{eq:norm} to the series having no radial terms of degree less than $m$, and is the choice used in Corollary~\ref{cor:ambient}. The alternative \emph{quotient} convention identifies $X^m f$ with $f\in\mathcal B$ and assigns $\|X^mf\|_{I_m}^{\mathrm{quot}}=\|f\|_{\mathcal B}$.
+
+\begin{proposition}[Failure of two-derivative control in quotient ideal norms]\label{prop:quotient}
+Fix $m\ge0$, $R,\rho>0$ and $\nu>0$. Under the quotient convention, $J_\nu\partial_\eta^2:I_m\to I_{m+1}$ is unbounded.
+\end{proposition}
+\begin{proof}
+For each $k>0$, let $f_k(\eta)=e^{k\eta}$ on a fixed compact parameter interval and put $F_k(X,\eta)=X^m f_k(\eta)$. The factorial growth in \eqref{eq:weight} makes $\|f_k\|_{\mathcal B}$ finite and nonzero for every fixed $k$. Directly from \eqref{eq:radinv},
+\[
+ J_\nu\partial_\eta^2F_k
+ =\frac{k^2}{(m+1)(m+\nu)}X^{m+1}f_k.
+\]
+The ratio of output and input \emph{quotient} norms is therefore $k^2/[(m+1)(m+\nu)]$, which tends to infinity with $k$.
+\end{proof}
+
+\noindent This result does not contradict the induced-norm estimate \eqref{eq:two}. Its importance is expository and structural: bounds used to pass from the radial valuation ladder to an analytic space must specify which of these norms is intended. Moreover, \eqref{eq:two} cannot be strengthened to a decay bound of order $1/m$ without additional structure; in the normalized coefficient calculation \eqref{eq:t2}, taking $b$ large and then $a\to\infty$ with $\nu$ fixed leaves a positive limiting multiplier $4R/\rho^2$. The delayed two-derivative channel must consequently remain separate from the one-derivative current feedback.
+
+\section{Relation to the coupled current-order problem}
+The coefficient equations of \cite{newton2026} write the current pair $w_n=(\varphi_n,U_n)$ as $w_n=S_nf_n+K_nw_n$, where $K_n$ consists of the four operators in equations (47)--(50). Estimates \eqref{eq:bounds}--\eqref{eq:shift} quantify the scalar radial inverse in those expressions. They do not by themselves bound the map $U_n\mapsto V_n[U_n]$, multiplication by the leading profiles, or the pressure primitive and its shifted axial derivative. Those maps must be constructed and estimated in the same induced weighted norm before a bound of the form $\|K_n\|\le C/n$ can be used.
+
+For the sum norm $\|(\varphi,U)\|=\|\varphi\|+\|U\|$, a sufficient operator-norm estimate follows from four concrete block bounds. If
+\[
+ \|K_n^{ij}\|\le\frac{c_{ij}}{n+1}\qquad (i,j\in\{\varphi,U\}),
+\]
+then the triangle inequality gives
+\begin{equation}\label{eq:matrix}
+ \|K_n\|\le\frac{1}{n+1}
+ \max\{c_{\varphi\varphi}+c_{U\varphi},\
+ c_{\varphi U}+c_{UU}\}.
+\end{equation}
+The estimate \eqref{eq:matrix} explains the exact remaining verification task: the coefficients $c_{ij}$ must be derived from the four actual PDE channels, not assigned as hypotheses. Only then do Neumann inversion, the quadratic coefficient majorant, normal convergence, and physical PDE reconstruction become available as subsequent steps.
+
+The pointwise weight identity and sharp two-derivative inequality have already been checked in Lean 4. The one-derivative inequality and the integrated Banach-space consequences require separate kernel certificates; the rational regression program checks the three ratio formulas and their bounds on an extensive finite grid but is not a proof for all orders. The reproducibility materials are maintained at \url{https://github.com/tonynewton79-web/unforced-navier-stokes-lean/pull/1}.
+
+\input{Four_Block_and_Majorant_Insert.tex}
+
+\input{CauchyProfileBridge_Insert.tex}
+
+\input{AnalyticReconstruction_Insert.tex}
+
+\input{Delayed_Pressure_Source_Ledger_Insert.tex}
+
+\input{Remaining_Linear_Pressure_and_Nonlinear_Ledger_Insert.tex}
+
+\input{Leading_Profile_Pressure_Cancellation_Insert.tex}
+
+\input{Quadratic_Pressure_Symmetrization_Insert.tex}
+
+\input{Weighted_Radial_Convolution_Smoothing_Insert.tex}
+
+\input{Full_Leading_Pressure_Normal_Form_Insert.tex}
+
+\input{Quadratic_Highest_Jet_Insert.tex}
+
+\input{Complete_Bilinear_Pressure_Insert.tex}
+
+\input{Direct_Momentum_and_Pressure_Norm_Insert.tex}
+
+\input{Leading_Profile_Radius_and_Current_Feedback_Insert.tex}
+
+\input{Fixed_Radius_Volterra_and_Two_Space_Majorant_Insert.tex}
+
+\input{Source_Level_Startup_and_Reconstruction_Insert.tex}
+
+\input{Axis_Profile_Geometric_Fence_and_Jets_Insert.tex}
+
+\input{Outer_Pressure_Measure_and_Admissibility_Insert.tex}
+
+\input{Outer_Pressure_Schedule_Enclosure_Insert.tex}
+
+\input{Pulse_Moment_Matrix_and_Amplitude_Insert.tex}
+
+\input{Exact_A19_Remainder_and_Quadratic_Amplitude_Insert.tex}
+
+\input{Source_Moment_Transport_and_Bump_Correction_Insert.tex}
+
+\input{Pulse_Entrance_Uniform_Source_Envelope_Insert.tex}
+\input{Source_A11_Azimuthal_Moment_Correction_Insert.tex}
+
+\input{A11_Derivatives_and_Explicit_Terminal_Stop_Insert.tex}
+
+\input{A11_Cone_Certificate_Insert.tex}
+
+\input{A11_Actual_Ns_Exterior_Tail_Certificate_Insert.tex}
+
+\input{A5_Pulse_Quantified_Cone_Insert.tex}
+
+\input{A29_A30_Exact_Residual_and_Certification_Insert.tex}
+
+\input{Normalized_Moment_Jet_and_Ratio_Insert.tex}
+
+\input{Ten_State_Affine_Interval_Tubes_Insert.tex}
+
+\input{Pulse_Exact_Integrating_Factors_Insert.tex}
+
+\input{Pulse_End_Exact_Moment_Cancellation_Insert.tex}
+
+\input{Full_Pulse_Coverage_and_Proof_Gates_Insert.tex}
+
+\input{Pulse_Precision_and_Proof_Provenance_Insert.tex}
+
+\input{Fixed_Pulse_Source_Interval_Certification_Insert.tex}
+
+\input{A11_Ns_Quantitative_Slack_Insert.tex}
+
+\input{A11_Endpoint_Tail_Comparison_Insert.tex}
+
+\input{A11_Local_Short_Tail_Insert.tex}
+
+\input{A11_Local_Parameter_Derivative_Cancellation_Insert.tex}
+
+\input{A11_Qs_Eta_Derivative_Improved_Cone_Insert.tex}
+
+\input{A11_Exact_Entrance_Angular_Jet_Insert.tex}
+
+\input{A11_Entrance_Derivative_and_Ns_Certificate_Insert.tex}
+\input{A11_Support_Stress_Improved_20261021_Insert.tex}
+
+\input{A11_Joint_Parameter_Wedge_and_Strict_Cone_20261021_Insert.tex}
+
+\input{A11_Stress_Support_Certificate_Insert.tex}
+
+\input{A11_Final_Rational_Stress_Gate_20261021_Insert.tex}
+
+\input{A11_Full_Patch_Gap_20261021_Insert.tex}
+
+\input{A11_Terminal_Parity_And_Improved_Tail_20261021_Insert.tex}
+
+\input{A11_Terminal_Gauge_and_Tail_20261021_Insert.tex}
+
+\input{A11_Terminal_Rigidity_and_A19_Residual_20261021_Insert.tex}
+
+\input{A11_Exact_Root_Entire_Hull_Bridge_20261021_Insert.tex}
+
+\input{A11_Independent_Future_Integral_Audit_20261021_Insert.tex}
+
+\input{A11_Authentic_Root_Jet_20261021_Insert.tex}
+
+\input{A11_Robust_Whole_Hull_20261021_Insert.tex}
+
+\input{A11_Consolidated_Independent_Audit_20261021_Insert.tex}
+
+\input{A11_Backward_Angular_Endpoint_20261021_Insert.tex}
+
+\input{A11_Source_Local_Future_Tail_20261022_Insert.tex}
+
+\input{A11_Explicit_Profile_Size_20261022_Insert.tex}
+
+\input{A11_Terminal_Gauge_Robust_20261022_Insert.tex}
+
+\input{A11_Support_Measure_Refinement_20261022_Insert.tex}
+
+\input{A11_Terminal_Gauge_Residual_Lift_20261022_Insert.tex}
+
+\input{A11_Full_Unforced_Source_Gate_20261022_Insert.tex}
+
+\input{A11_Interval_Net_and_Release_Margin_20261022_Insert.tex}
+
+\input{A11_Transport_Jet_Reduction_20261022_Insert.tex}
+
+\input{A11_A10_Exact_Fixed_Stage_Closure_20261022_Insert.tex}
+
+\input{A11_A19_Coupled_Gauge_Edition_V_20261022_Insert.tex}
+
+\input{A11_Pressure_Gauge_Source_Closure_Edition_VI_20261022_Insert.tex}
+
+\input{A7_Heat_Pressure_Compensation_Edition_VII_20261022_Insert.tex}
+
+\input{N1_First_Order_Collar_Obstruction_Edition_VIII_20261022_Insert.tex}
+
+\input{N1_Swirl_Compatibility_Edition_IX_20261022_Insert.tex}
+
+\input{N1_Coupled_Vorticity_Edition_X_20261022_Insert.tex}
+
+\input{N1_Pressure_Free_Witness_Edition_XI_20261023_Insert.tex}
+
+\input{N1_Nonflat_Startup_Edition_XII_20261023_Insert.tex}
+
+\input{N1_Projected_Stokes_First_Step_Edition_XIII_20261023_Insert.tex}
+
+\input{N1_Nonlinear_Picard_Gate_Edition_XIV_20261023_Insert.tex}
+
+\input{N1_Terminal_H3_Scaling_Edition_XV_20261023_Insert.tex}
+
+\input{N1_Source_Axis_Third_Jet_Edition_XVI_20261023_Insert.tex}
+
+\input{N1_Cauchy_Jet_Radius_Edition_XVII_20261023_Insert.tex}
+
+\input{N1_Exterior_Derivative_Certificate_Edition_XVIII_20261023_Insert.tex}
+
+\input{N1_Projected_Second_Order_And_Dual_Witness_Edition_XIX_20261024_Insert.tex}
+
+\input{N1_Source_Heat_Exterior_IBP_Edition_XX_20261024_Insert.tex}
+
+\input{N1_Analytic_No_Exact_Gluing_Edition_XXI_20261024_Insert.tex}
+
+\input{N1_Circulation_Maximum_Principle_Gate_Edition_XXII_20261024_Insert.tex}
+
+\input{N1_Nonaxis_Fourier_Coupling_Edition_XXIII_20261024_Insert.tex}
+
+\input{N1_Two_Shell_Nonaxis_Torque_Cancellation_XXIII_20261024_Insert.tex}
+
+\input{N1_Weighted_Flux_Source_Gate_Edition_XXIV_20261024_Insert.tex}
+
+\input{N1_Rank_Defect_And_Two_Frequency_Repair_XXIV_20261024_Insert.tex}
+
+\input{N1_Two_Frequency_Solenoidal_Strict_Stress_XXIV_20261024_Insert.tex}
+
+\input{N1_Two_Mode_Strict_Cone_And_Torque_XXIV_20261024_Insert.tex}
+
+\input{N1_Seven_Ray_Exact_Cone_Completion_Edition_XXV_20261024_Insert.tex}
+
+\input{N1_Global_Ray_Cone_Quotient_And_Axial_Localization_Edition_XXVI_20261024_Insert.tex}
+
+\input{N1_Calibrated_Seven_Ray_Gauge_Edition_XXVII_20261024_Insert.tex}
+
+\input{N1_Source_Dependent_Sharp_Ray_Inverse_Edition_XXVIII_20261024_Insert.tex}
+
+\input{N1_Source_Residual_Startup_Gate_Edition_XXIX_20261024_Insert.tex}
+
+\input{N1_Heat_Spectral_Shell_And_Nonzero_Startup_Edition_XXX_20261024_Insert.tex}
+
+\begin{thebibliography}{9}
+\bibitem{newton2026}
+T.~Newton, \emph{Exact Local Unforced Terminal-Core Dynamics in Three-Dimensional Navier--Stokes: Anisotropic Concentration and Swirl Reversals}, Zenodo (2026). \url{https://doi.org/10.5281/zenodo.23474915}.
+\bibitem{openai2026}
+OpenAI, \emph{Finite Time Blowup for Navier--Stokes}, research manuscript (2026), Appendix B.
+\url{https://cdn.openai.com/pdf/32d9f210-8b73-45e0-91bc-82a30aef8a9a/navier-stokes.pdf}.
+\bibitem{zhang2026analyticity}
+P.~Zhang, \emph{3-D Anisotropic vs. Classical Incompressible Navier--Stokes Equations}, Proceedings of the International Congress of Mathematicians 2026, Vol.~5, pp.~388--407 (2026). \url{https://doi.org/10.1137/25M1801980}.
+\bibitem{circulationMP2023}
+\emph{Quantitative Control of Solutions to the Axisymmetric Navier--Stokes Equations in Terms of the Weak $L^3$ Norm},
+Annals of PDE (2023), Section 5, equation (49).
+\url{https://doi.org/10.1007/s40818-023-00156-7}.
+\end{thebibliography}
+\end{document}

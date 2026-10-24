@@ -1,0 +1,124 @@
+
+\section{Weighted angular-flux feasibility before source-matched stress closure}
+\label{sec:weighted-flux-XXIV}
+This section supplies a source-facing \emph{necessary} test for the
+nonaxisymmetric correction route of Section~\ref{sec:nonaxis-Fourier-XXIII}.
+The argument is elementary positivity and integration by parts; we do
+not claim novelty for the covariance inequality or Navier--Stokes
+energy identity. The proposed physical source and full unforced
+blow-up theorem remain uncertified.
+
+\begin{theorem}[Weighted covariance and two-slice torque obstruction]
+\label{thm:weighted-flux-XXIV}
+Let $v$ be a real smooth field, compactly supported in an annulus
+$0<r<b$, periodic in $z$, and let
+$Q_{ij}(r,z)=\langle v_i v_j\rangle_\theta$.
+Define the azimuthal nonlinear mean momentum flux, its radial-slice
+torque, and the two weighted diagonal moments by
+\[
+g_\theta=\frac1{r^2}\partial_r(r^2Q_{r\theta})
+               +\partial_zQ_{z\theta},\quad
+m(z)=\int_0^\infty r^2g_\theta(r,z)\,dr,
+\]
+\[
+T(z)=\int_0^\infty r^2Q_{\theta z}(r,z)\,dr,\qquad
+E_j(z)=\int_0^\infty r^2Q_{jj}(r,z)\,dr
+\quad(j=\theta,z).
+\]
+Then, for every $z$,
+\begin{equation}\label{eq:weighted-CS-XXIV}
+m(z)=T'(z),\qquad
+T(z)^2\le E_\theta(z)E_z(z),\qquad
+2|T(z)|\le E_\theta(z)+E_z(z).
+\end{equation}
+For any primitive $M'(z)=m(z)$ and any interval $I$ in $z$,
+\begin{equation}\label{eq:torque-osc-XXIV}
+\boxed{\ \sup_{z\in I}(E_\theta(z)+E_z(z))
+       \ge\operatorname{osc}_{z\in I}M(z).\ }
+\end{equation}
+If the radial support lies in $r\le b$ and
+$\mathcal E_{\theta z}(z)=2\pi\int_0^\infty
+r\,\langle v_\theta^2+v_z^2\rangle_\theta\,dr$ is the
+non-halved directional kinetic-energy per axial slice, then
+\begin{equation}\label{eq:physical-energy-XXIV}
+\boxed{\ \sup_{z\in I}\mathcal E_{\theta z}(z)
+ \ge \frac{2\pi}{b}\operatorname{osc}_{z\in I}M(z).\ }
+\end{equation}
+The bound is necessary for the \emph{portion of the actual source
+assigned to the quadratic Reynolds stress}. In a full source
+comparison all other linear, mean and pressure terms must first be
+separated; $m$ cannot be identified with the entire source residual
+without that decomposition.
+\end{theorem}
+\begin{proof}
+Smoothness and radial compactness allow integration by parts in
+$r$ and differentiation in $z$, giving $m=T'$.
+The angular covariance matrix is positive semidefinite:
+for any real $a,b$, $\langle(av_\theta+bv_z)^2\rangle_\theta\ge0$.
+The resulting pointwise Cauchy--Schwarz bound, followed by weighted
+integral Cauchy--Schwarz, gives $T^2\le E_\theta E_z$.
+By arithmetic--geometric mean,
+$2|T|\le E_\theta+E_z$.
+For any two axial locations $z_+,z_-$,
+\[
+|M(z_+)-M(z_-)|=|T(z_+)-T(z_-)|
+ \le |T(z_+)|+|T(z_-)|
+ \le \sup_{z\in I}(E_\theta+E_z).
+\]
+Take the supremum over pairs, proving \eqref{eq:torque-osc-XXIV}.
+Finally $E_\theta+E_z\le
+b\mathcal E_{\theta z}/(2\pi)$ on $r\le b$, proving
+\eqref{eq:physical-energy-XXIV}.
+\end{proof}
+
+\begin{corollary}[Exact Gaussian fixture and two-shell interpretation]
+\label{cor:Gaussian-XXIV}
+For the smooth $m=\pm1$ Gaussian model of
+Proposition~\ref{prop:nonaxis-torque-XXIII},
+\[
+T(z)=\frac{\lambda}{8}\sin(2z),\qquad
+m(z)=\frac{\lambda}{4}\cos(2z),\qquad
+\operatorname{osc}_{[0,2\pi]}T=\frac{|\lambda|}{4}.
+\]
+Thus any stress realizing this \emph{entire} slice-torque target
+must have $\sup_z(E_\theta+E_z)\ge|\lambda|/4$.
+Conversely, the two-shell compensation of
+Proposition~\ref{prop:two-shell-XXIII} makes $T\equiv0$ and
+$m\equiv0$; it cannot reproduce a target with nonzero radial-slice
+torque, even though its local angular source need not vanish.
+\end{corollary}
+
+\begin{proposition}[Zero-initial-energy exclusion for unforced smooth flow]
+\label{prop:zero-data-XXIV}
+If $u$ is a smooth finite-energy unforced solution on $\mathbb R^3$
+or a periodic torus, and $u(0)=0$, then $u\equiv0$ on its entire
+smooth lifespan. Therefore removing the force from the published
+OpenAI construction \emph{while retaining its zero initial datum}
+cannot prove a nontrivial unforced singularity.
+\end{proposition}
+\begin{proof}
+The standard smooth energy identity yields
+\[
+\frac12\|u(t)\|_2^2+
+\nu\int_0^t\|\nabla u(s)\|_2^2\,ds
+=\frac12\|u(0)\|_2^2=0.
+\]
+Both left terms are nonnegative, so $u(t)=0$.
+The originating forced theorem explicitly has $u(0)=0$
+\cite{openai2026}. An unforced singularity attempt must instead
+exhibit admissible \emph{nonzero} smooth initial data.
+\end{proof}
+
+\paragraph{Proof and release status.}
+Independent Gaussian integration, $30{,}000$ rational positive
+covariance tests and $30{,}000$ two-slice budget tests pass; a
+separate scalar Lean module states the finite covariance inequality,
+two-slice bound, and zero-data energy arithmetic. It does not
+formalize angular averaging, Bochner integration, energy equality,
+the source or the full PDE. The existing source certificate remains
+\texttt{FAIL\_CLOSED\_MISSING\_SOURCE\_DATA}: source A.11/A.19
+profiles, actual mean forcing, full cone, pressure, and zero-force
+PDE residual are not authenticated. The seven-ray H8 realizability
+and its spatially varying dual obstructions remain separate,
+stronger gates. \emph{No unforced blow-up or complete Lean proof
+is established.}

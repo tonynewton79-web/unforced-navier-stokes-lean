@@ -1,0 +1,34 @@
+name: Exact sharp 64 corner dual and interpolation
+on:
+  push:
+    branches: [feature/zenodo-23474915-lean]
+    paths:
+      - 'TerminalCore2026/N1SharpCornerDualScalar.lean'
+      - 'TerminalCore2026/XXVIII_64_CORNER_EXACT_CERTIFICATES.txt'
+      - 'TerminalCore2026/verify_xxviii_sharp_cone.py'
+      - 'TerminalCore2026/verify_xxviii_derivative_cost.py'
+      - '.github/workflows/n1-sharp-64-corner.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  certified-corners:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Exact 64 corner and interpolation replay
+        run: |
+          python TerminalCore2026/verify_xxviii_sharp_cone.py
+          python TerminalCore2026/verify_xxviii_derivative_cost.py
+      - name: Install pinned Lean toolchain
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          elan toolchain install "$(cat lean-toolchain)"
+          lake update
+          lake exe cache get
+      - name: Reject local admitted proofs
+        run: |
+          if grep -nE '^[[:space:]]*(sorry|admit|axiom)([[:space:]]|$)' TerminalCore2026/N1SharpCornerDualScalar.lean; then exit 1; fi
+      - name: Lean kernel-check dual
+        run: lake env lean TerminalCore2026/N1SharpCornerDualScalar.lean

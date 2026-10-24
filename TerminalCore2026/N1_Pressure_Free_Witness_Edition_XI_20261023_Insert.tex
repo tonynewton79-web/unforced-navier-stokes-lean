@@ -1,0 +1,87 @@
+\subsection*{Proof Attack 6 (Edition XI, 23 October 2026): pressure-free collar witness and necessary correction budget}
+\label{subsec:n1-pressure-free-dual-witness-XI}
+The prescribed source's terminal-collar residual computed in Edition VIII
+obeys, at a physical symmetry-plane point $r=r_0>0,z=0,t=t_0<1$,
+\[
+R_{\theta,1}(r_0,0,t_0)
+=8K(r_0,t_0)q(t_0)^{-2D}\rho_o=:R_*>0,
+\qquad \rho_o=c_oh>0.
+\]
+This is an exact local residual under the original slow-field
+support and coefficient decomposition; it is \emph{not} automatically
+the complete residual of every modified velocity field.
+
+\begin{proposition}[Nonvanishing solenoidal collar witness]
+Suppose $R_{\theta,1}(r,z,t_0)$ is continuous on a neighborhood of
+$(r_0,0)$. There is a compactly supported smooth
+nonnegative bump $\zeta(r,z)$, not identically zero and supported
+away from $r=0$, such that $\Phi=\zeta(r,z)e_\theta$ satisfies
+\[
+\nabla\cdot\Phi=0,\qquad
+\int_{\mathbb R^3}\nabla p\cdot\Phi\,dx=0
+\quad\text{for every sufficiently regular pressure }p,
+\]
+but
+\begin{equation}\label{eq:XI-positive-pairing}
+B_\Phi=\int_{\mathbb R^3}R_1\cdot\Phi\,dx
+=2\pi\int R_{\theta,1}\zeta r\,dr\,dz>0.
+\end{equation}
+In particular no pressure gradient can cancel the specified
+source first-order residual on that neighborhood.
+\end{proposition}
+\begin{proof}
+Continuity permits an annular neighborhood where
+$R_{\theta,1}\ge R_*/2>0$. Choose $\zeta\ge0$ with
+nonempty interior support there. An axisymmetric azimuthal field
+is divergence-free. The pressure pairing vanishes by integration
+by parts; the residual pairing is strictly positive.
+\end{proof}
+The corresponding Leray-projected residual has the strict
+$H^{-1}$ lower bound
+\[
+\|\mathbb P R_1(t_0)\|_{H^{-1}}
+\ge B_\Phi/\|\Phi\|_{H^1}>0,\qquad
+\|\Phi\|_{H^1}^2=2\pi\int
+(\zeta^2+\zeta_r^2+\zeta_z^2+\zeta^2/r^2)\,r\,dr\,dz.
+\]
+Thus the obstruction is not a pressure-gauge artifact.
+
+\begin{proposition}[Exact necessary nonlinear correction budget]
+For a smooth divergence-free background $u_B$ of physical unforced
+momentum residual
+$R_B=\partial_tu_B-\nu\Delta u_B+
+(u_B\cdot\nabla)u_B+\nabla p_B$,
+every truly unforced correction $u=u_B+w$ with $\nabla\cdot w=0$
+must obey the exact equation
+\[
+\partial_tw-\nu\Delta w
++(u_B\cdot\nabla)w+(w\cdot\nabla)u_B
++(w\cdot\nabla)w+\nabla\pi=-R_B.
+\]
+For any compact smooth solenoidal test $\Phi$, assuming all norms exist,
+\begin{align*}
+|\langle R_B,\Phi\rangle|
+\le{}&
+\|\partial_tw\|_{H^{-1}}\|\Phi\|_{H^1}
++\nu\|\nabla w\|_2\|\nabla\Phi\|_2\\
+&+\|u_B\|_\infty\|w\|_2\|\nabla\Phi\|_2
++\|\nabla u_B\|_\infty\|w\|_2\|\Phi\|_2
++\|w\|_4^2\|\nabla\Phi\|_2.
+\end{align*}
+\end{proposition}
+\begin{proof}
+Subtract the two Navier--Stokes systems, test by $\Phi$,
+and use divergence-free integration by parts, Holder's inequality
+and $H^{-1}$--$H^1$ duality. Pressure drops out exactly.
+\end{proof}
+The numerical test uses a source-\emph{shaped} local fixture
+$K(r)=re^{-r^2}$ solely as a positive control, not the
+actual source amplitude. It independently checks Cartesian
+divergence, the smooth-step midpoint, a positive integral pairing,
+121 sample points and 10,000 exact rational positivity controls.
+The actual source physical residual must still be authenticated
+globally, and the missing matched coupled order-one corrector,
+nonzero initial data, all-order convergence and zero-force
+Navier--Stokes identities remain OPEN/HOLD.
+The Lean module only addresses finite scalar consequences, not
+the continuum witness or the full PDE.
