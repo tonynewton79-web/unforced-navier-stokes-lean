@@ -8,6 +8,7 @@ on:
       - 'TerminalCore2026/verify_rank_two_fourier_xxiv.py'
       - 'TerminalCore2026/verify_two_harmonic_solenoidal_xxiv.py'
       - 'TerminalCore2026/verify_two_mode_stress_torque_xxiv.py'
+      - 'TerminalCore2026/verify_two_mode_real_angle_xxiv.py'
       - '.github/workflows/n1-rank-gate.yml'
   pull_request:
   workflow_dispatch:
@@ -39,3 +40,4 @@ jobs:
           python TerminalCore2026/verify_rank_two_fourier_xxiv.py
           python TerminalCore2026/verify_two_harmonic_solenoidal_xxiv.py
           python TerminalCore2026/verify_two_mode_stress_torque_xxiv.py
+          python TerminalCore2026/verify_two_mode_real_angle_xxiv.py
