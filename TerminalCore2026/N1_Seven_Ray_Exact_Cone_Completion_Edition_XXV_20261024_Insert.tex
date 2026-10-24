@@ -131,3 +131,70 @@ $(2,-2,0,-1,-1,1,1)$, five thousand exact rational parameter
 replays, and an independent carrier-curl derivative audit pass.
 The accompanying Lean declarations cover only finite scalar
 identities, not the full PDE theorem.
+
+
+\begin{theorem}[Constant-carrier completion with a globally gradient-neutral radial extension]
+\label{thm:constant-carrier-XXV}
+On the same local patch as Theorem~\ref{thm:ray-carrier-XXV},
+replace the first ray coefficient by
+\[
+\widetilde d_1=21-K(r,z),\qquad
+\widetilde d_j=d_j\quad (j=2,\ldots,7).
+\]
+Then
+\begin{equation}\label{eq:constant-carrier-XXV}
+\boxed{Q+20 e_r\otimes e_r+\pi I
+=\sum_{j=1}^7\widetilde d_jv_j\otimes v_j,
+\quad \widetilde d_j\ge3/8,\quad
+\widetilde d_1\ge1191/512.}
+\end{equation}
+On the annulus $r>0$ the divergence of the constant carrier is
+$\nabla\cdot(20e_r\otimes e_r)=\nabla(20\log r)$.
+Thus the two tensors in \eqref{eq:constant-carrier-XXV}
+have equal divergence modulo the explicit gradient
+$\nabla(\pi+20\log r)$.
+
+More generally let $k(r)=20\chi(r)$, where $\chi$ is a
+smooth radial bump equal to one on $[3/4,5/4]$ and
+vanishing near the axis and beyond a larger annulus.
+On $\mathbb R^2\times\mathbb S^1_z$, or on a periodic
+three-torus with the annulus inside an embedded disk,
+\begin{equation}\label{eq:global-radial-gauge-XXV}
+\boxed{\nabla\cdot(k e_r\otimes e_r)=
+\nabla\left(k(r)+\int_0^r\frac{k(s)}s\,ds\right).}
+\end{equation}
+The carrier is therefore globally invisible to the Leray
+projection on these geometries. Strict seven-ray positivity
+has only been established on the local annular patch.
+\end{theorem}
+\begin{proof}
+Since $v_1=e_r$, the change in its coefficient adds
+$(20-K)e_r\otimes e_r$ to
+Theorem~\ref{thm:ray-carrier-XXV}.
+The source-independent bounds imply
+\[
+K\le85/8+8+25/512=9561/512,\qquad
+\widetilde d_1\ge21-9561/512=1191/512.
+\]
+All other ray coefficients retain their $3/8$ floor.
+The cylindrical tensor-divergence formula gives
+$\nabla\cdot(k e_r\otimes e_r)=(k'+k/r)e_r$,
+the gradient of the potential in
+\eqref{eq:global-radial-gauge-XXV}.
+Because $k$ vanishes near the axis and outside the larger
+annulus, this potential is smooth and constant outside the
+carrier support, and is an admissible pressure gauge.
+\end{proof}
+
+\paragraph{Independent second-pass correction and release boundary.}
+Proposition~\ref{prop:ray-carrier-curl-XXV} identifies a non-gradient
+curl for its particular spatially variable carrier. This
+is not an intrinsic obstruction: the alternative radial-only
+carrier above removes it modulo pressure. The result is exact
+local cone and projected-divergence compatibility for a
+manufactured covariance, with a globally gradient-neutral
+radial carrier. The complete actual A.11/A.19 source,
+global seven-ray floor after matching cutoffs,
+H8 virtual-work dual conditions, pressure and all-mode
+Navier--Stokes dynamics, zero forcing, singularity
+persistence, and full Lean PDE theorem remain OPEN.
