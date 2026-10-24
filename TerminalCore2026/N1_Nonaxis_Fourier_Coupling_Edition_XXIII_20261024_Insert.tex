@@ -1,0 +1,130 @@
+
+\section{The first nonaxisymmetric Fourier pair: pressure and harmonic leakage}
+\label{sec:nonaxis-Fourier-XXIII}
+This section studies a possible nonaxisymmetric escape from the
+circulation obstruction. Fourier-mode selection, the cylindrical
+vector Laplacian and Reynolds averaging are established prior art.
+The source Navier--Stokes singularity is \emph{forced}; we do not
+claim that a force-free construction has been completed.
+
+Let $u_B=U(r,z,t)e_\theta$ be an axisymmetric pure-swirl background
+(not assumed force-free). For
+$v_m=e^{im\theta}(a e_r+b e_\theta+c e_z)$ put
+$D_m=\partial_{rr}+r^{-1}\partial_r-m^2r^{-2}+\partial_{zz}$
+and $L_m=\partial_t-\nu D_m$. Linearizing, with a
+modewise right-hand side $H_m$, gives
+\begin{align}
+L_m a+\nu(a+2im b)/r^2+(imU/r)a-2Ub/r+\pi_{m,r}&=H_{m,r},\\
+L_m b+\nu(b-2im a)/r^2+(imU/r)b+(U_r+U/r)a+U_zc
+  +(im/r)\pi_m&=H_{m,\theta},\\
+L_m c+(imU/r)c+\pi_{m,z}&=H_{m,z},\\
+a_r+a/r+im b/r+c_z&=0.
+\label{eq:nonaxis-system-XXIII}
+\end{align}
+The off-diagonal viscosity coefficients reflect the vector
+Laplacian in its rotating basis and cannot be omitted.
+Divergence and solenoidality give the necessary pressure equation
+\begin{equation}\label{eq:nonaxis-pressure-XXIII}
+D_m\pi_m=\operatorname{div}_mH_m
+-\frac{2im}{r}(U_ra+U_zc)+\frac2r\partial_r(Ub),
+\end{equation}
+where
+$\operatorname{div}_mH_m=H_{m,r,r}+r^{-1}H_{m,r}
++im r^{-1}H_{m,\theta}+H_{m,z,z}$.
+This formula does not establish existence of an axis-regular
+Poisson inverse with the original physical boundary data.
+
+\begin{proposition}[A smooth first-harmonic source of mean angular torque]
+\label{prop:nonaxis-torque-XXIII}
+On $\mathbb R^2\times\mathbb S^1$ with axial period $2\pi$,
+put $f(r)=e^{-r^2}$ and let $\lambda\in\mathbb R$.
+For $m=+1$ set
+\[
+a=f\cos z,\qquad b=ia+\lambda r^2f\cos z,\qquad
+c=-f'\sin z-i\lambda rf\sin z,
+\]
+and define the real velocity
+$v=e^{i\theta}(a e_r+b e_\theta+c e_z)
++e^{-i\theta}(\bar a e_r+\bar b e_\theta+\bar c e_z)$.
+It is smooth, finite-energy and divergence-free; in Cartesian form,
+\[
+v=(2f\cos z(1-\lambda xy),\,2\lambda x^2f\cos z,\,
+       (4x+2\lambda y)f\sin z).
+\]
+Its azimuthal Reynolds tensor $Q=\langle v\otimes v\rangle_\theta$
+has
+\[
+Q_{r\theta}=2\lambda r^2e^{-2r^2}\cos^2z,\qquad
+Q_{z\theta}=\lambda r(2r^2-1)e^{-2r^2}\sin2z,
+\]
+and so the averaged angular convection satisfies
+\begin{equation}\label{eq:nonaxis-az-force-XXIII}
+g_\theta=\frac1{r^2}\partial_r(r^2Q_{r\theta})
+             +\partial_zQ_{z\theta}
+=2\lambda r e^{-2r^2}(2-2r^2+\cos2z).
+\end{equation}
+Its radial-slice torque is exactly
+\begin{equation}\label{eq:nonaxis-slice-XXIII}
+\int_0^\infty r^2g_\theta(r,z)\,dr
+=\frac{\lambda}{4}\cos2z.
+\end{equation}
+At each point, $Q$ is positive semidefinite and has rank at most
+two.
+\end{proposition}
+\begin{proof}
+The modal divergence vanishes directly:
+$a_r+a/r+ib/r+c_z=0$. Independently, the displayed Cartesian
+field has zero divergence and is regular across the axis.
+The angular average gives
+$Q_{ij}=2\operatorname{Re}(v_{+,i}\overline{v_{+,j}})$,
+a sum of two positive rank-one real tensors.
+Substitution in the cylindrical tensor-divergence formula gives
+\eqref{eq:nonaxis-az-force-XXIII}; exact Gaussian integration gives
+\eqref{eq:nonaxis-slice-XXIII}. Direct real-angle integration
+independently verifies both Reynolds tensor components.
+\end{proof}
+
+\begin{proposition}[Non-gradient second-harmonic residual]
+\label{prop:nonaxis-mtwo-XXIII}
+For the field in Proposition~\ref{prop:nonaxis-torque-XXIII}, the
+$m=+2$ coefficient $N=(v_+\cdot\nabla)v_+$ of self-convection
+has, at $\lambda=1$, $r=1$, $z=0$,
+\begin{equation}\label{eq:nonaxis-mtwo-curl-XXIII}
+(\nabla\times N)^{(+2)}_z=2(-2+5i)e^{-2}\ne0.
+\end{equation}
+Thus this \emph{particular} correction cannot be closed at
+$m=0,\pm1$ by choosing scalar pressure.
+\end{proposition}
+\begin{proof}
+In the rotating cylindrical basis, the $m=+2$ coefficients are
+\[
+N_r=aa_r+iba/r+ca_z-b^2/r,\quad
+N_\theta=ab_r+ib^2/r+cb_z+ab/r,\quad
+N_z=ac_r+ibc/r+cc_z.
+\]
+The axial curl coefficient is
+$r^{-1}\partial_r(rN_\theta)-2iN_r/r$.
+Exact differentiation gives \eqref{eq:nonaxis-mtwo-curl-XXIII}.
+A scalar pressure gradient has zero curl.
+\end{proof}
+
+\paragraph{Connection to the existing H8 shell programme.}
+The H8 inversion gate requires suitably small \emph{radial-slice}
+torque in a slender shell, not merely zero total torque.
+Equation~\eqref{eq:nonaxis-slice-XXIII} has zero average over $z$
+but an $O(|\lambda|)$ nonzero slice torque. Any source-compatible
+use of this mechanism requires $\lambda$ small at the right
+slenderness scale or an independent cancelling profile.
+The present manufactured domain is not the H8 physical source.
+
+\paragraph{The full unforced and Lean gates.}
+If the base residual lies in $m=0$, pure $m=\pm1$ perturbations
+cannot cancel it linearly. Quadratic cross terms can generate
+$m=0$ but the present witness generates $m=\pm2$ as well.
+An exact zero-force theorem needs source-matched A.11/A.19
+residuals and collars, a fully coupled pressure-compatible
+harmonic inverse, nonlinear norm convergence and survival of
+the terminal singularity. Independent SymPy and Cartesian
+reconstructions, direct angular averages and 12,000 exact
+rational finite tests pass. Lean establishes only finite
+mode-index and Gram-minor algebra, not these PDE theorems.
