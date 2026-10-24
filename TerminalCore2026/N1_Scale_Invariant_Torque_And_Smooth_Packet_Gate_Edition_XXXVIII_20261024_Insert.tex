@@ -136,6 +136,32 @@ $a_n\lambda_n^2\to0$, so
 $a_n^2\lambda_n^2=o(\lambda_n^{-2})$.
 \end{proof}
 
+
+\begin{proposition}[A finite-energy but nonsmooth infinite packet stack]
+\label{prop:xxxviii-finite-energy}
+In Theorem~\ref{thm:xxxviii-packets} put $a_n=1$ for all $n$.
+The resulting solenoidal field is in $L^2(\mathbb R^3)$
+with the exact norm
+\begin{equation}\label{eq:xxxviii-energy}
+\boxed{\quad\|U_0\|_2^2=
+\|\phi\|_2^2\sum_{n\ge1}\lambda_n^{-1}
+=\frac1{15}\|\phi\|_2^2<\infty.\quad}
+\end{equation}
+Nevertheless it is unbounded near the accumulation point,
+and therefore does not define admissible smooth initial data.
+Its initial packet torques can grow as $\lambda_n^2$
+only because the smoothness condition is violated.
+\end{proposition}
+\begin{proof}
+The supports are disjoint and the three-dimensional
+rescaling gives
+$\|U_n\|_2^2=\lambda_n^{-1}\|\phi\|_2^2$.
+Sum the geometric series $\sum_{n\ge1}16^{-n}=1/15$.
+On the $n$th support,
+$\|U_n\|_\infty=\lambda_n\|\phi\|_\infty\to\infty$,
+with nonzero maxima at points approaching the origin.
+\end{proof}
+
 \paragraph{Near-axis consequence and the remaining open dynamics.}
 For uniformly $C^4$ Cartesian velocity fields near the axis,
 angular Taylor expansion and parity imply
