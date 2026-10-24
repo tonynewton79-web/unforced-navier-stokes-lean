@@ -1,0 +1,230 @@
+
+\section{An explicit nonzero-data unforced comparison and a sharp obstruction to small corrections}
+\label{sec:xxxiv-explicit-comparison}
+
+The central remaining step is not to produce an arbitrary
+unforced flow with nonzero data---such flows are classical---but to
+prove that its correction to the \emph{actual} forced singular
+flow is smaller than the source at the collapsing core.
+We construct here a concrete global whole-space unforced comparison,
+with independently certifiable critical Fourier smallness and
+a complete zero-force PDE identity. We then prove that its correction
+necessarily \emph{violates} the proposed
+$o(\tau^{-4A/3})$ $H^2$ bound. This is an adversarial
+test of the conjectured cancellation mechanism, not a proof of
+finite-time unforced Navier--Stokes blowup.
+
+\begin{theorem}[Explicit smooth nonzero-data unforced whole-space flow]
+\label{thm:xxxiv-gaussian}
+Let $\nu>0$, $\rho^2=x^2+y^2+z^2$ and prescribe
+\begin{equation}\label{eq:xxxiv-datum}
+\boxed{
+v_0(x,y,z)=\frac{\nu}{100\pi}
+(-2y e^{-\rho^2},\,2x e^{-\rho^2},\,0).
+}
+\end{equation}
+There exists a global smooth divergence-free, finite-energy
+solution $v$ of the exact \emph{unforced} Navier--Stokes system
+on $\mathbb R^3$ with datum $v_0$. In particular, with
+\[
+C_{\rm F}=(2\pi)^{-3/2},\qquad
+\|a\|_{\mathcal X^j}=\int_{\mathbb R^3}
+|\xi|^j|\widehat a(\xi)|\,d\xi
+\]
+and the unitary Fourier transform, the explicit data satisfy
+\[
+\boxed{
+C_{\rm F}\frac{\|v_0\|_{\mathcal X^{-1}}}{\nu}
+=\frac1{400},\quad
+\|v_0\|_2=\frac{\nu}{100(2\pi)^{1/4}}.
+}
+\]
+One may construct $v$ by a globally convergent Fourier mild
+iteration with contraction factor at most $1/25$.
+For all $t\ge0$, the comparison also satisfies
+\begin{equation}\label{eq:xxxiv-uniform-bound}
+\boxed{\quad
+\|v(t)\|_\infty\le
+C_v:=\frac{\nu}{100\sqrt\pi}e^{1/50}.\quad}
+\end{equation}
+Its pressure may be fixed by
+$p_v=\sum_{i,j}R_iR_j(v_iv_j)$, where $R_i$ are the
+standard Riesz transforms; then
+\[
+\partial_tv+(v\cdot\nabla)v-\nu\Delta v+\nabla p_v=0
+\]
+holds identically for every $t>0$ and by smooth continuity
+at $t=0$.
+\end{theorem}
+\begin{proof}
+Let $\psi=e^{-\rho^2}$. The datum is
+$(\nu/(100\pi))(\partial_y\psi,-\partial_x\psi,0)$,
+so it is smooth, solenoidal, nonzero and Schwartz.
+The unitary transform is
+$\widehat\psi(\xi)=2^{-3/2}e^{-|\xi|^2/4}$. Thus
+$|\widehat{\nabla\times(\psi e_z)}|
+=2^{-3/2}\sqrt{\xi_x^2+\xi_y^2}\,
+ e^{-|\xi|^2/4}$, and exact spherical integration gives
+\begin{equation}\label{eq:xxxiv-gaussian-norms}
+\|\nabla\times(\psi e_z)\|_{\mathcal X^{-1}}
+=\frac{\pi^{5/2}}{\sqrt2},\qquad
+\|\nabla\times(\psi e_z)\|_{\mathcal X^0}
+=2\sqrt2\pi^2,\qquad
+\|\nabla\times(\psi e_z)\|_2^2
+=2(\pi/2)^{3/2}.
+\end{equation}
+The critical smallness ratio is consequently $1/400$.
+
+For completeness, define the time norm
+\[
+\|u\|_{\mathscr B}
+=\sup_{t\ge0}\|u(t)\|_{\mathcal X^{-1}}
++\nu\int_0^\infty\|u(t)\|_{\mathcal X^1}\,dt.
+\]
+With $H(t)=e^{\nu t\Delta}v_0$, direct integration yields
+$\|H\|_{\mathscr B}\le2X_0$, where
+$X_0=\|v_0\|_{\mathcal X^{-1}}$.
+Let
+\[
+\mathcal B(u,v)(t)=-
+\int_0^t e^{\nu(t-s)\Delta}
+\mathbb P\nabla\cdot(u\otimes v)(s)\,ds.
+\]
+The Fourier multiplier and $\|\mathbb P_\xi\|_{\rm op}\le1$
+give for both the supremum $\mathcal X^{-1}$ norm and the
+time-integrated $\nu\mathcal X^1$ norm a bound by
+$C_{\rm F}\int\|u\|_{\mathcal X^0}
+\|v\|_{\mathcal X^0}\,dt$.
+Cauchy--Schwarz and
+$\|u\|_{\mathcal X^0}^2
+\le\|u\|_{\mathcal X^{-1}}\|u\|_{\mathcal X^1}$
+therefore give
+\[
+\|\mathcal B(u,v)\|_{\mathscr B}
+\le\frac{2C_{\rm F}}{\nu}
+\|u\|_{\mathscr B}\|v\|_{\mathscr B}.
+\]
+The map $u\mapsto H+\mathcal B(u,u)$ sends the closed
+ball $\|u\|_{\mathscr B}\le4X_0$ into itself, since
+$2X_0+32(C_{\rm F}X_0/\nu)X_0<4X_0$,
+and has Lipschitz constant at most
+$16C_{\rm F}X_0/\nu=1/25$ there.
+Banach's theorem gives a global divergence-free mild
+solution, satisfying the projected PDE. Parabolic smoothing
+and the Schwartz initial datum give a classical solution;
+the pressure formula reconstructs the exact physical zero-force
+equation. Standard energy estimates yield
+$\|v(t)\|_2\le\|v_0\|_2$.
+
+The Fourier $\mathcal X^0$ inequality is
+\[
+\frac{d}{dt}\|v(t)\|_{\mathcal X^0}
+\le2C_{\rm F}
+\|v(t)\|_{\mathcal X^0}\|v(t)\|_{\mathcal X^1}.
+\]
+Since $\nu\int_0^\infty\|v\|_{\mathcal X^1}
+\le4X_0$, Gronwall implies
+$\|v(t)\|_{\mathcal X^0}
+\le\|v_0\|_{\mathcal X^0}
+ e^{8C_{\rm F}X_0/\nu}
+=\|v_0\|_{\mathcal X^0}e^{1/50}$.
+Finally Fourier inversion and
+$C_{\rm F}\|v_0\|_{\mathcal X^0}
+=\nu/(100\sqrt\pi)$ give
+\eqref{eq:xxxiv-uniform-bound}.
+This boundedness, combined with standard Sobolev energy
+estimates, excludes any finite-time loss of smoothness.
+\end{proof}
+
+\begin{theorem}[Exact correction equation and nonintegrable $H^2$ cancellation]
+\label{thm:xxxiv-h2-obstruction}
+Let $u_B$ be the actual compactly supported forced
+velocity of OpenAI \cite{openai2026}, Theorem~1.1,
+with viscosity $\nu$ and complete physical force $f_B$.
+Put $w=v-u_B$, where $v$ is the globally smooth
+\emph{unforced} solution of
+Theorem~\ref{thm:xxxiv-gaussian}. Then
+\[
+w(0)=v_0\ne0,\qquad
+\partial_tw-\nu\Delta w+
+\mathbb P\nabla\cdot
+(u_B\otimes w+w\otimes u_B+w\otimes w)
+=-\mathbb P f_B.
+\]
+Thus $u_B+w=v$ satisfies the \emph{full zero-force PDE
+identity with reconstructed pressure}; no projected-force
+or cutoff term has been omitted.
+
+Let $A=1/2+h$, $e_0>0$ and $x_\tau$ be the source's
+actual Section~10 singular trajectory,
+and write
+\[
+B=\sup_{0\le t<1}\|u_B(t)\|_2,\qquad
+M=B+\frac{\nu}{100(2\pi)^{1/4}},\qquad
+C_2=\frac4{\pi\sqrt2\,3^{7/8}}.
+\]
+For all sufficiently small $\tau>0$,
+\begin{equation}\label{eq:xxxiv-point-cancel}
+|w_\theta(x_\tau,1-\tau)|
+\ge\frac{e_0}{4}\tau^{-A},
+\end{equation}
+and the correction necessarily obeys
+\begin{equation}\label{eq:xxxiv-h2-nogo}
+\boxed{\quad
+\|\Delta w(1-\tau)\|_2
+\ge c_{\nu,B,e_0}\tau^{-4A/3},\qquad
+c_{\nu,B,e_0}:=
+\left(\frac{e_0}{4C_2 M^{1/4}}\right)^{4/3}>0.
+\quad}
+\end{equation}
+Consequently it is \emph{impossible} for this exact
+nonzero-data, zero-force corrector to satisfy
+$\|\Delta w(1-\tau)\|_2=o(\tau^{-4A/3})$,
+and indeed
+\begin{equation}\label{eq:xxxiv-L2time-nogo}
+\boxed{\quad
+\int_{t_0}^{1}\|\Delta w(t)\|_2^2\,dt=\infty
+\qquad\text{for every }t_0<1.\quad}
+\end{equation}
+\end{theorem}
+\begin{proof}
+Subtract the source's fully forced equation from the exact
+zero-force physical equation for $v$; the projected displayed
+difference equation follows identically.
+For sufficiently small $\tau$, the source (10.21) yields
+$|u_{B,\theta}(x_\tau,1-\tau)|
+\ge(e_0/2)\tau^{-A}$. On the other hand
+$|v_\theta|\le\|v\|_\infty\le C_v$.
+Choose $\tau$ small enough that
+$C_v\le(e_0/4)\tau^{-A}$ and apply the reverse
+triangle inequality to obtain \eqref{eq:xxxiv-point-cancel}.
+By the energy inequality and the source's uniform $L^2$
+bound, $\|w(t)\|_2\le M$.
+The explicit three-dimensional Fourier interpolation inequality
+of Lemma~\ref{lem:xxxiii-agn} then gives
+\[
+|w(x_\tau,1-\tau)|
+\le C_2 M^{1/4}\|\Delta w(1-\tau)\|_2^{3/4}.
+\]
+This proves \eqref{eq:xxxiv-h2-nogo}.
+Since $8A/3>4/3>1$, its square is not integrable
+in a neighborhood of $\tau=0$, proving
+\eqref{eq:xxxiv-L2time-nogo}.
+\end{proof}
+
+\paragraph{Scientific interpretation and exact unresolved target.}
+A smooth, numerically specified nonzero datum and a global
+exactly unforced whole-space solution have been constructed;
+the complete physical zero-force identity is therefore
+established \emph{for that completed flow}. But that solution
+is regular and its correction exactly cancels the forced
+singularity. The required little-$o$ $H^2$ bound is
+\emph{false for this concrete correction}. Proving it for
+a different exact unforced correction while preserving
+the published source core would amount to a finite-time
+singularity of smooth-data unforced Navier--Stokes---the
+unresolved Millennium regularity problem.
+The Fourier smallness constants, contraction factor,
+uniform amplitude, and $H^2$ time-divergence have been
+independently recomputed; finite Lean scalar dependencies
+are separate from a full PDE formalization.
