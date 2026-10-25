@@ -78,6 +78,10 @@ seven-ray floor, **not** existence of the H8 compact inverse.
 The subsequently compiled `PressureGauge.lean` and `Correction.lean` and their
 smoke tests provide pressure-gauge invariance and conditional physical
 zero-residual closure; they do not assert a correction witness.
+`SevenRayCenter.lean` and its smoke test later certified the complete
+source-matched rational H8 covariance, rank-one trace-free projector,
+physical axial efficiency and coefficient scaling. A separate exact
+`fractions.Fraction` regression reproduces the finite results.
 
 ### Task 3: Exact physical residual identity
 
