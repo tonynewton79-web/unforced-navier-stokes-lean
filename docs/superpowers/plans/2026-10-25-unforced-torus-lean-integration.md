@@ -75,6 +75,9 @@ placeholder `ResidualIdentity*`, `Geometry*`, and `finite_initial_energy`
 names below. An additional finite algebraic gate is implemented in
 `ConeBudget.lean` and `ConeBudgetSmoke.lean`; it proves the conditional
 seven-ray floor, **not** existence of the H8 compact inverse.
+The subsequently compiled `PressureGauge.lean` and `Correction.lean` and their
+smoke tests provide pressure-gauge invariance and conditional physical
+zero-residual closure; they do not assert a correction witness.
 
 ### Task 3: Exact physical residual identity
 
