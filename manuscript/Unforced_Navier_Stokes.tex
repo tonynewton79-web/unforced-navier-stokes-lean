@@ -53,12 +53,15 @@ total axial force as the necessary and sufficient compatibility condition.
 A separate two-diagonal pressure-neutral construction exhibits a sharp
 radial sign obstruction. Finite seven-ray stress algebra yields the exact
 coefficient margin $15971/122900$ and sharp componentwise amplification
-factor $14$. A compact source-matched dual test excludes a stronger
+factor $14$. A compact source-matched dual test excludes a strong
 physical entrywise stress bound at the corresponding numerical scale.
 For the frozen cylindrical seven-ray frame, an exact matrix
 reconstruction identifies that bound with a sufficient four-coordinate
-H8 stress estimate. We also give the exact three-inequality description
-of the original, weaker seven-coefficient cone.
+H8 stress estimate. We give the exact three-inequality description
+and sharp dual support function of the original seven-coefficient cone.
+An exact rational Bernstein certificate shows that even this larger
+absolute coefficient budget fails for the specified manufactured
+meridional source. This does not decide the authentic H8 residual.
 Lean additionally checks the meridional pointwise inverse and both
 integral antiderivative identities, alongside the finite cone algebra,
 physical residual expansion, and conditional terminal-speed retention.
@@ -107,6 +110,9 @@ weighted-seven-ray positivity requirement, which is not supplied by
 general existence of a compact tensor. Section~\ref{sec:dual} also
 shows that a natural \emph{stronger} physical-component envelope is
 incompatible with one explicit source, even modulo pressure gradients.
+We subsequently exclude the original absolute coefficient envelope
+for the same manufactured source by a sharper dual calculation;
+the actual H8 source remains a separate problem.
 
 \section{A compact symmetric inverse in an annular region}
 
@@ -479,24 +485,127 @@ entrywise physical cap \eqref{eq:dualprob}. This contradicts
 Proposition~\ref{prop:dual}.
 \end{proof}
 
-This is a restricted obstruction to the \emph{stronger sufficient}
-four-field estimate. It does not exclude all seven-ray coefficient
-perturbations obeying only the original bound
-$\max_i|\delta c_i|\le(15971/122900)\rho$.
-Proposition~\ref{prop:exact-cone} identifies the larger admissible
-pointwise set without any relaxation.
-Indeed, applying that larger constant to the conservative dual
-gradient upper bound \eqref{eq:dualU} gives
+The preceding argument excludes the \emph{stronger sufficient}
+four-field estimate. It cannot alone exclude the original absolute
+coefficient budget $\max_i|\delta c_i|\le(15971/122900)\rho$:
+if one simply inserts that larger constant into the conservative
+gradient bound \eqref{eq:dualU}, then
 \begin{equation}\label{eq:weaker-inconclusive}
  \frac{15971}{122900}\frac{313361}{470400}-L
  =\frac{51024386641}{635933760000}>0.
 \end{equation}
-There is then no dual contradiction from this estimate. This inequality
-is \emph{not} an existence result either. Moreover the manufactured
-source $P\eta'e_z$ is not the authenticated H8 source, and the
-conjugated tensor of a tilted frame has separate component and
-derivative requirements. The actual H8 positive-cone attachment and
-global unforced problem therefore remain undecided.
+The sign of this bound is inconclusive, not evidence of existence.
+The exact cone, however, has a smaller sharp dual support than
+that componentwise comparison.
+
+\begin{proposition}[Sharp dual of the original absolute coefficient cone]
+\label{prop:sharp-cone}
+For $\tau\ge0$ let $\mathcal K_\tau$ be the four-coordinate set
+defined by \eqref{eq:exact-cone}. For arbitrary $a,b,c,d\in\R$,
+\begin{equation}\label{eq:sharp-support}
+ \sup_{(A,B,C,D)\in\mathcal K_\tau}
+ (aA+bB+cC+dD)
+ =\tau\left[
+ \max\!\left(\frac{|a|+|c|}{2},\frac{|d|}{4}\right)
+ +\frac{|4a+b|}{8}\right].
+\end{equation}
+The upper bound in \eqref{eq:sharp-support} is proved in Lean for
+the actual seven coefficient constraints.
+\end{proposition}
+
+\begin{proof}
+Put $x=A-4B$. By \eqref{eq:exact-cone}, for fixed
+$s=|D|\in[0,\tau/4]$, the variables $x,C,B$ are independent and
+satisfy
+\[
+ |x|,|C|\le\frac{\tau-4s}{2},\qquad |B|\le\frac\tau8.
+\]
+The objective becomes $ax+(4a+b)B+cC+dD$. Its maximum for this
+$s$ is
+\[
+ \frac{\tau-4s}{2}(|a|+|c|)
+ +\frac\tau8|4a+b|+s|d|.
+\]
+This expression is affine in $s$, so its maximum occurs at $s=0$
+or $s=\tau/4$, yielding \eqref{eq:sharp-support}. Each bound is
+attained by choosing the signs of $x,C,B,D$ to match their respective
+linear coefficients. Thus the value is sharp.
+\end{proof}
+
+\begin{proposition}[An exact original-budget obstruction for the
+manufactured source]\label{prop:original-obstruction}
+Let $f,\rho$ be given by \eqref{eq:dualprofiles}, and set
+$\gamma=15971/122900$. No locally integrable symmetric tensor of
+the fixed-frame form $H(A,B,C,D)$ in \eqref{eq:four-field-map},
+together with a locally integrable scalar pressure $q$, can satisfy
+in the distributional sense
+\[
+  \diver H+\nabla q=f,\qquad
+  |\delta c_i(A,B,C,D)|\le\gamma\rho\quad(1\le i\le7).
+\]
+\end{proposition}
+
+\begin{proof}
+Use the divergence-free meridional field $v$ from
+\eqref{eq:dualtest}. Its nonzero coupling coordinates to $H$ are
+\begin{align*}
+ a(r,z)&=\partial_zv_r+\partial_rv_z
+      =-rP\eta'''+(3P'+rP'')\eta',\\
+ d(r,z)&=\partial_zv_z-\partial_rv_r
+      =(3P+2rP')\eta''.
+\end{align*}
+Indeed, $H:\nabla v=Aa+Dd$; the $B$ and $C$ components vanish
+because $v$ is meridional and independent of $\theta$.
+By Proposition~\ref{prop:sharp-cone}, integration by parts and
+$\rho\ge0$ would force
+\begin{equation}\label{eq:sharp-dual-source}
+ L\le\gamma S,\quad
+ S=\int_1^2\!\int_{-1}^1
+ rP(r)\eta(z)
+ \max\!\left(|a|,\frac{|a|}{2}+\frac{|d|}{4}\right)
+ \dd z\dd r.
+\end{equation}
+There is an exact rational upper bound
+\begin{equation}\label{eq:sharp-bernstein-bound}
+ S\le
+ \frac{5838537817787225523484624248207}
+ {150323855360000000000000000000000}
+ <\frac1{25}.
+\end{equation}
+For completeness, partition $[1,2]\times[-1,1]$ into $40^2$
+rational rectangles. On each rectangle express the separated
+polynomials $a$ and $d$ in a common-degree bivariate Bernstein
+basis. The convex-hull property bounds $|a|$ and $|d|$ by the
+largest absolute Bernstein coefficient. Multiply
+$\max(a_{ij},a_{ij}/2+d_{ij}/4)$ by the \emph{exact} nonnegative
+cell mass $\int rP\dd r\int\eta\dd z$, and sum the $1600$
+rational terms. This yields the first inequality in
+\eqref{eq:sharp-bernstein-bound}; the second is an integer
+comparison. The accompanying pure-rational program reproduces
+each coefficient and sum. Consequently
+\[
+ L-\gamma S
+ >\frac{256}{40425}-\frac{15971}{122900\cdot25}
+ =\frac{5637293}{4968232500}>0,
+\]
+contradicting \eqref{eq:sharp-dual-source}. The pressure term
+vanishes by solenoidality of $v$. The zero-extended test field is
+compactly supported and Lipschitz, so smooth divergence-free
+mollifications justify the same integration-by-parts identity for
+locally integrable $H$ and $q$.
+\end{proof}
+
+This obstruction concerns the \emph{absolute correction budget}
+$|\delta c_i|\le\gamma\rho$ in one fixed frame. It does not rule
+out every nonnegative seven-ray stress: the one-sided requirement
+$c_i^{(0)}\rho+\delta c_i\ge\rho/100$ admits perturbations outside
+that sufficient absolute budget. In addition, $f=P\eta'e_z$ is a
+manufactured diagnostic source, \emph{not} the authenticated H8
+residual $g-\mathbb P\diver(\rho R_*)$; the source profiles and
+potentially rotating physical frame required to test that residual
+have not been provided in the checked project. No statement here
+excludes a more flexible source-matched H8 inverse or decides the
+global unforced problem.
 
 \section{The physical residual and terminal speed}
 
@@ -572,6 +681,7 @@ Lean module & Checked scope and the missing construction\\
 \texttt{Periodicity}, \texttt{PressureGauge} & Sum and time-only gauge identities; no periodic singular solution.\\
 \texttt{ConeBudget}, \texttt{ConeOperator}, \texttt{SevenRayCenter} & Exact rational centre and sharp factor $14$; no source-matched weighted positive stress.\\
 \texttt{FourFieldPhysical} & Exact nine-entry ray-to-cylindrical tensor map modulo an isotropic gauge; entrywise four-coordinate bound in the frozen frame, not a spatially rotated PDE bridge.\\
+\texttt{ExactCoefficientCone}, \texttt{SharpCoefficientDual} & Exact seven-coefficient polytope and universal sharp dual upper estimate; no authentic H8 source or spatial inverse.\\
 \texttt{CompactGauge} & One-variable gauge derivative; no compact tensor support theorem.\\
 \texttt{MeridionalInverse} & Actual axial and radial interval-integral FTC identities, geometric hoop cancellation, and pointwise radial/axial cylindrical inverse; no Cartesian tensor-divergence bridge or compact support theorem.\\
 \texttt{Retention} & Subleading corrections preserve terminal speed; neither required field constructed.\\
@@ -619,17 +729,25 @@ checks the complete cylindrical divergence of the dual test field.
 An additional exact reconstruction and Lean theorem prove the
 fixed-frame four-field map \eqref{eq:four-field-map}, its inverse
 coordinate recovery and its
-entrywise consequence; the test \eqref{eq:weaker-inconclusive} explicitly
-records the failure of this method to rule out the weaker original
-coefficient condition. No executable test substitutes for the
-authentic H8 source and rotated-frame PDE estimates.
+entrywise consequence; the test \eqref{eq:weaker-inconclusive}
+records the failure of this \emph{conservative gradient method}
+at the original coefficient budget. The sharper polytope method
+proves Proposition~\ref{prop:original-obstruction}: a $40\times40$
+Bernstein partition yields the exact rational upper bound
+\eqref{eq:sharp-bernstein-bound}. No executable test substitutes
+for the authentic H8 source and rotated-frame PDE estimates.
 The equivalence \eqref{eq:exact-cone} is independently checked on
 exact rational samples and kernel-checked by
 \texttt{original\_seven\_coefficient\_cone\_exact}.
+The additional kernel theorem \texttt{original\_cone\_dual\_upper}
+establishes the finite-dimensional upper bound in
+\eqref{eq:sharp-support}; exact rational maximizing witnesses
+independently verify sharpness. The Bernstein integral itself is
+a rational Python certificate, not a Lean theorem.
 
 The source code, machine-readable G0--G8 ledger, smoke tests and
 reproduction commands accompany the public integration branch
-\cite{NewtonRepo2026}. A local pinned build has passed twelve smoke
+\cite{NewtonRepo2026}. A local pinned build has passed fourteen smoke
 modules; at the time of preparing this edition, the corresponding
 GitHub-hosted Actions checks had not furnished a successful receipt
 for the latest commit. Local compilation does not replace hosted CI,
@@ -645,12 +763,15 @@ pressure coupling, or incompatible moments. Even when compact
 inversion is possible, the output may leave the required seven-ray
 positive cone, especially as the support shrinks. The strict dual
 obstruction in Proposition~\ref{prop:dual}, together with
-Corollary~\ref{cor:four-field}, shows that the sufficient
-four-coordinate estimate fails for one manufactured compact source.
+Corollary~\ref{cor:four-field}, excludes the sufficient
+four-coordinate estimate; Proposition~\ref{prop:original-obstruction}
+also excludes the original absolute coefficient correction budget
+for that same manufactured source.
 The next mathematical question is whether the \emph{authentic}
 source, perhaps using a tilted frame or a more flexible coefficient
-allocation, admits a weighted inverse satisfying the weaker
-coefficientwise H8 inequalities \eqref{eq:exact-cone} and all spatial
+allocation, admits a weighted inverse satisfying the one-sided
+positive H8 ray conditions (or the absolute inequalities
+\eqref{eq:exact-cone}) and all spatial
 derivative bounds. The sharp cone description enables a direct
 weighted dual optimization against the authentic source, without
 replacing those inequalities by the factor-$14$ sufficient estimate.

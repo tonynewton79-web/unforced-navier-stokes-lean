@@ -102,12 +102,12 @@ identity, the bound, symmetry, trace, inverse recovery and diagonal
 constraints. The independent exact rational `h8_four_field_map.py` test
 rejects attempted inversion outside that subspace.
 
-The source-matched meridional dual test excludes the stronger sufficient
-four-coordinate cap for one explicitly manufactured compact axial source.
-It does **not** exclude the original weaker seven-coefficient margin for
-that source, much less for the yet-to-be-authenticated H8 source. Tensor
-conjugation and spatial derivatives of a tilted frame remain separate
-obligations.
+The first source-matched meridional dual test excludes the stronger
+sufficient four-coordinate cap for one explicitly manufactured compact
+axial source. A subsequent sharp dual test, described below, also
+excludes the original **absolute coefficient budget** for that same
+manufactured source. Neither test authenticates the genuine H8 residual.
+Tensor conjugation and derivatives of a tilted frame remain separate.
 
 The **exact**, unrelaxed original cone is now verified in
 `UnforcedPatching/ExactCoefficientCone.lean`: writing `τ≥0` for the allowed
@@ -122,8 +122,26 @@ only if
 
 For example `(A,B,C,D)=(τ,τ/8,0,0)` meets the original bound exactly
 even though its maximum four-coordinate magnitude is `τ`, fourteen
-times the sufficient bound `τ/14`. These exact coupled inequalities are
-the correct next input to an H8 positive-cone weighted dual test.
+times the sufficient bound `τ/14`. These coupled inequalities have
+the exact support function
+
+\[
+ \sigma_\tau(a,b,c,d)=\tau\left[
+ \max\left(\frac{|a|+|c|}{2},\frac{|d|}{4}\right)
+ +\frac{|4a+b|}{8}\right].
+\]
+
+`UnforcedPatching/SharpCoefficientDual.lean` proves the upper bound;
+independent rational extremizers give equality. The meridional
+solenoidal test has only `a` and `d` nonzero, so the pointwise maximum
+becomes `τ*max(|a|, |a|/2+|d|/4)`. A 40×40 exact Bernstein certificate
+gives `S<1/25`, while the manufactured source pairing is `256/40425`.
+The strict original-budget discrepancy therefore exceeds
+`5637293/4968232500>0`. This is a nonexistence result under the
+**absolute** coefficient perturbation cap for this manufactured
+source, not for every one-sided positive ray-coefficient allocation.
+See [`H8_AUTHENTIC_SOURCE_BOUNDARY.md`](H8_AUTHENTIC_SOURCE_BOUNDARY.md)
+for the genuine-source authentication blocker.
 
 A separate exact radial-derivative calculation now identifies a compact
 two-diagonal pressure-neutral gauge and a restricted sign obstruction:
@@ -152,6 +170,7 @@ proof. These remain `OPEN` in `proof_gates.json`.
 Reproduction: build `UnforcedPatching.SevenRayCenterSmoke`,
 `UnforcedPatching.ConeBudgetSmoke`, and
 `UnforcedPatching.FourFieldPhysicalSmoke` and
-`UnforcedPatching.ExactCoefficientConeSmoke` under the pinned Lean toolchain, and run
+`UnforcedPatching.ExactCoefficientConeSmoke`, and
+`UnforcedPatching.SharpCoefficientDualSmoke` under the pinned Lean toolchain, and run
 `python -m unittest discover -s tests -v`. A successful finite calculation
 must never promote the H8 analytic gate to complete.

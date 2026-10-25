@@ -159,11 +159,11 @@ are kernel-checked in `UnforcedPatching/FourFieldPhysical.lean` and
 replayed independently by `h8_four_field_map.py` and
 `tests/test_h8_four_field_map.py`.
 
-Therefore the dual test rules out the **sufficient four-coordinate
-bound for this manufactured compact source**, even with arbitrary
-pressure. This is a concrete obstruction to using that overly strong
-budget universally. It does **not** exclude solutions meeting the
-weaker original seven-coefficient bound `max|delta c_i|≤(15971/122900)rho`.
+Therefore the first dual test rules out the **sufficient
+four-coordinate bound for this manufactured compact source**, even
+with arbitrary pressure. A sharper test now also rules out the
+original **absolute seven-coefficient correction budget** for the
+same manufactured source, as recorded below.
 The exact original admissible cone is independently characterized and
 kernel-checked as
 `4|D|+2|C|≤τ`, `4|D|+2|A-4B|≤τ`, and `8|B|≤τ`, with
@@ -171,9 +171,18 @@ kernel-checked as
 `(A,B,C,D)=(τ,τ/8,0,0)`, outside the sufficient `max≤τ/14` envelope.
 The same conservative gradient upper bound is too large to give a
 contradiction under that weaker condition: its slack is exactly
-`51024386641/635933760000 > 0`.
+`51024386641/635933760000 > 0`. This failure belongs only to the
+conservative gradient bound. The exact pointwise support is
+`τ*(max((|a|+|c|)/2, |d|/4)+|4a+b|/8)`, kernel-checked as an upper
+bound by `SharpCoefficientDual.lean` and independently shown sharp
+by rational extremizers. The meridional dual test gives
+`S≤5838537817787225523484624248207/150323855360000000000000000000000<1/25`,
+so the source pairing violates the original correction budget by
+more than `5637293/4968232500`. The proof and source distinctions
+are in [`H8_AUTHENTIC_SOURCE_BOUNDARY.md`](H8_AUTHENTIC_SOURCE_BOUNDARY.md).
 
 For a tilted or spatially varying orthonormal frame `E`, the physical
 stress is `E H E^T`. No authentic H8 `E(r,z)`, its derivative bounds,
 or the real source profile has been checked against this example.
-Neither G4 nor the final unforced theorem is promoted; both remain OPEN.
+Neither this negative control nor the absent genuine H8 source
+promotes G4 or the final unforced theorem; both remain OPEN.

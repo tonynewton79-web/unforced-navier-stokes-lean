@@ -85,14 +85,15 @@ class FourFieldPhysicalMapTests(unittest.TestCase):
             self.assertLessEqual(max(abs(x) for row in H for x in row), beta)
         self.assertGreater(c["strict_margin"], 0)
 
-    def test_original_seven_coefficient_budget_is_not_excluded(self):
+    def test_conservative_gradient_bound_cannot_exclude_original_budget(self):
         c = certificate()
         gamma = Q(15971, 122900)
         self.assertLess(c["dual_source_pairing"],
                         gamma * c["dual_gradient_upper"])
         self.assertEqual(gamma * c["dual_gradient_upper"] -
                          c["dual_source_pairing"], Q(51024386641, 635933760000))
-        # This comparison is inconclusive; it is not an existence witness.
+        # Only this conservative comparison is inconclusive. The separate
+        # sharp-cone Bernstein test DOES exclude this manufactured source.
 
     def test_explicit_rotation_requires_conjugation(self):
         A, B, C, D = Q(2), Q(3), Q(5), Q(7)

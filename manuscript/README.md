@@ -35,9 +35,14 @@ The `ExactCoefficientCone` Lean theorem reduces the original seven
 coefficient inequalities to three exact coupled inequalities, without
 the sufficient factor-14 relaxation; the rational test also exhibits
 an admissible direction attaining the full original budget.
-Together these give a restricted no-go for the **sufficient**
-four-coordinate smallness estimate on a manufactured meridional source,
-not for the weaker original H8 seven-coefficient bound. The authentic
+The `SharpCoefficientDual` Lean theorem proves the support upper
+bound, with independent rational extremizers. The test
+`h8_sharp_dual_certificate.py` verifies, using 1600 rational Bernstein
+rectangles, a **stronger no-go even for the original absolute
+coefficient perturbation budget** on the same manufactured source.
+Run `python -m unittest discover -s tests -p 'test_h8_sharp_dual*.py' -v`
+to reproduce it. This still does not exclude every one-sided positive
+seven-ray allocation. The authentic
 source, any tilted frame and the weighted source-matched H8 inverse
 remain open. No full unforced finite-time
 blow-up proof follows. The official proof-gate ledger is in

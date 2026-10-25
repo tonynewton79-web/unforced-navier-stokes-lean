@@ -14,8 +14,12 @@ on:
       - 'tests/test_proof_gates.py'
       - 'tests/test_meridional_h8.py'
       - 'tests/test_h8_four_field_map.py'
+      - 'tests/test_h8_sharp_dual.py'
+      - 'tests/test_h8_sharp_dual_certificate.py'
       - 'meridional_h8_certificate.py'
       - 'h8_four_field_map.py'
+      - 'h8_sharp_dual.py'
+      - 'h8_sharp_dual_certificate.py'
       - 'manuscript/**'
       - '.github/workflows/unforced-torus-patching.yml'
   workflow_dispatch:
@@ -73,6 +77,7 @@ jobs:
           lake build UnforcedPatching.MeridionalInverseSmoke
           lake build UnforcedPatching.FourFieldPhysicalSmoke
           lake build UnforcedPatching.ExactCoefficientConeSmoke
+          lake build UnforcedPatching.SharpCoefficientDualSmoke
 
       - name: Revalidate fail-closed mathematical gate ledger
         run: |
