@@ -12,7 +12,7 @@ The authoritative machine-readable gate data are in [`proof_gates.json`](proof_g
 | G1 — exact local core | Local whole space | PAPER_CONDITIONAL | Independently certify common source profiles, full hierarchy/pressure, differentiated convergence and analytic first-shell supply. Local-to-torus chart transport remains separate. |
 | G2 — periodic localization | Torus | PAPER_CONDITIONAL | Physical mean/pressure identities, nonlocal transverse inverse and compatible first-shell bounds. |
 | G3 — temporal carriers | Torus | PAPER_CONDITIONAL | Two-color, phase-lock, compact tube and graph-space PDE inequalities, not only scalar algebra. |
-| G4 — shrinking spatial attachment | Torus | **OPEN** | One explicit compact H8 profile and weighted inverse with exact coefficient budget `15971/122900`. |
+| G4 — shrinking spatial attachment | Torus | **OPEN**; exact pointwise margin algebra compiled in Lean | One explicit compact H8 profile and weighted inverse with exact coefficient budget `15971/122900`. |
 | G5 — coupled contraction | Torus | **OPEN** | Physical right-inverse range `K_full G_reg S_r(Y) ⊆ Y_c`, constants `4 M_G C_B η < 1`, Banach completeness and smoothness bootstrap. |
 | G6 — physical unforced completion | Torus | **OPEN** | Full zero vector-valued residual, one pressure gauge, smooth periodic finite-energy solution on every `t<1`. |
 | G7 — singular trace retention | Torus | **OPEN** | Correction subleading along a genuine terminal trajectory, yielding `SpeedUnboundedAtOne`. |
@@ -24,6 +24,7 @@ Source-of-claim distinctions:
 - The imported OpenAI `NavierStokes.ProblemStatement.CandidateProperties` includes a force and **zero initial velocity**. It cannot serve as the new unforced nonzero-data theorem. At viscosity one, `navierStokesResidual` carries the physical acceleration, advection, Laplacian and **positive** pressure-gradient sign.
 - Original source stages A.11/A.19 are not blanket G1 assumptions for the carrier-independent periodic route. They become obligations only if an exact dependency of the selected local core on those stages is exhibited; otherwise keep them in the independent forced-source audit.
 - `Carrier_Independent_Structured_Stress_Route_FINAL_COLOUR.tex`, Proposition on the rational seven-ray centre, supplies pointwise algebra `4443/9832 > 9/20` and coefficient floor `172/1229`. It explicitly leaves the compact H8 weighted bound open. Finite algebra does not solve it.
+- `UnforcedPatching.ConeBudget` now kernel-checks the exact rational difference `172/1229 - 1/100 = 15971/122900` and derives a seven-ray positive coefficient floor **assuming** the bound on all seven corrections. It does not construct the weighted compact inverse or certify that the bound holds for any specific profile.
 - The 188-page `Unforced_Finite-Time_Blow-Up_for_Navier-Stokes.pdf` repeatedly calls its global periodic route conditional, not end-to-end Lean-compiled. Its earlier continuous-global-axisymmetry torus route was withdrawn in favor of local lifts, `C4`, and one global periodic pressure.
 
 ## Whole-space diagnostics kept outside the torus proof chain
