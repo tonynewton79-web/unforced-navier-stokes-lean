@@ -140,6 +140,60 @@ python h8_positive_dual_certificate.py
 lake build UnforcedPatching.PositiveCoefficientConeSmoke
 ```
 
+## Exact rotating-frame dual, without assuming a frozen source basis
+
+Write the trace-free source tensor as
+\(H=\begin{psmallmatrix}-D&C&A\\C&0&B\\A&B&D\end{psmallmatrix}\).
+If \(E(x)\) is its orthogonal source-to-physical frame and
+\(K=EHE^{\mathsf T}\), then for any physical gradient \(G=\nabla v\)
+the pulled-back gradient is \(M=E^{\mathsf T}GE\). The **exact** dual
+coordinates are
+
+\[
+(a_E,b_E,c_E,d_E)=
+(M_{rz}+M_{zr},\ M_{\theta z}+M_{z\theta},\
+ M_{r\theta}+M_{\theta r},\ M_{zz}-M_{rr}),
+\qquad K:G=Aa_E+Bb_E+Cc_E+Dd_E.
+\]
+
+The new `UnforcedPatching/RotatingFrameDual.lean` proves this finite
+identity even for arbitrary pointwise matrices \(E\) and also proves
+the one-sided upper bound
+\(-K:G\le\sigma^+_\rho(-a_E,-b_E,-c_E,-d_E)\)
+directly from all seven original ray floors. Orthogonality is needed
+to preserve the isotropic pressure gauge, but not for the contraction
+identity. `h8_rotating_frame.py` and an independent rational test
+exercise the physical contraction, covector values and gauge behavior.
+
+If \(\operatorname{div}K+\nabla q=f\), integration against any admissible
+divergence-free test field yields the **necessary** inequality
+
+\[
+\int f\cdot v\,dx \le
+\int\sigma^+_{\rho(x)}(-a_E,-b_E,-c_E,-d_E)\,dx.
+\]
+
+This continuum integral is **not** formalized in Lean. Moreover,
+the physical divergence differentiates the frame:
+
+\[
+\partial_jK_{ij} = E_{ia}E_{jb}\partial_jH_{ab}+
+(\partial_jE_{ia})H_{ab}E_{jb}+
+E_{ia}H_{ab}\partial_jE_{jb}.
+\]
+
+Thus the verified pointwise algebra cannot substitute for the
+missing derivative estimates, source profiles or compact stress
+construction. In particular **no authentic-source dual value can be
+reported** until \(g,\rho,R_*\) and \(E\) are available.
+
+Reproduce with:
+
+```sh
+python -m unittest tests.test_h8_rotating_frame -v
+lake build UnforcedPatching.RotatingFrameDualSmoke
+```
+
 ## Authentic H8 source: required data and current state
 
 The files available in this checkout reference

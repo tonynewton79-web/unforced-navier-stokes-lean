@@ -192,7 +192,10 @@ one-sided cone. No positive-cone inverse is implied, and testing
 other dual fields or the unavailable true H8 source remains open.
 
 For a tilted or spatially varying orthonormal frame `E`, the physical
-stress is `E H E^T`. No authentic H8 `E(r,z)`, its derivative bounds,
+stress is `E H E^T`. The new `RotatingFrameDual.lean` kernel checks
+the exact Frobenius change of frame and one-sided pointwise dual
+bound, but does not differentiate `E` or construct the spatial stress.
+No authentic H8 `E(r,z)`, its derivative bounds,
 or the real source profile has been checked against this example.
 Neither this negative control nor the absent genuine H8 source
 promotes G4 or the final unforced theorem; both remain OPEN.

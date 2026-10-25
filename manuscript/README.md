@@ -53,8 +53,14 @@ original dual field supplies no obstruction there, **not** that a
 positive-cone inverse exists. Reproduce with
 `python -m unittest discover -s tests -p 'test_h8_positive*.py' -v`
 and `python h8_positive_dual_certificate.py`. The authentic
-source, any tilted frame and the weighted source-matched H8 inverse
-remain open. No full unforced finite-time
+source and weighted source-matched H8 inverse remain open. The new
+`RotatingFrameDual` Lean module proves the exact finite-matrix
+conjugation identity and the one-sided dual bound for **arbitrary
+pointwise frame values**, with exact independent rational tests in
+`tests/test_h8_rotating_frame.py`. This completes only the rotating
+frame's **algebraic** bridge. It does not supply the authentic
+frame profile, its derivatives, a compact inverse or the continuum
+integral certificate. No full unforced finite-time
 blow-up proof follows. The official proof-gate ledger is in
 `docs/unforced-integration/proof_gates.json`.
 

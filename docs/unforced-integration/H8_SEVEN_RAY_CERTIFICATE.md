@@ -155,6 +155,15 @@ signed-polynomial certificate gives a lower support
 therefore does **not** contradict the one-sided floor. No spatial
 positive-cone inverse is constructed, nor does this test exclude other
 dual obstructions.
+
+The `RotatingFrameDual.lean` theorem now supplies the exact bridge
+to a variable physical source frame: with `K=E H E^T` and
+`M=E^T(∇v)E`, the dual covector is
+`(M_rz+M_zr, M_θz+M_zθ, M_rθ+M_θr, M_zz-M_rr)`.
+Lean checks the Frobenius identity and the transformed one-sided
+pointwise support bound for every frame value. The derivatives of
+`E`, the physical source and the spatially integrated dual bound
+remain separate open tasks. See the authentic-source boundary note.
 See [`H8_AUTHENTIC_SOURCE_BOUNDARY.md`](H8_AUTHENTIC_SOURCE_BOUNDARY.md)
 for the genuine-source authentication blocker.
 
@@ -188,6 +197,7 @@ Reproduction: build `UnforcedPatching.SevenRayCenterSmoke`,
 `UnforcedPatching.ExactCoefficientConeSmoke`,
 `UnforcedPatching.SharpCoefficientDualSmoke`, and
 `UnforcedPatching.PositiveCoefficientConeSmoke` under the pinned Lean
-toolchain; then run `python -m unittest discover -s tests -v`.
+toolchain; also build `UnforcedPatching.RotatingFrameDualSmoke`,
+then run `python -m unittest discover -s tests -v`.
 A successful finite calculation
 must never promote the H8 analytic gate to complete.

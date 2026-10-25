@@ -18,12 +18,14 @@ on:
       - 'tests/test_h8_sharp_dual_certificate.py'
       - 'tests/test_h8_positive_cone.py'
       - 'tests/test_h8_positive_dual_certificate.py'
+      - 'tests/test_h8_rotating_frame.py'
       - 'meridional_h8_certificate.py'
       - 'h8_four_field_map.py'
       - 'h8_sharp_dual.py'
       - 'h8_sharp_dual_certificate.py'
       - 'h8_positive_cone.py'
       - 'h8_positive_dual_certificate.py'
+      - 'h8_rotating_frame.py'
       - 'manuscript/**'
       - '.github/workflows/unforced-torus-patching.yml'
   workflow_dispatch:
@@ -83,6 +85,7 @@ jobs:
           lake build UnforcedPatching.ExactCoefficientConeSmoke
           lake build UnforcedPatching.SharpCoefficientDualSmoke
           lake build UnforcedPatching.PositiveCoefficientConeSmoke
+          lake build UnforcedPatching.RotatingFrameDualSmoke
 
       - name: Revalidate fail-closed mathematical gate ledger
         run: |

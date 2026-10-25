@@ -64,8 +64,11 @@ absolute coefficient budget fails for the specified manufactured
 meridional source. The larger, one-sided seven-ray positivity cone
 has a distinct asymmetric sharp dual support function. An exact
 rational enclosure shows that the same dual field does not obstruct
-this larger cone; no inverse is thereby constructed. None of these
-diagnostic tests decides the authentic H8 residual.
+this larger cone; no inverse is thereby constructed. A kernel-checked
+matrix identity then transfers the exact positive-cone dual to any
+rotating source frame, yielding a necessary integrated bound without
+assuming the frame is constant. None of these diagnostic tests
+decides the authentic H8 residual.
 Lean additionally checks the meridional pointwise inverse and both
 integral antiderivative identities, alongside the finite cone algebra,
 physical residual expansion, and conditional terminal-speed retention.
@@ -117,8 +120,9 @@ incompatible with one explicit source, even modulo pressure gradients.
 We subsequently exclude the original absolute coefficient envelope
 for the same manufactured source by a sharper dual calculation;
 we then determine the sharp support of the distinct one-sided cone
-and test the same source against it. The actual H8 source remains
-a separate problem.
+and test the same source against it. The exact frame pullback supplies
+the correct dual coordinates for the genuine spatially varying source.
+The actual H8 source remains a separate problem.
 
 \section{A compact symmetric inverse in an annular region}
 
@@ -719,6 +723,85 @@ have not been provided in the checked project. No statement here
 excludes a more flexible source-matched H8 inverse or decides the
 global unforced problem.
 
+\begin{proposition}[Physical-frame pullback of the one-sided dual]
+\label{prop:rotated-dual}
+Let $E(x)$ be a pointwise orthogonal $3\times3$ source-to-physical
+frame, written in Cartesian components, and set
+$K(x)=E(x)H(A,B,C,D)(x)E(x)^{\mathsf T}$ with
+$H$ from \eqref{eq:four-field-map}. For any physical gradient
+$G=\nabla v$, put $M=E^{\mathsf T}GE$ and define
+\begin{equation}\label{eq:rotated-covector}
+ (a_E,b_E,c_E,d_E)
+ =\big(M_{rz}+M_{zr},\ M_{\theta z}+M_{z\theta},\
+ M_{r\theta}+M_{\theta r},\ M_{zz}-M_{rr}\big).
+\end{equation}
+Then
+\begin{equation}\label{eq:rotated-pairing}
+ K:G=Aa_E+Bb_E+Cc_E+Dd_E.
+\end{equation}
+If every original seven-ray coefficient is at least $\rho/100$
+for $\rho\ge0$, then the pointwise necessary bound is
+\begin{equation}\label{eq:rotated-support}
+ -K:G\le\sigma^+_\rho(-a_E,-b_E,-c_E,-d_E),
+\end{equation}
+where $\sigma^+$ is given exactly by
+\eqref{eq:positive-support}. Both \eqref{eq:rotated-pairing}
+and \eqref{eq:rotated-support} are kernel-checked in Lean as
+pointwise finite-matrix results; the algebra does not require
+$E$ to be constant.
+
+Suppose additionally that $K$ and $q$ solve
+$\diver K+\nabla q=f$ distributionally on a periodic cell or
+a region where the following integration by parts is valid.
+For every smooth periodic or compactly supported solenoidal $v$,
+\begin{equation}\label{eq:rotated-integrated}
+ \int f\cdot v\,\dd x
+ \le\int\sigma^+_{\rho(x)}
+       (-a_E(x),-b_E(x),-c_E(x),-d_E(x))\,\dd x.
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+The Frobenius identity
+$(EHE^{\mathsf T}):G=H:(E^{\mathsf T}GE)$ follows by
+rearranging finite sums over the three matrix indices. Inserting
+the nine entries of $H$ gives \eqref{eq:rotated-pairing}.
+Apply Proposition~\ref{prop:positive-support} to the negative
+of this dual covector to obtain \eqref{eq:rotated-support}.
+Finally $\int f\cdot v=-\int K:\nabla v$ because the pressure
+term pairs to zero with a solenoidal $v$, proving
+\eqref{eq:rotated-integrated}.
+\end{proof}
+
+The frame transfer changes the dual coordinates even when
+$E$ is constant. For example, take $G=\operatorname{diag}(1,2,3)$
+and the orthogonal meridional rotation
+\[
+ E=\begin{pmatrix}3/5&0&4/5\\0&1&0\\-4/5&0&3/5\end{pmatrix}.
+\]
+Formula \eqref{eq:rotated-covector} gives
+$(a_E,b_E,c_E,d_E)=(-48/25,0,0,-14/25)$,
+whereas the frozen frame gives $(0,0,0,2)$. Thus a fixed-frame
+numerical obstruction cannot be transferred to a varying frame
+without recomputing its dual integral.
+
+For a differentiable frame, the analytic divergence additionally
+contains the connection terms
+\begin{equation}\label{eq:frame-derivatives}
+ \partial_jK_{ij}=
+ E_{ia}E_{jb}\partial_jH_{ab}
+ +(\partial_jE_{ia})H_{ab}E_{jb}
+ +E_{ia}H_{ab}(\partial_jE_{jb}),
+\end{equation}
+with repeated indices summed. Orthogonality ensures that a source-frame
+scalar multiple of the identity remains a physical pressure gauge,
+even if $E$ varies. Equation \eqref{eq:frame-derivatives} shows why
+the pointwise dual theorem alone does not control the weighted
+derivatives of a source-matched inverse. The authenticated functions
+$g,\rho,R_*$ and $E$, together with their support and derivative
+budgets, remain required to evaluate \eqref{eq:rotated-integrated}
+on the genuine H8 residual.
+
 \section{The physical residual and terminal speed}
 
 Define the viscosity-one residual
@@ -795,6 +878,7 @@ Lean module & Checked scope and the missing construction\\
 \texttt{FourFieldPhysical} & Exact nine-entry ray-to-cylindrical tensor map modulo an isotropic gauge; entrywise four-coordinate bound in the frozen frame, not a spatially rotated PDE bridge.\\
 \texttt{ExactCoefficientCone}, \texttt{SharpCoefficientDual} & Exact absolute-budget seven-coefficient polytope and sharp dual upper estimate; no authentic H8 source or spatial inverse.\\
 \texttt{PositiveCoefficientCone} & Universal one-sided seven-ray positive-cone support bound; not a spatial stress inverse or a continuum integral formalization.\\
+\texttt{RotatingFrameDual} & Exact source-to-physical matrix Frobenius pullback and pointwise rotated one-sided dual bound; no derivative-of-frame or PDE source matching theorem.\\
 \texttt{CompactGauge} & One-variable gauge derivative; no compact tensor support theorem.\\
 \texttt{MeridionalInverse} & Actual axial and radial interval-integral FTC identities, geometric hoop cancellation, and pointwise radial/axial cylindrical inverse; no Cartesian tensor-divergence bridge or compact support theorem.\\
 \texttt{Retention} & Subleading corrections preserve terminal speed; neither required field constructed.\\
@@ -870,9 +954,26 @@ formalized in Lean. The strict positivity of $J-L$ means only
 that this \emph{particular} dual test supplies no one-sided
 positive-cone nonexistence certificate.
 
+The further compiled declarations
+\begin{center}
+\small
+\texttt{rotating\_fourField\_frobenius}\\[2pt]
+\texttt{rotated\_oneSided\_dual\_upper}
+\end{center}
+establish
+\eqref{eq:rotated-pairing} and \eqref{eq:rotated-support} for
+every pointwise $3\times3$ frame matrix. Independent rational
+tests verify the rotated covector, equality of matrix contractions,
+an attainable one-sided dual support, and preservation of isotropic
+pressure gauges under orthogonal (but not arbitrary) frames.
+The spatial differential identity \eqref{eq:frame-derivatives} and
+integrated inequality \eqref{eq:rotated-integrated} are proved on
+paper, not yet in Lean; neither has been evaluated against the
+unavailable authentic H8 source.
+
 The source code, machine-readable G0--G8 ledger, smoke tests and
 reproduction commands accompany the public integration branch
-\cite{NewtonRepo2026}. A local pinned build has passed fifteen smoke
+\cite{NewtonRepo2026}. A local pinned build has passed sixteen smoke
 modules; at the time of preparing this edition, the corresponding
 GitHub-hosted Actions checks had not furnished a successful receipt
 for the latest commit. Local compilation does not replace hosted CI,
@@ -901,8 +1002,12 @@ allocation, admits a weighted inverse satisfying the one-sided
 positive H8 ray conditions (or the absolute inequalities
 \eqref{eq:exact-cone}) and all spatial
 derivative bounds. The sharp cone description enables a direct
-weighted dual optimization against the authentic source, without
+weighted dual optimization against the authentic source through
+\eqref{eq:rotated-integrated}, without
 replacing those inequalities by the factor-$14$ sufficient estimate.
+No numerical conclusion can be drawn from this inequality until the
+actual $g,\rho,R_*,E$ are supplied and the frame-derivative terms
+in \eqref{eq:frame-derivatives} are controlled.
 
 A complete unforced singularity construction must still provide a
 single authenticated local profile, source-matched smooth shell
