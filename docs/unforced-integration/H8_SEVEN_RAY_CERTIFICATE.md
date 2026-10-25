@@ -140,6 +140,21 @@ The strict original-budget discrepancy therefore exceeds
 `5637293/4968232500>0`. This is a nonexistence result under the
 **absolute** coefficient perturbation cap for this manufactured
 source, not for every one-sided positive ray-coefficient allocation.
+
+The original **one-sided** floor itself is now characterized and
+tested without imposing any symmetric absolute perturbation cap.
+With `g=15971/122900`, `h=22371/122900`, and `x=A-4B`, it is exactly
+`-gρ/4≤D≤(g+h)ρ/8`, `|B|≤gρ/8`, `|x|≤gρ/2+2D`, and
+`|C-(h-g)ρ/4|≤(g+h)ρ/4-2D`. Its sharp support is
+`ρ*((h-g)c/4+g*|4a+b|/8+max((3g+h)*|c|/4-g*d/4,
+(3g+h)*|a|/4+(g+h)*d/8))`. The upper bound is checked by
+`PositiveCoefficientCone.lean`, and exact rational maximizing witnesses
+attest sharpness. On the same manufactured source, a separate 1600-cell
+signed-polynomial certificate gives a lower support
+`J>256/40425+1/10000`: the **same** divergence-free dual field
+therefore does **not** contradict the one-sided floor. No spatial
+positive-cone inverse is constructed, nor does this test exclude other
+dual obstructions.
 See [`H8_AUTHENTIC_SOURCE_BOUNDARY.md`](H8_AUTHENTIC_SOURCE_BOUNDARY.md)
 for the genuine-source authentication blocker.
 
@@ -168,9 +183,11 @@ projection and global time-dependent PDE geometry also require separate
 proof. These remain `OPEN` in `proof_gates.json`.
 
 Reproduction: build `UnforcedPatching.SevenRayCenterSmoke`,
-`UnforcedPatching.ConeBudgetSmoke`, and
-`UnforcedPatching.FourFieldPhysicalSmoke` and
-`UnforcedPatching.ExactCoefficientConeSmoke`, and
-`UnforcedPatching.SharpCoefficientDualSmoke` under the pinned Lean toolchain, and run
-`python -m unittest discover -s tests -v`. A successful finite calculation
+`UnforcedPatching.ConeBudgetSmoke`,
+`UnforcedPatching.FourFieldPhysicalSmoke`,
+`UnforcedPatching.ExactCoefficientConeSmoke`,
+`UnforcedPatching.SharpCoefficientDualSmoke`, and
+`UnforcedPatching.PositiveCoefficientConeSmoke` under the pinned Lean
+toolchain; then run `python -m unittest discover -s tests -v`.
+A successful finite calculation
 must never promote the H8 analytic gate to complete.

@@ -181,6 +181,16 @@ so the source pairing violates the original correction budget by
 more than `5637293/4968232500`. The proof and source distinctions
 are in [`H8_AUTHENTIC_SOURCE_BOUNDARY.md`](H8_AUTHENTIC_SOURCE_BOUNDARY.md).
 
+The broader **one-sided** positivity floor is different: its exact
+asymmetric four-coordinate support is checked by the new
+`PositiveCoefficientCone.lean` theorem and independent exact rational
+maximizers. On the same manufactured meridional source and the same
+dual field, signed rational polynomial cell integrals show its
+available dual support exceeds the source pairing by more than
+`1/10000`. Thus this diagnostic dual field cannot rule out the
+one-sided cone. No positive-cone inverse is implied, and testing
+other dual fields or the unavailable true H8 source remains open.
+
 For a tilted or spatially varying orthonormal frame `E`, the physical
 stress is `E H E^T`. No authentic H8 `E(r,z)`, its derivative bounds,
 or the real source profile has been checked against this example.

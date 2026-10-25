@@ -76,12 +76,68 @@ stronger than the earlier result about the factor-14 sufficient cap.
 It still does not refute the larger one-sided set of merely positive
 coefficient allocations, or a tilted-frame construction.
 
+## Exact test of the larger one-sided positive-coefficient cone
+
+The original condition on every ray is
+\(c_i^{(0)}\rho+\delta c_i\ge\rho/100\), with \(\rho\ge0\).
+Writing \(g=15971/122900\), \(h=22371/122900\) and \(x=A-4B\),
+this is **exactly** the following asymmetric polytope:
+
+\[
+-g\rho/4\le D\le(g+h)\rho/8,\quad |B|\le g\rho/8,\quad
+|x|\le g\rho/2+2D,\quad
+|C-(h-g)\rho/4|\le(g+h)\rho/4-2D.
+\]
+
+Its support function, attained by rational endpoint choices, is
+
+\[
+\sigma^+_\rho(a,b,c,d)=\rho\left[
+ (h-g)c/4+g|4a+b|/8+
+ \max\{(3g+h)|c|/4-gd/4,\ (3g+h)|a|/4+(g+h)d/8\}\right].
+\]
+
+`UnforcedPatching/PositiveCoefficientCone.lean` kernel-checks the
+**universal upper bound** directly from all seven original floors;
+`h8_positive_cone.py` independently checks feasible maximizing
+witnesses in exact rational arithmetic. Thus the expression is sharp
+pointwise, but supplies no differential stress inverse.
+
+For the same manufactured meridional source, the exact support in
+the required dual direction is
+
+\[
+ J=\int_1^2\!\int_{-1}^1 rP\eta\,
+  \sigma^+_1(-a,0,0,-d)\,dz\,dr.
+\]
+
+The rational program `h8_positive_dual_certificate.py` sums the
+largest of four **signed polynomial action integrals** on each of
+1600 rational rectangles and proves
+
+\[
+ J\ge
+ \frac{249897750999661616493885744300330541}
+ {38797083829862400000000000000000000000}
+ >\frac{256}{40425}+\frac1{10000}.
+\]
+
+The same program also supplies an independent signed Bernstein upper
+enclosure. The strict **positive** slack means that this particular
+divergence-free dual field gives *no contradiction* under the larger
+one-sided cone, unlike the absolute-budget test. It does **not** show
+that a compact admissible inverse exists, and it does not settle
+whether another dual field obstructs the same source.
+
 Reproduce with:
 
 ```sh
 python -m unittest discover -s tests -p 'test_h8_sharp_dual*.py' -v
 python h8_sharp_dual_certificate.py
 lake build UnforcedPatching.SharpCoefficientDualSmoke
+python -m unittest discover -s tests -p 'test_h8_positive*.py' -v
+python h8_positive_dual_certificate.py
+lake build UnforcedPatching.PositiveCoefficientConeSmoke
 ```
 
 ## Authentic H8 source: required data and current state

@@ -42,7 +42,17 @@ rectangles, a **stronger no-go even for the original absolute
 coefficient perturbation budget** on the same manufactured source.
 Run `python -m unittest discover -s tests -p 'test_h8_sharp_dual*.py' -v`
 to reproduce it. This still does not exclude every one-sided positive
-seven-ray allocation. The authentic
+seven-ray allocation. The new `PositiveCoefficientCone` Lean theorem
+establishes the upper support bound for the exact, asymmetric
+one-sided coefficient floor; independent rational maximizing
+witnesses establish sharpness. The exact signed-polynomial certificate
+`h8_positive_dual_certificate.py` proves, on the *same manufactured*
+meridional source and dual field, that the larger cone's support
+exceeds the source pairing by more than `1/10000`. This means the
+original dual field supplies no obstruction there, **not** that a
+positive-cone inverse exists. Reproduce with
+`python -m unittest discover -s tests -p 'test_h8_positive*.py' -v`
+and `python h8_positive_dual_certificate.py`. The authentic
 source, any tilted frame and the weighted source-matched H8 inverse
 remain open. No full unforced finite-time
 blow-up proof follows. The official proof-gate ledger is in

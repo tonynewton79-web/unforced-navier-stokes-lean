@@ -61,7 +61,11 @@ H8 stress estimate. We give the exact three-inequality description
 and sharp dual support function of the original seven-coefficient cone.
 An exact rational Bernstein certificate shows that even this larger
 absolute coefficient budget fails for the specified manufactured
-meridional source. This does not decide the authentic H8 residual.
+meridional source. The larger, one-sided seven-ray positivity cone
+has a distinct asymmetric sharp dual support function. An exact
+rational enclosure shows that the same dual field does not obstruct
+this larger cone; no inverse is thereby constructed. None of these
+diagnostic tests decides the authentic H8 residual.
 Lean additionally checks the meridional pointwise inverse and both
 integral antiderivative identities, alongside the finite cone algebra,
 physical residual expansion, and conditional terminal-speed retention.
@@ -112,7 +116,9 @@ shows that a natural \emph{stronger} physical-component envelope is
 incompatible with one explicit source, even modulo pressure gradients.
 We subsequently exclude the original absolute coefficient envelope
 for the same manufactured source by a sharper dual calculation;
-the actual H8 source remains a separate problem.
+we then determine the sharp support of the distinct one-sided cone
+and test the same source against it. The actual H8 source remains
+a separate problem.
 
 \section{A compact symmetric inverse in an annular region}
 
@@ -599,7 +605,112 @@ This obstruction concerns the \emph{absolute correction budget}
 $|\delta c_i|\le\gamma\rho$ in one fixed frame. It does not rule
 out every nonnegative seven-ray stress: the one-sided requirement
 $c_i^{(0)}\rho+\delta c_i\ge\rho/100$ admits perturbations outside
-that sufficient absolute budget. In addition, $f=P\eta'e_z$ is a
+that sufficient absolute budget. We now compute the exact support
+of this larger admissible set rather than extending the obstruction
+by analogy.
+
+\begin{proposition}[Sharp support of the one-sided seven-ray cone]
+\label{prop:positive-support}
+Let $\rho\ge0$ and let $\mathcal P_\rho$ contain precisely those
+$(A,B,C,D)$ for which all seven original coefficients satisfy
+$c_i^{(0)}\rho+\delta c_i(A,B,C,D)\ge\rho/100$. Define
+\[
+ g=\frac{15971}{122900},\quad h=\frac{22371}{122900},\quad
+ x=A-4B.
+\]
+Then $\mathcal P_\rho$ is described exactly by
+\begin{align}
+ -\frac{g\rho}{4}&\le D\le\frac{(g+h)\rho}{8},
+ &|B|&\le\frac{g\rho}{8},\notag\\
+ |x|&\le\frac{g\rho}{2}+2D,
+ &\left|C-\frac{(h-g)\rho}{4}\right|
+ &\le\frac{(g+h)\rho}{4}-2D.\label{eq:positive-intervals}
+\end{align}
+For arbitrary dual coefficients $(a,b,c,d)\in\R^4$ its support is
+\begin{align}
+ \sigma^+_\rho(a,b,c,d)
+ =\rho\bigg[&\frac{h-g}{4}c+\frac g8|4a+b|\notag\\
+ &+\max\left\{
+ \frac{3g+h}{4}|c|-\frac g4d,\,
+ \frac{3g+h}{4}|a|+\frac{g+h}{8}d
+ \right\}\bigg].\label{eq:positive-support}
+\end{align}
+The universal upper bound in \eqref{eq:positive-support} is
+kernel-checked in Lean under the original seven coefficient floors.
+\end{proposition}
+
+\begin{proof}
+The six ordinary ray centres have available negative correction
+$-g\rho$ and the third ray has $-h\rho$. The paired fourth and
+fifth coefficient inequalities yield the bound on $|x|$; the
+sixth and seventh yield the bound on $|B|$. The second and third
+give the $C$ interval, whose nonnegative half-width forces the
+upper bound on $D$. The half-width for $x$ forces the lower bound
+on $D$. The remaining first-ray inequality $-3D/2\ge-g\rho$
+is then redundant, since $(g+h)/8\le2g/3$. This proves the exact
+description, including when $\rho=0$.
+
+The objective is
+$ax+(4a+b)B+cC+dD$. For each fixed $D$, the independent intervals
+for $x,B,C$ give a maximum equal to
+\[
+ \frac{h-g}{4}\rho c+\frac{g\rho}{8}|4a+b|
+ +\left(\frac{g\rho}{2}+2D\right)|a|
+ +\left(\frac{(g+h)\rho}{4}-2D\right)|c|+Dd.
+\]
+This is affine in $D$. Substitution of its two endpoints gives
+\eqref{eq:positive-support}. Signs of $x,B$ and the displacement
+of $C$ attain these extrema, establishing sharpness.
+\end{proof}
+
+\begin{proposition}[The manufactured dual test is inconclusive for
+the one-sided cone]\label{prop:positive-diagnostic}
+For the fixed diagnostic source and divergence-free test field in
+Proposition~\ref{prop:original-obstruction}, let $a,d$ be the
+coupling expressions there, and define
+\[
+ J=\int_1^2\!\int_{-1}^1
+ rP(r)\eta(z)\,\sigma^+_1(-a(r,z),0,0,-d(r,z))
+ \,\dd z\dd r.
+\]
+An exact rational partition certificate proves
+\begin{equation}\label{eq:positive-gap}
+ J\ge\frac{249897750999661616493885744300330541}
+ {38797083829862400000000000000000000000}
+ >\frac{256}{40425}+\frac1{10000}.
+\end{equation}
+Consequently the necessary dual inequality $L\le J$ is not
+contradicted by this test field under the one-sided cone. This
+asserts neither the existence of a stress nor the absence of an
+obstruction from a different test field.
+\end{proposition}
+
+\begin{proof}
+The explicit support \eqref{eq:positive-support}, evaluated on
+$(-a,0,0,-d)$, is the maximum of the four signed polynomial actions
+\[
+ \frac{ga}{2}+\frac{gd}{4},\quad
+ -\frac{ga}{2}+\frac{gd}{4},\quad
+ \left(\frac g2+\frac{3g+h}{4}\right)a-\frac{g+h}{8}d,\quad
+ -\left(\frac g2+\frac{3g+h}{4}\right)a-\frac{g+h}{8}d.
+\]
+Divide the rectangle into $40\times40$ rational subrectangles.
+On each cell, the integral of the pointwise maximum is at least
+the maximum of the four \emph{exact signed polynomial integrals}
+against the nonnegative weight $rP\eta$. Their rational sum gives
+the first inequality in \eqref{eq:positive-gap}. The second is
+an exact integer comparison. For independent error detection, the
+accompanying program also bounds the same integral from above with
+signed bivariate Bernstein coefficients. The pressure contribution
+vanishes because the test field is divergence free.
+\end{proof}
+
+The contrast is mathematically substantive: the absolute-budget
+obstruction is strict, whereas the exact one-sided cone is wider
+and this particular necessary inequality has positive slack. A
+primal positive-cone construction would additionally require a
+compact symmetric-divergence inverse with all support and derivative
+bounds. In addition, $f=P\eta'e_z$ is a
 manufactured diagnostic source, \emph{not} the authenticated H8
 residual $g-\mathbb P\diver(\rho R_*)$, where $\mathbb P$ denotes
 the divergence-free Leray projection; the source profiles and
@@ -682,7 +793,8 @@ Lean module & Checked scope and the missing construction\\
 \texttt{Periodicity}, \texttt{PressureGauge} & Sum and time-only gauge identities; no periodic singular solution.\\
 \texttt{ConeBudget}, \texttt{ConeOperator}, \texttt{SevenRayCenter} & Exact rational centre and sharp factor $14$; no source-matched weighted positive stress.\\
 \texttt{FourFieldPhysical} & Exact nine-entry ray-to-cylindrical tensor map modulo an isotropic gauge; entrywise four-coordinate bound in the frozen frame, not a spatially rotated PDE bridge.\\
-\texttt{ExactCoefficientCone}, \texttt{SharpCoefficientDual} & Exact seven-coefficient polytope and universal sharp dual upper estimate; no authentic H8 source or spatial inverse.\\
+\texttt{ExactCoefficientCone}, \texttt{SharpCoefficientDual} & Exact absolute-budget seven-coefficient polytope and sharp dual upper estimate; no authentic H8 source or spatial inverse.\\
+\texttt{PositiveCoefficientCone} & Universal one-sided seven-ray positive-cone support bound; not a spatial stress inverse or a continuum integral formalization.\\
 \texttt{CompactGauge} & One-variable gauge derivative; no compact tensor support theorem.\\
 \texttt{MeridionalInverse} & Actual axial and radial interval-integral FTC identities, geometric hoop cancellation, and pointwise radial/axial cylindrical inverse; no Cartesian tensor-divergence bridge or compact support theorem.\\
 \texttt{Retention} & Subleading corrections preserve terminal speed; neither required field constructed.\\
@@ -746,9 +858,21 @@ establishes the finite-dimensional upper bound in
 independently verify sharpness. The Bernstein integral itself is
 a rational Python certificate, not a Lean theorem.
 
+The separate one-sided cone is described by
+\eqref{eq:positive-intervals}; its universal support upper bound
+is proved by the compiled Lean declaration
+\texttt{one\_sided\_positive\_cone\_dual\_upper}. Independent exact
+rational feasible witnesses attain this value. A new $40\times40$
+rational partition proves the lower bound \eqref{eq:positive-gap},
+with a separate signed Bernstein upper enclosure. The integral
+certificate and its comparison with the source pairing are not
+formalized in Lean. The strict positivity of $J-L$ means only
+that this \emph{particular} dual test supplies no one-sided
+positive-cone nonexistence certificate.
+
 The source code, machine-readable G0--G8 ledger, smoke tests and
 reproduction commands accompany the public integration branch
-\cite{NewtonRepo2026}. A local pinned build has passed fourteen smoke
+\cite{NewtonRepo2026}. A local pinned build has passed fifteen smoke
 modules; at the time of preparing this edition, the corresponding
 GitHub-hosted Actions checks had not furnished a successful receipt
 for the latest commit. Local compilation does not replace hosted CI,
@@ -767,7 +891,10 @@ obstruction in Proposition~\ref{prop:dual}, together with
 Corollary~\ref{cor:four-field}, excludes the sufficient
 four-coordinate estimate; Proposition~\ref{prop:original-obstruction}
 also excludes the original absolute coefficient correction budget
-for that same manufactured source.
+for that same manufactured source. In contrast,
+Proposition~\ref{prop:positive-diagnostic} shows that the tested
+dual field has no obstruction for the larger one-sided cone; this
+leaves other dual tests and all primal construction questions open.
 The next mathematical question is whether the \emph{authentic}
 source, perhaps using a tilted frame or a more flexible coefficient
 allocation, admits a weighted inverse satisfying the one-sided
