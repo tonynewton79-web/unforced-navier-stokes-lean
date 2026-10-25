@@ -31,6 +31,10 @@ against a *stronger physical componentwise* weighted bound, supported by
 `FourFieldPhysical` reconstructs the exact fixed-frame four-field tensor
 and its isotropic gauge. Its independent exact test is
 `python -m unittest discover -s tests -p test_h8_four_field_map.py -v`.
+The `ExactCoefficientCone` Lean theorem reduces the original seven
+coefficient inequalities to three exact coupled inequalities, without
+the sufficient factor-14 relaxation; the rational test also exhibits
+an admissible direction attaining the full original budget.
 Together these give a restricted no-go for the **sufficient**
 four-coordinate smallness estimate on a manufactured meridional source,
 not for the weaker original H8 seven-coefficient bound. The authentic

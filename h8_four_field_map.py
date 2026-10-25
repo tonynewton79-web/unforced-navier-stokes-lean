@@ -33,6 +33,13 @@ def coefficient_correction(A, B, C, D):
     )
 
 
+def exact_original_cone_norm(A, B, C, D):
+    """Exact max_i |delta c_i|, without the sufficient factor-14 bound."""
+    return max(4 * abs(D) + 2 * abs(C),
+               4 * abs(D) + 2 * abs(A - 4 * B),
+               8 * abs(B))
+
+
 def ray_covariance(A, B, C, D):
     dc = coefficient_correction(A, B, C, D)
     return tuple(tuple(sum((dc[i] * QUARTER_RAYS[i][a] * QUARTER_RAYS[i][b]

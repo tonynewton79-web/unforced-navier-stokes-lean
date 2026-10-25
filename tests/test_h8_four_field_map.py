@@ -11,6 +11,7 @@ import unittest
 from h8_four_field_map import (
     coefficient_correction,
     cylinder_tensor,
+    exact_original_cone_norm,
     ray_covariance,
     recover_four_coordinates,
     rotate_tensor,
@@ -53,6 +54,25 @@ class FourFieldPhysicalMapTests(unittest.TestCase):
                    (Q(0), Q(0), Q(1)))
         with self.assertRaises(ValueError):
             recover_four_coordinates(outside)
+
+    def test_exact_original_cone_norm_equals_seven_ray_maximum(self):
+        samples = ((Q(a, 11), Q(b, 13), Q(c, 17), Q(d, 19))
+                   for a in (-7, -1, 0, 3, 8)
+                   for b in (-9, 0, 2)
+                   for c in (-5, 0, 6)
+                   for d in (-3, 0, 4))
+        for A, B, C, D in samples:
+            measured = max(map(abs, coefficient_correction(A, B, C, D)))
+            self.assertEqual(measured, exact_original_cone_norm(A, B, C, D))
+
+    def test_original_cone_allows_fourteen_times_sufficient_budget(self):
+        gamma = Q(15971, 122900)
+        A, B, C, D = gamma, gamma / 8, Q(0), Q(0)
+        self.assertEqual(exact_original_cone_norm(A, B, C, D), gamma)
+        self.assertEqual(max(map(abs, coefficient_correction(A, B, C, D))), gamma)
+        self.assertEqual(max(abs(x) for row in cylinder_tensor(A, B, C, D)
+                             for x in row), gamma)
+        self.assertEqual(gamma, 14 * Q(15971, 1720600))
 
     def test_four_coordinate_budget_implies_physical_entrywise_budget(self):
         c = certificate()

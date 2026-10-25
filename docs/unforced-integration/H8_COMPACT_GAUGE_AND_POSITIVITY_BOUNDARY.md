@@ -164,6 +164,11 @@ bound for this manufactured compact source**, even with arbitrary
 pressure. This is a concrete obstruction to using that overly strong
 budget universally. It does **not** exclude solutions meeting the
 weaker original seven-coefficient bound `max|delta c_i|≤(15971/122900)rho`.
+The exact original admissible cone is independently characterized and
+kernel-checked as
+`4|D|+2|C|≤τ`, `4|D|+2|A-4B|≤τ`, and `8|B|≤τ`, with
+`τ=(15971/122900)rho`. One may saturate it with
+`(A,B,C,D)=(τ,τ/8,0,0)`, outside the sufficient `max≤τ/14` envelope.
 The same conservative gradient upper bound is too large to give a
 contradiction under that weaker condition: its slack is exactly
 `51024386641/635933760000 > 0`.

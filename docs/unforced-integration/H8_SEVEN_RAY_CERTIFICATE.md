@@ -109,6 +109,22 @@ that source, much less for the yet-to-be-authenticated H8 source. Tensor
 conjugation and spatial derivatives of a tilted frame remain separate
 obligations.
 
+The **exact**, unrelaxed original cone is now verified in
+`UnforcedPatching/ExactCoefficientCone.lean`: writing `τ≥0` for the allowed
+absolute coefficient perturbation, all seven `|delta c_i|≤τ` hold if and
+only if
+
+\[
+ 4|D|+2|C|\le\tau,\quad
+ 4|D|+2|A-4B|\le\tau,\quad
+ 8|B|\le\tau.
+\]
+
+For example `(A,B,C,D)=(τ,τ/8,0,0)` meets the original bound exactly
+even though its maximum four-coordinate magnitude is `τ`, fourteen
+times the sufficient bound `τ/14`. These exact coupled inequalities are
+the correct next input to an H8 positive-cone weighted dual test.
+
 A separate exact radial-derivative calculation now identifies a compact
 two-diagonal pressure-neutral gauge and a restricted sign obstruction:
 see [`H8_COMPACT_GAUGE_AND_POSITIVITY_BOUNDARY.md`](H8_COMPACT_GAUGE_AND_POSITIVITY_BOUNDARY.md).
@@ -135,6 +151,7 @@ proof. These remain `OPEN` in `proof_gates.json`.
 
 Reproduction: build `UnforcedPatching.SevenRayCenterSmoke`,
 `UnforcedPatching.ConeBudgetSmoke`, and
-`UnforcedPatching.FourFieldPhysicalSmoke` under the pinned Lean toolchain, and run
+`UnforcedPatching.FourFieldPhysicalSmoke` and
+`UnforcedPatching.ExactCoefficientConeSmoke` under the pinned Lean toolchain, and run
 `python -m unittest discover -s tests -v`. A successful finite calculation
 must never promote the H8 analytic gate to complete.
