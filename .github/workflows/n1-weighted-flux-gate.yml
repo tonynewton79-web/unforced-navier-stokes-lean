@@ -6,6 +6,7 @@ on:
       - 'TerminalCore2026/N1WeightedFluxGateScalar.lean'
       - 'TerminalCore2026/verify_weighted_flux_xxiv.py'
       - 'TerminalCore2026/verify_authentic_source_hold_xxiv.py'
+      - 'tests/test_ci_lean_bootstrap.py'
       - '.github/workflows/n1-weighted-flux-gate.yml'
   pull_request:
   workflow_dispatch:
@@ -21,6 +22,7 @@ jobs:
         run: |
           curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
           echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
           elan toolchain install "$(cat lean-toolchain)"
           lake update
           lake exe cache get
@@ -32,6 +34,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: Regression test Lean bootstrap
+        run: python -m unittest discover -s tests -p 'test_ci_lean_bootstrap.py' -v
       - name: Independent exact covariance audit and source hold
         run: |
           python -m pip install sympy
