@@ -1,0 +1,101 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-25",
+  "target": "unforced periodic Navier-Stokes finite-time speed blow-up",
+  "target_geometry": "T3",
+  "viscosity": "1",
+  "target_theorem_status": "OPEN",
+  "source_ref": "1376c33866a103b2019cfee871e1924aa8ae2b7d",
+  "gates": [
+    {
+      "id": "G0",
+      "name": "Physical theorem interface and nonzero initial data",
+      "geometry": "T3",
+      "status": "OPEN",
+      "source": "docs/superpowers/specs/2026-10-25-unforced-torus-integration-design.md",
+      "lean_declarations": [],
+      "kernel_check": null,
+      "remaining": "Define nonzero-data unforced theorem against actual viscosity-one NavierStokes.ProblemStatement types; define/prove finite torus initial energy."
+    },
+    {
+      "id": "G1",
+      "name": "Exact local core and physical convergence",
+      "geometry": "LOCAL_R3",
+      "status": "PAPER_CONDITIONAL",
+      "source": "Exact_Local_Unforced_Terminal_Core_Dynamics_JFM_FINAL.tex, Theorem 1; source coefficient identities; PR #1 terminal-core ledger",
+      "lean_declarations": [],
+      "kernel_check": null,
+      "remaining": "Authenticate a single profile, n=1/2 coefficients, pressure, normal convergence, differentiated residual and axis continuation; prove local-to-torus chart interface."
+    },
+    {
+      "id": "G2",
+      "name": "C4 periodic localization and first-shell anti-divergence",
+      "geometry": "T3",
+      "status": "PAPER_CONDITIONAL",
+      "source": "Carrier_Independent_Structured_Stress_Route_FINAL_COLOUR.tex, Sections 2-4, H2/H6",
+      "lean_declarations": [],
+      "kernel_check": null,
+      "remaining": "Construct exact periodic field and prove force/mean/pressure identities and regular graph bounds."
+    },
+    {
+      "id": "G3",
+      "name": "Carrier and temporal patching",
+      "geometry": "T3",
+      "status": "PAPER_CONDITIONAL",
+      "source": "Carrier_Independent_Structured_Stress_Route_FINAL_COLOUR.tex, two-color/phase-lock/two-scale theorem chain",
+      "lean_declarations": [],
+      "kernel_check": null,
+      "remaining": "Formalize actual parabolic/graph norm inequalities, periodized geometry and temporal edge residual."
+    },
+    {
+      "id": "G4",
+      "name": "H8 shrinking-support weighted compact attachment",
+      "geometry": "T3",
+      "status": "OPEN",
+      "source": "Carrier_Independent_Structured_Stress_Route_FINAL_COLOUR.tex, equation finalH8weighted and final proof boundary",
+      "lean_declarations": [],
+      "kernel_check": null,
+      "remaining": "Freeze explicit smooth profiles and prove compact weighted symmetric inverse with 15971/122900 times rho coefficient budget, or exhibit dual obstruction."
+    },
+    {
+      "id": "G5",
+      "name": "Structured-to-regular fixed-point handoff",
+      "geometry": "T3",
+      "status": "OPEN",
+      "source": "unforced-navier-stokes-lean/README.md: core range, 4 M_G C_B eta < 1, completeness",
+      "lean_declarations": ["UnforcedClosure.fixedPoint_implies_zero_residual"],
+      "kernel_check": null,
+      "remaining": "Prove actual PDE operator/right-inverse range and contraction in complete Banach graph spaces; existing abstract Lean lemma alone is insufficient."
+    },
+    {
+      "id": "G6",
+      "name": "Physical periodic pressure, no forcing, smoothness, finite energy",
+      "geometry": "T3",
+      "status": "OPEN",
+      "source": "Unforced_Finite-Time_Blow-Up_for_Navier-Stokes.tex, Part III and Appendix I; frozen upstream PhysicalResidualBridge",
+      "lean_declarations": [],
+      "kernel_check": null,
+      "remaining": "Prove all components of navierStokesResidual vanish, pressure gauge and periodic smoothness for t<1, without inherited external force."
+    },
+    {
+      "id": "G7",
+      "name": "Global terminal speed retention",
+      "geometry": "T3",
+      "status": "OPEN",
+      "source": "Exact_Local_Unforced_Terminal_Core_Dynamics_JFM_FINAL.tex, core axis trace; PR #1 Edition XLII (short-time torque only)",
+      "lean_declarations": [],
+      "kernel_check": null,
+      "remaining": "Bound actual global correction along a terminal trajectory so a nonzero leading local trace yields SpeedUnboundedAtOne."
+    },
+    {
+      "id": "G8",
+      "name": "Hypothesis-free Lean end-to-end theorem",
+      "geometry": "T3",
+      "status": "OPEN",
+      "source": "PDE_INTEGRATION_GATE.md and FORMAL_STATUS.md",
+      "lean_declarations": [],
+      "kernel_check": null,
+      "remaining": "Compile final theorem and audit #print axioms with all G0-G7 proved, no sorryAx or project axioms."
+    }
+  ]
+}
