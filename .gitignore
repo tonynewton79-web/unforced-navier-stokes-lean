@@ -1,5 +1,6 @@
 # Lean/Lake build products
 .lake/
+.lean_toolchain/
 
 # Python
 __pycache__/
