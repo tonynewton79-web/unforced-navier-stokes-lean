@@ -7,7 +7,7 @@ Date: 25 October 2026. Branch: `integration/unforced-torus-20261025`.
 - Lean: `4.34.0-rc2` (commit `6a10ac8c22beadecabdbb0919c2b50214762f91d`)
 - Upstream: `openai/NavierStokesAndEuler@f9e8bc5b38b6e212696e8a30e3e91517af887bbd`
 - Mathlib: `85e3a25e006c35636f0e53b0e9296caca2685bc0`
-- Command: `lake build UnforcedPatching.DefinitionsSmoke UnforcedPatching.ResidualSmoke UnforcedPatching.PeriodicitySmoke UnforcedPatching.ConeBudgetSmoke`; plus `lake build UnforcedPatching.PressureGaugeSmoke UnforcedPatching.CorrectionSmoke`
+- Command: `lake build UnforcedPatching.DefinitionsSmoke UnforcedPatching.ResidualSmoke UnforcedPatching.PeriodicitySmoke UnforcedPatching.ConeBudgetSmoke UnforcedPatching.SevenRayCenterSmoke UnforcedPatching.PressureGaugeSmoke UnforcedPatching.CorrectionSmoke`
 - Result: **LOCAL COMPILE PASS** (the final H8 smoke dependency graph rebuilt 3,308 jobs, zero errors). This does not imply GitHub CI has passed.
 - Printed axiom sets for the new theorems: `[propext, Classical.choice, Quot.sound]`, without project-local axioms or `sorryAx`.
 
@@ -19,6 +19,7 @@ Date: 25 October 2026. Branch: `integration/unforced-torus-20261025`.
 4. The exact rational H8 margin identity and the seven coefficient **positivity consequence conditional on the weighted coefficient bound**. The existence of a compact spatial correction satisfying that bound remains unknown.
 5. Exact invariance of the full residual under an arbitrary time-dependent *spatially constant* pressure gauge, without a differentiability hypothesis on that gauge.
 6. An exact sufficient pointwise physical correction equation whose satisfaction implies a zero residual for the patched field. This theorem **does not supply a correction witness**.
+7. Full rational source-matched seven-ray covariance, its trace and rank-one projector, the coefficient scaling, and the transformed physical axial-product efficiency `4443/9832`. Independent Python `fractions.Fraction` tests reproduce the finite calculation.
 
 ## CI promotion boundary
 
