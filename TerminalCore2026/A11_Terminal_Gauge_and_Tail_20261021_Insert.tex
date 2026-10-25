@@ -1,0 +1,76 @@
+\subsection*{Terminal gauges and the A.11 axial stress source}
+Source (A.11) preserves the pressure increment, but the separate
+equation (A.19) fixes $S(\infty,\eta)=0$.
+The pressure terminal condition requires the source's prescribed
+axis datum (A.21)--(A.23) and the exact pressure-neutral A.11
+correction. They must hold for the \emph{same} corrected profile.
+Write $d=1-\eta^2$, $A=1/2+h$, and define the terminal defects
+$\sigma=S(\infty,\eta)$ and $\pi=\Pi(\infty,\eta)$.
+On both A.11 supports $U=M=J=0$, so (4.15)--(4.16) give
+\begin{equation}\label{eq:A11-terminal-gauge-full}
+ N_s=N_s^{\rm tail}
+ +\frac{4h\eta\sigma-d\sigma_\eta}{X}
+ +4A\eta\pi-d\pi_\eta .
+\end{equation}
+Here $N_s^{\rm tail}$ substitutes
+$S_{\rm tail}=\frac12\int_X^\infty E^2dx$ and
+$\Pi_{\rm tail}=-\frac12\int_X^\infty E^2dx/x$.
+The identity holds before terminal normalization and implies
+\[
+ \frac{|N_s-N_s^{\rm tail}|}{E}
+ \le\frac{4h|\sigma|+|\sigma_\eta|}{XE}
+ +\frac{4A|\pi|+|\pi_\eta|}{E}.
+\]
+It explicitly demonstrates why the two A.11 equations alone
+do not certify $|N_s|/E$.
+If $\sigma=\pi=0$ and differentiation under the convergent
+integrals is justified, then the four tail quantities combine
+into one source-exact integral:
+\begin{equation}\label{eq:A11-single-future-gate}
+ \frac{N_s}{E(X,\eta)}
+ =\frac1{E(X,\eta)}\int_X^\infty E(x,\eta)^2
+ \left[\frac{2h\eta}{X}-\frac{2A\eta}{x}
+ +(1-\eta^2)\partial_\eta\log E(x,\eta)
+ \left(\frac1x-\frac1X\right)\right]dx .
+\end{equation}
+Define $D_s=S_{\rm tail}/(XE^2)$ and
+$P_s=-\Pi_{\rm tail}/E^2$. Then $0\le P_s\le D_s$.
+If the full future logarithmic slope $\ell\le0$, also
+$P_s\le1/2$. If $|\partial_\eta\log E|\le\varepsilon$
+at every future radius, the integral gives
+\[
+ \frac{|N_s|}{E}\le E\left[
+ 4|\eta|(hD_s+AP_s)
+ +2(1-\eta^2)\varepsilon(D_s-P_s)\right].
+\]
+Thus the jointly certified sufficient source inputs
+$0<\lambda\le1/20$, $0<h\le\lambda/100$,
+$E\le\lambda/4$, $D_s\le233/100$,
+$\varepsilon\le1/1000$, $\ell\le0$, and
+$\sigma=\pi=0$ yield the exact-rational implication
+\begin{equation}\label{eq:A11-terminal-strict-slack}
+ |N_s|/E<253\lambda/1000<\lambda/2 .
+\end{equation}
+For imperfect gauges, the same result holds if the
+two displayed gauge-error ratios sum to less than
+$247\lambda/1000$. These are conditional inequalities,
+not independently source-authenticated enclosures.
+
+To see the unequal conditioning of the two terminal defects,
+write $X=X_pe^y$, $f=(1+\eta^2)^{-1}$,
+$E=e_b f e^{-(1/2+\lambda)y}G$ with $G>0$,
+$\sigma=X_pe_b^2f^2r/\lambda$, and $\pi=e_b^2f^2p$.
+The corresponding normalized corrections to $N_s/E$ are
+\[
+ \frac{e_bf}{\lambda G}e^{-(1/2-\lambda)y}
+ \left[4h\eta r-d\left(2(f_\eta/f)r+r_\eta\right)\right],
+\quad
+ \frac{e_bf}{G}e^{(1/2+\lambda)y}
+ \left[4A\eta p-d\left(2(f_\eta/f)p+p_\eta\right)\right].
+\]
+The $S$-defect coefficient decays with radius;
+the pressure-gauge coefficient grows. This establishes
+why the exact terminal roots or authenticated derivative
+enclosures are required before applying the stress gate.
+It does not close the $Q_s$, complete exterior cone,
+Appendix B, or proposed unforced Theorem~1.1.

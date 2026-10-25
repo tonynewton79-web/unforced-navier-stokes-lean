@@ -1,0 +1,154 @@
+\subsection*{A.11: an explicit support-stress certificate}
+\label{subsec:A11-support}
+In the source Appendix A.11, two width-$3/10$ angular corrections
+are inserted three and one logarithmic units before the end of the
+uniform plateau. On their supports $U=M=J=0$. Under the terminal
+gauges $S(\infty)=\Pi(\infty)=0$, (4.16) becomes
+\begin{equation}\label{eq:A11-Ns-exact}
+N_s(y,\eta)=\int_y^\infty\left[
+2\eta(h e^{v-y}-A)E(v,\eta)^2+
+(1-\eta^2)(1-e^{v-y})E(v,\eta)E_\eta(v,\eta)
+\right]dv,
+\quad A=\tfrac12+h.
+\end{equation}
+Indeed $S=\frac12\int_X^\infty E^2dx$ and
+$\Pi=-\frac12\int_X^\infty E^2/x\,dx$; insert these in
+$N_s=(4h\eta S-dS_\eta)/X+4A\eta\Pi-d\Pi_\eta$
+and set $x=e^v$.
+
+\begin{lemma}[Piecewise future-energy bound]
+Assume $\ell=\partial_y\log(\sqrt X E)\le0$
+until the following $\ell=-1$ interval, whose start is at most
+$83/20$ units later; that interval lasts $4\log(1/h)$; and
+$\ell\le-3h/4$ thereafter, including the terminal transition.
+For $0<h\le1/100$,
+\begin{equation}\label{eq:A11-future-energy}
+E(y)^{-2}\int_y^\infty e^{v-y}E(v)^2\,dv
+\le83/20+1/2+2h^7/3<47/10.
+\end{equation}
+\end{lemma}
+\begin{proof}
+For $F(t)=e^tE(y+t)^2/E(y)^2$ one has $F'=2\ell F$.
+The first part contributes at most $83/20$, the $-1$ hold
+at most $1/2$, and its exit factor is at most $h^8$.
+The last part contributes at most $h^8 2/(3h)$.
+\end{proof}
+
+The actual corrected profile has the form
+$E=E_b(1+c_1(\eta)\beta_1+c_2(\eta)\beta_2)$,
+where $E_b$ has no $\eta$ dependence on the supports and
+$\beta_i(y)=(10/3)\sigma'((10/3)(y-y_i)+1/2)$.
+The fixed step has
+\begin{equation}\label{eq:A11-bump-C1}
+\max\|\beta_i\|_\infty\le640/3,\qquad
+\max\|\beta_i'\|_\infty\le2\,000\,000/9.
+\end{equation}
+For the latter, write
+$q=2/t^3+2/(1-t)^3$ and use
+$\sigma''=\sigma(1-\sigma)[(1-2\sigma)q^2+q']$.
+For $t\in[1/4,3/4]$, its absolute value is at most $17152$.
+For $t\le1/4$, let $u=t^{-2}\ge16$ and use
+$|\sigma''|\le e^{2-u}(4u^4+26u^2+45)<20000$;
+the other endpoint follows by symmetry.
+
+\begin{theorem}[Two-support stress and strict cone, conditional on source coefficients]
+Fix $0<\lambda\le1/20$ and
+$0<h\le\min(1/100,\lambda/8)$.
+Suppose the exact A.11 moment equations, final pressure and $S$
+gauges, and the slope hypotheses above hold. Define
+$\gamma=\max_i\|c_i\|_{C^0_\eta}$ and
+$\gamma_\eta=\max_i\|\partial_\eta c_i\|_{C^0_\eta}$.
+If
+\begin{equation}\label{eq:A11-certificate-data}
+\gamma\le\min\{3/1280,9\lambda/8\,000\,000\},\quad
+\gamma_\eta\le3\lambda/10240,\quad
+\sup_{\rm supports}E_b\le\lambda/30,
+\end{equation}
+then $E>0$, $\ell\le-\lambda/2$, and on both supports
+\begin{equation}\label{eq:A11-support-Ns}
+\boxed{|N_s|/E<\lambda/2}.
+\end{equation}
+If further $Q_s\ge0$ at the end of interpolation,
+there is an unedited constant-slope interval of length at least
+$30\log(1/\lambda)-63/20$ before the supports, and
+$X\ge35/\lambda$ on the supports, then
+\begin{equation}\label{eq:A11-support-cone}
+Q_s\ge\lambda/4,\qquad p_1\ge4a,\qquad
+2(p_1-a)^2-(a-2)p_2^2\ge21p_1^2/40>0.
+\end{equation}
+Here $a=2-2\ell$, $b_s=0$,
+$p_1=XQ_s/L$, and $p_2=XN_s/(LE)$; thus
+the source's admissible stress cone is strict on these
+two supports only.
+\end{theorem}
+\begin{proof}
+The disjointness of the bumps gives
+$\gamma(640/3)\le1/2$ and
+$0<E\le(3/2)E_b\le\lambda/20$.
+Moreover
+$|\partial_\eta\log E|\le2(640/3)\gamma_\eta
+\le\lambda/8\le1$ and
+$|\ell+\lambda|\le2(2\,000\,000/9)\gamma\le\lambda/2$.
+After the interpolation the $\eta$ derivative is supported only
+on these two bumps. Therefore the future-stress formula and
+the energy lemma give
+\[
+|N_s|/E\le E(47/10)[2(A+h)+1]
+\le E\,2397/250\le2397\lambda/5000<\lambda/2.
+\]
+On the unedited plateau
+$Q_s'+(1-\lambda)Q_s=\lambda-h$; its nonnegative
+initial datum implies $Q_s\ge7\lambda/16>\lambda/4$
+at the first support. Across the two corrections
+$S_q=-\ell-h-D\eta\,\partial_\eta\log E
+\ge5\lambda/16$.
+The equation $Q_s'+(1+\ell)Q_s=S_q$
+preserves $Q_s\ge\lambda/4$.
+Thus $|p_2/p_1|\le2$ and
+$2+\lambda\le a\le2+3\lambda$.
+By $X\ge35/\lambda$, $p_1\ge35/4>4a$.
+Then $(a-2)p_2^2\le12\lambda p_1^2
+\le3p_1^2/5$ while
+$2(p_1-a)^2\ge9p_1^2/8$, giving the claimed gap.
+\end{proof}
+
+\paragraph{The exact nonlinear two-moment calculation.}
+Normalize the original A.11 angular-moment defect as
+$\Delta_I(\eta)$ at the first bump centre $y_1$.
+For the fixed bump $\beta_1$ set
+\[
+u=\int e^{(1-\lambda)(v-y_1)}\beta_1(v)\,dv,\quad
+v_0=\int e^{-(1+2\lambda)(v-y_1)}\beta_1(v)\,dv,\quad
+w=\int e^{-(1+2\lambda)(v-y_1)}\beta_1(v)^2\,dv,
+\]
+and $x=e^{2(1-\lambda)}$, $z=e^{-2(1+2\lambda)}$.
+The true A.11 equations are
+\[
+u(c_1+xc_2)=\Delta_I,\qquad
+2v_0(c_1+zc_2)+w(c_1^2+zc_2^2)=0.
+\]
+Putting $q=\Delta_I/u$, $t=c_2$, $c_1=q-xt$ gives
+\[
+w(x^2+z)t^2+
+[2v_0(z-x)-2wxq]t+(2v_0q+wq^2)=0.
+\]
+The branch tending to zero with the defect is used.
+Its $\eta$ derivative follows from implicit differentiation,
+or directly from
+\[
+t_\eta=
+-\frac{(-2wx)t+2v_0+2wq}
+ {2w(x^2+z)t+2v_0(z-x)-2wxq}
+ \frac{(\Delta_I)_\eta}{u},
+\quad(c_1)_\eta=(\Delta_I)_\eta/u-xt_\eta.
+\]
+This is an explicit interval-root problem, not an
+assumed smallness condition. Genuine source-specific interval
+bounds on $\Delta_I,(\Delta_I)_\eta$ and $u,v_0,w$ remain to be
+supplied. The sufficient baseline bound can be checked from
+$E_b\le e_b e^{-13/(2\lambda)}$.
+
+No simultaneous numerical source realization, pulse and exterior
+endpoint cone verification, Appendix-B nonlinear contraction,
+unforced startup solution, or physical Navier--Stokes residual
+follows from these conditional support estimates.

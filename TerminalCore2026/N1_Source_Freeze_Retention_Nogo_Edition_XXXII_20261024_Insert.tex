@@ -1,0 +1,135 @@
+
+\section{The missing numerical source and a rigorous spectral-retention no-go}
+\label{sec:xxxii-source-retention}
+The actual 166-page OpenAI source \cite{openai2026}, Section~10,
+(10.3)--(10.5), and Appendix~B, Proposition~B.2, specifies
+existence parameters and arbitrarily chosen smooth cutoffs,
+not a single frozen numerical $u_B$. For example, with
+$D=1/2-h$, the source requires
+$0<h<1/100$, $q_*,C_0>0$, and
+$C_0(\tau_0+z_0^{1/D})<q_*/2$, where $0<\tau_0<1/2$.
+The numerical $h,q_*,C_0$, the nonlinear profile, all cutoffs,
+and the complete Section~10 residual are not certified as a
+single independent numerical source in this programme.
+
+\begin{proposition}[Conditional admissible geometric choices]
+For any externally authenticated $q_*,C_0>0$ and admissible $h$,
+\[
+r_0=1,\quad \tau_0=\min\{1/4,q_*/(16C_0)\},\quad
+z_0=(q_*/(16C_0))^{1/2-h}
+\]
+satisfy $C_0(\tau_0+z_0^{1/D})\le q_*/8<q_*/2$.
+This is an admissible \emph{symbolic cutoff geometry only},
+not a numerical realization of the source's velocity.
+\end{proposition}
+\begin{proof} Substitute the definitions; $\tau_0<1/2$
+holds directly. \end{proof}
+
+\begin{proposition}[Exact interval-friendly Fourier-shell certificate]
+\label{prop:xxxii-interval}
+Suppose externally certified bounds for the actual zero-mean,
+compact Section~10 velocity at an explicit $t_*\in(0,1)$ are
+\[
+0<m_-\le\|u_B(t_*)\|_2,\quad
+R^2\le R_+^2,\quad V\le V_+,\quad
+\|\nabla u_B(t_*)\|_2/\|u_B(t_*)\|_2\le Q_+.
+\]
+If rational $L>0$ and integer $N\ge1$ obey
+$R_+^2V_+L^5\le45/4$ and $2^NL\ge4Q_+$,
+then some $0\le j<N$ satisfies
+\[
+\boxed{\quad b_{2^jL}(t_*)^2\ge
+\frac{13}{16N}m_-^2.\quad}
+\]
+\end{proposition}
+\begin{proof}
+Zero mean and compact support yield low-frequency
+energy at most $R_+^2V_+L^5\|u_B\|_2^2/(10\pi^2)
+\le\|u_B\|_2^2/8$ using $\pi^2>9$.
+The gradient ratio gives high-frequency energy above
+$2^NL$ at most $\|u_B\|_2^2/16$.
+The intermediate $N$ shells thus contain at least
+$13\|u_B\|_2^2/16$; pigeonhole.
+\end{proof}
+
+\begin{theorem}[No automatic shell retention from nonzero initial data]
+\label{thm:xxxii-noret}
+Fix $0<t_*<1$ and any Fourier shell with
+$b_K(t_*):=\|\mathcal B_Ku_B(t_*)\|_2>0$.
+For every $0\le\kappa<1$ there are arbitrarily small
+\emph{nonzero} smooth compactly supported divergence-free
+initial data with a global smooth exactly unforced
+Navier--Stokes solution $v_\varepsilon$ whose correction
+$w_\varepsilon=v_\varepsilon-u_B$ violates retention:
+\[
+\boxed{\quad
+\|\mathcal B_Kw_\varepsilon(t_*)\|_2>
+\kappa b_K(t_*).\quad}
+\]
+\end{theorem}
+\begin{proof}
+Choose any $\phi\in C_c^\infty(\mathbb R^3;\mathbb R^3)$,
+$\operatorname{div}\phi=0$, $\|\phi\|_2=1$.
+Global smooth small-data well-posedness of three-dimensional
+unforced Navier--Stokes applies to
+$v_\varepsilon(0)=\varepsilon\phi$ for $\varepsilon>0$
+sufficiently small. The unforced energy inequality gives
+$\|v_\varepsilon(t_*)\|_2\le\varepsilon$.
+Since $\mathcal B_K$ is an $L^2$ contraction,
+\[
+\|\mathcal B_Kw_\varepsilon(t_*)\|_2
+\ge b_K(t_*)-\varepsilon.
+\]
+Choose $\varepsilon<(1-\kappa)b_K(t_*)$.
+This corrector cancels the singular background in the
+completed globally smooth solution. It disproves
+universal retention, not the possibility of some specially
+constructed singularity-preserving corrector.
+\end{proof}
+
+\begin{proposition}[One-time shell retention is not blowup persistence]
+On the $2\pi$ periodic three-torus with $\nu=1$, the forced
+background $u_B=t\sin y\,e_x$ and the smooth, exactly unforced
+solution $v=\tfrac14e^{1/2-t}\sin y\,e_x$ satisfy
+$w:=v-u_B=-u_B/2$ at $t_*=1/2$.
+Thus $\|\mathcal B_1 w(t_*)\|_2=
+\|\mathcal B_1u_B(t_*)\|_2/2$, despite $v$ being
+globally smooth.
+\end{proposition}
+\begin{proof}
+The transport nonlinearity vanishes for both shears,
+and differentiation establishes their claimed equations.
+\end{proof}
+
+\begin{proposition}[A sufficient pointwise singularity-retention gate]
+For the actual source path
+$x_\tau=(\sqrt{2X_{\rm in}\tau},0,0)$ of (10.20),
+the source (10.21) gives
+$u_{B,\theta}(x_\tau,1-\tau)=
+\tau^{-A}(e_0+O(\tau^{2h}))$,
+$A=1/2+h$, $e_0>0$.
+If a nonzero-data zero-force corrector satisfied
+$|w_\theta(x_\tau,1-\tau)|\le
+(e_0/4)\tau^{-A}$ for all sufficiently small $\tau$,
+the completed velocity would blow up:
+\[
+|u_\theta(x_\tau,1-\tau)|
+\ge(e_0/4)\tau^{-A}\longrightarrow\infty.
+\]
+\end{proposition}
+\begin{proof}
+For small $\tau$, the background azimuthal component is at
+least $(e_0/2)\tau^{-A}$; apply the triangle inequality.
+\end{proof}
+
+\paragraph{Exact verification and release boundary.}
+The attached rational interval program rejects the current
+source ledger because the source-specific bounds have not
+been frozen; its positive acceptance fixture is clearly
+synthetic. Another checker reproduces 25,000 exact rational
+small-nonzero-data counterexamples and an explicit periodic
+smooth retention control. These are mathematics and test
+infrastructure, \emph{not} a numerical evaluation of the
+actual OpenAI velocity. A physically admissible singularity-
+preserving unforced correction, and its full Lean PDE proof,
+remain unproved.

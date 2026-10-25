@@ -1,0 +1,77 @@
+
+\subsection{Smooth solenoidal two-frequency stress with a strict local floor}
+\label{subsec:two-frequency-solenoidal-XXIV}
+The algebraic rank-three example above can in fact be realized by
+a smooth finite-energy \emph{divergence-free} field, though it is not
+an unforced Navier--Stokes solution.
+
+\begin{proposition}[Annular divergence-free positive covariance]
+\label{prop:two-frequency-solenoidal-XXIV}
+Let $f,g\in C_c^\infty((0,\infty);\mathbb R)$ have supports away
+from $r=0$, and set $r=\sqrt{x^2+y^2}$.
+On $\mathbb R^2\times(\mathbb R/2\pi\mathbb Z)$ define
+\[
+v_x=2f(r)\cos z,\quad v_y=0,\quad
+v_z=-2f'(r)\frac{x}{r}\sin z+
+          2g(r)\frac{x^2-y^2}{r^2}.
+\]
+This field is smooth, compactly supported in the transverse plane,
+finite-energy on the stated domain, and exactly divergence-free.
+In the rotating cylindrical frame it has angular frequencies
+$m=\pm1,\pm2$ only. Its azimuthally averaged co-rotating stress is
+\[
+Q=2\begin{pmatrix}
+ A^2&0&-AB\\0&A^2&0\\-AB&0&B^2+C^2
+\end{pmatrix},
+\quad A=f(r)\cos z,\quad B=f'(r)\sin z,\quad C=g(r).
+\]
+In particular,
+\[
+\boxed{\det Q=8f(r)^4 g(r)^2\cos^4z.}
+\]
+Choose $f=g=1$ on a nonempty annular plateau and zero outside
+a slightly larger annulus. On that plateau and
+$|z|\le\pi/4$, the stress satisfies the \emph{explicit} floor
+\[
+\boxed{Q=2\operatorname{diag}(\cos^2z,\cos^2z,1)
+\succeq I_3.}
+\]
+\end{proposition}
+\begin{proof}
+Since $v_y=0$ and the last term of $v_z$ is $z$-independent,
+\[
+\partial_xv_x
+=2f'(r)\frac{x}{r}\cos z,\qquad
+\partial_zv_z=-2f'(r)\frac{x}{r}\cos z,
+\]
+so $\nabla\cdot v=0$ identically. Compact radial supports away
+from $r=0$ ensure smoothness in Cartesian coordinates.
+The cylindrical components are
+\[
+v_r=2f\cos\theta\cos z,\quad
+v_\theta=-2f\sin\theta\cos z,\quad
+v_z=-2f'\cos\theta\sin z+2g\cos2\theta .
+\]
+Their nonzero Fourier amplitudes are
+$c_1=(f\cos z,\,if\cos z,\,-f'\sin z)$
+and $c_2=(0,0,g)$.
+Angular orthogonality yields the displayed covariance.
+Its determinant is
+$8A^4C^2$ by direct expansion; on the plateau $B=0$.
+Finally $2\cos^2z\ge1$ on $|z|\le\pi/4$.
+\end{proof}
+
+\paragraph{Physical and formal boundaries.}
+This theorem removes the \emph{local strict positive-definite
+covariance} obstruction for a two-frequency divergence-free
+manufactured field. It does not establish membership in the
+specific seven-ray H8 coefficient cone with a positive floor,
+nor the H8 virtual-work dual inequalities, A.11/A.19 source
+matching, compact anti-divergence, a genuinely unforced time
+evolution, or singularity preservation. Quadratic interaction
+of the $m=\pm1,\pm2$ modes creates frequencies through
+$m=\pm4$, requiring a larger and ultimately convergent
+harmonic hierarchy. An independent Cartesian divergence
+calculation, symbolic determinant factorization and a scalar
+Lean determinant identity were checked; full PDE formalization
+remains open.

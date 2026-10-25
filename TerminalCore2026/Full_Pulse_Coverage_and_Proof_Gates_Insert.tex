@@ -1,0 +1,63 @@
+\subsection*{What a complete pulse certificate must establish}
+The translated axial correction bumps impose exact terminal moments, but
+the cancellation does not bound source stresses in the pulse interior.
+The inequalities in (A.29)--(A.30) are required on
+$\mathcal D=[0,13]\times[-1,1]$, with $\xi=\lambda y$.
+Point tests and endpoint values are insufficient.
+
+\begin{proposition}[Soundness of a rational rectangular covering]
+\label{prop:full-pulse-cover}
+Let $\mathcal C$ be finitely many nondegenerate closed rectangles
+$C_k=[a_k,b_k]\times[c_k,d_k]\subset\mathcal D$ with rational
+endpoints. Form the grid of their two coordinate endpoint sets,
+together with $0,13,-1,1$. If every elementary open grid rectangle
+lies inside one of the $C_k$, then $\bigcup_k C_k=\mathcal D$.
+\end{proposition}
+\begin{proof}
+Each open elementary rectangle is contained in an input closed
+rectangle, so its closure is contained in that rectangle as well.
+The closures of all elementary rectangles cover $\mathcal D$.
+\end{proof}
+
+\begin{proposition}[Conditional A.29--A.30 interval soundness]
+\label{prop:full-pulse-residual-soundness}
+Suppose all source field and first-$\eta$ derivative enclosures used
+in \eqref{eq:pulse-exact-eQ}--\eqref{eq:pulse-exact-eN} are
+independently valid on every rectangle of a complete covering.
+Suppose their rational denominator intervals exclude zero and
+$X,E,H,Q_s>0$, with the source identity $H^2=2XE^2$.
+If exact outward interval arithmetic verifies on every rectangle
+\[
+|e_Q/q_0|\le10^{-10},\quad |e_m/q_0|\le10^{-7},
+\quad |\eta m_\eta/q_0|\le2\cdot10^{-7},\quad
+|e_N/q_0|\le10^{-7},\quad |w-w_0|<10^{-6},
+\]
+then those inequalities hold everywhere on $\mathcal D$.
+\end{proposition}
+\begin{proof}
+The residual formulas are source-native algebraic identities.
+Exact rational interval operations enclose their pointwise values
+whenever division avoids zero. The finite covering proposition
+then transfers the cell bounds to the whole domain.
+\end{proof}
+
+\paragraph{A fail-closed source audit.}
+The script \texttt{full\_pulse\_cover\_gate.py} checks complete
+two-dimensional rational coverage, identical source parameter boxes,
+source consistency $H^2=2XE^2$, positive denominators and the existing
+A.29--A.30 residual budget on every provided cell. Deliberate
+incomplete covers and synthetic invalid inputs are rejected.
+The checker requires source and proof hashes, but \emph{hashes
+are not mathematical evidence of interval enclosure correctness}.
+It therefore always emits the status
+\texttt{CONDITIONAL\_SOURCE\_ENCLOSURES\_NOT\_INDEPENDENTLY\_VERIFIED},
+even when the arithmetic comparisons pass.
+
+No independently authenticated full-pulse source interval boxes have
+been supplied. The two (A.11) cone supports, subsequent transitions,
+terminal matching and gluing, Appendix-B fixed point, actual unforced
+startup correction equations and reconstructed zero-force
+Navier--Stokes residual remain unproved. The originating global
+Navier--Stokes construction uses smooth external forcing. The proposed
+unforced Theorem~1.1 remains open; elementary Lean scalar gates are not
+an end-to-end kernel proof.

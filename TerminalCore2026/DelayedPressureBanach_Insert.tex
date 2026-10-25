@@ -1,0 +1,135 @@
+\subsection{Uniform bound for the complete delayed-viscosity pressure composite}
+\label{subsec:full-delayed-composite}
+
+The sharp four-jet estimate controls the principal coefficient. To bound the
+complete variable-coefficient operator, derivatives falling on the
+multipliers $d/L$ must also be included. For this particular two-step
+linear pressure contribution, all of those commutator terms admit one
+uniform weighted-norm bound.
+
+Fix $0<h<1/100$, $d=1-\eta^2$, $L=1-2h\eta^2$,
+$A=1/2+h$, $D=1/2-h$, and $\lambda_m=2hm$. Put
+\[
+ B=\frac{2\eta}{L},\quad G=\frac{d}{L},\quad
+ Z_q^{(r)}=G\partial_\eta+B(q-r),\qquad r=a+1.
+\]
+For $n\ge2$ and a radial input coefficient $F_a(\eta)X^a$,
+$a\ge n-2$, direct substitution into equations (24), (28), (27),
+and (26) gives the exact composition
+\begin{equation}\label{eq:full-composite}
+ (\mathcal P_nF)_{a+2}
+ =\frac{1}{4(a+1)^2(a+2)^2}
+ Z_{q_3}^{(r)}Z_{q_2}^{(r)}Z_{q_1}^{(r)}
+ \left[\bigl(B(r-D-\lambda_{n-2})-G\partial_\eta\bigr)F_a\right],
+\end{equation}
+where $q_1=\lambda_{n-2}$, $q_2=\lambda_{n-2}-D$,
+and $q_3=\lambda_n-2A$. Here the factors act from right to left.
+Equation \eqref{eq:full-composite} retains the derivatives of
+every multiplier, not merely the principal symbol.
+
+\begin{theorem}[Uniform delayed-viscosity pressure composite]
+\label{thm:delayed-banach}
+Let $E=[-1,1]$, $R>0$, and $0<\rho\le1/4$. For every
+$n\ge2$, the complete composite \eqref{eq:full-composite}
+maps the induced weighted ideal $I_{n-2}$ boundedly into $I_n$,
+with
+\begin{equation}\label{eq:full-delayed-bound}
+ \|\mathcal P_n F\|_{R,\rho;E}
+ \le C_{\mathrm{delay}}(R,\rho)\|F\|_{R,\rho;E},
+\end{equation}
+where the following explicit constant is independent of $n$:
+\begin{equation}\label{eq:full-delayed-constant}
+ C_{\mathrm{delay}}(R,\rho)=
+ \frac{14\,487\,066}{4}\cdot\frac{80}{27}\cdot54R^2
+ \sum_{j=0}^{4}\frac{25\,3^{4-j}}{(j+1)^2\rho^j}.
+\end{equation}
+In particular, the lower-jet variable-coefficient commutators
+in this one delayed-viscosity pressure channel are all included.
+\end{theorem}
+
+\begin{proof}
+Set $t=a+n+1$. Since $a\ge n-2$, we have
+$t\le3(a+1)$. The exact ratio obtained by dividing the $j$-jet
+weight by the $4$-jet weight and using the sharp inequality
+\eqref{eq:fourjet-exact} yields, for each $0\le j\le4$,
+\begin{equation}\label{eq:alljet-stronger}
+ \frac{t^{4-j}w_{a,b+j}}{(a+1)^2(a+2)^2w_{a+2,b}}
+ \le54R^2\rho^{-j}\frac{25}{(j+1)^2}3^{4-j}.
+\end{equation}
+Indeed, the remaining factor is
+\[
+ \rho^{4-j}\frac{(b+5)^2}{(b+j+1)^2}
+ \prod_{m=j+1}^{4}\frac1{2a+b+m}.
+\]
+The first fraction is at most $25/(j+1)^2$, each denominator
+factor is at least $a+1$, and $t\le3(a+1)$.
+The stronger bound \eqref{eq:alljet-stronger} handles arbitrary
+radial-Euler powers as well as the similarity shift $n$.
+
+We next control the \emph{full} normal form. On $|\eta|\le3$,
+$|L|\ge1-18h>41/50$, so $|G|\le13$ and $|B|\le300/41$.
+For $q=q_1,q_2,q_3$, direct use of $0<h<1/100$,
+$n\ge2$, and $a\ge n-2$ gives
+\[
+ |q-r|\le3t,\qquad |r-D-\lambda_{n-2}|\le3t.
+\]
+Thus all shift-multipliers are bounded by $22t$, while the
+derivative multiplier is bounded by $13$. If a differential
+normal form has coefficient $c_j$ at order $j$, applying the
+next $Z$ replaces it by
+$Gc_{j-1}+G(\partial_\eta c_j)+B(q-r)c_j$.
+Use successively the complex discs of radii
+$3$, $11/4$, $5/2$ and $9/4$.
+On each transition Cauchy's estimate gives a derivative factor
+at most $4$, so a coefficient bound $C_m t^{m-j}$
+is replaced by
+\[
+ (13+4\cdot13+22)C_m t^{m+1-j}
+ =87C_m t^{m+1-j}.
+\]
+The first factor in \eqref{eq:full-composite} starts with
+$C_1=22$; three compositions yield
+\begin{equation}\label{eq:normalform-bound}
+ Z_{q_3}^{(r)}Z_{q_2}^{(r)}Z_{q_1}^{(r)}
+ \bigl[B(r-D-\lambda_{n-2})-G\partial_\eta\bigr]
+ =\sum_{j=0}^{4}c_{a,n,j}(\eta)\partial_\eta^j,\qquad
+ |c_{a,n,j}|\le C_*t^{4-j},
+\end{equation}
+on $|\eta|\le9/4$, where
+$C_*=22\cdot87^3=14\,487\,066$.
+Cauchy's estimate on unit discs centered at $E$ consequently gives
+$|\partial_\eta^\ell c_{a,n,j}|\le C_*t^{4-j}\ell!$.
+
+For the weight \eqref{eq:weight}, Leibniz's rule and factorial
+cancellation give the following \emph{exact} multiplier estimate:
+\begin{align}
+ \frac{\binom b\ell\ell!\,w_{a+2,b-\ell}}{w_{a+2,b}}
+ &=\rho^\ell\,
+ \frac{\binom{2a+4+b-\ell}{b-\ell}}{\binom{2a+4+b}{b}}
+ \left(\frac{b+1}{b-\ell+1}\right)^2
+ \le \rho^\ell(\ell+1)^2,\qquad0\le\ell\le b.
+ \label{eq:delayed-commutator}
+\end{align}
+The inequality uses monotonicity of the binomial coefficient and
+$b+1\le(\ell+1)(b-\ell+1)$. Combining
+\eqref{eq:alljet-stronger}, \eqref{eq:normalform-bound} and
+\eqref{eq:delayed-commutator} bounds the $j$th channel by
+\[
+ \frac{C_*}{4}\cdot54R^2\rho^{-j}
+ \frac{25\,3^{4-j}}{(j+1)^2}
+ \sum_{\ell\ge0}(\ell+1)^2\rho^\ell\,\|F\|_{R,\rho;E}.
+\]
+Finally,
+$\sum_{\ell\ge0}(\ell+1)^2\rho^\ell
+ =(1+\rho)/(1-\rho)^3\le80/27$ for $\rho\le1/4$.
+Summing over $j=0,\ldots,4$ proves the theorem.
+\end{proof}
+
+Theorem~\ref{thm:delayed-banach} closes the complete
+\emph{variable-coefficient delayed-viscosity pressure composite}
+involving $U_{n-2}$. It is not a bound for the full $\Omega_{n-1}$
+of equation (28). Its other linear sources, nonlinear products,
+and the direct delayed terms in (25)--(26) must still be estimated
+uniformly before the complete recurrence (53) follows.
+The new Lean module proves the order and commutator inequalities
+used here, but not the entire Banach-space operator theorem in Lean.

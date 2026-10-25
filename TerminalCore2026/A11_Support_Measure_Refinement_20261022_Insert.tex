@@ -1,0 +1,69 @@
+\subsection*{The source A.11 support-measure refinement (22 October 2026)}
+\label{subsec:a11-support-measure-refinement}
+The two source-fixed correction supports have length $3/10$ each,
+so their total measure is $3/5$, while their enclosing hull has
+length $23/10$. The gap of length $17/10$ does not contribute
+to the parameter derivative of the perturbation.
+
+\begin{proposition}[Sharper conditional A.11 full-hull stress]
+\label{prop:a11-support-measure-refinement}
+Let $E(y,\eta)=E_0(y)(1+u(y,\eta))$ on the A.11 hull,
+with $E_0$ independent of $\eta$ along every future ray,
+$\partial_y\log(\sqrt X E_0)\le0$, $|u|\le a<1$ and
+$|\partial_\eta u|\le b$. Assume $u_\eta$ is supported on
+the two disjoint prescribed bumps, of combined measure
+at most $3/5$. Let
+\[
+ F_0=\int_0^\infty E(y+t,\eta)^2\,dt,\qquad
+ F_1=\int_0^\infty e^t E(y+t,\eta)^2\,dt.
+\]
+Assume the \emph{same corrected source profile} has terminal
+gauges $S(\infty,\eta)=\Pi(\infty,\eta)=0$ and baseline bounds
+$F_{0,0}/E_0^2\le1$, $F_{1,0}/E_0^2\le5$ on the hull.
+Then with $A=\frac12+h$ and $E_*=\sup_{\rm hull}E_0$,
+\[
+ \frac{|N_s|}{E}\le\frac{E_*}{1-a}
+ \left[2(1+a)^2(A+5h)+\frac35(1+a)b\right].
+\]
+If $0<\lambda\le1/100$, $0<h\le\lambda/100$,
+$a,b\le1/1000$, and $E_*\le\lambda/1000$, then
+\[
+ \sup_{\rm hull,\ |\eta|\le1}\frac{|N_s|}{E}
+ <\frac{201}{200000}\lambda<\frac\lambda2.
+\]
+\end{proposition}
+\begin{proof}
+The baseline slope yields $E_0(y+t)^2\le e^{-t}E_0(y)^2$.
+The parameter derivative of the difference of future integrals is
+\[
+ \partial_\eta(F_1-F_0)=2\int_0^\infty(e^t-1)
+ E_0(y+t)^2(1+u(y+t,\eta))u_\eta(y+t,\eta)\,dt.
+\]
+The kernel $(e^t-1)e^{-t}\le1$ and the support measure
+$\le3/5$ give
+$|\partial_\eta(F_1-F_0)|\le
+\frac65(1+a)bE_0(y)^2$.
+The exact source identity, with the specified gauges, is
+\[
+ N_s=2\eta(hF_1-AF_0)
+ -\frac{1-\eta^2}{2}\partial_\eta(F_1-F_0).
+\]
+Use $F_0\le(1+a)^2E_0^2$ and
+$F_1\le5(1+a)^2E_0^2$, and divide by
+$E\ge(1-a)E_0$. Under the numerical premises,
+$A+5h\le2503/5000$, and exact fraction arithmetic gives
+\[
+ \frac{2(1001/1000)^2(2503/5000)
+ +(3/5)(1001/1000)(1/1000)}{999/1000}
+ =\frac{2509510003}{2497500000}<\frac{201}{200}.
+\]
+Together with $E_*\le\lambda/1000$, this concludes.
+\end{proof}
+
+\paragraph{Certification boundary.}
+This is a conditional full-hull estimate. The moment-matched
+source coefficients and their $\eta$-jets, same-profile terminal
+gauges, future-tail assumptions, common parameter selection, and
+remaining stress-cone stages have not been certified jointly.
+The complete Appendix-B contraction, unforced startup profiles,
+physical-coordinate PDE residual and Theorem 1.1 remain open.

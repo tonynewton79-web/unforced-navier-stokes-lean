@@ -1,0 +1,153 @@
+
+\subsection{A pressure-complete equation for the near-axis torque coefficient}
+\label{sec:xlii-jet}
+
+The leading Reynolds torque coefficient from Edition~XLI is a quadratic
+functional of the Cartesian velocity jets, not a closed strain variable.
+This section derives its exact equation from the \emph{full unforced}
+Navier--Stokes system and provides an explicit, strictly positive
+short-time amplification example. Its positive mechanism is
+viscous redistribution; sustained terminal nonlinear amplification
+remains unproved.
+
+Let $u=(U,V,W)$ be a smooth divergence-free unforced solution on
+$\mathbb R^3$. A subscript $0$ denotes evaluation at $x=y=0$.
+Set $a=U_0$, $b=V_0$, $c=W_0$, and define
+\[
+A=-2(U_{xy})_0+(V_{xx})_0-(V_{yy})_0,\quad
+B=(U_{xx})_0-(U_{yy})_0+2(V_{xy})_0,\quad
+Q=b(W_x)_0-a(W_y)_0.
+\]
+The precise XLI quantity is
+\begin{equation}\label{eq:xlii-lambda}
+\boxed{\quad \Lambda=-\tfrac12(aA+bB+\partial_zQ).\quad}
+\end{equation}
+This equals $-4J_3-\partial_zK_2$, where
+$\mathcal T=r^2\Lambda+O(r^4)$ is the angular-mean
+Reynolds torque.
+
+\begin{theorem}[Full projected Navier--Stokes jet evolution]
+\label{thm:xlii-full}
+For each transverse multiindex $\alpha$ and $i=1,2,3$, put
+\begin{equation}\label{eq:xlii-H}
+H_i^\alpha=\left[
+\nu\Delta\partial_{xy}^\alpha u_i
+-\partial_{xy}^\alpha\partial_i p
+-\partial_{xy}^\alpha(u\cdot\nabla u_i)
++c\,\partial_z\partial_{xy}^\alpha u_i
+\right]_0.
+\end{equation}
+Writing $D_0=\partial_t+c\partial_z$, one has
+$D_0(\partial_{xy}^\alpha u_i)_0=H_i^\alpha$, and
+\begin{equation}\label{eq:xlii-evolution}
+\boxed{\begin{aligned}
+D_0\Lambda=-\frac12\big[&
+H_1^0 A+a(-2H_1^{xy}+H_2^{xx}-H_2^{yy})
++H_2^0 B+b(H_1^{xx}-H_1^{yy}+2H_2^{xy})\\
+&+\partial_z\big(H_2^0(W_x)_0+bH_3^x
+-H_1^0(W_y)_0-aH_3^y\big)
+-(\partial_zc)(\partial_zQ)\big].
+\end{aligned}}
+\end{equation}
+All pressure effects are retained via
+\begin{equation}\label{eq:xlii-poisson}
+-\Delta p=\partial_i\partial_j(u_iu_j),\qquad
+p=\sum_{i,j}\mathcal R_i\mathcal R_j(u_iu_j),
+\end{equation}
+where $\mathcal R_i$ denotes a Riesz transform.
+The equation generally needs fourth-order velocity
+jets, third-order pressure derivatives, and nonlinear
+products through third-order velocity jets. It is not
+a closed autonomous equation in the second-order jets.
+\end{theorem}
+\begin{proof}
+Differentiate the unforced physical momentum equation
+$\partial_tu_i=\nu\Delta u_i-\partial_i p-u\cdot\nabla u_i$
+before restricting to $x=y=0$, then add $c\partial_z$.
+The product rule applied to \eqref{eq:xlii-lambda} gives
+\eqref{eq:xlii-evolution}, noting the essential commutator
+$D_0\partial_zQ=\partial_zD_0Q-c_z\partial_zQ$.
+Taking divergence of the physical NSE gives
+\eqref{eq:xlii-poisson}, including the nonlocal pressure
+response. The derivative orders are explicit in
+\eqref{eq:xlii-H}.
+\end{proof}
+
+\begin{theorem}[Strictly positive instantaneous amplification
+in one globally regular unforced flow]
+\label{thm:xlii-positive}
+Fix any $\nu>0$, set $\varepsilon=\nu/1000$, and prescribe
+the fully explicit nonzero Schwartz datum
+\begin{equation}\label{eq:xlii-data}
+\boxed{\quad u_0=\operatorname{curl}\left[
+\varepsilon e^{-(x^2+y^2+z^2)}
+\bigl(x-(x^2+y^2)y\bigr)e_z\right].\quad}
+\end{equation}
+It is exactly solenoidal and globally evolves as a unique
+smooth, finite-energy, \emph{unforced} solution, by the
+same Fourier small-data bound $q\le1/(100\sqrt\pi)<1/16$
+used in Edition~XXXVII. Its exact initial near-axis
+coefficient and time derivative satisfy
+\begin{equation}\label{eq:xlii-amplification}
+\boxed{\begin{aligned}
+\Lambda(0,z)&=4\varepsilon^2e^{-2z^2},\\
+\partial_t\Lambda(0,z)&=
+16\nu\varepsilon^2(2z^2-7)e^{-2z^2},\\
+\partial_t\Lambda(0,2)&=16\nu\varepsilon^2e^{-8}>0,\\
+\partial_t\Lambda(0,0)&=-112\nu\varepsilon^2<0.
+\end{aligned}}
+\end{equation}
+Consequently, for some $\delta>0$, not numerically
+certified here, this one exact unforced solution has
+\[
+\boxed{\quad\partial_t\Lambda(t,2)
+\ge 8\nu\varepsilon^2e^{-8}>0
+\quad(0\le t\le\delta).\quad}
+\]
+The entire instantaneous nonlinear advection
+\emph{including projected pressure} contributes
+exactly zero to $\partial_t\Lambda(0,z)$ by
+half-turn rotation parity. The positive rate at $z=2$
+is viscous redistribution, not nonlinear strain growth.
+\end{theorem}
+\begin{proof}
+Let $S=\operatorname{diag}(-1,-1,1)$ and
+$\mathcal S v(x)=Sv(S^{-1}x)$.
+The potential in \eqref{eq:xlii-data} is odd under
+a half-turn, so $\mathscr S u_0=-u_0$.
+The quadratic projected acceleration
+$N(u_0)=-\mathbb P\nabla\cdot(u_0\otimes u_0)$
+is even, $\mathscr S N(u_0)=N(u_0)$.
+Since $\Lambda$ is an angular-average scalar,
+it is a rotation-invariant quadratic jet functional.
+Its polarization on an odd and an even velocity
+must vanish: $d\Lambda_{u_0}[N(u_0)]=0$.
+Thus the exact initial derivative arises only
+from $\nu\Delta u_0$.
+
+Independently calculate the heat evolution of the
+Gaussian potential. Writing $s=1+4\nu t$ gives
+\[
+F_H=\varepsilon s^{-3/2}e^{-(x^2+y^2+z^2)/s}
+\left[\frac{x}{s}-\frac{(x^2+y^2)y}{s^3}
+-\frac{2(s-1)y}{s^2}\right].
+\]
+Its exact jet coefficient is
+\[
+\boxed{\quad\Lambda_H(t,z)=
+4\varepsilon^2s^{-7}e^{-2z^2/s}.\quad}
+\]
+Differentiation at $t=0$ yields
+\eqref{eq:xlii-amplification}. Time-continuity of
+the smooth actual unforced solution provides
+the strict positive bound for a sufficiently short interval.
+\end{proof}
+
+\paragraph{Release boundary.}
+The results give one pressure-complete equation and one
+strictly positive \emph{early-time} coefficient lower bound
+from an exact unforced solution. They do not establish
+a positive sustained nonlinear contribution, the required
+source-compatible $\tau^{-h}$ terminal amplification, or
+pointwise blowup. The Gaussian solution is globally regular.
+No full Lean Navier--Stokes PDE formalization is claimed.

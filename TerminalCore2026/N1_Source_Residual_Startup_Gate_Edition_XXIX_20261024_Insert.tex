@@ -1,0 +1,151 @@
+
+\section{The authentic source residual and the necessary nonzero-data gate}
+\label{sec:source-startup-XXIX}
+
+This section corrects the target of the unforcing programme.
+The source moment identities (A.11) and (A.19) control leading-profile
+matching, not the physical forcing after cutoff. In the original
+forced Navier--Stokes source \cite{openai2026},
+Proposition 10.1, equation (10.4), forms the compactly supported
+velocity $u_B=\operatorname{curl}(c{\mathcal A})+c{\mathcal B}e_\theta$,
+with a temporal cutoff giving $u_B(0)=0$. Equation (10.5)
+then defines the actual force
+\[
+f_B=\partial_t u_B+(u_B\cdot\nabla)u_B-\nu\Delta u_B+\nabla p_B.
+\]
+Appendix A is not a certificate that this vector residual,
+or its divergence-free Leray projection, is zero.
+
+\begin{theorem}[Projected residual and compulsory unforced startup]
+\label{thm:xxix-startup}
+Let $\Omega=\mathbb R^3$ or $\mathbb T^3$, $\nu>0$, and
+$u_B$ be any smooth divergence-free finite-energy field
+on $[0,T)$ with $u_B(0)=0$. Let $w$ be smooth
+and divergence-free and put $u=u_B+w$.
+For an arbitrary smooth pressure $p$, define the residual
+\[
+R=\partial_tu+(u\cdot\nabla)u-\nu\Delta u+\nabla p,
+\]
+and assume $\mathbb P R\in L^1([0,t];L^2(\Omega))$
+for each $t<T$. Then
+\begin{equation}\label{eq:xxix-source-budget}
+\boxed{\quad
+\|u_B(t)\|_2\le
+\|w(0)\|_2+
+\int_0^t\|\mathbb P R(s)\|_2\,ds+
+\|w(t)\|_2.\quad}
+\end{equation}
+In particular, if $w(0)=0$ and the completed field solves
+the \emph{unforced} Navier--Stokes equations, i.e.
+$\mathbb P R\equiv0$ with the pressure reconstructed
+appropriately, then $u\equiv0$ and necessarily
+\begin{equation}\label{eq:xxix-no-go}
+\boxed{\qquad w=-u_B\qquad\text{on }[0,T).}
+\end{equation}
+Consequently a convergent retarded perturbation series
+with zero initial correction cannot remove the entire
+forced source while retaining any nonzero part of
+the forced velocity. This does not rule out a nonzero
+unforced initial datum.
+\end{theorem}
+\begin{proof}
+Apply the orthogonal Leray projection to the residual
+equation. Testing against $u$ and integrating by parts
+over space yields
+\[
+\frac12\frac{d}{dt}\|u(t)\|_2^2+
+\nu\|\nabla u(t)\|_2^2
+=\langle\mathbb P R(t),u(t)\rangle.
+\]
+The usual regularization of $\|u(t)\|_2$ at its zeros
+and Cauchy--Schwarz imply
+\[
+\|u(t)\|_2\le\|u(0)\|_2+
+\int_0^t\|\mathbb P R(s)\|_2\,ds.
+\]
+Since $u(0)=w(0)$ and
+$u_B(t)=u(t)-w(t)$, the triangle inequality gives
+\eqref{eq:xxix-source-budget}.
+If $w(0)=0$ and $\mathbb P R=0$, the energy identity
+gives $\|u(t)\|_2=0$ for every $t<T$. This proves
+\eqref{eq:xxix-no-go}.
+\end{proof}
+
+\begin{corollary}[A quantitative non-gauge forcing floor for the authentic forced velocity]
+\label{cor:xxix-real-force}
+For the nontrivial compact forced source solution $u_B$
+of Theorem 1.1 and Proposition 10.1 in \cite{openai2026},
+at any fixed $t_*\in(0,1)$ at which
+$\|u_B(t_*)\|_2=m_*>0$, its actual
+Section 10 residual satisfies
+\begin{equation}\label{eq:xxix-real-source-floor}
+\boxed{\quad
+\int_0^{t_*}\|\mathbb P f_B(s)\|_2\,ds\ge m_*>0.
+\quad}
+\end{equation}
+Thus the entire physical forcing cannot be a pressure
+gradient. Pure pressure-equivalent seven-ray modifications
+of Editions XXV--XXVIII cannot remove this projected
+force while leaving $u_B$ unchanged.
+\end{corollary}
+\begin{proof}
+Apply Theorem~\ref{thm:xxix-startup} with $u=u_B$,
+$w=0$, and $R=f_B$. Existence of a fixed positive
+$t_*$ follows from the source theorem's nontrivial
+late-time velocity, although its numerical $L^2$
+value is not supplied by the Appendix A moments.
+\end{proof}
+
+\begin{proposition}[Exact three-dimensional periodic shear negative control]
+\label{prop:xxix-shear}
+On the spatial torus of period $2\pi$ in every coordinate,
+take $\nu>0$ and, for $0\le t\le t_*$,
+\[
+u_B(x,y,z,t)=(t\sin y,0,0),\quad p_B=0.
+\]
+It is divergence-free, its convection vanishes identically,
+and the complete physical residual is
+\[
+f_B=(1+\nu t)\sin y\,e_x.
+\]
+Moreover
+\[
+\|u_B(t)\|_2=2\pi^{3/2}t,\quad
+\int_0^t\|f_B(s)\|_2\,ds
+=2\pi^{3/2}(t+\nu t^2/2),
+\]
+and the exact kinetic-energy equality is
+\[
+\|u_B(t)\|_2^2+
+2\nu\int_0^t\|\nabla u_B(s)\|_2^2\,ds
+=2\int_0^t\langle f_B(s),u_B(s)\rangle\,ds.
+\]
+The retarded correction $w=-u_B$ begins from zero and
+makes the completed field the trivial unforced solution,
+not a singular flow.
+\end{proposition}
+\begin{proof}
+Differentiate the sine mode explicitly:
+$\Delta u_B=-t\sin y\,e_x$,
+$(u_B\cdot\nabla)u_B=0$. The spatial integral
+$\int_{\mathbb T^3}\sin^2y\,dx\,dy\,dz=4\pi^3$
+gives the displayed norms and equality.
+\end{proof}
+
+\paragraph{Corrected theorem dependency and formalization boundary.}
+The next actual PDE input is the complete Section 10
+cutoff residual $f_B$ and its Leray projection,
+not only the A.11/A.19 moment-root data.
+A proposed smooth unforced correction must start with
+nonzero solenoidal initial velocity $w(0)$, must satisfy
+the exact projected equation throughout the early-time
+cutoff interval and terminal region, and must preserve
+the intended singularity despite the energy budget.
+The finite Lean component accompanying this edition
+formalizes only scalar and normed-space inequalities;
+it does not formalize the Navier--Stokes energy identity,
+Leray projection, source expressions or unforced
+singularity. The exact three-dimensional manufactured
+shear and independent 50,000 rational budget fixtures
+pass their numerical/symbolic audit.
+Nothing in this section proves the Millennium problem.

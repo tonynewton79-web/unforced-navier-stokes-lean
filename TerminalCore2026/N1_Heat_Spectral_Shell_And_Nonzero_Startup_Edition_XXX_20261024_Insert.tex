@@ -1,0 +1,158 @@
+\section{Heat-semigroup spectral barriers for nonzero-data unforcing}
+\label{sec:xxx-spectral-barrier}
+
+The forced velocity of Section~10 of \cite{openai2026} vanishes
+initially. Edition~XXIX proved that a correction also starting from
+zero cannot produce a nontrivial smooth unforced flow. We now develop
+an independently checkable, frequency-resolved \emph{necessary}
+condition for a correction starting from nonzero data. These estimates
+are elementary Fourier--Duhamel consequences of the energy inequality,
+not a new regularity theorem.
+
+\begin{theorem}[Exact periodic Fourier energy barrier]
+\label{thm:xxx-periodic}
+Let $u$ be a smooth unforced three-dimensional incompressible
+Navier--Stokes solution with viscosity $\nu>0$ on the torus
+$\mathbb T^3=(\mathbb R/2\pi\mathbb Z)^3$. Normalize spatial volume
+to one, put $E_0=\|u(0)\|_{L^2}^2$ and
+$\widehat u_k=(2\pi)^{-3}\int_{\mathbb T^3}u(x)e^{-ik\cdot x}\,dx$.
+For every nonzero $k\in\mathbb Z^3$ and $0\le t<T$,
+\begin{equation}\label{eq:xxx-standard-mode}
+\boxed{
+|\widehat u_k(t)|\le e^{-\nu|k|^2t}|\widehat u_k(0)|+
+\frac{1-e^{-\nu|k|^2t}}{\nu|k|}E_0.}
+\end{equation}
+If $\int_{\mathbb T^3}u(0)\,dx=0$, the stronger estimate holds:
+\begin{equation}\label{eq:xxx-mean-zero-mode}
+\boxed{|\widehat u_k(t)|\le
+ e^{-\nu|k|^2t}|\widehat u_k(0)|+E_0G_{\nu,k}(t),}
+\end{equation}
+with
+\[
+G_{\nu,k}(t)=\begin{cases}
+\displaystyle |k|\frac{e^{-2\nu t}-e^{-\nu|k|^2t}}
+{\nu(|k|^2-2)},&|k|^2\ne2,\\[5pt]
+\displaystyle |k|t e^{-2\nu t},&|k|^2=2.
+\end{cases}
+\]
+Both formulas remain valid at all finite times before any alleged
+singularity. They impose necessary conditions, not sufficient ones.
+\end{theorem}
+\begin{proof}
+The projected Fourier equation reads
+\[
+\frac{d}{dt}\widehat u_k+\nu|k|^2\widehat u_k
+=-i\mathbb P_k\sum_{\ell\in\mathbb Z^3}
+ (k\cdot\widehat u_\ell)\widehat u_{k-\ell}.
+\]
+The right side has modulus at most
+$|k|\sum_\ell|\widehat u_\ell||\widehat u_{k-\ell}|
+\le |k|\sum_\ell|\widehat u_\ell|^2=|k|E(t)$,
+by Cauchy--Schwarz and Parseval. The smooth energy identity gives
+$E(t)\le E_0$. Integrating against the heat multiplier proves
+\eqref{eq:xxx-standard-mode}. For mean-zero data, the mean stays
+zero, Poincar\'e's inequality on the $2\pi$ torus gives
+$E'(t)\le-2\nu E(t)$, hence $E(t)\le E_0e^{-2\nu t}$.
+Integrating $|k|E_0e^{-\nu|k|^2(t-s)}e^{-2\nu s}$
+proves the second formula, including the resonant
+$|k|^2=2$ limit.
+\end{proof}
+
+\begin{theorem}[Whole-space dyadic shell and residual tradeoff]
+\label{thm:xxx-whole-space}
+Let $u=u_B+w$ be a smooth divergence-free finite-energy field on
+$\mathbb R^3\times[0,T)$, with $u_B(0)=0$, $\nu>0$, and physical
+residual
+$R=\partial_tu+(u\cdot\nabla)u-\nu\Delta u+\nabla p$.
+For $K>0$ let $\mathcal B_K$ be the $L^2$ Fourier projector onto
+$\{\xi:K\le|\xi|\le2K\}$. Put
+\[
+x=\|w(0)\|_2,\quad \mathcal R_t=\int_0^t\|\mathbb P R(s)\|_2ds,
+\quad b_K(t)=\|\mathcal B_Ku_B(t)\|_2,
+\quad\delta_K(t)=\|\mathcal B_Kw(t)\|_2.
+\]
+Assume the standard smooth-solution energy identity and appropriate
+spatial decay/integrability. Then
+\begin{equation}\label{eq:xxx-physical-tradeoff}
+\boxed{\quad
+[b_K(t)-\delta_K(t)]_+\le
+ e^{-\nu K^2t}x+
+ \frac{\sqrt K}{\sqrt2\,\pi\nu}(x+\mathcal R_t)^2+
+ \mathcal R_t.\quad}
+\end{equation}
+In particular, for an \emph{exactly unforced} completed flow
+($\mathcal R_t=0$), writing
+$a=e^{-\nu K^2t}$, $c=\sqrt K/(\sqrt2\pi\nu)$ and
+$h=[b_K(t)-\delta_K(t)]_+$, a necessary explicit lower bound is
+\begin{equation}\label{eq:xxx-nonzero-startup-floor}
+\boxed{\quad
+\|w(0)\|_2\ge
+\frac{2h}{a+\sqrt{a^2+4ch}}\qquad(h>0).\quad}
+\end{equation}
+This lower bound applies directly to the authentic Section 10
+background once $b_K$ has been sourced and independently certified.
+It does not require pointwise evaluation of a whole-space Fourier
+transform.
+\end{theorem}
+\begin{proof}
+Use the unitary whole-space Fourier transform
+$\widehat u(\xi)=(2\pi)^{-3/2}\int e^{-ix\cdot\xi}u(x)dx$.
+For the projected quadratic nonlinearity,
+\[
+\left|\widehat{\mathbb P\operatorname{div}(u\otimes u)}(\xi)\right|
+\le(2\pi)^{-3/2}|\xi|\|u\|_2^2,
+\]
+because $|\xi\cdot u|\,|u|\le|\xi|\,|u|^2$ under the
+Fourier integral and $\|\mathbb P_\xi\|_{\mathrm{op}}=1$.
+The projected residual equation and smooth energy inequality imply
+$\sup_{s\le t}\|u(s)\|_2\le x+\mathcal R_t$.
+Duhamel's formula, Minkowski, and Plancherel now yield
+\[
+\|\mathcal B_Ku(t)\|_2\le
+ e^{-\nu K^2t}x+\mathcal R_t+
+ \frac{(2\pi)^{-3/2}}\nu(x+\mathcal R_t)^2
+ \left(\int_{K\le|\xi|\le2K}|\xi|^{-2}d\xi\right)^{1/2}.
+\]
+The shell integral is exactly $4\pi K$, giving
+$\sqrt K/(\sqrt2\pi\nu)$. The triangle inequality
+$\|\mathcal B_Ku_B\|_2\le\|\mathcal B_Ku\|_2+
+\|\mathcal B_Kw\|_2$ proves
+\eqref{eq:xxx-physical-tradeoff}. For $\mathcal R_t=0$,
+solve $cx^2+ax-h\ge0$ for $x\ge0$ and rationalize the
+positive root to obtain \eqref{eq:xxx-nonzero-startup-floor}.
+\end{proof}
+
+\begin{proposition}[Exact shear controls and limits of inference]
+\label{prop:xxx-controls}
+For each integer $n\ge1$, the periodic shear
+$u=Ae^{-\nu n^2t}\sin(ny)e_x$ is an exact unforced
+solution and obeys the purely linear part of the Fourier bound
+with no quadratic transfer. In contrast
+$u_B=t\sin(ny)e_x$ has projected physical force
+$(1+\nu n^2t)\sin(ny)e_x$ and begins from zero; it is not an
+unforced solution. Further, no pointwise whole-space bound of the
+form $|\widehat u_0(\xi_0)|\le C\|u_0\|_2$ with a universal
+constant $C$ is available for arbitrary Schwartz data; one must
+use Fourier shells or a specified test function.
+\end{proposition}
+\begin{proof}
+The shear fields are divergence-free and their convection term
+vanishes identically. The heat equation gives the first field;
+straight differentiation gives the stated force for the second.
+For the Fourier pointwise claim, normalized smooth frequency bumps
+supported in balls of radius $\varepsilon$ have unit $L^2$
+norm but pointwise height of order $\varepsilon^{-3/2}$.
+\end{proof}
+
+\paragraph{Adversarial verification and limitations.}
+An independently written exact SymPy replay checked the heat
+convolution at $|k|^2=2$, the periodic shear equations, and the
+unitary Fourier-shell constant. Forty thousand rational Cauchy
+and energy-budget fixtures passed; a second independent audit
+tested 1,200 divergence-free finite Fourier fields at four
+wavevectors. This is a necessary condition; the constant in the
+whole-space shell bound grows like $\sqrt K$, so it does not alone
+exclude a shrinking-core singularity. No actual Fourier-shell
+mass $b_K(t)$ or correction estimate $\delta_K(t)$ has yet been
+certified for the complete authentic A.11/A.19-corrected source.
+The end-to-end Navier--Stokes PDE and Lean formalization remain open.

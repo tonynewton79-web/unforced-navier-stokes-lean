@@ -1,0 +1,252 @@
+
+\section{Large-data exact unforced controls and the nonaxisymmetric angular-momentum escape gate}
+\label{sec:xxxv-nonaxis-torque}
+
+Edition~XXII already established that the bounded-circulation
+maximum principle prevents an axisymmetric unforced solution from
+retaining the particular growing azimuthal core of the original
+forced source \cite{openai2026}. We now test the distinct
+large-initial-data proposal with an exact no-swirl solution
+and derive an additional sharp quantitative requirement on
+\emph{nonaxisymmetric} transport. Neither result solves the
+unforced three-dimensional Navier--Stokes regularity problem.
+
+\begin{theorem}[A large-critical-norm nonzero datum with an exact globally regular unforced flow]
+\label{thm:xxxv-large-data}
+For any $\nu>0$ set $r=\sqrt{x^2+y^2}$ and
+$\rho^2=r^2+z^2$. Choose the explicit whole-space datum
+\begin{equation}\label{eq:xxxv-initial}
+\boxed{\quad
+v_0(x,y,z)=2\nu e^{-\rho^2}
+\bigl(xz,yz,1-r^2\bigr).\quad}
+\end{equation}
+It is nonzero, smooth, Schwartz, exactly divergence-free
+and axisymmetric \emph{without swirl}. In the unitary
+Fourier convention and the critical space
+$\|a\|_{\mathcal X^{-1}}=\int|\xi|^{-1}|\widehat a(\xi)|\,d\xi$,
+\begin{equation}\label{eq:xxxv-large-critical}
+\boxed{\quad
+\|v_0\|_{\mathcal X^{-1}}=\sqrt2\,\pi^2\nu,\qquad
+\frac{(2\pi)^{-3/2}}{\nu}\|v_0\|_{\mathcal X^{-1}}
+=\frac{\sqrt\pi}{2}>\frac1{16}.\quad}
+\end{equation}
+The classical global axisymmetric no-swirl theorem
+(e.g. Gallay--\v{S}ver\'ak \cite{gallaySverak2015})
+gives a unique global smooth exactly \emph{unforced}
+finite-energy solution $v$ arising from this datum,
+with $v_\theta\equiv0$. Its initial azimuthal vorticity is
+\[
+\omega_\theta(r,z,0)=
+2\nu r(5-2\rho^2)e^{-\rho^2},\qquad
+\left\|\frac{\omega_\theta(0)}r\right\|_\infty=10\nu.
+\]
+For comparison with the published viscosity-one forced source
+$u_B$ of \cite{openai2026}, take $\nu=1$; at other
+viscosities one must first use a correspondingly normalized
+forced background. In the viscosity-one case, the correction $w=v-u_B$ satisfies the complete
+zero-force correction equation and
+\begin{equation}\label{eq:xxxv-swirl-cancel}
+\boxed{\qquad w_\theta=-u_{B,\theta}\quad
+\text{for every }0\le t<1.\qquad}
+\end{equation}
+Consequently this \emph{large-data} exact unforced
+comparison cancels the forced azimuthal singularity
+identically.
+\end{theorem}
+\begin{proof}
+Let $\psi=e^{-\rho^2}$ and $e_z=(0,0,1)$.
+Then $v_0=(\nu/2)\operatorname{curl}
+\operatorname{curl}(\psi e_z)$, giving
+$\nabla\cdot v_0=0$ and the displayed
+axisymmetric no-swirl components
+$v_r=2\nu rz e^{-\rho^2}$,
+$v_z=2\nu(1-r^2)e^{-\rho^2}$.
+In Fourier space,
+\[
+\widehat v_0(\xi)=
+\frac{\nu}{2^{5/2}}e^{-|\xi|^2/4}
+\bigl(|\xi|^2e_z-\xi_z\xi\bigr).
+\]
+Its modulus is
+$\nu 2^{-5/2}|\xi|^2\sin\varphi
+e^{-|\xi|^2/4}$, where $\varphi$ is the angle
+with the $z$ axis. The exact angular and radial
+integrals are $\int_{\mathbb S^2}\sin\varphi\,d\Omega=\pi^2$
+and $\int_0^\infty q^3e^{-q^2/4}dq=8$.
+This proves \eqref{eq:xxxv-large-critical}.
+Direct cylindrical differentiation gives the vorticity formula;
+the ratio obeys the no-swirl advection--diffusion
+equation with the lifted meridional Laplacian, and its
+initial supremum is $10\nu$.
+Classical no-swirl global regularity supplies $v(t)$ and
+preserves $v_\theta=0$ for all time.
+The difference $w=v-u_B$ obeys
+\[
+\partial_tw-\nu\Delta w+
+\mathbb P\nabla\cdot
+(u_B\otimes w+w\otimes u_B+w\otimes w)
+=-\mathbb P f_B,
+\]
+where $f_B$ is the \emph{complete} Section~10 physical force.
+The full unforced equation of $v$ holds with its reconstructed
+pressure; \eqref{eq:xxxv-swirl-cancel} follows identically.
+\end{proof}
+
+\begin{theorem}[Exact nonaxisymmetric angular-momentum transport identity]
+\label{thm:xxxv-angular-mean}
+Let $u$ be any smooth divergence-free solution of the
+\emph{unforced} Navier--Stokes equations on $\mathbb R^3$
+up to a time $T>0$. Let
+$\Gamma=r u_\theta$ and denote averages over
+$\theta\in[0,2\pi]$ by a bar and fluctuations by
+primes, $f'=f-\bar f$. Then, wherever $r>0$,
+\begin{equation}\label{eq:xxxv-averaged-gamma}
+\boxed{
+(\partial_t+\bar u_r\partial_r+\bar u_z\partial_z)
+\bar\Gamma=
+\nu(\partial_{rr}-r^{-1}\partial_r+\partial_{zz})
+\bar\Gamma+\mathcal T,
+}
+\end{equation}
+where the \emph{entire} nonaxisymmetric transport term is
+\begin{equation}\label{eq:xxxv-torque}
+\boxed{\qquad
+\mathcal T=
+-\frac1r\partial_r(r\,\overline{u'_r\Gamma'})
+-\partial_z\overline{u'_z\Gamma'}.\qquad}
+\end{equation}
+There is no discarded mean pressure torque:
+$\overline{\partial_\theta p}=0$ identically.
+\end{theorem}
+\begin{proof}
+For the Cartesian angular momentum
+$\Gamma=xu_y-yu_x$, the cylindrical momentum equations
+give, with the full material derivative $D_t$,
+\[
+D_t\Gamma=
+\nu(\Delta-2r^{-1}\partial_r)\Gamma+
+2\nu r^{-1}\partial_\theta u_r-\partial_\theta p.
+\]
+Because $\nabla\cdot u=0$, the advection has the
+conservative form
+\[
+u\cdot\nabla\Gamma
+=r^{-1}\partial_r(ru_r\Gamma)+
+r^{-1}\partial_\theta(u_\theta\Gamma)+
+\partial_z(u_z\Gamma).
+\]
+Average over $\theta$. The two explicit angular
+derivatives and the angular Laplacian vanish, giving
+\[
+\partial_t\bar\Gamma+
+r^{-1}\partial_r(r\,\overline{u_r\Gamma})+
+\partial_z\overline{u_z\Gamma}
+=\nu(\partial_{rr}-r^{-1}\partial_r+\partial_{zz})
+\bar\Gamma.
+\]
+The mean meridional velocity satisfies
+$r^{-1}\partial_r(r\bar u_r)+\partial_z\bar u_z=0$.
+Decompose the mean products into
+$\bar u_r\bar\Gamma+\overline{u'_r\Gamma'}$
+and $\bar u_z\bar\Gamma+\overline{u'_z\Gamma'}$,
+giving \eqref{eq:xxxv-averaged-gamma}.
+\end{proof}
+
+\begin{theorem}[Quantitative nonaxisymmetric escape dichotomy]
+\label{thm:xxxv-dichotomy}
+Assume in addition that $\bar\Gamma$ has bounded initial
+data and satisfies the standard maximum-principle hypotheses
+at the symmetry axis and spatial infinity, with
+$M_0=\|\bar\Gamma(0)\|_\infty<\infty$.
+Suppose the completed unforced velocity
+retains at least one-quarter of the \emph{positive}
+source azimuthal amplitude at the trajectory
+$x_\tau=(r_\tau,0,z_\tau)$ of (10.20)--(10.21):
+\[
+r_\tau=\sqrt{2X_{\rm in}\tau},\quad
+u_\theta(r_\tau,0,z_\tau,1-\tau)
+\ge(e_0/4)\tau^{-1/2-h},
+\quad e_0>0,\ h>0.
+\]
+Then, for all sufficiently small $\tau>0$,
+\begin{equation}\label{eq:xxxv-escape}
+\boxed{\begin{aligned}
+&\int_0^{1-\tau}
+ \|\mathcal T(s)\|_{L^\infty_{r,z}}\,ds\\
+&\qquad+\sqrt{\frac{\pi}{6}}\,
+ \|\partial_\theta\Gamma(r_\tau,\cdot,z_\tau,1-\tau)\|_{L^2_\theta}
+\ge \frac{\sqrt{2X_{\rm in}}e_0}{4}\tau^{-h}-M_0.
+\end{aligned}}
+\end{equation}
+In particular, if \emph{both} quantities on the left
+are $o(\tau^{-h})$, such source-swirl retention is impossible.
+The coefficient $\sqrt{\pi/6}$ is the optimal
+point-evaluation constant for the periodic zero-mean
+homogeneous $H^1$ angular inequality, not a PDE
+sharpness claim for \eqref{eq:xxxv-escape}.
+\end{theorem}
+\begin{proof}
+The inhomogeneous scalar maximum principle applied to
+\eqref{eq:xxxv-averaged-gamma} gives
+\[
+\|\bar\Gamma(t)\|_\infty\le
+M_0+\int_0^t\|\mathcal T(s)\|_\infty ds.
+\]
+For a periodic $H^1$ function $g(\theta)$, Fourier series
+and Cauchy--Schwarz yield
+\[
+|g(0)-\bar g|
+\le \left(
+ \frac1{2\pi}\sum_{n\ne0}\frac1{n^2}
+ \right)^{1/2}\|g'\|_{L^2_\theta}
+=\sqrt{\frac{\pi}{6}}\|g'\|_{L^2_\theta}.
+\]
+Indeed $\sum_{n\ne0}n^{-2}=\pi^2/3$;
+truncations of the Fourier sequence $g_n=n^{-2}$
+approach equality. Apply this inequality to
+$g(\theta)=\Gamma(r_\tau,\theta,z_\tau,1-\tau)$,
+then use the retained amplitude and
+$r_\tau\tau^{-1/2-h}
+=\sqrt{2X_{\rm in}}\tau^{-h}$.
+\end{proof}
+
+\paragraph{An explicit nonzero Reynolds angular-momentum flux.}
+On an annular plateau choose the $z$ component
+of a smooth compactly supported vector potential
+as $A_z=r\cos\theta+r^3\sin\theta$.
+Set $u=\operatorname{curl}(A_ze_z)$, extending
+with radial and axial smooth cutoffs that equal one
+on the plateau. Then $u$ is exactly divergence-free.
+Direct calculation at the plateau gives
+\[
+u_r=-\sin\theta+r^2\cos\theta,\qquad
+u_\theta=-\cos\theta-3r^2\sin\theta,
+\quad\bar\Gamma=0,
+\]
+\[
+\overline{u'_r\Gamma'}=r^3,\qquad
+-\frac1r\partial_r(r\overline{u'_r\Gamma'})=-4r^2.
+\]
+Thus nonaxisymmetric Reynolds transport can be
+nonzero for a smooth solenoidal field. This is a
+\emph{kinematic flux example}, not a solution of
+the time-dependent unforced PDE or a construction
+of the required divergent torque.
+
+\paragraph{Proof boundary.}
+The original Section~10 source provides the
+positive shrinking-core swirl, while the
+no-swirl global regularity theorem and periodic
+angular trace inequality are classical prior art.
+The new source-targeted condition is the exact
+flux/oscillation dichotomy \eqref{eq:xxxv-escape};
+it does not produce a nonaxisymmetric unforced
+solution with those costs, and the source's
+numerical profile still lacks a frozen certificate.
+All six large-data Gaussian formulas and the
+nonaxisymmetric flux identities were audited
+independently with symbolic algebra and rational
+fixtures. A separate Lean module proves only
+scalar algebra; the full Navier--Stokes PDE,
+maximum principle and existence arguments are
+not kernel formalized.

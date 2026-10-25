@@ -1,0 +1,50 @@
+\subsection*{Proof Attack 8 (Edition XIII): exact first projected-Stokes correction and its nonlinear residual}
+\label{subsec:n1-projected-stokes-XIII}
+A first-order correction must cancel the \emph{whole physical} momentum residual, not just the azimuthal viscous channel. The following theorem is a standard local semigroup construction carried out on the full space; it is not an authentic globally matched correction for the prescribed source exterior.
+Let $t_0<T$, $\nu>0$, and let $u_B$ be a smooth divergence-free background in $\mathbb R^3$, with a chosen background pressure $p_B$. Define
+\[
+R_B=\partial_tu_B-\nu\Delta u_B+(u_B\cdot\nabla)u_B+\nabla p_B,
+\qquad \mathbb P=I-\nabla\Delta^{-1}\nabla\cdot.
+\]
+The inverse Laplacian is the standard free-space Fourier multiplier; the projected field is independent of the arbitrary additive constant in pressure.
+\begin{theorem}[Exact first-step correction and its residual]
+Assume $R_B\in C([t_0,T];H^1(\mathbb R^3))$, $u_B$ is divergence-free and $u_B,\nabla u_B$ are bounded. Define
+\begin{equation}\label{eq:XIII-first-corrector}
+ w_1(t)=-\int_{t_0}^t e^{\nu(t-s)\Delta}\mathbb P R_B(s)\,ds,
+\quad \delta p_1=-\Delta^{-1}\nabla\cdot R_B.
+\end{equation}
+Then $w_1$ is divergence-free, $w_1(t_0)=0$, and
+\begin{equation}\label{eq:XIII-corrected-jet}
+(\partial_t-\nu\Delta)w_1=-\mathbb P R_B,
+\qquad \partial_tw_1(t_0)=-\mathbb P R_B(t_0).
+\end{equation}
+The unforced Navier--Stokes momentum residual of the \emph{corrected} pair $(u_B+w_1,p_B+\delta p_1)$ is exactly
+\begin{equation}\label{eq:XIII-exact-leftover}
+\boxed{\mathcal R_1=(u_B\cdot\nabla)w_1+(w_1\cdot\nabla)u_B+(w_1\cdot\nabla)w_1.}
+\end{equation}
+Set $a=t-t_0$, $M=\sup_{s\in[t_0,T]}\|R_B(s)\|_{H^1}$, and $U=\sup_s(\|u_B(s)\|_{\infty}+\|\nabla u_B(s)\|_{\infty})$. For an absolute $H^1(\mathbb R^3)\hookrightarrow L^4$ embedding constant $C_4$,
+\begin{equation}\label{eq:XIII-time-remainder-bound}
+\boxed{\|w_1(t)\|_{H^1}\le aM,\qquad
+\|\mathcal R_1(t)\|_{H^{-1}}\le UaM+C_4^2a^2M^2.}
+\end{equation}
+For each compact solenoidal test field $\Phi$, the startup response automatically meets the Edition XII condition
+$\langle\partial_tw_1(t_0),\Phi\rangle=-\langle R_B(t_0),\Phi\rangle$.
+\end{theorem}
+\begin{proof}
+The Leray projector and heat semigroup commute, are contractions on $H^1$, and preserve divergence-free fields. Duhamel differentiation proves \eqref{eq:XIII-corrected-jet}, including its right derivative at $t_0$. Since $R_B=\mathbb PR_B+\nabla\Delta^{-1}\nabla\cdot R_B$ and $\nabla\delta p_1=-(I-\mathbb P)R_B$, expanding the corrected momentum equation cancels \emph{all} of $R_B$ against the linear Stokes response and the pressure adjustment, leaving exactly \eqref{eq:XIII-exact-leftover}. Contraction yields $\|w_1\|_{H^1}\le aM$. For an $H^1$ test $\Phi$, integrate $u_B\cdot\nabla w_1$ and $w_1\cdot\nabla w_1$ by parts, using solenoidality. Their pairings are bounded by $\|u_B\|_\infty\|w_1\|_2\|\nabla\Phi\|_2$ and $\|w_1\|_4^2\|\nabla\Phi\|_2$ respectively. The remaining cross term is bounded by $\|\nabla u_B\|_\infty\|w_1\|_2\|\Phi\|_2$. Sobolev embedding proves \eqref{eq:XIII-time-remainder-bound}. At startup the pressure gradient is orthogonal to every solenoidal test, proving the final identity.
+\end{proof}
+\begin{proposition}[The meridional response is already compulsory for smooth Gaussian swirl]
+For the stationary, smooth finite-energy, unforced-equation \emph{non-solution} $u_B=Ue_\theta$, $U=r\exp[-(r^2+z^2)]$, with $p_B=0$ and $\nu=1$, the \emph{complete} physical residual has
+\[
+R_{B,r}=-r e^{-2(r^2+z^2)},\quad R_{B,z}=0,\quad
+R_{B,\theta}=2r(5-2r^2-2z^2)e^{-(r^2+z^2)}.
+\]
+In particular,
+\begin{equation}\label{eq:XIII-gaussian-curl}
+\boxed{\partial_zR_{B,r}-\partial_rR_{B,z}
+=4rz\,e^{-2(r^2+z^2)}\ne0\quad(r>0,\ z\ne0).}
+\end{equation}
+As a gradient has zero curl, $\mathbb PR_B$ has a nontrivial meridional component. Therefore the exact first response $w_{1,t}(t_0)=-\mathbb PR_B(t_0)$ cannot be a purely azimuthal correction.
+\end{proposition}
+\paragraph{Exact global positive control.} On a periodic domain, the stationary shear $u_B=A\sin(kz)e_x$ has $R_B=\nu k^2u_B$ and its projected first step gives $w_1=(e^{-\nu k^2(t-t_0)}-1)u_B$. Here all quadratic convection terms vanish, and the \emph{fully corrected} field $u=Ae^{-\nu k^2(t-t_0)}\sin(kz)e_x$ is an exact smooth \emph{unforced} Navier--Stokes solution. This is well-known and not a blow-up construction.
+\paragraph{Scope and outstanding theorem.} The theorem requires uniform $H^1$ residual and bounded smooth source data over a short physical time interval, with no imposed radial/terminal compact-support or prescribed similarity/oscillatory matching. The projected heat semigroup is nonlocal and may destroy strict annular localization. Its remainder \eqref{eq:XIII-exact-leftover} is generally nonzero. Proving a \emph{second nonlinear correction}, original source-stage matching, a terminal blow-up rate, nonzero smooth initial data, complete zero-force physical NSE reconstruction, and full Lean formalization remains OPEN/HOLD. The companion Lean checks are finite scalar implications only.

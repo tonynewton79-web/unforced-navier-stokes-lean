@@ -1,0 +1,78 @@
+\subsection*{An explicit A.11 profile-size certificate from source stages}
+\label{subsec:a11-explicit-profile-size-20261022}
+The conditional whole-hull stress theorem previously required
+$E_c\le\lambda/4$ as an independently supplied source enclosure.
+For the exact Appendix-A stages, this requirement follows from
+an explicit further smallness choice.
+
+\begin{proposition}[Automatic smallness across both supports and their gap]
+\label{prop:a11-source-E-small-20261022}
+Assume the source (A.6)--(A.11), $P_*>e^{T_d}$,
+$0<\lambda\le1/100$, the A.10 interpolation slope
+$\ell\le-\lambda$, and the source-specific small A.11
+root $|c_i|\le54\lambda^{28}$. Let $E_b$ be the uniform
+precorrection A.11 plateau profile and
+$E_c=E_b(1+\sum_i c_i\beta_i)$ for the two disjoint
+width-$3/10$ source bumps with
+$\|\beta_i\|_\infty\le640/3$.
+Then everywhere on the entire closed A.11 two-support
+hull (including the gap),
+\[
+0<E_c\le16P_*\lambda^{45}e^{-13/(2\lambda)}
+\le16P_*\lambda^{45}.
+\]
+Consequently $64P_*\lambda^{44}\le1$ implies
+$E_c\le\lambda/4$ uniformly.
+\end{proposition}
+\begin{proof}
+At the inner reference $E\le P_*$. The one-unit initial
+transition has $\ell\le3/5$, so multiplies $E$ by at most
+$e^{1/10}$. The length-$T_d$ axial stage, one-unit
+intermediate transition, and length-$60\log(1/\lambda)$
+power-law stage give respectively $e^{-T_d/2}$,
+$e^{-1/2}$ and at most $\lambda^{30}$.
+Thus $E(X_p,\eta)\le P_*\lambda^{30}$.
+The pulse has length $13/\lambda$ and slope $-\lambda$,
+giving a factor at most $e^{-13/(2\lambda)}$.
+The interpolation cannot increase $E$.
+The first bump begins at plateau coordinate
+$30\log(1/\lambda)-63/20$. Its baseline factor is at most
+\[
+e^{-(1/2+\lambda)(30\log(1/\lambda)-63/20)}
+\le\lambda^{15}e^{693/400}<8\lambda^{15}.
+\]
+The last inequality uses $693/400<2$ and $e^2<8$,
+with a rational Taylor-tail certificate.
+The remaining baseline decreases across the whole hull.
+Source bump disjointness gives
+$|\sum_i c_i\beta_i|\le11520\lambda^{28}<1$.
+Hence $E_c<2E_b$ and the theorem follows.
+\end{proof}
+\begin{corollary}[A cofinal parameter wedge]
+\label{cor:a11-explicit-lambda-20261022}
+If $T_f=512$ is permissible for the originating
+A.10 profile and $P_*>e^{T_d}>1$, put
+\[
+Q=1+T_d+512+\log P_*,
+\quad
+\lambda=\frac{10^{-20}}{(1+P_*)Q},
+\quad
+h=\frac{\lambda e^{-T_d}}{10^6}.
+\]
+Then $0<\lambda<1/100$, $0<h<\lambda/100$, and
+$64P_*\lambda^{44}<1$.
+\end{corollary}
+\begin{proof}
+As $Q>1$, $\lambda<10^{-20}/(1+P_*)$ and
+$64P_*\lambda^{44}
+<64\cdot10^{-880}P_* /(1+P_*)^{44}<1$.
+The other comparisons are immediate.
+\end{proof}
+This removes the separately assumed $E_c\le\lambda/4$
+from prior conditional A.11 stress inequalities after
+the authentic A.11 root bound and source stages are
+instantiated. It does \emph{not} authenticate the same
+profile's $S(\infty)=\Pi(\infty)=0$, future $D_s,P_s$,
+complete exterior stress cone, Appendix B contraction,
+unforced coefficient hierarchy, physical zero-force
+residual or a trusted end-to-end Lean proof.

@@ -1,0 +1,38 @@
+name: Audit nonaxisymmetric Fourier gate
+on:
+  push:
+    branches: [feature/zenodo-23474915-lean]
+    paths:
+      - 'TerminalCore2026/N1NonaxisFourierScalar.lean'
+      - 'TerminalCore2026/verify_nonaxis_mode_gate.py'
+      - '.github/workflows/n1-nonaxis-fourier.yml'
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  nonaxis-mode:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install elan
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Lean and Mathlib
+        run: |
+          elan toolchain install "$(cat lean-toolchain)"
+          lake update
+          lake exe cache get
+      - name: Reject sorry and axioms
+        run: |
+          if grep -nE '^[[:space:]]*(sorry|admit|axiom)([[:space:]]|$)' TerminalCore2026/N1NonaxisFourierScalar.lean; then exit 1; fi
+      - name: Kernel-check finite mode mathematics
+        run: lake env lean TerminalCore2026/N1NonaxisFourierScalar.lean
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Independently replay Fourier identities
+        run: |
+          python -m pip install sympy
+          python TerminalCore2026/verify_nonaxis_mode_gate.py

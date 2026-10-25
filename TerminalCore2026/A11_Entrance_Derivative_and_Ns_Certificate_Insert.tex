@@ -1,0 +1,101 @@
+\subsection*{Appendix-A.11: exact entrance derivative and a conditional axial-stress certificate}
+The original interpolation (A.10), with \(a=1-\lambda\),
+\(J_0=\log(1+\eta^2)\), \(\theta=1-\sigma(t/T_f)\) and
+\(G=\exp((1-\theta)(J_0-\log2))\), implies
+\[
+r_f=\frac{e^{-aT_f}}{G(T_f,\eta)}
+ \left[r_p+\int_0^{T_f}e^{at}G(t,\eta)\,dt\right].
+\]
+All pre-interpolation azimuthal stages retain the common
+\((1+\eta^2)^{-1}\) factor. Thus \(\partial_\eta r_p=0\) and
+differentiation under the integral yields exactly
+\[
+\partial_\eta r_f=-J_0'(\eta)\left[
+\frac{2r_pe^{-aT_f}}{1+\eta^2}
++\int_0^{T_f}e^{-au}\left(\frac2{1+\eta^2}\right)^{\sigma(u/T_f)}
+                  \sigma(u/T_f)\,du\right].
+\]
+Consequently
+\[
+|\partial_\eta r_f|\le 2r_pe^{-aT_f}
+  +\frac2a[\sigma(1/4)+e^{-aT_f/4}].
+\]
+For \(T_f\ge512\), \(0<\lambda\le1/20\),
+\(r_p\le1/a\), the right side is \(<1.41\cdot10^{-6}\).
+The source step has \(\|\sigma'\|_\infty\le64\), so the
+interpolation slope belongs to \([-\lambda-1/10,-\lambda]\).
+
+Let the prescribed normalized \(\sigma'\) bumps be centered
+at \(L-d_i\), \(L=30\log(1/\lambda)\),
+\(d_1=3,d_2=1\), and let \(E=E_0(1+q)\),
+\(q=\sum_ic_i(\eta)\beta_i\). Put \(b=1+2\lambda\),
+\[
+u_i=e^{-ad_i}\int e^{az}\beta(z)\,dz,\quad
+v_i=e^{bd_i},\quad
+\kappa=\frac{\int e^{-bz}\beta(z)^2\,dz}
+             {2\int e^{-bz}\beta(z)\,dz},\quad
+\epsilon=(1/a-r_f)e^{-aL}.
+\]
+The TWO actual A.11 requirements are precisely
+\[
+u_1c_1+u_2c_2=\epsilon,\qquad
+v_1c_1+v_2c_2+\kappa(v_1c_1^2+v_2c_2^2)=0.
+\]
+The support and exponential-weight estimates give
+\[
+|\det B|>5,\quad \|B^{-1}\|_\infty<7,\quad
+\kappa<150,\quad v_1+v_2<36.
+\]
+Source comparison gives \(|\epsilon|\le3\lambda^{30a}\),
+\(|\partial_\eta\epsilon|\le5\lambda^{30a}\).
+On the ball \(\|c\|_\infty\le14|\epsilon|\), the exact
+quadratic moment map has Lipschitz constant at most
+\(7\cdot10800\cdot14|\epsilon|<1/2\). It has a unique
+small solution with
+\[
+\|c\|_\infty\le42\lambda^{30a},\qquad
+\|\partial_\eta c\|_\infty\le70\lambda^{30a}.
+\]
+The source \(\sigma'\)-bump satisfies \(\|\beta\|_\infty<214\),
+\(\|\beta'\|_\infty<56000\); hence
+\(\|q\|_\infty<1/4\), \(\|q_\eta\|_\infty<1\) and
+\(\|q_y\|_\infty<3\lambda/8\).
+Thus the corrected log slope is at most \(-\lambda/2\).
+
+The entrance-moment derivative alone DOES NOT bound \(N_s/E\).
+Using the exact source identity (4.16), and explicitly assuming
+the completed amplitude constraint \(S(\infty)=0\) and
+the pressure gauge \(\Pi(\infty)=0\), one obtains after the
+pulse (\(U=M=J=0\)):
+\[
+N_s(y,\eta)=2\eta\int_y^\infty
+(h e^{v-y}-A)E(v,\eta)^2\,dv
++\frac{1-\eta^2}{2}\int_y^\infty
+(1-e^{v-y})\partial_\eta E(v,\eta)^2\,dv .
+\]
+If the remaining source slopes obey \(\ell_0\le0\),
+the \(-1\) hold lasts \(4\log(1/h)\), and
+\(\ell_0\le-3h/4\) afterward, then the entire future
+baseline energy obeys
+\[
+\int_y^\infty E_0(v)^2\,dv\le E_0(y)^2,\quad
+\int_y^\infty e^{v-y}E_0(v)^2\,dv
+\le(93/20+2h^7/3)E_0(y)^2
+\]
+on both A.11 supports. Since their union has length \(3/5\),
+the exact \(N_s\) formula and bounds on \(q,q_\eta\) give
+\[
+\frac{|N_s|}{E}\le4E_0
+\le40P_*\lambda^{15}e^{-13/(2\lambda)}.
+\]
+Thus the sought \(\sup|N_s|/E\le\lambda/2\) follows from
+the explicit sufficient scalar gate
+\[
+80P_*\lambda^{14}e^{-13/(2\lambda)}\le1.
+\]
+This is a CONDITIONAL SOURCE-FAMILY statement. The source
+requires \(S(\infty)=0\), actual post-pulse slope bounds, and
+one simultaneously admissible parameter realization; the
+diagnostic numbers in the accompanying exact checker do not
+certify those missing hypotheses. No unforced Theorem 1.1,
+global singularity, or end-to-end Lean proof is asserted.

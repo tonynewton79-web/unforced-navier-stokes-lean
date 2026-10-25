@@ -1,0 +1,71 @@
+\subsection*{Exact A.11 axial stress across both bumps and the intervening gap}
+\label{subsec:a11-full-hull-20261021}
+On the source A.11 corrections, $U=M=J=0$. Let the true terminal
+gauges be $S(\infty)=\Pi(\infty)=0$, and let
+$E=E_b(1+u)$ where $E_b(y)$ is independent of $\eta$ for
+$y\ge y_-$ and $u=\sum_{i=1}^2c_i(\eta)\beta_i(y)$.
+The two supports have width $3/10$, their centres differ by
+two, and their closed convex hull is $[y_-,y_+]$ of length $23/10$.
+Write $F=E^2-E_b^2$. Source (4.16) and the true future-tail
+integrals give the exact identity
+\[
+N_s-N_{s,b}^{\rm tail}
+=\int_y^{y_+}\left[
+ 2\eta(he^{v-y}-A)F(v,\eta)
+ +\frac{1-\eta^2}{2}(1-e^{v-y})F_\eta(v,\eta)
+\right]\,dv .
+\]
+This holds at every point of the hull, including the gap; after
+$y_+$ the correction vanishes identically. Here $N_{s,b}^{\rm tail}$
+is the \emph{auxiliary future-tail functional} of the unedited
+$E_b$, not necessarily the physical stress of an unmatched
+unedited schedule. In particular the original A.11 constraints
+do not by themselves prove $S_b(\infty)=0$.
+
+\begin{proposition}[Conditional full-hull stress gate]
+\label{prop:a11-full-hull-20261021}
+Suppose the unedited source slope is $\ell_b=-\lambda$ on the
+hull, $\ell_b\le0$ afterward, and its normalized future-tail
+integral $\sup_{y\in[y_-,y_+]}E_b(y)^{-2}
+\int_y^\infty e^{v-y}E_b(v)^2\,dv\le47/10$.
+Write $\delta=\sup|u|<1$ and $\epsilon=\sup|u_\eta|$ on the
+full hull. Then everywhere, including the gap,
+\[
+\frac{|N_s|}{E}\le\frac{E_b}{1-\delta}
+\left[1+\frac{57}{5}h+
+2\left(A+\frac{23}{10}h\right)(2\delta+\delta^2)
++\frac{23}{10}(1+\delta)\epsilon\right].
+\]
+If additionally $0<\lambda\le1/20$, $0<h\le\lambda/100$,
+$E_b\le\lambda/4$, the \emph{actual prescribed} bump
+satisfies $\|\beta_i\|_\infty\le640/3$, and
+$|c_i|\le54\lambda^{28}$, $|c_{i,\eta}|\le6\lambda^{28}$,
+then
+\[
+\sup_{y\in[y_-,y_+],\ |\eta|\le1}\frac{|N_s|}{E}
+\le\frac{101}{400}\lambda<\frac{\lambda}{2}
+\]
+with a reserve of at least $99\lambda/400$.
+\end{proposition}
+\begin{proof}
+The unedited future-tail contribution is bounded by
+$E_b^2[1+2h(1+47/10)]$. Moreover
+$F=E_b^2(2u+u^2)$ and
+$F_\eta=2E_b^2(1+u)u_\eta$.
+On the $23/10$-long hull, the unedited slope
+$\ell_b=-\lambda$ gives
+$\int_y^{y_+}E_b(v)^2dv\le E_b(y)^2$ and
+$\int_y^{y_+}e^{v-y}E_b(v)^2dv\le(23/10)E_b(y)^2$.
+Insert these into the exact identity and divide by
+$E\ge(1-\delta)E_b$. Source bump disjointness gives
+$\delta\le11520\lambda^{28}<10^{-4}$ and
+$\epsilon\le1280\lambda^{28}<10^{-4}$.
+The resulting worst-case rational bracket is strictly
+less than $(101/100)(1-10^{-4})$, and $E_b\le\lambda/4$
+finishes the inequality.
+\end{proof}
+The result is a \emph{conditional extension to the gap};
+there is not yet a source-authenticated interval cover of the
+corrected A.11 fields, nor a full exterior/terminal cone or a
+force-free Navier--Stokes proof. A source-normalization check of
+$S(\infty)=\Pi(\infty)=0$ is essential.

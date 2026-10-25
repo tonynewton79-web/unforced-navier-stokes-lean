@@ -1,0 +1,107 @@
+\subsection*{Centerline precision and soundness of a pulse certificate}
+\label{subsec:centerline-proof-gate}
+The source's normalized pulse denominator is
+\[
+D=\tfrac12-h,\quad\beta=\tfrac12-\lambda,\quad
+c(\eta)=\frac{2D\eta^2}{1+\eta^2},\quad
+q_0(\eta)=\frac{\lambda-h+c(\eta)}{1-\lambda}.
+\]
+Thus, for $0<h\le\lambda/10^4$ and $0<\lambda\le10^{-14}$,
+\[
+\frac{9999}{10000}\lambda\le q_0(0)
+=\frac{\lambda-h}{1-\lambda}
+\le\frac{\lambda}{1-\lambda},\qquad q_0(\eta)\ge q_0(0)>0.
+\]
+\begin{proposition}[Necessary absolute source precision]
+\label{prop:source-pulse-precision}
+If the A.29--A.30 comparison inequalities
+$|e_Q/q_0|\le10^{-10}$ and $|e_N/q_0|\le10^{-7}$
+hold, then
+\[
+|e_Q(0)|\le 10^{-10}\frac{\lambda-h}{1-\lambda},
+\qquad |e_N(0)|\le10^{-7}\frac{\lambda-h}{1-\lambda}.
+\]
+At $\lambda=10^{-14}$ and $h=\lambda/10^4$, the
+right sides are of order $10^{-24}$ and $10^{-21}$,
+respectively. They shrink proportionally for smaller $\lambda$.
+\end{proposition}
+\begin{proof}
+Use $c\ge0$ with equality at $\eta=0$; multiply the
+relative inequalities by the exact positive $q_0(0)$.
+The endpoint estimates follow by rational arithmetic.
+\end{proof}
+Thus an absolute error of merely $10^{-16}$ obtained by
+subtracting order-one source terms is inadequate. A correct
+interval computation must first exploit source cancellations
+and use sufficiently accurate outward enclosures.
+
+\paragraph{Cancellation before interval evaluation.}
+Set
+\[
+S=D+c,\quad
+C_d=\frac{\lambda S(1-\lambda)}
+{\beta^2(\lambda-h+c)},\quad w_0=2R-C_dR',
+\]
+\[
+e_m=m-\frac R\beta+\frac{\lambda R'}{\beta^2},
+\quad e_Q=Q_s-q_0,\quad
+e_N=\frac{N_s}{E}+R-Sm+D\eta m_\eta.
+\]
+\begin{lemma}[Exact denominator-cleared pulse identity]
+\label{lem:pulse-source-cleared}
+Whenever the physical denominators are nonzero,
+\begin{align}
+\beta^2(N_s/E-w_0Q_s)={}&
+q_0\lambda R\beta+S\beta^2 e_m
+-D\eta\beta^2m_\eta+\beta^2e_N-\beta^2w_0e_Q.
+\label{eq:source-cleared-pulse}
+\end{align}
+Equivalently,
+\[
+\frac{N_s}{EQ_s}-w_0=
+\frac{q_0(\lambda/\beta)R+Se_m-D\eta m_\eta+
+e_N-w_0e_Q}{q_0+e_Q}.
+\]
+\end{lemma}
+\begin{proof}
+After multiplying by $\beta^2$, the coefficient of $R$
+is $\beta[S-\beta-q_0(2\beta+\lambda)]$; it vanishes since
+$S-\beta=q_0(1-\lambda)$ and $2\beta+2\lambda=1$.
+The $R'$ coefficient is
+$C_dq_0\beta^2-\lambda S=0$. The remaining
+terms cancel by definition. Independent symbolic and
+rational replays test both identities.
+\end{proof}
+
+\paragraph{Authenticating proof inputs rather than labels.}
+The existing rational full-cover program checks whether the
+provided rectangles cover $[0,13]\times[-1,1]$ and whether
+their supplied intervals meet each residual budget. Its
+former manifest accepted any syntactically valid SHA-256
+string without comparing it to file bytes. The new
+\texttt{pulse\_provenance\_replay\_gate.py} binds the three
+primary evidence files to recomputed SHA-256 digests, rejects
+missing or tampered files and traversal outside the evidence
+root, and then runs the exact rectangle and residual checks.
+Negative tests also reject empty coverings.
+
+This improves reproducibility but does not prove that the
+submitted intervals enclose the actual Appendix-A fields.
+Such a theorem must independently validate, on every closed
+cell, the source's field construction, derivatives, ODE
+comparison and interval arithmetic. No complete source-derived
+interval dataset or jointly admissible source tuple is present
+in this release. A matching hash is never a substitute for
+mathematical enclosure validity.
+
+\paragraph{Lean and physical status.}
+\texttt{PulseResidualPrecision.lean} proposes kernel lemmas for
+the cleared polynomial identity and centerline rational
+scales. Until a Lean job completes successfully, those
+statements are not kernel-certified. The full source interval
+construction, exterior stress cone, nonlinear Appendix-B
+analytic profile, unforced correction hierarchy and exact
+physical zero-force Navier--Stokes residual remain unproved.
+The originating OpenAI whole-space theorem uses a smooth
+external force \cite{openai2026}; it does not prove the
+proposed unforced Theorem 1.1.

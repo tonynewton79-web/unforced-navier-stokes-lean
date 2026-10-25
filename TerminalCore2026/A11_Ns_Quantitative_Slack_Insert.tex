@@ -1,0 +1,58 @@
+\subsection*{A quantitative slack for the azimuthal A.11 supports}
+On the two azimuthal correction supports (A.11), suppose the source has
+$U=M=J=0$, its correctly normalized terminal moment satisfies
+$S(\infty,\eta)=0$, and its pressure has the infinity gauge.
+Writing $D_s=S/(XE^2)$, $P_s=-\Pi/E^2$,
+$A=1/2+h$, $d=1-\eta^2$ and $g=\partial_\eta\log E$,
+the exact source equation (4.16) gives
+\[
+\frac{N_s}{E}
+=E\{4\eta(hD_s-AP_s)-d[
+2g(D_s-P_s)+\partial_\eta D_s-\partial_\eta P_s]\}.
+\]
+If all future logarithmic slopes are nonpositive,
+then $0\le P_s\le1/2$. If the future parameter-logarithmic
+derivative has modulus at most $\varepsilon$, differentiation of
+the positive tail integrals gives
+\begin{equation}\label{eq:A11-updated-Ns-tail}
+\frac{|N_s|}{E}
+\le E[4hD_s+4AP_s+2\varepsilon(D_s+P_s)].
+\end{equation}
+\begin{proposition}[Strict supportwise $N_s/E$ margin]
+Suppose, simultaneously across both complete A.11 supports,
+$E\le\lambda/4$, $4hD_s\le61/100$, $P_s\le1/2$,
+$2A\le1001/1000$ and $2\varepsilon(D_s+1/2)\le1/100$.
+Then
+\[
+\frac{|N_s|}{E}\le\frac{1621}{4000}\lambda
+\quad\text{and}\quad
+\frac\lambda2-\frac{|N_s|}{E}\ge\frac{379}{4000}\lambda.
+\]
+\end{proposition}
+\begin{proof}
+The square bracket in \eqref{eq:A11-updated-Ns-tail}
+is at most $61/100+1001/1000+1/100=1621/1000$.
+Multiply by $E\le\lambda/4$ and subtract from $\lambda/2$.
+\end{proof}
+\begin{corollary}[Improved normalized strict cone]
+Suppose additionally that $Q_s\ge\lambda/2$,
+$-3\lambda/2\le\ell\le-\lambda/2$, $0<\lambda\le1/20$
+and $X\ge9/\lambda$. For $a=2-2\ell$,
+$p_1=XQ_s/(1-2h\eta^2)$ and $w=N_s/(EQ_s)$ one has
+\[
+2(1-a/p_1)^2-(a-2)w^2
+\ge\frac{32117077}{80000000}>\frac25.
+\]
+\end{corollary}
+\begin{proof}
+The preceding result and $Q_s\ge\lambda/2$ give
+$|w|\le1621/2000$. Also
+$2+\lambda\le a\le2+3\lambda\le43/20$ and
+$p_1\ge9/2>2a$. Therefore the expression is bounded
+below by $1/2-(3/20)(1621/2000)^2$.
+\end{proof}
+The supplied exact-rational checker establishes these arithmetic
+implications only. It does not authenticate the analytic bounds
+for a frozen Appendix-A source tuple. The originating OpenAI
+global theorem includes smooth external forcing; unforced
+Theorem~1.1 and full Lean formalization remain open.

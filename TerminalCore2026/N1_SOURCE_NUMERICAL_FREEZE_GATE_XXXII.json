@@ -1,0 +1,48 @@
+{
+  "source": {
+    "title": "Finite Time Blowup for Navier-Stokes",
+    "author": "OpenAI",
+    "pdf": "https://cdn.openai.com/pdf/32d9f210-8b73-45e0-91bc-82a30aef8a9a/navier-stokes.pdf",
+    "pages": 166,
+    "source_pdf_sha256_verified_in_session": null,
+    "inspected_pdf_page_indices": [
+      116,
+      117,
+      123,
+      143,
+      145,
+      146
+    ]
+  },
+  "source_constraints": {
+    "h": "0<h<1/100 chosen by existence proof",
+    "qstar": "positive and not numerically fixed",
+    "C0": "positive comparison constant not numerically fixed",
+    "tau0": "0<tau0<1/2",
+    "z0": "positive and C0*(tau0+z0^(1/(1/2-h)))<qstar/2",
+    "r0": "any fixed positive, no unique choice",
+    "spatial_cutoff": "smooth plateau/support constraints, not a unique function",
+    "temporal_cutoff": "smooth plateau/support constraints, not a unique function",
+    "profile_amplitude": "Appendix B Proposition B.2 provides existence thresholds, not a fixed numerical solution"
+  },
+  "safe_geometric_choice_only": {
+    "r0": 1,
+    "tau0": "min(1/4,qstar/(16*C0))",
+    "z0": "(qstar/(16*C0))^(1/2-h)",
+    "warning": "Only conditional geometry; never present this as the OpenAI numerical velocity"
+  },
+  "actual_source_intervals": {
+    "t": null,
+    "m_lower": null,
+    "R2_upper": null,
+    "V_upper": null,
+    "G_over_m_upper": null,
+    "L_rational": null
+  },
+  "source_profile_hash": null,
+  "actual_unforced_initial_data": null,
+  "shell_retention_certificate": null,
+  "pointwise_singularity_retention": null,
+  "full_Lean_PDE": null,
+  "status": "HOLD_UNFROZEN_SOURCE_AND_UNPROVED_RETENTION"
+}

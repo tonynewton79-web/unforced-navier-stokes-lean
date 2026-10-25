@@ -1,0 +1,144 @@
+\section{A shrinking-core gradient and frequency barrier for unforced corrections}
+\label{sec:xxxiii-shrinking}
+In the authenticated forced construction of OpenAI \cite{openai2026},
+Section~10, equations (10.20)--(10.21), along
+$x_\tau=(\sqrt{2X_{\rm in}\tau},0,0)$,
+\[
+u_{B,\theta}(x_\tau,1-\tau)
+=\tau^{-A}(e_0+O(\tau^{2h})),
+\quad A=1/2+h,\quad 0<h<1/100,\quad e_0>0.
+\]
+The background also obeys a uniform whole-space kinetic-energy
+bound $B=\sup_{0\le t<1}\|u_B(t)\|_2<\infty$.
+These statements follow from the published Section~10 source,
+without inventing a numerical cutoff profile.
+
+\begin{lemma}[Two explicit three-dimensional interpolation bounds]
+\label{lem:xxxiii-agn}
+For a smooth vector field $v$ on $\mathbb R^3$ with
+$v\in L^2$ and $\nabla v\in L^\infty$,
+\[
+\boxed{\quad\|v\|_\infty^5\le
+\frac{24}{\pi}\|v\|_2^2\|\nabla v\|_\infty^3.\quad}
+\]
+For $v\in L^2$ with $\Delta v\in L^2$,
+\[
+\boxed{\quad\|v\|_\infty\le
+C_2\|v\|_2^{1/4}\|\Delta v\|_2^{3/4},
+\quad C_2=\frac4{\pi\sqrt2\,3^{7/8}}.\quad}
+\]
+Here $\|\nabla v\|_\infty$ denotes the operator-norm Lipschitz
+constant, and $C_2$ is an admissible explicit constant,
+not a claim of best possible interpolation constant.
+\end{lemma}
+\begin{proof}
+At a point $|v(x_0)|=a>0$, the Lipschitz estimate gives
+$|v|\ge a/2$ on $B(x_0,a/(2L))$, where
+$L=\|\nabla v\|_\infty$. Integrating the squared norm
+gives $\|v\|_2^2\ge\pi a^5/(24L^3)$ and then the
+first bound by taking suprema.
+For the second, use the unitary Fourier transform,
+split at $|\xi|=K$, and use Cauchy--Schwarz:
+\[
+\|v\|_\infty\le
+\frac{K^{3/2}}{\pi\sqrt6}\|v\|_2+
+\frac{K^{-1/2}}{\pi\sqrt2}\|\Delta v\|_2.
+\]
+The exact radial integrals are
+$\int_{|\xi|\le K}1\,d\xi=4\pi K^3/3$ and
+$\int_{|\xi|>K}|\xi|^{-4}d\xi=4\pi/K$.
+Choose $K^2=\|\Delta v\|_2/(\sqrt3\|v\|_2)$;
+the two terms sum to the stated constant.
+\end{proof}
+
+\begin{theorem}[Necessary cancellation cost at the authentic singular trajectory]
+\label{thm:xxxiii-cancellation}
+Let $u$ be any smooth finite-energy, exactly unforced
+three-dimensional Navier--Stokes comparison solution on
+$[0,1)$ with $\|u(0)\|_2=x<\infty$.
+Write $w=u-u_B$, $M=x+B$. The energy inequality and
+triangle inequality give $\|w(t)\|_2\le M$ for all $t<1$.
+Suppose that for all sufficiently small $\tau$ the
+completed azimuthal velocity is no greater than
+$(e_0/4)\tau^{-A}$ along the source path:
+\[
+|u_\theta(x_\tau,1-\tau)|\le
+(e_0/4)\tau^{-A}.
+\]
+Then both the following lower bounds are \emph{necessary}:
+\begin{align}
+\boxed{\quad\|\nabla w(1-\tau)\|_\infty
+&\ge\left(\frac{\pi(e_0/4)^5}{24M^2}\right)^{1/3}
+\tau^{-5A/3},\quad}
+\label{eq:xxxiii-gradient-cost}\\
+\boxed{\quad\|\Delta w(1-\tau)\|_2
+&\ge\left(\frac{e_0}{4C_2M^{1/4}}\right)^{4/3}
+\tau^{-4A/3}.\quad}
+\label{eq:xxxiii-h2-cost}
+\end{align}
+In particular, either reversed upper bound with the
+same coefficient suffices to preserve a divergent
+completed azimuthal velocity along $x_\tau$.
+\end{theorem}
+\begin{proof}
+The source (10.21) is at least $(e_0/2)\tau^{-A}$
+for all sufficiently small $\tau$. By the assumed
+cancellation, $|w(x_\tau,1-\tau)|\ge
+|w_\theta(x_\tau,1-\tau)|\ge(e_0/4)\tau^{-A}$.
+Apply Lemma~\ref{lem:xxxiii-agn} to the correction,
+using its energy bound $M$, to obtain both inequalities.
+If either upper bound holds, the lemma instead bounds
+$|w|\le(e_0/4)\tau^{-A}$ and the source's velocity
+growth survives by the reverse triangle inequality.
+\end{proof}
+
+\begin{theorem}[Necessary high-frequency tail for cancellation]
+\label{thm:xxxiii-tail}
+With the same notation, define a moving Fourier cutoff
+\[
+K_\tau=\left(\frac{\pi\sqrt6\,e_0}{8M}\right)^{2/3}
+\tau^{-2A/3},\qquad
+P_{>K_\tau}=\mathbf 1_{\{|\xi|>K_\tau\}}(D).
+\]
+Under the cancellation assumption of
+Theorem~\ref{thm:xxxiii-cancellation}, the correction
+necessarily satisfies
+\[
+\boxed{\quad
+|(P_{>K_\tau}w)(x_\tau,1-\tau)|
+\ge(e_0/8)\tau^{-A}.\quad}
+\]
+Hence $|(P_{>K_\tau}w)(x_\tau,1-\tau)|=o(\tau^{-A})$
+is a separate, sufficient spectral criterion for
+preservation of the source's singularity.
+The threshold scales as
+$K_\tau\asymp\tau^{-1/3-2h/3}$, strictly slower
+than the inverse radial similarity scale $\tau^{-1/2}$.
+\end{theorem}
+\begin{proof}
+Unitary Fourier inversion and the volume of a ball give
+$\|P_{\le K}w\|_\infty\le
+MK^{3/2}/(\pi\sqrt6)$.
+At $K=K_\tau$ this upper bound equals
+$(e_0/8)\tau^{-A}$. The correction must have magnitude
+at least $(e_0/4)\tau^{-A}$ at the source point;
+the high-frequency piece therefore contributes at least
+$(e_0/8)\tau^{-A}$. The exponent comparison follows
+from $2A/3=1/3+2h/3<1/2$.
+\end{proof}
+
+\paragraph{Scope and release boundary.}
+The source-specific ingredients used here are only the
+actual Section~10 uniform energy and asymptotic growth,
+not unverified numeric A.11/A.19 parameters.
+The two Fourier constants, interpolation optimizer,
+Gaussian solenoidal positive control, and 30,000 rational
+dichotomy fixtures were independently reproduced.
+These are necessary cancellation costs and sufficient
+conditional retention inequalities, not an existence
+proof for a nonzero-data unforced correction.
+The exact correction $w=-u_B$ corresponding to the
+trivial unforced solution $u=0$ is not excluded and
+may satisfy the compulsory growth costs.
+The full unforced Navier--Stokes singularity theorem
+and kernel-checked Lean PDE proof remain open.

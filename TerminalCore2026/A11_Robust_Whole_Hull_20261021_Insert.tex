@@ -1,0 +1,100 @@
+\subsection*{A robust rational interval-cell certificate for the complete A.11 hull}
+\label{subsec:a11-robust-cell-20261021}
+The latest scalar stress and full-hull lemmas still need an authenticated
+interval covering of both correction supports and the intervening gap.
+We quantify how much independent interval or mesh error they can tolerate.
+
+\begin{theorem}[Error-tolerant strict whole-hull cone]
+\label{thm:a11-robust-hull-20261021}
+Fix $0<\lambda\le1/20$, $0<h\le\lambda/100$,
+$X\ge9/\lambda$, $|\eta|\le1$, and $L=1-2h\eta^2$.
+Write $f=N_s/E$, $q=Q_s$ and
+$\ell=\partial_y\log(\sqrt X E)$.
+Suppose at every point of both prescribed A.11 supports and
+their intervening gap there exist reference fields $f_0,q_0,\ell_0$
+obeying
+\[
+ |f_0|\le503\lambda/2000,\qquad q_0\ge49\lambda/50,\qquad
+ -3\lambda/2\le\ell_0\le-\lambda/2
+\]
+and independently certified error bounds
+\[
+ |f-f_0|\le\lambda/100,\quad
+ |q-q_0|\le\lambda/100,\quad
+ |\ell-\ell_0|\le\lambda/100.
+\]
+Then everywhere on the full hull,
+\[
+ |N_s|/E\le523\lambda/2000<\lambda/2,\qquad
+ \lambda/2-|N_s|/E\ge477\lambda/2000.
+\]
+Moreover, with $a=2-2\ell$, $p_1=Xq/L$,
+$w=f/q$, the original normalized cone obeys the
+exact strict lower bound
+\[
+ 2(1-a/p_1)^2-(a-2)w^2
+ \ge\frac{4192747121}{3763600000}>\frac{11}{10}>\frac9{20}.
+\]
+\end{theorem}
+\begin{proof}
+The hypotheses imply
+$|f|\le523\lambda/2000$, $q\ge97\lambda/100$
+and $-151\lambda/100\le\ell\le-49\lambda/100$.
+Thus $0<L\le1$, $p_1\ge873/100$,
+$2<a\le2151/1000$, $a/p_1\le239/970<1/4$,
+$|w|\le523/1940$ and $a-2\le151/1000$.
+Consequently
+\[
+2(1-a/p_1)^2-(a-2)w^2
+\ge2(3/4)^2-\frac{151}{1000}
+ \left(\frac{523}{1940}\right)^2
+=\frac{4192747121}{3763600000}.
+\]
+The stress margin is immediate by subtraction. All comparisons
+are exact rational inequalities.
+\end{proof}
+
+\begin{proposition}[Certified Lipschitz mesh sufficient condition]
+\label{prop:a11-full-hull-lipschitz-20261021}
+Partition the closed logarithmic A.11 hull of length $23/10$
+and the complete parameter interval $[-1,1]$ into finitely many
+closed rectangles with disjoint interiors.
+For each field $g\in\{f,q,\ell\}$ let $D_{g,y},D_{g,\eta}$
+be independently verified bounds on its first derivatives
+over each rectangle, and let $\Delta y,\Delta\eta$ be its widths.
+Suppose the reference inequalities of the theorem are verified
+at its centre, while
+\[
+ (D_{g,y}\Delta y+D_{g,\eta}\Delta\eta)/2
+ \le\lambda/100\quad(g=f,q,\ell).
+\]
+If also $X\ge9/\lambda$, the theorem holds throughout the
+complete hull, including every point in the gap.
+\end{proposition}
+\begin{proof}
+Integrate each partial derivative along the two coordinate
+segments from a cell centre to any point of its rectangle.
+The errors are bounded by the indicated expression. A finite
+closed covering transfers the pointwise rational theorem to
+all points and shared boundaries.
+\end{proof}
+
+\paragraph{Necessary source-authentication boundary.}
+The local (A.11) moment constraints do not by themselves fix
+the terminal data $S(\infty,\eta)$ and $\Pi(\infty,\eta)$.
+From (4.16), a change of integration data produces
+\[
+ \Delta N_s=
+ \frac{4h\eta C_S-(1-\eta^2)C'_S}{X}
+ +4(\tfrac12+h)\eta C_\Pi-(1-\eta^2)C'_\Pi.
+\]
+At $\eta=0$, $C_S=K\eta$ changes $N_s$ by $-K/X$.
+Hence a verified source-root, the same corrected profile's
+terminal pressure gauge, full interval/derivative enclosures
+and all pulse/exterior stages are indispensable.
+The accompanying rational checker deliberately outputs only
+CONDITIONAL\_SCALAR\_PASS or FAIL\_CLOSED, never a claim
+of a source-authenticated or full Lean certificate.
+The original OpenAI theorem constructs a forced whole-space
+solution. Appendix-B contraction, unforced $n=1,2$ startups,
+all-order convergence and physical residual zero are still open.

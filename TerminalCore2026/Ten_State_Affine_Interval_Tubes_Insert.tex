@@ -1,0 +1,73 @@
+\section{Certified transport tubes for the normalized source moments}
+\label{sec:source-moment-interval-tubes}
+The ten-variable source system \eqref{eq:source-five-transport}--\eqref{eq:source-five-jet-transport} has a triangular split:
+\[
+z=(m,i,j,s,m_\eta,i_\eta,j_\eta,s_\eta)^\top,\qquad
+w=(p,p_\eta)^\top.
+\]
+Writing $c=(\ell+\tfrac12,\ell+1,2\ell+\tfrac12,2\ell)$,
+the eight forward equations are the affine system $z_y=A_fz+b_f$,
+\[
+A_f=
+\begin{pmatrix}
+-c_1&0&0&0&0&0&0&0\\
+0&-c_2&0&0&0&0&0&0\\
+0&0&-c_3&0&0&0&0&0\\
+0&0&0&-c_4&0&0&0&0\\
+-\ell_\eta&0&0&0&-c_1&0&0&0\\
+0&-\ell_\eta&0&0&0&-c_2&0&0\\
+0&0&-2\ell_\eta&0&0&0&-c_3&0\\
+0&0&0&-2\ell_\eta&0&0&0&-c_4
+\end{pmatrix},\quad
+b_f=\begin{pmatrix}a\\1\\a\\a^2-\tfrac12\\a_\eta\\0\\a_\eta\\2aa_\eta\end{pmatrix}.
+\]
+Only the first eight states have reference-radius initial values.
+The pressure pair is instead propagated backward from
+$y_T$ with $\tau=y_T-y$:
+\begin{equation}\label{eq:source-backward-pressure}
+w_\tau=
+\begin{pmatrix}2\ell-1&0\\2\ell_\eta&2\ell-1\end{pmatrix}w+
+\begin{pmatrix}-\tfrac12\\0\end{pmatrix},\quad
+w(0)=\begin{pmatrix}-[2(1+2h)]^{-1}\\0\end{pmatrix}.
+\end{equation}
+\begin{theorem}[Exact-rational conditional affine interval tubes]
+\label{thm:source-exact-rational-tube}
+Let $z'=A(t)z+b(t)$ on a source cell of length $\Delta>0$,
+with independently certified rational interval enclosures
+$\mathbf A,\mathbf b$ for every point of that cell, and initial
+box $Z_0$. Put $L=\max_i\sum_j\operatorname{mag}\mathbf A_{ij}$,
+$B=\max_i\operatorname{mag}\mathbf b_i$,
+$M=\max_i\operatorname{mag}(Z_0)_i$.
+If $\Delta L<1$, then every solution remains in
+$[-S,S]^d$, $S=(M+\Delta B)/(1-\Delta L)$.
+The complete trajectory interval may be tightened finitely
+by the exact-rational inclusions
+\[
+Z^{k+1}=Z^k\cap
+\operatorname{hull}\bigl(Z_0,Z_0+[0,\Delta](\mathbf A Z^k+\mathbf b)\bigr),
+\quad Z^0=[-S,S]^d.
+\]
+The endpoint is enclosed by
+$Z_0+\Delta(\mathbf A Z^k+\mathbf b)$.
+\end{theorem}
+\begin{proof}
+With $V=\sup\|z(t)\|_\infty$, the integral equation gives
+$V\le M+\Delta(LV+B)$, hence $V\le S$.
+If $Z^k$ encloses every solution value, the integral equation
+places every value within the displayed Picard interval; intersection
+preserves inclusion. At the endpoint the integration time equals
+$\Delta$. All operations are exact rational bounds.
+\end{proof}
+At $\eta=0$ on the source reference power law,
+$a=\ell_\eta=0$, $\ell=3/5$,
+$a_\eta=4/E$, and the known terminal reference data are
+$(0,5/8,0,-5/12,4/P_*,0,5/(2P_*),0)$.
+The pure exterior tail supplies the exact pressure equilibrium
+$(-[2(1+2h)]^{-1},0)$.
+The accompanying exact-rational verifier replays both checks and
+rejects unsafe step sizes.
+The certificate is conditional on independently verified
+$a,a_\eta,\ell,\ell_\eta$ source bounds, and its short-step version
+alone is not a practical discretization of a pulse of length
+$13/\lambda$ at extremely small $\lambda$. No complete source
+profile or stress-ratio certificate is asserted.

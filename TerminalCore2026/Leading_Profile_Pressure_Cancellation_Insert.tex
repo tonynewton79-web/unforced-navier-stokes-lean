@@ -1,0 +1,133 @@
+\subsection{The five leading-profile pressure interactions}
+\label{subsec:leading-profile-pressure}
+
+The remaining linear interactions in equation (28) appear at first to
+involve an unbounded radial derivative of $V_k$. Their ordered sum has
+a cancellation which is more useful than estimating those derivatives
+separately. The reduction is exact and uses no assumptions about the
+size or sign of the leading profiles.
+
+Put $v=V_0/X$, let $F=U_k\in I_k$, and write $V_k=XW_k$.
+Equation (24) gives, with $B=2\eta/L$, $G=d/L$,
+\begin{equation}\label{eq:leading-W}
+ W_k=BF-B(D+\lambda_k)A_XF-G\partial_\eta A_XF.
+\end{equation}
+In particular $W_k\in I_k$ coefficientwise whenever $F\in I_k$;
+this is a valuation statement and not a claim that the unregularised
+map $F\mapsto W_k$ is bounded in the analytic norm. Define
+\begin{equation}\label{eq:leading-K0}
+ K_0=G\partial_\eta v-B(v+D_Xv).
+\end{equation}
+The exact chain rule (18) yields
+\[
+ \frac{Z_{0,k}V_k}{X}
+  =G\partial_\eta W_k+B(\lambda_k-1-D_X)W_k,
+ \qquad \frac{Z_{0,0}V_0}{X}=K_0.
+\]
+
+\begin{proposition}[Radial cancellation and exact pressure primitive]
+\label{prop:leading-cancellation}
+For every $k\ge1$, the sum of the five leading-profile terms in
+$\Omega_k$, namely
+\[
+ S_k=V_0V_k'+V_kV_0'-\frac{V_0V_k}{X}
+     +U_0Z_{0,k}V_k+U_kZ_{0,0}V_0,
+\]
+admits the exact representation
+\begin{equation}\label{eq:leading-source}
+ \frac{S_k}{X}=(D_X+1)(vW_k)
+     +U_0\bigl[G\partial_\eta+B(\lambda_k-1-D_X)\bigr]W_k
+     +FK_0.
+\end{equation}
+Consequently its contribution to the order-$(k+1)$ pressure is
+\begin{equation}\label{eq:leading-primitive}
+ \Pi_{k+1}^{\mathrm{lead}}
+ =-\frac12 XvW_k-\frac12\int_0^X
+ \left\{U_0\bigl[G\partial_\eta+B(\lambda_k-1-D_X)\bigr]W_k
+     +FK_0\right\}(x,\eta)\,dx.
+\end{equation}
+After the shifted axial operator and the axis-regular inverse, its
+contribution to the next axial coefficient is precisely
+\begin{equation}\label{eq:leading-pressure-operator}
+ \mathcal P_{k+1}^{\mathrm{lead}}F
+ =-\frac14 J_1 Z_{-2A,k+1}
+ \left[XvW_k+\int_0^X
+ \left\{U_0\bigl[G\partial_\eta+B(\lambda_k-1-D_X)\bigr]W_k
+   +FK_0\right\}dx\right].
+\end{equation}
+If $v,U_0,K_0$ are regular at the axis, then
+$\mathcal P_{k+1}^{\mathrm{lead}}(I_k)\subseteq I_{k+2}$
+coefficientwise.
+\end{proposition}
+\begin{proof}
+Since $V_0=Xv$ and $V_k=XW_k$, direct differentiation gives
+\[
+ V_0V_k'+V_kV_0'-\frac{V_0V_k}{X}
+   =X(D_X+1)(vW_k)=X\partial_X(XvW_k).
+\]
+This proves the first term of \eqref{eq:leading-source}. The other
+two terms follow from the displayed $Z$ identities. Equation (27)
+contributes $-S_k/(2X)$ to $\Pi_{k+1}'$.
+Integrating from the axis, where $XvW_k$ vanishes, gives
+\eqref{eq:leading-primitive}. Equation (26), with its factor
+$\frac12J_1 Z_{-2A,k+1}$, gives
+\eqref{eq:leading-pressure-operator}.
+Finally $W_k\in I_k$, and multiplication by axis-regular fixed
+profiles preserves radial valuation. The bracket in
+\eqref{eq:leading-pressure-operator} lies in $I_{k+1}$;
+$J_1$ raises degree by one, proving the inclusion.
+\end{proof}
+
+The cancellation has a second useful consequence: the three source
+families have different \emph{input} derivative orders after pressure
+reconstruction. The $vW_k$ term has at most two derivatives of $F$;
+the $U_0Z_{0,k}V_k$ term has at most three; and $FK_0$ has at most one.
+Those statements count derivatives of the unknown $F$, not of the
+leading profiles. Derivatives of $v,U_0,B,G$ must be included
+explicitly when a bounded analytic operator is constructed.
+
+\begin{lemma}[Two-radial-lift scalar derivative budget]
+\label{lem:leading-weight-budget}
+For $a,b\ge0$, $r=a+1$ and $j\in\{0,1,2,3\}$, the exact
+coefficient weights \eqref{eq:weight} satisfy
+\begin{equation}\label{eq:leading-mixed-bound}
+ \frac{r^{3-j}w_{a,b+j}}{r^2(r+1)^2 w_{a+2,b}}
+ \le \frac{54R^2}{r\rho^j}
+       \frac{25\,3^{4-j}}{(j+1)^2}.
+\end{equation}
+\end{lemma}
+\begin{proof}
+Apply the all-index two-lift inequality
+\eqref{eq:alljet} with the auxiliary index $n=a+2$.
+It bounds the same weight ratio with the numerator
+$(a+3)^{4-j}$ in place of $r^{4-j}$.
+Since $r=a+1\le a+3$, division by $r$ gives
+\eqref{eq:leading-mixed-bound}.
+\end{proof}
+
+\paragraph{What remains to prove.}
+The coefficient budget \eqref{eq:leading-mixed-bound} is compatible
+with a $1/(k+1)$ estimate for the regularised leading-profile
+pressure operator. It is not that operator estimate: each analytic
+profile contains a full radial Taylor series, and commuting its
+multipliers through the parameter and radial derivatives produces
+additional terms. These must be bounded after radial convolution in
+the \emph{induced} norm with constants independent of $k$.
+In particular, applying a boundedness claim to the separate map
+$F\mapsto\partial_\eta A_XF$ would be invalid. The precise remaining
+analytic statement is a uniform bound for the full
+\eqref{eq:leading-pressure-operator}, with the common holomorphic
+radius and multiplication constants of the actual leading profiles
+specified. The positive-order quadratic pressure sum and the other
+momentum forcing channels are separate subsequent steps; neither the
+recurrence (53) nor Theorem~1.1 follows from Proposition
+\ref{prop:leading-cancellation} alone.
+
+The accompanying exact symbolic replay compares both sides of the
+five-term source identity and its reconstructed pressure coefficient
+on 72 independently specified nontrivial cases, and verifies 41,472
+rational inequalities of the form \eqref{eq:leading-mixed-bound}.
+The corresponding Lean source encodes the finite radial-cancellation,
+primitive-factor and valuation lemmas; kernel certification is pending
+successful compilation in the pinned GitHub workflow. The complete analytic
+operator is not represented as Lean-certified.

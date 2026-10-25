@@ -1,0 +1,240 @@
+
+\section{Signed inward transport in one unforced flow and the radial concentration barrier}
+\label{sec:xl-inward-concentration}
+The exact moving-cylinder conservation law of Section~\ref{sec:xxxix-moving}
+does not establish the \emph{sign} of nonlinear transport. We first
+construct a single smooth, globally regular, exactly unforced
+three-dimensional flow with inward angular-momentum transport across
+every sufficiently small radius for a common positive interval.
+We then quantify the concentration and $H^2$ cost of a \emph{hypothetical}
+divergent radial-flux amplitude. These results are not a construction
+of unforced finite-time blowup.
+
+Put $r^2=x^2+y^2$, $\rho^2=r^2+z^2$, $\varepsilon=\nu/1000$,
+and fix the explicit nonnegative normalized axial cutoff
+\[
+\eta(z)=
+\frac{e^{-1/(1-z^2)}\,\mathbf1_{\{|z|<1\}}}
+{\int_{-1}^{1}e^{-1/(1-s^2)}ds},\qquad\int\eta(z)dz=1.
+\]
+The numerator is extended smoothly by zero.
+For $r=R>0$ define the complete radial \emph{advective}
+angular-momentum flux
+\[
+\mathcal F(R,t)=R^2\int_{\mathbb R}\int_0^{2\pi}
+\eta(z)u_r(R,\theta,z,t)u_\theta(R,\theta,z,t)
+\,d\theta\,dz.
+\]
+Thus $\mathcal F=F_R^{\rm adv}$ in Edition~XXXIX; neither
+pressure nor viscosity is concealed in this term.
+
+\begin{theorem}[A common-time, infinite-scale signed inward flux]
+\label{thm:xl-single-flow}
+Let the whole-space initial datum be
+\begin{equation}\label{eq:xl-datum}
+u_0=\varepsilon\operatorname{curl}
+[e^{-\rho^2}(x-r^2y)e_z].
+\end{equation}
+There exists a unique global smooth finite-energy solution of
+the \emph{exact unforced} three-dimensional Navier--Stokes equations
+with this nonzero solenoidal Schwartz datum. With
+$\Gamma=ru_\theta$, its initial angular-mean covariance,
+torque and cylinder flux are
+\begin{align}
+\overline{u'_r\Gamma'}(0,r,z)
+&=-\varepsilon^2r^3e^{-2(r^2+z^2)},\\
+\mathcal T(0,r,z)
+&=4\varepsilon^2r^2(1-r^2)e^{-2(r^2+z^2)},\\
+\mathcal F(R,0)
+&=-2\pi\varepsilon^2R^4e^{-2R^2}
+\int\eta(z)e^{-2z^2}dz<0.
+\end{align}
+There exist $R_*>0$ and $\delta>0$ (not numerically
+evaluated) such that the \emph{one fixed unforced flow} obeys
+\begin{equation}\label{eq:xl-common-interval}
+\boxed{\quad
+\mathcal F(R,t)\le-\pi\varepsilon^2e^{-2}R^4
+\qquad(0<R\le R_*,\ 0\le t\le\delta).\quad}
+\end{equation}
+In particular it has signed inward flux through every radius
+$R_j=2^{-j}R_*$ simultaneously throughout this same time interval.
+\end{theorem}
+\begin{proof}
+The datum is a smooth solenoidal Schwartz curl and is
+nonaxisymmetric and reflection-breaking.
+It differs from the Gaussian of Edition~XXXVII solely by
+reversing the sign of the $r^2y$ potential mode.
+Its unitary Fourier absolute-value majorant is unchanged,
+so $C_F\|u_0\|_{\mathcal X^{-1}}/\nu
+\le1/(100\sqrt\pi)<1/16$.
+The explicitly contracting Fourier mild equation in
+Edition~XXXIV therefore yields a global smooth unforced
+solution with reconstructed physical pressure.
+
+Let $f=e^{-(r^2+z^2)}$ and
+$A_z=\varepsilon f(r\cos\theta-r^3\sin\theta)$.
+Direct cylindrical differentiation gives
+\[
+u_{0,r}=\varepsilon f(-\sin\theta-r^2\cos\theta),\qquad
+u_{0,\theta}=\varepsilon f[
+(2r^2-1)\cos\theta-(2r^4-3r^2)\sin\theta].
+\]
+Angular integration gives the displayed covariance,
+and the complete angularly averaged nonlinear advection
+agrees with the stated torque
+$-r^{-1}\partial_r(r\overline{u'_r\Gamma'})$.
+The cylinder formula follows.
+
+For every smooth Cartesian velocity near the $z$-axis,
+the angular Taylor expansion shows that
+$\overline{u'_r\Gamma'}=r^3a(r,z,t)$, with a continuous
+$a$ through $r=0$, continuously depending on $z,t$
+on compact sets. For the exact solution at $t=0$,
+$a(0,z,0)=-\varepsilon^2e^{-2z^2}\le
+-\varepsilon^2e^{-2}$ for $|z|\le1$.
+Smooth time-continuity supplies common
+$R_*,\delta>0$ with
+$a(r,z,t)\le-\varepsilon^2e^{-2}/2$ throughout
+$0\le r\le R_*$, $|z|\le1$, $0\le t\le\delta$.
+The normalized nonnegative cutoff then yields
+\eqref{eq:xl-common-interval}.
+\end{proof}
+
+\begin{proposition}[Positive angular-momentum accumulation under the full PDE]
+\label{prop:xl-moment-production}
+For the exact solution of Theorem~\ref{thm:xl-single-flow},
+the complete weighted cylinder moment of Edition~XXXIX
+satisfies, at every fixed $R>0$,
+\begin{equation}\label{eq:xl-moment-production}
+\boxed{\quad
+\mathcal M'_{R,\eta}(0)
+=-\mathcal F(R,0)
+=2\pi\varepsilon^2R^4e^{-2R^2}
+\int\eta(z)e^{-2z^2}dz>0.\quad}
+\end{equation}
+The identity remains true for an initially moving radius,
+because its geometric sweep contribution is zero at $t=0$.
+\end{proposition}
+\begin{proof}
+The mean initial angular momentum $\bar\Gamma(0,r,z)$
+and all its derivatives vanish, and $u_z(0)=0$.
+Thus the mean radial viscous, axial and moving-boundary
+terms in the complete cylinder identity vanish at $t=0$.
+The only remaining term is the explicitly signed
+advective flux $-\mathcal F(R,0)$.
+\end{proof}
+
+\begin{theorem}[Energy localization of amplified radial-flux spikes]
+\label{thm:xl-concentration}
+Let $u$ be any smooth finite-energy exactly unforced
+Navier--Stokes flow and $E_0=\|u(0)\|_2^2>0$.
+Set $B_\eta=\frac12\|\eta\|_\infty E_0$.
+At each time before any hypothetical singularity,
+\begin{equation}\label{eq:xl-logbudget}
+\boxed{\quad
+\int_0^\infty\frac{|\mathcal F(R,t)|}{R}\,dR
+\le B_\eta.\quad}
+\end{equation}
+Hence, if $|\mathcal F(R,t)|\ge A>0$ on a
+radial interval $I$, its logarithmic width satisfies
+$\int_I dR/R\le B_\eta/A$.
+Moreover, if $|\mathcal F(R_0,t)|\ge A$,
+some $R_c\in[R_0,R_0e^{4B_\eta/A}]$ obeys
+\begin{equation}\label{eq:xl-steep}
+\boxed{\quad
+|R_c\partial_R\mathcal F(R_c,t)|
+\ge \frac{3A^2}{16B_\eta}.\quad}
+\end{equation}
+In particular, a hypothetical terminal flux
+$|\mathcal F(R_\tau,1-\tau)|\ge c\tau^{-h}$
+with $h,c>0$ cannot remain comparably large
+across a whole dyadic annulus.
+Every interval on which its magnitude is at least
+$c\tau^{-h}/2$ has logarithmic width at most
+$2B_\eta c^{-1}\tau^h$.
+\end{theorem}
+\begin{proof}
+Since $\Gamma=Ru_\theta$,
+$2|u_ru_\theta|\le |u|^2$ and the unforced
+energy inequality imply
+\[
+\int_0^\infty|\mathcal F(R,t)|\,dR/R
+\le\tfrac12\int_{\mathbb R^3}|\eta(z)||u(x,t)|^2dx
+\le B_\eta.
+\]
+This proves the interval bound.
+On a logarithmic interval of length $4B_\eta/A$
+beginning at $\log R_0$, the average of
+$|\mathcal F|$ is at most $A/4$; choose a radius
+with that value and apply the mean-value theorem
+to $\mathcal F(e^s,t)$.
+The half-height interval estimate follows directly.
+\end{proof}
+
+\begin{proposition}[Necessary high-derivative cost of a divergent flux]
+\label{prop:xl-h2-flux}
+With the explicit whole-space interpolation constant
+$C_2=4/(\pi\sqrt2\,3^{7/8})$ from Edition~XXXIII,
+\begin{equation}\label{eq:xl-h2}
+\boxed{\quad
+\|\Delta u(t)\|_2\ge
+\left(
+\frac{|\mathcal F(R,t)|}
+{\pi R^2\|\eta\|_1C_2^2E_0^{1/4}}
+\right)^{2/3}.\quad}
+\end{equation}
+If $R_\tau=\sqrt{2X\tau}$ and a hypothesis
+$|\mathcal F(R_\tau,1-\tau)|\ge c\tau^{-h}$
+holds for all sufficiently small $\tau>0$,
+then
+\[
+\|\Delta u(1-\tau)\|_2\ge
+\left(
+\frac{c}{2\pi X\|\eta\|_1C_2^2E_0^{1/4}}
+\right)^{2/3}\tau^{-2(1+h)/3},
+\]
+so $\int_{t_0}^1\|\Delta u(t)\|_2^2dt=\infty$.
+\end{proposition}
+\begin{proof}
+The flux definition gives
+$|\mathcal F(R,t)|\le
+\pi R^2\|\eta\|_1\|u(t)\|_\infty^2$.
+Combine this with
+$\|u\|_\infty\le C_2\|u\|_2^{1/4}
+\|\Delta u\|_2^{3/4}$ and $\|u(t)\|_2^2\le E_0$.
+The squared terminal lower exponent
+$4(1+h)/3>1$ is nonintegrable.
+\end{proof}
+
+\paragraph{Scope.}
+The first theorem proves inward signed flux at every small
+radius over a common initial interval of \emph{one global
+regular unforced flow}. It does not prove time-dependent
+terminal amplification. The later estimates constrain
+the distinct, stronger hypothesis that the \emph{radial
+flux amplitude itself} grows as $\tau^{-h}$.
+The preceding source-specific escape requirement concerns
+the time-integrated torque or angular variation and
+does not imply that radial-flux hypothesis.
+No actual OpenAI Section~10 numerical source
+profile, singularity-preserving zero-force correction,
+or complete Lean PDE certificate has been obtained.
+
+
+\paragraph{Subsequent dissipation strengthening (Edition XL extension).}
+Section~\ref{sec:xl-trace-dissipation} proves that for a
+smooth finite-energy exactly unforced solution the radial trace
+inequality yields
+\[
+\int_0^1\frac{|\mathcal F(R(t),t)|^2}{R(t)^2}dt
+\le \|\eta\|_\infty^2 E_0^2/(2\nu).
+\]
+Consequently the persistent hypothesis
+$|\mathcal F(\sqrt{2X\tau},1-\tau)|
+\ge c\tau^{-h}$ for all small $\tau$ is impossible
+for every $h\ge0$. Proposition~\ref{prop:xl-h2-flux}
+is algebraically correct but its sustained unforced terminal
+power-law antecedent is excluded by this stronger theorem.
+The unsolved possibilities involve flux derivatives, intermittent
+short-duration spikes, angular oscillation, viscosity or axial
+transport, and independently certified pointwise retention.

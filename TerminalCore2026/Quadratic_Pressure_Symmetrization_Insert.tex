@@ -1,0 +1,81 @@
+\subsection{Ordered quadratic pressure symmetrization}
+\label{subsec:quadratic-pressure}
+
+The remaining positive-order velocity products in $\Omega_k$ have a
+related cancellation. It relies on the source sum being over
+\emph{ordered} pairs $i+j=k$; estimating individual summands would
+hide it. Write $V_i=XW_i$ for every positive order and define
+\[
+ Q_k=\sum_{\substack{i+j=k\\i,j\ge1}}W_iW_j,
+ \qquad H_k=\sum_{\substack{i+j=k\\i,j\ge1}}
+ U_i\left[G\partial_\eta+B(\lambda_j-1-D_X)\right]W_j.
+\]
+Both sums vanish for $k=1$.
+
+\begin{proposition}[Quadratic radial total derivative]
+\label{prop:quad-pressure}
+The full interior quadratic contribution to the pressure-vorticity
+source (28) has the exact form
+\begin{equation}\label{eq:quad-omega}
+ \Omega_k^{\mathrm{quad}}=\frac X2(D_X+1)Q_k+XH_k.
+\end{equation}
+Its pressure primitive, fixed to vanish at the axis, is therefore
+\begin{equation}\label{eq:quad-pi}
+ \Pi_{k+1}^{\mathrm{quad}}=-\frac14XQ_k
+                         -\frac12\int_0^XH_k(x,\eta)\,dx,
+\end{equation}
+and the corresponding axial forcing is
+\begin{equation}\label{eq:quad-reconstruct}
+ \mathcal P_{k+1}^{\mathrm{quad}}
+ =-\frac18J_1Z_{-2A,k+1}
+   \left[XQ_k+2\int_0^XH_k(x,\eta)\,dx\right].
+\end{equation}
+If $U_i,W_i\in I_i$ for every positive order, this contribution
+belongs coefficientwise to $I_{k+2}$ after the final radial inverse.
+\end{proposition}
+\begin{proof}
+For $V_i=XW_i$, differentiation gives
+\[
+ V_iV_j'-\frac{V_iV_j}{2X}
+ =X\left(W_iD_XW_j+\frac12W_iW_j\right).
+\]
+The map $(i,j)\mapsto(j,i)$ is a bijection of the ordered-pair
+index set. Applying the product rule and exchanging the indices,
+\[
+ \sum_{i+j=k}W_iD_XW_j
+ =\frac12\sum_{i+j=k}D_X(W_iW_j)
+ =\frac12D_XQ_k.
+\]
+The remaining product is
+$U_iZ_{0,j}(XW_j)=XU_i[G\partial_\eta+
+B(\lambda_j-1-D_X)]W_j$. This proves
+\eqref{eq:quad-omega}. By (27), the quadratic part of
+$\Pi_{k+1}'$ is $-\Omega_k^{\mathrm{quad}}/(2X)$.
+The identity
+$\int_0^X(D_X+1)Q_k\,dx=XQ_k$ gives
+\eqref{eq:quad-pi}; applying the axial operator in (26) yields
+\eqref{eq:quad-reconstruct}. The valuation statement follows
+because every summand of $Q_k$ and $H_k$ has radial degree
+at least $i+j=k$; the integral and $J_1$ each add one degree.
+\end{proof}
+
+The reduction removes a radial derivative and a pressure primitive
+from the entire $V_iV_j$ quadratic source. It does \emph{not}
+control the remaining $H_k$ as a bounded bilinear operator.
+For that step the complete analytic norm must accommodate the
+radial-average and parameter derivatives inside each $W_j$,
+the $Z$-operator acting on $W_j$, derivatives of the rational
+coefficients, and the convolution over $i+j=k$. A complete estimate
+would have to imply, with a constant independent of $k$,
+\[
+ \bigl\|\mathcal P_{k+1}^{\mathrm{quad}}((U_i)_{i=1}^{k-1})\bigr\|_{I_{k+2}}
+ \le C_{\mathrm{quad}}\sum_{\substack{i+j=k\\i,j\ge1}}
+   \|U_i\|_{I_i}\|U_j\|_{I_j}.
+\]
+The scalar convolution inequality in the previous section would
+then furnish the desired weighted summation factor.
+We do not assert that the missing bilinear Banach-norm estimate
+has been established. The exact source identities were independently
+replayed in 120 symbolic tests, with 29,106 exact ordered-pair
+Euler-coefficient comparisons. Lean encodes the finite ordered-pair
+algebra; a kernel proof of the full analytic statement is still open.

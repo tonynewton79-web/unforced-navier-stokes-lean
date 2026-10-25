@@ -1,0 +1,37 @@
+name: Audit Gaussian exact unforced comparison XXXIV
+on:
+  push:
+    branches: [feature/zenodo-23474915-lean]
+    paths:
+      - 'TerminalCore2026/N1GaussianUnforcedScalar.lean'
+      - 'TerminalCore2026/verify_gaussian_unforced_critical_xxxiv.py'
+      - 'TerminalCore2026/verify_gaussian_h2_no_go_xxxiv.py'
+      - '.github/workflows/n1-gaussian-unforced-comparison-xxxiv.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  gaussian-comparison:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Independent exact analytic small-data checks
+        run: |
+          python -m pip install sympy
+          python TerminalCore2026/verify_gaussian_unforced_critical_xxxiv.py
+          python TerminalCore2026/verify_gaussian_h2_no_go_xxxiv.py
+      - name: Pinned Lean
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          elan toolchain install "$(cat lean-toolchain)"
+          lake update
+          lake exe cache get
+      - name: Reject admitted local proofs
+        run: |
+          if grep -nE '^[[:space:]]*(sorry|admit|axiom)([[:space:]]|$)' TerminalCore2026/N1GaussianUnforcedScalar.lean; then exit 1; fi
+      - name: Kernel-check finite scalar margin
+        run: lake env lean TerminalCore2026/N1GaussianUnforcedScalar.lean

@@ -1,0 +1,100 @@
+\subsection*{A.11 source-root and angular-derivative certificate}
+\label{subsec:a11-rootjet-new-20261021}
+For the prescribed A.11 smooth-step derivative bumps, the true
+normalized correction equations are
+\[
+ u(c_1+xc_2)=\Delta_I(\eta),\qquad
+ 2v(c_1+zc_2)+w(c_1^2+zc_2^2)=0,
+\]
+where $u,v,w>0$, $x=e^{2(1-\lambda)}$,
+$z=e^{-2(1+2\lambda)}$ are independent of $\eta$.
+Earlier source-specific bounds give
+$\|B^{-1}\|_\infty<3/2$ for
+$B=\left(\begin{smallmatrix}u&ux\\2v&2vz\end{smallmatrix}\right)$
+and $\|Q(c)\|_\infty\le320\|c\|_\infty^2$ for
+$Q(c)=(0,w(c_1^2+zc_2^2))$.
+
+\begin{lemma}[Authentic moment-mismatch jet]
+\label{lem:a11-rootjet-delta-new}
+Assume the source A.10 interpolation $T_f=512$, the
+pre-interpolation factorization $E(y,\eta)=c(y)(1+\eta^2)^{-1}$
+and the succeeding $-\lambda$ slope plateau of length
+$30\log(1/\lambda)$. For $0<\lambda\le1/100$ the
+moment mismatch at the first A.11 bump center obeys
+\[
+ |\Delta_I|<\frac{63}{100}\lambda^{28},\qquad
+ |\partial_\eta\Delta_I|<\frac14\lambda^{28}.
+\]
+\end{lemma}
+\begin{proof}
+The angular moment ratio $r=I/(XH)$ solves
+$r'+(1+\ell)r=1$. It is independent of $\eta$
+before A.10, hence $r_\eta=0$ upon interpolation entry.
+On A.10, $\ell=-\lambda+\vartheta_f'(\log2-J_0)$,
+$J_0=\log(1+\eta^2)$ and
+$\vartheta_f=1-\sigma(y/T_f)$, so
+$|\ell_\eta|\le|\vartheta_f'|$ and
+$\int|\vartheta_f'|=1$.
+The source stage bounds give $0\le r\le20/17$ and
+$1+\ell\ge17/20$; differentiating the exact ODE shows
+$|r_\eta(T_f)|\le20/17$.
+The subsequent constant-slope interval has length
+$30\log(1/\lambda)-3$ before the first bump.
+Both the mismatch from its fixed point $(1-\lambda)^{-1}$
+(initially of magnitude below three) and $r_\eta$
+are multiplied by
+$\exp[-(1-\lambda)(30\log(1/\lambda)-3)]$.
+Since $30(1-\lambda)\ge29$, $e^3<21$
+and $\lambda\le1/100$, one gets
+$|\Delta_I|<63\lambda^{29}\le(63/100)\lambda^{28}$
+and $|\Delta_{I,\eta}|<(420/17)\lambda^{29}
+<(1/4)\lambda^{28}$.
+\end{proof}
+
+\begin{theorem}[Small corrected root and its first parameter jet]
+\label{thm:a11-rootjet-new}
+Under the lemma, the \emph{actual} nonlinear A.11 equations
+have a unique solution in $\|c\|_\infty\le2\lambda^{28}$,
+depending $C^1$ on $\eta$, with
+\[
+ \|c\|_\infty<2\lambda^{28},\qquad
+ \|\partial_\eta c\|_\infty<\lambda^{28}.
+\]
+\end{theorem}
+\begin{proof}
+On the ball $R_c=2\lambda^{28}$ the map
+$c\mapsto B^{-1}((\Delta_I,0)-Q(c))$ has norm at most
+$\bigl((3/2)(63/100)+1920\lambda^{28}\bigr)\lambda^{28}
+<R_c$ and Lipschitz constant at most
+$1920\lambda^{28}<1/100$. It has a unique small fixed
+point. The differentiated \emph{source} equations give
+$[B+DQ(c)]c_\eta=(\Delta_{I,\eta},0)$.
+The inverse norm is at most
+$(3/2)/(1-1/100)$, and therefore
+$\|c_\eta\|_\infty\le(25/66)\lambda^{28}
+<\lambda^{28}$.
+\end{proof}
+
+Because the two source bumps are disjoint and
+$\|\beta_i\|_\infty\le640/3$, this gives on their
+closed convex hull (including the gap)
+\[
+ \left|\frac{E}{E_b}-1\right|
+ \le\frac{1280}{3}\lambda^{28},\qquad
+ \left|\partial_\eta(E/E_b)\right|
+ \le\frac{640}{3}\lambda^{28}.
+\]
+It strengthens the previously assumed correction and
+parameter-jet constants in the \emph{conditional}
+full-hull $|N_s|/E$ theorem. It does not prove the
+same profile's exact $S(\infty)=\Pi(\infty)=0$,
+the future-tail integral enclosure, $Q_s$ positivity,
+all exterior stress-cone stages, the Appendix B fixed
+point, or the proposed unforced Theorem~1.1.
+
+The parameter-derivative argument is essential:
+$\Delta_I(\eta)=\epsilon\sin(N\eta)$ has a small
+uniform value but derivative as large as $N\epsilon$.
+The integral/ODE argument above, not the
+small-coefficient estimate alone, supplies the
+actual source's derivative bound.

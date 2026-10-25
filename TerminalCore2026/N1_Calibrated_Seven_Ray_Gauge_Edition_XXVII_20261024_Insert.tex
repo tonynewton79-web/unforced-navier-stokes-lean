@@ -1,0 +1,177 @@
+
+\section{Quantitatively calibrated seven-ray completion}
+\label{sec:xxvii-calibrated}
+
+Edition XXVI proves pressure-quotient realizability using large
+source-independent gauge constants. Here we substantially reduce
+those constants and prove a sharp zero-source floor. All statements
+are exact on a periodic-axial cylinder, or on an embedded annular
+disk of a three-torus; no assertion of a compact axial gauge on
+$\mathbb R^3$ is made.
+
+\begin{theorem}[Improved universal gauge with an arbitrary cone floor]
+\label{thm:xxvii-universal}
+Let $Q(r,z)$ be a smooth symmetric co-rotating tensor, radially
+compactly supported away from the axis, and let $\chi(r)$ be a
+smooth radial cutoff equal to one throughout the radial
+projection of $\operatorname{supp}Q$. Write
+\[
+M=\max_{i,j}\|Q_{ij}\|_{L^\infty},\qquad
+\mu>0,\qquad
+a=\frac{3}{8}\mu+\frac{13}{4}M,\qquad
+b=\frac{85}{8}\mu+\frac{471}{4}M,\qquad
+h=\mu+8M.
+\]
+Define the seven coefficients (ray aperture $1/4$)
+\begin{align*}
+d_1&=Q_{rr}-16(Q_{\theta\theta}+Q_{zz})
+          +(\mu+33M)\chi,\\
+d_2&=8Q_{\theta\theta}+2Q_{r\theta}
+          +(\mu+10M)\chi,\\
+d_3&=8Q_{\theta\theta}-2Q_{r\theta}
+          +(3\mu+26M)\chi,\\
+d_4&=8Q_{zz}+2Q_{rz}-8Q_{\theta z}
+          +(2\mu+18M)\chi,\\
+d_5&=8Q_{zz}-2Q_{rz}+8Q_{\theta z}
+          +(2\mu+18M)\chi,\\
+d_6&=8Q_{\theta z}+(\mu+8M)\chi,\\
+d_7&=-8Q_{\theta z}+(\mu+8M)\chi.
+\end{align*}
+Then, everywhere,
+\begin{equation}\label{eq:xxvii-completion}
+\boxed{\quad
+d_j\ge\mu\chi,\qquad
+\sum_{j=1}^7d_jv_j\otimes v_j
+=Q+a\chi I+b\chi e_r\otimes e_r.\quad}
+\end{equation}
+The carrier is globally pressure-neutral in the same periodic
+geometries as Edition XXVI:
+\[
+\nabla\cdot\bigl(\sum_jd_jv_j\otimes v_j-Q\bigr)
+=\nabla\left((a+b)\chi+
+  b\int_0^r\frac{\chi(s)}s\,ds\right).
+\]
+In particular, every matrix entry of the constructed stress obeys
+\begin{equation}\label{eq:xxvii-size}
+\boxed{\quad
+\left\|\sum_jd_jv_j\otimes v_j\right\|_{\ell^\infty_{\rm entry}}
+\le122M+11\mu.\quad}
+\end{equation}
+\end{theorem}
+\begin{proof}
+The seven ray tensor identities are those in
+Section~\ref{sec:xxvi-global-ray}. For a general
+seven-coefficient inverse with middle parameter $h\chi$,
+the off-diagonal and diagonal equations give
+\[
+\begin{aligned}
+d_6&=h\chi+8Q_{\theta z},&d_7&=h\chi-8Q_{\theta z},\\
+d_2&=8Q_{\theta\theta}+2Q_{r\theta}
+      +(8a-2h)\chi,&
+d_3&=8Q_{\theta\theta}-2Q_{r\theta}+8a\chi,\\
+d_4&=8Q_{zz}+2Q_{rz}-8Q_{\theta z}
+      +(8a-h)\chi,&
+d_5&=8Q_{zz}-2Q_{rz}+8Q_{\theta z}
+      +(8a-h)\chi,\\
+d_1&=Q_{rr}-16(Q_{\theta\theta}+Q_{zz})
+      +(b-31a+2h)\chi.
+\end{aligned}
+\]
+The chosen values satisfy exactly
+\[
+8a-2h=\mu+10M,\quad 8a=3\mu+26M,\quad
+8a-h=2\mu+18M,\quad
+b-31a+2h=\mu+33M.
+\]
+Where $Q\ne0$, $\chi=1$ and $|Q_{ij}|\le M$.
+The worst-case signed contributions to $d_1,\ldots,d_7$
+are respectively $-33M,-10M,-10M,-18M,-18M,-8M,-8M$.
+Every coefficient therefore exceeds $\mu$. In a cutoff
+collar $Q=0$, the displayed positive constants multiply $\chi$,
+so $d_j\ge\mu\chi$ globally. The tensor identity follows by
+substitution in the six synthesis equations.
+
+The carrier divergence is a gradient as in Edition XXVI.
+The only potentially largest entry of
+$S=Q+a\chi I+b\chi e_r\otimes e_r$ is the radial diagonal:
+\[
+|S_{rr}|\le M+a+b=M+121M+11\mu=122M+11\mu.
+\]
+The other diagonals are at most
+$(17/4)M+(3/8)\mu$, and the off-diagonals at most $M$.
+\end{proof}
+
+\begin{proposition}[Sharp zero-source cost, and minimax within a fixed-splitting inverse]
+\label{prop:xxvii-sharp-floor}
+For $Q=0$, $\chi=1$, any strict seven-ray representation
+\[
+aI+b e_r\otimes e_r=\sum_jd_jv_j\otimes v_j,\qquad
+d_j\ge\mu>0
+\]
+requires
+\begin{equation}\label{eq:xxvii-sharp-floor}
+\boxed{\quad b\ge\frac{85}{8}\mu.\quad}
+\end{equation}
+Equality is attained by
+$(d_1,\ldots,d_7)=(\mu,\mu,3\mu,2\mu,2\mu,\mu,\mu)$.
+
+Moreover, within the source-independent fixed-$h$ inverse
+displayed in the proof of Theorem~\ref{thm:xxvii-universal},
+with fixed scalar $a,b,h$ and arbitrary symmetric
+$|Q_{ij}|\le M$, one necessarily has
+\[
+h\ge\mu+8M,\qquad
+a\ge\frac{\mu+2h+10M}{8},\qquad
+b\ge\mu+31a-2h+33M,
+\]
+which imply
+\begin{equation}\label{eq:xxvii-fixed-minimax}
+\boxed{\quad
+b\ge\frac{85}{8}\mu+\frac{471}{4}M.\quad}
+\end{equation}
+The construction of Theorem~\ref{thm:xxvii-universal}
+attains this bound within the stated fixed-inverse class.
+This is \emph{not} a claim that the pressure quotient has
+the same optimal constant among all nonlinear
+source-dependent coefficient selections.
+\end{proposition}
+\begin{proof}
+At $Q=0$, the three off-diagonal tensor constraints give
+$d_6=d_7=h$, $d_3=d_2+2h$, $d_4=d_5$.
+Equality of the two transverse diagonal entries gives
+$d_4=d_5=d_2+h$. Hence
+\[
+a=(d_2+2h)/8,\qquad
+b=d_1+\frac{31}{8}d_2+\frac{23}{4}h.
+\]
+Since $d_1,d_2,h\ge\mu$, this gives the sharp $85\mu/8$
+bound and its equality case.
+
+For the fixed inverse in the theorem, testing all signed
+corners of the independent box $|Q_{ij}|\le M$ gives
+the three inequalities displayed, as well as
+$8a\ge\mu+10M$ and $8a-h\ge\mu+18M$.
+The first three dominate the latter two for
+$h\ge\mu+8M$. Eliminating $a$ and then $h$ yields
+\[
+b\ge\frac{39}{8}\mu+\frac{287}{4}M
+                 +\frac{23}{4}h
+\ge\frac{85}{8}\mu+\frac{471}{4}M.
+\]
+The displayed explicit coefficients attain equality.
+\end{proof}
+
+\paragraph{Independent audit, baseline, and real source limitation.}
+A distinct symbolic reconstruction checks every one of the
+six symmetric tensor components, and $20{,}000$ exact-rational
+box tests verify all seven coefficient floors.
+An independent linear-programming calculation finds the
+fixed-inverse optimum $(a,h,b)=(29/8,9,1027/8)$ at
+$(\mu,M)=(1,1)$, and independently confirms the
+sharp zero-source constant $85/8$.
+The $M$ slope of the carrier decreases from the source-independent
+Edition XXVI value $528$ to $471/4=117.75$.
+The original A.11/A.19 source remains unauthenticated;
+no H8 smallness threshold or all-mode Navier--Stokes
+closure follows from a universal pressure-quotient identity.
+The true end-to-end unforced theorem and Lean PDE proof remain open.

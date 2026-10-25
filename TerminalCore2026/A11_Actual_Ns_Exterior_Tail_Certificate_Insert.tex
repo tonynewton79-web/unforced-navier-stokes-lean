@@ -1,0 +1,107 @@
+\subsection*{Exterior-tail certification of the A.11 axial cone component}
+\label{subsec:A11-actual-Ns-tail}
+On the two corrected supports of (A.11), the source has $U=M=J=0$.
+After the genuine amplitude equation imposes $S(\infty,\eta)=0$, the source
+moment equation (4.15) gives
+\begin{equation}\label{eq:A11-tail-SP}
+ S(X,\eta)=\frac12\int_X^\infty E(x,\eta)^2\,dx,\qquad
+ \Pi(X,\eta)=-\frac12\int_X^\infty\frac{E(x,\eta)^2}{x}\,dx.
+\end{equation}
+The pressure formula uses the actual condition $\Pi(\infty,\eta)=0$
+and the A.11 pressure-neutral moment correction. In particular
+the $S$ identity is not valid before the $S(\infty)=0$ condition.
+
+\begin{lemma}[Exact tail form of the axial stress source]
+Define $D_s=S/(XE^2)$, $P_s=-\Pi/E^2$, $g=\partial_\eta\log E$,
+$d=1-\eta^2$, $A=1/2+h$. Formula (4.16) becomes
+\begin{equation}\label{eq:A11-Ns-tail-exact}
+ \frac{N_s}{E}=E\left\{4\eta(hD_s-AP_s)
+ -d[2g(D_s-P_s)+\partial_\eta D_s-\partial_\eta P_s]\right\}.
+\end{equation}
+If $\ell=\partial_{\log X}\log(\sqrt X E)\le0$ at all later radii
+and $|\partial_\eta\log E|\le\varepsilon$ there, then
+\begin{equation}\label{eq:A11-Ns-tail-inequality}
+0\le P_s\le\frac12,\qquad
+\frac{|N_s|}{E}\le E[4hD_s+2A+2\varepsilon(D_s+1/2)].
+\end{equation}
+\end{lemma}
+\begin{proof}
+For $t=\log(x/X)$ write $R(t)=\exp(2\int_0^t\ell(Xe^v)\,dv)$.
+Then $D_s=\frac12\int_0^\infty R\,dt$ and
+$P_s=\frac12\int_0^\infty e^{-t}R\,dt$. Since $R\le1$, $P_s\le1/2$.
+The original tail integrals give
+$|S_\eta|/X\le2\varepsilon E^2D_s$ and
+$|\Pi_\eta|\le2\varepsilon E^2P_s$. Apply (4.16).
+The exact displayed expression follows by differentiation.
+\end{proof}
+
+\begin{theorem}[Source-stage sufficient bound for both A.11 supports]
+\label{thm:A11-Ns-realized}
+Retain the corrected two-bump bounds, $T_f=512$, $T_d>10$,
+$P_*>e^{T_d}$ and the post-pulse nonpositive slope and terminal
+release bounds used above. Choose
+\[
+0<\lambda\le\min\left\{
+\frac{10^{-6}}{T_d+513},\frac1{10(1+\log P_*)},
+\frac1{20}\right\},\qquad0<h\le\lambda/100.
+\]
+Once the actual source moment matching has imposed $S(\infty)=0$,
+the resulting corrected supports satisfy
+\begin{equation}\label{eq:A11-Ns-final}
+\sup_{\mathrm{A.11\ supports},\,|\eta|\le1}|N_s|/E<\lambda/2.
+\end{equation}
+Together with $Q_s\ge\lambda/2$, the corrected slope range
+$-3\lambda/2\le\ell\le-\lambda/2$, and a choice
+$X\ge9/\lambda$, the full strict cone (4.22) follows on these
+two supports, with the previous normalized margin $7/20$.
+\end{theorem}
+\begin{proof}
+Past the angular interpolation the unedited source $E$ is
+$\eta$-independent. Only the two corrected bumps retain
+$\eta$ dependence. The bounds
+$\|c_\eta\|_\infty<12\lambda^{28}$,
+$\|\beta\|_\infty\le640/3$ and
+$|\sum c_i\beta_i|<1/2$ give
+$|\partial_\eta\log E|<5120\lambda^{28}=:\varepsilon$
+at every radius beyond the first support.
+The prescribed later nonpositive slope stages imply
+\[
+D_s\le B_D:=T_f/2+15\log(1/\lambda)+3+h^7/3
+\]
+on either support: allow half the remaining interpolation/plateau
+length, the two release transitions, the $-1$ hold and its
+exponentially suppressed terminal tail.
+
+The first unit transition enlarges $E$ by at most $e^{1/10}$.
+The angular flattening has integrated positive contribution at
+most $\log2<1$, and the relative correction is less than $3/2$.
+The corrected supports lie after a length-$13/\lambda$ pulse
+and within a three-unit endpoint reserve. Dropping all other
+decay gives
+\[
+ E\le P_*\exp(4-13/(2\lambda)).
+\]
+Put $t=1/\lambda\ge20$; since
+$t\ge10(1+\log P_*)$ and $\log(4t)\le t$,
+\[
+\log(4tP_*e^{4-13t/2})\le3-27t/5<0,
+\]
+hence $E<\lambda/4$.
+
+Also $\lambda T_f\le10^{-6}$, $h\le\lambda/100$,
+$\lambda\log(1/\lambda)\le1$ and $\lambda\le1/20$ give
+$4hB_D<61/100$, $2A\le1001/1000$, and
+$2\varepsilon(B_D+1/2)<1/100$ (use
+$\lambda^{27}\le20^{-27}$). Thus the square bracket in
+\eqref{eq:A11-Ns-tail-inequality} is strictly less than $2$,
+so $|N_s|/E<\lambda/2$. The previously proved
+$Q_s$ and slope bounds plus $X\ge9/\lambda$ imply the
+source cone inequality at these supports.
+\end{proof}
+
+This is an all-parameter \emph{conditional source-stage theorem},
+not an enclosure of one independently frozen complete exterior
+schedule. Compatibility with every other source-stage stress-cone
+margin, pulse $o(1)$ constants, terminal matching, Appendix B
+and the unforced coefficient hierarchy still requires separate
+verification. The proposed unforced Theorem~1.1 remains open.

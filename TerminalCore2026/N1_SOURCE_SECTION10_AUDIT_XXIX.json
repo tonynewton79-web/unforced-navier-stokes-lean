@@ -1,0 +1,23 @@
+{
+  "source_title": "Finite Time Blowup for Navier-Stokes",
+  "source_author": "OpenAI",
+  "source_pdf_url": "https://cdn.openai.com/pdf/32d9f210-8b73-45e0-91bc-82a30aef8a9a/navier-stokes.pdf",
+  "source_pdf_page_count": 166,
+  "source_version_hash": null,
+  "appendix_A11_A19_eliminates_force": false,
+  "appendix_A11_purpose": "angular moment and pressure-integral correction of leading profile; original PDF page number 130, PDF page index 129",
+  "appendix_A19_purpose": "axial pulse amplitude moment root; original PDF page number 133, PDF page index 132",
+  "section10_cutoff_velocity_formula": "u_B = curl(c A) + c B e_theta; equation (10.4), PDF page index 117",
+  "final_source_defining_equation": "(10.5)",
+  "final_source_definition": "f_B = partial_t u_B + (u_B . grad)u_B - Delta u_B + grad p_B (viscosity one as defined in source)",
+  "cutoff_temporal_zero_start": true,
+  "force_contains_all_cutoff_derivatives": true,
+  "force_may_have_nonzero_divergence": true,
+  "energy_identity_source_reference": "Section 10.3, Lemma 10.4, Eq (10.13)",
+  "actual_source_profile_hashed": false,
+  "actual_spacetime_residual_mathematically_reconstructed": false,
+  "actual_projected_force_budget_numerically_certified": false,
+  "physical_zero_force_certified": false,
+  "initial_correction_required": "nonzero initial correction (unless complete unforced velocity is identically zero)",
+  "status": "HOLD_AUTHENTIC_SOURCE_AND_COMPLETE_LEAN_UNFORCED_PDE"
+}

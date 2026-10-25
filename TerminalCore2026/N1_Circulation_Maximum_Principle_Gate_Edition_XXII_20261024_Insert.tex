@@ -1,0 +1,104 @@
+
+\section{Circulation maximum principle and a necessary leading-order cancellation}
+\label{sec:circulation-max-gate}
+The following obstruction applies to a \emph{smooth axisymmetric unforced}
+whole-space solution with bounded initial circulation. It does not apply
+as stated to arbitrary nonaxisymmetric solutions or directly to the
+separate periodic-torus closure problem. The scalar maximum principle
+used here is established prior art \cite{circulationMP2023}.
+
+For an axisymmetric velocity $(u_r,U,u_z)$ let $\Gamma=rU$. The
+azimuthal momentum equation implies
+\begin{equation}\label{eq:Gamma-axis-XXII}
+ (\partial_t+u_r\partial_r+u_z\partial_z)\Gamma
+ =\nu(\partial_{rr}-r^{-1}\partial_r+\partial_{zz})\Gamma.
+\end{equation}
+With smooth axis-compatible velocities and the usual spatial
+comparison-principle hypotheses, and $M=\|\Gamma(t_0)\|_\infty<\infty$,
+the maximum principle gives
+$\|\Gamma(t)\|_\infty\le M$ for $t_0\le t<T$.
+
+\begin{theorem}[Mandatory leading swirl cancellation in the axisymmetric route]
+\label{thm:circulation-cancel-XXII}
+Let $0<h$, $A=\frac12+h$, $\tau=1-t$ and fix an exterior similarity
+radius $R>0$ where the Edition XX source-leading profile obeys $f(R)>0$.
+Let $r_\tau=R\sqrt{\tau}$ and choose any compatible $z_\tau$.
+Assume the fully chosen smooth axisymmetric background has
+\[
+ (u_B)_\theta(r_\tau,z_\tau,1-\tau)
+ =\tau^{-A}[f(R)+\delta(\tau)],\qquad \delta(\tau)\longrightarrow0.
+\]
+If $u=u_B+w$ is a smooth axisymmetric \emph{unforced} solution with
+bounded initial circulation and the above maximum-principle hypotheses,
+then
+\begin{equation}\label{eq:circulation-cancellation-XXII}
+ \left|\tau^A w_\theta(r_\tau,z_\tau,1-\tau)+f(R)\right|
+ \le |\delta(\tau)|+\frac{M}{R}\tau^h.
+\end{equation}
+Consequently
+$\lim_{\tau\downarrow0}\tau^A w_\theta(r_\tau,z_\tau,1-\tau)
+=-f(R)\ne0$.
+No correction $w$ that is subleading in this \emph{rescaled azimuthal
+pointwise amplitude} can yield such an axisymmetric unforced solution.
+\end{theorem}
+\begin{proof}
+The maximum principle gives
+$|r_\tau u_\theta(r_\tau,z_\tau,1-\tau)|\le M$,
+so $|\tau^A u_\theta|\le M\tau^{A-1/2}/R=M\tau^h/R$.
+Insert $u_\theta=(u_B)_\theta+w_\theta$ and use the assumed source
+asymptotic and the triangle inequality. This proves
+\eqref{eq:circulation-cancellation-XXII}.
+\end{proof}
+
+\begin{corollary}[Necessary forcing budget if the circulation survives]
+For an axisymmetric \emph{forced} solution with azimuthal force $F_\theta$,
+the right side of \eqref{eq:Gamma-axis-XXII} gains $rF_\theta$.
+If $\int_{t_0}^{t}\|rF_\theta(s)\|_\infty\,ds<\infty$ for every
+$t<T$, and the actual forced velocity obeys
+$u_\theta(r_\tau,z_\tau,1-\tau)\ge\frac12\tau^{-A}f(R)$,
+then
+\begin{equation}\label{eq:force-budget-XXII}
+ \int_{t_0}^{1-\tau}\|rF_\theta(s)\|_\infty\,ds
+ \ge\frac12 Rf(R)\tau^{-h}-M.
+\end{equation}
+Thus such retained circulation requires a divergent \emph{cumulative}
+weighted azimuthal force as $\tau\downarrow0$. This is not a measured
+or certified bound for the complete forced source construction.
+\end{corollary}
+\begin{proof}
+The inhomogeneous maximum principle implies
+$\|\Gamma(t)\|_\infty\le
+ M+\int_{t_0}^t\|rF_\theta(s)\|_\infty\,ds$.
+Evaluate at $(r_\tau,z_\tau)$ and rearrange.
+\end{proof}
+
+\paragraph{Nonaxisymmetric boundary of the argument.}
+For general smooth cylindrical fields, direct calculation for $r>0$
+gives
+\begin{equation}\label{eq:nonaxis-circulation-XXII}
+\begin{aligned}
+ &(\partial_t+u_r\partial_r+(u_\theta/r)\partial_\theta
+     +u_z\partial_z)\Gamma\\
+ &\quad=\nu(\Delta-2r^{-1}\partial_r)\Gamma
+      +2\nu r^{-1}\partial_\theta u_r-\partial_\theta p
+      +rF_\theta.
+\end{aligned}
+\end{equation}
+The angular meridional and pressure terms are not negligible by
+symmetry in a nonaxisymmetric correction. The separated term
+$r^{-1}\partial_\theta u_r$ may fail to be uniformly bounded near
+the axis even for smooth Cartesian velocities, so we do not infer
+an unchecked global $L^\infty$ estimate from
+\eqref{eq:nonaxis-circulation-XXII}. A nonaxisymmetric route remains
+open, as does any distinct axisymmetric singularity mechanism that
+does not retain the positive growing source-leading circulation.
+
+\paragraph{Audit and scope.}
+The chain rules, viscosity cross term and similarity power were
+independently checked with SymPy; 50,000 exact rational finite budget
+tests passed. A separate Lean file certifies only finite scalar
+implications, not the axisymmetric maximum principle or its physical
+hypotheses. The source's leading exterior identity does not by itself
+prove that the \emph{fully matched background} satisfies the asymptotic
+assumed in Theorem~\ref{thm:circulation-cancel-XXII}. This is a
+source-specific obstruction, not an unforced blow-up proof.

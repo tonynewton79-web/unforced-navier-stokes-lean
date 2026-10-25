@@ -1,0 +1,36 @@
+name: Audit source Section 10 startup gate
+on:
+  push:
+    branches: [feature/zenodo-23474915-lean]
+    paths:
+      - 'TerminalCore2026/N1ProjectedStartupScalar.lean'
+      - 'TerminalCore2026/verify_section10_projected_startup_xxix.py'
+      - 'TerminalCore2026/N1_SOURCE_SECTION10_AUDIT_XXIX.json'
+      - '.github/workflows/n1-source-startup-gate.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source-startup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Independent exact source/startup regression
+        run: |
+          python -m pip install sympy
+          python TerminalCore2026/verify_section10_projected_startup_xxix.py
+      - name: Install pinned Lean toolchain
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          elan toolchain install "$(cat lean-toolchain)"
+          lake update
+          lake exe cache get
+      - name: Reject admitted local proofs
+        run: |
+          if grep -nE '^[[:space:]]*(sorry|admit|axiom)([[:space:]]|$)' TerminalCore2026/N1ProjectedStartupScalar.lean; then exit 1; fi
+      - name: Lean kernel-check startup and reverse triangle
+        run: lake env lean TerminalCore2026/N1ProjectedStartupScalar.lean

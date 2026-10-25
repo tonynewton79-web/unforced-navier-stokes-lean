@@ -1,0 +1,76 @@
+\subsection*{A.10 source-fixed interpolation closes the provisional A.11 angular-derivative gates (22 October 2026)}
+\label{subsec:a11-A10-fixed-stage-closure}
+The original Appendix A.10--A.11 construction fixes all stage boundaries
+independently of \(\eta\). For fixed \(T_f=512\) and
+\(0<\lambda\le1/100\), the A.11 first bump center follows
+the interpolation endpoint by
+\(L_1=30\log(1/\lambda)-3\), so \(\partial_\eta L_1=0\).
+The moving-endpoint formula of the preceding section is still valid
+for hypothetical moving stages, but its \(L_{1,\eta}\) term vanishes
+\emph{for this source schedule}.
+
+Write \(a=1-\lambda\), \(J_0=\log(1+\eta^2)\), and
+take the source's exact smooth step \(\sigma\) from (A.5).
+If the pre-interpolation moment ratio \(r_p=I/(XH)\) has its
+source-factorized \(\eta\)-independence, the integrating factor in (A.10)
+and \(\sigma(1-t)=1-\sigma(t)\) give
+\[
+r_f=\frac{2r_p}{1+\eta^2}e^{-aT_f}+
+ \int_0^{T_f} e^{-av}
+ \left(\frac2{1+\eta^2}\right)^{\sigma(v/T_f)}\,dv.
+\]
+Differentiation under this genuine finite integral gives
+\[
+\boxed{
+r_{f,\eta}=-\frac{2\eta}{1+\eta^2}
+\left[\frac{2r_p}{1+\eta^2}e^{-aT_f}+
+\int_0^{T_f}e^{-av}\sigma(v/T_f)
+\left(\frac2{1+\eta^2}\right)^{\sigma(v/T_f)}\,dv\right].
+}
+\]
+For \(0\le r_p\le20/17\), \(a\ge99/100\), \(T_f=512\),
+the exact step satisfies
+\(\sigma(1/4)=1/(1+e^{128/9})<10^{-6}\);
+the first 16 positive Taylor terms prove \(e^{128/9}>10^6\).
+The first 15 terms give \(e^{30}>10^{10}\), so
+\(e^{-aT_f/4},e^{-aT_f}<10^{-10}\).
+Splitting the integral at \(T_f/4\) proves
+\[
+\boxed{|r_{f,\eta}|<
+\frac{40}{17}\,10^{-10}
++\frac{200}{99}(10^{-6}+10^{-10})<3\cdot10^{-6}.}
+\]
+On the source-fixed \(-\lambda\) plateau the exact mismatch
+\(\Delta_I=1/a-r(y_1)\) satisfies
+\[
+\Delta_I=-e^{-aL_1}(r_f-1/a),\qquad
+\Delta_{I,\eta}=-e^{-aL_1}r_{f,\eta}.
+\]
+Assuming the already established \(0\le r_f\le20/17\)
+(which follows from its incoming bound and the source slope barrier),
+\(e^{-aL_1}\le e^3\lambda^{30a}\le21\lambda^{29}\) yields
+\[
+|\Delta_I|\le(21/95)\lambda^{28},\quad
+|\Delta_{I,\eta}|<63\cdot10^{-6}\lambda^{29}.
+\]
+Together with the existing genuine A.11 small-branch inverse and
+Jacobian gates \(\|c\|_\infty\le3|\Delta_I|\) and
+\(\|c_\eta\|_\infty\le2|\Delta_{I,\eta}|\), this gives the
+source-conditional sharpened bounds
+\[
+\boxed{\|c\|_\infty\le(63/95)\lambda^{28}<\lambda^{28},
+\qquad\|c_\eta\|_\infty<\lambda^{28}/100000.}
+\]
+These finite source-stage deductions replace the provisional
+\(|D_\eta r(a(\eta),\eta)|\le1/4\) and
+\(|L_{1,\eta}|\le1/8\) assumptions of Edition III.
+They recover and sharpen earlier A.10 sensitivity analyses
+already contained in the cumulative manuscript, not a new
+unconditional A.19 theorem.
+
+The original source theorem has \emph{forcing}. The full ordered
+parameter selection, same-profile A.19/pressure terminal gauges,
+exterior stress cones, Appendix B contraction, unforced startup,
+zero-force PDE residual, and complete Lean kernel proof remain
+OPEN/HOLD. The finite rational program only audits the displayed
+bounds and synthetic controls.

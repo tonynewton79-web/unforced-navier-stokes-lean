@@ -1,0 +1,78 @@
+
+\section{An exact heat identity for the source-leading exterior}
+\label{sec:source-heat-exterior}
+The preceding source-leading exterior analysis can be strengthened by an
+exact integration-by-parts identity, which also makes clear why a local
+exterior calculation does \emph{not} give smooth global unforced blowup.
+For $h>0$, $A=\frac12+h$, $c_\infty>0$, let
+\[
+g(R,v)=\frac{1}{R(R^2+4v)^h},\qquad
+p_h(v)=\frac{e^{-v}v^h}{\Gamma(1+h)},\qquad
+f(R)=c_\infty 2^A\int_0^\infty p_h(v)g(R,v)\,dv .
+\]
+This is the gamma-mixture expression for the published heat-exterior
+\emph{leading} profile, not the fully matched physical field.
+\begin{theorem}[Exact exterior radial heat identity]
+For $R>0$,
+\[
+\boxed{f''(R)+\frac{1}{R}f'(R)-\frac{1}{R^2}f(R)
+=\left(\frac12+h\right)f(R)+\frac R2 f'(R).}
+\]
+\end{theorem}
+\begin{proof}
+Put $\mathcal L=\partial_R^2+R^{-1}\partial_R-R^{-2}$
+and $S=R^2+4v$. Direct differentiation yields
+\begin{align*}
+\frac{(\mathcal L-A-\frac R2\partial_R)g}{g}
+&=\frac{4h\{R^2(1+h-v)-4v^2\}}{S^2}\\
+&=4h\left\{\frac{1+h-v}{S}
+-\frac{4(1+h)v}{S^2}\right\}.
+\end{align*}
+Because $p_h'/p_h=h/v-1$ and
+$\partial_v g/g=-4h/S$, the previous expression equals
+\[
+(\mathcal L-A-\tfrac R2\partial_R)g
+=\frac{1}{p_h(v)}
+\partial_v\left[p_h(v)\frac{4hv}{S}\,g(R,v)\right].
+\]
+For fixed $R>0$ the boundary bracket vanishes at $v=0$
+as $v^{1+h}$ and at $v=\infty$ exponentially.
+All required differentiated integrands are integrable.
+Integrating in $v$ proves the theorem.
+\end{proof}
+For $\tau=1-t$, the axially independent leading swirl
+$U(r,t)=\tau^{-A} f(r/\sqrt{\tau})$ consequently solves
+$\partial_tU=(\partial_r^2+r^{-1}\partial_r-r^{-2})U$
+for viscosity $\nu=1$. On any annulus separated from the axis,
+$u=Ue_\theta$ also solves the \emph{unforced} three-dimensional
+Navier--Stokes equations \emph{locally}, taking
+$p(r,t)=\int_{r_*}^{r}U(s,t)^2/s\,ds$ for its centrifugal pressure.
+The identity does not assert that the genuine source's
+meridional, oscillatory, transition, collar, and gluing corrections
+satisfy the force-free equations.
+
+\begin{proposition}[Exterior-only axis singularity]
+For every $h>0$,
+\[
+\lim_{R\downarrow0} R f(R)
+=\frac{c_\infty 2^{1/2-h}}{\Gamma(1+h)}>0.
+\]
+Hence for each fixed $\tau>0$,
+\[
+U(r,t)\sim \frac{c_\infty 2^{1/2-h}}{\Gamma(1+h)}
+\frac{\tau^{-h}}{r}\quad(r\downarrow0).
+\]
+Thus the exterior-only flow is \emph{already singular before}
+the proposed terminal time and is not a globally smooth
+finite-energy solution from admissible initial data.
+\end{proposition}
+\begin{proof}
+Dominated convergence in the gamma mixture gives
+$\mathbb E[V^{-h}]=\Gamma(1)/\Gamma(1+h)$.
+The displayed limit and its similarity consequence follow.
+\end{proof}
+The genuine remaining proof obligation is therefore exact
+force-free \emph{matching} across the axis replacement, collars,
+meridional velocity and all transition regions, together with
+uniform terminal control, not a repair of the idealized
+exterior's heat equation.

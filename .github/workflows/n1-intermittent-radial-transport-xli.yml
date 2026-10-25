@@ -1,0 +1,37 @@
+name: Audit intermittent radial transport and axis jets XLI
+on:
+  push:
+    branches: [feature/zenodo-23474915-lean]
+    paths:
+      - 'TerminalCore2026/N1RadialVariationScalar.lean'
+      - 'TerminalCore2026/verify_radial_BV_xli.py'
+      - 'TerminalCore2026/verify_axis_jet_xli.py'
+      - '.github/workflows/n1-intermittent-radial-transport-xli.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  exact-variation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Independent exact BV and axis jet
+        run: |
+          python -m pip install sympy
+          python TerminalCore2026/verify_radial_BV_xli.py
+          python TerminalCore2026/verify_axis_jet_xli.py
+      - name: Install pinned Lean and Mathlib
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          elan toolchain install "$(cat lean-toolchain)"
+          lake update
+          lake exe cache get
+      - name: Reject admitted local scalar proofs
+        run: |
+          if grep -nE '^[[:space:]]*(sorry|admit|axiom)([[:space:]]|$)' TerminalCore2026/N1RadialVariationScalar.lean; then exit 1; fi
+      - name: Kernel-check finite scalar statements only
+        run: lake env lean TerminalCore2026/N1RadialVariationScalar.lean

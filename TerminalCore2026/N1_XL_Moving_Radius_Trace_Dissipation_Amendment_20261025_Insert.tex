@@ -1,0 +1,93 @@
+\section{A dissipation obstruction to sustained flux on a shrinking cylinder}
+\label{sec:xl-trace-dissipation}
+Let $u$ be a smooth finite-energy exactly unforced Navier--Stokes flow,
+$E_0=\|u(0)\|_2^2$, $\eta\in L^\infty(\mathbb R)$ and
+$\mathcal F_\eta(R,t)=R^2\int\!\int\eta(z)u_r(R,\theta,z,t)u_\theta(R,\theta,z,t)\,d\theta dz$.
+
+\begin{lemma}[Radial trace inequality]\label{lem:xl-trace}
+For every $R>0$,
+\[
+\boxed{\quad |\mathcal F_\eta(R,t)|/R\le
+\|\eta\|_\infty\|u(t)\|_2\|\partial_r u(t)\|_2
+\le\|\eta\|_\infty\|u(t)\|_2\|\nabla u(t)\|_2.\quad}
+\]
+\end{lemma}
+\begin{proof}
+For each $(\theta,z)$, radial decay and the fundamental theorem of calculus give
+$|u(R)|^2\le2\int_R^\infty|u(s)||\partial_su(s)|ds$.
+Use $2|u_ru_\theta|\le|u|^2$, multiply by $R^2/2$,
+integrate in $(\theta,z)$ and use $s\ge R$.
+Cauchy--Schwarz in physical cylindrical measure $sdsd\theta dz$
+yields $|\mathcal F_\eta|\le
+\|\eta\|_\infty R\|u\|_2\|\partial_ru\|_2$.
+\end{proof}
+
+\begin{theorem}[Moving-radius finite-dissipation flux bound]
+\label{thm:xl-moving-dissipation}
+For any measurable positive $R(t)$,
+\begin{equation}\label{eq:xl-moving-square-budget}
+\boxed{\quad
+\int_0^S\frac{|\mathcal F_\eta(R(t),t)|^2}{R(t)^2}dt
+\le\frac{\|\eta\|_\infty^2 E_0^2}{2\nu}\quad(S<T).}
+\end{equation}
+If $T=1$ and $R(t)=\sqrt{2X(1-t)}$,
+\begin{equation}\label{eq:xl-terminal-advective-total}
+\boxed{\quad\int_{1-\tau}^1|\mathcal F_\eta(R(t),t)|dt
+\le\|\eta\|_\infty E_0\sqrt{\frac{X}{2\nu}}\,\tau.\quad}
+\end{equation}
+Both terminal expressions are understood as limits from $t<1$.
+\end{theorem}
+\begin{proof}
+Square Lemma~\ref{lem:xl-trace}, use
+$\|u(t)\|_2^2+2\nu\int_0^t\|\nabla u\|_2^2=E_0$,
+and integrate in time. Cauchy--Schwarz gives the second estimate,
+since $\int_{1-\tau}^1R(t)^2dt=X\tau^2$.
+\end{proof}
+
+\begin{corollary}[Persistent terminal power growth is impossible]
+\label{cor:xl-terminal-flux-impossible}
+For any $c,X>0$ and $h\ge0$, it is impossible for one
+smooth finite-energy unforced solution on $[0,1)$ to satisfy
+$|\mathcal F_\eta(\sqrt{2X\tau},1-\tau)|\ge
+c\tau^{-h}$ for all sufficiently small $\tau$.
+Indeed,
+\[
+\boxed{\quad\liminf_{\tau\downarrow0}
+|\mathcal F_\eta(\sqrt{2X\tau},1-\tau)|=0.\quad}
+\]
+Thus the persistent hypothetical radial-advective-flux growth
+considered in Edition~XL is excluded by energy dissipation;
+the distinct torque derivative and angular oscillation routes remain open.
+\end{corollary}
+\begin{proof}
+The bound in Theorem~\ref{thm:xl-moving-dissipation}
+would dominate $(c^2/(2X))\int_0^{\tau_0}
+\tau^{-1-2h}d\tau=\infty$, a contradiction.
+The same argument with $h=0$ proves the liminf statement.
+\end{proof}
+
+\begin{corollary}[Maximum terminal spike duration]
+\label{cor:xl-spike-duration}
+If $W_\tau\subset[1-2\tau,1-\tau]$ is measurable and
+$|\mathcal F_\eta(R(t),t)|\ge c\tau^{-h}$
+for $t\in W_\tau$, where $R(t)=\sqrt{2X(1-t)}$, then
+\begin{equation}\label{eq:xl-spike-duration}
+\boxed{\quad |W_\tau|\le
+\frac{2X\|\eta\|_\infty^2E_0^2}{\nu c^2}
+\tau^{1+2h}.\quad}
+\end{equation}
+\end{corollary}
+\begin{proof}
+For $t\in W_\tau$, $R(t)^2\le4X\tau$.
+Use this in the squared moving-radius bound and rearrange.
+\end{proof}
+
+\paragraph{Release boundary.}
+These bounds eliminate only \emph{sustained growth of raw
+advective flux} on the parabolic shrinking radius.
+They do not exclude intermittently concentrated time spikes,
+large derivatives $-r^{-1}\partial_r(rJ)$ of a small flux,
+a growing angular trace, or physical viscous/axial terms.
+The original OpenAI Navier--Stokes construction is forced.
+No finite-time smooth-data unforced blowup theorem or full Lean PDE
+formalization is obtained.

@@ -1,0 +1,66 @@
+\subsection*{Consolidated independent source audit and error-tolerant A.11 hull}
+\label{subsec:a11-consolidated-independent-20261021}
+A separate 21 October 2026 source audit of the two prescribed
+(A.11) corrections starts from $E=E_b(1+c_1(\eta)\beta_1+
+c_2(\eta)\beta_2)$ and the *same-profile* gauges
+$U=M=J=0$, $S(\infty,\eta)=\Pi(\infty,\eta)=0$.
+With $A=1/2+h$ and
+\[
+ F_0(y,\eta)=\int_y^\infty E(v,\eta)^2\,dv,\qquad
+ F_1(y,\eta)=\int_y^\infty e^{v-y}E(v,\eta)^2\,dv ,
+\]
+its exact independent stress reduction is
+\[
+N_s=2\eta(hF_1-AF_0)
+-\frac{1-\eta^2}{2}\,\partial_\eta(F_1-F_0).
+\]
+The second term equals
+$-(1-\eta^2)\int_y^\infty(e^{v-y}-1)
+E_b(v)^2g(v,\eta)\partial_\eta g(v,\eta)\,dv$.
+It must be retained when the correction coefficients depend
+on the angular variable. The prescribed sigma-prime bump has
+the explicit conservative envelopes
+$\|\beta_i\|_\infty\le640/3$ and
+$\|\beta_i'\|_\infty\le1715200/9$.
+These yield a separate \emph{two-support} sufficient estimate
+in terms of authenticated $|c_i|$, $|c_{i,\eta}|$ and the
+unedited $E_b$ envelope. It does not by itself cover the gap.
+
+The logically stronger hull robustness theorem,
+Theorem~\ref{thm:a11-robust-hull-20261021},
+covers both supports and the $17/10$ intervening gap.
+For $0<\lambda\le1/20$, $0<h\le\lambda/100$ and
+$X\ge9/\lambda$, suppose reference bounds
+$|f_0|\le503\lambda/2000$, $q_0\ge49\lambda/50$,
+$-3\lambda/2\le\ell_0\le-\lambda/2$ have been authenticated
+from the corrected source, and the complete actual errors in
+$f=N_s/E$, $q=Q_s$ and $\ell$ are each at most $\lambda/100$.
+Then the strict stress slack and the original normalized cone obey
+\[
+\frac{|N_s|}{E}\le\frac{523}{2000}\lambda<\frac\lambda2,
+\qquad
+\mathcal C\ge\frac{4192747121}{3763600000}>
+\frac{11}{10}>\frac9{20}.
+\]
+The exact rational calculation is reproducible with
+\texttt{a11\_robust\_hull\_exact.py}; finite arithmetic alone
+does not authenticate the input source profile.
+
+\paragraph{The single-source proof obligation.}
+The independent support estimate, the gap-covering robustness
+theorem and the more recent A.11 root-jet results must all refer
+to one corrected source with the same $(T_f,\lambda,h)$, the same
+A.19 amplitude root and infinity gauges, and independently
+verified pointwise/derivative intervals. A valid release therefore
+requires full closed-cell coverage of the entire $23/10$ hull,
+the exterior pulse/transition/terminal stress cones, and
+the same-profile $S(\infty)=\Pi(\infty)=0$.
+A missing pressure gauge changes $N_s$ by
+$4(\frac12+h)\eta C_\Pi-(1-\eta^2)C_\Pi'$, and an unfixed
+$S$ datum contributes
+$[4h\eta C_S-(1-\eta^2)C_S']/X$.
+These defects cannot be hidden in a $\lambda/100$ allowance.
+The present implication is proved conditionally; the
+authentic full exterior, Appendix-B contraction, unforced
+startup hierarchy, force-free Cartesian reconstruction, and a
+complete kernel-checked Lean theorem remain unproved.

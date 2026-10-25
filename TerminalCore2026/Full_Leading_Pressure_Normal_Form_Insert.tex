@@ -1,0 +1,135 @@
+\subsection{The complete leading-profile pressure operator}
+\label{subsec:full-leading-normalform}
+The highest-derivative estimate above treats only one channel of the five-term leading-profile pressure source. We now control the remaining three input derivative orders as well. The point is to expand the complete source before applying the analytic norm, retaining every radial index until both inverse lifts have acted.
+
+Put $u=U_0$, $v=V_0/X$, $K=G\partial_\eta v-B(v+D_Xv)$, $B=2\eta/L$ and $G=(1-\eta^2)/L$. Fix $k\ge1$, $F=U_k\in I_k$, input degree $a\ge k$, and leading-profile radial degree $c\ge0$. Set
+\begin{align*}
+r&=a+1,\quad m=a+c+1,\quad N=m+1,\\
+\alpha&=r-D-\lambda_k,\quad\epsilon=\lambda_k-r,\\
+\theta&=\lambda_{k+1}-2A-m=2hk-1-m .
+\end{align*}
+Then $W_{k,a}=(\alpha B F_a-G\partial_\eta F_a)/r$.
+All products of $u,v,K$ below are interpreted at radial degree $c$.
+Introduce three finite collections of pairs $(p,g)$, with $p$ independent
+of $\eta$ and $g$ an analytic multiplier:
+\begin{align*}
+\mathcal H_0={}&\{(m\alpha,vB),\,(\alpha,uGB'),\,
+(\epsilon\alpha,uB^2),\,(r,K)\},\\
+\mathcal H_1={}&\{(-m,vG),\,(\alpha,uGB),\,
+(-1,uGG'),\,(-\epsilon,uBG)\},\\
+\mathcal H_2={}&\{(-1,uG^2)\},\quad
+\mathcal H_{-1}=\mathcal H_3=\varnothing.
+\end{align*}
+For $j=0,1,2,3$ put, retaining multiplicities,
+\begin{equation}\label{eq:leading-pair-recursion}
+\mathcal E_j=
+\{(\theta p,Bg),(p,Gg'):(p,g)\in\mathcal H_j\}
+\mathbin{\cup}
+\{(p,Gg):(p,g)\in\mathcal H_{j-1}\}.
+\end{equation}
+The numbers of pairs are $8,12,6,1$, respectively.
+
+\begin{proposition}[Exact complete leading-pressure normal form]
+\label{prop:leading-all-jets}
+For the full five-term leading-pressure operator in
+\eqref{eq:leading-pressure-operator},
+\begin{equation}\label{eq:complete-leading-normalform}
+(\mathcal P_{k+1}^{\mathrm{lead}}F)_{a+c+2}
+=-\frac1{4rmN^2}
+\sum_{j=0}^3\sum_{(p,g)\in\mathcal E_j}
+p\,g_c(\eta)\,\partial_\eta^jF_a(\eta).
+\end{equation}
+For every contributing pair, with $t=N+k=m+k+1$,
+\begin{equation}\label{eq:leading-poly-bound}
+|p|\le t^{3-j},\qquad m/r\le1+c .
+\end{equation}
+\end{proposition}
+\begin{proof}
+Write $H_\ell=\sum_{(p,g)\in\mathcal H_\ell}p g_c$
+for $\ell=0,1,2$, with $H_{-1}=H_3=0$. Substituting
+$W_{k,a}$ into the exact pressure primitive gives
+$X^m(H_0F_a+H_1F_a'+H_2F_a'')/(rm)$.
+The shifted operator $Z_{-2A,k+1}=
+G\partial_\eta+B(\lambda_{k+1}-2A-D_X)$
+sends its coefficient of $F_a^{(j)}$ to
+$\theta BH_j+GH_j'+GH_{j-1}$. The final factor $-J_1/4$
+supplies $1/(4N^2)$, yielding the stated normal form.
+Since $a\ge k\ge1$, $r\ge k+1$ and $m=r+c$.
+For $0<h<1/100$, $0<D<1$ and
+$0<\lambda_k<k/50$, hence
+$0\le\alpha\le r$, $-r\le\epsilon\le0$,
+and $-(m+1)\le\theta\le0$.
+Each $p$ in $\mathcal E_j$ is a signed monomial of degree
+at most $3-j$ in $r,m,\alpha,\epsilon,\theta$.
+All five have absolute value at most $t$, proving the first
+bound. The second is $m/r=1+c/r\le1+c$.
+\end{proof}
+
+Define the finite multiplier budget
+\begin{equation}\label{eq:leading-multiplier-budget}
+\mathfrak M_j=\sum_{(p,g)\in\mathcal E_j}
+\sum_{s=0}^{3-j}\binom{3-j}{s}
+\|D_X^s(1+D_X)g\|_{R,\rho;E},\quad0\le j\le3.
+\end{equation}
+The 27 analytic multipliers are fully specified by
+\eqref{eq:leading-pair-recursion}; none contains an unknown positive-order field.
+
+\begin{theorem}[Uniform complete leading-profile pressure estimate]
+\label{thm:full-leading-pressure}
+Assume $0<h<1/100$, $R>0$, $0<\rho\le1/4$,
+and finiteness of all four budgets
+\eqref{eq:leading-multiplier-budget} on one common induced
+analytic coefficient space. For every $k\ge1$ and $F\in I_k$,
+\begin{equation}\label{eq:leading-full-bound}
+\|\mathcal P_{k+1}^{\mathrm{lead}}F\|_{R,\rho;E}
+\le\frac{C_{\mathrm{lead}}}{k+1}\|F\|_{R,\rho;E},
+\quad C_{\mathrm{lead}}=
+16\sum_{j=0}^3D_j(R,\rho)\mathfrak M_j,
+\end{equation}
+where $D_j(R,\rho)=675\,2^{4-j}R^2/
+[(j+1)^2\rho^j]$ as in \eqref{eq:tame-constant}.
+The complete five-term operator maps $I_k$ into $I_{k+2}$.
+\end{theorem}
+\begin{proof}
+For $(p,g)\in\mathcal E_j$,
+\[
+\frac{|p|}{4rmN^2}|g_c\partial_\eta^jF_a|
+\le\frac{t^{3-j}}{4m^2N^2}
+|(1+c)g_c\partial_\eta^jF_a|.
+\]
+The right side is one quarter of the positive coefficient
+majorant of the convolution-inverse operator
+\eqref{eq:radial-convolution} with multiplier
+$(1+D_X)g$ and $n=k$. The same domination applies
+to all $\eta$-derivatives, since $p$ and $m/r$ are
+$\eta$-independent, with each product derivative retained
+by Leibniz's rule. The proof of Theorem
+\ref{thm:convolution-smoothing} bounds precisely those
+positive Leibniz majorants without cancellations and yields
+for each pair
+\[
+\|\text{pair's contribution}\|
+\le\frac{16D_j}{k+1}
+\sum_{s=0}^{3-j}\binom{3-j}{s}
+\|D_X^s(1+D_X)g\|\|F\|.
+\]
+Sum over the 27 pairs. The valuation follows
+directly from \eqref{eq:complete-leading-normalform}.
+\end{proof}
+
+A sufficient, but still unverified, source condition is a
+common bounded holomorphic extension of $U_0$ and $V_0/X$
+to a larger complex product neighborhood where $L\ne0$.
+By the Cauchy embedding theorem \ref{thm:cauchy-embed},
+on a smaller common domain all the finitely many budgets
+above are then finite after choosing $R,\rho$ small enough.
+This does not certify the actual imported profiles.
+
+The full normal form has been checked symbolically, and
+45,360 exact-rational cases of the scalar polynomial
+majorants passed independent replay. The Lean source
+contains finite scalar/index proof gates, not the complete
+Banach-space formalization. The bilinear $H_k$ pressure
+source, other momentum sources, concrete imported profile
+radii and the full recurrence (53) remain open. In
+particular this theorem does not establish Theorem~1.1.

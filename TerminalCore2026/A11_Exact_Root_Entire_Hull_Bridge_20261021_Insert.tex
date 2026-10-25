@@ -1,0 +1,113 @@
+\subsection*{A.19 exact-root differentiation and a full-hull A.11 future-tail bound}
+\label{subsec:A11-root-whole-hull-bridge-20261021}
+The current stress proof must distinguish the \emph{total} parameter
+derivative from the partial derivative at fixed pulse amplitude.
+Write the full source A.19 moment residual, including its genuinely
+corrected A.11 azimuthal coefficients, as
+\[
+ \mathcal F(A,\eta)=\frac{\lambda S(\infty;A,\eta)}
+ {X_pe_b^2(1+\eta^2)^{-2}}.
+\]
+If the exact source moment equation has a $C^1$ root $A_*(\eta)$,
+then $\mathcal F(A_*(\eta),\eta)\equiv0$, and hence
+\[
+ \mathcal F_A(A_*,\eta)A_*'(\eta)
+ +\mathcal F_\eta(A_*,\eta)=0.
+\]
+Thus the total derivative appearing in the stress formula vanishes
+\emph{identically}. This uses an exact root, not merely a uniform
+small value: $10^{-5}\cos(10^5\eta)$ has supremum at most $10^{-5}$
+and derivative supremum one. The source's positive quadratic
+amplitude coefficient and its strictly positive derivative margin,
+once established for one actual common corrected profile, allow
+the implicit function theorem to produce the required $C^1$ branch.
+
+The separate genuine source pressure normalization
+$\Pi(\infty,\eta)=0$ must hold for the \emph{same} profile. Under
+these two normalizations the terminal-defect part of (4.16)
+vanishes, leaving $N_s=N_s^{\rm tail}$. Let
+$E_c(y,\eta)=E_b(y)v(y,\eta)$, where $E_b$ is independent of $\eta$
+after A.10 and $v=1+u$,
+$u=\sum_{i=1}^2 c_i(\eta)\beta_i(y)$.
+The two source $\sigma'$ corrections are disjoint, each of
+logarithmic support length $3/10$, with centers separated by two.
+Their \emph{closed convex hull} contains an intervening gap of
+length $17/10$; its total length is $23/10$ while the union
+of nonzero supports has length $3/5$.
+
+Define $R_b(y,t)=\exp(2\int_0^t\ell_b(y+s)\,ds)$,
+$D_c=S_{\rm tail}/(XE_c^2)$ and $P_c=-\Pi_{\rm tail}/E_c^2$.
+The future integrals are exactly
+\[
+D_c=\frac{\int_0^\infty R_b(y,t)v(y+t)^2\,dt}{2v(y)^2},
+\qquad
+P_c=\frac{\int_0^\infty e^{-t}R_b(y,t)v(y+t)^2\,dt}
+{2v(y)^2}.
+\]
+The exact normalization cancellation is
+\[
+ \mathcal T:=2g(D_c-P_c)+(D_c)_\eta-(P_c)_\eta
+ =\frac{\int_0^\infty R_b(y,t)(1-e^{-t})
+ v(y+t)u_\eta(y+t)\,dt}{v(y)^2},
+\]
+where $g=\partial_\eta\log E_c$. This identity holds equally
+within either corrected support and on their intervening gap;
+differentiation under the future integrals requires a
+source-justified common dominating envelope.
+
+\begin{theorem}[Conditional complete A.11 hull stress certificate]
+\label{thm:A11-root-whole-hull-20261021}
+Assume one corrected source profile has the exact $C^1$ A.19
+root and the prescribed terminal pressure gauge, $0<\lambda\le1/20$,
+$0<h\le\lambda/100$, baseline $\ell_b=-\lambda$ on the
+whole hull and $\ell_b\le0$ at all future radii, the source
+release/steep-hold/final-tail bound
+$D_b\le93/40+h^7/3$ at both hull endpoints, the
+authentic coefficient jets
+$|c_i|\le54\lambda^{28}$,
+$|c_{i,\eta}|\le6\lambda^{28}$,
+$|\beta_i|\le640/3$, and $E_c\le\lambda/4$
+throughout the hull. Then
+\[
+ \sup_{\substack{y\text{ in both A.11 supports and their gap}\\|\eta|\le1}}
+ \frac{|N_s|}{E_c}
+ <\frac{503}{2000}\lambda<\frac\lambda2.
+\]
+In particular, the strict stress slack is greater than
+$497\lambda/2000$.
+\end{theorem}
+\begin{proof}
+Disjointness gives $|u|\le\delta=11520\lambda^{28}$
+and $|u_\eta|\le1280\lambda^{28}$. Since $R_b\le1$ and
+the future support of $u_\eta$ has length at most $3/5$,
+\[
+ |\mathcal T|\le\frac35(1280\lambda^{28})
+ \frac{1+\delta}{(1-\delta)^2}<10^{-5}.
+\]
+On the baseline plateau, $D_b'=2\lambda D_b-1/2$ and
+$P_b'=(1+2\lambda)P_b-1/2$, so both are monotone or
+constant on the \emph{whole} hull, without an unchecked
+interior extremum in the gap. Positive-tail comparison yields
+\[
+D_c<233/100,\qquad
+P_c\le\tfrac12[(1+\delta)/(1-\delta)]^2
+ <5000001/10000000.
+\]
+Here $\ell_b\le0$ globally supplies $P_b\le1/2$.
+The exact source stress formula then yields
+\[
+ \frac{|N_s|}{E_c}
+ \le E_c\{4hD_c+4(\tfrac12+h)P_c+|\mathcal T|\}
+ <\frac\lambda4\frac{503}{500}.
+\]
+All numerical comparisons are strict rational inequalities
+at the source-worst value $\lambda=1/20$.
+\end{proof}
+
+This supplies a stronger \emph{logical reduction}, not
+an independently authenticated interval realization.
+The same-parameter A.19 root and infinity gauge, coefficient
+jets, whole future baseline slopes and complete other stress
+stages remain to be certified. The accompanying Lean module
+proves only scalar/derivative consequences, not the source
+integrals or the proposed unforced Navier--Stokes Theorem~1.1.

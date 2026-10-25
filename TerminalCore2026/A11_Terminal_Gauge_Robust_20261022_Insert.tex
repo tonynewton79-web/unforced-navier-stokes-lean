@@ -1,0 +1,82 @@
+\subsection*{A posteriori terminal-gauge robustness for the entire A.11 hull (22 October 2026)}
+\label{subsec:a11-gauge-robust-20261022}
+The exact source stress identity (4.16) on $U=M=J=0$ is
+\[
+N_s=\frac{4h\eta S-(1-\eta^2)S_\eta}{X}
++4A\eta\Pi-(1-\eta^2)\Pi_\eta,\qquad A=\tfrac12+h.
+\]
+Let $C_S(\eta)=S(\infty,\eta)$ and $C_\Pi(\eta)=\Pi(\infty,\eta)$
+for the \emph{same corrected profile}. When the integrals converge,
+\[
+S=C_S+\tfrac12\int_X^\infty E^2\,dx,\qquad
+\Pi=C_\Pi-\tfrac12\int_X^\infty E^2\,dx/x.
+\]
+Hence $N_s=N_s^{(0)}+\Delta N_s$ exactly, with
+\[
+\Delta N_s=\frac{4h\eta C_S-(1-\eta^2)C'_S}{X}
++4A\eta C_\Pi-(1-\eta^2)C'_\Pi.
+\]
+This separates the genuine source-tail contribution from any
+numerical or analytic terminal-gauge error.
+
+\begin{theorem}[Full-hull stress under finite gauge residuals]
+\label{thm:a11-gauge-robust-20261022}
+Let $\mathcal H=[y_L,y_L+23/10]\times[-1,1]$ be the complete A.11
+two-support hull, including the gap. Assume $0<\lambda\le1/100$ and
+$E(y,\eta)=E_0(y)(1+u(y,\eta))$ on the hull, where
+$E_0(y)=E_*\exp[-(\frac12+\lambda)(y-y_L)]$,
+$E_*>0$ and $|u|\le a\le1/1000$.
+Suppose the previous zero-gauge source-local estimate has been
+independently established for the actual profile:
+\[
+\sup_{\mathcal H}|N_s^{(0)}|/E<11\lambda/10000.
+\]
+Writing $X_L=e^{y_L}$, suppose also
+\begin{equation}\label{eq:a11-robust-residual-budget}
+\frac{4h\|C_S\|_\infty+\|C_S'\|_\infty}{X_L}
++4A\|C_\Pi\|_\infty+\|C_\Pi'\|_\infty
+\le\frac{(1-a)E_*\lambda}{400}.
+\end{equation}
+Then over both A.11 supports and every point in the gap,
+\[
+\sup_{\mathcal H}|N_s|/E<111\lambda/10000,\qquad
+\lambda/2-\sup_{\mathcal H}|N_s|/E>4889\lambda/10000.
+\]
+If additionally $0<h\le\lambda/100$,
+$Q_s\ge97\lambda/100$,
+$-151\lambda/100\le\ell\le-49\lambda/100$,
+$X\ge9/\lambda$ and $0<L=1-2h\eta^2\le1$, then
+\[
+2(1-a_s/p_1)^2-(a_s-2)w^2>1124/1000>9/20,
+\]
+where $a_s=2-2\ell$, $p_1=XQ_s/L$ and $w=N_s/(EQ_s)$.
+\end{theorem}
+\begin{proof}
+Since $(\frac12+\lambda)(23/10)\le1173/1000<6/5$,
+the finite Taylor comparison
+$e^{6/5}<1504439/453125<4$ shows that
+$E>(1-a)E_*/4$ everywhere on the complete hull.
+The terminal contribution therefore obeys
+\[
+\sup_{\mathcal H}|\Delta N_s|/E\le
+\frac4{(1-a)E_*}
+\left[\frac{4h\|C_S\|+\|C_S'\|}{X_L}
++4A\|C_\Pi\|+\|C_\Pi'\|\right]\le\lambda/100.
+\]
+Add the assumed zero-gauge bound and subtract from $\lambda/2$.
+For the cone, $p_1\ge873/100$, $a_s/p_1<1/4$,
+$0<a_s-2\le151/5000$ and $|w|<111/9700$.
+Thus its normalized margin exceeds the exact rational number
+\[
+2(3/4)^2-\frac{151}{5000}\left(\frac{111}{9700}\right)^2
+=\frac{529254389529}{470450000000}>\frac{1124}{1000}.
+\]
+\end{proof}
+\paragraph{Scope.}
+The tolerance \eqref{eq:a11-robust-residual-budget} is a new
+a posteriori acceptance condition, not an authenticated source
+interval. The source's A.11 moment root, exact same-profile terminal
+$S$ and pressure gauges, all remaining stress patches, Appendix B,
+the force-free correction hierarchy, and the physical zero-force
+PDE theorem still require independent proof. The originating
+whole-space theorem in \cite{openai2026} has smooth forcing.

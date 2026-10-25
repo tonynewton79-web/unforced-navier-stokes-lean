@@ -1,0 +1,49 @@
+
+\section{A positive-time analyticity obstruction to exact exterior matching}
+\label{sec:analytic-no-exact-gluing}
+The preceding exterior profile is real-analytic away from the symmetry
+axis, but has an unavoidable $r^{-1}$ singularity on that axis.
+Combining this fact with the established positive-time spatial
+analyticity of strong unforced Navier--Stokes solutions
+\cite{zhang2026analyticity} gives a useful restriction on exact gluing.
+
+\begin{theorem}[No exact annular matching of the singular exterior]
+Let $h>0$, $c_\infty>0$, $0<t_0<T$ and $\tau=1-t_0>0$.
+Suppose $u$ is a finite-energy, $H^s$ strong unforced solution
+on $\mathbb R^3$ with $s>5/2$, smooth up to time $t_0$ and
+spatially analytic at $t_0$. Define, on the connected domain
+$\Omega=\{(x,y,z):r=\sqrt{x^2+y^2}>0\}$, the exterior comparison field
+\[
+u_{\mathrm{ext}}(x,y,z)=
+\tau^{-(1/2+h)} f(r/\sqrt\tau)\,e_\theta,
+\]
+where $f$ is the gamma-mixture in Section~\ref{sec:source-heat-exterior}.
+Then $u(t_0,\cdot)$ cannot agree identically with
+$u_{\mathrm{ext}}$ on any nonempty open subset of $\Omega$.
+\end{theorem}
+\begin{proof}
+For $R>0$ the gamma-mixture is real-analytic in $R$:
+locally in $R$, a complex neighbourhood avoids the zeros of
+$R^2+4v$ for all $v\ge0$ and the exponentially weighted integral
+is locally uniformly convergent with its derivatives. The Cartesian
+factor $e_\theta=(-y/r,x/r,0)$ is analytic on $\Omega$.
+Thus both $u(t_0)$ and $u_{\mathrm{ext}}$ are real-analytic
+on the connected domain $\Omega$.
+Equality on one nonempty open set forces equality on $\Omega$.
+But Proposition in Section~\ref{sec:source-heat-exterior} shows
+$|u_{\mathrm{ext}}|\sim C\tau^{-h}/r$ for $C>0$ near the axis.
+Its squared norm has divergent radial integral
+$\int_0^\epsilon r^{-1}\,dr$ on every bounded axial interval,
+contradicting $u(t_0)\in L^2(\mathbb R^3)$.
+\end{proof}
+
+\noindent\textbf{Precise scope.}
+This rules out \emph{exact} equality with the specified
+singular analytic leading exterior on a nonempty open patch
+at a positive time. It does not rule out a nonzero analytic
+matching tail, an approximate exterior profile, or other
+unforced singularity constructions. The analyticity theorem is
+classical prior art; its application here is a restricted
+source-specific diagnostic, not a resolution of Navier--Stokes
+regularity. The actual full matched source profile has not
+been proved equal to $u_{\mathrm{ext}}$ on an open set.

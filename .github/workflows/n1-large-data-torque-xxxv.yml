@@ -1,0 +1,37 @@
+name: Audit large-data nonaxisymmetric torque gate XXXV
+on:
+  push:
+    branches: [feature/zenodo-23474915-lean]
+    paths:
+      - 'TerminalCore2026/N1NonaxisTorqueEscapeScalar.lean'
+      - 'TerminalCore2026/verify_large_non_swirl_xxxv.py'
+      - 'TerminalCore2026/verify_angular_trace_torque_xxxv.py'
+      - '.github/workflows/n1-large-data-torque-xxxv.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  axisymmetric-nonaxisymmetric-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Independent algebraic and exact rational audit
+        run: |
+          python -m pip install sympy
+          python TerminalCore2026/verify_large_non_swirl_xxxv.py
+          python TerminalCore2026/verify_angular_trace_torque_xxxv.py
+      - name: Install pinned Lean and Mathlib
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          elan toolchain install "$(cat lean-toolchain)"
+          lake update
+          lake exe cache get
+      - name: No admitted proofs in finite scalar module
+        run: |
+          if grep -nE '^[[:space:]]*(sorry|admit|axiom)([[:space:]]|$)' TerminalCore2026/N1NonaxisTorqueEscapeScalar.lean; then exit 1; fi
+      - name: Kernel-check finite scalar consequences
+        run: lake env lean TerminalCore2026/N1NonaxisTorqueEscapeScalar.lean

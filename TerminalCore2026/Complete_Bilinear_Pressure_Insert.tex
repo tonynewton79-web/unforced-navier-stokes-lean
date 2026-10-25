@@ -1,0 +1,151 @@
+\paragraph{The complete positive-order quadratic pressure operator.}
+The exact symmetrization in Proposition~\ref{prop:quad-pressure} leaves two bilinear operators. The first comes from the axial coupling $H_k$, and the second from $Q_k=\sum_{i+j=k}W_iW_j$. Their estimates require more than the pure third-jet bound: the outer shifted $Z$ differentiates either input, and an operator norm cannot rely on cancellations between those Leibniz terms. We give a common majorant argument for all mixed derivative orders.
+
+Throughout this paragraph $i,j\ge1$, $k=i+j$, $U_i\in I_i$, $U_j\in I_j$, and $0<h<1/100$, $E=[-1,1]$, $0<\rho\le1/4$. Put $a\ge i$, $b\ge j$, $N=a+b$, $r=b+1$, and $t=N+k+2$. Write
+\[
+ B=\frac{2\eta}{L},\qquad G=\frac{1-\eta^2}{L},\qquad
+ \alpha=1-\frac{D+\lambda_j}{r},\quad
+ e=\lambda_j-1-b,\quad\theta=\lambda_{k+1}-2A-(N+1).
+\]
+Since $j\le b$, $k\le N$ and $2h<1/50$, we have
+\begin{equation}\label{eq:bilinear-index}
+ 0\le\alpha\le1,\quad r^{-1}\le1,\quad
+ |e|\le t,\quad |\theta|\le t,\quad
+ N+1\le t\le2(N+1).
+\end{equation}
+On the $b$-th radial coefficient, $W_j=\alpha B U_j-(G/r)\partial_\eta U_j$. Define three analytic coefficient functions
+\begin{align}\label{eq:bilinear-c}
+ c_0&=\alpha(GB'+eB^2),\\
+ c_1&=\alpha BG-r^{-1}(GG'+eBG),\notag\\
+ c_2&=-r^{-1}G^2.\notag
+\end{align}
+The exact expression $H_{ij}=U_i[G\partial_\eta+B(\lambda_j-1-D_X)]W_j$ is
+$U_i(c_0U_j+c_1U_j'+c_2U_j'')$ coefficientwise. After the pressure primitive and the final shifted $Z$, its contribution is
+\begin{equation}\label{eq:H-composite}
+ (\mathcal H_{ij})_{N+2}=-\frac1{4(N+1)(N+2)^2}
+ \sum_{(p,q)\in\mathcal E_H} h_{p,q}\,\partial_\eta^p(U_i)_a\,\partial_\eta^q(U_j)_b,
+\end{equation}
+where
+\begin{align*}
+\mathcal E_H&=\{(0,0),(1,0),(0,1),(1,1),(0,2),(1,2),(0,3)\},\\
+h_{0,0}&=B\theta c_0+Gc_0',&h_{1,0}&=Gc_0,\\
+h_{0,1}&=B\theta c_1+Gc_1'+Gc_0,&h_{1,1}&=Gc_1,\\
+h_{0,2}&=B\theta c_2+Gc_2'+Gc_1,&h_{1,2}&=Gc_2,\\
+h_{0,3}&=Gc_2.
+\end{align*}
+This is a complete seven-channel normal form, not merely a derivative-order ledger.
+
+We first record the analytic smoothing estimate needed for its bilinear terms. For any $N\ge k\ge2$, $\beta\ge0$, and $d=0,1,2,3$, direct cancellation of the weight factorials gives
+\begin{align}\label{eq:bilinear-weight-identity}
+ \frac{w_{N,\beta+d}}{w_{N+2,\beta}}
+ &=R^2\rho^{-d}\frac{(N+3)^2}{(N+1)^2}
+  \frac{(\beta+1)^2}{(\beta+d+1)^2}
+  \frac{\prod_{\ell=1}^{4}(2N+\ell)}
+       {\prod_{\ell=d+1}^{4}(2N+\beta+\ell)}.
+\end{align}
+By $(N+3)/(N+1)\le3$, $(2N+4)/(N+1)\le4$ and $2N+\beta+\ell\ge N+1$, it follows that
+\begin{align}\label{eq:bilinear-smoothing-bounds}
+ \frac{t^{3-d}w_{N,\beta+d}}
+ {(N+1)(N+2)^2w_{N+2,\beta}}
+ &\le E_d:=\frac{2304\,2^{3-d}R^2}{\rho^d},\\
+ \frac{t^{2-d}w_{N,\beta+d}}
+ {(N+2)^2w_{N+2,\beta}}
+ &\le F_d:=\frac{2304\,2^{\max(2-d,0)}R^2}{\rho^d},
+ \qquad d=0,1,2,3.\notag
+\end{align}
+In the second inequality $t^{2-d}=t^{-1}$ when $d=3$. These are all-index bounds, uniform in $i$, $j$, $N$, and $\beta$.
+
+To handle mixed derivatives, define the nonnegative Leibniz jet majorant
+\[
+ \mathcal M_{N,s}(U_i,U_j)=
+ \sum_{a+b=N}\sum_{u+v=s}\binom{s}{u}
+ |\partial_\eta^u(U_i)_a|\,|\partial_\eta^v(U_j)_b|.
+\]
+The weighted multiplication estimate \eqref{eq:algebra64} applies without cancellation and yields
+\begin{equation}\label{eq:bilinear-unsigned}
+ \mathcal M_{N,s}(U_i,U_j)
+ \le64\|U_i\|\|U_j\|w_{N,s}.
+\end{equation}
+Moreover, for any $p,q\ge0$, $d=p+q$, $s\ge0$, and $0\le u\le s$,
+$\binom{s}{u}\le\binom{s+d}{u+p}$. Thus every differentiated split product is dominated by the corresponding unsigned majorant at order $s+d$.
+
+The rational multipliers can be bounded without a leading-profile hypothesis. On $|\eta|\le3$, $|L|>41/50$, and $|B|<300/41$, $|G|<500/41$. For $q=0,1,2$, Cauchy's estimate first bounds $B^{(q)}$ and $G^{(q)}$ on $|\eta|\le2$ by $q!\,300/41$ and $q!\,500/41$, using unit-radius discs. A second unit-radius estimate at $E$, together with $(\ell+1)^2\rho^\ell\le1$, yields
+\begin{equation}\label{eq:bilinear-multiplier-M}
+ M:=\max\{1,\|B\|,\|G\|,\|B'\|,\|G'\|,
+ \|B''\|,\|G''\|\}\le25.
+\end{equation}
+These norms refer to the radial-degree-zero elements of $\mathcal B_{R,\rho;E}$. By the multiplication bound $64$, \eqref{eq:bilinear-index}--\eqref{eq:bilinear-c} give
+\begin{align*}
+ \|c_0\|&\le2\cdot64M^2t,& \|c_0'\|&\le4\cdot64M^2t,\\
+ \|c_1\|&\le3\cdot64M^2t,& \|c_1'\|&\le6\cdot64M^2t,\\
+ \|c_2\|&\le64M^2,& \|c_2'\|&\le2\cdot64M^2.
+\end{align*}
+Consequently, for the seven exact coefficients,
+\begin{equation}\label{eq:bilinear-H-normalform-bound}
+ \|h_{p,q}\|\le A_H t^{3-p-q},
+ \qquad A_H:=11\cdot64^2 M^3.
+\end{equation}
+
+\begin{theorem}[Complete bilinear axial-pressure bound]\label{thm:full-H}
+For every ordered pair $i,j\ge1$ the whole $H_k$ pressure contribution \eqref{eq:H-composite}, including all mixed-jet and multiplier-commutator terms, satisfies
+\begin{equation}\label{eq:full-H-bound}
+ \|\mathcal H_{ij}(U_i,U_j)\|_{R,\rho;E}
+ \le C_H\|U_i\|_{R,\rho;E}\|U_j\|_{R,\rho;E},
+ \quad C_H:=\frac{64^2A_H}{4}(E_0+2E_1+2E_2+2E_3).
+\end{equation}
+The constant is finite and independent of $i,j$ and all radial Taylor cutoffs.
+\end{theorem}
+\begin{proof}
+Apply the multiplier bound \eqref{eq:bilinear-H-normalform-bound}, the unsigned mixed-derivative majorant \eqref{eq:bilinear-unsigned}, and the first smoothing inequality in \eqref{eq:bilinear-smoothing-bounds} with $d=p+q$. Differentiated multipliers are handled by the same positive Leibniz convolution as multiplication by a radial-degree-zero function; the algebra estimate contributes a second factor $64$. There is one term with $d=0$ and two terms at each of $d=1,2,3$. The pressure prefactor is $1/4$.
+\end{proof}
+
+The companion quadratic pressure term is the symmetrized $Q_k$ source. For $r_i=a+1$, $r_j=b+1$ write $W_i=\alpha_i B U_i-G\partial_\eta U_i/r_i$, with $\alpha_i=1-(D+\lambda_i)/r_i$, and similarly for $W_j$. After applying the outer $Z$, the exactly eight derivative-split positions are
+\[
+\mathcal E_Q=\{(0,0),(1,0),(0,1),(1,1),
+ (2,0),(0,2),(2,1),(1,2)\}.
+\]
+Their coefficients are obtained, for $p,q\in\{0,1\}$, from the terms
+\begin{equation}\label{eq:Q-source-normalform}
+ (p,q):B\theta g_{p,q}+Gg_{p,q}',\quad
+ (p+1,q):Gg_{p,q},\quad (p,q+1):Gg_{p,q},
+\end{equation}
+where $g_{p,q}=w_{i,p}w_{j,q}$, $w_{i,0}=\alpha_iB$, $w_{i,1}=-G/r_i$, and similarly for $j$. The exact output prefactor is $-1/[8(N+2)^2]$.
+The two radial averages satisfy
+\begin{equation}\label{eq:quadratic-double-average}
+ r_ir_j=(a+1)(b+1)\ge N+1
+ \quad\Longrightarrow\quad
+ \frac{|\theta|}{r_ir_j}\le2,\qquad
+ \frac1{r_ir_j}\le\frac2t.
+\end{equation}
+These bounds control both the shifted order-two coefficient and the order-three coefficient. Collecting each derivative split and using \eqref{eq:bilinear-multiplier-M} gives
+\begin{equation}\label{eq:bilinear-Q-normalform-bound}
+ \|q_{p,q}\|\le A_Q t^{2-p-q},
+ \qquad A_Q:=32\cdot64^2M^3.
+\end{equation}
+The exponent is $-1$ for the two third-order channels, as required by the second smoothing inequality.
+
+\begin{corollary}[The complete quadratic pressure source]\label{cor:all-quadratic-pressure}
+Both $Q_k$ and $H_k$ in \eqref{eq:quad-reconstruct} are bounded in the common induced analytic space. In particular,
+\begin{equation}\label{eq:quadratic-complete-constant}
+ \|\mathcal P_{ij}^{\mathrm{quad}}(U_i,U_j)\|
+ \le C_{\mathrm{quad,p}}\|U_i\|\|U_j\|,\quad
+ C_{\mathrm{quad,p}}=C_H+C_Q,
+\end{equation}
+where
+\begin{equation}\label{eq:CQ}
+ C_Q:=\frac{64^2A_Q}{8}(F_0+2F_1+3F_2+2F_3).
+\end{equation}
+Consequently $\|\mathcal P_{k+1}^{\mathrm{quad}}\|
+\le C_{\mathrm{quad,p}}\sum_{i+j=k,\,i,j\ge1}\|U_i\|\|U_j\|$
+for every $k\ge2$, with a constant independent of $k$.
+\end{corollary}
+\begin{proof}
+Use the eight exact positions in \eqref{eq:Q-source-normalform},
+the bound \eqref{eq:bilinear-Q-normalform-bound}, the unsigned Leibniz
+majorant, and the second estimate in \eqref{eq:bilinear-smoothing-bounds}.
+The algebra factors give $64^2$, the pressure prefactor is $1/8$,
+and there are one, two, three and two channels at derivative orders
+$0,1,2,3$. Add Theorem~\ref{thm:full-H} and sum over ordered pairs.
+\end{proof}
+
+These constants are deliberately conservative. Unlike the leading-profile theorem, the present bilinear estimate needs no imported-profile regularity hypothesis: $B$ and $G$ are explicit rational functions with the bounds above. It closes the positive-order quadratic pressure contribution of (28), but not the remaining swirl/axial momentum products or the unverified imported leading-profile radii. Thus the complete recurrence (53), termwise physical PDE reconstruction, and Theorem~1.1 are not established here.

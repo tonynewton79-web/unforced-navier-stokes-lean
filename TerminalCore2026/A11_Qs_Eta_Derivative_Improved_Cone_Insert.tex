@@ -1,0 +1,103 @@
+\subsection*{The parameter derivative of the angular moment on both A.11 supports}
+\label{subsec:A11-angular-moment-eta-derivative}
+The exact source formula (4.16), on the two corrected azimuthal
+supports where $U=M=J=0$ and $W=1$, reads
+\begin{equation}\label{eq:A11-Q-retain-eta}
+Q_s=-1+(1-h)\frac I{XH}-D\eta\frac{I_\eta}{XH},
+\qquad D=\tfrac12-h.
+\end{equation}
+The last term cannot be omitted: within either correction the
+angular moment can depend on $\eta$, even though its eventual
+exterior target is parameter independent.
+
+Write $E_c=E_b(1+u)$ with
+$u=c_1(\eta)\beta(y-y_1)+c_2(\eta)\beta(y-y_1-2)$
+and disjoint source-prescribed width-$3/10$ bumps.
+Assume $0<\lambda\le1/20$, $0<h\le\lambda/100$, and the
+\emph{source-verified} baseline entrance and coefficient-jet bounds
+\[
+\left|r_b(y_1)-\frac1{1-\lambda}\right|\le64\lambda^{28},
+\quad |\partial_\eta r_b(y_1)|\le64\lambda^{28},\qquad
+|c_i|\le192\lambda^{28},\quad|c_{i,\eta}|\le12\lambda^{28},
+\quad r_b=\frac{I_b}{XH_b}.
+\]
+The source plateau has $\ell_b=-\lambda$ and $H_b$ independent of
+$\eta$ after interpolation. Thus
+$r_b'=1-(1-\lambda)r_b$ and
+$r_{b,\eta}'=-(1-\lambda)r_{b,\eta}$.
+The first support begins $3/20$ units before $y_1$; hence on both
+supports
+\[
+\left|r_b-\frac1{1-\lambda}\right|\le80\lambda^{28},
+\qquad |r_{b,\eta}|\le80\lambda^{28},\qquad0<r_b<2.
+\]
+Put $\delta=40960\lambda^{28}$ and
+$\delta_\eta=2560\lambda^{28}$. The prescribed bump bound
+$\|\beta\|_\infty\le640/3$ gives $|u|\le\delta<1/2$ and
+$|u_\eta|\le\delta_\eta$. Comparing the corrected and baseline
+positive moments, including their $\eta$ derivatives, yields
+\begin{equation}\label{eq:A11-Q-moment-jet}
+\left|\frac{I_c}{XH_c}-r_b\right|
+\le\frac{2\delta}{1-\delta}r_b\le8\delta,\qquad
+\left|\frac{I_{c,\eta}}{XH_c}\right|
+\le\frac{80\lambda^{28}+\delta_\eta r_b}{1-\delta}
+\le10400\lambda^{28}.
+\end{equation}
+The second estimate retains the earlier parameter dependence of
+$I_b$; only the \emph{added} bump integral has parameter derivative
+$H_bu_\eta$.
+
+\begin{theorem}[Improved A.11 supportwise angular-stress bound]
+\label{thm:A11-Q-eta-improved}
+Under the above genuine source entrance and correction-jet bounds,
+both complete A.11 supports satisfy
+\begin{equation}\label{eq:A11-Q-improved}
+Q_s\ge\frac{\lambda-h}{1-\lambda}
+-350000\lambda^{28}>\frac{49}{50}\lambda.
+\end{equation}
+If in addition the source-authenticated terminal $S$ and pressure
+gauges, nonpositive future baseline slopes, and tail/derivative
+bounds of Corollary~\ref{cor:A11-local-cancel-cone} hold, then
+\[
+\frac{|N_s|}{E_c}<\frac{63}{250}\lambda<\frac\lambda2.
+\]
+With the same corrected slope bound and $X\ge9/\lambda$, the
+companion cone expression obeys
+\[
+2(1-a/p_1)^2-(a-2)w^2>
+\frac{55743}{50000}>\frac9{20},
+\quad a=2-2\ell_c,\quad p_1=XQ_s/(1-2h\eta^2),
+\quad w=N_s/(E_cQ_s).
+\]
+\end{theorem}
+\begin{proof}
+The source identity \eqref{eq:A11-Q-retain-eta} and
+\eqref{eq:A11-Q-moment-jet} bound the loss relative to the
+equilibrium value $(\lambda-h)/(1-\lambda)$ by
+$(80+8\cdot40960+\frac12\,10400)\lambda^{28}
+=332960\lambda^{28}<350000\lambda^{28}$.
+Since $h\le\lambda/100$ and
+$350000\lambda^{27}\le350000/20^{27}<1/100$,
+the first bound follows. The $N_s/E$ estimate is the
+separately conditional local-normalization cancellation already
+proved in Corollary~\ref{cor:A11-local-cancel-cone}.
+The improved $Q_s$ bound yields
+$|w|<(63/250)/(49/50)=9/35<13/50$.
+Moreover $p_1\ge XQ_s\ge441/50$ and
+$a\le43/20$, so $a/p_1<1/4$.
+Since $0\le a-2\le3/20$,
+\[
+2(1-a/p_1)^2-(a-2)w^2
+> 2(3/4)^2-(3/20)(13/50)^2
+=\frac{55743}{50000}.
+\]
+\end{proof}
+This theorem is a \emph{conditional source implication}.
+No genuine frozen A.11 entrance $C_\eta^1$ interval, corrected
+terminal-gauge/tail dataset, full exterior cone certificate,
+Appendix-B contraction, unforced coefficient startup, or
+zero-force physical residual has been supplied. The exact-rational
+checker tests implications and rejects missing input gates;
+its positive fixture does not authenticate source intervals.
+The accompanying Lean module formalizes only scalar consequences,
+not source integrals or the full unforced Navier--Stokes theorem.
