@@ -7,8 +7,8 @@ Date: 25 October 2026. Branch: `integration/unforced-torus-20261025`.
 - Lean: `4.34.0-rc2` (commit `6a10ac8c22beadecabdbb0919c2b50214762f91d`)
 - Upstream: `openai/NavierStokesAndEuler@f9e8bc5b38b6e212696e8a30e3e91517af887bbd`
 - Mathlib: `85e3a25e006c35636f0e53b0e9296caca2685bc0`
-- Command: `lake build UnforcedPatching.DefinitionsSmoke UnforcedPatching.ResidualSmoke UnforcedPatching.PeriodicitySmoke UnforcedPatching.ConeBudgetSmoke UnforcedPatching.SevenRayCenterSmoke UnforcedPatching.PressureGaugeSmoke UnforcedPatching.CorrectionSmoke UnforcedPatching.RetentionSmoke`
-- Result: **LOCAL COMPILE PASS** (the new terminal-retention smoke and seven preceding smoke targets completed in a 3,319-job Lake build, zero errors). This does not imply GitHub CI has passed.
+- Command: `lake build UnforcedPatching.DefinitionsSmoke UnforcedPatching.ResidualSmoke UnforcedPatching.PeriodicitySmoke UnforcedPatching.ConeBudgetSmoke UnforcedPatching.ConeOperatorSmoke UnforcedPatching.SevenRayCenterSmoke UnforcedPatching.PressureGaugeSmoke UnforcedPatching.CorrectionSmoke UnforcedPatching.RetentionSmoke`
+- Result: **LOCAL COMPILE PASS** (nine smoke targets completed in a 3,321-job Lake build, zero errors). This does not imply GitHub CI has passed.
 - Printed axiom sets for the new theorems: `[propext, Classical.choice, Quot.sound]`, without project-local axioms or `sorryAx`.
 
 ## What these kernel checks actually establish
@@ -21,6 +21,7 @@ Date: 25 October 2026. Branch: `integration/unforced-torus-20261025`.
 6. An exact sufficient pointwise physical correction equation whose satisfaction implies a zero residual for the patched field. This theorem **does not supply a correction witness**.
 7. Full rational source-matched seven-ray covariance, its trace and rank-one projector, the coefficient scaling, and the transformed physical axial-product efficiency `4443/9832`. Independent Python `fractions.Fraction` tests reproduce the finite calculation.
 8. Conditional terminal speed retention: if the physical correction obeys `‖w‖ ≤ α‖u‖ + C` at all positive presingular times, with `0 ≤ α < 1` and `C ≥ 0`, unbounded speed of `u` transfers to `u+w`. This does **not** certify the H8 spatial correction, the relative estimate, or a singular leading field.
+9. The sharp four-field-to-seven-ray coefficient operator norm is exactly `14` in the componentwise maximum norm. It yields an explicitly stronger **sufficient** stress-coordinate smallness condition `max(|A|,|B|,|C|,|D|) ≤ (15971/1720600)ρ`, not a constructed compact weighted inverse.
 
 ## CI promotion boundary
 

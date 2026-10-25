@@ -52,6 +52,34 @@ the same value without approximations. Together with
 the `ConeBudget.lean` module proves a positive coefficient floor *provided*
 each of the seven physical corrections obeys the weighted bound.
 
+## Sharp four-field componentwise certificate
+
+Write the four trace-free stress coordinates in the source notation as
+`(A,B,C,D)`, and let `δc_a` denote the seven linear coefficient changes
+recorded in `ConeBudget.lean`. The exact operator norm is
+
+\[
+\max_{1\le a\le 7}|\delta c_a|
+\le 14\max\{|A|,|B|,|C|,|D|\}.
+\]
+
+The factor `14` cannot be reduced for this componentwise maximum norm:
+the fourth ray has `δc₄=2A−8B+4D`, which equals `14` at
+`(A,B,C,D)=(1,-1,0,1)`. Lean checks both the bound for all seven rays
+and this exact sharpness witness in `ConeOperator.lean`.
+
+Consequently, an explicit **sufficient**, not necessary, condition for
+the seven-ray margin is
+
+\[
+\max(|A|,|B|,|C|,|D|)
+\le\frac{15971}{1720600}\,\rho.
+\]
+
+This sharper numerical target is useful for testing a proposed compact
+weighted inverse, but it is stronger than the original coefficientwise
+condition and no such source-matched inverse has been constructed here.
+
 ## Exact release boundary
 
 Nothing here provides a compact symmetric tensor `H` with

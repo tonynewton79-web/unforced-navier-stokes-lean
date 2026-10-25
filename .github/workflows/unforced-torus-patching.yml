@@ -59,6 +59,7 @@ jobs:
           lake build UnforcedPatching.ResidualSmoke
           lake build UnforcedPatching.PeriodicitySmoke
           lake build UnforcedPatching.ConeBudgetSmoke
+          lake build UnforcedPatching.ConeOperatorSmoke
           lake build UnforcedPatching.SevenRayCenterSmoke
           lake build UnforcedPatching.PressureGaugeSmoke
           lake build UnforcedPatching.CorrectionSmoke
