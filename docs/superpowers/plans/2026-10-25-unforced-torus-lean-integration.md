@@ -104,7 +104,7 @@
 
 **Interfaces:**
 - Consumes: Tasks 2–4 Lean source and smoke files.
-- Produces: a branch-filtered workflow that installs pinned toolchain, reuses the frozen dependency/cache, rejects proof escapes, compiles all four source/smoke modules, and prints axioms; a human-readable checked-SHA/status ledger.
+- Produces: a branch-filtered workflow that installs pinned toolchain, reuses the frozen dependency/cache, rejects proof escapes, compiles all six source/smoke modules, and prints axioms; a human-readable checked-SHA/status ledger.
 
 - [ ] **Step 1:** Write a release-gate expectation requiring source and smoke compilation, not just a scalar `norm_num` test. Confirm current branch lacks this gate.
 - [ ] **Step 2:** Add branch-specific workflow and status document with `UNVERIFIED` placeholders; do not label queued runs green.
@@ -112,13 +112,29 @@
 - [ ] **Step 4:** Update receipt to `PASS` **only** for the exact SHA that truly passed. If queued/failing, preserve `PENDING`/`FAIL` and report actual diagnostics.
 - [ ] **Step 5:** Commit the audited status and open a **draft** PR targeting `feature/zenodo-23474915-lean` (not `main`).
 
-### Task 6: Next research-only mathematical milestones (not promised as implementation success)
+### Task 6: Cumulative manuscript assembly and source/asset audit
+
+**Files:**
+- Create: `docs/unforced-integration/MANUSCRIPT_ASSEMBLY.md`
+- Create: `paper/unforced_torus_cumulative.tex` only when all necessary input assets are present and verified; otherwise keep a complete missing-asset ledger.
+
+**Interfaces:**
+- Consumes: attached 188-page master LaTeX, 65-page carrier-independent LaTeX, 16-page exact local-core LaTeX, Editions XXXIX–XLII PDFs, and the checked proof-obligation ledger.
+- Produces: one ordered manuscript source tree and a page/asset/source provenance report, explicitly distinguishing proved restrictions from conditional constructions.
+
+- [ ] **Step 1:** List exact `\\input`, `\\includepdf`, `\\includegraphics`, bibliography, and package dependencies of each supplied source; demonstrate failure of a full build with a missing dependency when applicable.
+- [ ] **Step 2:** Sort and deduplicate overlapping inserts by original date, theorem scope and dependency; flag superseded, withdrawn and contradictory claims.
+- [ ] **Step 3:** Assemble a cumulative chapter map with at most nine main sections; separate the periodic core/patching development from whole-space transport obstructions and benchmarks.
+- [ ] **Step 4:** If every required byte is available, compile twice, check labels/citations, render all pages, and inspect overlaps. If any is absent, preserve a manifest rather than claim a built full manuscript.
+- [ ] **Step 5:** Commit assembly/asset status. Do not announce a publication-ready full PDF unless verified.
+
+### Task 7: Next research-only mathematical milestones (not promised as implementation success)
 
 **Files (future, after analytic proof):**
 - `docs/unforced-integration/H8_PROFILE_CERTIFICATE.md`
 - `UnforcedPatching/AnalyticGates.lean`
 - `UnforcedPatching/Final.lean`
-- `paper/unforced_torus_cumulative.tex` and compiled PDF only once required assets are present.
+- Compiled cumulative PDF only after the necessary sources/assets have been provided and visually verified.
 
 **Interfaces:**
 - Consumes: genuine solution of the H8 fixed-profile weighted compact inverse bound, a fully matched local unforced core, and exact global handoff estimates.
@@ -132,6 +148,6 @@
 
 ## Self-review / handoff
 
-The first five tasks are testable and worthwhile independently of future research success. Task 6 is **open mathematics**, not an engineering deliverable with a guaranteed end date. All source-specific A.11/A.19 material is a dependency only if the actual selected carrier-independent core requires it; otherwise keep it in the parallel forced-source diagnostic ledger. The plan does not authorize merging PR #1 or claiming an unforced Millennium-problem proof.
+The first six tasks are testable and worthwhile independently of future research success. Task 7 is **open mathematics**, not an engineering deliverable with a guaranteed end date. All source-specific A.11/A.19 material is a dependency only if the actual selected carrier-independent core requires it; otherwise keep it in the parallel forced-source diagnostic ledger. The plan does not authorize merging PR #1 or claiming an unforced Millennium-problem proof.
 
 Review the spec and this plan before executing Task 1. Recommended execution mode: native incremental implementation, followed by independent whole-branch mathematical and Lean review.
