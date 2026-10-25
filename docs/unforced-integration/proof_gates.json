@@ -53,9 +53,9 @@
       "geometry": "T3",
       "status": "OPEN",
       "source": "Carrier_Independent_Structured_Stress_Route_FINAL_COLOUR.tex, equation finalH8weighted and final proof boundary",
-      "lean_declarations": ["UnforcedPatching.h8_budget_identity", "UnforcedPatching.sevenRay_positive_floor"],
+      "lean_declarations": ["UnforcedPatching.h8_budget_identity", "UnforcedPatching.sevenRay_positive_floor", "UnforcedPatching.quarter_source_covariance_exact", "UnforcedPatching.quarter_tracefree_rankOne", "UnforcedPatching.quarter_physical_axial_efficiency"],
       "kernel_check": null,
-      "remaining": "Exact 15971/122900 arithmetic and conditional seven-ray coefficient floor compile locally. STILL OPEN: freeze explicit smooth profiles and prove an actual compact weighted symmetric inverse obeying that bound, or exhibit dual obstruction."
+      "remaining": "Exact rational quarter-aperture seven-ray matrix, trace, rank-one projector, physical axial efficiency, 15971/122900 budget and conditional coefficient floor compile locally; Python Fraction independently checks finite algebra. STILL OPEN: freeze explicit smooth profiles and prove an actual compact weighted symmetric inverse obeying that bound, or exhibit dual obstruction."
     },
     {
       "id": "G5",
