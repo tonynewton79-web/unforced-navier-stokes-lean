@@ -54,8 +54,10 @@ A separate two-diagonal pressure-neutral construction exhibits a sharp
 radial sign obstruction. Finite seven-ray stress algebra yields the exact
 coefficient margin $15971/122900$ and sharp componentwise amplification
 factor $14$. A compact source-matched dual test excludes a stronger
-physical entrywise stress bound at the corresponding numerical scale;
-this condition is not identified with the original H8 coefficient cone.
+physical entrywise stress bound at the corresponding numerical scale.
+For the frozen cylindrical seven-ray frame, an exact matrix
+reconstruction identifies that bound with a sufficient four-coordinate
+H8 stress estimate, but not with the weaker seven-coefficient cone.
 Lean additionally checks the meridional pointwise inverse and both
 integral antiderivative identities, alongside the finite cone algebra,
 physical residual expansion, and conditional terminal-speed retention.
@@ -304,6 +306,47 @@ no estimate for the particular tensor delivered by
 Theorem~\ref{thm:inverse}. In particular, no implication from
 unweighted compact solvability to \eqref{eq:eps} is available.
 
+\begin{proposition}[The frozen-frame physical tensor map]\label{prop:frame}
+In the local co-rotating frame $(e_1,e_2,e_3)=(e_r,e_\theta,e_z)$
+of the seven-ray construction, let
+$G=\sum_{i=1}^7\delta c_i v_i\otimes v_i$.
+The exact physical tensor perturbation and its trace-free pressure
+representative are
+\begin{equation}\label{eq:four-field-map}
+ G=\begin{pmatrix}
+ -\frac32D&C&A\\ C&-\frac12D&B\\ A&B&\frac12D
+ \end{pmatrix},\quad
+ H=G+\frac D2 I
+ =\begin{pmatrix}-D&C&A\\ C&0&B\\ A&B&D\end{pmatrix}.
+\end{equation}
+In particular, if $m=\max(|A|,|B|,|C|,|D|)$, then
+$\max_{i,j}|H_{ij}|=m$ in that frame.
+Conversely, the coordinates are recovered as
+$A=H_{rz}$, $B=H_{\theta z}$, $C=H_{r\theta}$, and $D=H_{zz}$.
+The image is the four-dimensional subspace of symmetric trace-free
+matrices with $H_{\theta\theta}=0$ (hence $H_{rr}=-H_{zz}$);
+one independent trace-free diagonal mode is absent.
+For a different orthonormal frame with columns $E$, the physical matrix
+is $EHE^{\mathsf T}$; its componentwise maximum need not equal $m$.
+\end{proposition}
+
+\begin{proof}
+Substitute the seven vectors \eqref{eq:rays} and their coefficient
+perturbations \eqref{eq:linear-map} into the six independent entries
+of $G$. The diagonal entries are $-3D/2,-D/2,D/2$; the off-diagonal
+entries in $(r\theta,rz,\theta z)$ order are $(C,A,B)$.
+Thus $\operatorname{tr}G=-3D/2$, and the scalar gauge addition
+$D I/2$ removes its trace. The maximum-entry identity then follows
+directly from the displayed matrix. Conjugation gives the last claim.
+\end{proof}
+
+This identifies a previously implicit assumption: the bound
+\eqref{eq:eps} is also a physical entrywise bound for the trace-free
+perturbation \emph{in the specified cylindrical frame}. The same
+conclusion requires a verified change of frame when H8 rays are tilted;
+pointwise orthogonal conjugation alone does not control the additional
+derivatives of a spatially varying frame.
+
 \section{A source-matched weighted dual obstruction}\label{sec:dual}
 
 The coefficient condition \eqref{eq:eps} involves four trace-free
@@ -394,14 +437,37 @@ derivative integral norms. The strict gap survives for sufficiently
 small smoothing parameters and proves the smooth-profile assertion.
 \end{proof}
 
-This proposition excludes only the \emph{entrywise physical} cap
-\eqref{eq:dualprob}. The number $\beta$ is borrowed from the sufficient
-four-coordinate budget \eqref{eq:eps}, but the transformation from
-those four coordinates to the physical tensor has not been proved to
-preserve the same cap. Proposition~\ref{prop:dual} therefore does
-\emph{not} disprove an H8 positive-cone inverse. It supplies an exact
-pressure-gauge-independent stress test that a proposed coordinate
-realization must confront, not a proof of global regularity or blow-up.
+\begin{corollary}[Failure of the sufficient four-field envelope]
+\label{cor:four-field}
+For the source $f$ and envelope $\rho$ in
+\eqref{eq:dualprofiles}, there is no fixed-frame four-coordinate
+stress $H(A,B,C,D)$ of \eqref{eq:four-field-map} satisfying
+$\diver H+\nabla q=f$ and the sufficient bound
+\eqref{eq:eps}, even if the pressure is freely chosen.
+\end{corollary}
+
+\begin{proof}
+Proposition~\ref{prop:frame} transfers \eqref{eq:eps} to the
+entrywise physical cap \eqref{eq:dualprob}. This contradicts
+Proposition~\ref{prop:dual}.
+\end{proof}
+
+This is a restricted obstruction to the \emph{stronger sufficient}
+four-field estimate. It does not exclude all seven-ray coefficient
+perturbations obeying only the original bound
+$\max_i|\delta c_i|\le(15971/122900)\rho$.
+Indeed, applying that larger constant to the conservative dual
+gradient upper bound \eqref{eq:dualU} gives
+\begin{equation}\label{eq:weaker-inconclusive}
+ \frac{15971}{122900}\frac{313361}{470400}-L
+ =\frac{51024386641}{635933760000}>0.
+\end{equation}
+There is then no dual contradiction from this estimate. This inequality
+is \emph{not} an existence result either. Moreover the manufactured
+source $P\eta'e_z$ is not the authenticated H8 source, and the
+conjugated tensor of a tilted frame has separate component and
+derivative requirements. The actual H8 positive-cone attachment and
+global unforced problem therefore remain undecided.
 
 \section{The physical residual and terminal speed}
 
@@ -476,6 +542,7 @@ Lean module & Checked scope and the missing construction\\
 \texttt{Residual}, \texttt{Correction} & Full residual addition and conditional cancellation; no constructed correcting field.\\
 \texttt{Periodicity}, \texttt{PressureGauge} & Sum and time-only gauge identities; no periodic singular solution.\\
 \texttt{ConeBudget}, \texttt{ConeOperator}, \texttt{SevenRayCenter} & Exact rational centre and sharp factor $14$; no source-matched weighted positive stress.\\
+\texttt{FourFieldPhysical} & Exact nine-entry ray-to-cylindrical tensor map modulo an isotropic gauge; entrywise four-coordinate bound in the frozen frame, not a spatially rotated PDE bridge.\\
 \texttt{CompactGauge} & One-variable gauge derivative; no compact tensor support theorem.\\
 \texttt{MeridionalInverse} & Actual axial and radial interval-integral FTC identities, geometric hoop cancellation, and pointwise radial/axial cylindrical inverse; no Cartesian tensor-divergence bridge or compact support theorem.\\
 \texttt{Retention} & Subleading corrections preserve terminal speed; neither required field constructed.\\
@@ -520,13 +587,17 @@ infinitely smooth zero-extended cutoff.
 A second independent exact-rational test reproduces
 \eqref{eq:dualL}--\eqref{eq:dualgap} from polynomial integrals and
 checks the complete cylindrical divergence of the dual test field.
-Its strict incompatibility concerns the explicit physical entrywise
-surrogate only; no executable test can substitute for a proof of
-the H8 coordinate-to-tensor bounds.
+An additional exact reconstruction and Lean theorem prove the
+fixed-frame four-field map \eqref{eq:four-field-map}, its inverse
+coordinate recovery and its
+entrywise consequence; the test \eqref{eq:weaker-inconclusive} explicitly
+records the failure of this method to rule out the weaker original
+coefficient condition. No executable test substitutes for the
+authentic H8 source and rotated-frame PDE estimates.
 
 The source code, machine-readable G0--G8 ledger, smoke tests and
 reproduction commands accompany the public integration branch
-\cite{NewtonRepo2026}. A local pinned build has passed ten smoke
+\cite{NewtonRepo2026}. A local pinned build has passed twelve smoke
 modules; at the time of preparing this edition, the corresponding
 GitHub-hosted Actions checks had not furnished a successful receipt
 for the latest commit. Local compilation does not replace hosted CI,
@@ -541,17 +612,18 @@ azimuthal component, a noncompact Leray-projected tail, nontrivial
 pressure coupling, or incompatible moments. Even when compact
 inversion is possible, the output may leave the required seven-ray
 positive cone, especially as the support shrinks. The strict dual
-obstruction in Proposition~\ref{prop:dual} gives an additional
-quantitative warning against imposing an overly small physical
-entrywise envelope. The next mathematical question is whether a
-source-adapted inverse meets the \emph{actual four-coordinate} H8
-inequalities after its cylindrical tensor entries and pressure gauge
-have been related to those coordinates.
+obstruction in Proposition~\ref{prop:dual}, together with
+Corollary~\ref{cor:four-field}, shows that the sufficient
+four-coordinate estimate fails for one manufactured compact source.
+The next mathematical question is whether the \emph{authentic}
+source, perhaps using a tilted frame or a more flexible coefficient
+allocation, admits a weighted inverse satisfying the weaker
+coefficientwise H8 inequalities and all spatial derivative bounds.
 
 A complete unforced singularity construction must still provide a
 single authenticated local profile, source-matched smooth shell
 data, a scale-sharp weighted symmetric inverse respecting the
-coefficient margin \eqref{eq:eps}, a periodic nonlinear correction
+coefficient margin, a periodic nonlinear correction
 with a proved right-inverse/contraction scheme, the full physical
 zero-residual identity, and terminal retention for that actual
 correction. Each claim requires a further source-to-Lean semantic

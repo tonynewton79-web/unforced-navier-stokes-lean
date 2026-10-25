@@ -123,7 +123,52 @@ gradient is `U≤313361/470400`. Thus
 The entrywise cap is impossible, even after smooth nonnegative
 approximation of the compact polynomial profiles. The exact arithmetic
 is independently replayed in `meridional_h8_certificate.py` and
-`tests/test_meridional_h8.py`. Critically, **these physical components are
-not proved to be the same as the four H8 stress coordinates**. The
-diagnostic does not establish an obstruction to the real H8 seven-ray
-cone or to the full unforced singularity problem; G4 and G8 remain OPEN.
+`tests/test_meridional_h8.py`.
+
+### Exact four-field source-frame identification
+
+For the seven source rays in the explicitly identified **co-rotating
+cylindrical frame** `(e_r,e_theta,e_z)`, the coefficient perturbations
+`delta c_i(A,B,C,D)` assemble into
+
+\[
+G=\sum_i\delta c_i v_i\otimes v_i
+=\begin{pmatrix}-3D/2&C&A\\C&-D/2&B\\A&B&D/2\end{pmatrix}.
+\]
+
+The trace-free pressure representative is exactly
+
+\[
+H=G+(D/2)I
+=\begin{pmatrix}-D&C&A\\C&0&B\\A&B&D\end{pmatrix}.
+\]
+
+The reverse map is precisely
+`A=H_rz`, `B=H_theta,z`, `C=H_r,theta`, `D=H_zz`.
+It applies exactly when a symmetric trace-free tensor also satisfies
+`H_theta,theta=0`; thus the four coordinates omit one independent
+trace-free diagonal mode. Lean now also proves the inverse recovery
+and the two corresponding diagonal identities. A tensor outside this
+subspace cannot be represented merely by reassigning `A,B,C,D`.
+
+Thus the sufficient four-coordinate bound
+`max(|A|,|B|,|C|,|D|)≤beta*rho` **does imply** the physical
+entrywise cap `max |H_ij|≤beta*rho` in this fixed frame. The exact
+pressure-gauge reconstruction, symmetry, zero trace and entrywise bound
+are kernel-checked in `UnforcedPatching/FourFieldPhysical.lean` and
+replayed independently by `h8_four_field_map.py` and
+`tests/test_h8_four_field_map.py`.
+
+Therefore the dual test rules out the **sufficient four-coordinate
+bound for this manufactured compact source**, even with arbitrary
+pressure. This is a concrete obstruction to using that overly strong
+budget universally. It does **not** exclude solutions meeting the
+weaker original seven-coefficient bound `max|delta c_i|≤(15971/122900)rho`.
+The same conservative gradient upper bound is too large to give a
+contradiction under that weaker condition: its slack is exactly
+`51024386641/635933760000 > 0`.
+
+For a tilted or spatially varying orthonormal frame `E`, the physical
+stress is `E H E^T`. No authentic H8 `E(r,z)`, its derivative bounds,
+or the real source profile has been checked against this example.
+Neither G4 nor the final unforced theorem is promoted; both remain OPEN.

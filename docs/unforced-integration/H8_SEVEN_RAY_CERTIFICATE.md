@@ -80,11 +80,42 @@ This sharper numerical target is useful for testing a proposed compact
 weighted inverse, but it is stronger than the original coefficientwise
 condition and no such source-matched inverse has been constructed here.
 
+## Actual cylindrical four-coordinate tensor
+
+For the source's **frozen co-rotating frame**
+`(e_1,e_2,e_3)=(e_r,e_theta,e_z)`, the correction tensor and its
+trace-free pressure representative are exactly
+
+\[
+G=\sum_i\delta c_i v_i\otimes v_i
+ =\begin{pmatrix}-3D/2&C&A\\C&-D/2&B\\A&B&D/2\end{pmatrix},\qquad
+H=G+(D/2)I=\begin{pmatrix}-D&C&A\\C&0&B\\A&B&D\end{pmatrix}.
+\]
+
+In this frame, the inverse map is
+`(A,B,C,D)=(H_rz,H_theta,z,H_r,theta,H_zz)` and
+`max_ij |H_ij| = max(|A|,|B|,|C|,|D|)`. This is a *four-dimensional*
+subspace of trace-free symmetric tensors; the independent azimuthal
+diagonal direction is absent (`H_theta,theta=0`). The seven Lean theorems
+in `UnforcedPatching/FourFieldPhysical.lean` verify the nine-entry gauge
+identity, the bound, symmetry, trace, inverse recovery and diagonal
+constraints. The independent exact rational `h8_four_field_map.py` test
+rejects attempted inversion outside that subspace.
+
+The source-matched meridional dual test excludes the stronger sufficient
+four-coordinate cap for one explicitly manufactured compact axial source.
+It does **not** exclude the original weaker seven-coefficient margin for
+that source, much less for the yet-to-be-authenticated H8 source. Tensor
+conjugation and spatial derivatives of a tilted frame remain separate
+obligations.
+
 A separate exact radial-derivative calculation now identifies a compact
 two-diagonal pressure-neutral gauge and a restricted sign obstruction:
 see [`H8_COMPACT_GAUGE_AND_POSITIVITY_BOUNDARY.md`](H8_COMPACT_GAUGE_AND_POSITIVITY_BOUNDARY.md).
-Lean checks only its radial derivative compatibility. The compact
-physical source match and positivity-constrained H8 inverse remain open.
+Lean also checks the cylindrical divergence identities and the finite
+four-field map, but not the full spatial inverse or cone attachment.
+The compact physical source match and positivity-constrained H8 inverse
+remain open.
 
 ## Exact release boundary
 
@@ -102,7 +133,8 @@ scale-sharp weighted compact symmetric-divergence inverse. The periodic
 projection and global time-dependent PDE geometry also require separate
 proof. These remain `OPEN` in `proof_gates.json`.
 
-Reproduction: build `UnforcedPatching.SevenRayCenterSmoke` and
-`UnforcedPatching.ConeBudgetSmoke` under the pinned Lean toolchain, and run
+Reproduction: build `UnforcedPatching.SevenRayCenterSmoke`,
+`UnforcedPatching.ConeBudgetSmoke`, and
+`UnforcedPatching.FourFieldPhysicalSmoke` under the pinned Lean toolchain, and run
 `python -m unittest discover -s tests -v`. A successful finite calculation
 must never promote the H8 analytic gate to complete.
