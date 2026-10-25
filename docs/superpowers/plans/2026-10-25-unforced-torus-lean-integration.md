@@ -62,6 +62,20 @@
 - [ ] **Step 4:** Run smoke and `#print axioms`; record whether initial torus kinetic-energy integrability is now a proved consequence or an explicit independent formalization gate.
 - [ ] **Step 5:** Commit definitions/smoke only, retaining status `G0 PARTIAL`.
 
+### Implementation name reconciliation (25 October 2026)
+
+The working tree's compiled Task 3 modules are `UnforcedPatching/Residual.lean`
+and `ResidualSmoke.lean`; Task 4 modules are `UnforcedPatching/Periodicity.lean`
+and `PeriodicitySmoke.lean`. In these files the physical theorem names are
+`navierStokesResidual_add`, `unitSpatialPeriodsOn_add`, and
+`spatialDivergence_add`. The finite-energy candidate field is
+`finite_cell_energy`, defined using the explicitly normalized Euclidean
+fundamental-cell Haar measure. These as-built names supersede the earlier
+placeholder `ResidualIdentity*`, `Geometry*`, and `finite_initial_energy`
+names below. An additional finite algebraic gate is implemented in
+`ConeBudget.lean` and `ConeBudgetSmoke.lean`; it proves the conditional
+seven-ray floor, **not** existence of the H8 compact inverse.
+
 ### Task 3: Exact physical residual identity
 
 **Files:**
