@@ -53,9 +53,13 @@ total axial force as the necessary and sufficient compatibility condition.
 A separate two-diagonal pressure-neutral construction exhibits a sharp
 radial sign obstruction. Finite seven-ray stress algebra yields the exact
 coefficient margin $15971/122900$ and sharp componentwise amplification
-factor $14$. Lean checks the finite cone algebra, radial pressure-gauge
-derivative identity, full physical residual expansion, and conditional
-retention of terminal speed. These results do not yet construct the
+factor $14$. A compact source-matched dual test excludes a stronger
+physical entrywise stress bound at the corresponding numerical scale;
+this condition is not identified with the original H8 coefficient cone.
+Lean additionally checks the meridional pointwise inverse and both
+integral antiderivative identities, alongside the finite cone algebra,
+physical residual expansion, and conditional terminal-speed retention.
+These results do not yet construct the
 source-matched, scale-sharp, positive-cone-compatible compact stress or
 a genuine zero-force singular solution. The global unforced existence
 question remains open.
@@ -87,7 +91,7 @@ in a prescribed positive stress cone, its components need quantitative
 control relative to a density envelope. Third, all terms in the actual
 nonlinear physical residual must cancel with a single periodic pressure.
 Finally, a singular leading trace can survive only if the correction is
-provably subleading. Sections 2--6 establish exact parts of this chain.
+provably subleading. Sections 2--7 establish exact parts of this chain.
 
 The construction of compact symmetric anti-divergence operators under
 force and torque compatibility is not new; see, for example, the
@@ -97,7 +101,9 @@ below is offered as an elementary source-specific coordinate realization,
 not as a priority claim for compact symmetric anti-divergence. The new
 obstacle for the present programme is the additional shrinking-support,
 weighted-seven-ray positivity requirement, which is not supplied by
-general existence of a compact tensor.
+general existence of a compact tensor. Section~\ref{sec:dual} also
+shows that a natural \emph{stronger} physical-component envelope is
+incompatible with one explicit source, even modulo pressure gradients.
 
 \section{A compact symmetric inverse in an annular region}
 
@@ -298,6 +304,105 @@ no estimate for the particular tensor delivered by
 Theorem~\ref{thm:inverse}. In particular, no implication from
 unweighted compact solvability to \eqref{eq:eps} is available.
 
+\section{A source-matched weighted dual obstruction}\label{sec:dual}
+
+The coefficient condition \eqref{eq:eps} involves four trace-free
+coordinates, not arbitrary physical tensor components. To test a
+particularly strong candidate estimate, let
+\begin{equation}\label{eq:dualprofiles}
+ P(r)=\begin{cases}(r-1)^2(2-r)^2,&1\le r\le2,\\0,&\text{otherwise},\end{cases}
+ \quad
+ \eta(z)=\begin{cases}(1-z^2)^3,&|z|\le1,\\0,&\text{otherwise}.\end{cases}
+\end{equation}
+Set $\rho(r,z)=P(r)\eta(z)\ge0$ and choose the meridional
+source $f=P(r)\eta'(z)e_z$. This is source-matched in the literal sense
+that $S=\rho\,e_z\otimes e_z$ is a compact symmetric inverse:
+$\diver S=f$. Also $\int r f_z\dd r\dd z=0$, so the force
+compatibility condition of Theorem~\ref{thm:inverse} holds.
+
+\begin{proposition}[A pressure-independent stress bound]
+\label{prop:dual}
+Let $\beta=15971/1720600$. No smooth compact symmetric tensor $H$
+and smooth scalar pressure $q$ satisfy both
+\begin{equation}\label{eq:dualprob}
+\begin{aligned}
+ \diver H+\nabla q&=f,\\
+ |H_{ij}|&\le\beta\rho\quad(i,j\in\{r,\theta,z\}),
+\end{aligned}
+\end{equation}
+where components refer to the \emph{orthonormal cylindrical frame}.
+The contradiction also persists for suitable smooth compact
+nonnegative approximations to the profiles in \eqref{eq:dualprofiles}.
+\end{proposition}
+
+\begin{proof}
+Construct an axisymmetric vector field with components
+\begin{equation}\label{eq:dualtest}
+ v_r=-rP\eta'',\qquad v_\theta=0,\qquad
+ v_z=(2P+rP')\eta'.
+\end{equation}
+It is divergence-free because
+$r^{-1}\partial_r(rv_r)+\partial_zv_z=0$.
+The zero-extended profiles give a compactly supported Lipschitz $v$:
+$P=P'=0$ at $r=1,2$, and $\eta'=\eta''=0$ at $z=\pm1$.
+Thus integration by parts against $v$ is legitimate, by approximation
+if necessary, and the pressure term vanishes. With the angular
+factor $2\pi$ suppressed, the source pairing is
+\begin{align}
+ L&=\int_1^2\!\int_{-1}^1 r f_zv_z\dd z\dd r\notag\\
+  &=\left(\int_1^2 rP^2\dd r\right)
+    \left(\int_{-1}^1(\eta')^2\dd z\right)
+    =\frac{1}{420}\,\frac{1024}{385}
+    =\frac{256}{40425}.\label{eq:dualL}
+\end{align}
+Here the middle equality follows by integrating $r^2PP'$ by parts.
+The physical cylindrical gradient of $v$ includes its hoop entry
+$v_r/r$. Its entrywise absolute sum is bounded by
+\begin{equation}\label{eq:dualgrad}
+ |\nabla v|_1\le
+ (4P+2r|P'|)|\eta''|+rP|\eta'''|
+ +(3|P'|+r|P''|)|\eta'|.
+\end{equation}
+The elementary exact radial integrals are
+$\int_1^2P=1/30$, $\int_1^2P^2=1/630$,
+$\int_1^2rP^2=1/420$, and
+$\int_1^2P|P'|=1/256$. On their supports,
+$r\le2$, $|P''|\le2$, $|\eta''|\le6$ and
+$|\eta'''|\le72|z|+120|z|^3$. Direct integration gives
+\[
+ \int_{-1}^1\eta=\frac{32}{35},\quad
+ \int_{-1}^1\eta|\eta'|=1,\quad
+ \int_{-1}^1\eta|z|=\frac14,\quad
+ \int_{-1}^1\eta|z|^3=\frac1{20}.
+\]
+Consequently, writing $U=\int_1^2\int_{-1}^1
+r\rho|\nabla v|_1\dd z\dd r$, one obtains the rigorous upper bound
+\begin{align}
+ U&\le\left(\frac4{420}+\frac2{64}\right)\frac{192}{35}
+   +\frac2{315}\,24+\frac3{128}+\frac4{15}
+   =\frac{313361}{470400}.\label{eq:dualU}
+\end{align}
+But \eqref{eq:dualprob} would imply $L\le\beta U$ by the virtual-work
+identity $\int f\cdot v=-\int H:\nabla v$, whereas
+\begin{equation}\label{eq:dualgap}
+ L-\beta\,\frac{313361}{470400}
+ =\frac{443015653}{2967690880000}>0,
+\end{equation}
+a contradiction. Nonnegative convolution approximations of $P$ and
+$\eta$, supported away from the axis, converge in the requisite
+derivative integral norms. The strict gap survives for sufficiently
+small smoothing parameters and proves the smooth-profile assertion.
+\end{proof}
+
+This proposition excludes only the \emph{entrywise physical} cap
+\eqref{eq:dualprob}. The number $\beta$ is borrowed from the sufficient
+four-coordinate budget \eqref{eq:eps}, but the transformation from
+those four coordinates to the physical tensor has not been proved to
+preserve the same cap. Proposition~\ref{prop:dual} therefore does
+\emph{not} disprove an H8 positive-cone inverse. It supplies an exact
+pressure-gauge-independent stress test that a proposed coordinate
+realization must confront, not a proof of global regularity or blow-up.
+
 \section{The physical residual and terminal speed}
 
 Define the viscosity-one residual
@@ -371,7 +476,8 @@ Lean module & Checked scope and the missing construction\\
 \texttt{Residual}, \texttt{Correction} & Full residual addition and conditional cancellation; no constructed correcting field.\\
 \texttt{Periodicity}, \texttt{PressureGauge} & Sum and time-only gauge identities; no periodic singular solution.\\
 \texttt{ConeBudget}, \texttt{ConeOperator}, \texttt{SevenRayCenter} & Exact rational centre and sharp factor $14$; no source-matched weighted positive stress.\\
-\texttt{CompactGauge} & One-variable derivative; no cylindrical tensor or support theorem.\\
+\texttt{CompactGauge} & One-variable gauge derivative; no compact tensor support theorem.\\
+\texttt{MeridionalInverse} & Actual axial and radial interval-integral FTC identities, geometric hoop cancellation, and pointwise radial/axial cylindrical inverse; no Cartesian tensor-divergence bridge or compact support theorem.\\
 \texttt{Retention} & Subleading corrections preserve terminal speed; neither required field constructed.\\
 \bottomrule
 \end{tabular}
@@ -384,11 +490,24 @@ yield an inhabitant of
 smoke-tested declarations are the standard logical axioms
 \texttt{propext}, \texttt{Classical.choice}, and \texttt{Quot.sound}.
 
-These compiled declarations do not include the cylindrical tensor calculus
-\eqref{eq:divr}--\eqref{eq:divz}, the integral construction
-\eqref{eq:HJ}--\eqref{eq:L}, compact-support theorems or weighted H8
-bounds. Theorem~\ref{thm:inverse} therefore has the complete analytic
-proof given above but is \emph{not yet Lean-formalized}.
+In particular, \texttt{meridional\_correction\_divergence} checks both
+components of \eqref{eq:divr}--\eqref{eq:divz} for the hoop stress
+\eqref{eq:L} and the actual interval-integral axial primitive
+\eqref{eq:C}, under stated local continuity and integrability
+assumptions. The separate declarations
+\texttt{radialMoment\_relation} and
+\texttt{mixedCarrier\_radial\_balance} verify the antiderivative
+identity in \eqref{eq:HJ} and its product carrier \eqref{eq:M}.
+The further theorem \texttt{sourceMatched\_axialStress} checks the
+pointwise cylindrical source match $S_{zz}=\rho$,
+$f_z=\partial_z\rho$ used in Proposition~\ref{prop:dual}.
+These results compile without proof admissions; selected axiom
+reports list only Lean's standard logical axioms. They remain
+pointwise statements about \emph{defined cylindrical expressions}:
+the Cartesian tensor-divergence equivalence, global support and
+regularity construction, moment compatibility and weighted H8
+estimate are not yet formalized in Lean. Thus the full restricted
+Theorem~\ref{thm:inverse} is \emph{partially}, not fully, formalized.
 
 An independent exact-arithmetic test evaluates a nontrivial annular
 polynomial instance of the radial compatibility identity. For the
@@ -397,6 +516,13 @@ $(r,z)=(5/4,1/2)$ equals $-5103/32768$ exactly; the test explicitly
 rejects the pressure-neutral interpretation in this case. The
 polynomial is used only for interior differentiation, not as an
 infinitely smooth zero-extended cutoff.
+
+A second independent exact-rational test reproduces
+\eqref{eq:dualL}--\eqref{eq:dualgap} from polynomial integrals and
+checks the complete cylindrical divergence of the dual test field.
+Its strict incompatibility concerns the explicit physical entrywise
+surrogate only; no executable test can substitute for a proof of
+the H8 coordinate-to-tensor bounds.
 
 The source code, machine-readable G0--G8 ledger, smoke tests and
 reproduction commands accompany the public integration branch
@@ -414,7 +540,13 @@ weighted attachment problem because the desired source may have an
 azimuthal component, a noncompact Leray-projected tail, nontrivial
 pressure coupling, or incompatible moments. Even when compact
 inversion is possible, the output may leave the required seven-ray
-positive cone, especially as the support shrinks.
+positive cone, especially as the support shrinks. The strict dual
+obstruction in Proposition~\ref{prop:dual} gives an additional
+quantitative warning against imposing an overly small physical
+entrywise envelope. The next mathematical question is whether a
+source-adapted inverse meets the \emph{actual four-coordinate} H8
+inequalities after its cylindrical tensor entries and pressure gauge
+have been related to those coordinates.
 
 A complete unforced singularity construction must still provide a
 single authenticated local profile, source-matched smooth shell

@@ -44,9 +44,13 @@ Lean proves
 \]
 
 `UnforcedPatching.CompactGaugeSmoke` compiles that actual derivative
-theorem and prints its axioms. The full cylindrical divergence formula,
-smooth cutoff/support claims and radial integral are mathematical
-calculations in this note, **not Lean theorems**.
+theorem and prints its axioms. An additional compilation target,
+`UnforcedPatching.MeridionalInverseSmoke`, now checks both meridional
+cylindrical coordinate-divergence identities, the axial interval-integral
+fundamental theorem of calculus, the radial moment integral, and the
+mixed-carrier product identity. The Cartesian tensor calculus bridge,
+smooth compact cutoff/support claims, and H8 weighted cone estimate
+remain outside those Lean theorems.
 
 For a reproducible exact interior check take
 `P(r)=(r-1)^4(2-r)^4`, `Q(z)=(1-z²)^4`, `F=P Q`.
@@ -97,3 +101,29 @@ four-field coordinate target from `ConeOperator` remains
 
 These requirements, all of G4, and the final unforced finite-time
 singularity theorem retain status **OPEN**.
+
+## Source-matched dual test and its exact limitation
+
+The cumulative manuscript now contains a complete pressure-gauge-independent
+test of the **stronger physical tensor-entry cap** `|H_ij| ≤ βρ` with
+`β=15971/1720600`. On the annular cylinder `1≤r≤2`, `|z|≤1`, let
+`P=(r−1)²(2−r)²`, `η=(1−z²)³`, `ρ=Pη` and the exactly source-matched
+`f=Pη' e_z`. The compact symmetric inverse `S=ρ e_z⊗e_z` has `div S=f`.
+
+The compact Lipschitz, divergence-free dual field
+`v_r=−rPη''`, `v_z=(2P+rP')η'` annihilates all pressure gradients.
+The exact radial/axial integrals give the lower source pairing
+`L=256/40425`, while the upper bound on the weighted full cylindrical
+gradient is `U≤313361/470400`. Thus
+
+\[
+ L-β(313361/470400)=443015653/2967690880000>0.
+\]
+
+The entrywise cap is impossible, even after smooth nonnegative
+approximation of the compact polynomial profiles. The exact arithmetic
+is independently replayed in `meridional_h8_certificate.py` and
+`tests/test_meridional_h8.py`. Critically, **these physical components are
+not proved to be the same as the four H8 stress coordinates**. The
+diagnostic does not establish an obstruction to the real H8 seven-ray
+cone or to the full unforced singularity problem; G4 and G8 remain OPEN.
