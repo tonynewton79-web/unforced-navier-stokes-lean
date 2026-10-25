@@ -61,6 +61,46 @@ class ProofGateTests(unittest.TestCase):
         self.assertNotEqual(result.returncode, 0)
         self.assertIn("G4: kernel-check evidence missing", result.stderr)
 
+    def test_invented_target_status_is_rejected(self):
+        """Even a fully syntactically populated ledger cannot invent a resolution label."""
+        data = json.loads(LEDGER.read_text(encoding="utf-8"))
+        for gate in data["gates"]:
+            gate["status"] = "LEAN_KERNEL_CHECKED"
+            gate["kernel_check"] = {
+                "commit_sha": "a" * 40,
+                "run_id": 123,
+                "conclusion": "success",
+                "axioms_checked": True,
+            }
+            gate["lean_declarations"] = ["MadeUp.theorem"]
+        data["target_theorem_status"] = "SOLVED_WITH_NO_THEOREM"
+        with tempfile.TemporaryDirectory() as temp:
+            candidate = Path(temp) / "invented.json"
+            candidate.write_text(json.dumps(data), encoding="utf-8")
+            result = run_check(candidate)
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn("invalid target theorem status", result.stderr)
+
+    def test_final_theorem_must_have_separate_receipt(self):
+        """Proving helper gates does not silently substitute for a final theorem."""
+        data = json.loads(LEDGER.read_text(encoding="utf-8"))
+        for gate in data["gates"]:
+            gate["status"] = "LEAN_KERNEL_CHECKED"
+            gate["kernel_check"] = {
+                "commit_sha": "a" * 40,
+                "run_id": 123,
+                "conclusion": "success",
+                "axioms_checked": True,
+            }
+            gate["lean_declarations"] = ["MadeUp.theorem"]
+        data["target_theorem_status"] = "LEAN_KERNEL_CHECKED"
+        with tempfile.TemporaryDirectory() as temp:
+            candidate = Path(temp) / "no_final_theorem.json"
+            candidate.write_text(json.dumps(data), encoding="utf-8")
+            result = run_check(candidate)
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn("final theorem receipt missing", result.stderr)
+
 
 if __name__ == "__main__":
     unittest.main()
