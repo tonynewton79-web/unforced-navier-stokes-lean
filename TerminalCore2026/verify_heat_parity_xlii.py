@@ -19,6 +19,6 @@ def lmb(u,v,w):
  Q=ax(v)*ax(S.diff(w,x))-ax(u)*ax(S.diff(w,y))
  return -(ax(u)*ax(-2*S.diff(u,x,y)+S.diff(v,x,2)-S.diff(v,y,2))+ax(v)*ax(S.diff(u,x,2)-S.diff(u,y,2)+2*S.diff(v,x,y))+S.diff(Q,z))/2
 assert S.simplify(S.diff(lmb(u0+q*N1,v0+q*N2,q*N3),q).subs(q,0))==0
-assert S.simplify((4*nu*S.diff(L,s).subs(s,1)).subs({k:1,z:2})-16*nu*e*e*S.exp(-8))==0
+assert S.simplify((4*nu*S.diff(L,s).subs(s,1)).subs({k:-1,z:2})-16*nu*e*e*S.exp(-8))==0
 print("PASS independent exact heat Lambda(t,z)=-4 k eps^2 s^-7 exp(-2z^2/s)")
 print("PASS half-turn odd/even pressure-complete nonlinear cross term vanishes")
