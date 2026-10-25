@@ -73,9 +73,9 @@
       "geometry": "T3",
       "status": "OPEN",
       "source": "Unforced_Finite-Time_Blow-Up_for_Navier-Stokes.tex, Part III and Appendix I; frozen upstream PhysicalResidualBridge",
-      "lean_declarations": ["UnforcedPatching.navierStokesResidual_add"],
+      "lean_declarations": ["UnforcedPatching.navierStokesResidual_add", "UnforcedPatching.navierStokesResidual_timeGauge", "UnforcedPatching.physicalCorrection_closes"],
       "kernel_check": null,
-      "remaining": "Full physical residual addition identity locally kernel-checked with both cross terms. Still must prove actual corrected residual vanishes, pressure gauge and periodic smoothness for t<1, without inherited force."
+      "remaining": "Full residual addition, time-only pressure-gauge invariance, and conditional physical correction closure locally kernel-checked. Still must construct an actual correction satisfying that equation for all points/times and establish periodic smoothness and terminal growth without forcing."
     },
     {
       "id": "G7",
