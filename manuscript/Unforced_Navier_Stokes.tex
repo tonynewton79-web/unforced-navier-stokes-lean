@@ -1,0 +1,450 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[a4paper,margin=27mm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,microtype}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs,array}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,citecolor=blue!45!black,linkcolor=blue!45!black,urlcolor=blue!50!black]{hyperref}
+\hypersetup{pdftitle={Unforced Navier--Stokes},pdfauthor={Tony Newton},
+  pdfsubject={Compact symmetric stresses, exact coefficient margins and formal verification}}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\setlength{\parindent}{1.25em}
+\setlength{\parskip}{0.20em}
+\setcounter{secnumdepth}{2}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\footnotesize UNFORCED NAVIER--STOKES}
+\fancyhead[R]{\footnotesize T. NEWTON}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.3pt}
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\T}{\mathbb{T}^{3}}
+\newcommand{\e}{\mathrm{e}}
+\newcommand{\supp}{\operatorname{supp}}
+\newcommand{\diver}{\operatorname{div}}
+\newcommand{\cc}{C_c^{\infty}}
+\newcommand{\dd}{\,\mathrm{d}}
+\newcommand{\norm}[1]{\lVert #1\rVert}
+\title{\vspace{-1.2em}\bfseries\LARGE Unforced Navier--Stokes\\[0.45em]
+  \large\mdseries Compact symmetric stresses, exact coefficient margins, and formal verification on the three-torus}
+\author{Tony Newton\\\small Newton Astro Labs, United Kingdom}
+\date{25 October 2026}
+
+\begin{document}
+\maketitle
+\thispagestyle{plain}
+\begin{abstract}
+The absence of external forcing makes the three-dimensional Navier--Stokes
+regularity problem substantially more restrictive than a construction with
+prescribed smooth forcing. We study exact mathematical prerequisites for a
+candidate unforced finite-time singularity on the periodic three-torus.
+An explicit compact symmetric-divergence inverse is proved for smooth
+axisymmetric meridional sources supported in an annulus, with vanishing
+total axial force as the necessary and sufficient compatibility condition.
+A separate two-diagonal pressure-neutral construction exhibits a sharp
+radial sign obstruction. Finite seven-ray stress algebra yields the exact
+coefficient margin $15971/122900$ and sharp componentwise amplification
+factor $14$. Lean checks the finite cone algebra, radial pressure-gauge
+derivative identity, full physical residual expansion, and conditional
+retention of terminal speed. These results do not yet construct the
+source-matched, scale-sharp, positive-cone-compatible compact stress or
+a genuine zero-force singular solution. The global unforced existence
+question remains open.
+\end{abstract}
+
+\section{The problem and the mathematical objective}
+
+We work at viscosity one on the unit three-torus
+$\T=\R^{3}/\mathbb{Z}^{3}$. For a smooth velocity $u(t,x)\in\R^{3}$
+and pressure $p(t,x)\in\R$, the unforced incompressible equations are
+\begin{equation}\label{eq:NS}
+  \partial_tu+(u\cdot\nabla)u-\Delta u+\nabla p=0,
+  \qquad \diver u=0.
+\end{equation}
+The specific target is to find nonzero smooth divergence-free periodic
+initial data and a solution smooth for $0\le t<1$, of finite kinetic
+energy on a fundamental cell, whose speed becomes unbounded as $t\uparrow1$.
+The source-free condition in \eqref{eq:NS} is essential: a verified
+construction with a nonzero smooth force does not establish this target.
+The Clay problem statement makes this distinction explicit
+\cite{Fefferman2000}. The published OpenAI Lean formalization states
+Navier--Stokes breakdown with smooth forcing; its unforced finite-time
+result concerns Euler rather than Navier--Stokes \cite{OpenAI2026}.
+
+Our approach isolates small results that are meaningful independently of
+the unresolved global theorem. First, a source must admit a compact
+symmetric-divergence correction. Second, if that correction must remain
+in a prescribed positive stress cone, its components need quantitative
+control relative to a density envelope. Third, all terms in the actual
+nonlinear physical residual must cancel with a single periodic pressure.
+Finally, a singular leading trace can survive only if the correction is
+provably subleading. Sections 2--6 establish exact parts of this chain.
+
+The construction of compact symmetric anti-divergence operators under
+force and torque compatibility is not new; see, for example, the
+support-preserving operator and its explicit moment correction in
+\cite[\S3.6 and Appendix A]{Zhao2026}. The direct axisymmetric formula
+below is offered as an elementary source-specific coordinate realization,
+not as a priority claim for compact symmetric anti-divergence. The new
+obstacle for the present programme is the additional shrinking-support,
+weighted-seven-ray positivity requirement, which is not supplied by
+general existence of a compact tensor.
+
+\section{A compact symmetric inverse in an annular region}
+
+Let $0<a<b$ and $c<d$, and write
+$\Omega=(a,b)\times(c,d)$ in meridional cylindrical coordinates $(r,z)$.
+All functions in this section are independent of the azimuthal angle
+$\theta$. The orthonormal cylindrical frame is $(e_r,e_\theta,e_z)$.
+For a symmetric tensor with components
+\begin{equation}\label{eq:stress}
+  S=K\,e_r\otimes e_r+L\,e_\theta\otimes e_\theta
+    +M(e_r\otimes e_z+e_z\otimes e_r)
+    +C\,e_z\otimes e_z,
+\end{equation}
+standard cylindrical differentiation gives
+\begin{align}
+ (\diver S)_r&=\partial_rK+\frac{K-L}{r}+\partial_zM,
+       \label{eq:divr}\\
+ (\diver S)_z&=\partial_rM+\frac Mr+\partial_zC,
+       \label{eq:divz}\\
+ (\diver S)_\theta&=0.\notag
+\end{align}
+The $1/r$ terms are geometric, not lower-order terms that may be
+discarded near a shrinking cylindrical support.
+
+\begin{theorem}[Explicit compact meridional inversion]\label{thm:inverse}
+Let $f_r,f_z\in\cc(\Omega)$, and extend
+$f=f_r e_r+f_z e_z$ by zero to $\R^{3}$ in cylindrical coordinates.
+There is a symmetric $S\in\cc(\R^{3};\operatorname{Sym}_3)$,
+axisymmetric and supported in the same open annular cylinder, with
+$\diver S=f$, if and only if
+\begin{equation}\label{eq:vertical-force}
+ \int_a^b\int_c^d r f_z(r,z)\dd z\dd r=0.
+\end{equation}
+The construction uses no nonlocal spatial projection, but it asserts no
+positive-semidefinite or weighted-cone bound on $S$.
+\end{theorem}
+
+\begin{proof}
+For necessity, integrate the axial component of $\diver S=f$
+against the cylindrical Jacobian $r$. Compact support and
+\eqref{eq:divz} give
+\[
+ \int_a^b\int_c^d r f_z\dd z\dd r
+ =\int_a^b\int_c^d\bigl[\partial_r(rM)+r\partial_zC\bigr]
+   \dd z\dd r=0.
+\]
+For sufficiency, define the axial source marginal and its radial
+primitive by
+\begin{equation}\label{eq:HJ}
+ J(r)=\int_c^d f_z(r,z)\dd z,
+ \qquad H(r)=\frac1r\int_a^r sJ(s)\dd s.
+\end{equation}
+Since $r>0$ on $[a,b]$, $H$ is smooth. The vanishing moment
+\eqref{eq:vertical-force} makes $H$ identically zero outside a compact
+subinterval of $(a,b)$. Choose any $\eta\in\cc((c,d))$ normalized by
+$\int_c^d\eta(z)\dd z=1$, and set
+\begin{equation}\label{eq:M}
+ M(r,z)=H(r)\eta(z).
+\end{equation}
+The identity $(rH)'=rJ$ implies
+\[
+ \int_c^d\left(f_z-\partial_rM-\frac Mr\right)\dd z
+   =J-H'-\frac Hr=0.
+\]
+Consequently the axial primitive
+\begin{equation}\label{eq:C}
+ C(r,z)=\int_c^z\left[f_z(r,\zeta)-\partial_rM(r,\zeta)
+                  -\frac{M(r,\zeta)}r\right]\dd\zeta
+\end{equation}
+vanishes both below and above the axial support; it is smooth and
+compactly supported in $\Omega$. Choose any $K\in\cc(\Omega)$,
+including $K=0$, and define
+\begin{equation}\label{eq:L}
+ L=K+r\bigl(\partial_rK+\partial_zM-f_r\bigr).
+\end{equation}
+Each component of \eqref{eq:stress} is smooth and compactly supported
+away from the axis. Substitution in \eqref{eq:divr} gives
+\[
+ \partial_rK+\frac{K-L}{r}+\partial_zM
+ =\partial_rK-(\partial_rK+\partial_zM-f_r)+\partial_zM=f_r,
+\]
+and \eqref{eq:C} gives $\partial_rM+M/r+\partial_zC=f_z$.
+Thus $\diver S=f$ as claimed.
+\end{proof}
+
+\begin{remark}[Scope of the construction]
+The theorem concerns a meridional source with $f_\theta=0$ and support
+strictly separated from $r=0$. An azimuthal source introduces a
+different angular-momentum compatibility condition, and extending
+the construction across the axis requires separate regularity
+conditions on the cylindrical components. The tensor in the theorem
+may be indefinite, and its size can deteriorate when the support
+shrinks. None of these omissions is harmless for the weighted H8
+attachment problem.
+\end{remark}
+
+\section{Pressure-neutral gauges and a sign obstruction}
+
+The mixed and hoop degrees of freedom in Theorem~\ref{thm:inverse} are
+not optional decorations. A restricted diagonal ansatz exhibits a
+genuine obstruction to maintaining one sign.
+
+\begin{proposition}[Two-diagonal gauge]\label{prop:gauge}
+Let $F\in\cc(\Omega)$, put $K=rF_r$ and $C=F+rF_r$, and take
+$S=K e_r\otimes e_r+C e_z\otimes e_z$. Then
+\begin{equation}\label{eq:gauge}
+ \diver S=\nabla C.
+\end{equation}
+In particular its divergence is a pressure gradient, so it cannot by
+itself represent a prescribed source with a nonzero solenoidal part.
+\end{proposition}
+
+\begin{proof}
+The radial divergence is $K_r+K/r$. Since $K=rF_r$,
+$C_r=F_r+K_r=K/r+K_r$. The axial divergence is $C_z$,
+which proves \eqref{eq:gauge}.
+\end{proof}
+
+\begin{proposition}[Restricted radial sign condition]\label{prop:sign}
+If $K$ and $C$ are compactly supported in $r\in(a,b)$ at a fixed $z$
+and obey $C_r=K_r+K/r$, then
+\begin{equation}\label{eq:momentK}
+ \int_a^b K(r,z)/r\dd r=0.
+\end{equation}
+Consequently, $K\ge0$ forces $K\equiv0$ for this restricted two-diagonal
+class.
+\end{proposition}
+
+\begin{proof}
+Integrate the derivative identity between $a$ and $b$;
+the endpoint terms of $K$ and $C$ vanish by compact support.
+Since $r>0$, continuity and \eqref{eq:momentK} imply that a
+nonnegative $K$ is identically zero.
+\end{proof}
+
+This conclusion does not exclude a sign-changing correction around a
+positive background tensor or a compact construction with nonzero
+hoop and mixed components. Indeed, Theorem~\ref{thm:inverse} explicitly
+uses both of those components. The more difficult question is whether
+one can choose them while retaining a prescribed strict coefficient
+cone with uniform shrinking-support estimates.
+
+\section{The exact seven-ray coefficient margin}
+
+The finite cone appearing in the current H8 source has seven rays.
+With aperture $t=1/4$ they are
+\begin{equation}\label{eq:rays}
+\begin{aligned}
+ v_1&=(1,0,0), &v_2&=(1,t,0),&v_3&=(1,-t,0),\\
+ v_4&=(1,0,t),&v_5&=(1,0,-t),\\
+ v_6&=(1,t,t),&v_7&=(1,t,-t).
+\end{aligned}
+\end{equation}
+Their normalized positive coefficient centre is
+$c^{(0)}_i=236/1229$ for $i=3$ and $172/1229$ for every other
+index. The raw source covariance and its trace-free rank-one identity
+are established by exact finite arithmetic and in
+\texttt{UnforcedPatching.SevenRayCenter.lean}.
+
+Write $(A,B,C,D)\in\R^4$ for the four trace-free stress coordinates.
+The resulting coefficient perturbations, in ray order, are
+\begin{equation}\label{eq:linear-map}
+ \delta c=\left(
+ -\tfrac32 D,\ 2C-4D,\ -2C-4D,\
+ 2A-8B+4D,\ -2A+8B+4D,\ 8B,\ -8B\right).
+\end{equation}
+
+\begin{proposition}[Sharp componentwise cone estimate]\label{prop:14}
+For $m=\max(|A|,|B|,|C|,|D|)$ the map
+\eqref{eq:linear-map} satisfies
+\begin{equation}\label{eq:14}
+ \max_{1\le i\le7}|\delta c_i|\le14m,
+\end{equation}
+and the number $14$ is optimal. If $\rho\ge0$ and
+\begin{equation}\label{eq:eps}
+ m\le\frac{15971}{1720600}\rho,
+\end{equation}
+then for every ray $c_i^{(0)}\rho+\delta c_i\ge\rho/100$.
+\end{proposition}
+
+\begin{proof}
+The absolute row sums in \eqref{eq:linear-map} are respectively
+$3/2$, $6$, $6$, $14$, $14$, $8$, $8$; hence the operator norm
+from $\ell^\infty(\R^4)$ to $\ell^\infty(\R^7)$ is at most $14$.
+At $(A,B,C,D)=(1,-1,0,1)$, the fourth coordinate equals $14$,
+so the constant is sharp. Since
+\[
+ \frac{172}{1229}-\frac1{100}=\frac{15971}{122900},
+\]
+inequality \eqref{eq:eps} implies
+$|\delta c_i|\le 14m\le(15971/122900)\rho$.
+As $c_i^{(0)}\ge172/1229$, the claimed floor follows.
+\end{proof}
+
+The seven-ray claim is a finite linear-algebra statement. It provides
+the exact smallness target for a potential compact correction but gives
+no estimate for the particular tensor delivered by
+Theorem~\ref{thm:inverse}. In particular, no implication from
+unweighted compact solvability to \eqref{eq:eps} is available.
+
+\section{The physical residual and terminal speed}
+
+Define the viscosity-one residual
+\begin{equation}\label{eq:residual}
+ \mathcal N(u,p)=u_t+(u\cdot\nabla)u-\Delta u+\nabla p.
+\end{equation}
+For smooth $(u,p)$ and $(w,q)$, direct expansion yields
+\begin{equation}\label{eq:add}
+ \mathcal N(u+w,p+q)=\mathcal N(u,p)+\mathcal N(w,q)
+   +(u\cdot\nabla)w+(w\cdot\nabla)u.
+\end{equation}
+Both nonlinear cross terms are essential. Equation \eqref{eq:add},
+with explicit differentiability assumptions in the upstream physical
+definitions, is checked in Lean by the declaration
+\texttt{UnforcedPatching.}\allowbreak
+\texttt{navierStokesResidual\_add}.
+
+\begin{proposition}[Conditional terminal retention]\label{prop:ret}
+Suppose that $u$ has arbitrarily large speed at points with
+$t\uparrow1$. If a correction $w$ satisfies
+\begin{equation}\label{eq:subleading}
+ \norm{w(t,x)}\le\alpha\norm{u(t,x)}+C_0,
+ \qquad 0\le\alpha<1,\quad C_0\ge0,
+\end{equation}
+uniformly on $0<t<1$ and $x\in\T$, then $u+w$ also has
+arbitrarily large speed arbitrarily close to time one.
+\end{proposition}
+
+\begin{proof}
+The reverse triangle inequality and \eqref{eq:subleading} give
+\[
+ \norm{u+w}\ge\norm{u}-\norm{w}
+ \ge(1-\alpha)\norm{u}-C_0.
+\]
+Given any target speed $M>0$ and any terminal neighbourhood,
+choose a point therein where
+$\norm{u}>(M+C_0)/(1-\alpha)$.
+Then $\norm{u+w}>M$ at that point.
+\end{proof}
+
+This last implication is kernel-checked by the Lean theorem
+\begin{center}
+\small\texttt{UnforcedPatching.speedUnbounded\_add\_subleading}
+\end{center}
+It is deliberately conditional: no field $u$ meeting the singularity
+premise, and no actual PDE correction $w$ meeting
+\eqref{eq:subleading}, has been supplied by these lemmas.
+
+\section{What the formal development proves}
+
+The Lean project is pinned to Lean $4.34.0$-rc2 and a fixed Mathlib
+revision. The checked physical interface states smoothness, three
+coordinate periods, zero forcing, nonzero initial data, finite
+fundamental-cell kinetic energy and endpoint speed divergence. Its
+existential proposition is named
+\texttt{UnforcedPatching.unforcedTargetStatement}; there is no proof
+term inhabiting that proposition.
+
+Actual Lean theorems cover the full nonlinear residual addition
+\eqref{eq:add}, divergence and periodicity preservation for sums,
+time-only pressure-gauge invariance, a sufficient physical correction
+identity, the finite seven-ray data and \eqref{eq:14},
+the derivative identity used in Proposition~\ref{prop:gauge}, and
+Proposition~\ref{prop:ret}. The printed axioms for these declarations
+are the standard logical axioms
+\texttt{propext}, \texttt{Classical.choice}, and \texttt{Quot.sound}.
+Their scope does not include the cylindrical tensor calculus
+\eqref{eq:divr}--\eqref{eq:divz}, the integral construction
+\eqref{eq:HJ}--\eqref{eq:L}, compact-support theorems or weighted H8
+bounds. Theorem~\ref{thm:inverse} therefore has the complete analytic
+proof given above but is \emph{not yet Lean-formalized}.
+
+An independent exact-arithmetic test evaluates a nontrivial annular
+polynomial instance of the radial compatibility identity. For the
+uncompensated purely radial version, the curl obstruction at
+$(r,z)=(5/4,1/2)$ equals $-5103/32768$ exactly; the test explicitly
+rejects the pressure-neutral interpretation in this case. The
+polynomial is used only for interior differentiation, not as an
+infinitely smooth zero-extended cutoff.
+
+The source code, machine-readable G0--G8 ledger, smoke tests and
+reproduction commands accompany the public integration branch
+\cite{NewtonRepo2026}. A local pinned build has passed ten smoke
+modules; at the time of preparing this edition, the corresponding
+GitHub-hosted Actions checks had not furnished a successful receipt
+for the latest commit. Local compilation does not replace hosted CI,
+semantic theorem auditing or independent scrutiny of the paper proof.
+
+\section{Remaining analytic requirements}
+
+The compact meridional inverse of Theorem~\ref{thm:inverse} is a
+properly restricted solvability result. It does not resolve the
+weighted attachment problem because the desired source may have an
+azimuthal component, a noncompact Leray-projected tail, nontrivial
+pressure coupling, or incompatible moments. Even when compact
+inversion is possible, the output may leave the required seven-ray
+positive cone, especially as the support shrinks.
+
+A complete unforced singularity construction must still provide a
+single authenticated local profile, source-matched smooth shell
+data, a scale-sharp weighted symmetric inverse respecting the
+coefficient margin \eqref{eq:eps}, a periodic nonlinear correction
+with a proved right-inverse/contraction scheme, the full physical
+zero-residual identity, and terminal retention for that actual
+correction. Each claim requires a further source-to-Lean semantic
+audit and a compiled theorem using the genuine PDE definitions.
+
+Thus the present mathematical result is an exact compact stress
+construction and several independently checked necessary or
+conditional ingredients. The existence or nonexistence of a
+finite-time singular solution to \eqref{eq:NS} with smooth nonzero
+periodic initial data is \emph{not decided by this manuscript}.
+
+\begin{thebibliography}{9}
+\bibitem{Fefferman2000}
+C. Fefferman, \emph{Existence and Smoothness of the Navier--Stokes
+Equation}, Clay Mathematics Institute Millennium Prize Problem
+statement, \url{https://www.claymath.org/wp-content/uploads/2022/06/navierstokes.pdf}.
+
+\bibitem{OpenAI2026}
+OpenAI, \emph{Finite time blowup for Navier--Stokes} (2026), and the
+associated formalization repository,
+\url{https://github.com/openai/NavierStokesAndEuler}.
+The Navier--Stokes result uses smooth forcing; the unforced result
+in that repository concerns Euler.
+
+\bibitem{Zhao2026}
+X. Zhao, \emph{Compactly Supported Finite-Energy Stationary Solutions of
+the Three-Dimensional Navier--Stokes Equations} (2026),
+arXiv:2608.17383, \url{https://arxiv.org/abs/2608.17383}.
+See the compact symmetric anti-divergence construction in Section 3.6
+and Appendix A. Its stationary solutions are distributional; they do
+not settle classical smooth-solution regularity.
+
+\bibitem{Leray1934}
+J. Leray, \emph{Sur le mouvement d'un liquide visqueux emplissant
+l'espace}, Acta Mathematica \textbf{63} (1934), 193--248.
+
+\bibitem{CKN1982}
+L. Caffarelli, R. Kohn, and L. Nirenberg, \emph{Partial regularity
+of suitable weak solutions of the Navier--Stokes equations},
+Communications on Pure and Applied Mathematics \textbf{35} (1982),
+771--831.
+
+\bibitem{NewtonRepo2026}
+T. Newton, \emph{Unforced Navier--Stokes Lean integration branch},
+\url{https://github.com/tonynewton79-web/unforced-navier-stokes-lean/pull/3}
+(accessed 25 October 2026).
+\end{thebibliography}
+\end{document}
