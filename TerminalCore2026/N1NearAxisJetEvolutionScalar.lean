@@ -24,17 +24,16 @@ theorem xlii_even_odd_cross_vanish
     (cross : ℝ) (h : cross = -cross) : cross = 0 := by
   linarith
 
-theorem xlii_positive_at_z_two (nu eps e8 : ℝ)
-    (hnu : 0 < nu) (heps : eps ≠ 0)
+theorem xlii_positive_at_z_two (nu epsSq e8 : ℝ)
+    (hn : 0 < nu) (heps : 0 < epsSq)
     (hexp : 0 < e8) :
-    0 < 16*nu*eps^2*e8 := by
-  have hs : 0 < eps^2 := sq_pos_of_ne_zero heps
+    0 < 16*nu*epsSq*e8 := by
   positivity
 
-theorem xlii_negative_at_axis (nu eps : ℝ)
-    (hn : 0 < nu) (he : eps ≠ 0) :
-    -(112*nu*eps^2) < 0 := by
-  have hs : 0 < eps^2 := sq_pos_of_ne_zero he
+theorem xlii_negative_at_axis (nu epsSq : ℝ)
+    (hn : 0 < nu) (heps : 0 < epsSq) :
+    -(112*nu*epsSq) < 0 := by
+  have hp : 0 < nu*epsSq := mul_pos hn heps
   nlinarith
 
 theorem xlii_gaussian_sign_threshold (z : ℝ)
