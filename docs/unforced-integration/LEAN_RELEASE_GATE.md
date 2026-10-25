@@ -7,8 +7,8 @@ Date: 25 October 2026. Branch: `integration/unforced-torus-20261025`.
 - Lean: `4.34.0-rc2` (commit `6a10ac8c22beadecabdbb0919c2b50214762f91d`)
 - Upstream: `openai/NavierStokesAndEuler@f9e8bc5b38b6e212696e8a30e3e91517af887bbd`
 - Mathlib: `85e3a25e006c35636f0e53b0e9296caca2685bc0`
-- Command: `lake build UnforcedPatching.DefinitionsSmoke UnforcedPatching.ResidualSmoke UnforcedPatching.PeriodicitySmoke UnforcedPatching.ConeBudgetSmoke UnforcedPatching.ConeOperatorSmoke UnforcedPatching.SevenRayCenterSmoke UnforcedPatching.PressureGaugeSmoke UnforcedPatching.CorrectionSmoke UnforcedPatching.RetentionSmoke`
-- Result: **LOCAL COMPILE PASS** (nine smoke targets completed in a 3,321-job Lake build, zero errors). This does not imply GitHub CI has passed.
+- Command: `lake build UnforcedPatching.DefinitionsSmoke UnforcedPatching.ResidualSmoke UnforcedPatching.PeriodicitySmoke UnforcedPatching.ConeBudgetSmoke UnforcedPatching.ConeOperatorSmoke UnforcedPatching.SevenRayCenterSmoke UnforcedPatching.PressureGaugeSmoke UnforcedPatching.CorrectionSmoke UnforcedPatching.RetentionSmoke UnforcedPatching.CompactGaugeSmoke`
+- Result: **LOCAL COMPILE PASS** for all ten smoke targets in one 3,327-job Lake build, zero errors, including the new compact-gauge theorem. This does not imply GitHub CI has passed.
 - Printed axiom sets for the new theorems: `[propext, Classical.choice, Quot.sound]`, without project-local axioms or `sorryAx`.
 
 ## What these kernel checks actually establish
@@ -22,10 +22,11 @@ Date: 25 October 2026. Branch: `integration/unforced-torus-20261025`.
 7. Full rational source-matched seven-ray covariance, its trace and rank-one projector, the coefficient scaling, and the transformed physical axial-product efficiency `4443/9832`. Independent Python `fractions.Fraction` tests reproduce the finite calculation.
 8. Conditional terminal speed retention: if the physical correction obeys `‖w‖ ≤ α‖u‖ + C` at all positive presingular times, with `0 ≤ α < 1` and `C ≥ 0`, unbounded speed of `u` transfers to `u+w`. This does **not** certify the H8 spatial correction, the relative estimate, or a singular leading field.
 9. The sharp four-field-to-seven-ray coefficient operator norm is exactly `14` in the componentwise maximum norm. It yields an explicitly stronger **sufficient** stress-coordinate smallness condition `max(|A|,|B|,|C|,|D|) ≤ (15971/1720600)ρ`, not a constructed compact weighted inverse.
+10. A genuine radial derivative compatibility theorem for the explicit two-diagonal pressure-neutral gauge `K=r F_r`, `C=K+F`. The full cylindrical divergence identity and zero radial moment are paper calculations, not formal theorems. The pressure-neutral gauge does not solve the **prescribed** H8 residual and does not guarantee positivity. An independent exact rational polynomial negative control finds uncompensated pure-radial divergence curl `-5103/32768` at `(5/4,1/2)`.
 
 ## CI promotion boundary
 
-The workflow `.github/workflows/unforced-torus-patching.yml` is introduced in this branch. Its PR #3 run [40181414568](https://github.com/tonynewton79-web/unforced-navier-stokes-lean/actions/runs/40181414568) on the preceding head `69d71bb` was observed **QUEUED** on 25 October; the new terminal-retention module will require another run after publication. No successful commit SHA or run can yet be claimed. After a successful action, record its actual run and commit hash here. Do not promote G0, G2, G4, G6, G7, or the full target to `LEAN_KERNEL_CHECKED` solely on passing these helper-module tests: their PDE-construction obligations remain open.
+The workflow `.github/workflows/unforced-torus-patching.yml` is in this branch. Its PR #3 run [40191730077](https://github.com/tonynewton79-web/unforced-navier-stokes-lean/actions/runs/40191730077) on the preceding head `fbe23c3` was observed **QUEUED** on 25 October; the compact-gauge theorem requires a new run after publication. No successful commit SHA or run can yet be claimed. After a successful action, record its actual run and commit hash here. Do not promote G0, G2, G4, G6, G7, or the full target to `LEAN_KERNEL_CHECKED` solely on passing these helper-module tests: their PDE-construction obligations remain open.
 
 The release validator now restricts the final target status to `OPEN` or `LEAN_KERNEL_CHECKED`. A purported final proof also requires a separately identified `UnforcedPatching.unforcedExistenceTheorem` proving `unforcedTargetStatement`, a statement digest, and CI receipt. These are syntactic checks, **not** cryptographic or online authentication of the run; a human/source audit remains mandatory. The receipt and final theorem do not currently exist.
 

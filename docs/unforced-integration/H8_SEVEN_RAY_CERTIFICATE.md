@@ -80,6 +80,12 @@ This sharper numerical target is useful for testing a proposed compact
 weighted inverse, but it is stronger than the original coefficientwise
 condition and no such source-matched inverse has been constructed here.
 
+A separate exact radial-derivative calculation now identifies a compact
+two-diagonal pressure-neutral gauge and a restricted sign obstruction:
+see [`H8_COMPACT_GAUGE_AND_POSITIVITY_BOUNDARY.md`](H8_COMPACT_GAUGE_AND_POSITIVITY_BOUNDARY.md).
+Lean checks only its radial derivative compatibility. The compact
+physical source match and positivity-constrained H8 inverse remain open.
+
 ## Exact release boundary
 
 Nothing here provides a compact symmetric tensor `H` with
