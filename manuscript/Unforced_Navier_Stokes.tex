@@ -37,7 +37,7 @@
 \title{\vspace{-1.2em}\bfseries\LARGE Unforced Navier--Stokes\\[0.45em]
   \large\mdseries Compact symmetric stresses, exact coefficient margins, and formal verification on the three-torus}
 \author{Tony Newton\\\small Newton Astro Labs, United Kingdom}
-\date{25 October 2026}
+\date{}
 
 \begin{document}
 \maketitle
@@ -356,15 +356,35 @@ existential proposition is named
 \texttt{UnforcedPatching.unforcedTargetStatement}; there is no proof
 term inhabiting that proposition.
 
-Actual Lean theorems cover the full nonlinear residual addition
-\eqref{eq:add}, divergence and periodicity preservation for sums,
-time-only pressure-gauge invariance, a sufficient physical correction
-identity, the finite seven-ray data and \eqref{eq:14},
-the derivative identity used in Proposition~\ref{prop:gauge}, and
-Proposition~\ref{prop:ret}. The printed axioms for these declarations
-are the standard logical axioms
+The precise correspondence between the paper and the compiled
+\texttt{UnforcedPatching} declarations is as follows. In the third
+column, ``missing'' refers to mathematical constructions, not to
+unresolved Lean goals inside the named theorems.
+\begin{center}
+\small
+\renewcommand{\arraystretch}{1.17}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.31\linewidth}>{\raggedright\arraybackslash}p{0.61\linewidth}@{}}
+\toprule
+Lean module & Checked scope and the missing construction\\
+\midrule
+\texttt{Definitions} & Physical candidate predicates; no candidate witness.\\
+\texttt{Residual}, \texttt{Correction} & Full residual addition and conditional cancellation; no constructed correcting field.\\
+\texttt{Periodicity}, \texttt{PressureGauge} & Sum and time-only gauge identities; no periodic singular solution.\\
+\texttt{ConeBudget}, \texttt{ConeOperator}, \texttt{SevenRayCenter} & Exact rational centre and sharp factor $14$; no source-matched weighted positive stress.\\
+\texttt{CompactGauge} & One-variable derivative; no cylindrical tensor or support theorem.\\
+\texttt{Retention} & Subleading corrections preserve terminal speed; neither required field constructed.\\
+\bottomrule
+\end{tabular}
+\end{center}
+In particular, the residual-addition, correction-closure,
+seven-ray-floor, and terminal-retention declarations are all
+implications with explicit hypotheses. Their conjunction does not
+yield an inhabitant of
+\texttt{unforcedTargetStatement}. The printed axioms for the selected
+smoke-tested declarations are the standard logical axioms
 \texttt{propext}, \texttt{Classical.choice}, and \texttt{Quot.sound}.
-Their scope does not include the cylindrical tensor calculus
+
+These compiled declarations do not include the cylindrical tensor calculus
 \eqref{eq:divr}--\eqref{eq:divz}, the integral construction
 \eqref{eq:HJ}--\eqref{eq:L}, compact-support theorems or weighted H8
 bounds. Theorem~\ref{thm:inverse} therefore has the complete analytic
@@ -421,16 +441,11 @@ statement, \url{https://www.claymath.org/wp-content/uploads/2022/06/navierstokes
 OpenAI, \emph{Finite time blowup for Navier--Stokes} (2026), and the
 associated formalization repository,
 \url{https://github.com/openai/NavierStokesAndEuler}.
-The Navier--Stokes result uses smooth forcing; the unforced result
-in that repository concerns Euler.
 
 \bibitem{Zhao2026}
 X. Zhao, \emph{Compactly Supported Finite-Energy Stationary Solutions of
 the Three-Dimensional Navier--Stokes Equations} (2026),
 arXiv:2608.17383, \url{https://arxiv.org/abs/2608.17383}.
-See the compact symmetric anti-divergence construction in Section 3.6
-and Appendix A. Its stationary solutions are distributional; they do
-not settle classical smooth-solution regularity.
 
 \bibitem{Leray1934}
 J. Leray, \emph{Sur le mouvement d'un liquide visqueux emplissant
@@ -444,7 +459,6 @@ Communications on Pure and Applied Mathematics \textbf{35} (1982),
 
 \bibitem{NewtonRepo2026}
 T. Newton, \emph{Unforced Navier--Stokes Lean integration branch},
-\url{https://github.com/tonynewton79-web/unforced-navier-stokes-lean/pull/3}
-(accessed 25 October 2026).
+\url{https://github.com/tonynewton79-web/unforced-navier-stokes-lean/pull/3}.
 \end{thebibliography}
 \end{document}
