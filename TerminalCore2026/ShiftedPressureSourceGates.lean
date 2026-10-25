@@ -46,7 +46,6 @@ theorem shifted_pressure_laplacian_source_identity
     (r alpha B G f df : ℝ) (hr : r ≠ 0) :
     r*(alpha*B*f-G*df/r) = r*alpha*B*f-G*df := by
   field_simp
-  ring
 
 theorem shifted_pressure_time_source_identity
     (r q Linv H alpha B dB G dG f df ddf : ℝ) (hr : r ≠ 0) :
