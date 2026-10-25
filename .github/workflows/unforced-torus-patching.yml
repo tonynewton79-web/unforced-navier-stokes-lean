@@ -62,6 +62,7 @@ jobs:
           lake build UnforcedPatching.SevenRayCenterSmoke
           lake build UnforcedPatching.PressureGaugeSmoke
           lake build UnforcedPatching.CorrectionSmoke
+          lake build UnforcedPatching.RetentionSmoke
 
       - name: Revalidate fail-closed mathematical gate ledger
         run: |

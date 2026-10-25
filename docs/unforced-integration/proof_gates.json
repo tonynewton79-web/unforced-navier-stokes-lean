@@ -83,9 +83,9 @@
       "geometry": "T3",
       "status": "OPEN",
       "source": "Exact_Local_Unforced_Terminal_Core_Dynamics_JFM_FINAL.tex, core axis trace; PR #1 Edition XLII (short-time torque only)",
-      "lean_declarations": [],
+      "lean_declarations": ["UnforcedPatching.speedUnbounded_add_subleading", "UnforcedPatching.speedUnbounded_add_bounded"],
       "kernel_check": null,
-      "remaining": "Bound actual global correction along a terminal trajectory so a nonzero leading local trace yields SpeedUnboundedAtOne."
+      "remaining": "A local Lean theorem verifies speed retention conditionally under a strict relative correction bound α < 1 (or a uniform bound). Still construct the leading singular physical field and prove the required bound for an actual global correction; G7 remains OPEN."
     },
     {
       "id": "G8",

@@ -15,7 +15,7 @@ The authoritative machine-readable gate data are in [`proof_gates.json`](proof_g
 | G4 — shrinking spatial attachment | Torus | **OPEN**; exact pointwise margin algebra compiled in Lean | One explicit compact H8 profile and weighted inverse with exact coefficient budget `15971/122900`. |
 | G5 — coupled contraction | Torus | **OPEN** | Physical right-inverse range `K_full G_reg S_r(Y) ⊆ Y_c`, constants `4 M_G C_B η < 1`, Banach completeness and smoothness bootstrap. |
 | G6 — physical unforced completion | Torus | **OPEN** | Full zero vector-valued residual, one pressure gauge, smooth periodic finite-energy solution on every `t<1`. |
-| G7 — singular trace retention | Torus | **OPEN** | Correction subleading along a genuine terminal trajectory, yielding `SpeedUnboundedAtOne`. |
+| G7 — singular trace retention | Torus | **OPEN**; conditional subleading-correction theorem locally compiled in Lean | Produce a genuine singular leading field and verify the needed strict relative correction bound along its terminal approach. |
 | G8 — final Lean theorem | Torus | **OPEN** | Full end-to-end theorem free of project-local axioms/admissions, audited `#print axioms` and a successful pinned CI run. |
 
 Source-of-claim distinctions:
@@ -27,6 +27,7 @@ Source-of-claim distinctions:
 - `UnforcedPatching.ConeBudget` now kernel-checks the exact rational difference `172/1229 - 1/100 = 15971/122900` and derives a seven-ray positive coefficient floor **assuming** the bound on all seven corrections. It does not construct the weighted compact inverse or certify that the bound holds for any specific profile.
 - `UnforcedPatching.SevenRayCenter` computes the full `3×3` raw rational covariance directly from the seven rays, proves its trace, the source-matched trace-free rank-one projector, all seven normalized raw coefficients, and the exact physical radial–axial product `-4443/9832`. The independent `tests/test_seven_ray_exact.py` replay agrees. This verifies algebraic H8 input, not the existence or bounds of a spatial stress solution.
 - `UnforcedPatching.PressureGauge` proves spatially constant time-dependent shifts do not change the pressure gradient or full residual. `UnforcedPatching.Correction` proves that an actual solution of the complete pointwise nonlinear correction equation cancels the residual of the summed field. Neither module constructs the correction, solves H8 or proves terminal speed blow-up.
+- `UnforcedPatching.Retention` proves the exact `SpeedUnboundedAtOne` quantifiers persist under `‖w(t,x)‖ ≤ α ‖u(t,x)‖ + C` on physical times when `0 ≤ α < 1` and `C ≥ 0`; uniformly bounded corrections are a corollary. This is a conditional G7 implication, not evidence that the terminal leading field or its physical correction exists. The strict inequality matters: `w = -u` would cancel the trace if `α = 1` were allowed.
 - The 188-page `Unforced_Finite-Time_Blow-Up_for_Navier-Stokes.pdf` repeatedly calls its global periodic route conditional, not end-to-end Lean-compiled. Its earlier continuous-global-axisymmetry torus route was withdrawn in favor of local lifts, `C4`, and one global periodic pressure.
 
 ## Whole-space diagnostics kept outside the torus proof chain
