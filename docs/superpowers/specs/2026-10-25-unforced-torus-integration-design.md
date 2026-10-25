@@ -17,7 +17,7 @@ Define `UnforcedPeriodicCandidate (u : VelocityField) (p : PressureField) : Prop
 2. unit periodicity of `u` and `p` on `Ico 0 1`;
 3. divergence-free velocity on `Ico 0 1`;
 4. `navierStokesResidual u p t x = 0` for every `t ∈ Ioo 0 1` and `x`;
-5. smooth, periodic, divergence-free **nonzero** initial velocity `u₀=u(0,·)` and appropriate finite torus kinetic energy;
+5. smooth, periodic, divergence-free **nonzero** initial velocity `u₀=u(0,·)`, defined in Lean by `∃ x : Space, u (0,x) ≠ 0`; the unit-torus kinetic energy is the torus-cell integral `∫ x ∈ [0,1]³, ‖u (0,x)‖²`, whose finiteness must be defined/proved from periodic smoothness, not assumed through an untyped phrase;
 6. `SpeedUnboundedAtOne u`.
 
 The imported upstream `CandidateProperties` assumes *zero* initial velocity and includes a smooth external force. Do not reuse it as an unforced candidate: the smooth unforced energy identity makes zero-data finite-energy blow-up impossible. The main target is `∃ u p, UnforcedPeriodicCandidate u p` only when every analytic gate below has been discharged. Do not introduce this existential as an axiom.
@@ -41,7 +41,7 @@ This algebra is the first *semantic* Lean integration target. It must be stated 
 | Gate | Mathematical obligation | Current boundary |
 | --- | --- | --- |
 | G0 | Exact theorem statement, viscosity, torus, nonzero data, pressure gauge, energy, singularity notion | Definition to be built and checked |
-| G1 | Source-compatible local unforced coefficient hierarchy, pressure, normal convergence, real physical residual zero and first-shell jets | Paper-level claim; source A.11/A.19 and full PDE Lean reconstruction incomplete |
+| G1 | Local unforced coefficient hierarchy, pressure, normal convergence, real physical residual zero and first-shell jets | Paper-level claim, full PDE Lean reconstruction incomplete; source A.11/A.19 verification is relevant only IF the selected core actually depends on those forced-source stages, otherwise it belongs to the separate diagnostic lane |
 | G2 | Divergence-free `C₄` localization, mean control, transverse anti-divergence and full-gradient helical interface | Conditional analytic results, not full Lean |
 | G3 | Temporal two-color stress routing, moving-frame phase locking, dyadic carrier coherence and actual graph-norm constants | Paper-level reductions, not full Lean |
 | G4 | **H8**: explicit compact weighted symmetric anti-divergence and shrinking-support anisotropic covariance with a provable coefficient margin | OPEN: exact profile and weighted inverse bound missing |
@@ -56,7 +56,7 @@ For the seven-ray centre the paper gives exact rational axial efficiency `4443/9
 
 Maintain a theorem ledger with stable IDs, exact source (paper/equation/PR SHA), geometry (`𝕋³` or `ℝ³`), analytic conditions, proof status, Lean declaration, test/CI evidence and downstream gate. Preserve previous work without assuming it is compatible. Resolve superseded and contradictory claims explicitly.
 
-The scholarly cumulative TeX/PDF will use at most nine main sections and seven subsections per section, with central theorem early, notation before use, complete proofs, restrained visuals, accurate provenance and a claim-status paragraph. Its October XXXIX–XLII inserts belong to the *limitations/independent diagnostics* discussion unless a genuine analytic bridge demonstrates positive terminal retention. Do not treat their necessary energy/BV bounds or short-time viscous torque growth as a singularity mechanism.
+The scholarly cumulative TeX/PDF must preserve a source/asset manifest. The uploaded 188-page master includes external `\\includepdf` and `\\input` dependencies, so an independently renderable full PDF cannot be claimed until those assets are either provided with provenance or replaced by verified native source. Inspect every page and equation after compilation. It will use at most nine main sections and seven subsections per section, with central theorem early, notation before use, complete proofs, restrained visuals, accurate provenance and a claim-status paragraph. Its October XXXIX–XLII inserts belong to the *limitations/independent diagnostics* discussion unless a genuine analytic bridge demonstrates positive terminal retention. Do not treat their necessary energy/BV bounds or short-time viscous torque growth as a singularity mechanism.
 
 Do not silently replace original attached manuscript sources or merge either existing draft PR. Preserve existing user work and edit only newly agreed integration files. No automated public-claim upgrade from CI green.
 
@@ -68,9 +68,9 @@ Proof files are grouped by semantics rather than paper edition: `UnforcedPatchin
 
 ## 7. Verification, falsification, and release policy
 
-All new Lean declarations: source hygiene check, `lake env lean` in pinned Lean/Mathlib/upstream environment, `#print axioms` inspection, clean-branch CI receipt. Tests must fail for an absent intended definition or changed physical residual; simply passing a scalar theorem under an unproved premise is not a physical check. Independent exact-rational/SymPy tests can support finite identities but cannot certify analytic source intervals or pressure.
+All new Lean declarations: source hygiene check, `lake env lean` in pinned Lean/Mathlib/upstream environment, `#print axioms` inspection, clean-branch CI receipt. Ordinary Lean/Mathlib logical axioms (`propext`, `Quot.sound`, `Classical.choice`) are permitted and must be listed when present; newly introduced project axioms, `sorryAx`, `admit`, or an unproved hypothesis hidden under an existence theorem are not. Tests must fail for an absent intended definition or changed physical residual; simply passing a scalar theorem under an unproved premise is not a physical check. Independent exact-rational/SymPy tests can support finite identities but cannot certify analytic source intervals or pressure.
 
-Negative controls: (a) unforced zero-data candidate is ruled out by energy, (b) forced `CandidateProperties` is never accepted as target, (c) `ℝ³` Gaussian smooth example is not tagged singular, (d) persistent shrinking-radius flux is ruled out by Edition XL dissipation, (e) H8 absent or wrong weighted constant prevents release, (f) missing range or pressure term prevents claiming zero physical residual.
+Negative controls: (a) unforced zero-data candidate is ruled out by an explicit energy argument after its analytic hypotheses are established, (b) forced `CandidateProperties` is never accepted as target, (c) `ℝ³` Gaussian smooth example is not tagged singular, (d) persistent shrinking-radius flux is ruled out by Edition XL dissipation, (e) H8 absent or wrong weighted constant prevents release, (f) missing range or pressure term prevents claiming zero physical residual. Lean regression targets explicitly cover `fderiv` additivity/time and Laplacian, `advection (U+w)` cross terms, gradient sign, periodic and divergence inheritance, nonzero datum, and the prohibition on transporting upstream zero-data hypotheses into the new target. A dedicated narrow workflow, NOT the queue-prone inherited full CI set, is the authoritative first-milestone status.
 
 No claim of a full unforced blow-up proof until all G0–G8 are proved and a fresh pinned Lean build passes without project axioms. Any queued, cancelled or failing CI stays `UNVERIFIED`.
 
