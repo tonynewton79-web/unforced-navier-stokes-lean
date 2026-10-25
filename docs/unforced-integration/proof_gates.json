@@ -13,9 +13,9 @@
       "geometry": "T3",
       "status": "OPEN",
       "source": "docs/superpowers/specs/2026-10-25-unforced-torus-integration-design.md",
-      "lean_declarations": [],
+      "lean_declarations": ["UnforcedPatching.UnforcedPeriodicCandidate", "UnforcedPatching.unforcedTargetStatement", "UnforcedPatching.candidate_initial_not_zero"],
       "kernel_check": null,
-      "remaining": "Define nonzero-data unforced theorem against actual viscosity-one NavierStokes.ProblemStatement types; define/prove finite torus initial energy."
+      "remaining": "Physical candidate interface and explicit torus-cell finite-energy predicate now compile locally. No constructive witness, no proof of the open existential target, and no GitHub CI receipt yet."
     },
     {
       "id": "G1",
@@ -33,9 +33,9 @@
       "geometry": "T3",
       "status": "PAPER_CONDITIONAL",
       "source": "Carrier_Independent_Structured_Stress_Route_FINAL_COLOUR.tex, Sections 2-4, H2/H6",
-      "lean_declarations": [],
+      "lean_declarations": ["UnforcedPatching.unitSpatialPeriodsOn_add", "UnforcedPatching.spatialDivergence_add"],
       "kernel_check": null,
-      "remaining": "Construct exact periodic field and prove force/mean/pressure identities and regular graph bounds."
+      "remaining": "Addition preserves periods and divergence under stated regularity, locally kernel-checked. Still must construct the compact periodic field and prove force/mean/pressure identities and regular graph bounds."
     },
     {
       "id": "G3",
@@ -73,9 +73,9 @@
       "geometry": "T3",
       "status": "OPEN",
       "source": "Unforced_Finite-Time_Blow-Up_for_Navier-Stokes.tex, Part III and Appendix I; frozen upstream PhysicalResidualBridge",
-      "lean_declarations": [],
+      "lean_declarations": ["UnforcedPatching.navierStokesResidual_add"],
       "kernel_check": null,
-      "remaining": "Prove all components of navierStokesResidual vanish, pressure gauge and periodic smoothness for t<1, without inherited external force."
+      "remaining": "Full physical residual addition identity locally kernel-checked with both cross terms. Still must prove actual corrected residual vanishes, pressure gauge and periodic smoothness for t<1, without inherited force."
     },
     {
       "id": "G7",
