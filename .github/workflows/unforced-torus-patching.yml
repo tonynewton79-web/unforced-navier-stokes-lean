@@ -1,0 +1,68 @@
+name: Unforced torus physical Lean gates
+
+on:
+  push:
+    branches:
+      - integration/unforced-torus-20261025
+  pull_request:
+    paths:
+      - 'UnforcedPatching/**'
+      - 'lakefile.toml'
+      - 'lean-toolchain'
+      - 'docs/unforced-integration/**'
+      - 'tools/check_proof_gates.py'
+      - 'tests/test_proof_gates.py'
+      - '.github/workflows/unforced-torus-patching.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  physical-lean:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout proof sources
+        uses: actions/checkout@v4
+
+      - name: Install Lean version manager
+        shell: bash
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+
+      - name: Install pinned compiler
+        run: |
+          elan toolchain install "$(cat lean-toolchain)"
+          lean --version
+          lake --version
+
+      - name: Fetch pinned dependencies and Mathlib cache
+        run: |
+          lake update
+          lake exe cache get
+
+      - name: Refuse axioms and proof admissions in the integration sources
+        shell: bash
+        run: |
+          if grep -nE '^[[:space:]]*(sorry|admit|axiom)([[:space:]]|$)' UnforcedPatching/*.lean; then
+            echo 'The unforced integration modules contain a prohibited proof escape'
+            exit 1
+          fi
+
+      - name: Compile upstream physical Navier-Stokes definitions
+        run: lake build NavierStokes.ProblemStatement
+
+      - name: Kernel-check the unforced interface and physical correction algebra
+        run: |
+          lake build UnforcedPatching.DefinitionsSmoke
+          lake build UnforcedPatching.ResidualSmoke
+          lake build UnforcedPatching.PeriodicitySmoke
+
+      - name: Revalidate fail-closed mathematical gate ledger
+        run: |
+          python tools/check_proof_gates.py docs/unforced-integration/proof_gates.json
+          python -m unittest discover -s tests -v
+
+      - name: Replay older exact abstract arithmetic tests
+        run: python verify_unforced_closure.py
