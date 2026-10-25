@@ -53,9 +53,9 @@
       "geometry": "T3",
       "status": "OPEN",
       "source": "Carrier_Independent_Structured_Stress_Route_FINAL_COLOUR.tex, equation finalH8weighted and final proof boundary",
-      "lean_declarations": [],
+      "lean_declarations": ["UnforcedPatching.h8_budget_identity", "UnforcedPatching.sevenRay_positive_floor"],
       "kernel_check": null,
-      "remaining": "Freeze explicit smooth profiles and prove compact weighted symmetric inverse with 15971/122900 times rho coefficient budget, or exhibit dual obstruction."
+      "remaining": "Exact 15971/122900 arithmetic and conditional seven-ray coefficient floor compile locally. STILL OPEN: freeze explicit smooth profiles and prove an actual compact weighted symmetric inverse obeying that bound, or exhibit dual obstruction."
     },
     {
       "id": "G5",
