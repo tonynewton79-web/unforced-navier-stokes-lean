@@ -24,6 +24,7 @@ on:
       - 'tests/test_h8_flat_edge_gate.py'
       - 'tests/test_h8_c4_transition.py'
       - 'tests/test_h8_shared_cutoff_moment.py'
+      - 'tests/test_h8_split_cutoff_gate.py'
       - 'meridional_h8_certificate.py'
       - 'h8_four_field_map.py'
       - 'h8_sharp_dual.py'
@@ -35,6 +36,7 @@ on:
       - 'h8_shaper_flux_ledger.py'
       - 'h8_c4_transition.py'
       - 'h8_shared_cutoff_moment.py'
+      - 'h8_split_cutoff_gate.py'
       - 'manuscript/**'
       - '.github/workflows/unforced-torus-patching.yml'
   workflow_dispatch:

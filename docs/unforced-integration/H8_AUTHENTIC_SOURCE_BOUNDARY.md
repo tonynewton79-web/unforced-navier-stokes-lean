@@ -409,6 +409,93 @@ the test_h8_shared_cutoff_moment.py test module.
 This does not insert the genuine source profiles into the four-coordinate
 weighted H8 inverse.
 
+### Source-audited split cutoffs and the nonradial second-jet terms
+
+In the available 65-page structured-stress source, the core is localized
+as curl(chi A_c), with chi a C4-invariant similarity-coordinate cutoff
+equal to one on an inner region. The poloidal shell shaper is specified
+separately by Psi=A_z ell^2 U Phi(r/ell) Xi(z/c). The source does not
+identify chi with Phi or require chi to be radial. Its later scalar
+function also named chi(eta), in the strong-Rayleigh section, is a
+**different symbol**, not evidence for a common transition cutoff.
+
+For arbitrary chi(r,theta,z), an independent radial shaper envelope b(r),
+and P_theta=sum_i K_i a_i(r) Xi_i(z)/r, the exact physical rz shear
+second-cutoff-derivative contribution is
+
+\[
+S_{\mathrm{jet},2}=-\nu\int_{z_-}^{z_+}\Big\langle
+ A_\theta(\chi_{rr}-\chi_{zz})+
+ (A_z/r)\chi_{\theta z}-(A_r/r)\chi_{r\theta}
+ +P_\theta b''\Big\rangle_\theta dz.
+\]
+
+The difference S-S_jet,2 has at most first cutoff derivatives, including
+products of first derivatives from all fourfold kinetic overlaps.
+No estimate of that remainder in terms of b or b' alone follows:
+chi is independent. In particular, without a verified relation
+between chi and b the shared-envelope Gronwall obstruction is not
+a theorem about the authentic source.
+
+Pressure enters the integrated source via
+q_s=[<u_z^2-2 nu partial_z u_z+p>_theta] at the axial endpoints.
+The exact J_f=S-aS(a)/r+(1/r)int_a^r s q_s(s) ds must retain this
+term, including its radial integration trace. An independently checked
+pressure-only example has S=0, q_s=2(r^2-1), and
+J_f=(r^2-1)^2/(2r) when a=1. It proves that a vanishing physical shear
+cannot be substituted for a vanishing source primitive.
+This J_f is the primitive of div K+grad p, not yet of the full
+time-dependent residual. The latter includes the additional term
+
+\[
+T_z(r)=\int\langle\partial_tu_z\rangle_\theta dz,\qquad
+J_{\mathrm{NSE}}=J_f+\frac1r\int_a^r sT_z(s)ds .
+\]
+
+The exact Python calculator leaves J_NSE as **unknown** if no time
+symbol/source is given; it never silently sets T_z=0. A regression
+example with u_z=t has J_f=0 but J_NSE=(r^2-1)/(2r).
+Freezing the authentic time-dependent Case 006 source requires this
+term as well as the spatial transition and pressure functions.
+
+### A certified spatially varying H8 frame support enclosure
+
+In the one-sided seven-ray H8 cone, the exact coordinate extrema are
+at most the respective fractions
+51113/245800, 15971/983200, 19171/122900 and 19171/491600 times
+rho; hence every four-coordinate source-frame perturbation satisfies
+||H||_F <= rho. If a slice is partitioned into cells with exact masses
+m_j=int_cell rho, fixed orthogonal rational reference frames E_j,
+and **certified** uniform frame-error bounds
+sup_cell ||E-E_j||_F <= delta_j, the genuine weighted dual supports
+satisfy
+
+\[
+\max(0,\widehat B_\pm-2\sum_jm_j\delta_j)
+\le B_\pm\le
+\widehat B_\pm+2\sum_jm_j\delta_j,
+\quad
+\widehat B_\pm=\sum_jm_j\sigma^+(\pm\lambda(E_j)).
+\]
+
+This is a rigorous route for continuous smooth nonanalytic frames when
+valid enclosure data are supplied. It is not a numerical-grid
+certificate by itself; the current source still lacks authenticated
+masses, the field E and its interval/Lipschitz bounds.
+
+The physical divergence also contains
+sum_{j,a,b}[(partial_j E_ia)E_jb+E_ia(partial_j E_jb)]H_ab
+besides the frozen-frame term
+sum_{j,a,b} E_ia E_jb partial_j H_ab in Cartesian coordinates.
+Cylindrical coordinates add their geometric connection. A rotating
+stress can thus have nonzero divergence even for constant H, and
+the new pointwise cone enclosure does **not** solve that PDE inverse.
+
+The new h8_split_cutoff_gate.py calculator and
+test_h8_split_cutoff_gate.py reproduce the split radial/axial jets,
+the full cylindrical pressure flux, the rational two-cell support
+and its frame-error enclosure, and the connection source.
+
 ## Normalized C4 transition, explicit candidate cutoff and pressure
 
 The source localization lemma specifies averaging a vector potential

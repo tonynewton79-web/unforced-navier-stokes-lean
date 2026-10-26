@@ -90,6 +90,11 @@ functions, not the original unfrozen H8 cutoff or pressure.
 For a core localization sharing the shaper cutoff, a cylindrical
 circulation identity reduces cancellation of the viscous second jet
 to an exact axial-core moment and one reference-circle trace.
+For independent core and shaper cutoffs we retain every second
+spatial derivative, the full axial pressure jump and a rigorous
+variable-frame enclosure of the H8 shear support.
+The time derivative of the localized velocity remains a separate
+source marginal; its radial primitive cannot be discarded.
 Lean additionally checks the meridional pointwise inverse and both
 integral antiderivative identities, alongside the finite cone algebra,
 physical residual expansion, and conditional terminal-speed retention.
@@ -1235,6 +1240,181 @@ $b''$ coefficient without an additional source identity. Thus
 the genuine H8 test still requires the core flux $V$, the
 reference circulation, the shared-cutoff decision, and the full
 source-matched cone density and frame.
+
+\begin{proposition}[Independent core and shaper cutoffs]
+\label{prop:split-cutoff}
+On an annular cylindrical patch let $\mathcal A$ be any smooth,
+$2\pi$-periodic vector potential, let
+$\chi=\chi(r,\theta,z)$ be a smooth core cutoff, and let $b=b(r)$
+be an \emph{independent} radial poloidal cutoff. Put
+\[
+ P_\theta(r,z):=\sum_i\frac{K_i a_i(r)\Xi_i(z)}r,\qquad
+ u=U+\nabla\times\left(
+          \chi\mathcal A+bP_\theta e_\theta\right),
+\]
+where $U$ is a fixed smooth background. If $S(r)$ is the
+axial/angular integral of the physical shear
+$K_{rz}=u_ru_z-\nu(\partial_z u_r+\partial_r u_z)$, its full
+cutoff-\emph{second}-derivative part is
+\begin{equation}\label{eq:split-second-jet}
+\begin{aligned}
+ S_{\mathrm{jet},2}(r)=-\nu\int_{z_-}^{z_+}
+ \bigg\langle&
+ \mathcal A_\theta(\chi_{rr}-\chi_{zz})
+ +\frac{\mathcal A_z}{r}\chi_{\theta z}
+ -\frac{\mathcal A_r}{r}\chi_{r\theta}
+ +P_\theta b''\bigg\rangle_\theta\dd z .
+\end{aligned}
+\end{equation}
+The difference $S-S_{\mathrm{jet},2}$ contains the cutoffs and
+their first derivatives, but no second derivative of either
+cutoff. The nonlinear cross terms, including all ordered $C_4$
+core overlaps, belong to this remainder. In particular, a
+radial shaper $b$ and a genuinely three-variable $\chi$ do not
+have one common second-derivative coefficient.
+
+For any specified pressure representative $p$, the complete
+annular \emph{spatial-divergence} source still obeys
+\[
+ q_{\rm s}(r)=
+ [\langle u_z^2-2\nu\partial_z u_z+p
+      \rangle_\theta]_{z_-}^{z_+},\qquad
+ J_f=S-\frac{r_a}{r}S(r_a)
+           +\frac1r\int_{r_a}^r s q_{\rm s}(s)\dd s.
+\]
+For the full unforced Navier--Stokes residual
+$\mathcal N(u,p)=\partial_tu+\operatorname{div}K+\nabla p$,
+one must also keep
+\begin{equation}\label{eq:split-temporal-flux}
+ T_z(r)=\int_{z_-}^{z_+}
+         \langle\partial_tu_z\rangle_\theta\dd z,
+ \qquad
+ J_{\mathcal N}(r)=J_f(r)
+       +\frac1r\int_{r_a}^r sT_z(s)\dd s .
+\end{equation}
+No smallness of the pressure primitive or the first-derivative
+remainder follows from \eqref{eq:split-second-jet}; neither
+$T_z$ nor its primitive may be set to zero without a source
+identity.
+\end{proposition}
+
+\begin{proof}
+The cylindrical curl identities give
+\[
+\begin{aligned}
+ u_r-U_r&=\frac1r\partial_\theta(\chi\mathcal A_z)
+              -\partial_z(\chi\mathcal A_\theta+bP_\theta),\\
+ u_z-U_z&=\frac1r\partial_r
+                \bigl(r(\chi\mathcal A_\theta+bP_\theta)\bigr)
+              -\frac1r\partial_\theta(\chi\mathcal A_r).
+\end{aligned}
+\]
+Each velocity contains at most one derivative of either cutoff;
+therefore $u_ru_z$ contains no cutoff second derivative.
+Differentiating the first line in $z$ and the second in $r$
+produces exactly the four terms in \eqref{eq:split-second-jet}.
+The rest contains only lower cutoff jets. The pressure identity
+is the integrated axial component of
+$\operatorname{div}K+\nabla p=f$ and does not identify an
+independent radial primitive of $p$ with a time-only gauge.
+Adding the axial marginal of $\partial_tu$ and integrating the
+radial first-order equation proves \eqref{eq:split-temporal-flux}.
+\end{proof}
+
+The source distinction is substantive: the available Case~006
+structured-stress manuscript prescribes the core cutoff as a
+$C_4$-invariant function of similarity coordinates, equal to one
+on an inner subcore, whereas its poloidal shaper uses a separately
+specified shell profile $\Phi(r/\ell)\Xi(z/c)$. Those definitions
+neither identify the two radial envelopes nor provide a complete
+frozen four-patch source. Equation~\eqref{eq:split-second-jet}
+is therefore the appropriate general decomposition; the
+shared-envelope Proposition~\ref{prop:shared-envelope} is its
+additional-hypothesis specialization.
+
+\begin{proposition}[Certified variable-frame dual enclosure]
+\label{prop:frame-enclosure}
+Consider the one-sided seven-ray coefficient cone and its
+trace-free representative $H$ in \eqref{eq:four-field-map}.
+For every nonnegative density $\rho$, the pointwise coefficient
+floors imply
+\[
+ |A|,|B|,|C|,|D|\le\frac{\rho}{4},
+           \qquad \norm{H}_{F}\le\rho.
+\]
+Let a cylindrical shear-test slice be partitioned into finitely
+many measurable cells $\Omega_j$. On each cell suppose the
+physical orthogonal frame $E(x)$ admits a fixed rational
+orthogonal frame $E_j$ and a \emph{certified} bound
+\[
+ \sup_{\Omega_j}\norm{E(x)-E_j}_{F}\le\delta_j,
+ \qquad m_j=\int_{\Omega_j}\rho(x)\dd\mu(x).
+\]
+Here $\dd\mu=\dd z\,\dd\theta/(2\pi)$ on the slice. If
+$\sigma^+(\lambda)$ is the exact unit-density one-sided support
+and $G=e_r\otimes e_z$,
+define
+\[
+ \widehat B_\pm=
+ \sum_j m_j\,\sigma^+\!
+   \left(\pm\lambda(E_j^{\mathsf T}GE_j)\right),
+ \qquad
+ \varepsilon_E=2\sum_jm_j\delta_j.
+\]
+Then the genuine spatially varying shear supports satisfy
+\begin{equation}\label{eq:variable-frame-enclosure}
+ \max(0,\widehat B_\pm-\varepsilon_E)
+       \le B_\pm
+       \le \widehat B_\pm+\varepsilon_E.
+\end{equation}
+These bounds remain valid for smooth nonanalytic frames and
+densities, provided the cell masses and frame-error bounds are
+rigorously enclosed. Sampling a frame at cell centres alone
+does not provide such a certificate.
+\end{proposition}
+
+\begin{proof}
+Applying the exact support formula of
+Proposition~\ref{prop:positive-support} to the eight signed coordinate
+covectors gives the largest respective normalized absolute
+extrema
+\[
+ \frac{51113}{245800},\quad
+ \frac{15971}{983200},\quad
+ \frac{19171}{122900},\quad
+ \frac{19171}{491600}.
+\]
+Each is strictly less than $1/4$, so
+$\norm{H}_F^2=2(A^2+B^2+C^2+D^2)\le\rho^2/2$.
+For orthogonal $E,E_j$,
+\[
+ EHE^{\mathsf T}-E_jHE_j^{\mathsf T}
+ =(E-E_j)HE^{\mathsf T}
+   +E_jH(E-E_j)^{\mathsf T}.
+\]
+The Frobenius pairing with $G$ consequently changes by at
+most $2\rho\norm{E-E_j}_F$. Taking the pointwise supremum
+over the coefficient cone, then integrating over each cell,
+proves \eqref{eq:variable-frame-enclosure}.
+\end{proof}
+
+The dual bound controls values of the rotating stress, not its
+divergence. In a Cartesian chart, $K=EHE^{\mathsf T}$ obeys
+\begin{equation}\label{eq:rotating-frame-connection}
+ \partial_jK_{ij}
+ =E_{ia}E_{jb}\partial_jH_{ab}
+ +\bigl((\partial_jE_{ia})E_{jb}
+       +E_{ia}(\partial_jE_{jb})\bigr)H_{ab},
+\end{equation}
+with repeated indices summed. Thus even constant $H$ can
+generate a nonzero source when $E$ rotates. Cylindrical
+components require their geometric connection terms as well.
+An independently checked Cartesian rotation example and exact
+two-cell rational support tests accompany these formulas.
+Neither a bound on $\delta_j$ nor
+\eqref{eq:variable-frame-enclosure} controls $\nabla E$,
+so the weighted symmetric-divergence inverse and its
+derivative budget remain open.
 
 The form of a compact cutoff may be fixed in a \emph{test family}
 without identifying it with the source's unfrozen choice. Define
