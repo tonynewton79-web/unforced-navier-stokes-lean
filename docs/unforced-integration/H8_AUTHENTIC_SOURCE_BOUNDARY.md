@@ -194,13 +194,120 @@ python -m unittest tests.test_h8_rotating_frame -v
 lake build UnforcedPatching.RotatingFrameDualSmoke
 ```
 
+## The complete axial source flux and both exact H8 budgets
+
+For an arbitrary physical symmetric stress \(K\) and pressure \(p\)
+with \(\operatorname{div}K+\nabla p=f\), set the azimuthal averages
+
+\[
+S(r)=\int_c^d\langle K_{rz}\rangle_\theta dz,\qquad
+q_{\rm s}(r)=[\langle K_{zz}+p\rangle_\theta]_{c}^{d}.
+\]
+
+Direct cylindrical divergence, including its \(1/r\) term, proves
+
+\[
+J_f(r)=\frac1r\int_a^r s\!\int_c^d\langle f_z\rangle_\theta dz\,ds
+=S(r)-\frac ar S(a)+\frac1r\int_a^r s q_{\rm s}(s)ds.
+\]
+
+**The cone constrains \(S\), not \(J_f\) alone.** Let \(\lambda_E\) be the
+rotated four-coordinate covector for the physical \(rz\) matrix entry.
+With the pointwise one-sided coefficient floors, define
+
+\[
+B_\pm=\int_c^d\langle\sigma^+_{\rho}(\pm\lambda_E)\rangle_\theta dz.
+\]
+
+Then the exact necessary radial condition is
+
+\[
+-B_-\le J_f+\frac arS(a)-\frac1r\int_a^r s q_{\rm s}(s)ds
+\le B_+.
+\]
+
+The *original absolute* coefficient cap requires the stronger symmetric
+bound with \(B_{\rm abs}=\int\langle\sigma_{g\rho}(\lambda_E)\rangle dz\),
+\(g=15971/122900\). Its one-sided counterpart is asymmetric for a
+tilted frame. For a source-frame rotation with
+\(\cos\alpha=3/5,\sin\alpha=4/5\) the pulled-back physical shear
+covector is \((-7/25,0,0,24/25)\), giving exactly
+
+\[
+B_+/\bar\rho=(19h+47g)/100,\quad
+B_-/\bar\rho=B_{\rm abs}/\bar\rho=19g/50,
+\qquad h=22371/122900.
+\]
+
+The new `h8_exact_flux_gate.py` accepts a complete *declared* partition of
+stress-shear channels (core transition, core shaper, poloidal pairing,
+toroidal pairing, viscosity, four-patch overlap, structured remainder and
+subtraction of the chosen stress centre) and pressure/boundary channels
+(core pressure, toroidal pressure, transition pressure, axial tensor jump,
+four-patch overlap and remaining jump). Every channel is mandatory;
+unknown is not silently treated as zero. The tests cover the integrated
+cylindrical law, a nonzero pressure-only example, an inner trace,
+rotating-frame asymmetry, and a profile that passes positivity but fails
+the original absolute budget. Symbolic expressions and rational-point
+results **do not certify the continuum inequality**, nor does the
+presence of all field names authenticate their physical values.
+
+## Exact Case 006 shaper term family, not the full transition residual
+
+The source's poloidal stream-function architecture is
+\(\Psi_i=K_i a_i(r)b(r)\Xi_i(z)\), with radial/axial velocity
+\(P_r=-\Psi_z/r\), \(P_z=\Psi_r/r\). For a divergence-free
+axisymmetric core and axial endpoint conditions
+\(\Xi_i=\Xi_i'=0\), the exact additional quadratic shear is
+\(\Gamma b'+\Delta b+Q_2b^2\), where
+
+\[
+\Gamma={1\over r}\sum_iK_i a_i I_i,\quad
+\Delta={1\over r}\sum_iK_i[a_i'I_i-a_i(I_i'+I_i/r)],\quad
+Q_2={1\over r^2}\sum_{i<j}K_iK_j(a_ja_i'-a_ia_j')J_{ij},
+\]
+
+\(I_i=\int U_r\Xi_i\,dz\) and
+\(J_{ij}=\int\Xi_i'\Xi_j\,dz\). The cross-shaper coefficient has
+**no** \(bb'\) term: it cancels exactly as an antisymmetric Wronskian.
+The viscous \(rz\) stress adds
+
+\[
+-\nu\sum_i K_i m_i\,\partial_r((a_i b)'/r),
+\qquad m_i=\int\Xi_i\,dz.
+\]
+
+It generally has a \(b''\) coefficient, which is not controlled by
+\(b^2\) for a flat cutoff. For the explicitly stated local two-shaper
+polynomial example in the manuscript, the exact integrated sum at
+\(r=2\) is \(-2036/315\), independently reproduced by integrating
+the physical velocity products and viscosity. It is a **diagnostic**
+local example, not the authentic choice of global H8 profiles.
+
+`h8_shaper_flux_ledger.py` checks the incompressible core and axial
+endpoint conditions before applying these formulas. Reproduce with
+`python -m unittest discover -s tests -p 'test_h8_shaper_flux_ledger.py' -v`.
+
+Reproduce the exact finite check with SymPy:
+
+```sh
+python -m pip install sympy
+python -m unittest discover -s tests -p 'test_h8_exact_flux_gate.py' -v
+```
+
 ## Authentic H8 source: required data and current state
 
-The files available in this checkout reference
-`Carrier_Independent_Structured_Stress_Route_FINAL_COLOUR.tex`, but do
-not contain that source manuscript, the concrete \(g,\rho,R_*\) profiles,
-their support/derivative parameter choices, or the actual local frame
-\(E(r,z)\). The terminal source certificate
+The author-supplied `Carrier_Independent_Structured_Stress_Route_FINAL_COLOUR.tex`
+was inspected separately from this repository. Its SHA-256 is
+`a52409301270a6408f49116b62f6abafbd5f2c37ca22087ddc294c23fb78eb2e`.
+The separately supplied 65-page PDF with the same stem has SHA-256
+`46ef3e409e1f50350bc73a36a3c6217b92bc25cd258250baf4214a3471bbf04b`.
+It specifies the *forms* of the curl localization, the separable
+poloidal/toroidal shell shapers and the toroidal radial pressure
+derivative, but leaves their profiles and amplitudes as arbitrary fixed
+smooth data; it does not freeze a complete source-matched H8 residual.
+It is not yet tied by a checked correspondence to any distinct Case 006
+PDF revision. The terminal source certificate
 `TerminalCore2026/FULL_UNFORCED_SOURCE_CERTIFICATE_REQUIRED_20261022.json`
 also records missing source hashes, cutoffs and parameters. A generic
 profile name in a proof-gate reference is **not** source authentication.
@@ -219,7 +326,8 @@ The exact genuine-source test needs, at minimum:
    the dual integration by parts and producing a finite computable
    physical source pairing.
 
-**Status: BLOCKED ON AUTHENTIC H8 SOURCE DATA.** The computed rational
+**Status: BLOCKED ON A COMPLETE FROZEN H8 SOURCE, NOT ON THE ALGEBRAIC
+DUAL.** The computed rational
 obstruction is a reproducible negative control, not a test result for
 the missing H8 residual and not a proof of unforced Navier--Stokes
 regularity or blow-up. G4 and G8 remain `OPEN`.

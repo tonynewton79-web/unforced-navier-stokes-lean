@@ -68,7 +68,13 @@ this larger cone; no inverse is thereby constructed. A kernel-checked
 matrix identity then transfers the exact positive-cone dual to any
 rotating source frame, yielding a necessary integrated bound without
 assuming the frame is constant. None of these diagnostic tests
-decides the authentic H8 residual.
+decides the authentic H8 residual. We also derive the exact
+pressure-compensated annular flux identity and its two sharp
+frame-dependent cone inequalities. The pressure boundary trace is
+essential: an axial source primitive alone cannot be bounded by the
+stress cone when that trace is free.
+The source-prescribed separable shell shaper also admits an exact
+quadratic flux reduction, including its often-leading viscous shear.
 Lean additionally checks the meridional pointwise inverse and both
 integral antiderivative identities, alongside the finite cone algebra,
 physical residual expansion, and conditional terminal-speed retention.
@@ -801,6 +807,189 @@ derivatives of a source-matched inverse. The authenticated functions
 $g,\rho,R_*$ and $E$, together with their support and derivative
 budgets, remain required to evaluate \eqref{eq:rotated-integrated}
 on the genuine H8 residual.
+
+\begin{proposition}[Exact pressure-compensated annular H8 gate]
+\label{prop:complete-flux-gate}
+Fix a time and a cylindrical annulus $a<r<b$, $c<z<d$.
+Let $K$ be a smooth symmetric physical tensor, $p$ a smooth scalar,
+and $f=\diver K+\nabla p$. Denote the azimuthal average by
+$\langle\cdot\rangle_\theta$ and set
+\begin{align}
+ S(r)&=\int_c^d\langle K_{rz}\rangle_\theta\dd z, &
+ F(r)&=\int_c^d\langle f_z\rangle_\theta\dd z,\notag\\
+ q_{\rm s}(r)&=\left[\langle K_{zz}+p\rangle_\theta\right]_{z=c}^{z=d},&
+ Q(r)&=\frac1r\int_a^r s\,q_{\rm s}(s)\dd s.\label{eq:complete-flux-data}
+\end{align}
+Then the exact cylindrical identity is
+\begin{equation}\label{eq:complete-flux}
+ J_f(r):=\frac1r\int_a^r sF(s)\dd s
+ =S(r)-\frac arS(a)+Q(r).
+\end{equation}
+Suppose $K=EH(A,B,C,D)E^{\mathsf T}$, where $E(r,\theta,z)$ is
+orthogonal and the seven H8 ray coefficients exceed $\rho/100$ for
+$\rho\ge0$. Let $G$ be the physical matrix having $G_{rz}=1$
+and all other entries zero, and write $\lambda_E$ for the four
+coordinates of \eqref{eq:rotated-covector} applied to this $G$.
+Define the exact slice supports
+\begin{align}
+ \mathcal B_\pm(r)&=\int_c^d\left\langle
+  \sigma^+_{\rho(r,\theta,z)}(\pm\lambda_E(r,\theta,z))
+  \right\rangle_\theta\dd z,\notag\\
+ \mathcal B_{\rm abs}(r)&=\int_c^d\left\langle
+ \sigma_{g\rho(r,\theta,z)}(\lambda_E(r,\theta,z))
+ \right\rangle_\theta\dd z,
+ \qquad g=\frac{15971}{122900}.\label{eq:complete-flux-supports}
+\end{align}
+The original absolute coefficient budget implies
+\begin{equation}\label{eq:complete-flux-absolute}
+ \left|J_f(r)+\frac arS(a)-Q(r)\right|
+ \le\mathcal B_{\rm abs}(r),
+\end{equation}
+while the larger one-sided positive-coefficient cone requires only
+\begin{equation}\label{eq:complete-flux-positive}
+ -\mathcal B_-(r)\le J_f(r)+\frac arS(a)-Q(r)
+ \le\mathcal B_+(r).
+\end{equation}
+These bounds hold for a spatially varying orthogonal frame; they
+are necessary conditions and do not construct a differential inverse.
+\end{proposition}
+
+\begin{proof}
+The azimuthal mean removes the $r^{-1}\partial_\theta K_{\theta z}$
+term in the cylindrical divergence. The axial component therefore
+obeys $F=S'+S/r+q_{\rm s}$, proving
+$(rS)'=r(F-q_{\rm s})$ and \eqref{eq:complete-flux} by integration.
+At each spatial point $K_{rz}=K:G=\lambda_E\cdot(A,B,C,D)$.
+The sharp one-sided support formula \eqref{eq:positive-support}
+gives the upper and lower bounds on this quantity, and
+\eqref{eq:sharp-support} gives the symmetric absolute bound.
+Azimuthal and axial integration followed by
+\eqref{eq:complete-flux} proves both inequalities.
+\end{proof}
+
+The boundary primitive cannot be discarded in a local test. For
+example, on $1\le r\le2$, $0\le z\le1$, take $K=0$ and $p=z$.
+Then $F=q_{\rm s}=1$ and $S=0$, whereas
+$J_f(r)=(r^2-1)/(2r)$ is nonzero. The zero stress satisfies either
+cone with $\rho=0$. Thus $|J_f|\le\mathcal B$ without the
+boundary correction would give a false obstruction. This example
+is local and does not assert compact pressure support.
+
+For a finite exact check, let the frame be independent of $z,\theta$
+on each radial slice and write
+$\bar\rho(r)=\int_c^d\rho(r,z)\dd z$.
+Then the supports in \eqref{eq:complete-flux-supports} reduce to
+their respective finite-dimensional formulas at weight $\bar\rho$.
+For the rationally rotating frame
+\[
+ E(r)=\begin{pmatrix}
+ \frac{1-t^2}{1+t^2}&0&\frac{2t}{1+t^2}\\
+ 0&1&0\\
+ -\frac{2t}{1+t^2}&0&\frac{1-t^2}{1+t^2}
+ \end{pmatrix},\qquad t=r-1,
+\]
+the physical $rz$ shear has pulled-back covector
+$\lambda_E=(-7/25,0,0,24/25)$ at $r=3/2$. Writing
+$h=22371/122900$, exact evaluation gives
+\begin{equation}\label{eq:rotating-shear-exact}
+ \mathcal B_+=\frac{19h+47g}{100}\bar\rho,
+ \qquad\mathcal B_-=\frac{19g}{50}\bar\rho,
+ \qquad\mathcal B_{\rm abs}=\frac{19g}{50}\bar\rho.
+\end{equation}
+The asymmetry is real: replacing the original absolute budget by
+one-sided positivity can change a failed test into an inconclusive
+one. These rational point evaluations are not uniform estimates for
+a smooth shell, and no source authenticity follows from them.
+
+\begin{proposition}[Source-shaped meridional flux, including viscosity]
+\label{prop:shaper-shear}
+Let $U=(U_r,U_\theta,U_z)$ be an axisymmetric divergence-free smooth
+velocity on the cylindrical slice. Consider finitely many poloidal
+stream functions
+\[
+ \Psi_i(r,z)=K_i a_i(r)b(r)\Xi_i(z),\qquad
+ P_{r,i}=-r^{-1}\partial_z\Psi_i,\quad
+ P_{z,i}=r^{-1}\partial_r\Psi_i,
+\]
+where $K_i$ are constant and $\Xi_i=\Xi_i'=0$ at both axial endpoints.
+Put $P=\sum_iP_i$ and allow any purely azimuthal toroidal field
+$T_\theta e_\theta$. Define the axial moments
+\[
+ I_i(r)=\int_c^d U_r(r,z)\Xi_i(z)\dd z,\quad
+ m_i=\int_c^d\Xi_i(z)\dd z,\quad
+ J_{ij}=\int_c^d\Xi_i'(z)\Xi_j(z)\dd z.
+\]
+Then the axial integral of the physical quadratic $rz$ flux increment is
+\begin{align}
+ \mathcal C(r)&=\int_c^d\bigl[(U+P+T)_r(U+P+T)_z-U_rU_z\bigr]\dd z
+ =\Gamma(r)b'(r)+\Delta(r)b(r)+Q_2(r)b(r)^2,\notag\\
+ \Gamma&=\frac1r\sum_iK_i a_iI_i,\qquad
+ \Delta=\frac1r\sum_i K_i
+ \left[a_i'I_i-a_i\left(I_i'+\frac{I_i}{r}\right)\right],\notag\\
+ Q_2&=\frac1{r^2}\sum_{i<j}K_iK_j
+  (a_j a_i'-a_i a_j')J_{ij}.\label{eq:shaper-source-flux}
+\end{align}
+The contribution to the same flux from the canonical Newtonian
+viscous stress of $P$ is exactly
+\begin{equation}\label{eq:shaper-viscous}
+ \mathcal V_\nu(r)
+ =-\nu\int_c^d(\partial_zP_r+\partial_rP_z)\dd z
+ =-\nu\sum_iK_i m_i\frac{d}{dr}
+  \left(\frac{(a_i b)'}r\right).
+\end{equation}
+In particular its coefficient of $b''$ is
+$-\nu r^{-1}\sum_iK_i m_i a_i$; it cannot be included in a
+$O(b^2)$ remainder merely by assigning a flat radial cutoff.
+\end{proposition}
+
+\begin{proof}
+The mixed core--shaper product is
+$r^{-1}\sum_iK_i\bigl[(a_i b)'I_i-
+ a_i b\int_c^dU_z\Xi_i'\dd z\bigr]$.
+Axial integration by parts and
+$r^{-1}\partial_r(rU_r)+\partial_zU_z=0$ give
+$\int U_z\Xi_i'=I_i'+I_i/r$, proving the linear terms.
+The self-products vanish because $\int\Xi_i'\Xi_i=0$.
+For $i\ne j$ integration by parts gives $J_{ji}=-J_{ij}$;
+the paired cross-products reduce to
+$r^{-2}K_iK_j(a_j a_i'-a_i a_j')b^2J_{ij}$.
+All $rz$ components of a purely toroidal velocity vanish.
+Finally the integral of $\partial_zP_r$ vanishes by the endpoint
+conditions and
+$\int\partial_rP_z=\sum_iK_i m_i\partial_r((a_i b)'/r)$.
+This proves the viscous identity and its displayed $b''$ coefficient.
+\end{proof}
+
+For an exact local diagnostic take
+$U_r=-2r$, $U_z=4z$, $c=-1$, $d=1$,
+$b=(r-1)^3$, $\nu=1$, and two shapers
+\[
+ (K_1,a_1,\Xi_1)=(1,1,(1-z^2)^2),\qquad
+ (K_2,a_2,\Xi_2)=(2,r,z(1-z^2)^2).
+\]
+At $r=2$, direct polynomial integration and the reduced formula
+independently give
+\begin{equation}\label{eq:shaper-rational-example}
+ \Gamma=-\frac{32}{15},\quad \Delta=\frac{32}{15},\quad
+ Q_2=\frac{64}{315},\quad\mathcal V_1=-\frac{12}{5},\quad
+ \mathcal C+\mathcal V_1=-\frac{2036}{315}.
+\end{equation}
+The polynomial functions illustrate the exact algebra on a local
+slice; their zero extensions are not $C^\infty$ compact H8 cutoffs.
+Neither the still-free localization stresses nor the common pressure
+have been inserted into this number.
+
+The Case~006 source specifies a compact curl localization
+$u_b=\nabla\times(\chi A_c)$, separable poloidal and toroidal
+shell shapers, and a toroidal pressure radial derivative, but does
+not fix the smooth profiles, the complete four-patch interactions,
+or a common pressure representative. Hence no value of
+\eqref{eq:complete-flux} has yet been certified for the complete H8
+residual. The exact code records the transition, shaper, viscosity,
+overlap, reference-centre and axial boundary channels separately;
+omitting any named channel blocks evaluation. Supplying zero for a
+channel requires mathematical source justification, not merely
+successful execution of the code.
 
 \section{The physical residual and terminal speed}
 

@@ -19,6 +19,8 @@ on:
       - 'tests/test_h8_positive_cone.py'
       - 'tests/test_h8_positive_dual_certificate.py'
       - 'tests/test_h8_rotating_frame.py'
+      - 'tests/test_h8_exact_flux_gate.py'
+      - 'tests/test_h8_shaper_flux_ledger.py'
       - 'meridional_h8_certificate.py'
       - 'h8_four_field_map.py'
       - 'h8_sharp_dual.py'
@@ -26,6 +28,8 @@ on:
       - 'h8_positive_cone.py'
       - 'h8_positive_dual_certificate.py'
       - 'h8_rotating_frame.py'
+      - 'h8_exact_flux_gate.py'
+      - 'h8_shaper_flux_ledger.py'
       - 'manuscript/**'
       - '.github/workflows/unforced-torus-patching.yml'
   workflow_dispatch:
@@ -86,6 +90,9 @@ jobs:
           lake build UnforcedPatching.SharpCoefficientDualSmoke
           lake build UnforcedPatching.PositiveCoefficientConeSmoke
           lake build UnforcedPatching.RotatingFrameDualSmoke
+
+      - name: Install exact symbolic source-flux dependency
+        run: python -m pip install sympy
 
       - name: Revalidate fail-closed mathematical gate ledger
         run: |
