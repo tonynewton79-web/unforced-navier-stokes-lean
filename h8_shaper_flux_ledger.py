@@ -20,6 +20,17 @@ class ShaperFlux:
     total: sp.Expr
 
 
+@dataclass(frozen=True)
+class ShaperEdgeCoefficients:
+    """Coefficients of b'', b', b, b² in the exact shear increment."""
+
+    second: sp.Expr
+    first: sp.Expr
+    zero: sp.Expr
+    square: sp.Expr
+    viscous_mass: sp.Expr
+
+
 def shaper_flux(r, z, z_lower, z_upper, U_r, U_z, b,
                 profiles, *, viscosity=1):
     """Integrate shell-induced physical rz transport and viscous stress.
@@ -69,3 +80,26 @@ def shaper_flux(r, z, z_lower, z_upper, U_r, U_z, b,
         sp.simplify(x) for x in (gamma, delta, quadratic, viscous))
     total = sp.simplify(gamma*sp.diff(b, r)+delta*b+quadratic*b*b+viscous)
     return ShaperFlux(gamma, delta, quadratic, viscous, total)
+
+
+def shaper_edge_coefficients(r, z, z_lower, z_upper, U_r, U_z,
+                             profiles, *, viscosity=1):
+    """Expand a separable shaper shear into its four cutoff jet orders.
+
+    The result is exact only under ``shaper_flux``'s axisymmetric,
+    separated-profile and endpoint hypotheses; it does not include
+    pressure, rotating-patch interactions or the authentic H8 source.
+    """
+    nu = sp.sympify(viscosity)
+    base = shaper_flux(r, z, z_lower, z_upper, U_r, U_z, sp.S.Zero,
+                       profiles, viscosity=nu)
+    mass = sp.simplify(sum((sp.sympify(K) * sp.sympify(a) *
+                            sp.integrate(sp.sympify(xi), (z, z_lower, z_upper))
+                            for K, a, xi in profiles), sp.S.Zero))
+    second = -nu*mass/r
+    first = base.gamma - nu*(2*sp.diff(mass, r)/r - mass/r**2)
+    zero = base.delta - nu*(sp.diff(mass, r, 2)/r
+                             - sp.diff(mass, r)/r**2)
+    return ShaperEdgeCoefficients(*[sp.simplify(x)
+                                    for x in (second, first, zero,
+                                              base.quadratic, mass)])

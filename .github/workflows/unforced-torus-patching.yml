@@ -21,6 +21,7 @@ on:
       - 'tests/test_h8_rotating_frame.py'
       - 'tests/test_h8_exact_flux_gate.py'
       - 'tests/test_h8_shaper_flux_ledger.py'
+      - 'tests/test_h8_flat_edge_gate.py'
       - 'tests/test_h8_c4_transition.py'
       - 'meridional_h8_certificate.py'
       - 'h8_four_field_map.py'

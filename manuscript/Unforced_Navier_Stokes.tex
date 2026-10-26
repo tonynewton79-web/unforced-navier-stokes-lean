@@ -10,6 +10,7 @@
   pdfsubject={Compact symmetric stresses, exact coefficient margins and formal verification}}
 \usepackage{fancyhdr}
 \usepackage{enumitem}
+\usepackage{needspace}
 \setlength{\parindent}{1.25em}
 \setlength{\parskip}{0.20em}
 \setcounter{secnumdepth}{2}
@@ -75,6 +76,10 @@ essential: an axial source primitive alone cannot be bounded by the
 stress cone when that trace is free.
 The source-prescribed separable shell shaper also admits an exact
 quadratic flux reduction, including its often-leading viscous shear.
+An endpoint uniqueness lemma rules out an $O(b^2)$ stress-shear budget
+for any nonzero compact cutoff with a nondegenerate viscous second-jet
+coefficient, provided the remaining terms have at most first-jet
+size. The hypothesis is not established for the complete H8 residual.
 Normalized quarter-turn localization requires twelve ordered nonlinear
 overlap terms; an explicit local construction shows that these terms
 can carry three quarters of the core kinetic shear. A separately chosen
@@ -985,6 +990,81 @@ The polynomial functions illustrate the exact algebra on a local
 slice; their zero extensions are not $C^\infty$ compact H8 cutoffs.
 Neither the still-free localization stresses nor the common pressure
 have been inserted into this number.
+
+\Needspace{10\baselineskip}
+\begin{proposition}[Flat-edge second-derivative obstruction]
+\label{prop:flat-edge}
+Under the hypotheses of Proposition~\ref{prop:shaper-shear}, put
+$M(r)=\sum_iK_i m_i a_i(r)$. The shaper-induced kinetic and
+viscous stress-shear increment has the exact decomposition
+\begin{align}
+ \mathcal C+\mathcal V_\nu
+ &=\kappa_2b''+\kappa_1b'+\kappa_0b+\kappa_qb^2,
+ \label{eq:flat-edge-jets}\\
+ \kappa_2&=-\frac{\nu M}{r},&
+ \kappa_1&=\Gamma-\nu\left(\frac{2M'}r-\frac M{r^2}\right),\notag\\
+ \kappa_0&=\Delta-\nu\left(\frac{M''}r-\frac{M'}{r^2}\right),&
+ \kappa_q&=Q_2.\notag
+\end{align}
+Let $r_0>0$ and $I=[r_0,r_0+\delta]$, and suppose these four
+coefficients are bounded on $I$ with
+$\inf_I|\kappa_2|>0$. If $b\in C^2(I)$ satisfies
+$b(r_0)=b'(r_0)=0$ and another stress-shear contribution $R$
+obeys, for finite constants $L,L'\ge0$,
+\begin{equation}\label{eq:flat-edge-hypotheses}
+ |R|\le L(|b|+|b'|+b^2),\qquad
+ |\mathcal C+\mathcal V_\nu+R|\le L'b^2
+ \quad\hbox{on }I,
+\end{equation}
+then $b\equiv0$ throughout $I$.
+\end{proposition}
+
+\begin{proof}
+Differentiating $M'b+Mb'$ divided by $r$ in
+\eqref{eq:shaper-viscous} yields
+$M b''/r+(2M'/r-M/r^2)b'+(M''/r-M'/r^2)b$,
+which proves \eqref{eq:flat-edge-jets}. Let
+$\eta=\inf_I|\kappa_2|>0$ and $L_b=\sup_I|b|<\infty$.
+The two bounds in \eqref{eq:flat-edge-hypotheses}, boundedness of
+the other three coefficients and $b^2\le L_b|b|$ yield a
+constant $C<\infty$ such that
+\[
+ |b''(r)|\le C\bigl(|b(r)|+|b'(r)|\bigr)
+ \quad(r\in I).
+\]
+By the initial conditions and the fundamental theorem of calculus,
+the continuous nonnegative function $w=|b|+|b'|$ satisfies
+$w(r)\le(1+C)\int_{r_0}^r w(s)\dd s$. Gronwall's elementary
+integral inequality gives $w\equiv0$, and therefore $b\equiv0$.
+\end{proof}
+
+For the two profiles in \eqref{eq:shaper-rational-example}, direct
+integration gives $m_1=16/15$ and $m_2=0$; hence $M=16/15$ and
+\begin{equation}\label{eq:flat-edge-explicit}
+ \mathcal C+\mathcal V_1
+ =-\frac{16}{15r}b''
+ +\left(-\frac{32}{15}+\frac{16}{15r^2}\right)b'
+ +\frac{64}{15r}b+\frac{256}{315r^2}b^2.
+\end{equation}
+At $r=2$ and $b=(r-1)^3$ this again gives
+$-2036/315$. Since $\kappa_2=-16/(15r)$ is nowhere zero on
+any annulus with $r>0$ (indeed $|\kappa_2|\ge8/15$ on
+$1\le r\le2$), Proposition~\ref{prop:flat-edge}
+prohibits a nontrivial one-sided flat cutoff from satisfying an
+$O(b^2)$ budget for this \emph{restricted} flux whenever its remaining
+terms obey the first inequality of \eqref{eq:flat-edge-hypotheses}.
+
+In the H8 application, the two slice support functions in
+\eqref{eq:complete-flux-supports} yield such a target bound only if
+the relevant reference-centre-subtracted shear is precisely the
+quantity in \eqref{eq:flat-edge-hypotheses} and both supports are
+$O(b^2)$ on the edge collar. Neither follows from the source
+architecture alone. Nontrivial compactness can instead require a
+vanishing effective $b''$ coefficient, a compensating transition or
+overlap term of second-jet size, a pressure boundary primitive with
+the requisite source matching, or a density budget larger than
+$O(b^2)$. The lemma does not rule out these possibilities and is not
+a contradiction for the authentic H8 residual.
 
 The Case~006 source specifies a compact curl localization
 $u_b=\nabla\times(\chi A_c)$, separable poloidal and toroidal

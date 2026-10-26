@@ -288,6 +288,62 @@ local example, not the authentic choice of global H8 profiles.
 endpoint conditions before applying these formulas. Reproduce with
 `python -m unittest discover -s tests -p 'test_h8_shaper_flux_ledger.py' -v`.
 
+### A precise flat-edge restriction, conditional on the missing terms
+
+Set $M(r)=\sum_iK_i m_i a_i(r)$. The complete kinetic-plus-viscous
+shaper *increment* is exactly
+
+\[
+T_b=\kappa_2b''+\kappa_1b'+\kappa_0b+\kappa_qb^2,
+\]
+
+with
+
+\[
+\kappa_2=-\nu M/r,\quad
+\kappa_1=\Gamma-\nu(2M'/r-M/r^2),\quad
+\kappa_0=\Delta-\nu(M''/r-M'/r^2),\quad
+\kappa_q=Q_2.
+\]
+
+**Flat-edge uniqueness lemma.** Let $b\in C^2([a,a+\delta])$ satisfy
+$b(a)=b'(a)=0$, with the four coefficients bounded and
+$|\kappa_2|\ge\eta>0$ throughout that collar. If a remaining term
+$R$ obeys
+
+\[
+|R|\le L(|b|+|b'|+b^2),\qquad |T_b+R|\le L' b^2,
+\]
+
+then $b\equiv0$ on the collar. Indeed, boundedness of $b$ and the
+nonvanishing coefficient imply
+$|b''|\le C(|b|+|b'|)$; integration from $a$, followed by
+Gronwall, forces $b=b'=0$. This is a direct, complete ODE argument,
+not a numerical inference from finitely many cutoff samples.
+
+For the two-shaper example, $m_1=16/15$ and $m_2=0$, so
+
+\[
+T_b=-\frac{16}{15r}b''
++\left(-\frac{32}{15}+\frac{16}{15r^2}\right)b'
++\frac{64}{15r}b+\frac{256}{315r^2}b^2.
+\]
+
+The second-derivative coefficient is nonzero on any annulus away from
+the axis. Independent physical-stress integration checks this
+decomposition for two distinct polynomial $b$ profiles, and the
+original $r=2$ value remains exactly $-2036/315$.
+`tests/test_h8_flat_edge_gate.py` reproduces the checks.
+
+**Applicability boundary:** the original H8 one-sided cone only implies
+an $O(b^2)$ shear target if *both* relevant slice supports are
+$O(b^2)$ after reference-centre subtraction. The authentic density,
+frame, transition cutoff, overlap stresses and common pressure have
+not been fixed sufficiently to establish this. Second-jet-size
+cancellation by a missing term, a vanishing combined $M$, or a
+larger density budget remains possible. This is a necessary condition
+for the restricted residual, **not** a disproof of the full H8 route.
+
 ## Normalized C4 transition, explicit candidate cutoff and pressure
 
 The source localization lemma specifies averaging a vector potential
