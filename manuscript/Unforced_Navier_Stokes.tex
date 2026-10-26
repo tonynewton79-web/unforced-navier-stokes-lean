@@ -87,6 +87,9 @@ smooth annular cutoff and normalized toroidal pressure illustrate the
 remaining source choices, and a combined rational example checks the
 full flux ledger against direct stress integration. These are test
 functions, not the original unfrozen H8 cutoff or pressure.
+For a core localization sharing the shaper cutoff, a cylindrical
+circulation identity reduces cancellation of the viscous second jet
+to an exact axial-core moment and one reference-circle trace.
 Lean additionally checks the meridional pointwise inverse and both
 integral antiderivative identities, alongside the finite cone algebra,
 physical residual expansion, and conditional terminal-speed retention.
@@ -1121,6 +1124,117 @@ the core shear is carried by the overlap partition even for an
 exactly fourfold-equivariant field. This local polynomial example
 does not claim a compact source profile; spatial disjointness, if
 asserted for different carrier supports, must be checked separately.
+
+\begin{proposition}[Shared-envelope second jet and core circulation]
+\label{prop:shared-envelope}
+Let $r_0<r<r_1$ be a cylindrical annulus separated from the axis,
+with angular coordinate $\theta$ and fixed axial endpoints $z_-<z_+$.
+Let $\mathcal A=(\mathcal A_r,\mathcal A_\theta,\mathcal A_z)$ be a smooth,
+$2\pi$-periodic vector potential in the cylindrical orthonormal frame
+(possibly only $C_4$-equivariant), and let
+$U_c=\nabla\times\mathcal A$. Suppose the localized core and the
+poloidal stream functions of Proposition~\ref{prop:shaper-shear}
+share one radial envelope $b(r)$, so their total meridional
+correction is obtained from
+\[
+ \nabla\times\left[b(r)
+ \left(\mathcal A+
+    \sum_i\frac{K_ia_i(r)\Xi_i(z)}{r}e_\theta\right)\right].
+\]
+An arbitrary smooth background independent of $b$ may be included.
+Denote the full angular mean by $\langle\cdot\rangle_\theta$, set
+\[
+ M(r)=\sum_iK_i m_i a_i(r),\qquad
+ V(r)=\int_{z_-}^{z_+}\langle (U_c)_z(r,\theta,z)
+                  \rangle_\theta\dd z ,
+\]
+and let $S_b(r)$ be the axial/angular integral of the increment in the
+physical shear
+$K_{rz}=u_ru_z-\nu(\partial_zu_r+\partial_ru_z)$.
+The coefficient of $b''(r)$ in $S_b$ is exactly
+\begin{equation}\label{eq:full-second-jet}
+ \kappa_{2,\mathrm{eff}}(r)=
+ -\nu\left[\int_{z_-}^{z_+}
+      \langle\mathcal A_\theta(r,\theta,z)\rangle_\theta\dd z
+         +\frac{M(r)}r\right].
+\end{equation}
+All the remaining terms in $S_b$ are expressions in $b,b'$
+with smooth bounded coefficients on compact subannuli. In particular,
+the quadratic overlaps among the four velocities contain no
+$b''$ term in this \emph{physical shear} channel.
+
+For any reference radius $r_*\in[r_0,r_1)$, put
+\[
+ H_*:=r_*\int_{z_-}^{z_+}
+     \langle\mathcal A_\theta(r_*,\theta,z)\rangle_\theta\dd z.
+\]
+Then \eqref{eq:full-second-jet} has the potential-free expression
+\begin{equation}\label{eq:circulation-second-jet}
+ \kappa_{2,\mathrm{eff}}(r)=
+ -\frac{\nu}{r}
+ \left[H_*+\int_{r_*}^r sV(s)\dd s+M(r)\right].
+\end{equation}
+Consequently, \emph{identical} second-jet cancellation on an interval
+requires and is implied by a single anchor equality
+$H_*+\int_{r_*}^{r_a}sV(s)\dd s+M(r_a)=0$
+and the differential identity
+\begin{equation}\label{eq:circulation-cancellation}
+ rV(r)+M'(r)=0
+\end{equation}
+throughout that interval. If the potential extends smoothly across
+the axis on complete disks, one may set $r_*=0$ and $H_*=0$.
+\end{proposition}
+
+\begin{proof}
+Writing $A_\theta^{\rm tot}=\mathcal A_\theta+
+\sum_iK_i a_i\Xi_i/r$, the cylindrical curl gives
+\[
+ u_r-U_r=b\left(\frac1r\partial_\theta\mathcal A_z
+           -\partial_zA_\theta^{\rm tot}\right),\qquad
+ u_z-U_z=b\left(\frac1r\partial_r(rA_\theta^{\rm tot})
+              -\frac1r\partial_\theta\mathcal A_r\right)
+             +b'A_\theta^{\rm tot}.
+\]
+The quadratic product $u_ru_z$ therefore uses at most $b$ and
+$b'$. In the viscous shear only $\partial_r(u_z-U_z)$
+produces $b''$, with coefficient $-\nu A_\theta^{\rm tot}$.
+Angular/axial integration proves \eqref{eq:full-second-jet}.
+Meanwhile
+\[
+ (U_c)_z=\frac1r\partial_r(r\mathcal A_\theta)
+              -\frac1r\partial_\theta\mathcal A_r .
+\]
+The full angular average annihilates the last derivative; hence
+$\partial_r(r\int\langle\mathcal A_\theta\rangle_\theta\dd z)
+=rV(r)$. Integrating from $r_*$ proves
+\eqref{eq:circulation-second-jet}. Differentiating its bracket
+proves the stated characterization of identical cancellation.
+Smooth axis extension forces $r\langle\mathcal A_\theta\rangle_\theta
+\to0$ as $r\downarrow0$.
+\end{proof}
+
+The annular reference circulation matters. For the single profile
+$(K,a,\Xi)=(1,1,(1-z^2)^2)$ on $[-1,1]$, one has $M=16/15$.
+Choosing the local, $C_4$-invariant azimuthal potential
+$\mathcal A_\theta=-8/(15r)$ gives
+$\int_{-1}^1\mathcal A_\theta\dd z=-16/(15r)$ and
+$\kappa_{2,\mathrm{eff}}\equiv0$. Here $(U_c)_z=0$ on the
+annulus, while $H_*=-16/15$ supplies the cancellation.
+This is an algebraic counterexample to deleting the circulation
+constant, not an admissible axis-spanning H8 core. If a smooth
+axis-spanning potential is prescribed, its core axial flux rather
+than a free annular circulation must supply the needed moment.
+
+The proposition concerns the canonical physical $rz$ stress.
+The pressure-compensated source relation
+\eqref{eq:complete-flux} retains its independent axial jump; neither
+pressure nor an H8 inverse stress is reconstructed here. If the
+actual transition cutoff $\chi$ differs from the shaper envelope
+$b$, the core contributions cannot be assigned to the same
+$b''$ coefficient without an additional source identity. Thus
+the genuine H8 test still requires the core flux $V$, the
+reference circulation, the shared-cutoff decision, and the full
+source-matched cone density and frame.
 
 The form of a compact cutoff may be fixed in a \emph{test family}
 without identifying it with the source's unfrozen choice. Define

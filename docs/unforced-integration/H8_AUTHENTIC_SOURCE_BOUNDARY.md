@@ -344,6 +344,71 @@ cancellation by a missing term, a vanishing combined $M$, or a
 larger density budget remains possible. This is a necessary condition
 for the restricted residual, **not** a disproof of the full H8 route.
 
+### Common cutoff: the second-jet coefficient reduces to core circulation
+
+The user-supplied three-page H8 flat-edge viscosity addendum has SHA-256
+417a01820906d2ab8b7eaf8883f28006c70a9fae03500f59c2b5b603590c8525.
+Its conditional Gronwall obstruction agrees with the calculation above.
+The addendum cites a distinct 122-page Case 006 revision that is not
+present in the checked source tree; its named positive shaper profiles
+cannot yet be identified with a frozen, source-matched residual.
+
+There is a more specific test when the core localization and the poloidal
+shapers use the **same** radial envelope $b(r)$. Let $\mathcal A$ be
+the smooth $C_4$-averaged core potential, let
+$U_c=\operatorname{curl}\mathcal A$, and write
+$M(r)=\sum_iK_i m_i a_i(r)$. The physical symmetric stress
+$K=u\otimes u-\nu(\nabla u+\nabla u^{\mathsf T})$ has the exact
+axial/angular integrated $rz$ second-jet coefficient
+
+\[
+\kappa_{2,\mathrm{eff}}(r)=
+-\nu\left[
+\int_{z_-}^{z_+}\langle\mathcal A_\theta\rangle_\theta\,dz
++\frac{M(r)}r\right].
+\]
+
+The core curl enters because
+$\operatorname{curl}(b\mathcal A)
+=b\operatorname{curl}\mathcal A+b'(e_r\times\mathcal A)$;
+the axial component of the second term is $b'\mathcal A_\theta$.
+Quadratic four-patch overlaps contain no $b''$ in this **physical
+shear** channel, although the full source and its inverse can contain
+higher derivatives.
+
+Define $V(r)=\int_{z_-}^{z_+}\langle(U_c)_z\rangle_\theta dz$ and
+$H_*=r_*\int_{z_-}^{z_+}
+\langle\mathcal A_\theta(r_*,\theta,z)\rangle_\theta dz$.
+Angular averaging of the axial curl gives
+
+\[
+\partial_r(r\langle\mathcal A_\theta\rangle_\theta)
+=r\langle(U_c)_z\rangle_\theta,\qquad
+\kappa_{2,\mathrm{eff}}(r)=
+-\frac{\nu}{r}\left[
+H_*+\int_{r_*}^r sV(s)\,ds+M(r)\right].
+\]
+
+Hence **identical cancellation** on a radial collar is equivalent to
+one anchor moment and the exact differential condition
+$rV(r)+M'(r)=0$ throughout the collar. For a globally smooth
+axis-spanning potential one may set $r_*=0$ and $H_*=0$; for a
+genuinely annular chart the circulation trace $H_*$ must be retained.
+
+An exact annular negative control uses one positive shaper
+$\Xi=(1-z^2)^2$, $K=a=1$, and
+$\mathcal A_\theta=-8/(15r)$. Then
+$M=16/15$, the axial core moment equals $-16/(15r)$, and
+$\kappa_{2,\mathrm{eff}}\equiv0$. Its nonzero annular circulation is
+**not** evidence for an admissible smooth axis-spanning H8 core.
+
+The new shared-cutoff-moment Python calculator and its independent
+tests compute the full physical shear, including $C_4$-periodic angular
+overlaps, and verify the core moment reconstruction. Reproduce with
+the test_h8_shared_cutoff_moment.py test module.
+This does not insert the genuine source profiles into the four-coordinate
+weighted H8 inverse.
+
 ## Normalized C4 transition, explicit candidate cutoff and pressure
 
 The source localization lemma specifies averaging a vector potential
