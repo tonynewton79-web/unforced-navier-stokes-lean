@@ -288,6 +288,73 @@ local example, not the authentic choice of global H8 profiles.
 endpoint conditions before applying these formulas. Reproduce with
 `python -m unittest discover -s tests -p 'test_h8_shaper_flux_ledger.py' -v`.
 
+## Normalized C4 transition, explicit candidate cutoff and pressure
+
+The source localization lemma specifies averaging a vector potential
+over the quarter-turn group **before** localizing with a C4-invariant
+cutoff. In an equivalent order, let
+
+\[
+v_j=Q^j_*\nabla\times(\chi A),\qquad
+u_b=\tfrac14\sum_{j=0}^3 v_j.
+\]
+
+The complete quadratic stress is **not** its four diagonal products:
+
+\[
+u_b\otimes u_b=\tfrac1{16}\sum_jv_j\otimes v_j+
+\tfrac1{16}\sum_{j\ne k}v_j\otimes v_k.
+\]
+
+In the exact local example `A=(-yz,xz,0)`, `chi=1`, all rotated
+velocities are `(-x,-y,2z)`. The four diagonal products carry one
+quarter of the physical radial--axial shear and the twelve ordered
+cross products carry **three quarters**. This distinguishes group
+averaging from adding four disjoint supports: source symmetry alone
+does not justify deleting overlaps. The example is local and not a
+compactly supported H8 field.
+
+`h8_c4_transition.py` now provides:
+
+- the exact smooth, nonanalytic *candidate* radial cutoff
+  `h(r-1) h(4-r)` with support `[1,4]`, plateau `[2,3]`, and
+  `h(s)=exp(-1/s)/(exp(-1/s)+exp(-1/(1-s)))` on `(0,1)`;
+- normalized rotating curls, their full quadratic stress and advective
+  partitions, rejecting cutoffs that are not exactly C4-invariant;
+- a particular toroidal-pressure representative
+  `p_T(r,z)=int_a^r (2*u_theta*T_theta+T_theta**2)/s ds`, selected by
+  `p_T(a,z)=0` rather than inferred from the source; and
+- an exact pressure-endpoint jump, including nonvanishing trace tests.
+
+The single-shaper local polynomial combination with
+`U_r=-r, U_z=2z, U_theta=r, Xi=z**2*(1-z)**2, b=(r-1)**3`
+and `T_theta=r*z*(1-z)` gives independent physical integration and
+channel assembly as
+
+\[
+S(r)=\frac{-r^4-30r^3-2r+3}{30r^2},\quad
+q_s(r)=4,\quad
+J_f(r)=\frac{-r^4+30r^3-32r+3}{30r^2},
+\]
+
+with `S(3/2)=-63/40`, `J_f(3/2)=91/120` exactly. **The polynomial
+combined example does not apply the new nonanalytic cutoff**; the two
+checks intentionally test separate algebraic obligations. In particular,
+these values do not establish whether the original H8 cone contains
+an inverse for the genuine, compact, spatially varying source.
+
+Reproduce using:
+
+```sh
+python -m unittest discover -s tests -p 'test_h8_c4_transition.py' -v
+```
+
+The authentic next input remains a fully frozen `chi` in similarity
+coordinates, vector potential/transition core, toroidal pressure trace,
+relative support geometry of the four rotations, and matched `rho,R_*,E`.
+Only then can the complete nonanalytic flux and sharp weighted cone
+be evaluated without an artificial replacement.
+
 Reproduce the exact finite check with SymPy:
 
 ```sh

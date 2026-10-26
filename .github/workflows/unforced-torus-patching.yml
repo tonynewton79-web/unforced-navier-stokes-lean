@@ -21,6 +21,7 @@ on:
       - 'tests/test_h8_rotating_frame.py'
       - 'tests/test_h8_exact_flux_gate.py'
       - 'tests/test_h8_shaper_flux_ledger.py'
+      - 'tests/test_h8_c4_transition.py'
       - 'meridional_h8_certificate.py'
       - 'h8_four_field_map.py'
       - 'h8_sharp_dual.py'
@@ -30,6 +31,7 @@ on:
       - 'h8_rotating_frame.py'
       - 'h8_exact_flux_gate.py'
       - 'h8_shaper_flux_ledger.py'
+      - 'h8_c4_transition.py'
       - 'manuscript/**'
       - '.github/workflows/unforced-torus-patching.yml'
   workflow_dispatch:

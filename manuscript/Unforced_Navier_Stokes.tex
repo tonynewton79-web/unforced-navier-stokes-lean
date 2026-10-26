@@ -75,6 +75,13 @@ essential: an axial source primitive alone cannot be bounded by the
 stress cone when that trace is free.
 The source-prescribed separable shell shaper also admits an exact
 quadratic flux reduction, including its often-leading viscous shear.
+Normalized quarter-turn localization requires twelve ordered nonlinear
+overlap terms; an explicit local construction shows that these terms
+can carry three quarters of the core kinetic shear. A separately chosen
+smooth annular cutoff and normalized toroidal pressure illustrate the
+remaining source choices, and a combined rational example checks the
+full flux ledger against direct stress integration. These are test
+functions, not the original unfrozen H8 cutoff or pressure.
 Lean additionally checks the meridional pointwise inverse and both
 integral antiderivative identities, alongside the finite cone algebra,
 physical residual expansion, and conditional terminal-speed retention.
@@ -990,6 +997,110 @@ overlap, reference-centre and axial boundary channels separately;
 omitting any named channel blocks evaluation. Supplying zero for a
 channel requires mathematical source justification, not merely
 successful execution of the code.
+
+\begin{proposition}[Quarter-turn localization and its nonlinear overlaps]
+\label{prop:c4-overlap}
+Let $Q(x,y,z)=(-y,x,z)$ and $\chi$ be invariant under $Q$. On a
+simply connected Cartesian chart let $A$ be a smooth vector potential,
+and denote the active push-forward by
+$Q_*v(x)=Qv(Q^{-1}x)$. Write
+\[
+ v_j=Q_*^j\bigl(\nabla\times(\chi A)\bigr),\quad 0\le j\le3,
+ \qquad u_b=\frac14\sum_{j=0}^3v_j.
+\]
+Then $u_b$ is solenoidal and equals the curl of the normalized
+quarter-turn average of $\chi A$. Its full kinetic stress splits
+exactly into
+\begin{equation}\label{eq:c4-stress}
+ u_b\otimes u_b=\frac1{16}\sum_{j=0}^3v_j\otimes v_j
+ +\frac1{16}\sum_{\substack{0\le j,k\le3\\j\ne k}}
+     v_j\otimes v_k.
+\end{equation}
+For the material derivative, the same diagonal and ordered-cross
+decomposition holds with $v_j\otimes v_k$ replaced by
+$(v_j\cdot\nabla)v_k$. The twelve cross products do not generally
+vanish under fourfold symmetry.
+\end{proposition}
+
+\begin{proof}
+Rigid rotations commute with curl, and the curl of an average is
+the average of the curls. Each $v_j$ is divergence free. Expanding
+the product of the two sums for $u_b$ proves
+\eqref{eq:c4-stress}; applying the Leibniz bilinearity of directional
+differentiation proves the derivative formula. The normalization
+$1/16$ follows from two factors of $1/4$ and cannot be dropped.
+\end{proof}
+
+For example, on a local chart take $\chi=1$ and
+$A=(-yz,xz,0)$. Every rotated field is
+$v_j=(-x,-y,2z)$, so in cylindrical notation
+$u_r=-r$, $u_z=2z$, and $u_r u_z=-2rz$. The diagonal terms in
+\eqref{eq:c4-stress} contribute $-rz/2$ to this shear, whereas
+the ordered overlaps contribute $-3rz/2$. Thus three quarters of
+the core shear is carried by the overlap partition even for an
+exactly fourfold-equivariant field. This local polynomial example
+does not claim a compact source profile; spatial disjointness, if
+asserted for different carrier supports, must be checked separately.
+
+The form of a compact cutoff may be fixed in a \emph{test family}
+without identifying it with the source's unfrozen choice. Define
+\[
+ h(s)=\begin{cases}
+   0,&s\le0,\\
+   \dfrac{\exp(-1/s)}{\exp(-1/s)+\exp(-1/(1-s))},&0<s<1,\\
+   1,&s\ge1,
+ \end{cases}
+ \qquad \chi_*(r)=h(r-1)h(4-r).
+\]
+Then $\chi_*$ is smooth and nonanalytic, zero outside $[1,4]$,
+identically one on $[2,3]$, and equals $1/2$ at $r=3/2,7/2$.
+As a radial function on the surrounding chart it is $C_4$-invariant;
+the hole at $r\le1$ makes its extension across the axis smooth.
+This provides a reproducible candidate for testing derivative
+estimates, not a determination of the H8 similarity-coordinate cutoff.
+
+The source's toroidal pressure prescription likewise fixes only
+\begin{equation}\label{eq:c4-pressure}
+ \partial_r p_T=\frac{2u_\theta T_\theta+T_\theta^2}{r}.
+\end{equation}
+For a chosen inner-radius normalization $p_T(a,z)=0$, its
+representative is
+\[
+ p_T(r,z)=\int_a^r\frac{2u_\theta(s,z)T_\theta(s,z)
+                         +T_\theta(s,z)^2}{s}\dd s.
+\]
+For $a=1$, $u_\theta=r$ and $T_\theta=rz(1-z)$ this gives
+\[
+ p_T=\frac{r^2-1}{2}\bigl(2z(1-z)+z^2(1-z)^2\bigr),
+ \qquad [p_T]_{z=0}^{z=1}=0.
+\]
+By contrast $T_\theta=rz$ gives the nonzero pressure jump
+$[p_T]_{-1}^{1}=2(r^2-1)$. The arbitrary radial integration trace
+$C(z)$ must be fixed by the remaining physical pressure equations;
+it is \emph{not} an arbitrary gauge of the complete Navier--Stokes
+system.
+
+To test all pieces in one local example, take $0\le z\le1$,
+$U_r=-r$, $U_z=2z$, $U_\theta=r$, and the one-shaper data
+$K=a=1$, $\Xi=z^2(1-z)^2$, $b=(r-1)^3$, $\nu=1$, with the
+toroidal profile and pressure from the preceding zero-jump example.
+The $C_4$ core shear is partitioned into a diagonal $-r/4$ and
+ordered overlaps $-3r/4$; the shaper and viscous parts follow from
+Proposition~\ref{prop:shaper-shear}. Directly integrating
+$K_{rz}=u_ru_z-(\partial_zu_r+\partial_ru_z)$ gives exactly
+\begin{equation}\label{eq:c4-combined-example}
+ S(r)=\frac{-r^4-30r^3-2r+3}{30r^2},\qquad
+ q_{\rm s}(r)=4,\qquad
+ J_f(r)=\frac{-r^4+30r^3-32r+3}{30r^2}.
+\end{equation}
+At $r=3/2$ the exact values are $S=-63/40$ and $J_f=91/120$.
+The independently computed axial source integral
+$F=(rS)'/r+q_{\rm s}$ reproduces $J_f$ by integration from $a=1$.
+The example uses a \emph{polynomial local core and shaper}, not
+$\chi_*$; it verifies the algebraic combination and avoidance of
+double-counted core terms. The smooth nonanalytic cutoff and the
+authentic Case~006 transition, frame, and reference-centre fields
+still require their own complete weighted calculation.
 
 \section{The physical residual and terminal speed}
 
