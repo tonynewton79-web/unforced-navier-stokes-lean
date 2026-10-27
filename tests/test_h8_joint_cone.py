@@ -1,10 +1,11 @@
 """Exact projected seven-ray feasibility and coupled axial/torque support."""
 
 from fractions import Fraction as Q
+from itertools import product
 import unittest
 
 from h8_four_field_map import coefficient_correction
-from h8_positive_cone import GAMMA, GAMMA_THIRD
+from h8_positive_cone import GAMMA, GAMMA_THIRD, positive_support
 
 
 class JointConeTests(unittest.TestCase):
@@ -51,6 +52,21 @@ class JointConeTests(unittest.TestCase):
         self.assertTrue(joint_ac_feasible(0, 0, 0))
         self.assertEqual(joint_ac_witness(0, 0, 0), (Q(0), Q(0)))
         self.assertFalse(joint_ac_feasible(Q(1, 3), 0, 0))
+
+    def test_zero_density_forces_all_four_coordinates(self):
+        # Exact dual coordinate caps, not a floating-point tolerance.
+        for j in range(4):
+            direction = [Q(0)] * 4
+            direction[j] = Q(1)
+            self.assertEqual(positive_support(*direction, Q(0)), 0)
+            direction[j] = Q(-1)
+            self.assertEqual(positive_support(*direction, Q(0)), 0)
+
+        # Independent original-ray check over integer lattice points.
+        for a, b, c, d in product(range(-2, 3), repeat=4):
+            floors = coefficient_correction(Q(a), Q(b), Q(c), Q(d))
+            if all(v >= 0 for v in floors):
+                self.assertEqual((a, b, c, d), (0, 0, 0, 0))
 
 
 if __name__ == "__main__":

@@ -44,4 +44,24 @@ theorem one_sided_positive_cone_joint_ac_bounds
   · linarith
   · linarith
 
+/-- Where the coefficient envelope vanishes, all four source-frame
+coordinates vanish. This is a pointwise algebraic lemma. The analytic
+consequence that a source is irrotational on an open zero-density collar
+requires the actual differential source identity and is not asserted
+by this Lean theorem. -/
+theorem one_sided_positive_cone_zero_density
+    (A B C D : ℝ)
+    (hFloor : ∀ i : Fin 7,
+      (0 : ℝ) * sevenRayCenter i +
+        sevenRayCorrection A B C D i ≥ (0 : ℝ) / 100) :
+    A = 0 ∧ B = 0 ∧ C = 0 ∧ D = 0 := by
+  have h1 := hFloor (1 : Fin 7)
+  have h2 := hFloor (2 : Fin 7)
+  have h3 := hFloor (3 : Fin 7)
+  have h4 := hFloor (4 : Fin 7)
+  have h5 := hFloor (5 : Fin 7)
+  have h6 := hFloor (6 : Fin 7)
+  simp [sevenRayCorrection] at h1 h2 h3 h4 h5 h6
+  refine ⟨?_, ?_, ?_, ?_⟩ <;> linarith
+
 end UnforcedPatching

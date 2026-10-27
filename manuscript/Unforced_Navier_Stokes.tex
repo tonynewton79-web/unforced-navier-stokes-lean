@@ -76,6 +76,8 @@ hexagonal axial--azimuthal projection of the one-sided cone and a
 constructive lift to all seven coefficients. The spatial-frame
 support enclosure retains angular variation of its physical test
 tensor, repairing an earlier cell-mass approximation. We also derive the exact
+zero-density collar and flat-edge curl obstruction, which constrains
+the authentic source independently of the pressure gauge. We derive the exact
 pressure-compensated annular flux identity and its two sharp
 frame-dependent cone inequalities. The pressure boundary trace is
 essential: an axial source primitive alone cannot be bounded by the
@@ -1703,6 +1705,56 @@ components, a nonconstant spatial tilt, and a nonzero axial pressure
 jump. No authentic H8 profile tuple has been certified by these
 tests, and the compact source-matched positive-stress inverse
 remains an open analytic problem.
+
+\begin{proposition}[Zero-density collar and flat-edge curl obstruction]
+\label{prop:zero-density-curl}
+Let $U\subset\R^3$ be open, and suppose $\rho\ge0$,
+$A,B,C,D$, a source frame $E\in SO(3)$ and a pressure $p$ are
+smooth. Suppose the original one-sided seven-ray floors hold
+pointwise and, writing $K=EHE^{\mathsf T}$ for
+$H=H(A,B,C,D)$, the actual Cartesian source identity is
+\begin{equation}\label{eq:collar-source-identity}
+ f=\diver K+\nabla p.
+\end{equation}
+Then on every open region $V\subset U$ where $\rho\equiv0$,
+\begin{equation}\label{eq:collar-curl-zero}
+ A=B=C=D=0,\qquad K=0,\qquad \nabla\times f=0.
+\end{equation}
+More strongly, at any point $x_0\in U$ where
+$\partial^\alpha\rho(x_0)=0$ for every multi-index $\alpha$,
+\begin{equation}\label{eq:collar-flat-curl}
+ \partial^\alpha(\nabla\times f)(x_0)=0
+ \qquad\text{for every multi-index }\alpha.
+\end{equation}
+In particular this applies at a boundary point of the support
+of a globally smooth compactly supported density. The conditions
+are necessary, not sufficient, for a positive-stress inverse.
+\end{proposition}
+
+\begin{proof}
+At $\rho=0$, the six paired ray inequalities imply first
+$D\ge0$ from rays four and five, and $D\le0$ from rays two and
+three (one-based indexing). They then force $C=0$, $B=0$ and
+$A=0$. Thus $K=0$ on $V$, and taking curl in
+\eqref{eq:collar-source-identity} removes the pressure gradient.
+For the second assertion, the exact bounded seven-ray polytope
+implies $|A|+|B|+|C|+|D|\le C_*\rho$ for an absolute constant
+$C_*$. Flatness of the smooth nonnegative $\rho$ at $x_0$ gives
+$\rho(x)=o(|x-x_0|^N)$ for every $N$. Each smooth stress
+coefficient has the same property; otherwise its first nonzero
+Taylor polynomial would dominate $\rho$ along some direction.
+Hence all derivatives of $H$, and therefore of $K=EHE^{\mathsf T}$,
+vanish at $x_0$. The identity
+$\nabla\times f=\nabla\times\diver K$ finishes the proof.
+\end{proof}
+
+This supplies a sharp \emph{source-side} diagnostic for the
+authentic H8 collar: a nonzero source-curl value on the exterior
+zero-density region, or a nonzero curl jet at a smooth flat edge,
+would preclude a compact, seven-ray-positive correction for that
+same source and pressure representative. It cannot be evaluated
+until the full unfrozen physical residual is supplied; examples
+constructed with diagnostic cutoffs do not decide H8.
 
 \begin{corollary}[Sharp azimuthal torque-flux compatibility]
 \label{cor:h8-torque-flux}

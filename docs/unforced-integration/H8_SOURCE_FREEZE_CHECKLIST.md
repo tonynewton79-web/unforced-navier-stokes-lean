@@ -61,6 +61,14 @@ approximation is not a theorem.
 If `rho=0`, the one-sided ray floors imply `A=B=C=D=0`. A residual
 remaining in a density-zero transition collar cannot be repaired by
 this constrained tensor except for a permissible pressure gradient.
+In particular, the full Cartesian source `f=div(E H E^T)+grad(p)` must
+satisfy `curl(f)=0` throughout such an open collar. If `rho` is flat
+at a smooth support boundary point, **every derivative of `curl(f)`
+must vanish there**. The manuscript's flat-edge proposition proves
+this necessary condition directly; the finite zero-density coefficient
+statement also has a dedicated Lean declaration and exact Python
+tests. This is a new source-side screen to apply *after* source freeze,
+not evidence that the authentic H8 source violates it.
 
 ## Exact nonlinear realization (G5--G7)
 

@@ -41,6 +41,14 @@ integral*. The rational Python enclosure separately requires certified
 test-tensor variation and frame-variation errors. See
 `docs/unforced-integration/H8_SOURCE_FREEZE_CHECKLIST.md`.
 
+The next exact source-side screen is a **zero-density collar / flat-edge
+curl obstruction**. All four admissible H8 stress coefficients vanish
+where `rho=0`; consequently a genuine source
+`f=div(E H E^T)+grad(p)` must have zero curl there. At any smooth flat
+boundary point of `rho`, every jet of `curl(f)` must vanish. The proof
+is in the cumulative manuscript, with exact finite Python regression
+and a new (hosted compilation pending) Lean zero-density lemma.
+
 The original complete H8 cutoff, frame, shaper, pressure and source
 tuple remains unauthenticated. Moreover, stress-divergence matching
 is not equivalent to solving the nonlinear unforced PDE. The final
