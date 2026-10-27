@@ -42,4 +42,4 @@
 
 - [x] Add CI smoke target and document exact scope and remaining H8 steps.
 - [x] Re-run repository tests, `git diff --check`, and Lean build.
-- [ ] Upload verified files to existing draft PR #5 and confirm blob hashes.
+- [x] Upload verified files to existing draft PR #5 and confirm blob hashes.
