@@ -43,16 +43,16 @@ def cartesianAxialMixedDiv (M N : ℝ → ℝ) (x y : ℝ) : ℝ :=
   deriv (fun t : ℝ => cartesianAxialMixedX M N t y) x +
     deriv (fun t : ℝ => cartesianAxialMixedY M N x t) y
 
-private theorem cartesianRadius_sq (x y : ℝ) :
+theorem cartesianRadius_sq (x y : ℝ) :
     cartesianRadius x y ^ 2 = x ^ 2 + y ^ 2 := by
   unfold cartesianRadius
   exact Real.sq_sqrt (add_nonneg (sq_nonneg x) (sq_nonneg y))
 
-private theorem cartesianRadius_pos (x y : ℝ)
+theorem cartesianRadius_pos (x y : ℝ)
     (hxy : 0 < x ^ 2 + y ^ 2) : 0 < cartesianRadius x y := by
   exact Real.sqrt_pos.2 hxy
 
-private theorem cartesianRadius_hasDerivAt_x (x y : ℝ)
+theorem cartesianRadius_hasDerivAt_x (x y : ℝ)
     (hxy : 0 < x ^ 2 + y ^ 2) :
     HasDerivAt (fun t : ℝ => cartesianRadius t y)
       (x / cartesianRadius x y) x := by
@@ -66,7 +66,7 @@ private theorem cartesianRadius_hasDerivAt_x (x y : ℝ)
   convert h using 1
   field_simp [hr]
 
-private theorem cartesianRadius_hasDerivAt_y (x y : ℝ)
+theorem cartesianRadius_hasDerivAt_y (x y : ℝ)
     (hxy : 0 < x ^ 2 + y ^ 2) :
     HasDerivAt (fun t : ℝ => cartesianRadius x t)
       (y / cartesianRadius x y) y := by
