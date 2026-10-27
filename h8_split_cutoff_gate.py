@@ -174,30 +174,40 @@ def split_cutoff_shear(r, theta, z, z_lower, z_upper, background_meridional,
 
 
 def spatial_frame_support_bounds(patches):
-    """Rigorous interval bounds for variable-frame H8 shear support.
+    """Certified patch bounds allowing BOTH physical frame and test variation.
 
-    Each patch supplies (mass, E0, delta), where mass=int_patch rho>=0,
-    E0 is an EXACT orthogonal rational matrix, and delta is a CERTIFIED
-    upper bound on sup_patch ||E(x)-E0||_F for the true moving frame.
-    No grid sampling establishes delta by itself.
+    Every patch MUST supply (mass, E0, delta, G0, test_error), where
+    mass=int_patch rho>=0, E0 is an exactly orthogonal rational matrix,
+    delta>=sup_patch ||E(x)-E0||_F, and G0 is a rational 3-by-3
+    reference test matrix with ||G0||_F<=1.  The nonnegative test_error
+    must enclose sup_patch ||G(x)-G0||_F.  The true G also has norm one
+    (as does the physical e_r(theta) tensor e_z shear test).
+
+    Omitting the test field was the defective historic interface: the
+    cylindrical test G=e_r(theta) tensor e_z varies with theta even when
+    the Cartesian frame E is exactly constant.  Mass alone does not
+    determine its integrated support.  Genuine cellwise integration is
+    another valid route; this function uses certified uniform errors.
+    No sampled grid establishes either uniform error by itself.
 
     The four-coordinate source correction
        H=[[-D,C,A],[C,0,B],[A,B,D]]
     has ||H||_F <= rho under the one-sided seven-ray positivity floors:
     the exact coordinate-wise extrema are each less than rho/4.
-    For orthogonal E and E0, |(EHE^T-E0HE0^T)_rz|
-       <= 2*rho*||E-E0||_F.
-    Additivity of the independent pointwise support and this error give
-    rigorous upper/lower enclosures of both weighted dual supports.
+    For orthogonal E and E0, the dual contraction error for unit-norm G
+    is at most rho*(2*delta+test_error).  Summing mass-weighted errors
+    encloses both signs of the physical integrated support.
     """
-    g = ((0, 0, 1), (0, 0, 0), (0, 0, 0))
     plus, minus, error = Q(0), Q(0), Q(0)
     count = 0
-    for mass, frame, delta in patches:
+    for patch in patches:
         count += 1
-        mass, delta = Q(mass), Q(delta)
-        if mass < 0 or delta < 0:
-            raise ValueError("mass and certified frame error must be nonnegative")
+        if len(patch) != 5:
+            raise ValueError("each patch needs a reference test tensor and certified variation")
+        mass, frame, delta, g, test_error = patch
+        mass, delta, test_error = Q(mass), Q(delta), Q(test_error)
+        if mass < 0 or delta < 0 or test_error < 0:
+            raise ValueError("mass, frame error and test error must be nonnegative")
         if len(frame) != 3 or any(len(row) != 3 for row in frame):
             raise ValueError("a 3-by-3 orthogonal reference frame is required")
         E = tuple(tuple(Q(v) for v in row) for row in frame)
@@ -205,10 +215,15 @@ def spatial_frame_support_bounds(patches):
                != (1 if i == j else 0)
                for i in range(3) for j in range(3)):
             raise ValueError("the reference frame must be exactly orthogonal")
-        cov = dual_covector(E, g)
+        if len(g) != 3 or any(len(row) != 3 for row in g):
+            raise ValueError("a 3-by-3 reference test tensor is required")
+        G = tuple(tuple(Q(v) for v in row) for row in g)
+        if sum((v*v for row in G for v in row), Q(0)) > 1:
+            raise ValueError("the reference test tensor needs Frobenius norm at most one")
+        cov = dual_covector(E, G)
         plus += positive_support(*cov, mass)
         minus += positive_support(*(-v for v in cov), mass)
-        error += 2*mass*delta
+        error += mass*(2*delta+test_error)
     if not count:
         raise ValueError("at least one certified frame patch is needed")
     return SpatialFrameSupport(plus, minus, max(Q(0), plus-error),

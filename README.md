@@ -20,6 +20,34 @@ DOI: `10.5281/zenodo.22903432`
 
 The present Lean development **does not constitute a machine-checked proof of the full unforced three-dimensional Navier–Stokes theorem**.
 
+### Case 006 H8 joint-cone and angular-frame audit (27 October 2026)
+
+The cumulative mathematical paper is
+`manuscript/Unforced_Navier_Stokes.tex`; it is distinct from the older
+conditional archival manuscript `paper.tex`. The current H8 revision
+proves a **jointly sharp axial--azimuthal hexagon** for the original
+one-sided seven-ray coefficient floors, with a constructive rational
+lift. `h8_positive_cone.py` and `tests/test_h8_joint_cone.py` replay
+the calculation. The new `UnforcedPatching/JointFluxCone.lean` contains
+the corresponding necessary inequalities; a hosted compilation receipt
+for its exact GitHub commit is required before calling that declaration
+kernel-checked.
+
+An adversarial review also found that the earlier cell-mass-only
+physical variable-frame support formula incorrectly treated
+`e_r(theta) tensor e_z` as constant over angular cells. The cumulative
+manuscript now keeps the frozen-frame support *inside the angular
+integral*. The rational Python enclosure separately requires certified
+test-tensor variation and frame-variation errors. See
+`docs/unforced-integration/H8_SOURCE_FREEZE_CHECKLIST.md`.
+
+The original complete H8 cutoff, frame, shaper, pressure and source
+tuple remains unauthenticated. Moreover, stress-divergence matching
+is not equivalent to solving the nonlinear unforced PDE. The final
+existential theorem, source-matched inverse and smooth nonlinear
+correction remain **OPEN**. See the machine-readable
+`docs/unforced-integration/proof_gates.json` ledger.
+
 What is already kernel-checked in `UnforcedClosure.lean`:
 
 - the exact cumulative-mean bottleneck identity `9/10 - 1/2 = 2/5`;

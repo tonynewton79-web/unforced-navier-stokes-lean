@@ -38,7 +38,8 @@
 \newcommand{\norm}[1]{\lVert #1\rVert}
 \title{\vspace{-1.2em}\bfseries\LARGE Unforced Navier--Stokes\\[0.45em]
   \large\mdseries Compact symmetric stresses, exact coefficient margins, and formal verification on the three-torus}
-\author{Tony Newton\\\small Newton Astro Labs, United Kingdom}
+\author{Tony Newton\\\small Newton Astro Labs, United Kingdom\\
+  \small\texttt{tony.newton79@gmail.com}}
 \date{}
 
 \begin{document}
@@ -70,7 +71,11 @@ this larger cone; no inverse is thereby constructed. A kernel-checked
 matrix identity then transfers the exact positive-cone dual to any
 rotating source frame, yielding a necessary integrated bound without
 assuming the frame is constant. None of these diagnostic tests
-decides the authentic H8 residual. We also derive the exact
+decides the authentic H8 residual. We derive the exact, jointly sharp
+hexagonal axial--azimuthal projection of the one-sided cone and a
+constructive lift to all seven coefficients. The spatial-frame
+support enclosure retains angular variation of its physical test
+tensor, repairing an earlier cell-mass approximation. We also derive the exact
 pressure-compensated annular flux identity and its two sharp
 frame-dependent cone inequalities. The pressure boundary trace is
 essential: an axial source primitive alone cannot be bounded by the
@@ -697,6 +702,98 @@ This is affine in $D$. Substitution of its two endpoints gives
 \eqref{eq:positive-support}. Signs of $x,B$ and the displacement
 of $C$ attain these extrema, establishing sharpness.
 \end{proof}
+
+\begin{theorem}[Exact joint axial--azimuthal seven-ray cone]
+\label{thm:joint-ac-cone}
+Fix $\rho\ge0$, and retain the genuine one-sided seven-ray floor of
+Proposition~\ref{prop:positive-support}. Given $A,C\in\R$, there exist
+$B,D\in\R$ satisfying all seven coefficient floors if and only if
+\begin{equation}\label{eq:joint-hexagon}
+ \begin{split}
+  -g\rho&\le C\le\frac{g+h}{2}\rho,\\
+  |A|-C&\le\frac{3g}{2}\rho,\\
+  |A|+C&\le\left(g+\frac h2\right)\rho.
+ \end{split}
+\end{equation}
+The projection is a hexagon with vertices
+\begin{equation}\label{eq:joint-vertices}
+ \left(\pm\frac{g\rho}{2},-g\rho\right),\qquad
+ \left(\pm\frac{(5g+h)\rho}{4},\frac{(h-g)\rho}{4}\right),\qquad
+ \left(\pm\frac{g\rho}{2},\frac{(g+h)\rho}{2}\right).
+\end{equation}
+For $a,c\in\R$, its exact joint support is
+\begin{equation}\label{eq:joint-ac-support}
+ \sigma^{AC}_{\rho}(a,c)=\rho\left[
+ \frac{h-g}{4}c+\frac g2|a|
+ +\frac{3g+h}{4}\max\{|a|,|c|\}\right].
+\end{equation}
+In particular, the separate sharp values of $A$ and $C$ cannot
+be attained simultaneously.
+\end{theorem}
+
+\begin{proof}
+The fourth and fifth coefficient floors, together with the sixth and
+seventh, imply
+\[
+ |A-4B|\le\frac{g\rho}{2}+2D,\qquad
+ |4B|\le\frac{g\rho}{2}.
+\]
+Thus $|A|\le g\rho+2D$. The second and third floors give
+\[
+ 2D\le C+\frac{g\rho}{2},\qquad
+ 2D\le\frac{h\rho}{2}-C.
+\]
+The nonnegative half-width of the $A-4B$ interval forces
+$D\ge-g\rho/4$, giving the two bounds on $C$ and both mixed
+inequalities in \eqref{eq:joint-hexagon}.
+
+Conversely suppose \eqref{eq:joint-hexagon} holds and choose
+\[
+ D=\min\left\{\frac{g\rho+2C}{4},
+                    \frac{h\rho-2C}{4}\right\},\qquad
+ 4B=\operatorname{clip}\left(A;-\frac{g\rho}{2},
+                                     \frac{g\rho}{2}\right),
+\]
+where $\operatorname{clip}(s;l,u)=\max\{l,\min\{s,u\}\}$.
+The displayed inequalities give
+\[
+ -\frac{g\rho}{4}\le D\le\frac{(g+h)\rho}{8}
+ \le\frac{2g\rho}{3},\qquad
+ D\ge\frac{|A|-g\rho}{2},
+\]
+and
+\[
+ |A-4B|=\max\left\{|A|-\frac{g\rho}{2},0\right\}
+          \le\frac{g\rho}{2}+2D.
+\]
+These relations verify all seven floors, including the first-ray
+inequality $-3D/2\ge-g\rho$. They also cover $\rho=0$.
+The intersection of the four sloping and two horizontal half-planes
+has exactly the six vertices in \eqref{eq:joint-vertices}.
+Maximizing $aA+cC$ at those vertices yields
+\eqref{eq:joint-ac-support}.
+\end{proof}
+
+For the unrotated cylindrical source frame the same inequalities
+persist upon positive-weight angular and axial averaging. Namely,
+at a fixed radius let
+\[
+ S_z=\int\!\langle K_{rz}\rangle_\theta\,dz,\qquad
+ S_\theta=\int\!\langle K_{r\theta}\rangle_\theta\,dz,\qquad
+ M_\rho=\int\!\langle\rho\rangle_\theta\,dz.
+\]
+Provided the source frame agrees with the cylindrical frame, the
+pair $(S_z,S_\theta)$ satisfies \eqref{eq:joint-hexagon} with
+$(A,C,\rho)$ replaced by $(S_z,S_\theta,M_\rho)$.
+The axial source reconstruction must retain the $K_{zz}+p$ boundary
+jump, and the azimuthal reconstruction must retain its $K_{\theta z}$
+endcap. For a genuinely rotating source frame the correct necessary
+bound instead uses the full dual support
+$\sigma^+_\rho\bigl(a\lambda(E^{\mathsf T}G_zE)
++c\lambda(E^{\mathsf T}G_\theta E)\bigr)$ integrated over the
+slice, where $G_z=e_r\otimes e_z$ and
+$G_\theta=e_r\otimes e_\theta$; fixed-frame hexagon coefficients
+cannot simply be transported through a tilt.
 
 \begin{proposition}[The manufactured dual test is inconclusive for
 the one-sided cone]\label{prop:positive-diagnostic}
@@ -1415,7 +1512,7 @@ is therefore the appropriate general decomposition; the
 shared-envelope Proposition~\ref{prop:shared-envelope} is its
 additional-hypothesis specialization.
 
-\begin{proposition}[Certified variable-frame dual enclosure]
+\begin{proposition}[Variable-frame dual enclosure with angular test]
 \label{prop:frame-enclosure}
 Consider the one-sided seven-ray coefficient cone and its
 trace-free representative $H$ in \eqref{eq:four-field-map}.
@@ -1435,12 +1532,12 @@ orthogonal frame $E_j$ and a \emph{certified} bound
 \]
 Here $\dd\mu=\dd z\,\dd\theta/(2\pi)$ on the slice. If
 $\sigma^+(\lambda)$ is the exact unit-density one-sided support
-and $G=e_r\otimes e_z$,
+and $G(x)=e_r(\theta)\otimes e_z$,
 define
 \[
  \widehat B_\pm=
- \sum_j m_j\,\sigma^+\!
-   \left(\pm\lambda(E_j^{\mathsf T}GE_j)\right),
+ \sum_j\int_{\Omega_j}\rho(x)\,\sigma^+\!\left(
+   \pm\lambda(E_j^{\mathsf T}G(x)E_j)\right)\dd\mu(x),
  \qquad
  \varepsilon_E=2\sum_jm_j\delta_j.
 \]
@@ -1451,9 +1548,11 @@ Then the genuine spatially varying shear supports satisfy
        \le \widehat B_\pm+\varepsilon_E.
 \end{equation}
 These bounds remain valid for smooth nonanalytic frames and
-densities, provided the cell masses and frame-error bounds are
-rigorously enclosed. Sampling a frame at cell centres alone
-does not provide such a certificate.
+densities, provided the weighted cell support integrals and
+frame-error bounds are rigorously enclosed. Alternatively the
+integrals may be bounded by $m_j$ times certified cellwise lower
+and upper support values. Sampling a frame and a physical test
+at cell centres alone does not provide such a certificate.
 \end{proposition}
 
 \begin{proof}
@@ -1475,11 +1574,23 @@ For orthogonal $E,E_j$,
  =(E-E_j)HE^{\mathsf T}
    +E_jH(E-E_j)^{\mathsf T}.
 \]
-The Frobenius pairing with $G$ consequently changes by at
-most $2\rho\norm{E-E_j}_F$. Taking the pointwise supremum
-over the coefficient cone, then integrating over each cell,
-proves \eqref{eq:variable-frame-enclosure}.
+The Frobenius pairing with the unit-norm $G(x)$ consequently changes
+by at most $2\rho\norm{E-E_j}_F$. Taking the pointwise supremum
+over the coefficient cone, retaining $G(x)$ in the frozen-frame
+support, and then integrating over each cell proves
+\eqref{eq:variable-frame-enclosure}.
 \end{proof}
+
+An earlier cell-mass-only expression which omitted the integral in
+$\widehat B_\pm$ is invalid for physical Cartesian reference frames.
+Indeed, even if $E(x)=E_j=I$ and $\delta_j=0$, its test tensor
+$G(\theta)$ varies. At $\theta=0$ the unit-density support is
+$51113/245800$, while at $\theta=\pi/2$ it is $15971/983200$.
+Thus zero frame error does not imply zero angular-test error. A
+piecewise-constant-test implementation is valid only with an
+additional certified bound
+$\eta_j\ge\sup_{\Omega_j}\norm{G(x)-G_j}_F$,
+in which case $\sum_jm_j\eta_j$ is added to $\varepsilon_E$.
 
 The dual bound controls values of the rotating stress, not its
 divergence. In a Cartesian chart, $K=EHE^{\mathsf T}$ obeys
@@ -1745,6 +1856,30 @@ definitions, is checked in Lean by the declaration
 \texttt{UnforcedPatching.}\allowbreak
 \texttt{navierStokesResidual\_add}.
 
+An exact positive symmetric-divergence inverse does not, by itself,
+cancel the unforced residual. For example, on the unit three-torus
+let $u=(\sin2\pi y,0,0)$ and $p=0$. Then $\diver u=0$ and
+$(u\cdot\nabla)u=0$, but
+\[
+ \mathcal N(u,0)=4\pi^2u\ne0.
+\]
+The symmetric periodic tensor
+\[
+ S=10I-2\pi\cos(2\pi y)
+ (e_1\otimes e_2+e_2\otimes e_1)
+\]
+is positive definite and satisfies $\diver S=4\pi^2u$.
+This example concerns positive tensors in general, not the
+particular H8 seven-ray cone. It shows why a source-matched
+stress is only a precursor to a nonlinear correction: an actual
+divergence-free $w$ and pressure $q$ must solve
+\[
+ \partial_tw-\Delta w+(u\cdot\nabla)w+(w\cdot\nabla)u
+ +(w\cdot\nabla)w+\nabla q=-\mathcal N(u,p)
+\]
+with the necessary initial trace, periodic compatibility,
+regularity and terminal estimates.
+
 \begin{proposition}[Conditional terminal retention]\label{prop:ret}
 Suppose that $u$ has arbitrarily large speed at points with
 $t\uparrow1$. If a correction $w$ satisfies
@@ -1809,6 +1944,7 @@ Lean module & Checked scope and the missing construction (continued)\\
 \texttt{FourFieldPhysical} & Exact nine-entry ray-to-cylindrical tensor map modulo an isotropic gauge; entrywise four-coordinate bound in the frozen frame, not a spatially rotated PDE bridge.\\
 \texttt{ExactCoefficientCone}, \texttt{SharpCoefficientDual} & Exact absolute-budget seven-coefficient polytope and sharp dual upper estimate; no frozen final Case~006 residual or spatial inverse.\\
 \texttt{PositiveCoefficientCone} & Universal one-sided seven-ray positive-cone support bound; not a spatial stress inverse or a continuum integral formalization.\\
+\texttt{AxialFluxCone}, \texttt{JointFluxCone} & The separate axial/azimuthal caps and the coupled hexagon necessary bounds are finite algebra; new branch declarations require a fresh head-commit compilation and axiom receipt. The constructive hexagon lift is proved in the text and rational tests, not yet a continuum inverse.\\
 \texttt{RotatingFrameDual} & Exact source-to-physical matrix Frobenius pullback and pointwise rotated one-sided dual bound; no derivative-of-frame or PDE source matching theorem.\\
 \texttt{FrameConnectionDerivative} & Genuine entrywise product-rule derivative of $EHE^{\mathsf T}$, skew angular connection and its commutator, including an exact moving-trigonometric-frame sign test; authentic H8 bounds and PDE source matching remain open.\\
 \texttt{CompactGauge} & One-variable gauge derivative; no compact tensor support theorem.\\
@@ -1974,6 +2110,16 @@ No numerical conclusion can be drawn from this inequality until the
 actual $g,\rho,R_*,E$ are supplied and the frame-derivative terms
 in \eqref{eq:frame-derivatives} are controlled.
 
+The joint constraints \eqref{eq:joint-hexagon} supply a sharper
+source-facing test in an aligned cylindrical frame. In a moving
+physical frame they must be replaced by the spatially integrated
+support of the complete rotated covector; the corrected
+Proposition~\ref{prop:frame-enclosure} makes the needed angular
+test variation explicit. Failure of a fully certified necessary
+inequality would obstruct the proposed source-matched positive
+inverse. Passing these necessary tests would not construct that
+inverse and would not discharge the physical nonlinear correction.
+
 A complete unforced singularity construction must still provide a
 single authenticated local profile, source-matched smooth shell
 data, a scale-sharp weighted symmetric inverse respecting the
@@ -2019,6 +2165,6 @@ Communications on Pure and Applied Mathematics \textbf{35} (1982),
 
 \bibitem{NewtonRepo2026}
 T. Newton, \emph{Unforced Navier--Stokes Lean integration branch},
-\url{https://github.com/tonynewton79-web/unforced-navier-stokes-lean/pull/3}.
+\url{https://github.com/tonynewton79-web/unforced-navier-stokes-lean/pull/5}.
 \end{thebibliography}
 \end{document}

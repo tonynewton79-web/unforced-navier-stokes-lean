@@ -101,6 +101,7 @@ jobs:
           lake build UnforcedPatching.SharpCoefficientDualSmoke
           lake build UnforcedPatching.PositiveCoefficientConeSmoke
           lake build UnforcedPatching.AxialFluxConeSmoke
+          lake build UnforcedPatching.JointFluxConeSmoke
           lake build UnforcedPatching.RotatingFrameDualSmoke
           lake build UnforcedPatching.Case006SourceBandSmoke
           lake build UnforcedPatching.PressureCompensatedFluxSmoke
