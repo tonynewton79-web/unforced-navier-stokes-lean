@@ -1642,6 +1642,7 @@ Lean module & Checked scope and the missing construction\\
 \texttt{CartesianAxialBridge} & Actual Cartesian axial divergence for axisymmetric mixed stress, including geometric $K_{rz}/r$ and nonzero swirl; not a general tensor inverse.\\
 \texttt{NonaxisymmetricAxialBridge} & Cartesian axial divergence with both radial and angular directional derivatives for arbitrary locally differentiable mixed stress; axial pressure derivative retained.\\
 \texttt{AngularMean} & Exact periodic angular FTC removing the angular derivative after averaging, under explicit differentiability and integrability assumptions.\\
+\texttt{PhysicalCircleAngular} & Physical circle chain rule and exact $-y\partial_x+x\partial_y$ correspondence, automatic angular endpoint equality, and integrated cancellation for Frechet-differentiable stress with integrable angular derivative.\\
 \texttt{Retention} & Subleading corrections preserve terminal speed; neither required field constructed.\\
 \bottomrule
 \end{tabular}
@@ -1670,15 +1671,18 @@ reports list only Lean's standard logical axioms. The further
 \texttt{CartesianAxialBridge} and
 \texttt{NonaxisymmetricAxialBridge} theorems now establish the actual
 Cartesian \emph{axial} divergence component, including the nonzero
-angular directional derivative. The separate \texttt{AngularMean}
-theorem removes that derivative only after periodic integration,
-while \texttt{PressureCompensatedFlux} proves the radial FTC with the
-full axial boundary trace retained. Derivation of the integrated
-source--shear differential hypothesis from authenticated H8 profiles,
-all interchange-of-differentiation conditions, rotating-frame
-connection terms, the complete Cartesian tensor divergence, global
-support, moment compatibility and weighted positive inverse remain
-open. Thus the full restricted Theorem~\ref{thm:inverse} is
+angular directional derivative. The \texttt{PhysicalCircleAngular}
+theorem derives that derivative by the Frechet chain rule along a
+genuine Cartesian circle, supplies the periodic endpoint equality,
+and invokes \texttt{AngularMean} to remove its contribution only
+\emph{after} integration. The \texttt{PressureCompensatedFlux} theorem
+proves the separate radial FTC with the full axial boundary trace
+retained. Derivation of the integrated source--shear differential
+hypothesis from authenticated H8 profiles, all necessary
+interchange-of-differentiation conditions, rotating-frame connection
+terms, the complete Cartesian tensor divergence, global support,
+moment compatibility and weighted positive inverse remain open.
+Thus the full restricted Theorem~\ref{thm:inverse} is
 \emph{partially}, not fully, formalized.
 
 An independent exact-arithmetic test evaluates a nontrivial annular
