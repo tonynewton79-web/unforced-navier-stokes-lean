@@ -41,4 +41,4 @@
 
 - [x] Update and typeset the cumulative manuscript with accurate boundaries.
 - [x] Run exact and Lean regression tests and diff checks.
-- [ ] Upload to draft PR and verify remote blob hashes.
+- [x] Upload to draft PR and verify remote blob hashes (all seven matched; hosted CI queued).
