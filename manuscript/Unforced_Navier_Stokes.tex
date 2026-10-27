@@ -1636,7 +1636,12 @@ Lean module & Checked scope and the missing construction\\
 \texttt{PositiveCoefficientCone} & Universal one-sided seven-ray positive-cone support bound; not a spatial stress inverse or a continuum integral formalization.\\
 \texttt{RotatingFrameDual} & Exact source-to-physical matrix Frobenius pullback and pointwise rotated one-sided dual bound; no derivative-of-frame or PDE source matching theorem.\\
 \texttt{CompactGauge} & One-variable gauge derivative; no compact tensor support theorem.\\
-\texttt{MeridionalInverse} & Actual axial and radial interval-integral FTC identities, geometric hoop cancellation, and pointwise radial/axial cylindrical inverse; no Cartesian tensor-divergence bridge or compact support theorem.\\
+\texttt{MeridionalInverse} & Actual axial and radial interval-integral FTC identities, geometric hoop cancellation, and pointwise radial/axial cylindrical inverse; no compact support theorem.\\
+\texttt{Case006SourceBand} & Sharp finite-dimensional source-frame axial interval with an explicit one-sided-cone counterexample; no authentic spatial source identity.\\
+\texttt{PressureCompensatedFlux} & Continuum radial FTC for the pressure-compensated axial source, conditional on the shear differential identity; axial pressure/tensor trace retained.\\
+\texttt{CartesianAxialBridge} & Actual Cartesian axial divergence for axisymmetric mixed stress, including geometric $K_{rz}/r$ and nonzero swirl; not a general tensor inverse.\\
+\texttt{NonaxisymmetricAxialBridge} & Cartesian axial divergence with both radial and angular directional derivatives for arbitrary locally differentiable mixed stress; axial pressure derivative retained.\\
+\texttt{AngularMean} & Exact periodic angular FTC removing the angular derivative after averaging, under explicit differentiability and integrability assumptions.\\
 \texttt{Retention} & Subleading corrections preserve terminal speed; neither required field constructed.\\
 \bottomrule
 \end{tabular}
@@ -1661,12 +1666,20 @@ The further theorem \texttt{sourceMatched\_axialStress} checks the
 pointwise cylindrical source match $S_{zz}=\rho$,
 $f_z=\partial_z\rho$ used in Proposition~\ref{prop:dual}.
 These results compile without proof admissions; selected axiom
-reports list only Lean's standard logical axioms. They remain
-pointwise statements about \emph{defined cylindrical expressions}:
-the Cartesian tensor-divergence equivalence, global support and
-regularity construction, moment compatibility and weighted H8
-estimate are not yet formalized in Lean. Thus the full restricted
-Theorem~\ref{thm:inverse} is \emph{partially}, not fully, formalized.
+reports list only Lean's standard logical axioms. The further
+\texttt{CartesianAxialBridge} and
+\texttt{NonaxisymmetricAxialBridge} theorems now establish the actual
+Cartesian \emph{axial} divergence component, including the nonzero
+angular directional derivative. The separate \texttt{AngularMean}
+theorem removes that derivative only after periodic integration,
+while \texttt{PressureCompensatedFlux} proves the radial FTC with the
+full axial boundary trace retained. Derivation of the integrated
+source--shear differential hypothesis from authenticated H8 profiles,
+all interchange-of-differentiation conditions, rotating-frame
+connection terms, the complete Cartesian tensor divergence, global
+support, moment compatibility and weighted positive inverse remain
+open. Thus the full restricted Theorem~\ref{thm:inverse} is
+\emph{partially}, not fully, formalized.
 
 An independent exact-arithmetic test evaluates a nontrivial annular
 polynomial instance of the radial compatibility identity. For the
