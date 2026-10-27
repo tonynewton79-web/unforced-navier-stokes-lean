@@ -36,6 +36,16 @@ def positive_support(a, b, c, d, rho):
     return rho * (center + B_part + max(at_lower_D, at_upper_D))
 
 
+def axial_flux_cap(rho):
+    """Sharp |H_rz|=|A| cap for the original one-sided seven-ray floor.
+
+    For nonnegative rho the two support values in the +/- A directions
+    coincide at (5*GAMMA + GAMMA_THIRD)*rho/4. This is a pointwise
+    necessary bound and does not solve the divergence equation.
+    """
+    return positive_support(1, 0, 0, 0, rho)
+
+
 def positive_maximizer(a, b, c, d, rho):
     a, b, c, d, rho = _data(a, b, c, d, rho)
     g, h = GAMMA, GAMMA_THIRD
