@@ -74,6 +74,10 @@ pressure-compensated annular flux identity and its two sharp
 frame-dependent cone inequalities. The pressure boundary trace is
 essential: an axial source primitive alone cannot be bounded by the
 stress cone when that trace is free.
+The recovered 122-page Case~006 revision also gives an exact
+source-native axial interval under the original absolute coefficient
+budget; its interval is not a necessary condition under one-sided
+coefficient positivity alone.
 The source-prescribed separable shell shaper also admits an exact
 quadratic flux reduction, including its often-leading viscous shear.
 An endpoint uniqueness lemma rules out an $O(b^2)$ stress-shear budget
@@ -887,6 +891,84 @@ Azimuthal and axial integration followed by
 \eqref{eq:complete-flux} proves both inequalities.
 \end{proof}
 
+\begin{proposition}[Case~006 source-native axial interval]
+\label{prop:case006-native-band}
+Work in the physical cylindrical source frame of the Case~006
+seven-ray centre, for which $(R_*)_{rz}=\alpha=-4443/9832$.
+Let $\mathsf T$ be a smooth prepared symmetric stress, let
+$\rho\ge0$, and write
+\[
+ f=\diver(\mathsf T-\rho R_*)+\nabla p_0,\qquad
+ \mathcal T(r)=\int_c^d\langle\mathsf T_{rz}\rangle_\theta\dd z,
+ \qquad \mathcal R(r)=\int_c^d\langle\rho\rangle_\theta\dd z.
+\]
+Set $q_0(r)=[\langle(\mathsf T-\rho R_*)_{zz}
+ +p_0\rangle_\theta]_{z=c}^{z=d}$, and let $J_f$ be the
+source primitive in \eqref{eq:complete-flux}. Then
+\begin{equation}\label{eq:case006-source-native-primitive}
+ J_f(r)=\mathcal T(r)-\alpha\mathcal R(r)
+ -\frac ar\bigl(\mathcal T(a)-\alpha\mathcal R(a)\bigr)
+ +\frac1r\int_a^r s q_0(s)\dd s.
+\end{equation}
+Suppose that the source and the sought correction admit the
+corresponding compact representatives, with zero inner shear
+and axial pressure/tensor boundary traces. If the correction
+$H(A,B,C,D)$ obeys the \emph{original absolute} seven-coefficient
+budget $|\delta c_i|\le\kappa\rho$,
+$\kappa=15971/122900$, then
+\[
+ |\mathcal T(r)-\alpha\mathcal R(r)|\le\kappa\mathcal R(r).
+\]
+In particular, whenever $\mathcal R(r)>0$,
+\begin{equation}\label{eq:case006-absolute-source-band}
+ -\frac{143017}{245800}\le
+ \frac{\mathcal T(r)}{\mathcal R(r)}\le
+ -\frac{79133}{245800}.
+\end{equation}
+If the angular coefficient $B=H_{\theta z}$ has already been
+selected and $\mathcal B(r)=\int_c^d\langle B\rangle_\theta\dd z$,
+the stronger condition is
+$|\mathcal T-\alpha\mathcal R-4\mathcal B|
+\le(\kappa/2)\mathcal R$.
+
+This interval is \emph{not} implied by the larger one-sided
+positive-coefficient cone. With
+$g=15971/122900$ and $h=22371/122900$, its sharp physical
+$rz$ maximum in this same frame is
+\[
+ A_{\max}=\frac{5g+h}{4}\rho
+ =\frac{51113}{245800}\rho>\kappa\rho.
+\]
+Indeed $D=(g+h)\rho/8$, $B=g\rho/8$,
+$C=(h-g)\rho/4$ and $A=(5g+h)\rho/4$ preserve all seven
+coefficient floors at or above $\rho/100$. A spatially rotated
+source frame additionally requires the transported support in
+\eqref{eq:complete-flux-supports}; neither scalar interval may
+simply be copied to an arbitrary rotating frame.
+\end{proposition}
+
+\begin{proof}
+Equation~\eqref{eq:case006-source-native-primitive} follows by
+applying Proposition~\ref{prop:complete-flux-gate} to
+$K=\mathsf T-\rho R_*$ and using $(R_*)_{rz}=\alpha$.
+Under the stated compact boundary assumptions the source primitive
+is the axial integral of the correction shear $H_{rz}=A$.
+The original coefficient norm is
+\[
+ \max\{8|B|,\;2|C|+4|D|,\;
+              2|A-4B|+4|D|\}\le\kappa\rho.
+\]
+It follows that $|A|\le 4|B|+|A-4B|\le\kappa\rho$ and
+$|A-4B|\le\kappa\rho/2$. Integrating over the slice proves
+the two necessary bounds. Exact subtraction of the rational
+centre and margin gives
+$\alpha-\kappa=-143017/245800$ and
+$\alpha+\kappa=-79133/245800$.
+Finally the displayed one-sided witness satisfies the seven
+original coefficient floors by direct substitution in their
+rational formulas; its $A$ strictly exceeds $\kappa\rho$.
+\end{proof}
+
 The boundary primitive cannot be discarded in a local test. For
 example, on $1\le r\le2$, $0\le z\le1$, take $K=0$ and $p=z$.
 Then $F=q_{\rm s}=1$ and $S=0$, whereas
@@ -1550,7 +1632,7 @@ Lean module & Checked scope and the missing construction\\
 \texttt{Periodicity}, \texttt{PressureGauge} & Sum and time-only gauge identities; no periodic singular solution.\\
 \texttt{ConeBudget}, \texttt{ConeOperator}, \texttt{SevenRayCenter} & Exact rational centre and sharp factor $14$; no source-matched weighted positive stress.\\
 \texttt{FourFieldPhysical} & Exact nine-entry ray-to-cylindrical tensor map modulo an isotropic gauge; entrywise four-coordinate bound in the frozen frame, not a spatially rotated PDE bridge.\\
-\texttt{ExactCoefficientCone}, \texttt{SharpCoefficientDual} & Exact absolute-budget seven-coefficient polytope and sharp dual upper estimate; no authentic H8 source or spatial inverse.\\
+\texttt{ExactCoefficientCone}, \texttt{SharpCoefficientDual} & Exact absolute-budget seven-coefficient polytope and sharp dual upper estimate; no frozen final Case~006 residual or spatial inverse.\\
 \texttt{PositiveCoefficientCone} & Universal one-sided seven-ray positive-cone support bound; not a spatial stress inverse or a continuum integral formalization.\\
 \texttt{RotatingFrameDual} & Exact source-to-physical matrix Frobenius pullback and pointwise rotated one-sided dual bound; no derivative-of-frame or PDE source matching theorem.\\
 \texttt{CompactGauge} & One-variable gauge derivative; no compact tensor support theorem.\\
@@ -1605,8 +1687,16 @@ records the failure of this \emph{conservative gradient method}
 at the original coefficient budget. The sharper polytope method
 proves Proposition~\ref{prop:original-obstruction}: a $40\times40$
 Bernstein partition yields the exact rational upper bound
-\eqref{eq:sharp-bernstein-bound}. No executable test substitutes
-for the authentic H8 source and rotated-frame PDE estimates.
+\eqref{eq:sharp-bernstein-bound}. No executable diagnostic substitutes
+for frozen final Case~006 profiles and rotated-frame PDE estimates.
+The recovered 122-page revision permits an additional
+standard-library rational check of
+Proposition~\ref{prop:case006-native-band}: it verifies both
+interval endpoints, an attaining absolute-budget tensor, a
+one-sided-positive witness exceeding that budget, all seven
+coefficient floors, and a nonzero pressure boundary primitive.
+These are finite algebra checks, not an authentic-source inequality
+evaluation.
 The equivalence \eqref{eq:exact-cone} is independently checked on
 exact rational samples and kernel-checked by
 \texttt{original\_seven\_coefficient\_cone\_exact}.
@@ -1643,15 +1733,18 @@ pressure gauges under orthogonal (but not arbitrary) frames.
 The spatial differential identity \eqref{eq:frame-derivatives} and
 integrated inequality \eqref{eq:rotated-integrated} are proved on
 paper, not yet in Lean; neither has been evaluated against the
-unavailable authentic H8 source.
+still-unfrozen complete Case~006 prepared stress.
 
 The source code, machine-readable G0--G8 ledger, smoke tests and
 reproduction commands accompany the public integration branch
-\cite{NewtonRepo2026}. A local pinned build has passed sixteen smoke
-modules; at the time of preparing this edition, the corresponding
-GitHub-hosted Actions checks had not furnished a successful receipt
-for the latest commit. Local compilation does not replace hosted CI,
-semantic theorem auditing or independent scrutiny of the paper proof.
+\cite{NewtonRepo2026}. A prior local pinned build passed sixteen smoke
+modules, and the main physical Lean workflow later received a
+GitHub-hosted success receipt. A separate weighted source-flux workflow
+halted during Lean toolchain installation before executing any
+mathematical check. None of these receipts covers the new rational
+source-band test until the updated branch is independently checked.
+Compilation does not replace semantic theorem auditing or independent
+scrutiny of the paper proof.
 
 \section{Remaining analytic requirements}
 
@@ -1699,6 +1792,7 @@ finite-time singular solution to \eqref{eq:NS} with smooth nonzero
 periodic initial data is \emph{not decided by this manuscript}.
 
 \begin{thebibliography}{9}
+\small
 \bibitem{Fefferman2000}
 C. Fefferman, \emph{Existence and Smoothness of the Navier--Stokes
 Equation}, Clay Mathematics Institute Millennium Prize Problem

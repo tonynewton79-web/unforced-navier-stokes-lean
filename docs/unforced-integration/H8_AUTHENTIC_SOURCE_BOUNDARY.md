@@ -349,9 +349,10 @@ for the restricted residual, **not** a disproof of the full H8 route.
 The user-supplied three-page H8 flat-edge viscosity addendum has SHA-256
 417a01820906d2ab8b7eaf8883f28006c70a9fae03500f59c2b5b603590c8525.
 Its conditional Gronwall obstruction agrees with the calculation above.
-The addendum cites a distinct 122-page Case 006 revision that is not
-present in the checked source tree; its named positive shaper profiles
-cannot yet be identified with a frozen, source-matched residual.
+The addendum cites a distinct 122-page Case 006 revision. That revision
+has now been supplied and examined (source identity below). Its Appendix AD
+provides explicitly frozen **diagnostic** positive shapers, but expressly
+does not identify them with a globally glued, source-matched residual.
 
 There is a more specific test when the core localization and the poloidal
 shapers use the **same** radial envelope $b(r)$. Let $\mathcal A$ be
@@ -570,6 +571,74 @@ python -m pip install sympy
 python -m unittest discover -s tests -p 'test_h8_exact_flux_gate.py' -v
 ```
 
+## Recovered 122-page Case 006 source: exact axial band and its scope
+
+The user-supplied **Carrier_Independent_Structured_Stress_Route_CASE006_122PAGE-3.pdf**
+is a 122-page, unencrypted PDF with SHA-256
+56ff24696ac58bef19bcf339d297d3af8b0401e46d5e8125c7fb1d054f01a758.
+The original main-body equations (265), (269)--(273) are present, followed
+by supplemental appendices including AC (PDF pp. 115--116), AD
+(pp. 117--118) and AF (pp. 121--122). Appendix AC fixes the *physical*
+cylindrical centre shear, not a new unknown cutoff:
+
+\[
+ \alpha=(R_*)_{rz}=-4443/9832,\qquad
+ \kappa=15971/122900.
+\]
+
+For a chosen prepared symmetric stress \(T\), density \(\rho\), and
+representative \(f=\operatorname{div}(T-\rho R_*)+\nabla p_0\),
+define \(\mathcal T=\int\langle T_{rz}\rangle dz\),
+\(\mathcal R=\int\langle\rho\rangle dz\), and
+\(q=[\langle(T-\rho R_*)_{zz}+p_0\rangle]_{z_-}^{z_+}\).
+Direct cylindrical divergence gives the exact source-native primitive
+
+\[
+ J_f=\mathcal T-\alpha\mathcal R
+ -\frac ar[\mathcal T(a)-\alpha\mathcal R(a)]
+ +\frac1r\int_a^r sq(s)\,ds.
+\]
+
+**Only under compact correction/boundary assumptions and the original
+absolute coefficient cap** \(|\delta c_i|\le\kappa\rho\) does the
+source-only scalar screen reduce to
+
+\[
+ -\frac{143017}{245800}\le
+ \frac{\mathcal T(r)}{\mathcal R(r)}
+ \le-\frac{79133}{245800}\quad(\mathcal R(r)>0).
+\]
+
+These endpoints, the full pressure-trace primitive and an attaining
+absolute-budget coefficient vector are independently checked in
+**tests/test_h8_case006_source_band.py**, using standard-library exact
+fractions.
+
+**Do not apply this interval to the larger one-sided positive cone.**
+The positive cone in the same frozen physical frame permits a sharp
+positive \(rz\) coefficient
+
+\[
+ A=(5g+h)\rho/4=51113\rho/245800>\kappa\rho,
+ \quad g=15971/122900,\quad h=22371/122900.
+\]
+
+An explicit witness is \(D=(g+h)\rho/8\),
+\(B=g\rho/8\), \(C=(h-g)\rho/4\); all seven original
+coefficients remain at least \(\rho/100\). The independent rational
+test checks all seven floors. For a genuinely rotating frame, the
+pointwise physical \(rz\) entry additionally requires the pulled-back
+covector and spatially varying support from the earlier section.
+
+Appendix AD's infinitely flat two-shaper construction is intentionally
+a **manufactured model**: it matches the physical centre shear at every
+radius but omits the authentic core, transition, pressure and fourfold
+overlap. Appendix AF proves a conditional \(b'\)-order obstruction for
+positive two-shaper profiles, while explicitly leaving the actual
+pressure jet, off-axis remainder and fourfold prepared stress unfrozen.
+Neither appendix supplies the final \(T,\rho,p_0,E\) needed to test
+the authentic weighted inverse.
+
 ## Authentic H8 source: required data and current state
 
 The author-supplied `Carrier_Independent_Structured_Stress_Route_FINAL_COLOUR.tex`
@@ -581,8 +650,10 @@ It specifies the *forms* of the curl localization, the separable
 poloidal/toroidal shell shapers and the toroidal radial pressure
 derivative, but leaves their profiles and amplitudes as arbitrary fixed
 smooth data; it does not freeze a complete source-matched H8 residual.
-It is not yet tied by a checked correspondence to any distinct Case 006
-PDF revision. The terminal source certificate
+The 122-page Case 006 revision is now identified above. It reproduces the
+relevant main-body architecture and includes further diagnostic appendices,
+but its Remark 9.23 still leaves the final normalized shell and
+transition profiles freely chosen. The terminal source certificate
 `TerminalCore2026/FULL_UNFORCED_SOURCE_CERTIFICATE_REQUIRED_20261022.json`
 also records missing source hashes, cutoffs and parameters. A generic
 profile name in a proof-gate reference is **not** source authentication.
@@ -601,8 +672,9 @@ The exact genuine-source test needs, at minimum:
    the dual integration by parts and producing a finite computable
    physical source pairing.
 
-**Status: BLOCKED ON A COMPLETE FROZEN H8 SOURCE, NOT ON THE ALGEBRAIC
-DUAL.** The computed rational
+**Status: THE 122-PAGE REVISION IS RECOVERED; BLOCKED ON ITS UNFROZEN
+PHYSICAL FUNCTIONS AND PATCH TRANSPORT, NOT ON THE ALGEBRAIC DUAL.**
+The computed rational
 obstruction is a reproducible negative control, not a test result for
 the missing H8 residual and not a proof of unforced Navier--Stokes
 regularity or blow-up. G4 and G8 remain `OPEN`.
