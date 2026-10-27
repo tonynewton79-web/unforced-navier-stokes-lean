@@ -128,3 +128,20 @@ def pressure_axial_jump(D: sp.Expr, p: sp.Expr, r: sp.Symbol,
     """The retained trace [K_zz+p] at the two axial faces."""
     del r, theta  # They remain free symbolic parameters in D and p.
     return sp.simplify((D + p).subs(z, upper) - (D + p).subs(z, lower))
+
+
+def azimuthal_torque_primitive(C: sp.Expr, B: sp.Expr,
+                                r: sp.Symbol, theta: sp.Symbol,
+                                z: sp.Symbol, lower: sp.Expr,
+                                upper: sp.Expr) -> sp.Expr:
+    """Full-circle axial theta source, with the axial B endcap retained.
+
+    Requires angular periodicity and enough regularity for differentiation
+    under the integrals. The angular pressure derivative cancels only
+    after angular averaging.
+    """
+    mean_C = sp.integrate(C, (theta, 0, 2*sp.pi))/(2*sp.pi)
+    mean_B = sp.integrate(B, (theta, 0, 2*sp.pi))/(2*sp.pi)
+    c_slice = sp.integrate(mean_C, (z, lower, upper))
+    return sp.simplify(sp.diff(r**2*c_slice, r)/r**2
+                       +mean_B.subs(z, upper)-mean_B.subs(z, lower))
