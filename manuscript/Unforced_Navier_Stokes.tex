@@ -3,7 +3,7 @@
 \usepackage[T1]{fontenc}
 \usepackage{lmodern,microtype}
 \usepackage{amsmath,amssymb,amsthm,mathtools}
-\usepackage{booktabs,array}
+\usepackage{booktabs,array,longtable}
 \usepackage{xcolor}
 \usepackage[colorlinks=true,citecolor=blue!45!black,linkcolor=blue!45!black,urlcolor=blue!50!black]{hyperref}
 \hypersetup{pdftitle={Unforced Navier--Stokes},pdfauthor={Tony Newton},
@@ -13,6 +13,7 @@
 \usepackage{needspace}
 \setlength{\parindent}{1.25em}
 \setlength{\parskip}{0.20em}
+\setlength{\emergencystretch}{1em}
 \setcounter{secnumdepth}{2}
 \pagestyle{fancy}
 \fancyhf{}
@@ -1491,6 +1492,27 @@ divergence. In a Cartesian chart, $K=EHE^{\mathsf T}$ obeys
 with repeated indices summed. Thus even constant $H$ can
 generate a nonzero source when $E$ rotates. Cylindrical
 components require their geometric connection terms as well.
+
+The angular form of this connection is now an exact Lean theorem.
+More generally, let $E(t)$ be a differentiable orthogonal
+$3\times3$ frame, $H(t)$ a differentiable coefficient matrix, and
+$\Omega(t)=E(t)^{\mathsf T}E'(t)$. Differentiation of
+$E^{\mathsf T}E=I$ gives $\Omega^{\mathsf T}=-\Omega$. The ordinary
+matrix product rule and $E'=E\Omega$ yield
+\begin{equation}\label{eq:frame-commutator}
+ \frac{d}{dt}\bigl(EHE^{\mathsf T}\bigr)
+ =E\bigl(H'+\Omega H-H\Omega\bigr)E^{\mathsf T}.
+\end{equation}
+The \texttt{FrameConnectionDerivative} module proves each
+scalar physical-tensor entry derivative from explicit entrywise
+derivative hypotheses, proves the skew and commutator identities
+under row orthogonality and differentiated orthogonality, and checks
+an actual trigonometric planar rotation. For
+$H=\operatorname{diag}(1,2,0)$, the $(0,1)$ entry changes at
+rate $-1$ at zero angle. This verifies the sign of
+\eqref{eq:frame-commutator} and refutes omission of its commutator
+even for a constant frame-coordinate stress.
+
 An independently checked Cartesian rotation example and exact
 two-cell rational support tests accompany these formulas.
 Neither a bound on $\delta_j$ nor
@@ -1620,13 +1642,18 @@ The precise correspondence between the paper and the compiled
 \texttt{UnforcedPatching} declarations is as follows. In the second
 column, ``missing'' refers to mathematical constructions, not to
 unresolved Lean goals inside the named theorems.
-\begin{center}
+\begingroup
 \small
 \renewcommand{\arraystretch}{1.17}
-\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.31\linewidth}>{\raggedright\arraybackslash}p{0.61\linewidth}@{}}
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.31\linewidth}>{\raggedright\arraybackslash}p{0.61\linewidth}@{}}
 \toprule
 Lean module & Checked scope and the missing construction\\
 \midrule
+\endfirsthead
+\toprule
+Lean module & Checked scope and the missing construction (continued)\\
+\midrule
+\endhead
 \texttt{Definitions} & Physical candidate predicates; no candidate witness.\\
 \texttt{Residual}, \texttt{Correction} & Full residual addition and conditional cancellation; no constructed correcting field.\\
 \texttt{Periodicity}, \texttt{PressureGauge} & Sum and time-only gauge identities; no periodic singular solution.\\
@@ -1635,6 +1662,7 @@ Lean module & Checked scope and the missing construction\\
 \texttt{ExactCoefficientCone}, \texttt{SharpCoefficientDual} & Exact absolute-budget seven-coefficient polytope and sharp dual upper estimate; no frozen final Case~006 residual or spatial inverse.\\
 \texttt{PositiveCoefficientCone} & Universal one-sided seven-ray positive-cone support bound; not a spatial stress inverse or a continuum integral formalization.\\
 \texttt{RotatingFrameDual} & Exact source-to-physical matrix Frobenius pullback and pointwise rotated one-sided dual bound; no derivative-of-frame or PDE source matching theorem.\\
+\texttt{FrameConnectionDerivative} & Genuine entrywise product-rule derivative of $EHE^{\mathsf T}$, skew angular connection and its commutator, including an exact moving-trigonometric-frame sign test; authentic H8 bounds and PDE source matching remain open.\\
 \texttt{CompactGauge} & One-variable gauge derivative; no compact tensor support theorem.\\
 \texttt{MeridionalInverse} & Actual axial and radial interval-integral FTC identities, geometric hoop cancellation, and pointwise radial/axial cylindrical inverse; no compact support theorem.\\
 \texttt{Case006SourceBand} & Sharp finite-dimensional source-frame axial interval with an explicit one-sided-cone counterexample; no authentic spatial source identity.\\
@@ -1645,8 +1673,8 @@ Lean module & Checked scope and the missing construction\\
 \texttt{PhysicalCircleAngular} & Physical circle chain rule and exact $-y\partial_x+x\partial_y$ correspondence, automatic angular endpoint equality, and integrated cancellation for Frechet-differentiable stress with integrable angular derivative.\\
 \texttt{Retention} & Subleading corrections preserve terminal speed; neither required field constructed.\\
 \bottomrule
-\end{tabular}
-\end{center}
+\end{longtable}
+\endgroup
 In particular, the residual-addition, correction-closure,
 seven-ray-floor, and terminal-retention declarations are all
 implications with explicit hypotheses. Their conjunction does not
@@ -1675,12 +1703,17 @@ angular directional derivative. The \texttt{PhysicalCircleAngular}
 theorem derives that derivative by the Frechet chain rule along a
 genuine Cartesian circle, supplies the periodic endpoint equality,
 and invokes \texttt{AngularMean} to remove its contribution only
-\emph{after} integration. The \texttt{PressureCompensatedFlux} theorem
+\emph{after} integration. The \texttt{FrameConnectionDerivative}
+theorem separately derives the full product-rule differentiation of
+rotated stresses, including the $\Omega H-H\Omega$ connection term;
+it does not assume that $E$ is spatially constant. The
+\texttt{PressureCompensatedFlux} theorem
 proves the separate radial FTC with the full axial boundary trace
 retained. Derivation of the integrated source--shear differential
 hypothesis from authenticated H8 profiles, all necessary
-interchange-of-differentiation conditions, rotating-frame connection
-terms, the complete Cartesian tensor divergence, global support,
+interchange-of-differentiation conditions, authentic H8 frame
+profiles and uniform connection estimates, the complete Cartesian
+tensor divergence, global support,
 moment compatibility and weighted positive inverse remain open.
 Thus the full restricted Theorem~\ref{thm:inverse} is
 \emph{partially}, not fully, formalized.
@@ -1809,6 +1842,7 @@ finite-time singular solution to \eqref{eq:NS} with smooth nonzero
 periodic initial data is \emph{not decided by this manuscript}.
 
 \begin{thebibliography}{9}
+\raggedright
 \small
 \bibitem{Fefferman2000}
 C. Fefferman, \emph{Existence and Smoothness of the Navier--Stokes
