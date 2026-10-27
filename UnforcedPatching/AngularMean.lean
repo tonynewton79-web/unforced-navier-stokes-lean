@@ -56,9 +56,10 @@ theorem angularMean_derivative_vanishes (A G D : ℝ → ℝ) (r : ℝ)
   rw [hSplit, intervalIntegral.integral_const_mul, hZero]
   ring
 
-/-- A *nonconstant* periodic angular mode with a nonzero derivative
-whose full-period integral is exactly zero. -/
-theorem angularNonconstantPeriodicExample :
+/-- A *nonconstant* polynomial with matching angular interval endpoints
+and a nonzero derivative whose integral vanishes. It is not globally
+periodic; global periodicity is stronger than the FTC needs. -/
+theorem angularEqualEndpointPolynomialExample :
     (∫ θ in (0 : ℝ)..(2 * Real.pi),
       (2 * Real.pi - 2 * θ)) = 0 := by
   let T : ℝ := 2 * Real.pi
