@@ -43,4 +43,39 @@ theorem one_sided_positive_cone_axial_cap_sharp :
   intro i
   fin_cases i <;> norm_num [sevenRayCenter, sevenRayCorrection]
 
+/-- The cylindrical azimuthal stress coordinate `C=H_rtheta` lies in
+a sharp asymmetric interval under the one-sided seven-ray floor. -/
+theorem one_sided_positive_cone_azimuthal_interval
+    (ρ A B C D : ℝ) (hρ : 0 ≤ ρ)
+    (hFloor : ∀ i : Fin 7,
+      ρ * sevenRayCenter i + sevenRayCorrection A B C D i ≥ ρ/100) :
+    -(15971 / 122900 : ℝ) * ρ ≤ C ∧
+      C ≤ (19171 / 122900 : ℝ) * ρ := by
+  have hC1 := hFloor (1 : Fin 7)
+  have hC2 := hFloor (2 : Fin 7)
+  have hA1 := hFloor (3 : Fin 7)
+  have hA2 := hFloor (4 : Fin 7)
+  simp [sevenRayCenter, sevenRayCorrection] at hC1 hC2 hA1 hA2
+  constructor <;> linarith
+
+/-- Exact pointwise ray allocation saturating the upper C bound. -/
+theorem one_sided_positive_cone_azimuthal_upper_sharp :
+    ∀ i : Fin 7,
+      sevenRayCenter i + sevenRayCorrection
+        (0 : ℝ) (0 : ℝ)
+        (19171 / 122900 : ℝ)
+        (-(15971 / 491600) : ℝ) i ≥ (1 / 100 : ℝ) := by
+  intro i
+  fin_cases i <;> norm_num [sevenRayCenter, sevenRayCorrection]
+
+/-- Exact pointwise ray allocation saturating the lower C bound. -/
+theorem one_sided_positive_cone_azimuthal_lower_sharp :
+    ∀ i : Fin 7,
+      sevenRayCenter i + sevenRayCorrection
+        (0 : ℝ) (0 : ℝ)
+        (-(15971 / 122900) : ℝ)
+        (-(15971 / 491600) : ℝ) i ≥ (1 / 100 : ℝ) := by
+  intro i
+  fin_cases i <;> norm_num [sevenRayCenter, sevenRayCorrection]
+
 end UnforcedPatching
