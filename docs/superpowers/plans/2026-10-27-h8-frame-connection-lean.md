@@ -40,4 +40,4 @@
 
 - [x] Rebuild the integrated manuscript and inspect the rendered PDF.
 - [x] Run all regression tests, nine-gate checker and diff checks.
-- [ ] Upload source and text to the existing draft PR; verify exact hashes.
+- [x] Upload source and text to the existing draft PR; all seven Git blob hashes match.
