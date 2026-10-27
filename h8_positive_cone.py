@@ -46,6 +46,14 @@ def axial_flux_cap(rho):
     return positive_support(1, 0, 0, 0, rho)
 
 
+def azimuthal_shear_interval(rho):
+    """Sharp asymmetric interval for C=H_rtheta under positive rays."""
+    rho = Q(rho)
+    if rho < 0:
+        raise ValueError("the nonnegative density weight is required")
+    return -GAMMA*rho, (GAMMA+GAMMA_THIRD)*rho/2
+
+
 def positive_maximizer(a, b, c, d, rho):
     a, b, c, d, rho = _data(a, b, c, d, rho)
     g, h = GAMMA, GAMMA_THIRD
