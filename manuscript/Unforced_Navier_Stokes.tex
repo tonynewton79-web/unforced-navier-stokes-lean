@@ -1593,6 +1593,74 @@ jump. No authentic H8 profile tuple has been certified by these
 tests, and the compact source-matched positive-stress inverse
 remains an open analytic problem.
 
+\begin{corollary}[Sharp azimuthal torque-flux compatibility]
+\label{cor:h8-torque-flux}
+Under the cylindrical-frame hypotheses of
+Proposition~\ref{prop:h8-complete-moving-source}, define
+\[
+ \mathfrak c(r)=\int_c^d\langle C\rangle_\theta\,\dd z,
+ \qquad \mathfrak b(r)
+   =[\langle B\rangle_\theta]_{c}^{d},
+ \qquad \mathfrak f_\theta(r)
+   =\int_c^d\langle f_\theta\rangle_\theta\,\dd z,
+\]
+where $\langle\cdot\rangle_\theta$ is the normalized full-circle
+angular average. Then
+\begin{equation}\label{eq:h8-torque-conservative}
+ \mathfrak f_\theta(r)
+ =\frac1{r^2}\partial_r(r^2\mathfrak c(r))+\mathfrak b(r),
+\end{equation}
+and for $a>0$,
+\begin{equation}\label{eq:h8-torque-primitive}
+ \mathfrak c(r)=\frac{a^2}{r^2}\mathfrak c(a)
+ +\frac1{r^2}\int_a^r s^2
+       (\mathfrak f_\theta(s)-\mathfrak b(s))\,\dd s.
+\end{equation}
+If the original one-sided seven-ray positivity floor holds at
+every point and $\rho\ge0$, put
+$\mathcal R(r)=\int_c^d\langle\rho\rangle_\theta\,\dd z$.
+The compact positive-stress construction must satisfy
+\begin{equation}\label{eq:h8-torque-one-sided}
+ -\frac{15971}{122900}\,\mathcal R(r)
+ \le\mathfrak c(r)\le
+ \frac{19171}{122900}\,\mathcal R(r).
+\end{equation}
+Both constants are attained by pointwise exact rational seven-ray
+allocations. The two-sided interval is \emph{asymmetric}; replacing
+it by a symmetric absolute-correction budget would impose a
+different condition.
+\end{corollary}
+
+\begin{proof}
+Average \eqref{eq:h8-full-theta} over a complete angular period.
+The pressure term integrates to zero by periodicity, but
+$[\langle B\rangle_\theta]_c^d$ need not vanish.
+The radial identity follows by writing
+$\partial_rC+2C/r=r^{-2}\partial_r(r^2C)$.
+The fundamental theorem of calculus gives
+\eqref{eq:h8-torque-primitive}. For the one-sided ray cone,
+the original seven coefficient floors imply the pointwise sharp
+interval
+\[
+ -\frac{15971}{122900}\rho\le C\le
+ \frac{19171}{122900}\rho.
+\]
+Its endpoints follow directly by combining the second, third,
+fourth and fifth ray inequalities; rational endpoint allocations
+show attainability. Integrating the pointwise interval proves
+\eqref{eq:h8-torque-one-sided}.
+\end{proof}
+
+The torque-flux test is independent of the axial meridional
+test: it controls a different stress coordinate and has a
+different radial weight ($r^2$ in place of $r$).
+It applies directly only when the source frame is the standard
+cylindrical frame. For any additional spatial tilt, the
+covariant Cartesian source identity
+\eqref{eq:h8-general-source-connection} and the rotated cone
+support must be used instead. Without authenticated H8 functions,
+neither flux condition is a completed source-matching test.
+
 An independently checked Cartesian rotation example and exact
 two-cell rational support tests accompany these formulas.
 Neither a bound on $\delta_j$ nor
