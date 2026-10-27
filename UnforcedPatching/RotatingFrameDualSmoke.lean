@@ -1,0 +1,6 @@
+import UnforcedPatching.RotatingFrameDual
+
+#check UnforcedPatching.rotating_fourField_frobenius
+#print axioms UnforcedPatching.rotating_fourField_frobenius
+#check UnforcedPatching.rotated_oneSided_dual_upper
+#print axioms UnforcedPatching.rotated_oneSided_dual_upper

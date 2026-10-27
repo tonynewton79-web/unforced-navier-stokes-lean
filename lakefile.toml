@@ -5,6 +5,9 @@ defaultTargets = ["UnforcedClosure"]
 [[lean_lib]]
 name = "UnforcedClosure"
 
+[[lean_lib]]
+name = "UnforcedPatching"
+
 [[require]]
 name = "mathlib"
 git = "https://github.com/leanprover-community/mathlib4.git"

@@ -1,0 +1,4 @@
+import UnforcedPatching.ExactCoefficientCone
+
+#check UnforcedPatching.original_seven_coefficient_cone_exact
+#print axioms UnforcedPatching.original_seven_coefficient_cone_exact

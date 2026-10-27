@@ -1,0 +1,110 @@
+name: Unforced torus physical Lean gates
+
+on:
+  push:
+    branches:
+      - integration/unforced-torus-20261025
+  pull_request:
+    paths:
+      - 'UnforcedPatching/**'
+      - 'lakefile.toml'
+      - 'lean-toolchain'
+      - 'docs/unforced-integration/**'
+      - 'tools/check_proof_gates.py'
+      - 'tests/test_proof_gates.py'
+      - 'tests/test_meridional_h8.py'
+      - 'tests/test_h8_four_field_map.py'
+      - 'tests/test_h8_sharp_dual.py'
+      - 'tests/test_h8_sharp_dual_certificate.py'
+      - 'tests/test_h8_positive_cone.py'
+      - 'tests/test_h8_positive_dual_certificate.py'
+      - 'tests/test_h8_rotating_frame.py'
+      - 'tests/test_h8_exact_flux_gate.py'
+      - 'tests/test_h8_shaper_flux_ledger.py'
+      - 'tests/test_h8_flat_edge_gate.py'
+      - 'tests/test_h8_c4_transition.py'
+      - 'tests/test_h8_shared_cutoff_moment.py'
+      - 'tests/test_h8_split_cutoff_gate.py'
+      - 'meridional_h8_certificate.py'
+      - 'h8_four_field_map.py'
+      - 'h8_sharp_dual.py'
+      - 'h8_sharp_dual_certificate.py'
+      - 'h8_positive_cone.py'
+      - 'h8_positive_dual_certificate.py'
+      - 'h8_rotating_frame.py'
+      - 'h8_exact_flux_gate.py'
+      - 'h8_shaper_flux_ledger.py'
+      - 'h8_c4_transition.py'
+      - 'h8_shared_cutoff_moment.py'
+      - 'h8_split_cutoff_gate.py'
+      - 'manuscript/**'
+      - '.github/workflows/unforced-torus-patching.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  physical-lean:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout proof sources
+        uses: actions/checkout@v4
+
+      - name: Install Lean version manager
+        shell: bash
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+
+      - name: Install pinned compiler
+        run: |
+          elan toolchain install "$(cat lean-toolchain)"
+          lean --version
+          lake --version
+
+      - name: Fetch pinned dependencies and Mathlib cache
+        run: |
+          lake update
+          lake exe cache get
+
+      - name: Refuse axioms and proof admissions in the integration sources
+        shell: bash
+        run: |
+          if grep -nE '^[[:space:]]*(sorry|admit|axiom)([[:space:]]|$)' UnforcedPatching/*.lean; then
+            echo 'The unforced integration modules contain a prohibited proof escape'
+            exit 1
+          fi
+
+      - name: Compile upstream physical Navier-Stokes definitions
+        run: lake build NavierStokes.ProblemStatement
+
+      - name: Kernel-check the unforced interface and physical correction algebra
+        run: |
+          lake build UnforcedPatching.DefinitionsSmoke
+          lake build UnforcedPatching.ResidualSmoke
+          lake build UnforcedPatching.PeriodicitySmoke
+          lake build UnforcedPatching.ConeBudgetSmoke
+          lake build UnforcedPatching.ConeOperatorSmoke
+          lake build UnforcedPatching.SevenRayCenterSmoke
+          lake build UnforcedPatching.PressureGaugeSmoke
+          lake build UnforcedPatching.CorrectionSmoke
+          lake build UnforcedPatching.RetentionSmoke
+          lake build UnforcedPatching.CompactGaugeSmoke
+          lake build UnforcedPatching.MeridionalInverseSmoke
+          lake build UnforcedPatching.FourFieldPhysicalSmoke
+          lake build UnforcedPatching.ExactCoefficientConeSmoke
+          lake build UnforcedPatching.SharpCoefficientDualSmoke
+          lake build UnforcedPatching.PositiveCoefficientConeSmoke
+          lake build UnforcedPatching.RotatingFrameDualSmoke
+
+      - name: Install exact symbolic source-flux dependency
+        run: python -m pip install sympy
+
+      - name: Revalidate fail-closed mathematical gate ledger
+        run: |
+          python tools/check_proof_gates.py docs/unforced-integration/proof_gates.json
+          python -m unittest discover -s tests -v
+
+      - name: Replay older exact abstract arithmetic tests
+        run: python verify_unforced_closure.py

@@ -1,5 +1,6 @@
 # Lean/Lake build products
 .lake/
+.lean_toolchain/
 
 # Python
 __pycache__/
@@ -16,6 +17,7 @@ __pycache__/
 *.out
 *.synctex.gz
 *.toc
+manuscript/build/
 
 # OS/editor noise
 .DS_Store

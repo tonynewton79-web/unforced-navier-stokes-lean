@@ -1,0 +1,1825 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[a4paper,margin=27mm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,microtype}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs,array}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,citecolor=blue!45!black,linkcolor=blue!45!black,urlcolor=blue!50!black]{hyperref}
+\hypersetup{pdftitle={Unforced Navier--Stokes},pdfauthor={Tony Newton},
+  pdfsubject={Compact symmetric stresses, exact coefficient margins and formal verification}}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage{needspace}
+\setlength{\parindent}{1.25em}
+\setlength{\parskip}{0.20em}
+\setcounter{secnumdepth}{2}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\footnotesize UNFORCED NAVIER--STOKES}
+\fancyhead[R]{\footnotesize T. NEWTON}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.3pt}
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\T}{\mathbb{T}^{3}}
+\newcommand{\e}{\mathrm{e}}
+\newcommand{\supp}{\operatorname{supp}}
+\newcommand{\diver}{\operatorname{div}}
+\newcommand{\cc}{C_c^{\infty}}
+\newcommand{\dd}{\,\mathrm{d}}
+\newcommand{\norm}[1]{\lVert #1\rVert}
+\title{\vspace{-1.2em}\bfseries\LARGE Unforced Navier--Stokes\\[0.45em]
+  \large\mdseries Compact symmetric stresses, exact coefficient margins, and formal verification on the three-torus}
+\author{Tony Newton\\\small Newton Astro Labs, United Kingdom}
+\date{}
+
+\begin{document}
+\maketitle
+\thispagestyle{plain}
+\begin{abstract}
+The absence of external forcing makes the three-dimensional Navier--Stokes
+regularity problem substantially more restrictive than a construction with
+prescribed smooth forcing. We study exact mathematical prerequisites for a
+candidate unforced finite-time singularity on the periodic three-torus.
+An explicit compact symmetric-divergence inverse is proved for smooth
+axisymmetric meridional sources supported in an annulus, with vanishing
+total axial force as the necessary and sufficient compatibility condition.
+A separate two-diagonal pressure-neutral construction exhibits a sharp
+radial sign obstruction. Finite seven-ray stress algebra yields the exact
+coefficient margin $15971/122900$ and sharp componentwise amplification
+factor $14$. A compact source-matched dual test excludes a strong
+physical entrywise stress bound at the corresponding numerical scale.
+For the frozen cylindrical seven-ray frame, an exact matrix
+reconstruction identifies that bound with a sufficient four-coordinate
+H8 stress estimate. We give the exact three-inequality description
+and sharp dual support function of the original seven-coefficient cone.
+An exact rational Bernstein certificate shows that even this larger
+absolute coefficient budget fails for the specified manufactured
+meridional source. The larger, one-sided seven-ray positivity cone
+has a distinct asymmetric sharp dual support function. An exact
+rational enclosure shows that the same dual field does not obstruct
+this larger cone; no inverse is thereby constructed. A kernel-checked
+matrix identity then transfers the exact positive-cone dual to any
+rotating source frame, yielding a necessary integrated bound without
+assuming the frame is constant. None of these diagnostic tests
+decides the authentic H8 residual. We also derive the exact
+pressure-compensated annular flux identity and its two sharp
+frame-dependent cone inequalities. The pressure boundary trace is
+essential: an axial source primitive alone cannot be bounded by the
+stress cone when that trace is free.
+The recovered 122-page Case~006 revision also gives an exact
+source-native axial interval under the original absolute coefficient
+budget; its interval is not a necessary condition under one-sided
+coefficient positivity alone.
+The source-prescribed separable shell shaper also admits an exact
+quadratic flux reduction, including its often-leading viscous shear.
+An endpoint uniqueness lemma rules out an $O(b^2)$ stress-shear budget
+for any nonzero compact cutoff with a nondegenerate viscous second-jet
+coefficient, provided the remaining terms have at most first-jet
+size. The hypothesis is not established for the complete H8 residual.
+Normalized quarter-turn localization requires twelve ordered nonlinear
+overlap terms; an explicit local construction shows that these terms
+can carry three quarters of the core kinetic shear. A separately chosen
+smooth annular cutoff and normalized toroidal pressure illustrate the
+remaining source choices, and a combined rational example checks the
+full flux ledger against direct stress integration. These are test
+functions, not the original unfrozen H8 cutoff or pressure.
+For a core localization sharing the shaper cutoff, a cylindrical
+circulation identity reduces cancellation of the viscous second jet
+to an exact axial-core moment and one reference-circle trace.
+For independent core and shaper cutoffs we retain every second
+spatial derivative, the full axial pressure jump and a rigorous
+variable-frame enclosure of the H8 shear support.
+The time derivative of the localized velocity remains a separate
+source marginal; its radial primitive cannot be discarded.
+Lean additionally checks the meridional pointwise inverse and both
+integral antiderivative identities, alongside the finite cone algebra,
+physical residual expansion, and conditional terminal-speed retention.
+These results do not yet construct the
+source-matched, scale-sharp, positive-cone-compatible compact stress or
+a genuine zero-force singular solution. The global unforced existence
+question remains open.
+\end{abstract}
+
+\section{The problem and the mathematical objective}
+
+We work at viscosity one on the unit three-torus
+$\T=\R^{3}/\mathbb{Z}^{3}$. For a smooth velocity $u(t,x)\in\R^{3}$
+and pressure $p(t,x)\in\R$, the unforced incompressible equations are
+\begin{equation}\label{eq:NS}
+  \partial_tu+(u\cdot\nabla)u-\Delta u+\nabla p=0,
+  \qquad \diver u=0.
+\end{equation}
+The specific target is to find nonzero smooth divergence-free periodic
+initial data and a solution smooth for $0\le t<1$, of finite kinetic
+energy on a fundamental cell, whose speed becomes unbounded as $t\uparrow1$.
+The source-free condition in \eqref{eq:NS} is essential: a verified
+construction with a nonzero smooth force does not establish this target.
+The Clay problem statement makes this distinction explicit
+\cite{Fefferman2000}. The published OpenAI Lean formalization states
+Navier--Stokes breakdown with smooth forcing; its unforced finite-time
+result concerns Euler rather than Navier--Stokes \cite{OpenAI2026}.
+
+Our approach isolates small results that are meaningful independently of
+the unresolved global theorem. First, a source must admit a compact
+symmetric-divergence correction. Second, if that correction must remain
+in a prescribed positive stress cone, its components need quantitative
+control relative to a density envelope. Third, all terms in the actual
+nonlinear physical residual must cancel with a single periodic pressure.
+Finally, a singular leading trace can survive only if the correction is
+provably subleading. Sections 2--7 establish exact parts of this chain.
+
+The construction of compact symmetric anti-divergence operators under
+force and torque compatibility is not new; see, for example, the
+support-preserving operator and its explicit moment correction in
+\cite[\S3.6 and Appendix A]{Zhao2026}. The direct axisymmetric formula
+below is offered as an elementary source-specific coordinate realization,
+not as a priority claim for compact symmetric anti-divergence. The new
+obstacle for the present programme is the additional shrinking-support,
+weighted-seven-ray positivity requirement, which is not supplied by
+general existence of a compact tensor. Section~\ref{sec:dual} also
+shows that a natural \emph{stronger} physical-component envelope is
+incompatible with one explicit source, even modulo pressure gradients.
+We subsequently exclude the original absolute coefficient envelope
+for the same manufactured source by a sharper dual calculation;
+we then determine the sharp support of the distinct one-sided cone
+and test the same source against it. The exact frame pullback supplies
+the correct dual coordinates for the genuine spatially varying source.
+The actual H8 source remains a separate problem.
+
+\section{A compact symmetric inverse in an annular region}
+
+Let $0<a<b$ and $c<d$, and write
+$\Omega=(a,b)\times(c,d)$ in meridional cylindrical coordinates $(r,z)$.
+All functions in this section are independent of the azimuthal angle
+$\theta$. The orthonormal cylindrical frame is $(e_r,e_\theta,e_z)$.
+For a symmetric tensor with components
+\begin{equation}\label{eq:stress}
+  S=K\,e_r\otimes e_r+L\,e_\theta\otimes e_\theta
+    +M(e_r\otimes e_z+e_z\otimes e_r)
+    +C\,e_z\otimes e_z,
+\end{equation}
+standard cylindrical differentiation gives
+\begin{align}
+ (\diver S)_r&=\partial_rK+\frac{K-L}{r}+\partial_zM,
+       \label{eq:divr}\\
+ (\diver S)_z&=\partial_rM+\frac Mr+\partial_zC,
+       \label{eq:divz}\\
+ (\diver S)_\theta&=0.\notag
+\end{align}
+The $1/r$ terms are geometric, not lower-order terms that may be
+discarded near a shrinking cylindrical support.
+
+\begin{theorem}[Explicit compact meridional inversion]\label{thm:inverse}
+Let $f_r,f_z\in\cc(\Omega)$, and extend
+$f=f_r e_r+f_z e_z$ by zero to $\R^{3}$ in cylindrical coordinates.
+There is a symmetric $S\in\cc(\R^{3};\operatorname{Sym}_3)$,
+axisymmetric and supported in the same open annular cylinder, with
+$\diver S=f$, if and only if
+\begin{equation}\label{eq:vertical-force}
+ \int_a^b\int_c^d r f_z(r,z)\dd z\dd r=0.
+\end{equation}
+The construction uses no nonlocal spatial projection, but it asserts no
+positive-semidefinite or weighted-cone bound on $S$.
+\end{theorem}
+
+\begin{proof}
+For necessity, integrate the axial component of $\diver S=f$
+against the cylindrical Jacobian $r$. Compact support and
+\eqref{eq:divz} give
+\[
+ \int_a^b\int_c^d r f_z\dd z\dd r
+ =\int_a^b\int_c^d\bigl[\partial_r(rM)+r\partial_zC\bigr]
+   \dd z\dd r=0.
+\]
+For sufficiency, define the axial source marginal and its radial
+primitive by
+\begin{equation}\label{eq:HJ}
+ J(r)=\int_c^d f_z(r,z)\dd z,
+ \qquad H(r)=\frac1r\int_a^r sJ(s)\dd s.
+\end{equation}
+Since $r>0$ on $[a,b]$, $H$ is smooth. The vanishing moment
+\eqref{eq:vertical-force} makes $H$ identically zero outside a compact
+subinterval of $(a,b)$. Choose any $\eta\in\cc((c,d))$ normalized by
+$\int_c^d\eta(z)\dd z=1$, and set
+\begin{equation}\label{eq:M}
+ M(r,z)=H(r)\eta(z).
+\end{equation}
+The identity $(rH)'=rJ$ implies
+\[
+ \int_c^d\left(f_z-\partial_rM-\frac Mr\right)\dd z
+   =J-H'-\frac Hr=0.
+\]
+Consequently the axial primitive
+\begin{equation}\label{eq:C}
+ C(r,z)=\int_c^z\left[f_z(r,\zeta)-\partial_rM(r,\zeta)
+                  -\frac{M(r,\zeta)}r\right]\dd\zeta
+\end{equation}
+vanishes both below and above the axial support; it is smooth and
+compactly supported in $\Omega$. Choose any $K\in\cc(\Omega)$,
+including $K=0$, and define
+\begin{equation}\label{eq:L}
+ L=K+r\bigl(\partial_rK+\partial_zM-f_r\bigr).
+\end{equation}
+Each component of \eqref{eq:stress} is smooth and compactly supported
+away from the axis. Substitution in \eqref{eq:divr} gives
+\[
+ \partial_rK+\frac{K-L}{r}+\partial_zM
+ =\partial_rK-(\partial_rK+\partial_zM-f_r)+\partial_zM=f_r,
+\]
+and \eqref{eq:C} gives $\partial_rM+M/r+\partial_zC=f_z$.
+Thus $\diver S=f$ as claimed.
+\end{proof}
+
+\begin{remark}[Scope of the construction]
+The theorem concerns a meridional source with $f_\theta=0$ and support
+strictly separated from $r=0$. An azimuthal source introduces a
+different angular-momentum compatibility condition, and extending
+the construction across the axis requires separate regularity
+conditions on the cylindrical components. The tensor in the theorem
+may be indefinite, and its size can deteriorate when the support
+shrinks. None of these omissions is harmless for the weighted H8
+attachment problem.
+\end{remark}
+
+\section{Pressure-neutral gauges and a sign obstruction}
+
+The mixed and hoop degrees of freedom in Theorem~\ref{thm:inverse} are
+not optional decorations. A restricted diagonal ansatz exhibits a
+genuine obstruction to maintaining one sign.
+
+\begin{proposition}[Two-diagonal gauge]\label{prop:gauge}
+Let $F\in\cc(\Omega)$, put $K=rF_r$ and $C=F+rF_r$, and take
+$S=K e_r\otimes e_r+C e_z\otimes e_z$. Then
+\begin{equation}\label{eq:gauge}
+ \diver S=\nabla C.
+\end{equation}
+In particular its divergence is a pressure gradient, so it cannot by
+itself represent a prescribed source with a nonzero solenoidal part.
+\end{proposition}
+
+\begin{proof}
+The radial divergence is $K_r+K/r$. Since $K=rF_r$,
+$C_r=F_r+K_r=K/r+K_r$. The axial divergence is $C_z$,
+which proves \eqref{eq:gauge}.
+\end{proof}
+
+\begin{proposition}[Restricted radial sign condition]\label{prop:sign}
+If $K$ and $C$ are compactly supported in $r\in(a,b)$ at a fixed $z$
+and obey $C_r=K_r+K/r$, then
+\begin{equation}\label{eq:momentK}
+ \int_a^b K(r,z)/r\dd r=0.
+\end{equation}
+Consequently, $K\ge0$ forces $K\equiv0$ for this restricted two-diagonal
+class.
+\end{proposition}
+
+\begin{proof}
+Integrate the derivative identity between $a$ and $b$;
+the endpoint terms of $K$ and $C$ vanish by compact support.
+Since $r>0$, continuity and \eqref{eq:momentK} imply that a
+nonnegative $K$ is identically zero.
+\end{proof}
+
+This conclusion does not exclude a sign-changing correction around a
+positive background tensor or a compact construction with nonzero
+hoop and mixed components. Indeed, Theorem~\ref{thm:inverse} explicitly
+uses both of those components. The more difficult question is whether
+one can choose them while retaining a prescribed strict coefficient
+cone with uniform shrinking-support estimates.
+
+\section{The exact seven-ray coefficient margin}
+
+The finite cone appearing in the current H8 source has seven rays.
+With aperture $t=1/4$ they are
+\begin{equation}\label{eq:rays}
+\begin{aligned}
+ v_1&=(1,0,0), &v_2&=(1,t,0),&v_3&=(1,-t,0),\\
+ v_4&=(1,0,t),&v_5&=(1,0,-t),\\
+ v_6&=(1,t,t),&v_7&=(1,t,-t).
+\end{aligned}
+\end{equation}
+Their normalized positive coefficient centre is
+$c^{(0)}_i=236/1229$ for $i=3$ and $172/1229$ for every other
+index. The raw source covariance and its trace-free rank-one identity
+are established by exact finite arithmetic and in
+\texttt{UnforcedPatching.SevenRayCenter.lean}.
+
+Write $(A,B,C,D)\in\R^4$ for the four trace-free stress coordinates.
+The resulting coefficient perturbations, in ray order, are
+\begin{equation}\label{eq:linear-map}
+ \delta c=\left(
+ -\tfrac32 D,\ 2C-4D,\ -2C-4D,\
+ 2A-8B+4D,\ -2A+8B+4D,\ 8B,\ -8B\right).
+\end{equation}
+
+\begin{proposition}[Sharp componentwise cone estimate]\label{prop:14}
+For $m=\max(|A|,|B|,|C|,|D|)$ the map
+\eqref{eq:linear-map} satisfies
+\begin{equation}\label{eq:14}
+ \max_{1\le i\le7}|\delta c_i|\le14m,
+\end{equation}
+and the number $14$ is optimal. If $\rho\ge0$ and
+\begin{equation}\label{eq:eps}
+ m\le\frac{15971}{1720600}\rho,
+\end{equation}
+then for every ray $c_i^{(0)}\rho+\delta c_i\ge\rho/100$.
+\end{proposition}
+
+\begin{proof}
+The absolute row sums in \eqref{eq:linear-map} are respectively
+$3/2$, $6$, $6$, $14$, $14$, $8$, $8$; hence the operator norm
+from $\ell^\infty(\R^4)$ to $\ell^\infty(\R^7)$ is at most $14$.
+At $(A,B,C,D)=(1,-1,0,1)$, the fourth coordinate equals $14$,
+so the constant is sharp. Since
+\[
+ \frac{172}{1229}-\frac1{100}=\frac{15971}{122900},
+\]
+inequality \eqref{eq:eps} implies
+$|\delta c_i|\le 14m\le(15971/122900)\rho$.
+As $c_i^{(0)}\ge172/1229$, the claimed floor follows.
+\end{proof}
+
+The seven-ray claim is a finite linear-algebra statement. It provides
+the exact smallness target for a potential compact correction but gives
+no estimate for the particular tensor delivered by
+Theorem~\ref{thm:inverse}. In particular, no implication from
+unweighted compact solvability to \eqref{eq:eps} is available.
+
+\begin{proposition}[The frozen-frame physical tensor map]\label{prop:frame}
+In the local co-rotating frame $(e_1,e_2,e_3)=(e_r,e_\theta,e_z)$
+of the seven-ray construction, let
+$G=\sum_{i=1}^7\delta c_i v_i\otimes v_i$.
+The exact physical tensor perturbation and its trace-free pressure
+representative are
+\begin{equation}\label{eq:four-field-map}
+ G=\begin{pmatrix}
+ -\frac32D&C&A\\ C&-\frac12D&B\\ A&B&\frac12D
+ \end{pmatrix},\quad
+ H=G+\frac D2 I
+ =\begin{pmatrix}-D&C&A\\ C&0&B\\ A&B&D\end{pmatrix}.
+\end{equation}
+In particular, if $m=\max(|A|,|B|,|C|,|D|)$, then
+$\max_{i,j}|H_{ij}|=m$ in that frame.
+Conversely, the coordinates are recovered as
+$A=H_{rz}$, $B=H_{\theta z}$, $C=H_{r\theta}$, and $D=H_{zz}$.
+The image is the four-dimensional subspace of symmetric trace-free
+matrices with $H_{\theta\theta}=0$ (hence $H_{rr}=-H_{zz}$);
+one independent trace-free diagonal mode is absent.
+For a different orthonormal frame with columns $E$, the physical matrix
+is $EHE^{\mathsf T}$; its componentwise maximum need not equal $m$.
+\end{proposition}
+
+\begin{proof}
+Substitute the seven vectors \eqref{eq:rays} and their coefficient
+perturbations \eqref{eq:linear-map} into the six independent entries
+of $G$. The diagonal entries are $-3D/2,-D/2,D/2$; the off-diagonal
+entries in $(r\theta,rz,\theta z)$ order are $(C,A,B)$.
+Thus $\operatorname{tr}G=-3D/2$, and the scalar gauge addition
+$D I/2$ removes its trace. The maximum-entry identity then follows
+directly from the displayed matrix. Conjugation gives the last claim.
+\end{proof}
+
+\begin{proposition}[The exact original seven-coefficient cone]
+\label{prop:exact-cone}
+For any $\tau\ge0$, all seven constraints $|\delta c_i|\le\tau$
+of \eqref{eq:linear-map} hold if and only if
+\begin{equation}\label{eq:exact-cone}
+ 4|D|+2|C|\le\tau,\qquad
+ 4|D|+2|A-4B|\le\tau,\qquad
+ 8|B|\le\tau.
+\end{equation}
+The sufficient bound $m\le\tau/14$ therefore need not hold for a
+valid coefficient perturbation: at
+$(A,B,C,D)=(\tau,\tau/8,0,0)$, the exact largest coefficient
+perturbation and $m$ both equal $\tau$.
+\end{proposition}
+
+\begin{proof}
+For real $x,y$ the identity
+$\max(|x+y|,|x-y|)=|x|+|y|$ is exact.
+Apply it to the paired coefficients $(\delta c_2,\delta c_3)$,
+$(\delta c_4,\delta c_5)$, and $(\delta c_6,\delta c_7)$.
+The first pair contributes $4|D|+2|C|$, the second
+$4|D|+2|A-4B|$, and the third $8|B|$. The remaining
+coefficient $|\delta c_1|=3|D|/2$ is dominated by the first
+pair. Substitution verifies the equality case.
+\end{proof}
+
+This identifies a previously implicit assumption: the bound
+\eqref{eq:eps} is also a physical entrywise bound for the trace-free
+perturbation \emph{in the specified cylindrical frame}. The same
+conclusion requires a verified change of frame when H8 rays are tilted;
+pointwise orthogonal conjugation alone does not control the additional
+derivatives of a spatially varying frame.
+
+\section{A source-matched weighted dual obstruction}\label{sec:dual}
+
+The coefficient condition \eqref{eq:eps} involves four trace-free
+coordinates, not arbitrary physical tensor components. To test a
+particularly strong candidate estimate, let
+\begin{equation}\label{eq:dualprofiles}
+ P(r)=\begin{cases}(r-1)^2(2-r)^2,&1\le r\le2,\\0,&\text{otherwise},\end{cases}
+ \quad
+ \eta(z)=\begin{cases}(1-z^2)^3,&|z|\le1,\\0,&\text{otherwise}.\end{cases}
+\end{equation}
+Set $\rho(r,z)=P(r)\eta(z)\ge0$ and choose the meridional
+source $f=P(r)\eta'(z)e_z$. This is source-matched in the literal sense
+that $S=\rho\,e_z\otimes e_z$ is a compact symmetric inverse:
+$\diver S=f$. Also $\int r f_z\dd r\dd z=0$, so the force
+compatibility condition of Theorem~\ref{thm:inverse} holds.
+
+\begin{proposition}[A pressure-independent stress bound]
+\label{prop:dual}
+Let $\beta=15971/1720600$. No smooth compact symmetric tensor $H$
+and smooth scalar pressure $q$ satisfy both
+\begin{equation}\label{eq:dualprob}
+\begin{aligned}
+ \diver H+\nabla q&=f,\\
+ |H_{ij}|&\le\beta\rho\quad(i,j\in\{r,\theta,z\}),
+\end{aligned}
+\end{equation}
+where components refer to the \emph{orthonormal cylindrical frame}.
+The contradiction also persists for suitable smooth compact
+nonnegative approximations to the profiles in \eqref{eq:dualprofiles}.
+\end{proposition}
+
+\begin{proof}
+Construct an axisymmetric vector field with components
+\begin{equation}\label{eq:dualtest}
+ v_r=-rP\eta'',\qquad v_\theta=0,\qquad
+ v_z=(2P+rP')\eta'.
+\end{equation}
+It is divergence-free because
+$r^{-1}\partial_r(rv_r)+\partial_zv_z=0$.
+The zero-extended profiles give a compactly supported Lipschitz $v$:
+$P=P'=0$ at $r=1,2$, and $\eta'=\eta''=0$ at $z=\pm1$.
+Thus integration by parts against $v$ is legitimate, by approximation
+if necessary, and the pressure term vanishes. With the angular
+factor $2\pi$ suppressed, the source pairing is
+\begin{align}
+ L&=\int_1^2\!\int_{-1}^1 r f_zv_z\dd z\dd r\notag\\
+  &=\left(\int_1^2 rP^2\dd r\right)
+    \left(\int_{-1}^1(\eta')^2\dd z\right)
+    =\frac{1}{420}\,\frac{1024}{385}
+    =\frac{256}{40425}.\label{eq:dualL}
+\end{align}
+Here the middle equality follows by integrating $r^2PP'$ by parts.
+The physical cylindrical gradient of $v$ includes its hoop entry
+$v_r/r$. Its entrywise absolute sum is bounded by
+\begin{equation}\label{eq:dualgrad}
+ |\nabla v|_1\le
+ (4P+2r|P'|)|\eta''|+rP|\eta'''|
+ +(3|P'|+r|P''|)|\eta'|.
+\end{equation}
+The elementary exact radial integrals are
+$\int_1^2P=1/30$, $\int_1^2P^2=1/630$,
+$\int_1^2rP^2=1/420$, and
+$\int_1^2P|P'|=1/256$. On their supports,
+$r\le2$, $|P''|\le2$, $|\eta''|\le6$ and
+$|\eta'''|\le72|z|+120|z|^3$. Direct integration gives
+\[
+ \int_{-1}^1\eta=\frac{32}{35},\quad
+ \int_{-1}^1\eta|\eta'|=1,\quad
+ \int_{-1}^1\eta|z|=\frac14,\quad
+ \int_{-1}^1\eta|z|^3=\frac1{20}.
+\]
+Consequently, writing $U=\int_1^2\int_{-1}^1
+r\rho|\nabla v|_1\dd z\dd r$, one obtains the rigorous upper bound
+\begin{align}
+ U&\le\left(\frac4{420}+\frac2{64}\right)\frac{192}{35}
+   +\frac2{315}\,24+\frac3{128}+\frac4{15}
+   =\frac{313361}{470400}.\label{eq:dualU}
+\end{align}
+But \eqref{eq:dualprob} would imply $L\le\beta U$ by the virtual-work
+identity $\int f\cdot v=-\int H:\nabla v$, whereas
+\begin{equation}\label{eq:dualgap}
+ L-\beta\,\frac{313361}{470400}
+ =\frac{443015653}{2967690880000}>0,
+\end{equation}
+a contradiction. Nonnegative convolution approximations of $P$ and
+$\eta$, supported away from the axis, converge in the requisite
+derivative integral norms. The strict gap survives for sufficiently
+small smoothing parameters and proves the smooth-profile assertion.
+\end{proof}
+
+\begin{corollary}[Failure of the sufficient four-field envelope]
+\label{cor:four-field}
+For the source $f$ and envelope $\rho$ in
+\eqref{eq:dualprofiles}, there is no fixed-frame four-coordinate
+stress $H(A,B,C,D)$ of \eqref{eq:four-field-map} satisfying
+$\diver H+\nabla q=f$ and the sufficient bound
+\eqref{eq:eps}, even if the pressure is freely chosen.
+\end{corollary}
+
+\begin{proof}
+Proposition~\ref{prop:frame} transfers \eqref{eq:eps} to the
+entrywise physical cap \eqref{eq:dualprob}. This contradicts
+Proposition~\ref{prop:dual}.
+\end{proof}
+
+The preceding argument excludes the \emph{stronger sufficient}
+four-field estimate. It cannot alone exclude the original absolute
+coefficient budget $\max_i|\delta c_i|\le(15971/122900)\rho$:
+if one simply inserts that larger constant into the conservative
+gradient bound \eqref{eq:dualU}, then
+\begin{equation}\label{eq:weaker-inconclusive}
+ \frac{15971}{122900}\frac{313361}{470400}-L
+ =\frac{51024386641}{635933760000}>0.
+\end{equation}
+The sign of this bound is inconclusive, not evidence of existence.
+The exact cone, however, has a smaller sharp dual support than
+that componentwise comparison.
+
+\begin{proposition}[Sharp dual of the original absolute coefficient cone]
+\label{prop:sharp-cone}
+For $\tau\ge0$ let $\mathcal K_\tau$ be the four-coordinate set
+defined by \eqref{eq:exact-cone}. For arbitrary $a,b,c,d\in\R$,
+\begin{equation}\label{eq:sharp-support}
+ \sup_{(A,B,C,D)\in\mathcal K_\tau}
+ (aA+bB+cC+dD)
+ =\tau\left[
+ \max\!\left(\frac{|a|+|c|}{2},\frac{|d|}{4}\right)
+ +\frac{|4a+b|}{8}\right].
+\end{equation}
+The upper bound in \eqref{eq:sharp-support} is proved in Lean for
+the actual seven coefficient constraints.
+\end{proposition}
+
+\begin{proof}
+Put $x=A-4B$. By \eqref{eq:exact-cone}, for fixed
+$s=|D|\in[0,\tau/4]$, the variables $x,C,B$ are independent and
+satisfy
+\[
+ |x|,|C|\le\frac{\tau-4s}{2},\qquad |B|\le\frac\tau8.
+\]
+The objective becomes $ax+(4a+b)B+cC+dD$. Its maximum for this
+$s$ is
+\[
+ \frac{\tau-4s}{2}(|a|+|c|)
+ +\frac\tau8|4a+b|+s|d|.
+\]
+This expression is affine in $s$, so its maximum occurs at $s=0$
+or $s=\tau/4$, yielding \eqref{eq:sharp-support}. Each bound is
+attained by choosing the signs of $x,C,B,D$ to match their respective
+linear coefficients. Thus the value is sharp.
+\end{proof}
+
+\begin{proposition}[An exact original-budget obstruction for the
+manufactured source]\label{prop:original-obstruction}
+Let $f,\rho$ be given by \eqref{eq:dualprofiles}, and set
+$\gamma=15971/122900$. No locally integrable symmetric tensor of
+the fixed-frame form $H(A,B,C,D)$ in \eqref{eq:four-field-map},
+together with a locally integrable scalar pressure $q$, can satisfy
+in the distributional sense
+\[
+  \diver H+\nabla q=f,\qquad
+  |\delta c_i(A,B,C,D)|\le\gamma\rho\quad(1\le i\le7).
+\]
+\end{proposition}
+
+\begin{proof}
+Use the divergence-free meridional field $v$ from
+\eqref{eq:dualtest}. Its nonzero coupling coordinates to $H$ are
+\begin{align*}
+ a(r,z)&=\partial_zv_r+\partial_rv_z
+      =-rP\eta'''+(3P'+rP'')\eta',\\
+ d(r,z)&=\partial_zv_z-\partial_rv_r
+      =(3P+2rP')\eta''.
+\end{align*}
+Indeed, $H:\nabla v=Aa+Dd$; the $B$ and $C$ components vanish
+because $v$ is meridional and independent of $\theta$.
+By Proposition~\ref{prop:sharp-cone}, integration by parts and
+$\rho\ge0$ would force
+\begin{equation}\label{eq:sharp-dual-source}
+ L\le\gamma S,\quad
+ S=\int_1^2\!\int_{-1}^1
+ rP(r)\eta(z)
+ \max\!\left(|a|,\frac{|a|}{2}+\frac{|d|}{4}\right)
+ \dd z\dd r.
+\end{equation}
+There is an exact rational upper bound
+\begin{equation}\label{eq:sharp-bernstein-bound}
+ S\le
+ \frac{5838537817787225523484624248207}
+ {150323855360000000000000000000000}
+ <\frac1{25}.
+\end{equation}
+For completeness, partition $[1,2]\times[-1,1]$ into $40^2$
+rational rectangles. On each rectangle express the separated
+polynomials $a$ and $d$ in a common-degree bivariate Bernstein
+basis. The convex-hull property bounds $|a|$ and $|d|$ by the
+largest absolute Bernstein coefficient. Multiply
+$\max(a_{ij},a_{ij}/2+d_{ij}/4)$ by the \emph{exact} nonnegative
+cell mass $\int rP\dd r\int\eta\dd z$, and sum the $1600$
+rational terms. This yields the first inequality in
+\eqref{eq:sharp-bernstein-bound}; the second is an integer
+comparison. The accompanying pure-rational program reproduces
+each coefficient and sum. Consequently
+\[
+ L-\gamma S
+ >\frac{256}{40425}-\frac{15971}{122900\cdot25}
+ =\frac{5637293}{4968232500}>0,
+\]
+contradicting \eqref{eq:sharp-dual-source}. The pressure term
+vanishes by solenoidality of $v$. The zero-extended test field is
+compactly supported and Lipschitz, so smooth divergence-free
+mollifications justify the same integration-by-parts identity for
+locally integrable $H$ and $q$.
+\end{proof}
+
+This obstruction concerns the \emph{absolute correction budget}
+$|\delta c_i|\le\gamma\rho$ in one fixed frame. It does not rule
+out every nonnegative seven-ray stress: the one-sided requirement
+$c_i^{(0)}\rho+\delta c_i\ge\rho/100$ admits perturbations outside
+that sufficient absolute budget. We now compute the exact support
+of this larger admissible set rather than extending the obstruction
+by analogy.
+
+\begin{proposition}[Sharp support of the one-sided seven-ray cone]
+\label{prop:positive-support}
+Let $\rho\ge0$ and let $\mathcal P_\rho$ contain precisely those
+$(A,B,C,D)$ for which all seven original coefficients satisfy
+$c_i^{(0)}\rho+\delta c_i(A,B,C,D)\ge\rho/100$. Define
+\[
+ g=\frac{15971}{122900},\quad h=\frac{22371}{122900},\quad
+ x=A-4B.
+\]
+Then $\mathcal P_\rho$ is described exactly by
+\begin{align}
+ -\frac{g\rho}{4}&\le D\le\frac{(g+h)\rho}{8},
+ &|B|&\le\frac{g\rho}{8},\notag\\
+ |x|&\le\frac{g\rho}{2}+2D,
+ &\left|C-\frac{(h-g)\rho}{4}\right|
+ &\le\frac{(g+h)\rho}{4}-2D.\label{eq:positive-intervals}
+\end{align}
+For arbitrary dual coefficients $(a,b,c,d)\in\R^4$ its support is
+\begin{align}
+ \sigma^+_\rho(a,b,c,d)
+ =\rho\bigg[&\frac{h-g}{4}c+\frac g8|4a+b|\notag\\
+ &+\max\left\{
+ \frac{3g+h}{4}|c|-\frac g4d,\,
+ \frac{3g+h}{4}|a|+\frac{g+h}{8}d
+ \right\}\bigg].\label{eq:positive-support}
+\end{align}
+The universal upper bound in \eqref{eq:positive-support} is
+kernel-checked in Lean under the original seven coefficient floors.
+\end{proposition}
+
+\begin{proof}
+The six ordinary ray centres have available negative correction
+$-g\rho$ and the third ray has $-h\rho$. The paired fourth and
+fifth coefficient inequalities yield the bound on $|x|$; the
+sixth and seventh yield the bound on $|B|$. The second and third
+give the $C$ interval, whose nonnegative half-width forces the
+upper bound on $D$. The half-width for $x$ forces the lower bound
+on $D$. The remaining first-ray inequality $-3D/2\ge-g\rho$
+is then redundant, since $(g+h)/8\le2g/3$. This proves the exact
+description, including when $\rho=0$.
+
+The objective is
+$ax+(4a+b)B+cC+dD$. For each fixed $D$, the independent intervals
+for $x,B,C$ give a maximum equal to
+\[
+ \frac{h-g}{4}\rho c+\frac{g\rho}{8}|4a+b|
+ +\left(\frac{g\rho}{2}+2D\right)|a|
+ +\left(\frac{(g+h)\rho}{4}-2D\right)|c|+Dd.
+\]
+This is affine in $D$. Substitution of its two endpoints gives
+\eqref{eq:positive-support}. Signs of $x,B$ and the displacement
+of $C$ attain these extrema, establishing sharpness.
+\end{proof}
+
+\begin{proposition}[The manufactured dual test is inconclusive for
+the one-sided cone]\label{prop:positive-diagnostic}
+For the fixed diagnostic source and divergence-free test field in
+Proposition~\ref{prop:original-obstruction}, let $a,d$ be the
+coupling expressions there, and define
+\[
+ J=\int_1^2\!\int_{-1}^1
+ rP(r)\eta(z)\,\sigma^+_1(-a(r,z),0,0,-d(r,z))
+ \,\dd z\dd r.
+\]
+An exact rational partition certificate proves
+\begin{equation}\label{eq:positive-gap}
+ J\ge\frac{249897750999661616493885744300330541}
+ {38797083829862400000000000000000000000}
+ >\frac{256}{40425}+\frac1{10000}.
+\end{equation}
+Consequently the necessary dual inequality $L\le J$ is not
+contradicted by this test field under the one-sided cone. This
+asserts neither the existence of a stress nor the absence of an
+obstruction from a different test field.
+\end{proposition}
+
+\begin{proof}
+The explicit support \eqref{eq:positive-support}, evaluated on
+$(-a,0,0,-d)$, is the maximum of the four signed polynomial actions
+\[
+ \frac{ga}{2}+\frac{gd}{4},\quad
+ -\frac{ga}{2}+\frac{gd}{4},\quad
+ \left(\frac g2+\frac{3g+h}{4}\right)a-\frac{g+h}{8}d,\quad
+ -\left(\frac g2+\frac{3g+h}{4}\right)a-\frac{g+h}{8}d.
+\]
+Divide the rectangle into $40\times40$ rational subrectangles.
+On each cell, the integral of the pointwise maximum is at least
+the maximum of the four \emph{exact signed polynomial integrals}
+against the nonnegative weight $rP\eta$. Their rational sum gives
+the first inequality in \eqref{eq:positive-gap}. The second is
+an exact integer comparison. For independent error detection, the
+accompanying program also bounds the same integral from above with
+signed bivariate Bernstein coefficients. The pressure contribution
+vanishes because the test field is divergence free.
+\end{proof}
+
+The contrast is mathematically substantive: the absolute-budget
+obstruction is strict, whereas the exact one-sided cone is wider
+and this particular necessary inequality has positive slack. A
+primal positive-cone construction would additionally require a
+compact symmetric-divergence inverse with all support and derivative
+bounds. In addition, $f=P\eta'e_z$ is a
+manufactured diagnostic source, \emph{not} the authenticated H8
+residual $g-\mathbb P\diver(\rho R_*)$, where $\mathbb P$ denotes
+the divergence-free Leray projection; the source profiles and
+potentially rotating physical frame required to test that residual
+have not been provided in the checked project. No statement here
+excludes a more flexible source-matched H8 inverse or decides the
+global unforced problem.
+
+\begin{proposition}[Physical-frame pullback of the one-sided dual]
+\label{prop:rotated-dual}
+Let $E(x)$ be a pointwise orthogonal $3\times3$ source-to-physical
+frame, written in Cartesian components, and set
+$K(x)=E(x)H(A,B,C,D)(x)E(x)^{\mathsf T}$ with
+$H$ from \eqref{eq:four-field-map}. For any physical gradient
+$G=\nabla v$, put $M=E^{\mathsf T}GE$ and define
+\begin{equation}\label{eq:rotated-covector}
+ (a_E,b_E,c_E,d_E)
+ =\big(M_{rz}+M_{zr},\ M_{\theta z}+M_{z\theta},\
+ M_{r\theta}+M_{\theta r},\ M_{zz}-M_{rr}\big).
+\end{equation}
+Then
+\begin{equation}\label{eq:rotated-pairing}
+ K:G=Aa_E+Bb_E+Cc_E+Dd_E.
+\end{equation}
+If every original seven-ray coefficient is at least $\rho/100$
+for $\rho\ge0$, then the pointwise necessary bound is
+\begin{equation}\label{eq:rotated-support}
+ -K:G\le\sigma^+_\rho(-a_E,-b_E,-c_E,-d_E),
+\end{equation}
+where $\sigma^+$ is given exactly by
+\eqref{eq:positive-support}. Both \eqref{eq:rotated-pairing}
+and \eqref{eq:rotated-support} are kernel-checked in Lean as
+pointwise finite-matrix results; the algebra does not require
+$E$ to be constant.
+
+Suppose additionally that $K$ and $q$ solve
+$\diver K+\nabla q=f$ distributionally on a periodic cell or
+a region where the following integration by parts is valid.
+For every smooth periodic or compactly supported solenoidal $v$,
+\begin{equation}\label{eq:rotated-integrated}
+ \int f\cdot v\,\dd x
+ \le\int\sigma^+_{\rho(x)}
+       (-a_E(x),-b_E(x),-c_E(x),-d_E(x))\,\dd x.
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+The Frobenius identity
+$(EHE^{\mathsf T}):G=H:(E^{\mathsf T}GE)$ follows by
+rearranging finite sums over the three matrix indices. Inserting
+the nine entries of $H$ gives \eqref{eq:rotated-pairing}.
+Apply Proposition~\ref{prop:positive-support} to the negative
+of this dual covector to obtain \eqref{eq:rotated-support}.
+Finally $\int f\cdot v=-\int K:\nabla v$ because the pressure
+term pairs to zero with a solenoidal $v$, proving
+\eqref{eq:rotated-integrated}.
+\end{proof}
+
+The frame transfer changes the dual coordinates even when
+$E$ is constant. For example, take $G=\operatorname{diag}(1,2,3)$
+and the orthogonal meridional rotation
+\[
+ E=\begin{pmatrix}3/5&0&4/5\\0&1&0\\-4/5&0&3/5\end{pmatrix}.
+\]
+Formula \eqref{eq:rotated-covector} gives
+$(a_E,b_E,c_E,d_E)=(-48/25,0,0,-14/25)$,
+whereas the frozen frame gives $(0,0,0,2)$. Thus a fixed-frame
+numerical obstruction cannot be transferred to a varying frame
+without recomputing its dual integral.
+
+For a differentiable frame, the analytic divergence additionally
+contains the connection terms
+\begin{equation}\label{eq:frame-derivatives}
+ \partial_jK_{ij}=
+ E_{ia}E_{jb}\partial_jH_{ab}
+ +(\partial_jE_{ia})H_{ab}E_{jb}
+ +E_{ia}H_{ab}(\partial_jE_{jb}),
+\end{equation}
+with repeated indices summed. Orthogonality ensures that a source-frame
+scalar multiple of the identity remains a physical pressure gauge,
+even if $E$ varies. Equation \eqref{eq:frame-derivatives} shows why
+the pointwise dual theorem alone does not control the weighted
+derivatives of a source-matched inverse. The authenticated functions
+$g,\rho,R_*$ and $E$, together with their support and derivative
+budgets, remain required to evaluate \eqref{eq:rotated-integrated}
+on the genuine H8 residual.
+
+\begin{proposition}[Exact pressure-compensated annular H8 gate]
+\label{prop:complete-flux-gate}
+Fix a time and a cylindrical annulus $a<r<b$, $c<z<d$.
+Let $K$ be a smooth symmetric physical tensor, $p$ a smooth scalar,
+and $f=\diver K+\nabla p$. Denote the azimuthal average by
+$\langle\cdot\rangle_\theta$ and set
+\begin{align}
+ S(r)&=\int_c^d\langle K_{rz}\rangle_\theta\dd z, &
+ F(r)&=\int_c^d\langle f_z\rangle_\theta\dd z,\notag\\
+ q_{\rm s}(r)&=\left[\langle K_{zz}+p\rangle_\theta\right]_{z=c}^{z=d},&
+ Q(r)&=\frac1r\int_a^r s\,q_{\rm s}(s)\dd s.\label{eq:complete-flux-data}
+\end{align}
+Then the exact cylindrical identity is
+\begin{equation}\label{eq:complete-flux}
+ J_f(r):=\frac1r\int_a^r sF(s)\dd s
+ =S(r)-\frac arS(a)+Q(r).
+\end{equation}
+Suppose $K=EH(A,B,C,D)E^{\mathsf T}$, where $E(r,\theta,z)$ is
+orthogonal and the seven H8 ray coefficients exceed $\rho/100$ for
+$\rho\ge0$. Let $G$ be the physical matrix having $G_{rz}=1$
+and all other entries zero, and write $\lambda_E$ for the four
+coordinates of \eqref{eq:rotated-covector} applied to this $G$.
+Define the exact slice supports
+\begin{align}
+ \mathcal B_\pm(r)&=\int_c^d\left\langle
+  \sigma^+_{\rho(r,\theta,z)}(\pm\lambda_E(r,\theta,z))
+  \right\rangle_\theta\dd z,\notag\\
+ \mathcal B_{\rm abs}(r)&=\int_c^d\left\langle
+ \sigma_{g\rho(r,\theta,z)}(\lambda_E(r,\theta,z))
+ \right\rangle_\theta\dd z,
+ \qquad g=\frac{15971}{122900}.\label{eq:complete-flux-supports}
+\end{align}
+The original absolute coefficient budget implies
+\begin{equation}\label{eq:complete-flux-absolute}
+ \left|J_f(r)+\frac arS(a)-Q(r)\right|
+ \le\mathcal B_{\rm abs}(r),
+\end{equation}
+while the larger one-sided positive-coefficient cone requires only
+\begin{equation}\label{eq:complete-flux-positive}
+ -\mathcal B_-(r)\le J_f(r)+\frac arS(a)-Q(r)
+ \le\mathcal B_+(r).
+\end{equation}
+These bounds hold for a spatially varying orthogonal frame; they
+are necessary conditions and do not construct a differential inverse.
+\end{proposition}
+
+\begin{proof}
+The azimuthal mean removes the $r^{-1}\partial_\theta K_{\theta z}$
+term in the cylindrical divergence. The axial component therefore
+obeys $F=S'+S/r+q_{\rm s}$, proving
+$(rS)'=r(F-q_{\rm s})$ and \eqref{eq:complete-flux} by integration.
+At each spatial point $K_{rz}=K:G=\lambda_E\cdot(A,B,C,D)$.
+The sharp one-sided support formula \eqref{eq:positive-support}
+gives the upper and lower bounds on this quantity, and
+\eqref{eq:sharp-support} gives the symmetric absolute bound.
+Azimuthal and axial integration followed by
+\eqref{eq:complete-flux} proves both inequalities.
+\end{proof}
+
+\begin{proposition}[Case~006 source-native axial interval]
+\label{prop:case006-native-band}
+Work in the physical cylindrical source frame of the Case~006
+seven-ray centre, for which $(R_*)_{rz}=\alpha=-4443/9832$.
+Let $\mathsf T$ be a smooth prepared symmetric stress, let
+$\rho\ge0$, and write
+\[
+ f=\diver(\mathsf T-\rho R_*)+\nabla p_0,\qquad
+ \mathcal T(r)=\int_c^d\langle\mathsf T_{rz}\rangle_\theta\dd z,
+ \qquad \mathcal R(r)=\int_c^d\langle\rho\rangle_\theta\dd z.
+\]
+Set $q_0(r)=[\langle(\mathsf T-\rho R_*)_{zz}
+ +p_0\rangle_\theta]_{z=c}^{z=d}$, and let $J_f$ be the
+source primitive in \eqref{eq:complete-flux}. Then
+\begin{equation}\label{eq:case006-source-native-primitive}
+ J_f(r)=\mathcal T(r)-\alpha\mathcal R(r)
+ -\frac ar\bigl(\mathcal T(a)-\alpha\mathcal R(a)\bigr)
+ +\frac1r\int_a^r s q_0(s)\dd s.
+\end{equation}
+Suppose that the source and the sought correction admit the
+corresponding compact representatives, with zero inner shear
+and axial pressure/tensor boundary traces. If the correction
+$H(A,B,C,D)$ obeys the \emph{original absolute} seven-coefficient
+budget $|\delta c_i|\le\kappa\rho$,
+$\kappa=15971/122900$, then
+\[
+ |\mathcal T(r)-\alpha\mathcal R(r)|\le\kappa\mathcal R(r).
+\]
+In particular, whenever $\mathcal R(r)>0$,
+\begin{equation}\label{eq:case006-absolute-source-band}
+ -\frac{143017}{245800}\le
+ \frac{\mathcal T(r)}{\mathcal R(r)}\le
+ -\frac{79133}{245800}.
+\end{equation}
+If the angular coefficient $B=H_{\theta z}$ has already been
+selected and $\mathcal B(r)=\int_c^d\langle B\rangle_\theta\dd z$,
+the stronger condition is
+$|\mathcal T-\alpha\mathcal R-4\mathcal B|
+\le(\kappa/2)\mathcal R$.
+
+This interval is \emph{not} implied by the larger one-sided
+positive-coefficient cone. With
+$g=15971/122900$ and $h=22371/122900$, its sharp physical
+$rz$ maximum in this same frame is
+\[
+ A_{\max}=\frac{5g+h}{4}\rho
+ =\frac{51113}{245800}\rho>\kappa\rho.
+\]
+Indeed $D=(g+h)\rho/8$, $B=g\rho/8$,
+$C=(h-g)\rho/4$ and $A=(5g+h)\rho/4$ preserve all seven
+coefficient floors at or above $\rho/100$. A spatially rotated
+source frame additionally requires the transported support in
+\eqref{eq:complete-flux-supports}; neither scalar interval may
+simply be copied to an arbitrary rotating frame.
+\end{proposition}
+
+\begin{proof}
+Equation~\eqref{eq:case006-source-native-primitive} follows by
+applying Proposition~\ref{prop:complete-flux-gate} to
+$K=\mathsf T-\rho R_*$ and using $(R_*)_{rz}=\alpha$.
+Under the stated compact boundary assumptions the source primitive
+is the axial integral of the correction shear $H_{rz}=A$.
+The original coefficient norm is
+\[
+ \max\{8|B|,\;2|C|+4|D|,\;
+              2|A-4B|+4|D|\}\le\kappa\rho.
+\]
+It follows that $|A|\le 4|B|+|A-4B|\le\kappa\rho$ and
+$|A-4B|\le\kappa\rho/2$. Integrating over the slice proves
+the two necessary bounds. Exact subtraction of the rational
+centre and margin gives
+$\alpha-\kappa=-143017/245800$ and
+$\alpha+\kappa=-79133/245800$.
+Finally the displayed one-sided witness satisfies the seven
+original coefficient floors by direct substitution in their
+rational formulas; its $A$ strictly exceeds $\kappa\rho$.
+\end{proof}
+
+The boundary primitive cannot be discarded in a local test. For
+example, on $1\le r\le2$, $0\le z\le1$, take $K=0$ and $p=z$.
+Then $F=q_{\rm s}=1$ and $S=0$, whereas
+$J_f(r)=(r^2-1)/(2r)$ is nonzero. The zero stress satisfies either
+cone with $\rho=0$. Thus $|J_f|\le\mathcal B$ without the
+boundary correction would give a false obstruction. This example
+is local and does not assert compact pressure support.
+
+For a finite exact check, let the frame be independent of $z,\theta$
+on each radial slice and write
+$\bar\rho(r)=\int_c^d\rho(r,z)\dd z$.
+Then the supports in \eqref{eq:complete-flux-supports} reduce to
+their respective finite-dimensional formulas at weight $\bar\rho$.
+For the rationally rotating frame
+\[
+ E(r)=\begin{pmatrix}
+ \frac{1-t^2}{1+t^2}&0&\frac{2t}{1+t^2}\\
+ 0&1&0\\
+ -\frac{2t}{1+t^2}&0&\frac{1-t^2}{1+t^2}
+ \end{pmatrix},\qquad t=r-1,
+\]
+the physical $rz$ shear has pulled-back covector
+$\lambda_E=(-7/25,0,0,24/25)$ at $r=3/2$. Writing
+$h=22371/122900$, exact evaluation gives
+\begin{equation}\label{eq:rotating-shear-exact}
+ \mathcal B_+=\frac{19h+47g}{100}\bar\rho,
+ \qquad\mathcal B_-=\frac{19g}{50}\bar\rho,
+ \qquad\mathcal B_{\rm abs}=\frac{19g}{50}\bar\rho.
+\end{equation}
+The asymmetry is real: replacing the original absolute budget by
+one-sided positivity can change a failed test into an inconclusive
+one. These rational point evaluations are not uniform estimates for
+a smooth shell, and no source authenticity follows from them.
+
+\begin{proposition}[Source-shaped meridional flux, including viscosity]
+\label{prop:shaper-shear}
+Let $U=(U_r,U_\theta,U_z)$ be an axisymmetric divergence-free smooth
+velocity on the cylindrical slice. Consider finitely many poloidal
+stream functions
+\[
+ \Psi_i(r,z)=K_i a_i(r)b(r)\Xi_i(z),\qquad
+ P_{r,i}=-r^{-1}\partial_z\Psi_i,\quad
+ P_{z,i}=r^{-1}\partial_r\Psi_i,
+\]
+where $K_i$ are constant and $\Xi_i=\Xi_i'=0$ at both axial endpoints.
+Put $P=\sum_iP_i$ and allow any purely azimuthal toroidal field
+$T_\theta e_\theta$. Define the axial moments
+\[
+ I_i(r)=\int_c^d U_r(r,z)\Xi_i(z)\dd z,\quad
+ m_i=\int_c^d\Xi_i(z)\dd z,\quad
+ J_{ij}=\int_c^d\Xi_i'(z)\Xi_j(z)\dd z.
+\]
+Then the axial integral of the physical quadratic $rz$ flux increment is
+\begin{align}
+ \mathcal C(r)&=\int_c^d\bigl[(U+P+T)_r(U+P+T)_z-U_rU_z\bigr]\dd z
+ =\Gamma(r)b'(r)+\Delta(r)b(r)+Q_2(r)b(r)^2,\notag\\
+ \Gamma&=\frac1r\sum_iK_i a_iI_i,\qquad
+ \Delta=\frac1r\sum_i K_i
+ \left[a_i'I_i-a_i\left(I_i'+\frac{I_i}{r}\right)\right],\notag\\
+ Q_2&=\frac1{r^2}\sum_{i<j}K_iK_j
+  (a_j a_i'-a_i a_j')J_{ij}.\label{eq:shaper-source-flux}
+\end{align}
+The contribution to the same flux from the canonical Newtonian
+viscous stress of $P$ is exactly
+\begin{equation}\label{eq:shaper-viscous}
+ \mathcal V_\nu(r)
+ =-\nu\int_c^d(\partial_zP_r+\partial_rP_z)\dd z
+ =-\nu\sum_iK_i m_i\frac{d}{dr}
+  \left(\frac{(a_i b)'}r\right).
+\end{equation}
+In particular its coefficient of $b''$ is
+$-\nu r^{-1}\sum_iK_i m_i a_i$; it cannot be included in a
+$O(b^2)$ remainder merely by assigning a flat radial cutoff.
+\end{proposition}
+
+\begin{proof}
+The mixed core--shaper product is
+$r^{-1}\sum_iK_i\bigl[(a_i b)'I_i-
+ a_i b\int_c^dU_z\Xi_i'\dd z\bigr]$.
+Axial integration by parts and
+$r^{-1}\partial_r(rU_r)+\partial_zU_z=0$ give
+$\int U_z\Xi_i'=I_i'+I_i/r$, proving the linear terms.
+The self-products vanish because $\int\Xi_i'\Xi_i=0$.
+For $i\ne j$ integration by parts gives $J_{ji}=-J_{ij}$;
+the paired cross-products reduce to
+$r^{-2}K_iK_j(a_j a_i'-a_i a_j')b^2J_{ij}$.
+All $rz$ components of a purely toroidal velocity vanish.
+Finally the integral of $\partial_zP_r$ vanishes by the endpoint
+conditions and
+$\int\partial_rP_z=\sum_iK_i m_i\partial_r((a_i b)'/r)$.
+This proves the viscous identity and its displayed $b''$ coefficient.
+\end{proof}
+
+For an exact local diagnostic take
+$U_r=-2r$, $U_z=4z$, $c=-1$, $d=1$,
+$b=(r-1)^3$, $\nu=1$, and two shapers
+\[
+ (K_1,a_1,\Xi_1)=(1,1,(1-z^2)^2),\qquad
+ (K_2,a_2,\Xi_2)=(2,r,z(1-z^2)^2).
+\]
+At $r=2$, direct polynomial integration and the reduced formula
+independently give
+\begin{equation}\label{eq:shaper-rational-example}
+ \Gamma=-\frac{32}{15},\quad \Delta=\frac{32}{15},\quad
+ Q_2=\frac{64}{315},\quad\mathcal V_1=-\frac{12}{5},\quad
+ \mathcal C+\mathcal V_1=-\frac{2036}{315}.
+\end{equation}
+The polynomial functions illustrate the exact algebra on a local
+slice; their zero extensions are not $C^\infty$ compact H8 cutoffs.
+Neither the still-free localization stresses nor the common pressure
+have been inserted into this number.
+
+\Needspace{10\baselineskip}
+\begin{proposition}[Flat-edge second-derivative obstruction]
+\label{prop:flat-edge}
+Under the hypotheses of Proposition~\ref{prop:shaper-shear}, put
+$M(r)=\sum_iK_i m_i a_i(r)$. The shaper-induced kinetic and
+viscous stress-shear increment has the exact decomposition
+\begin{align}
+ \mathcal C+\mathcal V_\nu
+ &=\kappa_2b''+\kappa_1b'+\kappa_0b+\kappa_qb^2,
+ \label{eq:flat-edge-jets}\\
+ \kappa_2&=-\frac{\nu M}{r},&
+ \kappa_1&=\Gamma-\nu\left(\frac{2M'}r-\frac M{r^2}\right),\notag\\
+ \kappa_0&=\Delta-\nu\left(\frac{M''}r-\frac{M'}{r^2}\right),&
+ \kappa_q&=Q_2.\notag
+\end{align}
+Let $r_0>0$ and $I=[r_0,r_0+\delta]$, and suppose these four
+coefficients are bounded on $I$ with
+$\inf_I|\kappa_2|>0$. If $b\in C^2(I)$ satisfies
+$b(r_0)=b'(r_0)=0$ and another stress-shear contribution $R$
+obeys, for finite constants $L,L'\ge0$,
+\begin{equation}\label{eq:flat-edge-hypotheses}
+ |R|\le L(|b|+|b'|+b^2),\qquad
+ |\mathcal C+\mathcal V_\nu+R|\le L'b^2
+ \quad\hbox{on }I,
+\end{equation}
+then $b\equiv0$ throughout $I$.
+\end{proposition}
+
+\begin{proof}
+Differentiating $M'b+Mb'$ divided by $r$ in
+\eqref{eq:shaper-viscous} yields
+$M b''/r+(2M'/r-M/r^2)b'+(M''/r-M'/r^2)b$,
+which proves \eqref{eq:flat-edge-jets}. Let
+$\eta=\inf_I|\kappa_2|>0$ and $L_b=\sup_I|b|<\infty$.
+The two bounds in \eqref{eq:flat-edge-hypotheses}, boundedness of
+the other three coefficients and $b^2\le L_b|b|$ yield a
+constant $C<\infty$ such that
+\[
+ |b''(r)|\le C\bigl(|b(r)|+|b'(r)|\bigr)
+ \quad(r\in I).
+\]
+By the initial conditions and the fundamental theorem of calculus,
+the continuous nonnegative function $w=|b|+|b'|$ satisfies
+$w(r)\le(1+C)\int_{r_0}^r w(s)\dd s$. Gronwall's elementary
+integral inequality gives $w\equiv0$, and therefore $b\equiv0$.
+\end{proof}
+
+For the two profiles in \eqref{eq:shaper-rational-example}, direct
+integration gives $m_1=16/15$ and $m_2=0$; hence $M=16/15$ and
+\begin{equation}\label{eq:flat-edge-explicit}
+ \mathcal C+\mathcal V_1
+ =-\frac{16}{15r}b''
+ +\left(-\frac{32}{15}+\frac{16}{15r^2}\right)b'
+ +\frac{64}{15r}b+\frac{256}{315r^2}b^2.
+\end{equation}
+At $r=2$ and $b=(r-1)^3$ this again gives
+$-2036/315$. Since $\kappa_2=-16/(15r)$ is nowhere zero on
+any annulus with $r>0$ (indeed $|\kappa_2|\ge8/15$ on
+$1\le r\le2$), Proposition~\ref{prop:flat-edge}
+prohibits a nontrivial one-sided flat cutoff from satisfying an
+$O(b^2)$ budget for this \emph{restricted} flux whenever its remaining
+terms obey the first inequality of \eqref{eq:flat-edge-hypotheses}.
+
+In the H8 application, the two slice support functions in
+\eqref{eq:complete-flux-supports} yield such a target bound only if
+the relevant reference-centre-subtracted shear is precisely the
+quantity in \eqref{eq:flat-edge-hypotheses} and both supports are
+$O(b^2)$ on the edge collar. Neither follows from the source
+architecture alone. Nontrivial compactness can instead require a
+vanishing effective $b''$ coefficient, a compensating transition or
+overlap term of second-jet size, a pressure boundary primitive with
+the requisite source matching, or a density budget larger than
+$O(b^2)$. The lemma does not rule out these possibilities and is not
+a contradiction for the authentic H8 residual.
+
+The Case~006 source specifies a compact curl localization
+$u_b=\nabla\times(\chi A_c)$, separable poloidal and toroidal
+shell shapers, and a toroidal pressure radial derivative, but does
+not fix the smooth profiles, the complete four-patch interactions,
+or a common pressure representative. Hence no value of
+\eqref{eq:complete-flux} has yet been certified for the complete H8
+residual. The exact code records the transition, shaper, viscosity,
+overlap, reference-centre and axial boundary channels separately;
+omitting any named channel blocks evaluation. Supplying zero for a
+channel requires mathematical source justification, not merely
+successful execution of the code.
+
+\begin{proposition}[Quarter-turn localization and its nonlinear overlaps]
+\label{prop:c4-overlap}
+Let $Q(x,y,z)=(-y,x,z)$ and $\chi$ be invariant under $Q$. On a
+simply connected Cartesian chart let $A$ be a smooth vector potential,
+and denote the active push-forward by
+$Q_*v(x)=Qv(Q^{-1}x)$. Write
+\[
+ v_j=Q_*^j\bigl(\nabla\times(\chi A)\bigr),\quad 0\le j\le3,
+ \qquad u_b=\frac14\sum_{j=0}^3v_j.
+\]
+Then $u_b$ is solenoidal and equals the curl of the normalized
+quarter-turn average of $\chi A$. Its full kinetic stress splits
+exactly into
+\begin{equation}\label{eq:c4-stress}
+ u_b\otimes u_b=\frac1{16}\sum_{j=0}^3v_j\otimes v_j
+ +\frac1{16}\sum_{\substack{0\le j,k\le3\\j\ne k}}
+     v_j\otimes v_k.
+\end{equation}
+For the material derivative, the same diagonal and ordered-cross
+decomposition holds with $v_j\otimes v_k$ replaced by
+$(v_j\cdot\nabla)v_k$. The twelve cross products do not generally
+vanish under fourfold symmetry.
+\end{proposition}
+
+\begin{proof}
+Rigid rotations commute with curl, and the curl of an average is
+the average of the curls. Each $v_j$ is divergence free. Expanding
+the product of the two sums for $u_b$ proves
+\eqref{eq:c4-stress}; applying the Leibniz bilinearity of directional
+differentiation proves the derivative formula. The normalization
+$1/16$ follows from two factors of $1/4$ and cannot be dropped.
+\end{proof}
+
+For example, on a local chart take $\chi=1$ and
+$A=(-yz,xz,0)$. Every rotated field is
+$v_j=(-x,-y,2z)$, so in cylindrical notation
+$u_r=-r$, $u_z=2z$, and $u_r u_z=-2rz$. The diagonal terms in
+\eqref{eq:c4-stress} contribute $-rz/2$ to this shear, whereas
+the ordered overlaps contribute $-3rz/2$. Thus three quarters of
+the core shear is carried by the overlap partition even for an
+exactly fourfold-equivariant field. This local polynomial example
+does not claim a compact source profile; spatial disjointness, if
+asserted for different carrier supports, must be checked separately.
+
+\begin{proposition}[Shared-envelope second jet and core circulation]
+\label{prop:shared-envelope}
+Let $r_0<r<r_1$ be a cylindrical annulus separated from the axis,
+with angular coordinate $\theta$ and fixed axial endpoints $z_-<z_+$.
+Let $\mathcal A=(\mathcal A_r,\mathcal A_\theta,\mathcal A_z)$ be a smooth,
+$2\pi$-periodic vector potential in the cylindrical orthonormal frame
+(possibly only $C_4$-equivariant), and let
+$U_c=\nabla\times\mathcal A$. Suppose the localized core and the
+poloidal stream functions of Proposition~\ref{prop:shaper-shear}
+share one radial envelope $b(r)$, so their total meridional
+correction is obtained from
+\[
+ \nabla\times\left[b(r)
+ \left(\mathcal A+
+    \sum_i\frac{K_ia_i(r)\Xi_i(z)}{r}e_\theta\right)\right].
+\]
+An arbitrary smooth background independent of $b$ may be included.
+Denote the full angular mean by $\langle\cdot\rangle_\theta$, set
+\[
+ M(r)=\sum_iK_i m_i a_i(r),\qquad
+ V(r)=\int_{z_-}^{z_+}\langle (U_c)_z(r,\theta,z)
+                  \rangle_\theta\dd z ,
+\]
+and let $S_b(r)$ be the axial/angular integral of the increment in the
+physical shear
+$K_{rz}=u_ru_z-\nu(\partial_zu_r+\partial_ru_z)$.
+The coefficient of $b''(r)$ in $S_b$ is exactly
+\begin{equation}\label{eq:full-second-jet}
+ \kappa_{2,\mathrm{eff}}(r)=
+ -\nu\left[\int_{z_-}^{z_+}
+      \langle\mathcal A_\theta(r,\theta,z)\rangle_\theta\dd z
+         +\frac{M(r)}r\right].
+\end{equation}
+All the remaining terms in $S_b$ are expressions in $b,b'$
+with smooth bounded coefficients on compact subannuli. In particular,
+the quadratic overlaps among the four velocities contain no
+$b''$ term in this \emph{physical shear} channel.
+
+For any reference radius $r_*\in[r_0,r_1)$, put
+\[
+ H_*:=r_*\int_{z_-}^{z_+}
+     \langle\mathcal A_\theta(r_*,\theta,z)\rangle_\theta\dd z.
+\]
+Then \eqref{eq:full-second-jet} has the potential-free expression
+\begin{equation}\label{eq:circulation-second-jet}
+ \kappa_{2,\mathrm{eff}}(r)=
+ -\frac{\nu}{r}
+ \left[H_*+\int_{r_*}^r sV(s)\dd s+M(r)\right].
+\end{equation}
+Consequently, \emph{identical} second-jet cancellation on an interval
+requires and is implied by a single anchor equality
+$H_*+\int_{r_*}^{r_a}sV(s)\dd s+M(r_a)=0$
+and the differential identity
+\begin{equation}\label{eq:circulation-cancellation}
+ rV(r)+M'(r)=0
+\end{equation}
+throughout that interval. If the potential extends smoothly across
+the axis on complete disks, one may set $r_*=0$ and $H_*=0$.
+\end{proposition}
+
+\begin{proof}
+Writing $A_\theta^{\rm tot}=\mathcal A_\theta+
+\sum_iK_i a_i\Xi_i/r$, the cylindrical curl gives
+\[
+ u_r-U_r=b\left(\frac1r\partial_\theta\mathcal A_z
+           -\partial_zA_\theta^{\rm tot}\right),\qquad
+ u_z-U_z=b\left(\frac1r\partial_r(rA_\theta^{\rm tot})
+              -\frac1r\partial_\theta\mathcal A_r\right)
+             +b'A_\theta^{\rm tot}.
+\]
+The quadratic product $u_ru_z$ therefore uses at most $b$ and
+$b'$. In the viscous shear only $\partial_r(u_z-U_z)$
+produces $b''$, with coefficient $-\nu A_\theta^{\rm tot}$.
+Angular/axial integration proves \eqref{eq:full-second-jet}.
+Meanwhile
+\[
+ (U_c)_z=\frac1r\partial_r(r\mathcal A_\theta)
+              -\frac1r\partial_\theta\mathcal A_r .
+\]
+The full angular average annihilates the last derivative; hence
+$\partial_r(r\int\langle\mathcal A_\theta\rangle_\theta\dd z)
+=rV(r)$. Integrating from $r_*$ proves
+\eqref{eq:circulation-second-jet}. Differentiating its bracket
+proves the stated characterization of identical cancellation.
+Smooth axis extension forces $r\langle\mathcal A_\theta\rangle_\theta
+\to0$ as $r\downarrow0$.
+\end{proof}
+
+The annular reference circulation matters. For the single profile
+$(K,a,\Xi)=(1,1,(1-z^2)^2)$ on $[-1,1]$, one has $M=16/15$.
+Choosing the local, $C_4$-invariant azimuthal potential
+$\mathcal A_\theta=-8/(15r)$ gives
+$\int_{-1}^1\mathcal A_\theta\dd z=-16/(15r)$ and
+$\kappa_{2,\mathrm{eff}}\equiv0$. Here $(U_c)_z=0$ on the
+annulus, while $H_*=-16/15$ supplies the cancellation.
+This is an algebraic counterexample to deleting the circulation
+constant, not an admissible axis-spanning H8 core. If a smooth
+axis-spanning potential is prescribed, its core axial flux rather
+than a free annular circulation must supply the needed moment.
+
+The proposition concerns the canonical physical $rz$ stress.
+The pressure-compensated source relation
+\eqref{eq:complete-flux} retains its independent axial jump; neither
+pressure nor an H8 inverse stress is reconstructed here. If the
+actual transition cutoff $\chi$ differs from the shaper envelope
+$b$, the core contributions cannot be assigned to the same
+$b''$ coefficient without an additional source identity. Thus
+the genuine H8 test still requires the core flux $V$, the
+reference circulation, the shared-cutoff decision, and the full
+source-matched cone density and frame.
+
+\begin{proposition}[Independent core and shaper cutoffs]
+\label{prop:split-cutoff}
+On an annular cylindrical patch let $\mathcal A$ be any smooth,
+$2\pi$-periodic vector potential, let
+$\chi=\chi(r,\theta,z)$ be a smooth core cutoff, and let $b=b(r)$
+be an \emph{independent} radial poloidal cutoff. Put
+\[
+ P_\theta(r,z):=\sum_i\frac{K_i a_i(r)\Xi_i(z)}r,\qquad
+ u=U+\nabla\times\left(
+          \chi\mathcal A+bP_\theta e_\theta\right),
+\]
+where $U$ is a fixed smooth background. If $S(r)$ is the
+axial/angular integral of the physical shear
+$K_{rz}=u_ru_z-\nu(\partial_z u_r+\partial_r u_z)$, its full
+cutoff-\emph{second}-derivative part is
+\begin{equation}\label{eq:split-second-jet}
+\begin{aligned}
+ S_{\mathrm{jet},2}(r)=-\nu\int_{z_-}^{z_+}
+ \bigg\langle&
+ \mathcal A_\theta(\chi_{rr}-\chi_{zz})
+ +\frac{\mathcal A_z}{r}\chi_{\theta z}
+ -\frac{\mathcal A_r}{r}\chi_{r\theta}
+ +P_\theta b''\bigg\rangle_\theta\dd z .
+\end{aligned}
+\end{equation}
+The difference $S-S_{\mathrm{jet},2}$ contains the cutoffs and
+their first derivatives, but no second derivative of either
+cutoff. The nonlinear cross terms, including all ordered $C_4$
+core overlaps, belong to this remainder. In particular, a
+radial shaper $b$ and a genuinely three-variable $\chi$ do not
+have one common second-derivative coefficient.
+
+For any specified pressure representative $p$, the complete
+annular \emph{spatial-divergence} source still obeys
+\[
+ q_{\rm s}(r)=
+ [\langle u_z^2-2\nu\partial_z u_z+p
+      \rangle_\theta]_{z_-}^{z_+},\qquad
+ J_f=S-\frac{r_a}{r}S(r_a)
+           +\frac1r\int_{r_a}^r s q_{\rm s}(s)\dd s.
+\]
+For the full unforced Navier--Stokes residual
+$\mathcal N(u,p)=\partial_tu+\operatorname{div}K+\nabla p$,
+one must also keep
+\begin{equation}\label{eq:split-temporal-flux}
+ T_z(r)=\int_{z_-}^{z_+}
+         \langle\partial_tu_z\rangle_\theta\dd z,
+ \qquad
+ J_{\mathcal N}(r)=J_f(r)
+       +\frac1r\int_{r_a}^r sT_z(s)\dd s .
+\end{equation}
+No smallness of the pressure primitive or the first-derivative
+remainder follows from \eqref{eq:split-second-jet}; neither
+$T_z$ nor its primitive may be set to zero without a source
+identity.
+\end{proposition}
+
+\begin{proof}
+The cylindrical curl identities give
+\[
+\begin{aligned}
+ u_r-U_r&=\frac1r\partial_\theta(\chi\mathcal A_z)
+              -\partial_z(\chi\mathcal A_\theta+bP_\theta),\\
+ u_z-U_z&=\frac1r\partial_r
+                \bigl(r(\chi\mathcal A_\theta+bP_\theta)\bigr)
+              -\frac1r\partial_\theta(\chi\mathcal A_r).
+\end{aligned}
+\]
+Each velocity contains at most one derivative of either cutoff;
+therefore $u_ru_z$ contains no cutoff second derivative.
+Differentiating the first line in $z$ and the second in $r$
+produces exactly the four terms in \eqref{eq:split-second-jet}.
+The rest contains only lower cutoff jets. The pressure identity
+is the integrated axial component of
+$\operatorname{div}K+\nabla p=f$ and does not identify an
+independent radial primitive of $p$ with a time-only gauge.
+Adding the axial marginal of $\partial_tu$ and integrating the
+radial first-order equation proves \eqref{eq:split-temporal-flux}.
+\end{proof}
+
+The source distinction is substantive: the available Case~006
+structured-stress manuscript prescribes the core cutoff as a
+$C_4$-invariant function of similarity coordinates, equal to one
+on an inner subcore, whereas its poloidal shaper uses a separately
+specified shell profile $\Phi(r/\ell)\Xi(z/c)$. Those definitions
+neither identify the two radial envelopes nor provide a complete
+frozen four-patch source. Equation~\eqref{eq:split-second-jet}
+is therefore the appropriate general decomposition; the
+shared-envelope Proposition~\ref{prop:shared-envelope} is its
+additional-hypothesis specialization.
+
+\begin{proposition}[Certified variable-frame dual enclosure]
+\label{prop:frame-enclosure}
+Consider the one-sided seven-ray coefficient cone and its
+trace-free representative $H$ in \eqref{eq:four-field-map}.
+For every nonnegative density $\rho$, the pointwise coefficient
+floors imply
+\[
+ |A|,|B|,|C|,|D|\le\frac{\rho}{4},
+           \qquad \norm{H}_{F}\le\rho.
+\]
+Let a cylindrical shear-test slice be partitioned into finitely
+many measurable cells $\Omega_j$. On each cell suppose the
+physical orthogonal frame $E(x)$ admits a fixed rational
+orthogonal frame $E_j$ and a \emph{certified} bound
+\[
+ \sup_{\Omega_j}\norm{E(x)-E_j}_{F}\le\delta_j,
+ \qquad m_j=\int_{\Omega_j}\rho(x)\dd\mu(x).
+\]
+Here $\dd\mu=\dd z\,\dd\theta/(2\pi)$ on the slice. If
+$\sigma^+(\lambda)$ is the exact unit-density one-sided support
+and $G=e_r\otimes e_z$,
+define
+\[
+ \widehat B_\pm=
+ \sum_j m_j\,\sigma^+\!
+   \left(\pm\lambda(E_j^{\mathsf T}GE_j)\right),
+ \qquad
+ \varepsilon_E=2\sum_jm_j\delta_j.
+\]
+Then the genuine spatially varying shear supports satisfy
+\begin{equation}\label{eq:variable-frame-enclosure}
+ \max(0,\widehat B_\pm-\varepsilon_E)
+       \le B_\pm
+       \le \widehat B_\pm+\varepsilon_E.
+\end{equation}
+These bounds remain valid for smooth nonanalytic frames and
+densities, provided the cell masses and frame-error bounds are
+rigorously enclosed. Sampling a frame at cell centres alone
+does not provide such a certificate.
+\end{proposition}
+
+\begin{proof}
+Applying the exact support formula of
+Proposition~\ref{prop:positive-support} to the eight signed coordinate
+covectors gives the largest respective normalized absolute
+extrema
+\[
+ \frac{51113}{245800},\quad
+ \frac{15971}{983200},\quad
+ \frac{19171}{122900},\quad
+ \frac{19171}{491600}.
+\]
+Each is strictly less than $1/4$, so
+$\norm{H}_F^2=2(A^2+B^2+C^2+D^2)\le\rho^2/2$.
+For orthogonal $E,E_j$,
+\[
+ EHE^{\mathsf T}-E_jHE_j^{\mathsf T}
+ =(E-E_j)HE^{\mathsf T}
+   +E_jH(E-E_j)^{\mathsf T}.
+\]
+The Frobenius pairing with $G$ consequently changes by at
+most $2\rho\norm{E-E_j}_F$. Taking the pointwise supremum
+over the coefficient cone, then integrating over each cell,
+proves \eqref{eq:variable-frame-enclosure}.
+\end{proof}
+
+The dual bound controls values of the rotating stress, not its
+divergence. In a Cartesian chart, $K=EHE^{\mathsf T}$ obeys
+\begin{equation}\label{eq:rotating-frame-connection}
+ \partial_jK_{ij}
+ =E_{ia}E_{jb}\partial_jH_{ab}
+ +\bigl((\partial_jE_{ia})E_{jb}
+       +E_{ia}(\partial_jE_{jb})\bigr)H_{ab},
+\end{equation}
+with repeated indices summed. Thus even constant $H$ can
+generate a nonzero source when $E$ rotates. Cylindrical
+components require their geometric connection terms as well.
+An independently checked Cartesian rotation example and exact
+two-cell rational support tests accompany these formulas.
+Neither a bound on $\delta_j$ nor
+\eqref{eq:variable-frame-enclosure} controls $\nabla E$,
+so the weighted symmetric-divergence inverse and its
+derivative budget remain open.
+
+The form of a compact cutoff may be fixed in a \emph{test family}
+without identifying it with the source's unfrozen choice. Define
+\[
+ h(s)=\begin{cases}
+   0,&s\le0,\\
+   \dfrac{\exp(-1/s)}{\exp(-1/s)+\exp(-1/(1-s))},&0<s<1,\\
+   1,&s\ge1,
+ \end{cases}
+ \qquad \chi_*(r)=h(r-1)h(4-r).
+\]
+Then $\chi_*$ is smooth and nonanalytic, zero outside $[1,4]$,
+identically one on $[2,3]$, and equals $1/2$ at $r=3/2,7/2$.
+As a radial function on the surrounding chart it is $C_4$-invariant;
+the hole at $r\le1$ makes its extension across the axis smooth.
+This provides a reproducible candidate for testing derivative
+estimates, not a determination of the H8 similarity-coordinate cutoff.
+
+The source's toroidal pressure prescription likewise fixes only
+\begin{equation}\label{eq:c4-pressure}
+ \partial_r p_T=\frac{2u_\theta T_\theta+T_\theta^2}{r}.
+\end{equation}
+For a chosen inner-radius normalization $p_T(a,z)=0$, its
+representative is
+\[
+ p_T(r,z)=\int_a^r\frac{2u_\theta(s,z)T_\theta(s,z)
+                         +T_\theta(s,z)^2}{s}\dd s.
+\]
+For $a=1$, $u_\theta=r$ and $T_\theta=rz(1-z)$ this gives
+\[
+ p_T=\frac{r^2-1}{2}\bigl(2z(1-z)+z^2(1-z)^2\bigr),
+ \qquad [p_T]_{z=0}^{z=1}=0.
+\]
+By contrast $T_\theta=rz$ gives the nonzero pressure jump
+$[p_T]_{-1}^{1}=2(r^2-1)$. The arbitrary radial integration trace
+$C(z)$ must be fixed by the remaining physical pressure equations;
+it is \emph{not} an arbitrary gauge of the complete Navier--Stokes
+system.
+
+To test all pieces in one local example, take $0\le z\le1$,
+$U_r=-r$, $U_z=2z$, $U_\theta=r$, and the one-shaper data
+$K=a=1$, $\Xi=z^2(1-z)^2$, $b=(r-1)^3$, $\nu=1$, with the
+toroidal profile and pressure from the preceding zero-jump example.
+The $C_4$ core shear is partitioned into a diagonal $-r/4$ and
+ordered overlaps $-3r/4$; the shaper and viscous parts follow from
+Proposition~\ref{prop:shaper-shear}. Directly integrating
+$K_{rz}=u_ru_z-(\partial_zu_r+\partial_ru_z)$ gives exactly
+\begin{equation}\label{eq:c4-combined-example}
+ S(r)=\frac{-r^4-30r^3-2r+3}{30r^2},\qquad
+ q_{\rm s}(r)=4,\qquad
+ J_f(r)=\frac{-r^4+30r^3-32r+3}{30r^2}.
+\end{equation}
+At $r=3/2$ the exact values are $S=-63/40$ and $J_f=91/120$.
+The independently computed axial source integral
+$F=(rS)'/r+q_{\rm s}$ reproduces $J_f$ by integration from $a=1$.
+The example uses a \emph{polynomial local core and shaper}, not
+$\chi_*$; it verifies the algebraic combination and avoidance of
+double-counted core terms. The smooth nonanalytic cutoff and the
+authentic Case~006 transition, frame, and reference-centre fields
+still require their own complete weighted calculation.
+
+\section{The physical residual and terminal speed}
+
+Define the viscosity-one residual
+\begin{equation}\label{eq:residual}
+ \mathcal N(u,p)=u_t+(u\cdot\nabla)u-\Delta u+\nabla p.
+\end{equation}
+For smooth $(u,p)$ and $(w,q)$, direct expansion yields
+\begin{equation}\label{eq:add}
+ \mathcal N(u+w,p+q)=\mathcal N(u,p)+\mathcal N(w,q)
+   +(u\cdot\nabla)w+(w\cdot\nabla)u.
+\end{equation}
+Both nonlinear cross terms are essential. Equation \eqref{eq:add},
+with explicit differentiability assumptions in the upstream physical
+definitions, is checked in Lean by the declaration
+\texttt{UnforcedPatching.}\allowbreak
+\texttt{navierStokesResidual\_add}.
+
+\begin{proposition}[Conditional terminal retention]\label{prop:ret}
+Suppose that $u$ has arbitrarily large speed at points with
+$t\uparrow1$. If a correction $w$ satisfies
+\begin{equation}\label{eq:subleading}
+ \norm{w(t,x)}\le\alpha\norm{u(t,x)}+C_0,
+ \qquad 0\le\alpha<1,\quad C_0\ge0,
+\end{equation}
+uniformly on $0<t<1$ and $x\in\T$, then $u+w$ also has
+arbitrarily large speed arbitrarily close to time one.
+\end{proposition}
+
+\begin{proof}
+The reverse triangle inequality and \eqref{eq:subleading} give
+\[
+ \norm{u+w}\ge\norm{u}-\norm{w}
+ \ge(1-\alpha)\norm{u}-C_0.
+\]
+Given any target speed $M>0$ and any terminal neighbourhood,
+choose a point therein where
+$\norm{u}>(M+C_0)/(1-\alpha)$.
+Then $\norm{u+w}>M$ at that point.
+\end{proof}
+
+This last implication is kernel-checked by the Lean theorem
+\begin{center}
+\small\texttt{UnforcedPatching.speedUnbounded\_add\_subleading}
+\end{center}
+It is deliberately conditional: no field $u$ meeting the singularity
+premise, and no actual PDE correction $w$ meeting
+\eqref{eq:subleading}, has been supplied by these lemmas.
+
+\section{What the formal development proves}
+
+The Lean project is pinned to Lean $4.34.0$-rc2 and a fixed Mathlib
+revision. The checked physical interface states smoothness, three
+coordinate periods, zero forcing, nonzero initial data, finite
+fundamental-cell kinetic energy and endpoint speed divergence. Its
+existential proposition is named
+\texttt{UnforcedPatching.unforcedTargetStatement}; there is no proof
+term inhabiting that proposition.
+
+The precise correspondence between the paper and the compiled
+\texttt{UnforcedPatching} declarations is as follows. In the second
+column, ``missing'' refers to mathematical constructions, not to
+unresolved Lean goals inside the named theorems.
+\begin{center}
+\small
+\renewcommand{\arraystretch}{1.17}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.31\linewidth}>{\raggedright\arraybackslash}p{0.61\linewidth}@{}}
+\toprule
+Lean module & Checked scope and the missing construction\\
+\midrule
+\texttt{Definitions} & Physical candidate predicates; no candidate witness.\\
+\texttt{Residual}, \texttt{Correction} & Full residual addition and conditional cancellation; no constructed correcting field.\\
+\texttt{Periodicity}, \texttt{PressureGauge} & Sum and time-only gauge identities; no periodic singular solution.\\
+\texttt{ConeBudget}, \texttt{ConeOperator}, \texttt{SevenRayCenter} & Exact rational centre and sharp factor $14$; no source-matched weighted positive stress.\\
+\texttt{FourFieldPhysical} & Exact nine-entry ray-to-cylindrical tensor map modulo an isotropic gauge; entrywise four-coordinate bound in the frozen frame, not a spatially rotated PDE bridge.\\
+\texttt{ExactCoefficientCone}, \texttt{SharpCoefficientDual} & Exact absolute-budget seven-coefficient polytope and sharp dual upper estimate; no frozen final Case~006 residual or spatial inverse.\\
+\texttt{PositiveCoefficientCone} & Universal one-sided seven-ray positive-cone support bound; not a spatial stress inverse or a continuum integral formalization.\\
+\texttt{RotatingFrameDual} & Exact source-to-physical matrix Frobenius pullback and pointwise rotated one-sided dual bound; no derivative-of-frame or PDE source matching theorem.\\
+\texttt{CompactGauge} & One-variable gauge derivative; no compact tensor support theorem.\\
+\texttt{MeridionalInverse} & Actual axial and radial interval-integral FTC identities, geometric hoop cancellation, and pointwise radial/axial cylindrical inverse; no Cartesian tensor-divergence bridge or compact support theorem.\\
+\texttt{Retention} & Subleading corrections preserve terminal speed; neither required field constructed.\\
+\bottomrule
+\end{tabular}
+\end{center}
+In particular, the residual-addition, correction-closure,
+seven-ray-floor, and terminal-retention declarations are all
+implications with explicit hypotheses. Their conjunction does not
+yield an inhabitant of
+\texttt{unforcedTargetStatement}. The printed axioms for the selected
+smoke-tested declarations are the standard logical axioms
+\texttt{propext}, \texttt{Classical.choice}, and \texttt{Quot.sound}.
+
+In particular, \texttt{meridional\_correction\_divergence} checks both
+components of \eqref{eq:divr}--\eqref{eq:divz} for the hoop stress
+\eqref{eq:L} and the actual interval-integral axial primitive
+\eqref{eq:C}, under stated local continuity and integrability
+assumptions. The separate declarations
+\texttt{radialMoment\_relation} and
+\texttt{mixedCarrier\_radial\_balance} verify the antiderivative
+identity in \eqref{eq:HJ} and its product carrier \eqref{eq:M}.
+The further theorem \texttt{sourceMatched\_axialStress} checks the
+pointwise cylindrical source match $S_{zz}=\rho$,
+$f_z=\partial_z\rho$ used in Proposition~\ref{prop:dual}.
+These results compile without proof admissions; selected axiom
+reports list only Lean's standard logical axioms. They remain
+pointwise statements about \emph{defined cylindrical expressions}:
+the Cartesian tensor-divergence equivalence, global support and
+regularity construction, moment compatibility and weighted H8
+estimate are not yet formalized in Lean. Thus the full restricted
+Theorem~\ref{thm:inverse} is \emph{partially}, not fully, formalized.
+
+An independent exact-arithmetic test evaluates a nontrivial annular
+polynomial instance of the radial compatibility identity. For the
+uncompensated purely radial version, the curl obstruction at
+$(r,z)=(5/4,1/2)$ equals $-5103/32768$ exactly; the test explicitly
+rejects the pressure-neutral interpretation in this case. The
+polynomial is used only for interior differentiation, not as an
+infinitely smooth zero-extended cutoff.
+
+A second independent exact-rational test reproduces
+\eqref{eq:dualL}--\eqref{eq:dualgap} from polynomial integrals and
+checks the complete cylindrical divergence of the dual test field.
+An additional exact reconstruction and Lean theorem prove the
+fixed-frame four-field map \eqref{eq:four-field-map}, its inverse
+coordinate recovery and its
+entrywise consequence; the test \eqref{eq:weaker-inconclusive}
+records the failure of this \emph{conservative gradient method}
+at the original coefficient budget. The sharper polytope method
+proves Proposition~\ref{prop:original-obstruction}: a $40\times40$
+Bernstein partition yields the exact rational upper bound
+\eqref{eq:sharp-bernstein-bound}. No executable diagnostic substitutes
+for frozen final Case~006 profiles and rotated-frame PDE estimates.
+The recovered 122-page revision permits an additional
+standard-library rational check of
+Proposition~\ref{prop:case006-native-band}: it verifies both
+interval endpoints, an attaining absolute-budget tensor, a
+one-sided-positive witness exceeding that budget, all seven
+coefficient floors, and a nonzero pressure boundary primitive.
+These are finite algebra checks, not an authentic-source inequality
+evaluation.
+The equivalence \eqref{eq:exact-cone} is independently checked on
+exact rational samples and kernel-checked by
+\texttt{original\_seven\_coefficient\_cone\_exact}.
+The additional kernel theorem \texttt{original\_cone\_dual\_upper}
+establishes the finite-dimensional upper bound in
+\eqref{eq:sharp-support}; exact rational maximizing witnesses
+independently verify sharpness. The Bernstein integral itself is
+a rational Python certificate, not a Lean theorem.
+
+The separate one-sided cone is described by
+\eqref{eq:positive-intervals}; its universal support upper bound
+is proved by the compiled Lean declaration
+\texttt{one\_sided\_positive\_cone\_dual\_upper}. Independent exact
+rational feasible witnesses attain this value. A new $40\times40$
+rational partition proves the lower bound \eqref{eq:positive-gap},
+with a separate signed Bernstein upper enclosure. The integral
+certificate and its comparison with the source pairing are not
+formalized in Lean. The strict positivity of $J-L$ means only
+that this \emph{particular} dual test supplies no one-sided
+positive-cone nonexistence certificate.
+
+The further compiled declarations
+\begin{center}
+\small
+\texttt{rotating\_fourField\_frobenius}\\[2pt]
+\texttt{rotated\_oneSided\_dual\_upper}
+\end{center}
+establish
+\eqref{eq:rotated-pairing} and \eqref{eq:rotated-support} for
+every pointwise $3\times3$ frame matrix. Independent rational
+tests verify the rotated covector, equality of matrix contractions,
+an attainable one-sided dual support, and preservation of isotropic
+pressure gauges under orthogonal (but not arbitrary) frames.
+The spatial differential identity \eqref{eq:frame-derivatives} and
+integrated inequality \eqref{eq:rotated-integrated} are proved on
+paper, not yet in Lean; neither has been evaluated against the
+still-unfrozen complete Case~006 prepared stress.
+
+The source code, machine-readable G0--G8 ledger, smoke tests and
+reproduction commands accompany the public integration branch
+\cite{NewtonRepo2026}. A prior local pinned build passed sixteen smoke
+modules, and the main physical Lean workflow later received a
+GitHub-hosted success receipt. A separate weighted source-flux workflow
+halted during Lean toolchain installation before executing any
+mathematical check. None of these receipts covers the new rational
+source-band test until the updated branch is independently checked.
+Compilation does not replace semantic theorem auditing or independent
+scrutiny of the paper proof.
+
+\section{Remaining analytic requirements}
+
+The compact meridional inverse of Theorem~\ref{thm:inverse} is a
+properly restricted solvability result. It does not resolve the
+weighted attachment problem because the desired source may have an
+azimuthal component, a noncompact Leray-projected tail, nontrivial
+pressure coupling, or incompatible moments. Even when compact
+inversion is possible, the output may leave the required seven-ray
+positive cone, especially as the support shrinks. The strict dual
+obstruction in Proposition~\ref{prop:dual}, together with
+Corollary~\ref{cor:four-field}, excludes the sufficient
+four-coordinate estimate; Proposition~\ref{prop:original-obstruction}
+also excludes the original absolute coefficient correction budget
+for that same manufactured source. In contrast,
+Proposition~\ref{prop:positive-diagnostic} shows that the tested
+dual field has no obstruction for the larger one-sided cone; this
+leaves other dual tests and all primal construction questions open.
+The next mathematical question is whether the \emph{authentic}
+source, perhaps using a tilted frame or a more flexible coefficient
+allocation, admits a weighted inverse satisfying the one-sided
+positive H8 ray conditions (or the absolute inequalities
+\eqref{eq:exact-cone}) and all spatial
+derivative bounds. The sharp cone description enables a direct
+weighted dual optimization against the authentic source through
+\eqref{eq:rotated-integrated}, without
+replacing those inequalities by the factor-$14$ sufficient estimate.
+No numerical conclusion can be drawn from this inequality until the
+actual $g,\rho,R_*,E$ are supplied and the frame-derivative terms
+in \eqref{eq:frame-derivatives} are controlled.
+
+A complete unforced singularity construction must still provide a
+single authenticated local profile, source-matched smooth shell
+data, a scale-sharp weighted symmetric inverse respecting the
+coefficient margin, a periodic nonlinear correction
+with a proved right-inverse/contraction scheme, the full physical
+zero-residual identity, and terminal retention for that actual
+correction. Each claim requires a further source-to-Lean semantic
+audit and a compiled theorem using the genuine PDE definitions.
+
+Thus the present mathematical result is an exact compact stress
+construction and several independently checked necessary or
+conditional ingredients. The existence or nonexistence of a
+finite-time singular solution to \eqref{eq:NS} with smooth nonzero
+periodic initial data is \emph{not decided by this manuscript}.
+
+\begin{thebibliography}{9}
+\small
+\bibitem{Fefferman2000}
+C. Fefferman, \emph{Existence and Smoothness of the Navier--Stokes
+Equation}, Clay Mathematics Institute Millennium Prize Problem
+statement, \url{https://www.claymath.org/wp-content/uploads/2022/06/navierstokes.pdf}.
+
+\bibitem{OpenAI2026}
+OpenAI, \emph{Finite time blowup for Navier--Stokes} (2026), and the
+associated formalization repository,
+\url{https://github.com/openai/NavierStokesAndEuler}.
+
+\bibitem{Zhao2026}
+X. Zhao, \emph{Compactly Supported Finite-Energy Stationary Solutions of
+the Three-Dimensional Navier--Stokes Equations} (2026),
+arXiv:2608.17383, \url{https://arxiv.org/abs/2608.17383}.
+
+\bibitem{Leray1934}
+J. Leray, \emph{Sur le mouvement d'un liquide visqueux emplissant
+l'espace}, Acta Mathematica \textbf{63} (1934), 193--248.
+
+\bibitem{CKN1982}
+L. Caffarelli, R. Kohn, and L. Nirenberg, \emph{Partial regularity
+of suitable weak solutions of the Navier--Stokes equations},
+Communications on Pure and Applied Mathematics \textbf{35} (1982),
+771--831.
+
+\bibitem{NewtonRepo2026}
+T. Newton, \emph{Unforced Navier--Stokes Lean integration branch},
+\url{https://github.com/tonynewton79-web/unforced-navier-stokes-lean/pull/3}.
+\end{thebibliography}
+\end{document}

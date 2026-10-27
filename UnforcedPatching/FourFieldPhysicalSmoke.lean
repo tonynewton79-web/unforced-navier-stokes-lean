@@ -1,0 +1,20 @@
+import UnforcedPatching.FourFieldPhysical
+
+/-! Kernel check for the exact seven-ray-to-physical cylindrical tensor map,
+including its isotropic pressure-gauge correction and entrywise budget. -/
+
+#check UnforcedPatching.quarter_fourField_gauge_exact
+#check UnforcedPatching.fourFieldPhysical_entry_bound
+#check UnforcedPatching.fourFieldPhysical_trace_zero
+#check UnforcedPatching.fourFieldPhysical_symmetric
+#check UnforcedPatching.fourFieldPhysical_recover_coordinates
+#check UnforcedPatching.fourFieldPhysical_azimuthal_diagonal_zero
+#check UnforcedPatching.fourFieldPhysical_meridional_diagonals
+
+#print axioms UnforcedPatching.quarter_fourField_gauge_exact
+#print axioms UnforcedPatching.fourFieldPhysical_entry_bound
+#print axioms UnforcedPatching.fourFieldPhysical_trace_zero
+#print axioms UnforcedPatching.fourFieldPhysical_symmetric
+#print axioms UnforcedPatching.fourFieldPhysical_recover_coordinates
+#print axioms UnforcedPatching.fourFieldPhysical_azimuthal_diagonal_zero
+#print axioms UnforcedPatching.fourFieldPhysical_meridional_diagonals
