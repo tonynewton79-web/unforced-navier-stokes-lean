@@ -17,6 +17,8 @@ on:
       - 'tests/test_h8_sharp_dual.py'
       - 'tests/test_h8_sharp_dual_certificate.py'
       - 'tests/test_h8_positive_cone.py'
+      - 'tests/test_h8_axial_flux_cone_cap.py'
+      - 'tests/test_h8_cylindrical_full_source.py'
       - 'tests/test_h8_positive_dual_certificate.py'
       - 'tests/test_h8_rotating_frame.py'
       - 'tests/test_h8_exact_flux_gate.py'
@@ -30,6 +32,7 @@ on:
       - 'h8_sharp_dual.py'
       - 'h8_sharp_dual_certificate.py'
       - 'h8_positive_cone.py'
+      - 'h8_cylindrical_full_source.py'
       - 'h8_positive_dual_certificate.py'
       - 'h8_rotating_frame.py'
       - 'h8_exact_flux_gate.py'
@@ -96,6 +99,7 @@ jobs:
           lake build UnforcedPatching.ExactCoefficientConeSmoke
           lake build UnforcedPatching.SharpCoefficientDualSmoke
           lake build UnforcedPatching.PositiveCoefficientConeSmoke
+          lake build UnforcedPatching.AxialFluxConeSmoke
           lake build UnforcedPatching.RotatingFrameDualSmoke
           lake build UnforcedPatching.Case006SourceBandSmoke
           lake build UnforcedPatching.PressureCompensatedFluxSmoke
