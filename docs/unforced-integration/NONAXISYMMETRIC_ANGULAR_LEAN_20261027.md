@@ -43,6 +43,9 @@ the nonconstant derivative `D(θ)=2π-2θ`, which integrates exactly
 to zero by the same theorem. The polynomial is **not globally
 periodic**: it tests the minimal endpoint hypothesis, not the
 periodic-extension regularity of an authentic angular H8 profile.
+Separately, the genuinely smooth periodic profile `G(θ)=sin θ`,
+`D(θ)=cos θ` is kernel-checked with
+`∫_0^(2π) cos θ dθ = 0`.
 
 ## Remaining source-match requirements
 
