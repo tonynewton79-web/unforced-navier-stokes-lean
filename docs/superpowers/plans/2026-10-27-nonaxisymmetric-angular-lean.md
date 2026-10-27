@@ -29,7 +29,7 @@
 
 **Files:** Create `UnforcedPatching/AngularMean.lean`, `UnforcedPatching/AngularMeanSmoke.lean`.
 
-**Interfaces:** `angularDerivativeIntegral_zero` and `angularMean_derivative_vanishes`; a nonconstant equal-endpoint polynomial regression.
+**Interfaces:** `angularDerivativeIntegral_zero` and `angularMean_derivative_vanishes`; a nonconstant equal-endpoint polynomial regression and genuine periodic sine regression.
 
 - [x] Add smoke test, observe missing-module red failure.
 - [x] Implement angular FTC and mean cancellation.
