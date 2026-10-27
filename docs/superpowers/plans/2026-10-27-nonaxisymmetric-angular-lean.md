@@ -51,4 +51,4 @@
 
 - [x] Add both smoke targets; describe exact remaining authentic H8 gates.
 - [x] Re-run complete Python suite, Lean targets, and `git diff --check`.
-- [ ] Upload to draft PR #5 and independently compare Git blob hashes.
+- [x] Upload to draft PR #5 and independently compare Git blob hashes.
