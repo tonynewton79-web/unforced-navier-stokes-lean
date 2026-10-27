@@ -82,4 +82,19 @@ theorem angularEqualEndpointPolynomialExample :
   exact angularDerivativeIntegral_zero G (fun θ => T - 2 * θ)
     hDeriv hInt hPer
 
+/-- A genuinely periodic smooth angular profile `G(θ)=sin θ`:
+its derivative is `cos θ` and has zero integral over a full turn. -/
+theorem angularSinePeriodicExample :
+    (∫ θ in (0 : ℝ)..(2 * Real.pi), Real.cos θ) = 0 := by
+  have hDeriv : ∀ θ ∈ Set.uIcc (0 : ℝ) (2 * Real.pi),
+      HasDerivAt Real.sin (Real.cos θ) θ := by
+    intro θ _
+    exact Real.hasDerivAt_sin θ
+  have hInt : IntervalIntegrable Real.cos volume 0 (2 * Real.pi) :=
+    Real.continuous_cos.intervalIntegrable _ _
+  have hPeriodic : Real.sin (2 * Real.pi) = Real.sin 0 := by
+    simp
+  exact angularDerivativeIntegral_zero Real.sin Real.cos
+    hDeriv hInt hPeriodic
+
 end UnforcedPatching
