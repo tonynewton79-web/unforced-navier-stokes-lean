@@ -38,9 +38,11 @@ the complete unoriented interval, the kernel proves
 ⟨A⟩_θ = (1/(2π)) ∫_0^(2π) A(θ) dθ.
 ```
 
-The example `G(θ)=(2π)θ-θ²` has zero equal endpoint values and
+The example `G(θ)=(2π)θ-θ²` has equal zero endpoint values and
 the nonconstant derivative `D(θ)=2π-2θ`, which integrates exactly
-to zero by the same theorem.
+to zero by the same theorem. The polynomial is **not globally
+periodic**: it tests the minimal endpoint hypothesis, not the
+periodic-extension regularity of an authentic angular H8 profile.
 
 ## Remaining source-match requirements
 
