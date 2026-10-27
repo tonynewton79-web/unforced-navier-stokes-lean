@@ -42,4 +42,5 @@ varying H8 frame derivatives, compactness or PDE singularity is claimed.
 Lean 4.34.0-rc2 / pinned Mathlib, no `sorry`/`admit`/custom axioms,
 explicit smoke tests with nonzero angular derivative and a nonconstant
 equal-endpoint polynomial example (not asserted globally periodic),
-the original Python suite, and CI smoke targets.
+plus an independently checked genuinely periodic sine example, the
+original Python suite, and CI smoke targets.
