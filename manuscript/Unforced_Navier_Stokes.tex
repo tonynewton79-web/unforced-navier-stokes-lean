@@ -1513,6 +1513,86 @@ rate $-1$ at zero angle. This verifies the sign of
 \eqref{eq:frame-commutator} and refutes omission of its commutator
 even for a constant frame-coordinate stress.
 
+\begin{proposition}[Complete moving-frame source and axial trace]
+\label{prop:h8-complete-moving-source}
+Let $E(x)\in SO(3)$ be a differentiable physical frame on a
+Cartesian chart, and let $H=H^{\mathsf T}$ be its differentiable
+stress-coordinate matrix. Write
+$\Gamma_i=E^{\mathsf T}\partial_iE$, where the index $i$ denotes
+a Cartesian derivative, and set
+$f=\nabla\cdot(EHE^{\mathsf T})+\nabla p$.
+Then, for each moving-frame component $b$,
+\begin{equation}\label{eq:h8-general-source-connection}
+ (E^{\mathsf T}f)_b
+ =\sum_{i,a}E_{ia}
+ \bigl(\partial_iH+\Gamma_iH-H\Gamma_i\bigr)_{ab}
+ +\sum_iE_{ib}\partial_i p.
+\end{equation}
+For the \emph{standard cylindrical} frame
+$E=(e_r,e_\theta,e_z)$ and the four-field stress in
+\eqref{eq:four-field-map}, the corresponding components are
+\begin{align}
+ f_r&=-\partial_rD+r^{-1}\partial_\theta C
+             +\partial_zA-r^{-1}D+\partial_rp,\label{eq:h8-full-r}\\
+ f_\theta&=\partial_rC+2r^{-1}C
+             +\partial_zB+r^{-1}\partial_\theta p,\label{eq:h8-full-theta}\\
+ f_z&=\partial_rA+r^{-1}A+r^{-1}\partial_\theta B
+             +\partial_z(D+p).\label{eq:h8-full-z}
+\end{align}
+If $A,B,D,p$ are $2\pi$-periodic in $\theta$, have the indicated
+derivatives and axial traces at $c,d$, then
+\begin{equation}\label{eq:h8-axial-trace-balance}
+ \int_0^{2\pi}\!\int_c^d r f_z\,\dd z\,\dd\theta
+ =\partial_r\!\left(
+ r\int_0^{2\pi}\!\int_c^d A\,\dd z\,\dd\theta\right)
+ +r\int_0^{2\pi}[D+p]_{c}^{d}\,\dd\theta.
+\end{equation}
+In particular the pressure jump generally survives axial
+integration. None of these identities identifies the possibly
+tilted spatial frame of the unfrozen H8 construction with the
+standard cylindrical frame.
+\end{proposition}
+
+\begin{proof}
+Orthogonality implies
+$\Gamma_i^{\mathsf T}=-\Gamma_i$ and hence
+$\partial_i(EHE^{\mathsf T})
+ =E(\partial_iH+\Gamma_iH-H\Gamma_i)E^{\mathsf T}$.
+Contract the Cartesian derivative index against the first tensor
+index and transform the remaining vector index by $E^{\mathsf T}$
+to obtain \eqref{eq:h8-general-source-connection}. For the
+cylindrical frame,
+\[
+E^{\mathsf T}\partial_\theta E
+ =\begin{pmatrix}0&-1&0\\1&0&0\\0&0&0\end{pmatrix},
+\qquad \partial_rE=\partial_zE=0.
+\]
+Substitution gives \eqref{eq:h8-full-r}--\eqref{eq:h8-full-z}.
+Integrating the last identity, periodicity cancels the angular
+derivative and the fundamental theorem of calculus produces
+the \emph{combined} stress-pressure axial trace.
+\end{proof}
+
+The exact one-sided seven-ray floor also gives the sharp local
+necessary bound
+\begin{equation}\label{eq:h8-sharp-meridional-cap}
+ |H_{rz}|=|A|\le\frac{51113}{245800}\,\rho.
+\end{equation}
+This constant is attained by an exact rational ray allocation,
+and agrees with Proposition~\ref{prop:frame-enclosure}.
+Consequently, any source-matched construction in the frozen
+physical frame must simultaneously obey
+\eqref{eq:h8-axial-trace-balance} and
+\eqref{eq:h8-sharp-meridional-cap}. For a spatially tilted frame
+the latter inequality remains in the \emph{local} four-field
+coordinates, while \eqref{eq:h8-general-source-connection}
+replaces the cylindrical expression. The symbolic verification
+accompanying this manuscript tests all three Cartesian divergence
+components, a nonconstant spatial tilt, and a nonzero axial pressure
+jump. No authentic H8 profile tuple has been certified by these
+tests, and the compact source-matched positive-stress inverse
+remains an open analytic problem.
+
 An independently checked Cartesian rotation example and exact
 two-cell rational support tests accompany these formulas.
 Neither a bound on $\delta_j$ nor
