@@ -13,6 +13,37 @@ exact-rational Python certificates; this module proves necessity.
 
 namespace UnforcedPatching
 
+/-- Sharp necessary joint bounds for the azimuthal-axial coefficient
+projection `(A,B)`. This is the parallelogram which also governs the
+source curl at an axial rank-one quadratic vacuum point once the
+analytic stress-jet reduction has been established. -/
+theorem one_sided_positive_cone_ab_parallelogram
+    (ρ A B C D : ℝ) (_hρ : 0 ≤ ρ)
+    (hFloor : ∀ i : Fin 7,
+      ρ * sevenRayCenter i + sevenRayCorrection A B C D i ≥ ρ/100) :
+    |B| ≤ (15971 / 983200 : ℝ) * ρ ∧
+      |A - 4 * B| ≤ (17571 / 122900 : ℝ) * ρ := by
+  have hC1 := hFloor (1 : Fin 7)
+  have hC2 := hFloor (2 : Fin 7)
+  have hA1 := hFloor (3 : Fin 7)
+  have hA2 := hFloor (4 : Fin 7)
+  have hB1 := hFloor (5 : Fin 7)
+  have hB2 := hFloor (6 : Fin 7)
+  simp [sevenRayCenter, sevenRayCorrection] at
+    hC1 hC2 hA1 hA2 hB1 hB2
+  have hDhi : D ≤ (19171 / 491600 : ℝ) * ρ := by
+    linarith
+  have hBhi : B ≤ (15971 / 983200 : ℝ) * ρ := by
+    linarith
+  have hBlo : -B ≤ (15971 / 983200 : ℝ) * ρ := by
+    linarith
+  have hXhi : A - 4 * B ≤ (17571 / 122900 : ℝ) * ρ := by
+    linarith
+  have hXlo : -(A - 4 * B) ≤ (17571 / 122900 : ℝ) * ρ := by
+    linarith
+  exact ⟨abs_le.mpr ⟨hBlo, hBhi⟩,
+    abs_le.mpr ⟨hXlo, hXhi⟩⟩
+
 /-- Exact jointly sharp hexagonal necessary bounds for the `A,C`
 projection of the one-sided seven-ray coefficient floor. -/
 theorem one_sided_positive_cone_joint_ac_bounds

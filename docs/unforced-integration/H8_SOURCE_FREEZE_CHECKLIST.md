@@ -70,6 +70,20 @@ statement also has a dedicated Lean declaration and exact Python
 tests. This is a new source-side screen to apply *after* source freeze,
 not evidence that the authentic H8 source violates it.
 
+**Quadratic-vacuum refinement.** At a density-zero point whose Hessian
+is `lambda*n tensor n` with `n=E(x0)e_3`, let
+`omega=E(x0)^T curl(f)(x0)`. The new local necessary and sharp jet
+screen is `omega_3=0`,
+`|omega_1| <= (15971/983200)*lambda`, and
+`|omega_2+4*omega_1| <= (17571/122900)*lambda`.
+It follows by applying the same seven-ray floors to second directional
+jets; it is pressure-independent and immune to frame-derivative terms
+at the zero. It has an exact rational corner/witness regression in
+`h8_vacuum_curl_gate.py` and a new *finite* parallelogram Lean
+declaration, whose hosted kernel receipt must still be checked.
+Neither this local necessary screen nor its manufactured sharpness
+model supplies the missing authentic H8 density Hessian or source.
+
 ## Exact nonlinear realization (G5--G7)
 
 Writing a residual as the divergence of a positive stress does **not**

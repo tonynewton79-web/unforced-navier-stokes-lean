@@ -1756,6 +1756,89 @@ same source and pressure representative. It cannot be evaluated
 until the full unfrozen physical residual is supplied; examples
 constructed with diagnostic cutoffs do not decide H8.
 
+\begin{proposition}[Sharp quadratic-vacuum curl parallelogram]
+\label{prop:h8-vacuum-curl-parallelogram}
+Retain the hypotheses of Proposition~\ref{prop:zero-density-curl},
+and suppose at a point $x_0$ that
+\[
+ \rho(x_0)=0,\qquad
+ \nabla^2\rho(x_0)=\lambda\,n\otimes n,\qquad
+ n=E(x_0)e_3,\quad \lambda\ge0.
+\]
+Write $\omega=E(x_0)^{\mathsf T}(\nabla\times f)(x_0)$.
+With $g=15971/122900$ and $h=22371/122900$, the following
+\emph{sharp pointwise necessary} inequalities hold:
+\begin{equation}\label{eq:h8-vacuum-curl-parallelogram}
+ \omega_3=0,\qquad
+ |\omega_1|\le\frac{g}{8}\lambda,
+ \qquad
+ |\omega_2+4\omega_1|
+ \le\frac{3g+h}{4}\lambda
+ =\frac{17571}{122900}\lambda.
+\end{equation}
+The planar parallelogram is exactly attained by local smooth
+quadratic stress jets; no global compact-support or source-matching
+claim is implied. The bound is independent of the derivatives of
+$E$ at $x_0$ and of the pressure representative.
+\end{proposition}
+
+\begin{proof}
+The nonnegative smooth density has $\nabla\rho(x_0)=0$.
+The bounded one-sided seven-ray polytope gives
+$|A|+|B|+|C|+|D|\le C_*\rho$; hence the four coefficients and
+their gradients vanish at $x_0$. For each constant direction $v$,
+differentiate twice the seven nonnegative ray-floor slacks.
+Since each slack has a local minimum zero at $x_0$, the four
+numbers $D_v^2(A,B,C,D)(x_0)$ satisfy \emph{the same} seven
+linear floors with density $D_v^2\rho(x_0)=\lambda(n\cdot v)^2$.
+This cone is bounded and reduces to the origin for zero density.
+In particular, the second directional jets vanish for $v\perp n$.
+For $v\perp n$, the coefficient jet on $n+tv$ is affine in $t$
+because $D_v^2(A,B,C,D)=0$, but remains in the fixed bounded
+cone with density $\lambda$ for every real $t$. Its mixed
+$n,v$ coefficient must therefore vanish. Polarization also
+annihilates the cross-jets within $n^\perp$. Thus, for a
+four-tuple $(a,b,c,d)$ satisfying the seven floors at density
+$\lambda$, the Hessian of each coefficient is its corresponding
+scalar times $n\otimes n$.
+
+All terms involving derivatives of $E$ disappear from the second
+jet of $K=EHE^{\mathsf T}$, because $H(x_0)=0$ and
+$\nabla H(x_0)=0$. In the positively oriented coordinates of
+$E(x_0)$ one obtains
+\[
+ (\nabla\times f)(x_0)
+ =n\times\bigl(E(x_0)H(a,b,c,d)e_3\bigr),
+ \qquad \omega=(-b,a,0).
+\]
+The final two ray floors give $|b|\le g\lambda/8$.
+Adding the pair involving $c$ gives
+$d\le(g+h)\lambda/8$; the opposite axial pair then yields
+$|a-4b|\le g\lambda/2+2d\le(3g+h)\lambda/4$.
+Substitution proves \eqref{eq:h8-vacuum-curl-parallelogram}.
+
+Conversely, any $a,b$ in that parallelogram admit the explicit
+lift
+\[
+ c=\frac{h-g}{4}\lambda,
+ \qquad d=\frac{g+h}{8}\lambda,
+\]
+which meets all seven original floors. Taking locally
+$\rho(x)=\lambda s^2/2$ and
+$H(x)=s^2 H(a,b,c,d)/2$, where $s=n\cdot(x-x_0)$,
+realizes the indicated second jets and all seven floors.
+The construction asserts sharpness only within this local
+quadratic model.
+\end{proof}
+
+Equation~\eqref{eq:h8-vacuum-curl-parallelogram} is a stronger
+source diagnostic at an axial quadratic zero than separate curl
+component caps. The exact-arithmetic companion
+\texttt{h8\_vacuum\_curl\_gate.py} checks membership, constructs
+the sharp ray lift, and tests a spatially rotating frame.
+As with the flat-edge result, no authenticated Case~006 source
+has yet been evaluated against these inequalities.
+
 \begin{corollary}[Sharp azimuthal torque-flux compatibility]
 \label{cor:h8-torque-flux}
 Under the cylindrical-frame hypotheses of
