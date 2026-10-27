@@ -103,6 +103,7 @@ jobs:
           lake build UnforcedPatching.AngularMeanSmoke
           lake build UnforcedPatching.NonaxisymmetricAxialBridgeSmoke
           lake build UnforcedPatching.PhysicalCircleAngularSmoke
+          lake build UnforcedPatching.FrameConnectionDerivativeSmoke
 
       - name: Install exact symbolic source-flux dependency
         run: python -m pip install sympy
