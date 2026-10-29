@@ -50,3 +50,14 @@ def test_consistency_with_appendix_T_influx_coefficient():
     q=mp.mpf('0.2');Rmin=mp.mpf(3)*mp.besseljzero(1,1)**2/8
     value=(1-mp.power(2,-q))*(Rmin/q-mp.mpf('0.5'))
     assert mp.mpf('3.4988')<value<mp.mpf('3.4989')
+
+def test_general_critical_pressure_resonance():
+    h=s.symbols('h',positive=True)
+    A=s.Rational(1,2)+h
+    L=s.Rational(3,2)+2*h
+    sigma=s.Rational(1,2)
+    kappa=s.Integer(1)
+    assert s.simplify(L-sigma-2*A)==0
+    assert s.simplify(L-3*sigma-2*h)==0
+    assert s.simplify(L-sigma-kappa-2*h)==0
+    assert s.simplify(1+2*h-2*sigma-2*h)==0
