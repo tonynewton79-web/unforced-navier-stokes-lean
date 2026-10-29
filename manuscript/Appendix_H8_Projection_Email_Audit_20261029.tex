@@ -1,0 +1,84 @@
+\clearpage
+\section*{Appendix: H8 exterior pressure, authentic translation projection, and nonlinear modulation}
+\noindent\textbf{Scope and release status.} This integrated update reconciles the three H8 research emails of 29 October and corrects an adjoint-normalization omission. The diagnostic exterior-source formula has not been replayed from its unavailable original Appendix D; it is not asserted for the authentic singular carrier. The complete unforced finite-time blow-up theorem remains open.
+
+\subsection*{Exterior-pressure record and analyticity}
+For the frozen diagnostic axisymmetric source the reported finite-order result is
+\[
+|\partial_z^bp_{\mathrm{ext}}(t,0,z)|\le C_b(T-t)^{-2A-bD},\quad
+A=\tfrac12+h,\ D=\tfrac12-h.
+\]
+The associated diagnostic asymptotic was reported as $q^{2A}p_{\mathrm{ext}}\to-\mathfrak I_\beta$ with $\mathfrak I_\beta=64^{-1}\int_{1/2}^1\beta(s)^2(1-\beta(s))\,ds$, but the relevant cutoff data were not included in that email. This is \emph{not} a newly verified constant. The same diagnostic source fails its inner-axis H8 matching gate.
+
+Under a separated exterior support and $L^1$ source size $\mathcal E_{\mathrm{ext}}$, standard harmonic Green-kernel estimates give the conditional factorial estimate
+\[
+|\partial^\alpha p_{\mathrm{ext}}(t,x)|\le
+C^{|\alpha|+1}(|\alpha|+2)!\,
+\mathcal E_{\mathrm{ext}}(t)\delta(t)^{-3-|\alpha|}.
+\]
+In the authentic coordinates $\tau=q(1-\eta^2)$, $z=q^{1/2-h}\eta$, a source distance $\delta\asymp\sqrt{\tau}$ generally only supplies an $\eta$-radius of order $q^h$. The exact pullback derivative has the time term
+\[
+\partial_\eta \widehat f\big|_q=
+q^{1/2-h}\widehat{\partial_zf}+2q\eta\widehat{\partial_tf}.
+\]
+Consequently an exterior fixed-radius analytic bound and terminal-uniform correction cannot be inferred from spatial derivatives alone.
+
+\subsection*{Exact periodic translation projection}
+Let $U$ be a smooth solenoidal periodic prepared velocity and $\mathbb P$ the Leray projection. Define
+\[
+G=U_t-\Delta U+\mathbb P\nabla\cdot(U\otimes U),\quad
+L_Uv=\Delta v-\mathbb P\nabla\cdot(U\otimes v+v\otimes U),\quad W=\partial_zU.
+\]
+Translations commute with $\mathbb P$, hence $W_t=L_UW+\partial_zG$ exactly. If $N(t)=\langle W,W\rangle_{L^2}>0$, define
+\[
+P_tv=\frac{\langle v,W\rangle}{N}W,\quad Q_t=I-P_t.
+\]
+The two exact residual channels are
+\[
+P_t(-G)=-\frac{\langle G,W\rangle}{N}W,\qquad
+Q_t(-G)=-G+\frac{\langle G,W\rangle}{N}W.
+\]
+They are formulae for any specified $U$, not a numerical evaluation of the still-unfrozen singular H8 carrier.
+
+For the unforcing correction $w_t=L_Uw-G-\mathcal N(w)$, $\mathcal N(w)=\mathbb P\nabla\cdot(w\otimes w)$, put $a=\langle w,W\rangle/N$ and $v=Q_tw$. Direct differentiation proves
+\[
+a'=-a\frac{\langle\partial_zG,W\rangle}{N}
++\frac{\langle-G-\mathcal N(w),W\rangle+
+\langle v,L_U^*W+W_t\rangle}{N},
+\]
+\[
+v_t=Q_tL_Uv-P_t'v-aQ_t\partial_zG-Q_tG-Q_t\mathcal N(w).
+\]
+In particular the moving projection and the mode-defect source cannot be dropped. Integration by parts yields the sufficient amplitude bound
+\[
+\left|a'+a\frac{\langle\partial_zG,W\rangle}{N}\right|
+\le\frac{|\langle G,W\rangle|+
+\|L_U^*W+W_t\|_2\|v\|_2+
+\|\nabla W\|_\infty\|w\|_2^2}{N}.
+\]
+A translation mode of size $O((T-t)^{-1})$ is subleading to the proposed carrier growth $O((T-t)^{-A})$ if $a=o((T-t)^D)$; no such estimate is established here.
+
+\subsection*{Adjoint normalization repair}
+The Appendix F equation $\ell_t'=-L_U^*\ell_t$ combined with $\ell_t(W)=1$ is generally inconsistent when $\ell_t(\partial_zG)\ne0$, because
+\[
+\frac d{dt}\ell_t(W)=\ell_t(\partial_zG).
+\]
+A conditionally consistent normalized adjoint instead obeys
+\[
+\ell_t'=-L_U^*\ell_t-\ell_t(\partial_zG)\ell_t,\quad \ell_t(W)=1,
+\]
+so $a_\ell=\ell_t(w)$ satisfies
+\[
+a_\ell'=-\ell_t(\partial_zG)a_\ell-\ell_t(G+\mathcal N(w)).
+\]
+Existence and weighted norm control of $\ell_t$ remain open.
+
+\subsection*{Exact regular regression and outstanding authentic source}
+On a $2\pi$-torus the shear $U=e^{-t}\sin(z-\theta(t))e_x$ has
+$W=e^{-t}\cos(z-\theta(t))e_x$ and $G=-\theta'W$.
+For the exact unforced shear $u=e^{-t}\sin z\,e_x$,
+$w=u-U$ has $a=\sin\theta$ and
+$v=e^{-t}(\cos\theta-1)\sin(z-\theta)e_x$.
+The displayed amplitude formula gives $a'=\theta'\cos\theta$; omitting the off-diagonal term would incorrectly give $\theta'$.
+
+The currently accessible carrier-independent source defines only $u_b=\nabla\times(\chi A_c)$ with $\nabla\times A_c=U_c$ on a core patch and leaves the actual globally fixed cutoff/frame/shapers and pressure tuple unverified. Consequently neither the claimed stable $\kappa_s<A$, nor $\sigma>0$, nor the nonlinear estimate $a=o((T-t)^D)$ has been proved for an authentic singular H8 family. The proof-gate ledger must retain its OPEN status.
