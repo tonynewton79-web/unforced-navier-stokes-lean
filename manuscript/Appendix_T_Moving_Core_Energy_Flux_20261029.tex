@@ -127,6 +127,32 @@ $\Phi=0$, contradicting \eqref{eq:T-inward-lower}.
 More generally, any proposed boundary estimates making
 $\int_{I_\tau}|\Phi(s)|\,ds=o(\tau^p)$ contradict the same theorem.
 
+\paragraph{Corollary T.4 (A bounded exterior collar cannot supply the flux).}
+Assume also the H8 compact chart has lateral scale
+$r=O(\tau^{1/2})$, axial scale $z=O(\tau^D)$,
+where $D=1/2-h$, $0<h<1/6$, and $p=1/2-3h$.
+Choose a smooth moving collar boundary with surface area
+$|\partial\Omega(t)|=O(\tau^{1-h})$ and normal speed
+$|V_b\cdot n|=O(\tau^{-A})$, $A=1/2+h$.
+If the full unforced pressure $\pi$ and all traces
+$w,\nabla w$ are uniformly bounded on this collar
+as $t\uparrow T$, then, since $U=\nabla U=0$ there,
+\[
+ |\Phi(t)|=O(\tau^{1-h-A})
+          =O(\tau^{1/2-2h}),\qquad
+ \int_{I_\tau}|\Phi(s)|\,ds
+          =O(\tau^{3/2-2h})
+          =o(\tau^{p}).
+\]
+This contradicts Theorem T.1 whenever $R_0>p/2$.
+Consequently, any exterior-coupled realization retaining such
+a rapidly dissipating core must violate at least one of these
+uniform boundary trace bounds: the correction or its gradient
+or the physical pressure must develop a sufficiently large
+interface contribution. This conditional exclusion does not
+identify which channel supplies it, and does not require an
+isolated or globally small correction.
+
 \paragraph{A quantitative global-error alternative.}
 Let $\epsilon(t)=\|u(t)-U(t)\|_2/\|U(t)\|_2$ globally,
 $K=\limsup_{t\uparrow T}
