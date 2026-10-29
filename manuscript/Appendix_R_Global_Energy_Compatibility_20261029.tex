@@ -1,0 +1,116 @@
+\clearpage
+\section*{Appendix R. Global energy compatibility for compact H8 carriers}
+\addcontentsline{toc}{section}{Appendix R. Global energy compatibility for compact H8 carriers}
+\noindent\textbf{Scope.} This is a conditional obstruction derived from the
+unforced Navier--Stokes energy law. It does not exclude a solution with a
+non-negligible exterior correction or a different carrier.
+
+\paragraph{Theorem R.1 (Energy compatibility of global $L^2$ retention).}
+Let $u$ solve smooth unforced viscosity-one incompressible Navier--Stokes
+on $\mathbb T^3$ for $t<T$. Let $U(t)$ be a nonzero smooth periodic,
+divergence-free prepared carrier, $\tau=T-t$, and suppose
+\begin{equation}\label{eq:R-energy-profiles}
+ \|U\|_2^2=M_0\tau^p(1+o(1)),\qquad
+ \|\nabla U\|_2^2=R_0M_0\tau^{p-1}(1+o(1)),
+\end{equation}
+with $M_0,p,R_0>0$. Assume
+\begin{equation}\label{eq:R-laplacian-ratio}
+ \sup_{t\in(T-\delta,T)}
+ \frac{\|U(t)\|_2\|\Delta U(t)\|_2}
+      {\|\nabla U(t)\|_2^2}<\infty
+\end{equation}
+for some $\delta>0$, and assume the full correction is
+\emph{globally} subleading in the energy space:
+\begin{equation}\label{eq:R-energy-retention}
+ \|u(t)-U(t)\|_2=o(\|U(t)\|_2).
+\end{equation}
+Then the necessary inequality is
+\begin{equation}\label{eq:R-energy-necessary}
+ \boxed{R_0\le p/2.}
+\end{equation}
+In particular, with differentiated similarity asymptotics the
+amplitude coefficient
+$c_A=\langle U_t-\Delta U+\mathbb P[(U\cdot\nabla)U],U\rangle/
+\|U\|_2^2$ satisfies
+$\tau c_A\to R_0-p/2$; its positive limit is incompatible
+with \eqref{eq:R-energy-retention}.
+
+\paragraph{Proof.}
+Put $\varepsilon=\|u-U\|_2/\|U\|_2=o(1)$. Periodic integration
+by parts and Cauchy--Schwarz show
+\[
+ \|\nabla u\|_2\|\nabla U\|_2
+ \ge\langle\nabla u,\nabla U\rangle
+ =\|\nabla U\|_2^2+\langle u-U,-\Delta U\rangle
+ \ge(1-o(1))\|\nabla U\|_2^2,
+\]
+where \eqref{eq:R-laplacian-ratio} controls the last error.
+Thus $\|\nabla u\|_2^2\ge(1-o(1))\|\nabla U\|_2^2$.
+Likewise $\|u\|_2^2=M_0\tau^p(1+o(1))$. On the terminal
+dyad $I_\tau=[T-\tau,T-\tau/2]$, the exact unforced energy
+identity implies
+\[
+ \begin{aligned}
+ M_0(1-2^{-p})\tau^p+o(\tau^p)
+ &=\|u(T-\tau)\|_2^2-\|u(T-\tau/2)\|_2^2\\
+ &=2\int_{I_\tau}\|\nabla u\|_2^2\,ds\\
+ &\ge 2(1-o(1))R_0M_0
+  \int_{\tau/2}^{\tau}r^{p-1}\,dr\\
+ &=2(1-o(1))\frac{R_0M_0}{p}(1-2^{-p})\tau^p.
+ \end{aligned}
+\]
+Division by the positive common factor gives $1\ge2R_0/p$.
+The formula for $c_A$ follows from
+$\langle\mathbb P[(U\cdot\nabla)U],U\rangle=0$
+and $\langle-\Delta U,U\rangle=\|\nabla U\|_2^2$.
+\hfill$\square$
+
+\paragraph{Corollary R.2 (Confinement without numerical quadrature).}
+If $U$ vanishes outside an embedded horizontal disk of radius
+$R_*\sqrt\tau$, then the scalar disk Dirichlet inequality applied
+componentwise yields
+\[
+ \|\nabla U\|_2^2\ge
+ \frac{j_{0,1}^2}{R_*^2\tau}\|U\|_2^2,
+\]
+where $j_{0,1}$ is the first positive zero of the Bessel
+function $J_0$. Therefore if
+$j_{0,1}^2/R_*^2>p/2$, the assumptions of Theorem R.1
+cannot all hold. For the smooth Appendix O prepared-field
+prototype with $h=1/10$, $p=1/5$, $X_*=1$ and
+$|\eta|\le1/2$, one has $R_*^2=8/3$ and hence
+\[
+ R_0\ge (3/8)j_{0,1}^2>2>1/10=p/2.
+\]
+The contradiction requires no unverified profile quadratures.
+The smooth flat compact prototype has a bounded
+Laplacian-shape ratio under its differentiated similarity scaling.
+
+\paragraph{Connection with Appendix Q.}
+For $w=\alpha U+aW+v$ with $W=\partial_z U$ and
+$M\sim M_0\tau^p$, $N=\|W\|_2^2\sim N_0\tau^{-A}$,
+$A=\frac12+h$, $D=\frac12-h$, the exact exponent
+$A+p=2D$ implies
+\[
+ \alpha=o(1),\quad a=o(\tau^D),\quad
+ \|v\|_2=o(\|U\|_2)
+ \quad\Longrightarrow\quad
+ \|w\|_2=o(\|U\|_2).
+\]
+When $v$ is chart-supported in volume $O(\tau^{1+D})$,
+the pointwise condition $\|v\|_\infty=o(\tau^{-A})$
+implies the displayed global $L^2$ smallness, since
+$-A+(1+D)/2=p/2$.
+If instead $v$ has a non-negligible \emph{exterior}
+$L^2$ component, this theorem does not apply: that
+component needs an independent energy, pressure and
+complementary-propagator analysis.
+
+\paragraph{Open theorem frontier.}
+The theorem rules out globally $L^2$-subleading
+unforcing for this confined positive-Rayleigh carrier class,
+not an unforced singularity in general. Authentic H8 source
+selection, the weighted one-sided seven-ray stress inverse,
+a possible exterior energy reservoir, and nonlinear terminal
+retention remain unproved. The complete unforced
+Navier--Stokes theorem remains OPEN.
