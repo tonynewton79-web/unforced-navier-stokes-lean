@@ -57,3 +57,14 @@ def test_zero_collar_reduces_to_complementary_flux():
     flux=(e+pu)*wu-ge-e*V
     expected=wu**3/2+pu*wu-ge-wu**2*V/2
     assert sp.expand(flux-expected)==0
+
+def test_bounded_exterior_collar_flux_is_subcritical():
+    h=sp.symbols('h',positive=True)
+    A=sp.Rational(1,2)+h
+    D=sp.Rational(1,2)-h
+    p=sp.Rational(1,2)-3*h
+    boundary_area=sp.Rational(1,2)+D
+    worst_speed_exponent=-A
+    dyadic_total=1+boundary_area+worst_speed_exponent
+    assert sp.simplify(dyadic_total-p)==1+h
+    assert sp.simplify(dyadic_total-(sp.Rational(3,2)-2*h))==0
