@@ -1,0 +1,74 @@
+\clearpage
+\section*{Appendices N--O. Physical-profile Rayleigh bounds and return-flow confinement}
+\addcontentsline{toc}{section}{Appendices N--O. Physical-profile Rayleigh bounds and return flow}
+\noindent\textbf{Scope.} All assertions below concern a smooth compact axisymmetric solenoidal similarity-profile carrier on the three-torus. The gauge, cutoff, H8 shapers/stress and pressure of the authentic singular source remain unfrozen. The full unforced singularity theorem is OPEN. A complete five-page standalone source and exact tests accompany the independently verified 88-page cumulative PDF.
+
+\paragraph{Exact physical similarity geometry.}
+With $\tau=T-t$, $A=1/2+h$, $D=1/2-h$, $d=1-\eta^2$, $L=1-2h\eta^2$, and $0<h<1/6$, use the authentic chart $q=\tau/d$, $r=\sqrt{2qX}$, $z=q^D\eta$. Its exact axisymmetric volume form and axial derivative are
+\[
+dV=2\pi\tau^{1+D}Ld^{-D-2}\,dX\,d\eta,\quad
+\partial_z(q^aF)=q^{a-D}Z_aF,\quad
+Z_aF=L^{-1}[2a\eta F+dF_\eta-2\eta XF_X].
+\]
+For a source with $U_r=q^{-1/2}(V_r+O(q^{2h}))$ and
+$(U_\theta,U_z)=q^{-A}((V_\theta,V_z)+O(q^{2h}))$ in the stated differentiated symbol class, set
+$E_\theta=Z_{-A}V_\theta$, $E_z=Z_{-A}V_z$.
+The translation energy and amplitude energy are
+\[
+M=\|U\|_2^2=\tau^p(M_0+O(\tau^{2h})),\
+N=\|\partial_zU\|_2^2=\tau^{-A}(N_0+O(\tau^{2h})),\
+p=1/2-3h,
+\]
+where
+\[
+M_0=2\pi\int Ld^{2A-D-2}(V_\theta^2+V_z^2)\,dX\,d\eta,\quad
+N_0=2\pi\int Ld^{-D}(E_\theta^2+E_z^2)\,dX\,d\eta.
+\]
+The exact periodic energy identity gives
+$c_A=\langle G,U\rangle/M=(\log M)'/2+\|\nabla U\|_2^2/M$;
+hence $c_A=\tau^{-1}(R_U/M_0-p/2)+O(\tau^{-1+2h})$
+with the positive physical-profile radial form $R_U$ given in the full Appendix N.
+Likewise the exact translation identity gives
+$b_T=\tau^{-1}[A/2+(R_W+S_W)/N_0]+O(\tau^{-1+2h})$;
+$R_W$ is the viscous radial form, $S_W$ is the signed cylindrical-strain profile integral. The time and advection integrals in the full source give the corresponding $g_T,e_T$. These are conditional finite profile functionals, not authenticated numerical H8 certificates.
+
+\begin{theorem}[Sharp axisymmetric return-flow spectral bound]
+Suppose $U$ is smooth, axisymmetric, solenoidal, supported in a proper axial interval and in $r\le R\sqrt{\tau}$ with the cross-sectional disk embedded in the torus. Then the axial flux vanishes on every horizontal section:
+\[
+\int_{\mathbb T^2}U_z(x,y,z,t)\,dx\,dy=0.
+\]
+Writing $U_\perp=U_re_r+U_\theta e_\theta$, the classical sharp transverse disk estimates are
+\[
+\|\nabla_\perp U_\perp\|_2^2\ge \frac{j_{1,1}^2}{R^2\tau}\|U_\perp\|_2^2,\qquad
+\|\nabla_\perp U_z\|_2^2\ge \frac{j_{2,1}^2}{R^2\tau}\|U_z\|_2^2.
+\]
+Here $j_{m,1}$ is the first positive zero of $J_m$. Thus, if
+$\vartheta=\|U_z\|_2^2/\|U\|_2^2$,
+\[
+\boxed{\frac{\|\nabla U\|_2^2}{\|U\|_2^2}
+\ge \frac{j_{1,1}^2+(j_{2,1}^2-j_{1,1}^2)\vartheta}{R^2\tau}.}
+\]
+\end{theorem}
+\begin{proof}
+Cross-sectional solenoidality makes $\int_{\mathbb T^2}U_z$ independent of $z$; it vanishes outside the axial support. The transverse Cartesian components have only angular Fourier modes $m=\pm1$, so the first disk Dirichlet eigenvalue is $j_{1,1}^2/R^2$. The radial axial component has zero mean. Its constrained radial minimizer solves
+$-(rf')'=\lambda rf+\mu r$ with $f(R)=0$, giving
+$f=C[J_0(\sqrt\lambda r)-J_0(\sqrt\lambda R)]$.
+The zero-mean condition is $J_2(\sqrt\lambda R)=0$, hence the first constant $j_{2,1}^2/R^2$. Combine the inequalities and integrate in $z$.
+\end{proof}
+\paragraph{Support and amplitude-injection consequence.}
+For support $X\le X_*$ and $|\eta|\le\eta_*<1$, put
+$d_*=1-\eta_*^2$ and $R_*^2=2X_*/d_*$. If $\vartheta(t)\to\vartheta_0$, the exact energy identity yields
+\[
+\boxed{\liminf_{t\uparrow T}\tau c_A(t)\ge
+\frac{d_*}{2X_*}\big[j_{1,1}^2+(j_{2,1}^2-j_{1,1}^2)\vartheta_0\big]-p/2.}
+\]
+The uniform sufficient positivity condition is
+$X_*<j_{1,1}^2d_*/p$ (for $p>0$).
+If the exact amplitude equation is $\beta'+c_A\beta=F_A$ and
+$\beta(t)\to1$, $\tau c_A(t)\to c_0>0$, then
+\[
+\boxed{\lim_{\varepsilon\downarrow0}
+\frac{\int_{t_0}^{T-\varepsilon}F_A(s)\,ds}
+{\log((T-t_0)/\varepsilon)}=c_0.}
+\]
+It follows that $\limsup_{t\uparrow T}\tau F_A(t)\ge c_0$ for continuous forcing: nonlinear amplitude injection is required at leading order, not as a small remainder. The H8 source is still too unfrozen to evaluate these quantities or prove the three terminal retention inequalities.
