@@ -1,0 +1,90 @@
+\clearpage
+\section*{Appendix J. Translation-mode energy and H8 source-specific stability gates}
+\addcontentsline{toc}{section}{Appendix J. Translation-mode energy and H8 stability}
+\noindent\textbf{Claim boundary.} All periodic identities in this appendix are exact under smoothness, solenoidality and nonzero translation-mode norm. The explicit Gaussian is an independent whole-space diagnostic. Neither the singular H8 source nor the global unforced Navier--Stokes blow-up theorem is constructed.
+
+\paragraph{Exact coefficient formula.}
+For a smooth solenoidal prepared velocity $U$, write
+\[
+G=U_t-\Delta U+\mathbb P\nabla\cdot(U\otimes U),\quad
+W=\partial_zU,\quad N=\|W\|_2^2>0,\quad
+b=\langle\partial_zG,W\rangle/N.
+\]
+Commuting $\partial_z$ with the torus Leray projection, integrating by parts, and using $\nabla\cdot U=\nabla\cdot W=0$ proves
+\[
+\boxed{\quad
+b(t)=\frac12\frac{d}{dt}\log N(t)
++\frac{\|\nabla W\|_2^2}{N(t)}
++\frac{\int_{\mathbb T^3}W\cdot[(W\cdot\nabla)U]\,dx}{N(t)}.
+\quad}
+\]
+The last term is the translation-mode strain form, which may have either sign. No estimate of $b$ for the authentic H8 carrier follows without a frozen $U$.
+
+\paragraph{Exact complementary energy cancellation.}
+Put $P_tv=\langle v,W\rangle W/N$, $Q_t=I-P_t$,
+$L_Uv=\Delta v-\mathbb P\nabla\cdot(U\otimes v+v\otimes U)$,
+$\mathcal N(w)=\mathbb P\nabla\cdot(w\otimes w)$, and
+$w=aW+v$, $v=Q_tv$, with $w_t=L_Uw-G-\mathcal N(w)$.
+The full complementary equation derived in Appendix I remains valid:
+\[
+v_t=Q_tL_Uv-P_t'v-aQ_t\partial_zG-Q_tG-Q_t\mathcal N(aW+v).
+\]
+Since $Q_tP_t'Q_t=0$, we have $\langle P_t'v,v\rangle=0$ exactly.
+Furthermore, the $v\otimes v$ term and one mixed quadratic term
+vanish in the $L^2$ pairing by incompressibility. The complete identity is
+\[
+\boxed{\begin{aligned}
+\frac12\frac{d}{dt}\|v\|_2^2+\|\nabla v\|_2^2
+={}&-\int_{\mathbb T^3}v\cdot[(v\cdot\nabla)(U+aW)]\,dx\\
+&-\langle G+a\partial_zG+a^2(W\cdot\nabla)W,v\rangle.
+\end{aligned}}
+\]
+This cancels the direct $P_t'$ energy cost, \emph{not} the off-diagonal amplitude coupling or higher-regularity commutators.
+
+\paragraph{Concrete conditional stability gate.}
+Let $\tau=T-t$, $A=\tfrac12+h$. Define
+$\mathcal H_a=Q_t[G+a\partial_zG+a^2(W\cdot\nabla)W]$.
+If, along one actual correction, every complementary $v$ satisfies
+\[
+-\int v\cdot[(v\cdot\nabla)(U+aW)]\,dx
+\le \frac{\kappa_s}{\tau}\|v\|_2^2,\quad
+\|\mathcal H_a\|_2\le M\tau^{-A-1+\sigma},
+\quad\kappa_s<A,\ \sigma>0,
+\]
+then $y=\|v\|_2$ satisfies
+$y'\le(\kappa_s/\tau)y+M\tau^{-A-1+\sigma}$ and
+\[
+y(t)\le(\tau_0/\tau)^{\kappa_s}y(t_0)
++M\tau^{-\kappa_s}\int_{\tau}^{\tau_0}
+r^{\kappa_s-A-1+\sigma}\,dr
+=o(\tau^{-A}).
+\]
+This is only a conditional $L^2$ conclusion. A compatible analytic
+or Sobolev embedding estimate for the same shrinking geometry is still
+required for terminal pointwise retention, jointly with the amplitude
+matching theorem in Appendix I.
+
+\paragraph{Adversarial toroidal Gaussian coefficient.}
+On $\mathbb R^3$, separately from any physical H8 source, take
+$U=\tau^{-A}\rho\Phi(\rho,\zeta)e_\theta$,
+$\rho=r/\sqrt\tau$, $\zeta=z/\tau^D$,
+$D=\tfrac12-h$, $\Phi=-\tfrac12e^{-\rho^2-\zeta^2}$.
+Then $W=\partial_zU=\tau^{-1}\rho\zeta
+e^{-\rho^2-\zeta^2}e_\theta$ and $N=C\tau^{-A}$.
+The stretching form vanishes; the exact radial-plus-hoop and axial
+Rayleigh quotients are respectively $4$ and $3$. Thus
+\[
+\boxed{b(t)=\frac{A/2+4}{\tau}+3\tau^{-1+2h}.}
+\]
+The small coefficient hypothesis of Appendix I is not automatic.
+The diagnostic is not a periodic singular H8 solution.
+
+\paragraph{Unclosed authentic-source obligations.}
+Freeze the complete gauge-dependent carrier $U_c,p_c,A_c,\chi$,
+frame, density, shell shapers, stress and periodic pressure; compute
+$N$, the three terms of the exact $b$ identity, the restricted strain
+form, $\mathcal H_a$ and the nonlinear amplitude $f$. Prove the one-sided
+spectral bound, positive source gain, terminal matching and an
+$L^\infty$-controlling estimate in a common function space.
+No source-specific $\kappa_s<A$ or $\sigma>0$ certificate, and no final
+Lean existential theorem, has yet been obtained.
