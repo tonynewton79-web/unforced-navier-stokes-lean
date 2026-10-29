@@ -154,6 +154,10 @@
     "exterior_energy_route": "OPEN: A globally non-negligible exterior correction might evade the conditional energy obstruction; joint pressure, energy, complementary propagator and pointwise-retention estimates absent.",
     "amplitude_translation_dyad": "Appendix Q supplies exact necessary terminal-dyad injection identities; no authenticated source-specific nonlinear injection certificate.",
     "artifact_status": "Main cumulative LaTeX includes Appendices M through R. Appendix R five algebraic/spectral tests independently passed locally; hosted CI and full source-compiled PDF remain pending.",
-    "global_unforced_theorem": "OPEN; no physical PDE witness or hypothesis-free Lean theorem."
+    "global_unforced_theorem": "OPEN; fail-closed G0-G8. No source-matched positive-stress inverse, actual unforcing correction or entire PDE closure witness.",
+    "exact_physical_ns_residual": "Appendix S proves exact periodic 3D projected NS expansion under w=alpha U + a partial_zU + v and pressure Poisson reconstruction; algebraic identities only, no constructed correction.",
+    "final_independent_symbolic_suite": "11/11 local pytest checks passed: 6 nontrivial 3D physical PDE, pressure, energy, torus Poisson translation, r-factor and implicit-chart tests plus 5 global energy terminal-dyad/spectral checks; these do not verify an existential singularity theorem.",
+    "ci_final_test_enforcement": "Physical torus GitHub Actions workflow now explicitly runs the two new pytest modules; hosted completion not established.",
+    "latest_main_source": "manuscript/Unforced_Navier_Stokes.tex includes Appendices M,N,O,P,Q,R,S, without redundant N-O recap inclusion."
   }
 }
