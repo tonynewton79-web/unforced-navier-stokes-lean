@@ -1,0 +1,71 @@
+\clearpage
+\section*{Appendix U. Anisotropic interface flux and pressure-oscillation threshold}
+\addcontentsline{toc}{section}{Appendix U. Anisotropic interface flux and pressure threshold}
+\noindent\textbf{Scope.} This appendix sharpens the necessary exterior-to-core transport gate of Appendix T. All results concern a hypothetically retained compact carrier and an actual smooth unforced solution; they neither authenticate the H8 source nor construct a singularity.
+
+\paragraph{Exact anisotropic moving-boundary geometry.}
+Put $\tau=T-t$, $0<h<1/6$, $D=1/2-h$, $A=1/2+h$, and $p=1/2-3h$. Fix a smooth bounded reference region $\Omega_0$ and a fixed centre $x_0$. Let $\Omega(t)=x_0+S_\tau\Omega_0$, where $S_\tau=\operatorname{diag}(\tau^{1/2},\tau^{1/2},\tau^D)$, embedded in a single torus chart for small $\tau$. If $n_0$ denotes the reference outward unit normal, then the area Jacobian is $\det(S_\tau)|S_\tau^{-T}n_0|$ and
+\begin{equation}\label{eq:U-area}
+ |\partial\Omega(t)|\le C_{\Omega_0}\tau^{1-h}.
+\end{equation}
+For the physical boundary velocity $V_b(t,S_\tau y)=\partial_t(S_\tau y)$, the oriented measure identity is exact:
+\begin{equation}\label{eq:U-cofactor}
+ (V_b\cdot n)\,dS
+ =-\tau^D\left[\frac12(y_1n_{0,1}+y_2n_{0,2})+Dy_3n_{0,3}\right]\,dS_0.
+\end{equation}
+Consequently $\int_{\partial\Omega(t)}|V_b\cdot n|\,dS\le C_{\Omega_0}\tau^D$. This is sharper than multiplying the maximum boundary speed by its total surface area.
+
+\paragraph{Theorem U.1 (Necessary interface-growth threshold).}
+Let $u$ be smooth, periodic, divergence-free and solve the unforced viscosity-one Navier--Stokes equation on $t<T$. Let $U$ be a smooth divergence-free carrier supported strictly within $\Omega(t)$, vanishing with its gradient in a neighbourhood of $\partial\Omega(t)$. Suppose
+\[
+ \|U\|_2^2=M_0\tau^p(1+o(1)),\quad
+ \|\nabla U\|_2^2=R_0M_0\tau^{p-1}(1+o(1)),
+ \quad M_0>0,\ R_0>p/2,
+\]
+and suppose the ratio $\|U\|_2\|\Delta U\|_2/\|\nabla U\|_2^2$ stays bounded and $\|u-U\|_{L^2(\Omega(t))}=o(\|U\|_2)$. Define $I_\tau=[T-\tau,T-\tau/2]$ and
+\[
+ V_\tau=\sup_{s\in I_\tau,\ x\in\partial\Omega(s)}|u(s,x)|,\quad
+ G_\tau=\sup_{s\in I_\tau,\ x\in\partial\Omega(s)}|\nabla u(s,x)|.
+\]
+Let $P_\tau$ be the maximum over this dyad of the physical pressure \emph{oscillation} on each boundary, namely $\max_{\partial\Omega(s)}\pi(s,\cdot)-\min_{\partial\Omega(s)}\pi(s,\cdot)$. Then for some $c>0$ and all sufficiently small $\tau$,
+\begin{equation}\label{eq:U-threshold}
+ \boxed{\tau^{3/2+2h}\left(V_\tau^3+P_\tau V_\tau+V_\tau G_\tau\right)
+ +\tau^{1+2h}V_\tau^2\ge c.}
+\end{equation}
+The hypothesis concerns \emph{local} energy retention and permits a globally non-negligible exterior correction.
+
+\paragraph{Proof.}
+The smooth unforced local energy equality reads
+\[
+ \partial_t(|u|^2/2)+\operatorname{div}[ (|u|^2/2+\pi)u-\nabla(|u|^2/2)]
+ =-|\nabla u|^2.
+\]
+The local-retention theorem of Appendix T gives, with $\Phi$ the outward moving-boundary energy flux,
+\[
+ -\int_{I_\tau}\Phi(s)\,ds\ge
+ \left[\frac{1-2^{-p}}{p}(R_0-p/2)+o(1)\right]M_0\tau^p.
+\]
+The divergence-free identity $\int_{\partial\Omega(s)}u\cdot n\,dS=0$ permits subtraction of any time-dependent constant from $\pi$; thus the pressure boundary term is controlled by its \emph{oscillation}, independent of gauge. The collar of zero $U$ makes $u=w$ on $\partial\Omega$. Since $|\nabla(|u|^2/2)|\le |u||\nabla u|$, the exact geometry \eqref{eq:U-area}--\eqref{eq:U-cofactor} yields
+\[
+ \left|\int_{I_\tau}\Phi(s)\,ds\right|\le
+ C\left[\tau^{2-h}(V_\tau^3+P_\tau V_\tau+V_\tau G_\tau)+\tau^{1+D}V_\tau^2\right].
+\]
+Divide by $\tau^p$; use $2-h-p=3/2+2h$ and $1+D-p=1+2h$ to conclude. \hfill$\square$
+
+\paragraph{Corollary U.2 (Four competing interface channels).}
+If for all late terminal dyads $V_\tau=O(\tau^{-\sigma})$, $P_\tau=O(\tau^{-\rho})$ and $G_\tau=O(\tau^{-\kappa})$, then at least one of
+\begin{equation}\label{eq:U-exponent-alternatives}
+ \boxed{3\sigma\ge3/2+2h,\quad \rho+\sigma\ge3/2+2h,\quad
+ \sigma+\kappa\ge3/2+2h,\quad \sigma\ge1/2+h}
+\end{equation}
+is necessary. If the pressure and viscous terms are subcritical, then $\sigma\ge1/2+2h/3$ is necessary in this growth-exponent sense.
+
+\paragraph{Corollary U.3 (Gauge-invariant pressure burden at $h=1/10$).}
+Suppose the hypotheses of Theorem U.1 hold with $h=1/10$ and $V_\tau\le C_V\tau^{-1/2}$, $G_\tau\le C_G\tau^{-1}$. The convection, viscosity and boundary-motion contributions in \eqref{eq:U-threshold} are then $O(\tau^{1/5})$ and vanish. The pressure term must therefore remain nonzero; hence for some $c_\pi>0$ on every sufficiently small dyad,
+\begin{equation}\label{eq:U-pressure-growth}
+ \boxed{P_\tau\ge c_\pi\tau^{-6/5}.}
+\end{equation}
+This concerns pressure oscillation, not an arbitrary gauge representative, and is conditional on the two interface bounds.
+
+\paragraph{Open proof gate and verification.}
+The coefficient needed to enter Theorem U.1 is positive for the independently specified, non-authentic Appendix O prototype by Appendix T's sharp Bessel estimate. The existence of a correction and its pressure are not established. Six independent tests check the exact cofactor normal-motion identity, area and motion exponents, terminal flux thresholds, pressure exponent and diagnostic spectral coefficient; these do not constitute a proof of a singular Navier--Stokes solution. The authentic source cutoff, physical frame, periodic Poisson pressure, seven-ray positive inverse, complementary nonlinear equation and pointwise terminal retention all remain OPEN.
