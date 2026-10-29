@@ -1,0 +1,104 @@
+\clearpage
+\section*{Appendix S. Exact physical residual and final closure interface}
+\addcontentsline{toc}{section}{Appendix S. Exact physical residual and final closure interface}
+\noindent\textbf{Scope.} The identities below are exact on the periodic
+three-torus. Their verification does not supply the missing nonlinear
+correction, source-matched positive stress or singular solution.
+The complete unforced existence theorem remains open.
+
+\paragraph{Exact periodic formulation.}
+Let $U$ be smooth, periodic and divergence-free, let $\mathbb P$
+be the periodic Leray projection, and set
+\[
+ \mathcal B(f,g)=\mathbb P[(f\cdot\nabla)g],\quad
+ G=U_t-\Delta U+\mathcal B(U,U),\quad
+ L_Uv=\Delta v-\mathcal B(U,v)-\mathcal B(v,U).
+\]
+For every smooth divergence-free correction $w$ the projected
+unforced residual of $u=U+w$ is the \emph{exact} identity
+\begin{equation}\label{eq:S-unforced-expansion}
+ \mathcal N(U+w)=G+w_t-L_Uw+\mathcal B(w,w).
+\end{equation}
+No prescribed body force has been introduced.
+
+\paragraph{Proposition S.1 (Exact moving two-mode reconstruction).}
+Let $W=\partial_zU$ and suppose $U,W$ are $L^2$-orthogonal with
+nonzero norms. Write $w=\alpha U+aW+v$ and
+$\langle v,U\rangle=\langle v,W\rangle=0$.
+Then the full projected residual is
+\begin{equation}\label{eq:S-two-mode-exact}
+\boxed{\begin{aligned}
+\mathcal N(U+w)={}&
+ \alpha' U+a'W+v_t-L_Uv
+ +(1+\alpha)G\\
+ &+\alpha\mathcal B(U,U)
+ +a\,\partial_zG+\mathcal B(w,w).
+\end{aligned}}
+\end{equation}
+The identity holds for nonconstant $U$, varying two-mode projectors
+and arbitrary smooth $v$.
+
+\paragraph{Proof.}
+Differentiation and bilinearity expand
+$\mathcal N(U+w)$ into
+$G+w_t-\Delta w+\mathcal B(U,w)+\mathcal B(w,U)+\mathcal B(w,w)$.
+The coefficient of $\alpha$ satisfies
+$U_t-L_UU=G+\mathcal B(U,U)$.
+Because the periodic Leray projection commutes with $\partial_z$,
+\[
+ W_t-L_UW
+ =W_t-\Delta W+\mathcal B(U,W)+\mathcal B(W,U)
+ =\partial_zG.
+\]
+Combining these identities gives
+\eqref{eq:S-two-mode-exact} without dropping the moving modes,
+the time derivative, viscosity or quadratic correction.
+\hfill$\square$
+
+\paragraph{Pressure reconstruction.}
+For smooth periodic divergence-free $u$ define the zero-mean
+pressure uniquely by
+\begin{equation}\label{eq:S-pressure-poisson}
+ -\Delta p=\sum_{i,j=1}^{3}\partial_i\partial_j(u_i u_j),
+ \qquad\int_{\mathbb T^3}p\,dx=0.
+\end{equation}
+The mean of the right-hand side vanishes, so this equation is
+solvable and $\mathbb P[(u\cdot\nabla)u]
+=(u\cdot\nabla)u+\nabla p$.
+Consequently $\mathcal N(u)=0$ and \eqref{eq:S-pressure-poisson}
+are equivalent to the unforced physical Navier--Stokes PDE.
+This reconstruction does not solve $\mathcal N(u)=0$;
+it only fixes the pressure gauge for a candidate $u$.
+
+\paragraph{Precise conditional closure statement.}
+A smooth periodic divergence-free $U+w$ with a smooth pressure
+from \eqref{eq:S-pressure-poisson} is an unforced Navier--Stokes
+solution only if the \emph{whole vector field} in
+\eqref{eq:S-two-mode-exact} vanishes at every point and time.
+In addition, a finite-time singularity conclusion requires
+smooth nonzero initial data, finite torus-cell kinetic energy,
+regularity for all $t<T$, and a certified pointwise trace
+$|U(t,x_t)+w(t,x_t)|\to\infty$ for a suitable family of points.
+Projected amplitude/translation equations alone do not establish
+the complementary equation or any of these global properties.
+
+\paragraph{Final independent tests and proof status.}
+Six independent exact symbolic regressions of the physical identities
+above use a nonconstant divergence-free three-dimensional Fourier
+field, nonlinear cross terms, the pressure Poisson sign, the
+periodic energy cancellation, the meridional $r$ factor, and
+the implicit H8 axial chain rule. Five further tests reproduce
+the terminal energy-dyad algebra and the source-confinement
+spectral gap of Appendix R. The combined \emph{11-test}
+suite passed locally. These test receipts are evidence for the
+individual identities, not a machine-checked witness for the open
+existence theorem.
+
+The remaining mathematical gates are an authenticated singular
+core and single periodic source; a compact weighted positive
+seven-ray inverse respecting the actual rotating frame; a
+constructive nonlinear correction and its exterior-energy
+dynamics; the entire zero-residual identity including pressure;
+terminal pointwise retention; and an end-to-end proof in the
+physical PDE definitions. The repository's G0--G8 ledger remains
+fail-closed with target status \texttt{OPEN}.
