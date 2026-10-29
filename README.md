@@ -36,8 +36,8 @@ by a rigorous disk spectral estimate. Thus the specific globally
 This does **not** exclude non-negligible exterior-energy corrections
 or an alternative carrier. It is not a proof of finite-time blow-up.
 
-Five mathematical regressions for the new appendix passed locally.
-They are supportive symbolic/spectral checks, not an independent
+Twelve independent mathematical regressions now pass locally: six exact 3D PDE/pressure/energy/chart checks, five terminal energy-dyad/spectral checks, and one direct full-residual projection of both amplitude and translation equations.
+The new physical CI workflow explicitly executes all three pytest modules, while the full final theorem remains open. They are supportive symbolic/spectral checks, not an independent
 Lean kernel theorem or a physical PDE solution. CI status is tracked
 separately. The G0--G8 proof gates and the global unforced
 Navier--Stokes existential theorem remain **OPEN**.
