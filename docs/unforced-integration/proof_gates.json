@@ -154,10 +154,15 @@
     "exterior_energy_route": "OPEN: A globally non-negligible exterior correction might evade the conditional energy obstruction; joint pressure, energy, complementary propagator and pointwise-retention estimates absent.",
     "amplitude_translation_dyad": "Appendix Q supplies exact necessary terminal-dyad injection identities; no authenticated source-specific nonlinear injection certificate.",
     "artifact_status": "Main cumulative LaTeX includes Appendices M through R. Appendix R five algebraic/spectral tests independently passed locally; hosted CI and full source-compiled PDF remain pending.",
-    "global_unforced_theorem": "OPEN; fail-closed G0-G8. No source-matched positive-stress inverse, actual unforcing correction or entire PDE closure witness.",
+    "global_unforced_theorem": "OPEN; do not claim H8 physical solution, positive stress, or Lean existential witness.",
     "exact_physical_ns_residual": "Appendix S proves exact periodic 3D projected NS expansion under w=alpha U + a partial_zU + v and pressure Poisson reconstruction; algebraic identities only, no constructed correction.",
     "final_independent_symbolic_suite": "12/12 independent local pytest checks passed: six 3D physical PDE/pressure/energy/chart checks, five Appendix R energy-dyad/spectral checks, one independent exact full-residual projection onto both amplitude and translation modes. No singular existence witness or full Lean proof.",
     "ci_final_test_enforcement": "Hosted unforced-torus-patching workflow now explicitly runs three pytest modules, including independent two-mode projection. Latest hosted job completion not yet confirmed.",
-    "latest_main_source": "manuscript/Unforced_Navier_Stokes.tex includes Appendices M,N,O,P,Q,R,S, no redundant N-O recap inclusion."
+    "latest_main_source": "manuscript/Unforced_Navier_Stokes.tex includes Appendices M,N,O,P,Q,R,S, no redundant N-O recap inclusion.",
+    "moving_core_flux_gate": "Appendix T: exact moving-boundary local energy law. If genuine unforced u=U+w retains compact similarity core in local L2, with bounded carrier Laplacian-shape ratio, terminal dyad inward flux must be at least (R0-p/2)(1-2^-p)/p times M0*tau^p in liminf. If local gradient correction is small the normalized limit is exact. No global L2 smallness assumed.",
+    "axisymmetric_Appendix_O_flux_diagnostic": "For the nonauthentic h=1/10 prepared axisymmetric core with Rstar^2=8/3, R0>=3/8*j_{1,1}^2=5.50573899079646; the normalized dyad inflow lower bound is >=3.49884933663390. This is a conditional necessary bound and no authenticated H8 estimate.",
+    "relative_L2_quantitative_gate": "Appendix T derives necessary inequality (1+d)^2-2^-p(1-d)^2 >= (2 R0/p)(1-2^-p)(1-Kd)^2 when global relative L2 correction limsup d<min(1,1/K).",
+    "moving_flux_independent_tests": "Six local pytest regression tests passed on moving heat-shear slab, terminal dyad law, quantitative global relative correction, similarity exponents, Bessel bound and zero-collar boundary flux. These finite tests do not certify PDE existence.",
+    "source_freeze_gate": "OPEN: original H8 source tuple and authentic pressure/frame/cutoff/positive stress still not frozen; Appendix T is a source-independent necessary condition."
   }
 }
