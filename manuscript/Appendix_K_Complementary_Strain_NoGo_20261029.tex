@@ -1,0 +1,68 @@
+\clearpage
+\section*{Appendix K. Sharp complementary-strain obstruction}
+\addcontentsline{toc}{section}{Appendix K. Sharp complementary-strain obstruction}
+\noindent\textbf{Status.} This is a source-independent theorem and an exact periodic diagnostic. The authenticated H8 singular source and the complete unforced Navier--Stokes theorem remain open.
+
+\begin{theorem}[One translation projection does not improve the worst strain]
+Let $U$ be smooth, periodic, solenoidal; $W=\partial_zU\neq0$; and $S=\tfrac12(\nabla U+\nabla U^{\mathsf T})$. Then
+\[
+\boxed{\sup_{\substack{\nabla\cdot v=0,\;\langle v,W\rangle=0\\v\in C^\infty,\;v\ne0}}
+\frac{-\int_{\mathbb T^3}v^{\mathsf T}Sv}{\|v\|_2^2}
+=\max_{x\in\mathbb T^3}[-\lambda_{\min}(S(x))]
+\ge \frac{\|S\|_{L^\infty(F)}}{\sqrt6}.}
+\]
+The trace-free constant $1/\sqrt6$ is sharp.
+\end{theorem}
+\begin{proof}
+The pointwise eigenvalue inequality gives the upper bound. For the converse choose a point $x_0$ and unit eigenvector $e$ for $\lambda_{\min}(S(x_0))$, and a unit $\xi\perp e$. With a smooth localized bump $\varphi$ near $x_0$, the periodic solenoidal packet
+\[
+v_k=\operatorname{curl}\left(\frac{\varphi}k(\xi\times e)
+\cos(k\xi\cdot(x-x_0))\right)
+=\varphi e\sin(k\xi\cdot(x-x_0))+O(k^{-1})
+\]
+satisfies $\langle v_k,W\rangle\to0$. Subtracting its orthogonal projection onto $W$ gives an admissible solenoidal packet with the same limiting quotient. Letting the bump support shrink gives the desired lower bound. For trace-free symmetric $S$, writing ordered eigenvalues as $(-m,\lambda_2,m-\lambda_2)$ with $\lambda_2\in[-m,m/2]$ shows $\|S\|_F^2\le6m^2$. Equality occurs at $(2m,-m,-m)$.
+\end{proof}
+
+\paragraph{An exact periodic witness.}
+On $(\mathbb R/2\pi\mathbb Z)^3$ put $U=K(t)\sin(z)e_x$, $W=K(t)\cos(z)e_x$,
+\[
+\psi=\sin(x)\cos(z)+\cos(x)\sin(2z),\quad
+v=(\partial_z\psi,0,-\partial_x\psi).
+\]
+Then $\nabla\cdot v=0$, $\langle v,W\rangle=0$, and exact integration gives
+\[
+\boxed{\|v\|_2^2=14\pi^3,\quad
+-\int v\cdot(v\cdot\nabla)U=3\pi^3K(t),\quad
+\frac{-\int v\cdot(v\cdot\nabla)U}{\|v\|_2^2}
+=\frac3{14}K(t).}
+\]
+Taking $K(t)=(T-t)^{-1-h}$ disproves a universal fixed-$\kappa_s$ bound of the form $\kappa_s/(T-t)$ for all complementary perturbations of this diagnostic prepared field. It is not an unforced or authentic H8 solution.
+
+\begin{proposition}[Conditional H8 supercritical-strain test]
+Suppose the \emph{authenticated} periodic H8 carrier has a region where, for $\tau=T-t$ sufficiently small,
+$|\partial_rU_z|\ge c\tau^{-1-h}$ and
+$|\partial_zU_r|\le C\tau^{-1+h}$.
+Then
+\[
+\|S\|_{L^\infty(F)}\ge\frac c{2\sqrt2}\tau^{-1-h},
+\qquad
+\Lambda_\perp(t)\ge\frac c{4\sqrt3}\tau^{-1-h}.
+\]
+Thus no all-perturbation complementary strain estimate
+$\Lambda_\perp(t)\le\kappa_s/\tau$ holds with fixed $\kappa_s$.
+\end{proposition}
+\begin{proof}
+For small $\tau$, $|S_{rz}|=\tfrac12|\partial_rU_z+\partial_zU_r|
+\ge (c/4)\tau^{-1-h}$. Thus $\|S\|_F\ge\sqrt2|S_{rz}|$ and the theorem applies.
+\end{proof}
+
+\paragraph{Subleading translation cannot erase the leading strain by itself.}
+If $\|\nabla W\|_\infty\le C_W\tau^{-3/2}$ and
+$a=o(\tau^{D})$, $D=\tfrac12-h$, then
+$\|a\operatorname{sym}\nabla W\|_\infty=o(\tau^{-1-h})$.
+The uniform all-$v$ gate remains unavailable when the authenticated
+supercritical strain assumptions hold. A dynamically restricted estimate
+on the actual nonlinear complementary correction remains conceivable.
+
+\paragraph{Release status.}
+The authentic H8 source and its pressure/stress tuple are not yet frozen in one consistent implicit-coordinate specification, so this appendix does not claim numerical values of $b$, $f$, or an H8 propagator exponent. Its theorem is verified analytically; the trigonometric witness is checked by exact symbolic integration. No complete Lean theorem or unforced singularity is claimed.
