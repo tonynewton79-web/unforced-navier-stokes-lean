@@ -1,0 +1,168 @@
+\clearpage
+\section*{Appendix T. Necessary exterior-to-core energy transport}
+\addcontentsline{toc}{section}{Appendix T. Necessary exterior-to-core energy transport}
+\noindent\textbf{Scope.} This appendix sharpens the energy-compatibility
+boundary of Appendix R while permitting a globally non-negligible
+exterior correction. Its transport law is a necessary consequence of
+the classical smooth unforced Navier--Stokes energy equation; neither
+a positive H8 stress nor a singular unforced solution is constructed.
+
+\paragraph{Local conservation and the moving boundary.}
+Let $u$ be a smooth periodic divergence-free solution at unit viscosity,
+and let $\pi$ be its physical periodic pressure. Put
+$e=\frac12|u|^2$. The exact pointwise identity is
+\begin{equation}\label{eq:T-local-energy}
+ \partial_t e+
+ \nabla\cdot\bigl[(e+\pi)u-\nabla e\bigr]
+ =-|\nabla u|^2.
+\end{equation}
+Let $\Omega(t)\Subset\mathbb T^3$ have a smooth moving boundary,
+outward normal $n$ and normal boundary velocity $V_b\cdot n$.
+Reynolds transport gives
+\begin{equation}\label{eq:T-moving-domain}
+ \frac{d}{dt}\int_{\Omega(t)}e\,dx+
+ \int_{\Omega(t)}|\nabla u|^2\,dx+
+ \Phi(t)=0,\quad
+ \Phi(t)=\int_{\partial\Omega(t)}
+ \left[(e+\pi)u-\nabla e-eV_b\right]\cdot n\,dS.
+\end{equation}
+Here $\Phi>0$ denotes \emph{outward} transport. The
+integrated pressure flux is invariant under the time-dependent
+gauge $\pi\mapsto\pi+c(t)$ because
+$\int_{\partial\Omega}u\cdot n\,dS=0$.
+
+\paragraph{Theorem T.1 (Terminal-dyad inward-flux requirement).}
+Let $\tau=T-t$, $p>0$ and $M_0,R_0>0$.
+Assume a smooth prepared divergence-free field $U(t)$ is compactly
+supported strictly inside $\Omega(t)$, vanishing in a collar of its
+boundary, and satisfies
+\begin{equation}\label{eq:T-U-scaling}
+ \|U\|_2^2=M_0\tau^p(1+o(1)),\qquad
+ \|\nabla U\|_2^2=R_0M_0\tau^{p-1}(1+o(1)).
+\end{equation}
+Suppose the genuine unforced solution $u=U+w$ retains the carrier
+\emph{locally} in the moving core:
+\begin{equation}\label{eq:T-local-L2}
+ \|w(t)\|_{L^2(\Omega(t))}=o(\|U(t)\|_2).
+\end{equation}
+Assume additionally the dimensionless Laplacian shape ratio
+$\|U\|_2\|\Delta U\|_2/\|\nabla U\|_2^2$ remains bounded.
+Then for $I_\tau=[T-\tau,T-\tau/2]$,
+\begin{equation}\label{eq:T-inward-lower}
+ \boxed{\liminf_{\tau\downarrow0}
+ \frac{-\int_{I_\tau}\Phi(s)\,ds}{M_0\tau^p}
+ \ge \frac{1-2^{-p}}{p}\left(R_0-\frac p2\right).}
+\end{equation}
+If in addition
+$\|\nabla w(t)\|_{L^2(\Omega(t))}
+=o(\|\nabla U(t)\|_2)$,
+then \eqref{eq:T-inward-lower} holds with
+\emph{equality in the limit}.
+Consequently $R_0>p/2$ requires a positive, leading-order
+inward energy transfer across the moving boundary.
+The theorem does not require $w$ to be small in global $L^2$.
+
+\paragraph{Proof.}
+Since $U$ is supported within $\Omega(t)$, the local retention
+condition implies
+\[
+ E_\Omega(t):=\int_{\Omega(t)}e\,dx
+ =\frac12 M_0\tau^p(1+o(1)).
+\]
+The collar permits integration by parts without surface terms:
+\[
+ \langle\nabla u,\nabla U\rangle_{L^2(\Omega)}
+ =\|\nabla U\|_2^2+\langle w,-\Delta U\rangle_{L^2(\Omega)}.
+\]
+By Cauchy--Schwarz and the bounded shape ratio,
+$\|\nabla u\|_{L^2(\Omega)}^2
+\ge(1-o(1))\|\nabla U\|_2^2$.
+The stronger gradient-retention condition makes this
+asymptotic an equality.
+Integrating \eqref{eq:T-moving-domain} over $I_\tau$ gives
+\[
+ -\int_{I_\tau}\Phi(s)\,ds
+ =E_\Omega(T-\tau/2)-E_\Omega(T-\tau)
+ +\int_{I_\tau}\!\int_{\Omega(s)}
+ |\nabla u|^2\,dx\,ds.
+\]
+The first term is
+$-\frac12M_0(1-2^{-p})\tau^p+o(\tau^p)$;
+the second is at least
+$(1-o(1))R_0M_0(1-2^{-p})\tau^p/p$.
+Together they prove \eqref{eq:T-inward-lower}.
+\hfill$\square$
+
+\paragraph{Corollary T.2 (Source-independent axisymmetric diagnostic).}
+For the compact axisymmetric solenoidal Appendix O prepared
+profile, $h=1/10$, $p=1/5$, $X_*=1$, $|\eta|\le1/2$.
+The transverse disk radius obeys $R_*^2=8/3$.
+Because the horizontal Cartesian components of an axisymmetric
+vector have angular order one and the axial component has zero
+horizontal mean, the exact disk inequalities in Appendix O imply
+\[
+ R_0\ge\frac{3}{8}j_{1,1}^2
+ =5.50573899079645\ldots .
+\]
+Therefore any unforced solution satisfying the local-retention
+hypotheses of Theorem T.1 for this diagnostic must obey
+\begin{equation}\label{eq:T-diagnostic-influx}
+ \liminf_{\tau\downarrow0}
+ \frac{-\int_{I_\tau}\Phi(s)\,ds}{M_0\tau^{1/5}}
+ \ge \frac{1-2^{-1/5}}{1/5}
+ \left(\frac38j_{1,1}^2-\frac1{10}\right)
+ =3.49884933663390\ldots .
+\end{equation}
+The Bessel eigenvalue is classical; the numerical display is
+a rounding of an exact spectral expression, not a certificate
+for the non-authentic Appendix O source coefficients.
+
+\paragraph{Proposition T.3 (An isolated compact core cannot retain).}
+Under the hypotheses of Theorem T.1 with $R_0>p/2$,
+if $w=0$ in an open collar of $\partial\Omega(t)$ for all
+sufficiently late times, then no such unforced solution exists.
+Indeed $U=0$ in that collar, hence $u=\nabla u=e=0$
+on the moving boundary and \eqref{eq:T-moving-domain} has
+$\Phi=0$, contradicting \eqref{eq:T-inward-lower}.
+More generally, any proposed boundary estimates making
+$\int_{I_\tau}|\Phi(s)|\,ds=o(\tau^p)$ contradict the same theorem.
+
+\paragraph{A quantitative global-error alternative.}
+Let $\epsilon(t)=\|u(t)-U(t)\|_2/\|U(t)\|_2$ globally,
+$K=\limsup_{t\uparrow T}
+ \|U\|_2\|\Delta U\|_2/\|\nabla U\|_2^2<\infty$,
+and $\delta=\limsup_{t\uparrow T}\epsilon(t)$.
+If $0\le\delta<\min\{1,1/K\}$, then the exact
+global unforced energy law and the same projection argument give
+the necessary inequality
+\begin{equation}\label{eq:T-global-delta}
+ \boxed{(1+\delta)^2-2^{-p}(1-\delta)^2
+ \ge \frac{2R_0}{p}(1-2^{-p})(1-K\delta)^2.}
+\end{equation}
+To prove it, bound the early dyad energy above by
+$(1+\delta+o(1))^2M_0\tau^p$ and the late energy
+below by $(1-\delta+o(1))^2M_0 2^{-p}\tau^p$.
+Meanwhile $\|\nabla u\|_2^2\ge
+(1-K\delta-o(1))^2\|\nabla U\|_2^2$.
+Insert these into the energy identity and pass to the limit.
+At $\delta=0$ this recovers Theorem R.1's
+necessary bound $R_0\le p/2$.
+No numerical value for the authentic H8 ratio $K$ is asserted.
+
+\paragraph{Where the exterior correction enters.}
+Since $U$ and all its derivatives vanish on the selected
+boundary collar, the integrand of the exact flux becomes
+\[
+ \left[\left(\frac{|w|^2}{2}+\pi\right)w
+ -\nabla\left(\frac{|w|^2}{2}\right)
+ -\frac{|w|^2}{2}V_b\right]\cdot n.
+\]
+Its nonlocal pressure trace is essential; neither the
+amplitude and translation ODEs nor the pointwise stress cone
+provides the required sign or size.
+The decisive next source-specific certificate is a lower bound
+on this \emph{actual} inward pressure--convection--viscous--boundary
+flux on every sufficiently late dyad while independently proving
+the complementary PDE and pointwise terminal retention.
+The authentic H8 source tuple remains unfrozen.
+The complete unforced Navier--Stokes theorem remains OPEN.
