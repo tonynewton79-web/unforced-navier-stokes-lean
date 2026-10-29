@@ -13,7 +13,11 @@
       "geometry": "T3",
       "status": "OPEN",
       "source": "docs/superpowers/specs/2026-10-25-unforced-torus-integration-design.md",
-      "lean_declarations": ["UnforcedPatching.UnforcedPeriodicCandidate", "UnforcedPatching.unforcedTargetStatement", "UnforcedPatching.candidate_initial_not_zero"],
+      "lean_declarations": [
+        "UnforcedPatching.UnforcedPeriodicCandidate",
+        "UnforcedPatching.unforcedTargetStatement",
+        "UnforcedPatching.candidate_initial_not_zero"
+      ],
       "kernel_check": null,
       "remaining": "Physical candidate interface and explicit torus-cell finite-energy predicate now compile locally. No constructive witness, no proof of the open existential target, and no GitHub CI receipt yet."
     },
@@ -33,7 +37,10 @@
       "geometry": "T3",
       "status": "PAPER_CONDITIONAL",
       "source": "Carrier_Independent_Structured_Stress_Route_FINAL_COLOUR.tex, Sections 2-4, H2/H6",
-      "lean_declarations": ["UnforcedPatching.unitSpatialPeriodsOn_add", "UnforcedPatching.spatialDivergence_add"],
+      "lean_declarations": [
+        "UnforcedPatching.unitSpatialPeriodsOn_add",
+        "UnforcedPatching.spatialDivergence_add"
+      ],
       "kernel_check": null,
       "remaining": "Addition preserves periods and divergence under stated regularity, locally kernel-checked. Still must construct the compact periodic field and prove force/mean/pressure identities and regular graph bounds."
     },
@@ -53,7 +60,34 @@
       "geometry": "T3",
       "status": "OPEN",
       "source": "Carrier_Independent_Structured_Stress_Route_FINAL_COLOUR.tex, equation finalH8weighted and final proof boundary",
-      "lean_declarations": ["UnforcedPatching.h8_budget_identity", "UnforcedPatching.sevenRay_positive_floor", "UnforcedPatching.sevenRayCorrection_bound_fourField", "UnforcedPatching.sevenRay_fourField_factor14_sharp", "UnforcedPatching.sevenRay_positive_floor_of_fourField", "UnforcedPatching.quarter_source_covariance_exact", "UnforcedPatching.quarter_tracefree_rankOne", "UnforcedPatching.quarter_physical_axial_efficiency", "UnforcedPatching.radial_axial_carrier_derivative", "UnforcedPatching.axialPrimitive_partialAxial", "UnforcedPatching.meridional_correction_divergence", "UnforcedPatching.radialMoment_relation", "UnforcedPatching.mixedCarrier_radial_balance", "UnforcedPatching.sourceMatched_axialStress", "UnforcedPatching.quarter_fourField_gauge_exact", "UnforcedPatching.fourFieldPhysical_entry_bound", "UnforcedPatching.fourFieldPhysical_trace_zero", "UnforcedPatching.fourFieldPhysical_symmetric", "UnforcedPatching.fourFieldPhysical_recover_coordinates", "UnforcedPatching.fourFieldPhysical_azimuthal_diagonal_zero", "UnforcedPatching.fourFieldPhysical_meridional_diagonals", "UnforcedPatching.original_seven_coefficient_cone_exact", "UnforcedPatching.original_cone_dual_upper", "UnforcedPatching.one_sided_positive_cone_dual_upper", "UnforcedPatching.rotating_fourField_frobenius", "UnforcedPatching.rotated_oneSided_dual_upper"],
+      "lean_declarations": [
+        "UnforcedPatching.h8_budget_identity",
+        "UnforcedPatching.sevenRay_positive_floor",
+        "UnforcedPatching.sevenRayCorrection_bound_fourField",
+        "UnforcedPatching.sevenRay_fourField_factor14_sharp",
+        "UnforcedPatching.sevenRay_positive_floor_of_fourField",
+        "UnforcedPatching.quarter_source_covariance_exact",
+        "UnforcedPatching.quarter_tracefree_rankOne",
+        "UnforcedPatching.quarter_physical_axial_efficiency",
+        "UnforcedPatching.radial_axial_carrier_derivative",
+        "UnforcedPatching.axialPrimitive_partialAxial",
+        "UnforcedPatching.meridional_correction_divergence",
+        "UnforcedPatching.radialMoment_relation",
+        "UnforcedPatching.mixedCarrier_radial_balance",
+        "UnforcedPatching.sourceMatched_axialStress",
+        "UnforcedPatching.quarter_fourField_gauge_exact",
+        "UnforcedPatching.fourFieldPhysical_entry_bound",
+        "UnforcedPatching.fourFieldPhysical_trace_zero",
+        "UnforcedPatching.fourFieldPhysical_symmetric",
+        "UnforcedPatching.fourFieldPhysical_recover_coordinates",
+        "UnforcedPatching.fourFieldPhysical_azimuthal_diagonal_zero",
+        "UnforcedPatching.fourFieldPhysical_meridional_diagonals",
+        "UnforcedPatching.original_seven_coefficient_cone_exact",
+        "UnforcedPatching.original_cone_dual_upper",
+        "UnforcedPatching.one_sided_positive_cone_dual_upper",
+        "UnforcedPatching.rotating_fourField_frobenius",
+        "UnforcedPatching.rotated_oneSided_dual_upper"
+      ],
       "kernel_check": null,
       "remaining": "Lean checks sharp support upper bounds for the original absolute budget and asymmetric ONE-SIDED coefficient floor, with exact rational pointwise extremizers. The original manufactured meridional test excludes the ABSOLUTE correction budget. A separate exact rational one-sided support bound J>256/40425+1/10000 shows that SAME diagnostic field does not obstruct the larger cone; no stress follows. The NEW rotating-frame Lean theorems prove the exact EHE^T Frobenius dual-coordinate pullback and resulting pointwise positive-cone dual bound for arbitrary 3x3 frame values. These do NOT formalize spatial differentiation, a compact inverse or the necessary integrated inequality. Genuine H8 residual g-Pdiv(ρR*) and E(r,z) profiles remain unauthenticated; see H8_AUTHENTIC_SOURCE_BOUNDARY.md. STILL OPEN: source provenance, rotated frame derivative terms, support/moment compatibility, weighted inverse or a true-source dual no-go, and the full PDE proof."
     },
@@ -63,7 +97,9 @@
       "geometry": "T3",
       "status": "OPEN",
       "source": "unforced-navier-stokes-lean/README.md: core range, 4 M_G C_B eta < 1, completeness",
-      "lean_declarations": ["UnforcedClosure.fixedPoint_implies_zero_residual"],
+      "lean_declarations": [
+        "UnforcedClosure.fixedPoint_implies_zero_residual"
+      ],
       "kernel_check": null,
       "remaining": "Prove actual PDE operator/right-inverse range and contraction in complete Banach graph spaces; existing abstract Lean lemma alone is insufficient."
     },
@@ -73,7 +109,11 @@
       "geometry": "T3",
       "status": "OPEN",
       "source": "Unforced_Finite-Time_Blow-Up_for_Navier-Stokes.tex, Part III and Appendix I; frozen upstream PhysicalResidualBridge",
-      "lean_declarations": ["UnforcedPatching.navierStokesResidual_add", "UnforcedPatching.navierStokesResidual_timeGauge", "UnforcedPatching.physicalCorrection_closes"],
+      "lean_declarations": [
+        "UnforcedPatching.navierStokesResidual_add",
+        "UnforcedPatching.navierStokesResidual_timeGauge",
+        "UnforcedPatching.physicalCorrection_closes"
+      ],
       "kernel_check": null,
       "remaining": "Full residual addition, time-only pressure-gauge invariance, and conditional physical correction closure locally kernel-checked. Still must construct an actual correction satisfying that equation for all points/times and establish periodic smoothness and terminal growth without forcing."
     },
@@ -83,7 +123,10 @@
       "geometry": "T3",
       "status": "OPEN",
       "source": "Exact_Local_Unforced_Terminal_Core_Dynamics_JFM_FINAL.tex, core axis trace; PR #1 Edition XLII (short-time torque only)",
-      "lean_declarations": ["UnforcedPatching.speedUnbounded_add_subleading", "UnforcedPatching.speedUnbounded_add_bounded"],
+      "lean_declarations": [
+        "UnforcedPatching.speedUnbounded_add_subleading",
+        "UnforcedPatching.speedUnbounded_add_bounded"
+      ],
       "kernel_check": null,
       "remaining": "A local Lean theorem verifies speed retention conditionally under a strict relative correction bound α < 1 (or a uniform bound). Still construct the leading singular physical field and prove the required bound for an actual global correction; G7 remains OPEN."
     },
@@ -105,5 +148,12 @@
     "variable_frame_enclosure": "prior cell-mass-only physical test statement invalid; corrected integral test and certified angular-test variation error required",
     "authentic_H8_tuple": "MISSING; no source-matched stress feasibility conclusion",
     "global_unforced_theorem": "OPEN; no Lean existential witness"
+  },
+  "research_additions_2026_10_29": {
+    "global_energy_compatibility": "Appendix R gives a rigorous conditional necessity R0<=p/2 for a globally L2-subleading unforced correction under smooth similarity energy and bounded Laplacian-shape ratio; Appendix O confined h=1/10 prototype violates it by a rigorous disk spectral bound.",
+    "exterior_energy_route": "OPEN: A globally non-negligible exterior correction might evade the conditional energy obstruction; joint pressure, energy, complementary propagator and pointwise-retention estimates absent.",
+    "amplitude_translation_dyad": "Appendix Q supplies exact necessary terminal-dyad injection identities; no authenticated source-specific nonlinear injection certificate.",
+    "artifact_status": "Main cumulative LaTeX includes Appendices M through R. Appendix R five algebraic/spectral tests independently passed locally; hosted CI and full source-compiled PDF remain pending.",
+    "global_unforced_theorem": "OPEN; no physical PDE witness or hypothesis-free Lean theorem."
   }
 }
