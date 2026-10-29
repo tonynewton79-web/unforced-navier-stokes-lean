@@ -1,0 +1,142 @@
+\clearpage
+\section*{Appendix Q. Two-mode terminal-dyad compatibility for compact H8 carriers}
+\addcontentsline{toc}{section}{Appendix Q. Two-mode terminal-dyad compatibility}
+\noindent\textbf{Scope.}
+This appendix derives necessary forcing laws from the exact coupled modulation
+equations of Appendix M and the profile-scaling hypotheses of Appendices N--O.
+Its diagnostic constants concern the prepared field of Appendix O, not an
+authenticated singular H8 carrier. The unforced Navier--Stokes problem remains open.
+
+\paragraph{Exact equations.}
+Put $\tau=T-t$, $0<h<1/6$,
+$A=\frac12+h$, $D=\frac12-h$, $p=\frac12-3h$, and
+$W=\partial_zU$.
+For a smooth divergence-free periodic prepared carrier $U$, define
+$G=U_t-\Delta U+\mathbb P[(U\cdot\nabla)U]$ and
+$\mathcal B(f,g)=\mathbb P[(f\cdot\nabla)g]$.
+Write the unforcing correction in the moving orthogonal two-mode frame
+\[
+ w=\alpha U+aW+v,\qquad \beta=1+\alpha,\qquad
+ \langle v,U\rangle=\langle v,W\rangle=0.
+\]
+Let $M=\|U\|_2^2$, $N=\|W\|_2^2$ and
+\[
+ c_A=\frac{\langle G,U\rangle}{M},\qquad
+ g_T=\frac{\langle G,W\rangle}{N},\qquad
+ b_T=\frac{\langle\partial_zG,W\rangle}{N},\qquad
+ e_T=\frac{\langle\mathcal B(U,U),W\rangle}{N}.
+\]
+The exact equations established in Appendix M are
+\begin{align}
+ \beta'+c_A\beta &= a\,\frac{Ng_T}{M}+J_A,
+ \label{eq:Q-amplitude}\\
+ a'+b_Ta &= -\beta g_T-\alpha e_T+J_T,
+ \label{eq:Q-translation}
+\end{align}
+where, with $\mathcal L_U f=\Delta f-\mathcal B(U,f)-\mathcal B(f,U)$,
+\begin{align*}
+ J_A&=-\frac{\langle\mathcal B(w,w),U\rangle}{M}
+       +\frac{\langle v,\mathcal L_U^*U+U_t\rangle}{M},\\
+ J_T&=-\frac{\langle\mathcal B(w,w),W\rangle}{N}
+       +\frac{\langle v,\mathcal L_U^*W+W_t\rangle}{N}.
+\end{align*}
+Both injections are exact quantities; they are not assumed small.
+
+\paragraph{Theorem Q.1 (Simultaneous terminal-dyad compatibility).}
+Assume $M_0,N_0>0$, real constants $c_0,g_0$, and some $C>0$
+satisfy, as $\tau\downarrow0$,
+\[
+ M=\tau^p(M_0+o(1)),\quad N=\tau^{-A}(N_0+o(1)),\quad
+ c_A=\frac{c_0+o(1)}{\tau},\quad
+ g_T=\tau^{-A}(g_0+o(1)),
+\]
+together with $|b_T|\le C/\tau$, $|e_T|\le C\tau^{-A}$.
+If a full unforcing correction satisfies the simultaneous retention laws
+\[
+ \alpha(t)=o(1),\qquad a(t)=o(\tau^D),
+\]
+then for $I_\tau=[T-\tau,T-\tau/2]$,
+\begin{align}
+ \lim_{\tau\downarrow0}\int_{I_\tau}J_A(s)\,ds
+   &=c_0\log2,\label{eq:Q-inject-A}\\
+ \lim_{\tau\downarrow0}\tau^{-D}\int_{I_\tau}J_T(s)\,ds
+   &=g_0\,\frac{1-2^{-D}}{D}.
+   \label{eq:Q-inject-T}
+\end{align}
+In particular, if $c_0\ne0$ then $J_A=o(\tau^{-1})$ is
+incompatible with amplitude retention; if $g_0\ne0$ then
+$J_T=o(\tau^{-A})$ is incompatible with translation retention.
+These statements are necessary conditions, not sufficient existence criteria.
+
+\paragraph{Proof.}
+Write $a=\tau^D\varepsilon_a(\tau)$ with
+$\varepsilon_a(\tau)\to0$.
+The exponent identity $2A+p=1+D$ implies
+\[
+ a\,\frac{Ng_T}{M}
+  =\varepsilon_a(\tau)
+    \frac{N_0g_0/M_0+o(1)}{\tau}=o(\tau^{-1}).
+\]
+Integration of \eqref{eq:Q-amplitude} over $I_\tau$ gives
+$\beta(T-\tau/2)-\beta(T-\tau)=o(1)$,
+$\int_{I_\tau}c_A\beta\,ds\to c_0\log2$, and an $o(1)$
+integral of the geometric coupling. This establishes
+\eqref{eq:Q-inject-A}.
+For \eqref{eq:Q-translation}, the endpoint difference and the
+integrals of $b_Ta$ and $\alpha e_T$ are each $o(\tau^D)$.
+Since $A+D=1$,
+\[
+ \int_{I_\tau}\beta g_T\,ds
+ =g_0\int_{\tau/2}^{\tau}u^{-A}\,du+o(\tau^D)
+ =g_0\frac{1-2^{-D}}D\,\tau^D+o(\tau^D).
+\]
+Rearrangement proves \eqref{eq:Q-inject-T}. The pointwise
+smallness consequences follow by integration. \hfill$\square$
+
+\paragraph{Translation damping alone is insufficient.}
+For $b_0>D$ the forced scalar equation
+$a'+(b_0/\tau)a=-g_0\tau^{-A}$
+has the exact general solution
+\[
+ a(t)=-\frac{g_0}{b_0-D}\tau^D+C_1\tau^{b_0}.
+\]
+Thus damping of its homogeneous mode does not imply the strict
+$a=o(\tau^D)$ retention condition when $g_0\ne0$.
+
+\paragraph{Numerical prepared-field diagnostic.}
+The non-authentic Appendix O prototype with $h=1/10$
+has $A=3/5$, $D=2/5$, $p=1/5$, and reports convergent,
+not interval-certified quadratures
+\[
+ \begin{gathered}
+ c_0\simeq27.0163023544,\qquad
+ b_0\simeq43.4741340312,\qquad
+ g_0=e_0\simeq0.0477816887268,\\
+ M_0\simeq0.829691939536,\qquad
+ N_0\simeq9.33098522102.
+ \end{gathered}
+\]
+Under the hypotheses of Theorem Q.1 these would require
+\[
+ \int_{I_\tau}J_A\,ds\longrightarrow18.7262738\ldots,\qquad
+ \tau^{-2/5}\int_{I_\tau}J_T\,ds
+ \longrightarrow0.0289248503\ldots .
+\]
+Neglecting $J_T$ in a scalar approximation instead predicts
+$a/\tau^{2/5}\to-0.00110929\ldots$,
+which does not meet the strict translation-retention target.
+No assertion is made that the full nonlinear correction follows
+this scalar approximation.
+
+\paragraph{Outstanding proof boundary.}
+Appendix P supplies a separate conditional complementary
+azimuthal-source obstruction for reflection-symmetric, flatly
+compact swirl profiles. It does not cover the authentic
+non-reflection-symmetric H8 local core.
+A physical H8 singularity proof still requires one authenticated
+source, source-specific seven-ray stresses, a periodic pressure,
+the two independent modal injections above, complementary
+propagator control and pointwise terminal retention.
+No unforced finite-time Navier--Stokes singularity is proved here.
+
+\medskip\noindent All computational algorithms, proof-search procedures, and certificate criteria were developed by the author(s). Large Language Models (LLMs) such as ChatGPT and Claude were utilized strictly as computational assistants for debugging code and cross-checking routines. No mathematical claims rely on LLM outputs; all results are grounded exclusively in independently reproducible, rigorously verified certificates (exact, symbolic, rational, interval, exhaustive, or controlled high-precision).
