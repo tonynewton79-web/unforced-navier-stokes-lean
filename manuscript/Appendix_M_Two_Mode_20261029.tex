@@ -1,0 +1,59 @@
+\clearpage
+\section*{Appendix M. Exact two-mode H8 source-authentication gate}
+\addcontentsline{toc}{section}{Appendix M. Exact two-mode H8 source-authentication gate}
+\noindent\textbf{Status.} These are exact conditional identities, not a source-specific singularity proof. The full four-page Appendix M, tests and 84-page cumulative PDF are in the downloadable research release.
+
+\paragraph{Physical-chart reconciliation.}
+The exact core uses \(\tau=T-t=q(1-\eta^2)\), \(z=q^D\eta\), \(X=r^2/(2q)\), \(D=1/2-h\). The source-native H8 text also writes \(q=1-t\). These descriptions are not identical off axis. The physical axial chain rule is
+\[
+\partial_zF=\frac{q^{-D}}{1-2h\eta^2}
+\left[(1-\eta^2)F_\eta-2\eta XF_X+2\eta qF_q\right].
+\]
+A canonical potential on a star-shaped physical chart is
+\[
+A_c(x)=\int_0^1s\,U_c(x_0+s(x-x_0))\times(x-x_0)\,ds,\quad \nabla\times A_c=U_c.
+\]
+This chooses a gauge but does not fix a physical cutoff or H8 stress.
+
+\paragraph{Nonlinear two-mode projection.}
+Set \(\mathcal B(f,g)=\mathbb P[(f\cdot\nabla)g]\),
+\(G=U_t-\Delta U+\mathcal B(U,U)\),
+\(L_Uf=\Delta f-\mathcal B(U,f)-\mathcal B(f,U)\).
+Let \(W=\partial_zU\), \(M=\|U\|_2^2\), \(N=\|W\|_2^2\).
+Since \(\langle U,W\rangle=0\), write
+\(w=\alpha U+aW+v\), \(v\perp U,W\), \(\beta=1+\alpha\), with \(Q=I-P_A-P_T\).
+Define
+\[
+c_A=\langle G,U\rangle/M,\quad
+g_T=\langle G,W\rangle/N,\quad
+b_T=\langle\partial_zG,W\rangle/N,\quad
+e_T=\langle\mathcal B(U,U),W\rangle/N.
+\]
+The exact unforcing equation implies
+\begin{align*}
+\beta'+c_A\beta&=a\langle G,W\rangle/M
+-\langle\mathcal B(w,w),U\rangle/M
++\langle v,L_U^*U+U_t\rangle/M,\\
+a'+b_Ta&=-\beta g_T-\alpha e_T
+-\langle\mathcal B(w,w),W\rangle/N
++\langle v,L_U^*W+W_t\rangle/N,\\
+v_t&=QL_Uv-P'v-Q[\beta G+\alpha\mathcal B(U,U)
++a\partial_zG+\mathcal B(w,w)].
+\end{align*}
+Here \(P=P_A+P_T\). Both off-diagonal interactions and moving-projector couplings remain in the equations.
+
+\paragraph{Conditional amplitude obstruction.}
+The exact identity is \(c_A=\frac12(\log M)'+\|\nabla U\|_2^2/M\).
+If \(c_A\ge\kappa/(T-t)\), \(\kappa>0\), and the total right-hand-side forcing of the \(\beta\) equation is \(o((T-t)^{-1})\), integrating factors give \(\beta\to0\) and \(\alpha\to-1\). Thus a positive coefficient requires amplitude injection rather than mere smallness of the mode forcing. The actual H8 sign of \(c_A\) is not known.
+
+\paragraph{Anisotropic pointwise gate.}
+For \(\tau=T-t\), \(D=1/2-h\) and a compact-chart correction,
+\[
+\|v\|_\infty\le C\tau^{-(1+D)/2}
+\sum_{|\gamma|\le2}\tau^{(\gamma_1+\gamma_2)/2+D\gamma_3}
+\|\partial^\gamma v\|_2.
+\]
+The weighted sum must be \(o(\tau^{1/4-3h/2})\) to ensure \(v=o(\tau^{-1/2-h})\) in \(L^\infty\). A global correction additionally needs an exterior estimate.
+
+\paragraph{Remaining source-specific gate.}
+The full periodic H8 tuple is still unfrozen, so no authentic values of \(c_A,g_T,b_T,e_T,QG\), complementary propagator, or nonlinear terminal-retention bounds can yet be certified. The unforced finite-time blow-up theorem remains OPEN.
