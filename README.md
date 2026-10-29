@@ -16,6 +16,33 @@ The manuscript and associated formal-verification materials are archived on Zeno
 Zenodo record: `22903432`  
 DOI: `10.5281/zenodo.22903432`
 
+### 29 October 2026: full-equation and energy-compatibility audit
+
+The cumulative **editable** manuscript at
+\`manuscript/Unforced_Navier_Stokes.tex\` now includes the exact
+two-mode equations (Appendix M), terminal-dyad injection necessities
+(Appendix Q), and the global energy-compatibility theorem (Appendix R).
+The existing Appendices N--P remain on this research branch.
+
+For a compact similarity carrier with
+\(\|U\|_2^2\sim M_0\tau^p\) and
+\(\|\nabla U\|_2^2\sim R_0M_0\tau^{p-1}\),
+an exact unforced energy-law argument shows that, assuming a bounded
+dimensionless Laplacian-shape ratio, **global relative \(L^2\) retention**
+\(\|u-U\|_2=o(\|U\|_2)\) requires \(R_0\le p/2\).
+The confined Appendix O prepared-field prototype violates this bound
+by a rigorous disk spectral estimate. Thus the specific globally
+\(L^2\)-subleading correction route is excluded for that prototype.
+This does **not** exclude non-negligible exterior-energy corrections
+or an alternative carrier. It is not a proof of finite-time blow-up.
+
+Five mathematical regressions for the new appendix passed locally.
+They are supportive symbolic/spectral checks, not an independent
+Lean kernel theorem or a physical PDE solution. CI status is tracked
+separately. The G0--G8 proof gates and the global unforced
+Navier--Stokes existential theorem remain **OPEN**.
+See \`docs/unforced-integration/proof_gates.json\`.
+
 ## Current formal status
 
 The present Lean development **does not constitute a machine-checked proof of the full unforced three-dimensional Navier–Stokes theorem**.
