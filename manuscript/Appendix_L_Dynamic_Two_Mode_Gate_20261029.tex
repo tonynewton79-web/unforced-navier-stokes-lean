@@ -1,0 +1,116 @@
+\clearpage
+\section*{Appendix L. Dynamically restricted H8 corrections and the carrier-amplitude channel}
+\addcontentsline{toc}{section}{Appendix L. Dynamically restricted H8 corrections}
+\noindent\textbf{Claim boundary.} Exact periodic identities and diagnostic shears are proved below; the authentic gauge- and cutoff-frozen singular H8 source is not yet available and the full unforced blow-up theorem remains open.
+
+\begin{proposition}[Two orthogonal carrier modes]
+Let $U$ be a nonzero smooth periodic divergence-free prepared velocity, $W=\partial_zU\ne0$, and
+\[
+G=U_t-\Delta U+\mathbb P\operatorname{div}(U\otimes U),
+\quad M=\|U\|_2^2,\quad N=\|W\|_2^2.
+\]
+Then $\langle U,W\rangle=0$, and the canonical rank-two source projection is
+\[
+\boxed{P_{AT}f=\frac{\langle f,U\rangle}{M}U+
+\frac{\langle f,W\rangle}{N}W,\quad Q_{AT}=I-P_{AT}.}
+\]
+Its amplitude source coefficient is exactly
+\[
+\boxed{\quad c_A(t)=\frac{\langle G,U\rangle}{M}
+=\frac12\frac{d}{dt}\log M+\frac{\|\nabla U\|_2^2}{M}.\quad}
+\]
+\end{proposition}
+\begin{proof}
+Periodicity gives $\langle U,W\rangle=\frac12\int\partial_z|U|^2=0$.
+In the second identity, pair the projected prepared residual with $U$.
+Incompressibility cancels $\langle (U\cdot\nabla)U,U\rangle$ and
+periodic integration by parts gives the viscous quotient.
+\end{proof}
+
+\begin{theorem}[Sufficient two-mode terminal retention]
+Put $\tau=T-t$, $A=\frac12+h$, $D=\frac12-h$ with $A+D=1$.
+Assume $\|U\|_\infty\le C\tau^{-A}$,
+$\|W\|_\infty\le C\tau^{-1}$, and
+$\max_x|U(t,x)|\ge c\tau^{-A}$.
+Write the exact unforcing correction as
+$w=\alpha U+aW+v$ with $v=Q_{AT}w$.
+If
+\[
+\boxed{\alpha=o(1),\qquad a=o(\tau^D),\qquad
+\|v\|_\infty=o(\tau^{-A}),}
+\]
+then $\|U+w\|_\infty\ge(c-o(1))\tau^{-A}\to\infty$.
+\end{theorem}
+\begin{proof}
+Use the reverse triangle inequality at a point where $|U|$ attains
+its maximum and the identity $D-1=-A$.
+\end{proof}
+\noindent This is a sufficient implication; its hypotheses have not
+been established for the authentic H8 nonlinear correction.
+
+\paragraph{An exact cancellation that translation modulation misses.}
+For the diagnostic prepared shear $U=K(t)\sin z\,e_x$ on
+$(\mathbb R/2\pi\mathbb Z)^3$ with $K(t)=\tau^{-A}$,
+\[
+G=(K'+K)\sin z\,e_x,\quad
+W=K\cos z\,e_x,\quad
+\boxed{\frac{\langle G,W\rangle}{N}=0,\quad
+Q_{AT}G=0,\quad c_A=A/\tau+1.}
+\]
+Yet $u(t)=K(t_0)e^{-(t-t_0)}\sin z\,e_x$ is an exact
+unforced smooth shear with zero pressure. The correction
+$w=u-U$ has translation coefficient $a=0$ and complementary
+component $v=0$, but its amplitude coefficient
+\[
+\boxed{\alpha=\frac{K(t_0)e^{-(t-t_0)}}{K(t)}-1\to-1.}
+\]
+Thus even perfect translation matching and $Q_{AT}G=0$
+do not prevent cancellation of apparent singular growth.
+This deliberately forced prepared shear is not an authentic H8 carrier.
+
+\paragraph{Dynamically restricted linearized growth can be subcritical.}
+Take a different diagnostic shear $U=K(t)\sin z\,e_x$,
+$K(t)=\tau^{-1-h}$, for which $\|\nabla U\|_\infty=K$.
+The homogeneous divergence-free linearized equation has
+the explicit solution
+\[
+V=C(t)\sin y\cos z\,e_x+Z(t)\sin y\,e_z,
+\quad Z(t)=\varepsilon e^{-(t-t_0)},
+\]
+\[
+C'(t)+2C(t)=-K(t)Z(t),\quad C(t_0)=0,\qquad
+C(t)=-\varepsilon e^{-2(t-t_0)}
+\int_{t_0}^t e^{s-t_0}K(s)\,ds.
+\]
+Hence $\boxed{\|V(t)\|_\infty=O(\tau^{-h})
+=o(\tau^{-A}),\quad A=\frac12+h.}$
+At every time $\langle V,U\rangle=\langle V,W\rangle=0$.
+This shows a favorable \emph{specific} linearized orbit is possible
+despite supercritical instantaneous strain, but does not solve
+the unforcing source equation.
+
+\paragraph{Quadratic amplitude regeneration.}
+The same $V$ satisfies
+$(V\cdot\nabla)V=-ZC\sin^2y\sin z\,e_x$,
+which is already solenoidal. Thus
+\[
+\boxed{\quad
+P_A\mathbb P\operatorname{div}(V\otimes V)
+=-\frac{ZC}{2K}U,\qquad
+P_T\mathbb P\operatorname{div}(V\otimes V)=0.\quad}
+\]
+The complementary \emph{linear} orbit therefore generates a
+carrier-amplitude source at quadratic order. Any H8 nonlinear
+closure must track this mode alongside translation and the
+remaining complementary correction.
+
+\paragraph{Outstanding source-specific gates.}
+Freeze $(U_c,p_c,A_c,\chi)$, its physical frame, shapers,
+density, positive H8 stress and periodic pressure in the correct
+implicit coordinates. Calculate $M,N,c_A$, $\langle G,W\rangle/N$,
+$Q_{AT}G$, the time-dependent two-mode projection couplings and
+quadratic amplitude regeneration. Establish
+$\alpha=o(1)$, $a=o(\tau^D)$ and
+$\|Q_{AT}w\|_\infty=o(\tau^{-A})$ in one valid terminal analytic
+or anisotropic Sobolev space. The existing regression checks
+do not certify this analytic existence bridge or a complete Lean proof.
