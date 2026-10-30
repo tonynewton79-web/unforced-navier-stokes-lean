@@ -1,7 +1,7 @@
 \clearpage
 \section*{Appendix AG. GitHub mathematical verification and independent replay}
 \addcontentsline{toc}{section}{Appendix AG. GitHub verification and independent replay}
-\noindent\textbf{Purpose.} This appendix separates finite algebra verified in the research code, source-available but not yet hosted-certified Lean modules, and unproved physical Navier--Stokes construction gates. The expanded 129-page research edition includes a complete inventory and the full independently uploaded Python script. The present native LaTeX appendix records its mathematical conclusions.
+\noindent\textbf{Purpose.} This appendix separates finite algebra verified in the research code, source-available but not yet hosted-certified Lean modules, and unproved physical Navier--Stokes construction gates. The theorem inventory and independent Python checker record exactly which finite arithmetic and Fourier identities are reproducible. The constructive PDE conditions are stated separately.
 
 \paragraph{Exact stress centre and coefficient cones.}
 The pinned seven-ray source at aperture $t=1/4$ has positive reference coefficients $c_3^{(0)}=236/1229$, $c_i^{(0)}=172/1229$ for $i\ne3$. The exact minimum coefficient margin and the sharp componentwise factor are
@@ -28,16 +28,16 @@ These modules cover exact matrix reconstruction, sharp finite coefficient bounds
 The repository README reports a historical successful pinned workflow (run~12, ID~35779131542) for the \emph{abstract} nonlinear-closure file. This does not constitute a kernel proof of a source-matched H8 correction. At the time of the connected source check, hosted workflows for the current H8 pull-request head were queued rather than certified passed. Statements available in Lean source must not be described as proved by the hosted kernel for that commit until its actual build and axioms are checked.
 
 \paragraph{Independent finite-arithmetic and Fourier verification.}
-An independently uploaded script \texttt{verify\_h8\_independent.py} was run unchanged and returned 17 successful assertions. They cover exact fractional identities, complete vertex enumeration, the two scale exponents, the dyadic inward-flux constant, the logarithmic retention boundary, exact pressure polarization on a $16^3$ Fourier grid, and the unit Frobenius norm of $k\otimes k/|k|^2$. An additional 26 available local affine-pressure and research-paper Python tests passed. These are finite and symbolic checks, not a proof that the physical pressure-dominance or correction hypotheses hold.
+A separately implemented script \texttt{verify\_h8\_independent.py} returned 17 successful assertions. They cover exact fractional identities, complete vertex enumeration, the two scale exponents, the dyadic inward-flux constant, the logarithmic retention boundary, exact pressure polarization on a $16^3$ Fourier grid, and the unit Frobenius norm of $k\otimes k/|k|^2$. An additional 26 available local affine-pressure and research-paper Python tests passed. These are finite and symbolic checks, not a proof that the physical pressure-dominance or correction hypotheses hold.
 
 \paragraph{Reviewer notation clarification.}
-The short paper's equation~(1.8) has the \emph{correct denominator} in the actual LaTeX source; it was not an erroneous positive-power product. For clarity the mathematically equivalent statements are
+The corrected summability law must use the \emph{inverse square} of the relative correction deficit. For clarity the mathematically equivalent statements are
 \[
 \boxed{\sum_{n\ge0}\tau_n^{1/2-h}\delta_{\tau_n}^{-2}<\infty
 \quad\Longleftrightarrow\quad
 \sum_{n\ge0}\frac{\tau_n^{1/2-h}}{\delta_{\tau_n}^{2}}<\infty.}
 \]
-At the excluded rate $\delta_{\tau_n}^2=\tau_n^{1/2-h}\log(1/\tau_n)$, each correct summand is $1/\log(1/\tau_n)\asymp1/n$, and so the series diverges. The incorrect \emph{product} with $\delta^2$ would converge. The short-paper source uses the explicit square-root command $\backslash\texttt{sqrt}$ and the logarithmic claim is correctly formulated.
+At the excluded rate $\delta_{\tau_n}^2=\tau_n^{1/2-h}\log(1/\tau_n)$, each correct summand is $1/\log(1/\tau_n)\asymp1/n$, and so the series diverges. The incorrect \emph{product} with $\delta^2$ would converge. The logarithmic retention rate contains the square root $\sqrt{\log(1/\tau)}$.
 
 \paragraph{Full unforced physical release boundary.}
 Define $\mathcal B(f,g)=\mathbb P[(f\cdot\nabla)g]$, $G=\partial_tU-\Delta U+\mathcal B(U,U)$, and $L_Uw=\Delta w-\mathcal B(U,w)-\mathcal B(w,U)$. A complete source-matched nonlinear correction would have to satisfy
