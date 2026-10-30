@@ -5,7 +5,7 @@
 
 \paragraph{Proposition Y.1 (Fourfold selection with a symmetry caveat).}
 On the square periodic three-torus let $Q(x,y,z)=(-y,x,z)$. If a smooth divergence-free velocity satisfies $u(Qx)=Qu(x)$, its unique mean-zero Poisson pressure
-$\pi[u]=(-\Delta)^{-1}_0\partial_i\partial_j(u_i u_j)$ is $Q$-invariant. Hence its circular trace has Fourier coefficients $\pi_m=0$ unless $m\in4\mathbb Z$. The quarter-turn average of a vector field has this covariance. However, if only the prepared carrier $U$ is equivariant, the conclusion is valid for $\pi[U]$ but does \emph{not} automatically hold for $\pi[U+w]$: the exact polarization
+$\pi[u]=(-\Delta)^{-1}_0\partial_i\partial_j(u_i u_j)$ is $Q$-invariant. Hence its trace on a circle centred on the rotation axis has Fourier coefficients $\pi_m=0$ unless $m\in4\mathbb Z$. The quarter-turn average of a vector field has this covariance. However, if only the prepared carrier $U$ is equivariant, the conclusion is valid for $\pi[U]$ but does \emph{not} automatically hold for $\pi[U+w]$: the exact polarization
 $\pi[U+w]=\pi[U]+2\mathcal Q(U,w)+\pi[w]$ can break the symmetry when $w$ does. Averaging a proposed nonlinear correction does not generally preserve the correction equation.
 \begin{proof}
 The scalar Poisson source is invariant under $Q$ and the periodic mean-zero inverse is unique. Quarter-turn invariance of the scalar trace forces its Fourier support to lie in $4\mathbb Z$. The last distinction follows from pressure polarization.
@@ -77,6 +77,9 @@ Using rational bounds $314159/100000<\pi<314160/100000$ establishes the strict i
 Finally $\psi_{-\alpha}(x,y)=\psi_\alpha(y,x)$:
 coordinate exchange reverses the oriented stream velocity while retaining the corresponding Poisson pressure, and consequently reverses $\mathcal W$.
 \end{proof}
+
+\paragraph{Corollary Y.2a (Realization in short-time unforced dynamics).}
+Each smooth solenoidal datum $u_{\pm3/10}$ is admissible initial data for classical short-time smooth unforced Navier--Stokes evolution on the periodic three-torus. Its physical initial pressure is uniquely given up to a constant by the same Poisson equation as in Theorem Y.2. Thus there are genuine smooth unforced evolutions, each preserving $C_4$ symmetry by uniqueness, whose instantaneous pressure work across the fixed unit circular cylinder at the initial time has opposite signs. This is a direct consequence of standard smooth local well-posedness, \emph{not} a construction of the terminal shrinking H8 state or a finite-time singularity.
 
 \paragraph{Proposition Y.3 (Quantitative $m=4$ dominance gate).}
 For a circular reference interface $R=a(\eta)$ under Appendix~X's leading lateral solenoidality, let $q(\theta,\eta)=V_\perp\cdot e_R$ have $q_0(\eta)=0$. If the \emph{full} leading pressure trace $\Pi$ is $C_4$-invariant, then
