@@ -584,6 +584,39 @@ axisymmetric affine seed is a source-native local diagnostic only.
 No positive seven-ray inverse, exact nonlinear solution or singular
 unforced terminal result has been certified.
 
+## Localized affine pressure-source proximity: no disjoint velocity assumption (Appendix AM)
+
+The exact source-specific pressure gate should decompose the **full quadratic
+correction stress**, not the total velocity: S=u tensor u - U tensor U.
+For any compact axial plateau P_tau, split S into a cutoff-near part and
+a far part supported >=d from P_tau. The split retains every U/w
+mixed product and is valid even when the actual unforced velocity has
+analytic tails. Finite global kinetic energy gives ||S_far||_L1<=C,
+so the full periodic Poisson far pressure obeys
+
+```
+||grad pi_far||_Linfty(P_tau) <= C d^-4.
+```
+
+The source-only affine-seed physical residual is 6 eta after multiplying
+by tau^(2A+D), where A=1/2+h and D=1/2-h. For any *actual* unforced
+correction, denote the complete axial nonpressure correction by Q_z.
+Then the exact necessary inequality is
+
+```
+sup_P |partial_eta[tau^(2A) pi_near] + 6 eta|
+   <= C tau^(2h)(1+abs(log tau)) + sup_P|tau^(2A+D) Q_z|
+      + C tau^(2A+D) d^-4.
+```
+
+If the normalized Q_z is o(1), then any d >> tau^beta with
+beta=(2A+D)/4=3/8+h/4 forces near pressure to reconstruct
+-6 eta. At h=1/10 this beta is exactly 2/5, the axial shrinkage
+exponent. A purported far-only pressure solution with bounded global
+energy is then excluded. This is **not** a full four-patch H8 source
+construction, a proof of stress positivity, or the sought zero-residual
+nonlinear correction. Remaining gates stay OPEN.
+
 ## Exact nonlinear realization (G5--G7)
 
 Writing a residual as the divergence of a positive stress does **not**
