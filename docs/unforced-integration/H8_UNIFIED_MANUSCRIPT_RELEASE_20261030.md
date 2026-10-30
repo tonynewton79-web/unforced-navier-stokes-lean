@@ -43,4 +43,4 @@ int_(I_tau) ||grad w||_2^2 dt >= c delta_tau^-2 tau^(1/2-h).
 ```
 Thus retention `delta_tau=O(tau^(1/4-h/2))` would contradict the finite total unforced energy dissipation. For h=1/10 the excluded rate is `O(tau^1/5)`. The theorem does not produce a singular solution and requires its stated global correction bound.
 
-The **final unified working PDF contains 115 pages**: all 114 earlier cleaned pages and one authorless Appendix AD page. The checked PDF SHA-256 is `72c27378c73bb594b61be0b9088aadc8c055ff6d2d5edb196f99f449140f927d`. Ten local Appendix AD tests pass; hosted CI is checked separately. The complete unforced singularity claim remains OPEN.
+The **final unified working PDF contains 115 pages**: all 114 earlier cleaned pages and one authorless Appendix AD page. The checked PDF SHA-256 is `78d48e8fefe34645df6be62c03187da382f18a4ccc5749519d693365759bb578`. Ten local Appendix AD tests pass; hosted CI is checked separately. The complete unforced singularity claim remains OPEN.
