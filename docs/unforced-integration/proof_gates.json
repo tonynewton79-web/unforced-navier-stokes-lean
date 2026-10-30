@@ -169,6 +169,11 @@
     "anisotropic_interface_growth": "Given Appendix T local-retention assumptions and R0>p/2, boundary sup V_tau, gauge-invariant pressure oscillation P_tau and gradient G_tau necessarily satisfy tau^(3/2+2h)(V^3+PV+VG)+tau^(1+2h)V^2>=c>0.",
     "general_pressure_resonance": "If V_tau=O(tau^-1/2) and G_tau=O(tau^-1), pressure oscillation must be >= c_h tau^-(1+2h)=c_h tau^-2A on every late dyad. This exponent matches leading prepared velocity squared; existence of actual H8 pressure-work flux not shown.",
     "interface_test_status": "Seven independently executed local exact/symbolic/geometric tests passed; CI explicitly configured to run the current U test module, but no hosted receipt yet.",
-    "publication_status": "Full GitHub LaTeX master includes M through U and stays draft; compiled 95p working PDF starts from earlier 89p snapshot and appends T and U, so it does not replace the complete native GitHub compilation."
+    "publication_status": "Full GitHub LaTeX master includes M through U and stays draft; compiled 95p working PDF starts from earlier 89p snapshot and appends T and U, so it does not replace the complete native GitHub compilation.",
+    "periodic_poisson_signed_work": "Appendix V: pi[U+w]=pi[U]+2Q(U,w)+pi[w]; signed interface work sum on zero-U collar requires normal trace of w, cannot be inferred from pressure oscillation. Exact Fourier interface certificate with full tensor product modes and boundary normal measure.",
+    "exact_sign_reversal_diagnostic": "Non-H8 smooth periodic slab field U=(f(x)sin y,f'(x)cos y,0) with f=sin x+(1/3)sin2x and solenoidal v=(cos2y,0,0): actual Poisson pressure of U+lambda*v has integrated pressure work lambda*(224*pi^2/195) across 0<x<pi. Pressure sign reverses under lambda -> -lambda even when pressure is recomputed.",
+    "independent_signed_pressure_tests": "One pytest test with fourteen exact SymPy assertions passes locally (full zero-mean pressure, divergence-free, boundary differences, cross-pressure orthogonality, quadratic pressure zero, exact signed work); CI explicitly configured on PR.",
+    "authenticated_h8_signed_pressure_gate": "OPEN: no single frozen original Case006 H8 vector potential, cutoff, shapers, moving SO(3) frame, rho, R_star, full source G and stress; therefore no actual source-matched periodic Poisson pressure, inward flux, positive stress or nonlinear correction certificate.",
+    "full_unforced_theorem": "OPEN; neither pressure oscillation scaling nor the diagnostic sign reversal is an existence theorem."
   }
 }
