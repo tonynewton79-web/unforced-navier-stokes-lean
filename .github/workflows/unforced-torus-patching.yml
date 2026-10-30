@@ -34,6 +34,7 @@ on:
       - 'tests/test_h8_correction_halo_nogo_20261030.py'
       - 'tests/test_h8_quadratic_stress_concentration_20261030.py'
       - 'tests/test_h8_energy_dissipation_retention_20261030.py'
+      - 'tests/test_h8_logarithmic_dyadic_retention_20261030.py'
       - 'tests/test_h8_two_mode_projection_20261029.py'
       - 'tests/test_h8_positive_dual_certificate.py'
       - 'tests/test_h8_rotating_frame.py'
@@ -135,7 +136,7 @@ jobs:
           python -m unittest discover -s tests -v
 
       - name: Independently replay final physical PDE and energy-gate regressions
-        run: python -m pytest -q tests/test_h8_final_physical_pde_20261029.py tests/test_h8_global_energy_gate_20261029.py tests/test_h8_local_energy_influx_20261029.py tests/test_h8_two_mode_projection_20261029.py tests/test_h8_anisotropic_interface_20261029.py tests/test_h8_signed_poisson_pressure_20261029.py tests/test_h8_signed_poisson_fft_20261030.py tests/test_h8_signed_pressure_coefficient_20261030.py tests/test_h8_axisymmetric_pressure_mode_20261030.py tests/test_h8_c4_signed_pressure_20261030.py tests/test_h8_fourth_multipole_20261030.py tests/test_h8_anisotropic_pressure_limit_20261030.py tests/test_h8_correction_halo_nogo_20261030.py tests/test_h8_quadratic_stress_concentration_20261030.py tests/test_h8_energy_dissipation_retention_20261030.py
+        run: python -m pytest -q tests/test_h8_final_physical_pde_20261029.py tests/test_h8_global_energy_gate_20261029.py tests/test_h8_local_energy_influx_20261029.py tests/test_h8_two_mode_projection_20261029.py tests/test_h8_anisotropic_interface_20261029.py tests/test_h8_signed_poisson_pressure_20261029.py tests/test_h8_signed_poisson_fft_20261030.py tests/test_h8_signed_pressure_coefficient_20261030.py tests/test_h8_axisymmetric_pressure_mode_20261030.py tests/test_h8_c4_signed_pressure_20261030.py tests/test_h8_fourth_multipole_20261030.py tests/test_h8_anisotropic_pressure_limit_20261030.py tests/test_h8_correction_halo_nogo_20261030.py tests/test_h8_quadratic_stress_concentration_20261030.py tests/test_h8_energy_dissipation_retention_20261030.py tests/test_h8_logarithmic_dyadic_retention_20261030.py
 
       - name: Replay older exact abstract arithmetic tests
         run: python verify_unforced_closure.py
