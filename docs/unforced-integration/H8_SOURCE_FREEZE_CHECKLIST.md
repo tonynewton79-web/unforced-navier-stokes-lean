@@ -127,6 +127,56 @@ A source-specific release packet must supply:
 Neither the new Fourier test nor the pressure-exponent calculation
 discharges G4--G8.
 
+## Exact leading signed pressure coefficient (Appendix W)
+
+Appendix U's pressure-oscillation exponent alone is not a work
+certificate. On the fixed anisotropic interface
+`Omega(t)=x0+diag(tau^(1/2),tau^(1/2),tau^D)*Omega0` with
+`D=1/2-h`, `A=1/2+h`, `p=1/2-3h`, verify the
+**actual** uniform traces
+
+```
+tau^(2A) * (pi[u](t,x0+S_tau*y) - c(t)) -> Pi(y)
+tau^(1/2) * w_perp(t,x0+S_tau*y) -> V_perp(y)
+tau^(1/2) * w_z(t,x0+S_tau*y) = O(1)
+```
+
+If the genuine periodic unforced solution locally retains a
+carrier `U=0` near the boundary and Appendix T applies, then the
+leading signed pressure coefficient is
+
+```
+C_pi = int_boundary_Omega0 Pi(y) * (V_perp(y) dot n_perp(y)) dS0
+```
+
+and the **necessary** full-flux inequality is
+`C_pi+C_other <= -M0*(R0-p/2)`.
+The axial pressure interface contribution is lower by `tau^h`
+under these specific boundary assumptions; never discard it
+without checking the assumptions. Incompressibility forces the
+limiting lateral normal flux to have zero mean, making `C_pi`
+gauge independent.
+
+**A rigorous finite-mode pass/fail path is available:**
+with `K>=1`, Fourier sum `W_K`, actual boundary
+`g=u dot n`, and Fourier-normalized tensor Sobolev norm,
+
+```
+abs(W-W_K) <= sqrt(26/3) * K^(-3/2)
+              * norm_L1_boundary(g) * norm_H3_F(u tensor u).
+```
+
+Acquire source-authenticated enclosures for the finite coefficients,
+interface geometry, `g` and Sobolev tail on every requested
+terminal dyad. A positive finite sum without a certified
+tail or signed normal correlation is insufficient.
+
+**Current authenticated-source state: HOLD.** No common original H8
+vector potential, cutoff, rotating frame, shapers, density, stress
+centre, residual and exterior correction were located in the
+research branch; Appendix W gives a conditional, classical
+Fourier estimate and the needed scalar coefficient only.
+
 ## Exact nonlinear realization (G5--G7)
 
 Writing a residual as the divergence of a positive stress does **not**
