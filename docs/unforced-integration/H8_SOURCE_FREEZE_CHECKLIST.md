@@ -389,6 +389,60 @@ positive stress, a zero-residual nonlinear correction and
 pointwise terminal retention. The original unforced
 singularity theorem has not been proved.
 
+## Two-scale nonlinear exterior correction exclusion (Appendix AB)
+
+For a retained compact H8 carrier with R0>p/2, in the
+tau=T-t chart with A=1/2+h, D=1/2-h, p=1/2-3h,
+Appendix AB now adds a necessary **correction pressure gradient**.
+If w in the moving core is bounded by C*tau^-1/2, its boundary
+gradient by C*tau^-1, and the actual carrier self-pressure is
+subcritical on the zero-U collar (Appendix AA), the exact local
+energy equation and divergence theorem force:
+
+```
+pi_c = 2*Q(U,w) + pi[w]
+sup_{I_tau, Omega} |grad(pi_c)| >= c*tau^(-3/2-2h)
+int_boundary pi_c*(w dot n) = int_Omega w dot grad(pi_c).
+```
+
+An exact **two-scale correction no-go theorem** applies to a
+hypothetical unforced solution u=U+w_N+w_F when:
+
+- w_N is solenoidal and tau^-1/2 times a uniformly bounded Hs>5/2
+  compact reference-scale profile, including the interface;
+- w_F is solenoidal, its support is disjoint from U+w_N and
+  separated from the moving core by distance >=d(tau), and
+  ||w_F||_2^2<=E_* uniformly (no globally small error assumed);
+- the strong carrier reference profiles and zero-swirl collar of
+  Appendix AA hold;
+- d(tau)/tau^(3/8+h/2)->infinity.
+
+Then the **actual periodic Poisson** near pressure is subcritical,
+the far pressure gradient satisfies
+`||grad pi[w_F]||_infty(Omega)<=C E_* d^-4`, and its signed
+interface work obeys
+
+```
+|int_boundary pi[w_F]*(u dot n)|
+      <= C E_* tau^(1-h)*d^-4 = o(tau^(p-1)).
+```
+
+The other boundary fluxes are subcritical, contradicting the
+necessary inward energy transfer. **Such a correction architecture
+cannot produce the desired exact unforced H8 retained-core solution**.
+For h=1/10, the distance threshold exponent is exactly
+3/8+h/2=17/40=0.425. The statement is conditional and does not
+exclude overlapping near-field stress, a correction of stronger
+interface amplitude, loss of scaled regularity, or another mechanism.
+It is **not** a global Navier-Stokes regularity theorem.
+
+The next actual source attack must freeze complete Case006 data and
+construct an overlapping, genuinely critical near-field exterior
+coupling (or another explicit compatible mechanism), then compute
+the mixed/self periodic pressure, all signed nonpressure fluxes,
+positive one-sided seven-ray stress, exact PDE correction, and
+pointwise terminal retention. Status: OPEN.
+
 ## Exact nonlinear realization (G5--G7)
 
 Writing a residual as the divergence of a positive stress does **not**
