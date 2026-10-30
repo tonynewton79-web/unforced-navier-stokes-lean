@@ -222,6 +222,56 @@ or nonaxisymmetric H8 source. No authentic `Pi_m`, `q_m`,
 or `C_other` coefficients are available. Never count a radial
 diagnostic cancellation as a source-specific no-go theorem.
 
+## C4 symmetry and the source-specific m=4 pressure gate (Appendix Y)
+
+The quarter-turn average of a vector potential creates a C4-equivariant
+prepared carrier, but **does not by itself prove that an actual nonlinear
+exterior correction shares that symmetry**. If the *complete* periodic
+velocity is C4-equivariant, its unique mean-zero physical Poisson pressure
+has angular modes only m=0, +/-4, +/-8, ... . If only the carrier is C4,
+this Fourier selection applies to the carrier's self-pressure alone;
+the mixed and exterior correction pressures need separate analysis.
+
+Under the slice-wise normal-flux condition q_0=0, the leading signed
+pressure coefficient in the fully C4-equivariant case is
+
+```
+C_pi = C_4 + E_ge8
+C_4 = 4*pi*integral a(eta)*Re(Pi_4(eta)*conj(q_4(eta)))deta
+abs(E_ge8) <= 1/64*integral a(eta)*norm_L2(dtheta2 Pi)
+                                  *norm_L2(q)deta .
+```
+
+With a certified upper remaining-flux coefficient `C_other_plus`,
+the necessary inward-energy sign gate is verified by
+
+```
+C_4 + B_8 + C_other_plus <= -M0*(R0-p/2).
+```
+
+With certified lower remaining flux `C_other_minus`,
+the same candidate source would be excluded if
+
+```
+C_4 - B_8 + C_other_minus > -M0*(R0-p/2).
+```
+
+This is a **necessary energy-flux gate**, not a sufficient existence
+theorem. One must first authenticate the full source, prove or
+separately justify full-correction C4 symmetry, verify the periodic
+Poisson pressure and all normal-velocity/moving-interface traces,
+and control all non-pressure fluxes with rigorous error bounds.
+
+A fully reconstructed smooth C4-periodic Poisson diagnostic in
+Appendix Y gives signed work (per unit axial length) in
+(-0.0079871,-0.0079870) at alpha=3/10 and the opposite sign at
+alpha=-3/10, with exact rational Fourier/Bessel coefficients.
+Thus C4 symmetry cannot force the needed sign.
+These fields are NOT original Case006 H8 fields and are NOT
+time-dependent unforced solutions.
+
+**H8 source-specific signed coefficient status: OPEN.**
+
 ## Exact nonlinear realization (G5--G7)
 
 Writing a residual as the divergence of a positive stress does **not**
