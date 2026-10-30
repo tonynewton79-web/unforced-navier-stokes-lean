@@ -177,6 +177,51 @@ centre, residual and exterior correction were located in the
 research branch; Appendix W gives a conditional, classical
 Fourier estimate and the needed scalar coefficient only.
 
+## Axisymmetric pressure-mode filter (Appendix X)
+
+For the shrinking H8 chart, first test whether the pressure contribution
+comes only from a compact axisymmetric leading swirl. Under a
+differentiated transverse limit and an exterior boundary profile
+`w_perp=tau^-1/2 V_perp`, `w_z=tau^-1/2 V_z`, solenoidality forces
+`div_perp V_perp=0` because the axial term is `tau^h` smaller.
+
+If the leading carrier self-pressure `Pi_U` satisfies the regular
+axisymmetric transverse equation
+
+```
+-Delta_perp Pi_U = -(1/R) * partial_R(v_theta**2)
+partial_R Pi_U = v_theta**2 / R,
+```
+
+and the original core swirl vanishes in a collar of a smooth circular
+reference interface, then `Pi_U` is radially constant on that collar.
+Its critical pressure-work coefficient therefore cancels:
+
+```
+C_pi_U = int_boundary Pi_U * (V_perp dot n_perp) dS0 = 0
+```
+
+The **full** pressure `Pi` can still have nonaxisymmetric modes,
+including source shapers and cross/self terms from the exterior
+correction. With boundary lateral normal trace `q`, the next
+source-authenticated target is the exact angular coefficient
+
+```
+C_pi = 2*pi*int a(eta)*sum_{m != 0} Pi_m(eta)*q_{-m}(eta) deta.
+```
+
+Here `q_0=0` slice-by-slice. Sign closure requires an interval
+enclosure for the nonzero angular mode pairing, the independent
+`C_other` flux, and the required inequality
+`C_pi+C_other <= -M0*(R0-p/2)` under Appendix T's
+retention hypotheses.
+
+**Important scope:** the transverse Poisson limit is an assumption
+for this model, not yet proved for the original Case 006 rotating-frame
+or nonaxisymmetric H8 source. No authentic `Pi_m`, `q_m`,
+or `C_other` coefficients are available. Never count a radial
+diagnostic cancellation as a source-specific no-go theorem.
+
 ## Exact nonlinear realization (G5--G7)
 
 Writing a residual as the divergence of a positive stress does **not**
