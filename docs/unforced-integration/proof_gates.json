@@ -178,5 +178,13 @@
     "independent_fourier_pressure_replay": "Exact sympy Poisson work (14 assertions) independently reproduced in numpy Fourier pressure solver with n=16,32, lambda=-2,-1,0,1,2. All 10 numerical cases agree to better than 1e-10, with pressure zero-mean check. Diagnostic only, not authenticated H8.",
     "appendix_V_release": "Main GitHub LaTeX now inputs Appendix V and the physical torus CI workflow runs both the symbolic and independent FFT Poisson tests; no successful hosted CI receipt yet.",
     "authenticated_H8_pressure_status": "HOLD: no frozen complete original H8 source tuple, hence no source-specific pressure coefficient or signed-work certificate and no nonlinear correction."
+  },
+  "research_additions_2026_10_30": {
+    "source_search": "GitHub PR#5 research branch and prior cumulative manuscript checked; connected Drive queries Case 006/H8/Terminal Core/Carrier Independent returned no original complete source tuple. Authentic H8 source manifest remains missing; no coefficient attributed to it.",
+    "appendix_W": "For anisotropic S_tau=diag(tau^1/2,tau^1/2,tau^D) and boundary leading w_perp=tau^-1/2 V_perp, pi=tau^-2A Pi, pressure work=tau^(p-1)(C_pi+o(1)), C_pi=int_boundary_Omega0 Pi(V_perp.n_perp), with axial term lower by tau^h. Requires uniform profile asymptotics and genuine unforced u.",
+    "signed_coefficient_gate": "With Appendix T hypotheses and remaining flux=tau^(p-1)(C_other+o(1)), necessary C_pi+C_other <= -M0(R0-p/2). A matching exponent alone does not imply this sign.",
+    "certified_fourier_tail": "For actual smooth periodic u and boundary normal g, finite Fourier truncation 0<normInf(k)<=K has pressure-work error <= sqrt(26/3)*K^(-3/2)*norm_L1(g)*norm_H3F(u tensor u). Constant follows 24n^2+2 lattice shell count, multiplier Frobenius one, Cauchy Schwarz. Needs authenticated source, interval enclosures and adequate H3 bounds.",
+    "independent_regressions": "7/7 local symbolic/geometric tests passed for cofactor, exponents, signed sphere mode, lattice shell, dyadic integral, Fourier multiplier and tail constant. Not an existential Navier-Stokes proof.",
+    "claim_status": "All G0-G8 remain OPEN or PAPER_CONDITIONAL. No authentic source-specific C_pi; no positive seven-ray stress, complementary nonlinear correction or terminal retention certificate."
   }
 }
