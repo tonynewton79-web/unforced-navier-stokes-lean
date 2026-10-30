@@ -185,6 +185,12 @@
     "signed_coefficient_gate": "With Appendix T hypotheses and remaining flux=tau^(p-1)(C_other+o(1)), necessary C_pi+C_other <= -M0(R0-p/2). A matching exponent alone does not imply this sign.",
     "certified_fourier_tail": "For actual smooth periodic u and boundary normal g, finite Fourier truncation 0<normInf(k)<=K has pressure-work error <= sqrt(26/3)*K^(-3/2)*norm_L1(g)*norm_H3F(u tensor u). Constant follows 24n^2+2 lattice shell count, multiplier Frobenius one, Cauchy Schwarz. Needs authenticated source, interval enclosures and adequate H3 bounds.",
     "independent_regressions": "7/7 local symbolic/geometric tests passed for cofactor, exponents, signed sphere mode, lattice shell, dyadic integral, Fourier multiplier and tail constant. Not an existential Navier-Stokes proof.",
-    "claim_status": "All G0-G8 remain OPEN or PAPER_CONDITIONAL. No authentic source-specific C_pi; no positive seven-ray stress, complementary nonlinear correction or terminal retention certificate."
+    "claim_status": "All G0-G8 remain OPEN or PAPER_CONDITIONAL. No authentic source-specific C_pi; no positive seven-ray stress, complementary nonlinear correction or terminal retention certificate.",
+    "axisymmetric_swirl_carrier_pressure_filter": "Appendix X conditional lemma: for a regular compact radial leading swirl v_theta, transverse -Delta_perp Pi_U=-(1/R)partial_R(v_theta^2), implying partial_R Pi_U=v_theta^2/R, hence radial self-pressure constant on exterior collar. Does not establish actual nonaxisymmetric H8 Poisson limit.",
+    "leading_planar_solenoidality": "With w_perp and w_z both scaling tau^-1/2 in differentiated shrinking coordinates, and z scale tau^D, physical div w=0 forces leading div_perp V_perp=0 (axial derivative suppressed by tau^h). Cross-section normal flux average zero.",
+    "axisymmetric_pressure_no_work": "For a smooth shrinking region of revolution with circular slices and regular swirl pressure on a zero-carrier collar, C_pi,U=int_surface Pi_U V_perp.n_perp=0. The full pressure can still have nonaxisymmetric modes from shapers/cross interaction/w^2.",
+    "angular_mode_selection": "Exact source-independent formula C_pi=2pi int a(eta) sum_{m!=0} Pi_m(eta) q_{-m}(eta)deta; slice-wise q_0=0. The actual signed nonzero-m overlap remains unauthenticated.",
+    "axisymmetric_pressure_mode_tests": "9/9 independently run local SymPy tests pass for polynomial swirl, radial Poisson, pressure collar, solenoidality exponents, slice normal flux and angular coupling. GitHub CI now runs the module; hosted status not yet PASS.",
+    "status": "Original Case006 H8 source tuple still not frozen. This is a conditional cancellation and mode-filtering result, not a final unforced Navier-Stokes theorem."
   }
 }
