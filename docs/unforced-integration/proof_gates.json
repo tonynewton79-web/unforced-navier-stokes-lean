@@ -174,6 +174,9 @@
     "exact_sign_reversal_diagnostic": "Non-H8 smooth periodic slab field U=(f(x)sin y,f'(x)cos y,0) with f=sin x+(1/3)sin2x and solenoidal v=(cos2y,0,0): actual Poisson pressure of U+lambda*v has integrated pressure work lambda*(224*pi^2/195) across 0<x<pi. Pressure sign reverses under lambda -> -lambda even when pressure is recomputed.",
     "independent_signed_pressure_tests": "One pytest test with fourteen exact SymPy assertions passes locally (full zero-mean pressure, divergence-free, boundary differences, cross-pressure orthogonality, quadratic pressure zero, exact signed work); CI explicitly configured on PR.",
     "authenticated_h8_signed_pressure_gate": "OPEN: no single frozen original Case006 H8 vector potential, cutoff, shapers, moving SO(3) frame, rho, R_star, full source G and stress; therefore no actual source-matched periodic Poisson pressure, inward flux, positive stress or nonlinear correction certificate.",
-    "full_unforced_theorem": "OPEN; neither pressure oscillation scaling nor the diagnostic sign reversal is an existence theorem."
+    "full_unforced_theorem": "OPEN; neither pressure oscillation scaling nor the diagnostic sign reversal is an existence theorem.",
+    "independent_fourier_pressure_replay": "Exact sympy Poisson work (14 assertions) independently reproduced in numpy Fourier pressure solver with n=16,32, lambda=-2,-1,0,1,2. All 10 numerical cases agree to better than 1e-10, with pressure zero-mean check. Diagnostic only, not authenticated H8.",
+    "appendix_V_release": "Main GitHub LaTeX now inputs Appendix V and the physical torus CI workflow runs both the symbolic and independent FFT Poisson tests; no successful hosted CI receipt yet.",
+    "authenticated_H8_pressure_status": "HOLD: no frozen complete original H8 source tuple, hence no source-specific pressure coefficient or signed-work certificate and no nonlinear correction."
   }
 }
