@@ -56,6 +56,6 @@ The polygon of allowed joint `(A,C)` components has the six rational vertices gi
 
 ## Reproduction and journal review
 
-The published-chat research packet contains `H8_Pressure_Retention_JAMS_Research.tex`, a compiled PDF, `verify_h8_research.py` (10 tests passing locally), verification JSON, and the retained historical 115-page paper. The new LaTeX is self-contained for compilation with standard AMS-LaTeX/TikZ.
+The published-chat research packet contains `H8_Pressure_Retention_JAMS_Research.tex`, a compiled PDF, `verify_h8_research.py` (12 tests passing locally), verification JSON, and the retained historical 115-page paper. The new LaTeX is self-contained for compilation with standard AMS-LaTeX/TikZ.
 
 **Journal-facing status:** typeset in AMS style, not represented as an accepted or submission-complete JAMS article. The headline theorem is a conditional obstruction; originality and suitability for a high-selectivity journal require independent peer evaluation. This journal article does not claim an unforced Navier--Stokes finite-time blow-up example.
