@@ -1,5 +1,7 @@
 # Unforced Navier–Stokes — Lean Audit and Reproducibility Package
 
+> **Current mathematical status (30 October 2026):** The original unforced finite-time singularity construction is **NOT proved**. The latest journal-style research edition proves a **conditional pressure-driven retention obstruction**, an exact finite seven-ray cone, and a new **logarithmic dyadic summability exclusion**; it does not construct a source-matched nonlinear correction. See [the journal-style edition and precise theorem scope](docs/unforced-integration/H8_JAMS_RESEARCH_EDITION_20261030.md) and [the proof-gate ledger](docs/unforced-integration/proof_gates.json). The earlier archival manuscript title below is historical and **must not be understood as a currently verified proof of unforced blow-up**.
+
 This repository accompanies the manuscript
 
 > **Unforced Finite-Time Blow-Up for Navier–Stokes: Exact Nonlinear Closure on the Three-Dimensional Periodic Torus**  
