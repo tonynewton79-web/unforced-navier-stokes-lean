@@ -1,6 +1,6 @@
 # H8 unified manuscript layout and proof-status record
 
-This is the presentation record for the 114-page cumulative **working research snapshot**, not a declaration that the Navier--Stokes problem is solved.
+This is the presentation record for the original 114-page cumulative **working research snapshot**, not a declaration that the Navier--Stokes problem is solved.
 
 ## Single-front-matter presentation
 
@@ -34,3 +34,13 @@ These page indices refer to a cumulative **PDF presentation snapshot** assembled
 ## Remaining mathematical closure contract
 
 A theorem of unforced blow-up requires one immutable original Case 006 physical source with all four-patch overlaps, radial/axial cutoffs, the physical rotating frame, density, stress centre, a correct common residual, and periodic pressure. It also requires one nonlinear exterior correction solving the genuine zero-force equation together with the required signed inward energy flux, all positive stress floors and terminal retention. The current archive does not contain this joint authenticated witness. Do not change the theorem proof gates to CLOSED solely from the Appendix AC concentration estimate.
+
+## Appendix AD and final working snapshot
+
+An additional conditional finite-energy theorem has been incorporated as Appendix AD: under pressure-dominated inward transport, local retention ratio `delta_tau`, and global velocity bounds `||w||_infty<=C tau^-1/2`, `||U||_infty<=C tau^(-1/2-h)`, the exact correction dissipation obeys
+```
+int_(I_tau) ||grad w||_2^2 dt >= c delta_tau^-2 tau^(1/2-h).
+```
+Thus retention `delta_tau=O(tau^(1/4-h/2))` would contradict the finite total unforced energy dissipation. For h=1/10 the excluded rate is `O(tau^1/5)`. The theorem does not produce a singular solution and requires its stated global correction bound.
+
+The **final unified working PDF contains 115 pages**: all 114 earlier cleaned pages and one authorless Appendix AD page. The checked PDF SHA-256 is `72c27378c73bb594b61be0b9088aadc8c055ff6d2d5edb196f99f449140f927d`. Ten local Appendix AD tests pass; hosted CI is checked separately. The complete unforced singularity claim remains OPEN.
