@@ -521,6 +521,69 @@ The original physical source tuple, positive seven-ray stress,
 full pressure/flux, terminal-retained correction and full
 unforced finite-time singularity remain OPEN.
 
+## Affine Case006 plateau: actual periodic pressure mismatch (Appendix AF)
+
+The local diagnostic Case006 vector-potential seed
+`A0=(-y*z,x*z,0)` has curl `(-x,-y,2z)`. The affine velocity
+`u_aff=(-x,-y,2z)/(T-t)` with
+`p_aff=-3*z²/(T-t)²` solves unforced NS **locally on R3**,
+but has infinite spatial kinetic energy and cannot be the
+desired finite-energy periodic singular solution.
+
+For **any fixed compact smooth axisymmetric cutoff** chi(R,eta)
+with a plateau chi=1, set
+`R=r/tau^1/2`, `eta=z/tau^(1/2-h)`, `eps=tau^h`
+and freeze the explicit prepared field
+`U=curl[tau^-1*chi*A0]`. Then
+
+```
+U_r=tau^-1/2*[-R*(chi+eta*chi_eta)]
+U_theta=0
+U_z=tau^-(1/2+h)*[eta*(2*chi+R*chi_R)]
+Pi_tau=tau^(1+2h)*pi_periodic[U].
+```
+
+The physical zero-mean periodic pressure obeys, on the
+shrinking chart, the quantitative anisotropic Fourier bound
+
+```
+sup |partial_eta Pi_tau|
+  <= C*tau^(2*h)*(1+abs(log(tau))).
+```
+
+On the plateau the exact source-specific **unforced physical
+momentum residual** satisfies
+
+```
+tau^(3/2+h)*[U_t-Delta U+(U.grad)U+grad pi_periodic[U]]_z
+     = 6*eta+O(tau^(2*h)*(1+abs(log(tau)))).
+```
+
+Although the velocity remains affine locally, its local affine
+pressure does **not** equal the periodic pressure of the
+compactified velocity. The physical Poisson equation remains
+satisfied: its source is instead balanced predominantly by
+transverse pressure curvature.
+
+An exact unforced correction `w` must cancel this plateau
+residual. If its complete **nonpressure axial** correction term
+is subcritical relative to `tau^(-3/2-h)`, then its actual
+periodic correction pressure must satisfy
+
+```
+partial_eta[tau^(1+2h)*pi_c] = -6*eta+o(1),
+tau^(1+2h)*[pi_c(b)-pi_c(a)] = -3*(b*b-a*a)+o(1)
+for 0<=a<b<eta0 and fixed R on the plateau.
+```
+
+This is a **signed axial pressure jump**, NOT the separate
+radial interface pressure-work coefficient `C_pi`.
+The real full H8 source still needs its authentic theta-dependent
+four-patch profiles, shapers, and nontrivial cross terms; the
+axisymmetric affine seed is a source-native local diagnostic only.
+No positive seven-ray inverse, exact nonlinear solution or singular
+unforced terminal result has been certified.
+
 ## Exact nonlinear realization (G5--G7)
 
 Writing a residual as the divergence of a positive stress does **not**
