@@ -443,6 +443,60 @@ the mixed/self periodic pressure, all signed nonpressure fluxes,
 positive one-sided seven-ray stress, exact PDE correction, and
 pointwise terminal retention. Status: OPEN.
 
+## Source-independent quadratic stress concentration gate (Appendix AC)
+
+Unlike the separated-halo theorem, this conditional result permits an
+overlapping, arbitrarily nonlocal exterior correction and imposes
+no symmetry or globally small L2 correction assumption.
+
+Let u=U+w solve the genuine unforced Navier--Stokes equation,
+locally retain a compact H8 carrier as in Appendix T, and suppose
+the **dyad-integrated** sum of carrier-only pressure work and all
+nonpressure boundary fluxes is o(tau^p), with R0>p/2.
+Set delta_tau=tau^(-p/2)*sup_{I_tau} ||w||_L2(Omega(t)); then
+delta_tau->0. With complete periodic pressure pi_c=pi[U+w]-pi[U]
+and complete **quadratic velocity stress**
+
+```
+S = U tensor w + w tensor U + w tensor w
+pi_c = (-Delta)^(-1)_0 partial_i partial_j S_ij,
+```
+
+the necessary inward transport implies
+
+```
+sup_I ||grad pi_c||_L2(Omega)
+  >= c * tau^(p/2-1) / delta_tau,
+sup_I ||grad S||_L2(T3)
+  >= c * tau^(p/2-1) / delta_tau,
+tau^(1-p/2) * sup_I ||grad S||_L2(T3) -> infinity.
+```
+
+The second line follows from the exact periodic rank-one Fourier
+pressure multiplier inequality
+`||grad pi_c||_2 <= ||grad S||_2` with constant one.
+This quadratic velocity stress is **NOT** the constrained positive
+seven-ray H8 engineering stress. Do not conflate their norms or cones.
+
+**New no-go:** if an authenticated source plus correction yields
+`sup_I ||grad S||_L2(T3)=O(tau^(p/2-1))`, it cannot satisfy
+the retained-core pressure transport under these hypotheses.
+At h=1/10 the natural stress-gradient exponent is -9/10.
+For the same source the physical pointwise pressure-gradient
+requirement strengthens to
+
+```
+sup_I ||grad pi_c||_Linfty(Omega)
+ >= c * |Omega0|^-1/2 * delta_tau^-1 * tau^(-3/2-h).
+```
+
+The **remaining constructive frontier** must therefore exhibit
+a genuinely super-natural quadratic stress-gradient concentration,
+or invalidate a stated flux/retention assumption, while still
+closing all H8 source, positive-stress and nonlinear PDE requirements.
+A necessary concentration law does not construct the required
+singular near-field correction or solve Navier--Stokes.
+
 ## Exact nonlinear realization (G5--G7)
 
 Writing a residual as the divergence of a positive stress does **not**
