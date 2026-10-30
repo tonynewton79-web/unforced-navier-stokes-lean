@@ -321,6 +321,74 @@ Mandatory original H8 source-specific gate:
 **Gate remains OPEN.** A planar control model does not prove the
 original unforced Navier-Stokes singularity claim.
 
+## Periodic-to-planar pressure and near-field necessity (Appendix AA)
+
+The H8 physical component hierarchy in Appendix N is
+`Ur=tau^-1/2*Vr`, `Utheta=tau^-(1/2+h)*Vtheta`,
+`Uz=tau^-(1/2+h)*Vz` with radial length `tau^1/2`,
+axial length `tau^(1/2-h)` and `eps=tau^h`. Exact physical
+divergence, for the straight reference-chart form, gives
+
+```
+(1/R)*partial_theta Vtheta =
+  -eps*((1/R)*partial_R(R*Vr)+partial_eta Vz).
+```
+
+If the complete source is genuinely in this chart and has
+bounded convergent differentiated profiles, its leading azimuthal
+velocity is **axisymmetric**. A leading order-one m=4 swirl
+requires a compensating leading derivative and cannot be freely
+inserted into the old similarity hierarchy. Verify the actual
+implicit physical q/eta chain rule before using this conclusion.
+
+For uniformly compact strong Hs (s>5/2) reference profiles,
+the **actual periodic** carrier-only Poisson pressure has a
+rigorously justified 2D transverse limit, with the periodic-image
+pressure correction O(tau^p) unscaled. The leading
+axisymmetric swirl pressure is
+
+```
+Pi0(R,eta)=-int_R^infinity Vtheta0(s,eta)^2/s ds.
+```
+
+It is zero in a collar outside the swirl support. Thus the
+carrier-only pressure contribution to signed boundary energy work
+is o(tau^(p-1)) under the bounded exterior trace profiles of
+Appendix W. This conclusion is **only about pi[U]**:
+the nonlocal mixed `2Q(U,w)` and exterior `pi[w]` can remain
+critical, especially for correction stress sourced outside
+the compact core.
+
+For a C4-covariant pressure-generating stress with L1 size
+at most E_* supported distance d from a shrinking circular
+interface of radius ell=tau^1/2, the nonzero fourfold pressure
+modes have the rigorous upper bound
+
+```
+sup_(m in 4Z, m!=0) |pi_far_m|
+    <= C*E_* * tau^2 * d^-7.
+tau^(2A)*sup |pi_far_m| <= C*E_* tau^(3+2h)*d^-7.
+```
+
+If `d/tau^((3+2h)/7)->infinity`, the fourfold far-field
+contribution is subcritical. At h=1/10, exponent=16/35.
+This is a pressure-**stress** distance gate; it does not
+assume the whole correction is supported away from the boundary,
+and is invalid for symmetry-breaking lower angular modes.
+
+The available local Case 006 seed A=(-yz,xz,0) with radial
+cutoff chi has Ur=-r(chi+z chi_z), Uz=z(2chi+r chi_r).
+Its transverse divergence is **not** zero: its axial divergence
+cancels it. Do not apply the planar-solenoidal Appendix Z
+moment directly to this 3D seed.
+
+**Still OPEN:** freeze one complete authentic source, including
+the true off-axis chart and four-patch overlaps; certify
+correction mixed/self pressure, C_other, one-sided seven-ray
+positive stress, a zero-residual nonlinear correction and
+pointwise terminal retention. The original unforced
+singularity theorem has not been proved.
+
 ## Exact nonlinear realization (G5--G7)
 
 Writing a residual as the divergence of a positive stress does **not**
