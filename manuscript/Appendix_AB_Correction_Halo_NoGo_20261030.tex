@@ -1,0 +1,83 @@
+\clearpage
+\section*{Appendix AB. The near-field requirement for the nonlinear exterior pressure}
+\addcontentsline{toc}{section}{Appendix AB. Near-field requirement for exterior pressure}
+\noindent\textbf{Scope.} A regular correction at the shrinking H8 scale, together with a finite-energy exterior velocity whose quadratic stress remains sufficiently distant, cannot retain the rapidly dissipating prepared core in an exact unforced solution. This is a conditional exclusion, not an authentication of the original Case~006 source or a solution of the global regularity problem.
+
+\paragraph{Setup.}
+Let $\tau=T-t$, $0<h<1/6$, $A=1/2+h$, $D=1/2-h$, $p=1/2-3h$, and $\Omega(t)=x_0+S_\tau\Omega_0$, where $S_\tau=\operatorname{diag}(\tau^{1/2},\tau^{1/2},\tau^D)$ and $\Omega_0$ is fixed and smooth. Assume a compact solenoidal $U$, vanishing in a collar of the interface, obeys
+\begin{equation}\label{eq:AB-core}
+\|U\|_2^2=M_0\tau^p(1+o(1)),\qquad
+\|\nabla U\|_2^2=R_0M_0\tau^{p-1}(1+o(1)),\quad
+M_0>0,\ R_0>p/2,
+\end{equation}
+with Appendix T's bounded dimensionless Laplacian ratio. Assume also the strong compact reference-profile hypotheses and zero-swirl collar of Appendix AA. Its full \emph{periodic} self-pressure then satisfies $\sup_{\partial\Omega(t)}|\pi[U]|=o(\tau^{-2A})$.
+
+\paragraph{Theorem AB.1 (Necessary correction-pressure gradient).}
+Suppose a smooth unforced periodic solution $u=U+w$ retains the carrier locally, with $\|w\|_{L^\infty(\Omega(t))}\le C\tau^{-1/2}$ and $\|\nabla w\|_{L^\infty(\partial\Omega(t))}\le C\tau^{-1}$. Set $\pi_c=\pi[u]-\pi[U]=2\mathcal Q(U,w)+\pi[w]$, with the full mean-zero periodic Poisson bilinear form. Then some $c>0$ satisfies, for every sufficiently late terminal dyad $I_\tau=[T-\tau,T-\tau/2]$,
+\begin{equation}\label{eq:AB-gradient}
+\boxed{\sup_{s\in I_\tau}\|\nabla\pi_c(s)\|_{L^\infty(\Omega(s))}
+\ge c\tau^{-(3/2+2h)}.}
+\end{equation}
+\begin{proof}
+Appendix T forces $-\int_{I_\tau}\Phi\ge c_0\tau^p$. The convection, viscosity and moving-boundary fluxes, bounded by the interface traces and Appendix U's cofactor formula, have dyadic integral $O(\tau^{p+2h})=o(\tau^p)$. The carrier self-pressure work is also $o(\tau^p)$ from Appendix AA. Therefore the correction-pressure work has absolute dyadic integral at least $c_1\tau^p$.
+
+Since $\operatorname{div}w=0$,
+\begin{equation}\label{eq:AB-volume}
+\int_{\partial\Omega(t)}\pi_c w\cdot n\,dS
+=\int_{\Omega(t)}w\cdot\nabla\pi_c\,dx.
+\end{equation}
+The moving volume is $|\Omega(t)|=\tau^{3/2-h}|\Omega_0|$ and hence
+$\|w\|_{L^1(\Omega(t))}\le C\tau^{1-h}$. Integrating
+\eqref{eq:AB-volume} over a dyad of length $O(\tau)$ gives
+$c_1\tau^p\le C\tau^{2-h}\sup_{I_\tau}\|\nabla\pi_c\|_\infty$,
+equivalent to \eqref{eq:AB-gradient}.
+\end{proof}
+
+\paragraph{Theorem AB.2 (Exclusion of a regular near field and distant finite-energy halo).}
+Under the preceding carrier hypotheses, suppose a hypothetical smooth unforced solution admits $u=U+w_N+w_F$, with $w_N,w_F$ individually solenoidal, and the following additional structure:
+\begin{enumerate}
+\item $w_N(t,x_0+S_\tau y)=\tau^{-1/2}W^\epsilon(y)$, $\epsilon=\tau^h$, where $\sup_\epsilon\|W^\epsilon\|_{H^s(\mathbb R^3)}<\infty$, $s>5/2$, and the reference supports lie in one fixed compact set;
+\item $U+w_N$ and $w_F$ have disjoint supports, $w_F=0$ in a neighbourhood of $\overline{\Omega(t)}$, and $\operatorname{dist}(\operatorname{supp}(w_F\otimes w_F),\overline{\Omega(t)})\ge d(\tau)$, with $0<d(\tau)<d_0$ and $\|w_F\|_2^2\le E_*$;
+\item $d(\tau)/\tau^{3/8+h/2}\to\infty$.
+\end{enumerate}
+Then there is \emph{no} such exact unforced solution retaining the core with $R_0>p/2$.
+\begin{proof}
+The local correction energy is $\|w_N\|_{L^2(\Omega)}^2=O(\tau^{1/2-h})=O(\tau^{p+2h})$, so its relative $L^2$ norm is $O(\tau^h)\to0$. The disjoint supports make the \emph{full} quadratic pressure split exactly:
+\[
+\pi[u]=\pi[U+w_N]+\pi[w_F].
+\]
+Under the anisotropic reference rescaling,
+$U+w_N=\tau^{-A}(v^\epsilon+\epsilon W^\epsilon)$.
+The uniform $H^s$ bounds and the norm-one Fourier pressure multiplier used in Appendix AA show that its rescaled periodic pressure has the same limit as the carrier, namely zero on the selected boundary collar. Therefore
+$\sup_{\partial\Omega}|\pi[U+w_N]|=o(\tau^{-2A})$;
+its pressure work is $o(\tau^{p-1})$, since $u=w_N=O(\tau^{-1/2})$ on the boundary and $|\partial\Omega|=O(\tau^{1-h})$.
+
+The derivative of the three-dimensional periodic double-Riesz pressure kernel away from its pole is bounded by $C d^{-4}$. Because
+$\|w_F\otimes w_F\|_1\le E_*$ and the stress is separated,
+\begin{equation}\label{eq:AB-far-gradient}
+\|\nabla\pi[w_F]\|_{L^\infty(\Omega(t))}
+\le C E_*d(\tau)^{-4}.
+\end{equation}
+The exact divergence theorem, followed by compact divergence-free support of $U$, gives
+\[
+\int_{\partial\Omega(t)}\pi[w_F]u\cdot n\,dS
+=\int_{\Omega(t)}(U+w_N)\cdot\nabla\pi[w_F]\,dx
+=\int_{\Omega(t)}w_N\cdot\nabla\pi[w_F]\,dx.
+\]
+Its modulus is at most $C E_*\tau^{1-h}d(\tau)^{-4}$, which is $o(\tau^{p-1})$, because
+\[
+\frac{\tau^{1-h}d(\tau)^{-4}}{\tau^{p-1}}
+=\tau^{3/2+2h}d(\tau)^{-4}\longrightarrow0.
+\]
+The remaining convection, viscosity and moving-boundary fluxes have dyadic integral $O(\tau^{p+2h})$. The total outward dyadic flux is consequently $o(\tau^p)$, contrary to Appendix T's positive inward-flux requirement.
+\end{proof}
+
+\paragraph{Corollary AB.3 (Exact proximity threshold).}
+At $h=1/10$, the separation exponent is
+\begin{equation}\label{eq:AB-threshold}
+\boxed{\frac38+\frac h2=\frac{17}{40}=0.425.}
+\end{equation}
+Within Theorem AB.2's two-component class, any surviving correction must fail at least one of its regularity, separation or size assumptions. For an energy-bounded distant halo, approaching the critical distance is necessary but not sufficient. Unlike the fourfold pressure-tail bound of Appendix AA, this theorem does not require symmetry of the exterior correction.
+
+\paragraph{Boundary of the result.}
+The no-go theorem excludes a regular self-similar near correction combined with a separated finite-energy exterior halo, but does not establish existence of a singular near-field correction or of an admissible positive seven-ray stress. The genuine Case~006 H8 carrier, its complete mixed and exterior pressure, the signed remaining flux, exact unforced nonlinear correction and terminal retention remain unauthenticated. No unforced three-dimensional Navier--Stokes singularity or regularity theorem is proved.
