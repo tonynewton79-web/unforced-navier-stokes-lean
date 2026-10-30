@@ -1,0 +1,110 @@
+\clearpage
+\section*{Appendix V. Periodic Poisson pressure and the signed interface-work gate}
+\addcontentsline{toc}{section}{Appendix V. Periodic Poisson pressure and signed interface work}
+\noindent\textbf{Scope.} We isolate the signed requirement missing from the pressure-amplitude condition of Appendix U. The exact Fourier counterexample is a smooth diagnostic, not an authenticated H8 carrier, nonlinear correction, or finite-time singularity.
+
+\paragraph{The complete Poisson pressure.}
+For smooth periodic divergence-free vector fields $F,H$, write
+\[
+ \mathcal Q(F,H)=(-\Delta)^{-1}_0\partial_i\partial_j(F_iH_j),
+ \qquad \pi[u]=\mathcal Q(u,u),
+\]
+where $(-\Delta)^{-1}_0$ denotes the zero-mean periodic inverse. Repeated indices are summed. Symmetry of the double derivative implies $\mathcal Q(F,H)=\mathcal Q(H,F)$, hence for $u=U+w$
+\begin{equation}\label{eq:V-polarization}
+ \boxed{\pi[U+w]=\pi[U]+2\mathcal Q(U,w)+\pi[w].}
+\end{equation}
+For a region $\Omega(t)$ with $U=0$ on a collar of its boundary, the outward physical pressure work is exactly
+\begin{equation}\label{eq:V-pressurework}
+ \boxed{\mathscr W_\pi(t)=\int_{\partial\Omega(t)}
+ [\pi[U]+2\mathcal Q(U,w)+\pi[w]]\, (w\cdot n)\,dS.}
+\end{equation}
+Since $\int_{\partial\Omega}w\cdot n\,dS=0$, this is gauge invariant. There is no sign constraint from an oscillation bound for $\pi$ alone.
+
+\paragraph{Proposition V.1 (Exact signed Fourier certificate).}
+On $\mathbb T^3=(\mathbb R/2\pi\mathbb Z)^3$, set
+$\widehat f(k)=(2\pi)^{-3}\int f(x)e^{-ik\cdot x}\,dx$
+and $\widehat\mu(k)=\int_{\partial\Omega}g(x)e^{-ik\cdot x}\,dS$,
+with $g=u\cdot n$. For smooth periodic $u$,
+\begin{equation}\label{eq:V-Fourier}
+ \boxed{\int_{\partial\Omega}\pi[u]g\,dS
+ =-\sum_{k\in\mathbb Z^3\setminus\{0\}}
+ \frac{k_i k_j}{|k|^2}\widehat{u_i u_j}(k)\widehat\mu(-k).}
+\end{equation}
+The sum converges absolutely by smoothness of the pressure. It is invariant under the pressure gauge because $\widehat\mu(0)=0$. If $U$ vanishes in a collar, then $\pi[U]$ is harmonic in that collar, but its boundary trace need not be constant.
+\begin{proof}
+The Fourier transform of $-\Delta\pi=\partial_i\partial_j(u_i u_j)$ is
+$\widehat\pi(k)=-k_i k_j|k|^{-2}\widehat{u_i u_j}(k)$ for $k\ne0$.
+Expand the pressure on the boundary and integrate the series. If $U$
+vanishes in a collar, the Poisson source vanishes there. \hfill$\square$
+\end{proof}
+
+\paragraph{Proposition V.2 (Exact pressure-work sign reversal).}
+Define on $\mathbb T^3$
+\[
+ f(x)=\sin x+\tfrac13\sin2x,\quad
+ U=(f(x)\sin y,\ f'(x)\cos y,\ 0),\quad
+ v=(\cos2y,0,0),\quad u_\lambda=U+\lambda v.
+\]
+Let $\Omega=(0,\pi)\times\mathbb T^2$, and construct the \emph{full}
+zero-mean Poisson pressure $\pi_\lambda=\pi[u_\lambda]$ for each real
+$\lambda$. Every $u_\lambda$ is smooth, divergence free and periodic;
+$U\cdot n=0$ on the two boundary faces. Then
+\begin{equation}\label{eq:V-sign}
+ \boxed{\int_{\partial\Omega}\pi_\lambda u_\lambda\cdot n\,dS
+ =\frac{224\pi^2}{195}\lambda.}
+\end{equation}
+Thus choosing $\lambda$ of either sign reverses the instantaneous
+pressure-work direction even after consistently recomputing its pressure.
+This is not a family of singular Navier--Stokes solutions.
+\begin{proof}
+The carrier pressure is exactly
+\[
+ \pi[U]=-\tfrac12 f(x)^2+\tfrac5{18}
+ +b(x)\cos2y,\quad
+ b(x)=-\tfrac{13}{36}-\tfrac3{10}\cos x+\tfrac1{78}\cos3x.
+\]
+Direct differentiation verifies
+$-\Delta\pi[U]=\partial_i\partial_j(U_iU_j)$ and zero mean.
+Since $f(0)=f(\pi)=0$, the normal velocity on each face is
+$\lambda\cos2y$. The pressure difference is
+\[
+ \pi[U](\pi,y,z)-\pi[U](0,y,z)
+ =\tfrac{112}{195}\cos2y.
+\]
+The mixed pressure $2\lambda\mathcal Q(U,v)$ only contains the
+$y$-frequencies $1$ and $3$, orthogonal to $\cos2y$; and
+$\pi[v]=0$ because $v_x$ is independent of $x$.
+Integrating $\cos^22y$ over $y$ and the constant $z$ factor gives
+$\lambda(112/195)\pi(2\pi)=224\pi^2\lambda/195$.
+\hfill$\square$
+\end{proof}
+
+\paragraph{The actual H8 signed certificate.}
+With $\mathscr W_{\pi,U}$, $\mathscr W_{\pi,Uw}$ and
+$\mathscr W_{\pi,w}$ denoting the three terms in
+\eqref{eq:V-pressurework}, and $\Phi_{\rm other}$ the convection,
+viscous and boundary-motion flux from Appendix T, an actual unforced
+solution under the local-retention hypotheses must obey
+\begin{equation}\label{eq:V-necessary-gate}
+ -\int_{I_\tau}
+ [\mathscr W_{\pi,U}+\mathscr W_{\pi,Uw}
+ +\mathscr W_{\pi,w}+\Phi_{\rm other}]\,dt
+ \ge\left[\frac{1-2^{-p}}p\left(R_0-\frac p2\right)+o(1)\right]
+ M_0\tau^p.
+\end{equation}
+The complete signed pressure and boundary-normal velocity must be
+computed or rigorously enclosed for \emph{one common authentic H8 source}
+and a correction satisfying the full nonlinear unforced equation.
+A lower bound on pressure oscillation does not imply the signed work.
+Even a verified signed flux condition is necessary, not sufficient, for
+constructing a singular solution.
+
+\paragraph{Verification and claim boundary.}
+An independent exact symbolic regression verifies the solenoidal
+fields, Poisson source and zero mean, boundary traces, frequency
+decoupling, rational coefficient and sign reversal. The original
+Case~006/H8 tuple remains unfrozen: the common physical potential,
+cutoff, shapers, frame, pressure, stress centre and residual are not
+authenticated together. Consequently no authentic H8 pressure-work
+coefficient, positive seven-ray stress or nonlinear terminal-retained
+solution is proved. The full unforced Navier--Stokes theorem remains OPEN.
