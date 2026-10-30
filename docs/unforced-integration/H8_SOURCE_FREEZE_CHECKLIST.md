@@ -272,6 +272,55 @@ time-dependent unforced solutions.
 
 **H8 source-specific signed coefficient status: OPEN.**
 
+## Planar fourfold pressure multipole source audit (Appendix Z)
+
+Before reconstructing a full 3D periodic pressure, ask whether a
+rigorous transverse **free-space planar pressure limit** for the same
+H8 source has actually been proved, including axial terms, periodic
+images, frame derivatives and exterior-correction errors. Do not
+assume this limit merely from scaling exponents.
+
+Under this additional planar-limit hypothesis, for a compact
+C4-equivariant solenoidal transverse carrier U=(U_x,U_y), the exact
+exterior fourth harmonic is determined by one weighted quadratic
+stress moment:
+
+```
+zeta = x + i*y
+Q4(U) = integral_R2 zeta**2 * (U_x + i*U_y)**2 dx dy
+Pi4(R) = (3/(4*pi*R**4))*conj(Q4(U)), outside support
+```
+
+If U is the original quarter-turn-average U=(1/4)*sum_{j=0..3} v_j,
+the moment contains **all 16 ordered products** j,k, including the
+12 off-diagonal overlaps. A diagonal-only estimate is not the
+complete source pressure.
+
+Appendix Z contains a finite-regularity compact C4 diagnostic
+stream function psi_eps=(1-R**2)^6_+*(1+eps*R**4*cos4theta),
+for which exact rational integration yields Q4=8*pi*eps/1001 and
+Pi4(R)=6*eps/(1001*R**4), R>1. A disjointly supported C4-solenoidal
+exterior field with q=cos4theta produces full planar Poisson work
+delta*12*pi*eps/(1001*a**3)+O(delta**3), of either sign for small
+delta. This verifies that a compact C4 self-pressure can supply
+a nonzero fourth mode, but **does not authenticate original H8**.
+
+Mandatory original H8 source-specific gate:
+- Freeze one original vector potential, full cutoff, all shapers,
+  four-patch fields, rotated frame, rho, R_star and physical residual.
+- Rigorously control planar-limit pressure error for the true
+  3D periodic field, or work directly with its full Poisson modes.
+- Evaluate the complete Q4 moment and signed exterior normal trace
+  with independent interval enclosures; keep correction cross and
+  self pressure terms.
+- Prove the remaining flux coefficient and the necessary
+  inward-energy inequality, a compatible positive seven-ray
+  stress, full nonlinear zero-residual correction and terminal
+  pointwise retention.
+
+**Gate remains OPEN.** A planar control model does not prove the
+original unforced Navier-Stokes singularity claim.
+
 ## Exact nonlinear realization (G5--G7)
 
 Writing a residual as the divergence of a positive stress does **not**
