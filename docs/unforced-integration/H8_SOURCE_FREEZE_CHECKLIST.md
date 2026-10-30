@@ -497,6 +497,30 @@ closing all H8 source, positive-stress and nonlinear PDE requirements.
 A necessary concentration law does not construct the required
 singular near-field correction or solve Navier--Stokes.
 
+## Strong local retention versus total energy dissipation (Appendix AD)
+
+Under the pressure-driven inward flux assumption of Appendix AC,
+and global pointwise bounds on an actual correction
+`||w||_infty<=C*tau^-1/2`,
+`||U||_infty<=C*tau^(-1/2-h)` and the usual carrier
+gradient scaling, an exact finite-energy unforced solution requires
+
+```
+delta_tau=tau^(-p/2)*sup_I ||w||_L2(Omega) -> 0
+int_I ||grad w||_2^2 dt >= c*delta_tau^-2*tau^(1/2-h).
+```
+
+If `delta_tau=O(tau^(1/4-h/2))`, each late dyadic
+interval consumes a positive amount of true unforced
+dissipation: this contradicts the finite global kinetic-energy
+budget. At h=1/10 it excludes `delta_tau=O(tau^1/5)`.
+
+This is a **conditional no-go**, not an exact nonlinear
+source-matched correction or full Navier--Stokes proof.
+The original physical source tuple, positive seven-ray stress,
+full pressure/flux, terminal-retained correction and full
+unforced finite-time singularity remain OPEN.
+
 ## Exact nonlinear realization (G5--G7)
 
 Writing a residual as the divergence of a positive stress does **not**
