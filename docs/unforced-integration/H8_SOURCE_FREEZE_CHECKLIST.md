@@ -84,6 +84,49 @@ declaration, whose hosted kernel receipt must still be checked.
 Neither this local necessary screen nor its manufactured sharpness
 model supplies the missing authentic H8 density Hessian or source.
 
+## Signed periodic pressure-work gate (Appendix V; still OPEN)
+
+For one common authenticated H8 core and exterior correction, calculate
+the **full** zero-mean periodic Poisson pressure, not just the source's
+local pressure ansatz:
+
+```
+pi[u] = (-Delta)^(-1)_0 partial_i partial_j(u_i u_j)
+u = U + w
+pi[u] = pi[U] + 2 Q(U,w) + pi[w]
+```
+
+On a smooth moving interface with `U=0` in an open collar, set
+`g=w dot n`; the exact gauge-invariant signed pressure work is
+`int_boundary pi[u] g dS`. Computing `osc_boundary pi`
+or identifying the critical pressure amplitude `tau^(-2A)`
+does **not** determine the sign. The diagnostic in Appendix V gives
+the fully recomputed periodic Poisson work
+`(224*pi^2/195)*lambda` for smooth solenoidal Fourier data,
+demonstrating exact sign reversal under a boundary-trace reversal.
+It is **not** the authentic H8 carrier.
+
+A source-specific release packet must supply:
+
+- One frozen physical `U`, `w` and all cutoffs, frames and
+  overlap fields at a common source revision, including a reproducible
+  hash/parameter manifest.
+- The complete periodic Poisson pressure for `U+w`, including
+  `Q(U,w)` and `pi[w]` with independently checked Fourier tails.
+- The actual boundary normal trace `g=w dot n`, mean-zero compatibility,
+  interface cofactor, normal orientation, and gauge-invariant
+  signed pressure-work integral with rigorous enclosure.
+- Matching signed convection, viscous and moving-boundary work on
+  each terminal dyad; these must meet Appendix T's positive inward
+  energy requirement without dropping any term.
+- A zero-residual certificate for the whole nonlinear unforced
+  PDE and compatible positive seven-ray stress, rather than merely
+  satisfying the boundary inequality.
+
+**Status: HOLD / no authentic H8 pressure-work coefficient.**
+Neither the new Fourier test nor the pressure-exponent calculation
+discharges G4--G8.
+
 ## Exact nonlinear realization (G5--G7)
 
 Writing a residual as the divergence of a positive stress does **not**
