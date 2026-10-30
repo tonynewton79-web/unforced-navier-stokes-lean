@@ -1,0 +1,103 @@
+\clearpage
+\section*{Appendix Y. Quarter-turn symmetry and certified signed pressure}
+\addcontentsline{toc}{section}{Appendix Y. Quarter-turn symmetry and signed pressure}
+\noindent\textbf{Scope.} This appendix gives a source-independent exact periodic-pressure test of the quarter-turn symmetry used by H8 localization and a fourfold angular-mode error bound. It does not authenticate the Case~006 H8 data or construct a nonlinear unforced solution.
+
+\paragraph{Proposition Y.1 (Fourfold selection with a symmetry caveat).}
+On the square periodic three-torus let $Q(x,y,z)=(-y,x,z)$. If a smooth divergence-free velocity satisfies $u(Qx)=Qu(x)$, its unique mean-zero Poisson pressure
+$\pi[u]=(-\Delta)^{-1}_0\partial_i\partial_j(u_i u_j)$ is $Q$-invariant. Hence its circular trace has Fourier coefficients $\pi_m=0$ unless $m\in4\mathbb Z$. The quarter-turn average of a vector field has this covariance. However, if only the prepared carrier $U$ is equivariant, the conclusion is valid for $\pi[U]$ but does \emph{not} automatically hold for $\pi[U+w]$: the exact polarization
+$\pi[U+w]=\pi[U]+2\mathcal Q(U,w)+\pi[w]$ can break the symmetry when $w$ does. Averaging a proposed nonlinear correction does not generally preserve the correction equation.
+\begin{proof}
+The scalar Poisson source is invariant under $Q$ and the periodic mean-zero inverse is unique. Quarter-turn invariance of the scalar trace forces its Fourier support to lie in $4\mathbb Z$. The last distinction follows from pressure polarization.
+\end{proof}
+
+\paragraph{Theorem Y.2 (Fourfold-symmetric pressure work with opposite signs).}
+Let
+\[
+\psi_\alpha(x,y)=\cos x+\cos y+
+\alpha\sin x\sin y(\cos x-\cos y),\qquad
+u_\alpha=(\partial_y\psi_\alpha,-\partial_x\psi_\alpha,0)
+\]
+on $(\mathbb R/2\pi\mathbb Z)^3$. Each $u_\alpha$ is smooth, divergence-free and $C_4$-equivariant. Reconstruct its \emph{actual} mean-zero periodic Poisson pressure $\pi_\alpha$ and consider the embedded unit cylindrical region
+$\Omega=\{x^2+y^2<1\}\times\mathbb T_z$. Define work \emph{per unit axial length},
+\[
+\mathcal W(\alpha)=\frac1{2\pi}
+\int_{\partial\Omega}\pi_\alpha u_\alpha\cdot n\,dS
+=\int_0^{2\pi}\pi_\alpha(\cos\theta,\sin\theta)\,
+u_\alpha\cdot e_R\,d\theta.
+\]
+For $\alpha=3/10$ there is the exact finite Bessel formula
+\begin{equation}\label{eq:Y-bessel}
+\boxed{\mathcal W(3/10)=2\pi\sum_{n\in\mathcal N}c_n\frac{J_1(\sqrt n)}{\sqrt n},\qquad
+\mathcal N=\{1,5,9,13,17,29,37,41\},}
+\end{equation}
+with
+\[
+\begin{array}{c|rrrrrrrr}
+n&1&5&9&13&17&29&37&41\\ \hline
+c_n&-2427/32000&21/100&-10791/64000&3/640&
+1047/32000&-81/16000&27/8000&-81/64000
+\end{array}
+\]
+and the \emph{rigorously rationally enclosed} signs
+\begin{equation}\label{eq:Y-sign}
+\boxed{-0.0079871<\mathcal W(3/10)<-0.0079870,\qquad
+\mathcal W(-3/10)=-\mathcal W(3/10)>0.}
+\end{equation}
+The full three-dimensional work equals $2\pi\mathcal W(\alpha)$.
+Neither snapshot is claimed to solve the time-dependent unforced Navier--Stokes equation.
+\begin{proof}
+Since
+$\sin x\sin y(\cos x-\cos y)=
+(\sin2x\sin y-\sin x\sin2y)/2$,
+the stream function is invariant under $(x,y)\mapsto(-y,x)$.
+Writing $\psi_\alpha=\sum_a s_a e^{ia\cdot(x,y)}$ gives rational finite Fourier coefficients $s_a$ and velocity coefficients $i(a_y,-a_x)s_a$. For $k\ne0$, the complete periodic Poisson pressure has the finite Fourier coefficient
+\[
+\widehat\pi_\alpha(k)
+=\frac{1}{|k|^2}\sum_{a+b=k}
+(k_xa_y-k_ya_x)(k_xb_y-k_yb_x)s_as_b,\qquad
+\widehat\pi_\alpha(0)=0.
+\]
+On the unit circle use
+$\int_0^{2\pi}e^{iq\cdot e_R}e_R\,d\theta
+=2\pi iJ_1(|q|)\,q/|q|$.
+Exact rational convolution and grouping by $n=|q|^2$ produce the eight coefficients displayed.
+The expansion
+\[
+\frac{J_1(\sqrt n)}{\sqrt n}
+=\frac12\sum_{j=0}^\infty\frac{(-n/4)^j}{j!(j+1)!}
+\]
+has total truncation error after $j=20$ at most
+\[
+E_{20}=\frac12\sum_{n\in\mathcal N}|c_n|
+\frac{(n/4)^{21}}{21!\,22!}<3\times10^{-23};
+\]
+the alternating tails are decreasing there because $n\le41$.
+Using rational bounds $314159/100000<\pi<314160/100000$ establishes the strict interval \eqref{eq:Y-sign} with no floating-point sign assumptions.
+Finally $\psi_{-\alpha}(x,y)=\psi_\alpha(y,x)$:
+coordinate exchange reverses the oriented stream velocity while retaining the corresponding Poisson pressure, and consequently reverses $\mathcal W$.
+\end{proof}
+
+\paragraph{Proposition Y.3 (Quantitative $m=4$ dominance gate).}
+For a circular reference interface $R=a(\eta)$ under Appendix~X's leading lateral solenoidality, let $q(\theta,\eta)=V_\perp\cdot e_R$ have $q_0(\eta)=0$. If the \emph{full} leading pressure trace $\Pi$ is $C_4$-invariant, then
+\[
+C_\pi=4\pi\int a(\eta)\operatorname{Re}
+(\Pi_4(\eta)\overline{q_4(\eta)})\,d\eta+\mathcal E_{\ge8}
+\]
+and
+\begin{equation}\label{eq:Y-angular-tail}
+\boxed{|\mathcal E_{\ge8}|\le\frac1{64}
+\int a(\eta)\|\partial_\theta^2\Pi(\cdot,\eta)\|_{L^2_\theta}
+\|q(\cdot,\eta)\|_{L^2_\theta}\,d\eta.}
+\end{equation}
+The bound also applies to carrier self-pressure when only $U$ is $C_4$-equivariant. It cannot be applied to \emph{full} pressure unless the complete velocity and nonlinear correction retain the symmetry.
+\begin{proof}
+Only angular frequencies $m\in4\mathbb Z$ occur in $\Pi$, and $q_0=0$. After the $m=\pm4$ modes, $|m|\ge8$, so $|m|^{-2}\le1/64$; Parseval and Cauchy--Schwarz give \eqref{eq:Y-angular-tail}.
+\end{proof}
+
+\paragraph{Conditional sign test and remaining frontier.}
+Let $C_4$ denote the explicit $m=\pm4$ term and $B_8$ the bound on the right of \eqref{eq:Y-angular-tail}. If a single authenticated H8 solution supplies $C_{\rm other}\le C_{\rm other}^+$ and
+\[
+C_4+B_8+C_{\rm other}^+\le -M_0(R_0-p/2),
+\]
+then the \emph{necessary inward-energy coefficient gate} of Appendix W is certified. Conversely, a lower bound $C_4-B_8+C_{\rm other}^->-M_0(R_0-p/2)$ excludes that source/solution under the stated hypotheses. Neither sign test proves that a nonlinear correction exists. The original H8 vector potential, cutoff, shapers and overlaps, frame, density, stress centre, complete pressure, exterior correction and terminal retention remain unauthenticated together. The full unforced Navier--Stokes finite-time blow-up theorem remains \textbf{OPEN}. The Fourier selection and Bessel techniques are classical, not new general theorems.
