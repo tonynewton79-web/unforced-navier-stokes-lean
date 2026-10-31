@@ -712,6 +712,54 @@ theta-dependent axial velocity and all 12 ordered overlaps
 rather than counting the raw centrifugal stress size as a
 certified signed energy injection.
 
+## Critical nonaxisymmetric axial angular channel (Appendix AP)
+
+For an authentic compact **C4-equivariant** source with smooth uniformly
+bounded H8 similarity profiles, freeze the full theta-dependent
+V_r, V_theta, V_z and all 12 ordered patch overlaps.
+
+Exact incompressibility forces the leading azimuthal profile
+V_theta^0(R,eta) to be independent of theta, but V_z^0 can retain
+nonzero m=4,8,... angular harmonics. After solenoidal cancellation
+of the leading centrifugal-gradient contribution, the only
+potentially critical angular transfer at natural-amplitude retention is
+
+```
+F4(R,theta,eta) = [V_theta^0(R,eta)/R] * partial_theta V_z^0(R,theta,eta)
+```
+
+For a smooth unforced u=U+w with AN energy/regularity hypotheses
+and local correction deficit delta_tau=O(tau^h), necessity is
+
+```
+int_{I_tau} tau(t)^(-2A-1/2) int_{Omega(t)}
+         [P_C4_nonzero(w_z)] F4 dx dt = K*tau^p+o(tau^p), K>0
+```
+
+where P_C4_nonzero is the nonzero fourfold angular projection and
+K=M0*(R0-p/2)*(1-2^(-p))/p. In particular
+tau^(-p/2)*sup_I ||P_C4_nonzero(w_z)||_L2(Omega)>=c*tau^h.
+If F4 vanishes or the correction lacks matching axial fourfold
+harmonics, natural-amplitude retention fails within the hypotheses.
+
+**Kinematic sign-positive control, not PDE closure:** choose
+psi_c=R^6 f(R²)g(eta)cos4theta with smooth flat compact f,g,
+V_r=-partial_eta(psi_c)/R, V_z=partial_R(psi_c)/R,
+V_theta=R*a with a=1 on psi support. A natural-amplitude
+solenoidal correction with psi_w=-4R^6 f g sin4theta
+has F4=W_z and thus strictly positive signed pairing
+int F4² R dR dtheta deta. An exact finite-regularity
+polynomial diagnostic gives 4194304*pi/547521975.
+This proves only that the signed channel is kinematically allowed.
+It does not satisfy the full physical unforced residual,
+positive seven-ray source H, periodic pressure or terminal retention.
+
+**Authenticated Case006 source is still missing**: the selected
+physical four-patch U and all 12 overlaps, rotated frame E,
+positive density rho, compact H and its full nonlinear pressure
+and correction must be frozen together. Do not promote the
+manufactured kinematic control to an H8 existence witness.
+
 ## Exact nonlinear realization (G5--G7)
 
 Writing a residual as the divergence of a positive stress does **not**
