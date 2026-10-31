@@ -760,6 +760,48 @@ positive density rho, compact H and its full nonlinear pressure
 and correction must be frozen together. Do not promote the
 manufactured kinematic control to an H8 existence witness.
 
+## Pressure-free solenoidal detector for the nonzero C4 axial source (Appendix AQ)
+
+After the authenticated physical 4-patch source is frozen, extract
+F4=(Vtheta^0/R)*partial_theta Vz^0 and prove J_F=int
+|partial_theta F4|² R dR dtheta deta > 0. Under smooth
+C4 H8 similarity profiles, this produces the **explicit compact
+physical solenoidal detector**:
+
+```
+Zr=0
+Ztheta=tau^(-1/2)*tau^h*R*partial_eta partial_theta F4
+Zz=-tau^(-1/2)*partial_theta² F4
+```
+
+Exact div Z=0 and <tau^(-2A-1/2)*F4*ez,Z>
+=J_F tau^(p-1)>0. Because Zr=0, the large centrifugal
+radial gradient has zero pairing, and true periodic
+pressure cancels identically.
+
+For any exact smooth unforced u=U+w with local
+delta=tau^(-p/2)*sup_I||w||_L2(Omega)->0, and source
+bounds ||U||infty<=C*tau^(-A),
+||grad U||infty<=C*tau^(-1-h),
+||Ut-Delta U||2<=C*tau^(p/2-1), integrate the PDE against
+Z over the dyad and transfer w_t, Delta w and U.grad w
+derivatives onto Z. This needs NO derivative bounds on w.
+It gives the nonnegotiable concentration condition
+
+```
+delta*tau^(1/2+h)*sup_I||w||_Linfty(Omega) >= c > 0.
+```
+
+For the proposed natural retention delta=O(tau^h),
+the correction must peak at least tau^(-1/2-2h);
+at h=1/10 this is tau^(-7/10).
+Thus the AP kinematically signed-positive test does not
+produce an exact unforced natural-amplitude solution.
+Only highly concentrated corrections or failure of
+source-grammar hypotheses can escape this test.
+The source-specific five-field tuple, one-sided stress
+positivity, and final PDE singularity remain OPEN.
+
 ## Exact nonlinear realization (G5--G7)
 
 Writing a residual as the divergence of a positive stress does **not**
