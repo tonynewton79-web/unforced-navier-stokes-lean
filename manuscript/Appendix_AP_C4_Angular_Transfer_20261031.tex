@@ -1,0 +1,114 @@
+\clearpage
+\section*{Appendix AP. Critical Fourfold Angular Transfer and a Positive Kinematic Control}
+\addcontentsline{toc}{section}{Appendix AP. Critical Fourfold Angular Transfer and a Positive Kinematic Control}
+\noindent\textbf{Objective.} Isolate the source component that can deliver the leading signed pressure-free transfer for a natural-amplitude correction to an H8-scale fourfold-equivariant carrier. A positive kinematic example is not an unforced Navier--Stokes solution.
+
+\paragraph{Carrier assumptions.}
+Let $\tau=T-t$, $0<h<1/6$, $A=1/2+h$, $D=1/2-h$, $p=1/2-3h$, $\varepsilon=\tau^h$, $R=r/\sqrt\tau$ and $\eta=z/\tau^D$. Suppose $U$ is compactly supported, $C_4$-equivariant, smooth and divergence free, with
+\[
+U_r=\tau^{-1/2}V_r^\varepsilon,\qquad
+U_\theta=\tau^{-A}V_\theta^\varepsilon,\qquad
+U_z=\tau^{-A}V_z^\varepsilon.
+\]
+The profiles have uniform $C^2$ bounds, fixed compact support, smooth Cartesian axis extension, controlled radial divisions, and $O(\varepsilon)$ convergence in $C^1$ to $V_r^0,V_\theta^0,V_z^0$. The filled radial potential support lies in a $C_4$-invariant region $\Omega(t)$ of volume $O(\tau^{1+D})$. Exact divergence reads
+\[
+\frac1R\partial_\theta V_\theta^\varepsilon
+=-\varepsilon\left[\frac1R\partial_R(RV_r^\varepsilon)+\partial_\eta V_z^\varepsilon\right].
+\]
+Consequently $\partial_\theta V_\theta^0=0$. The critical candidate is
+\[
+\boxed{F_4(R,\theta,\eta)=\frac{V_\theta^0(R,\eta)}R\,
+\partial_\theta V_z^0(R,\theta,\eta).}
+\]
+It has zero $\theta$ mean and only nonzero $m\in4\mathbb Z$ angular harmonics.
+
+\paragraph{Theorem AP.1 (Necessary signed fourfold coupling).}
+Suppose a smooth unforced periodic $u=U+w$, $\nabla\cdot w=0$, satisfies
+\[
+\begin{gathered}
+\|U\|_2^2=M_0\tau^p(1+o(1)),\quad
+\|\nabla U\|_2^2=R_0M_0\tau^{p-1}(1+o(1)),
+\quad R_0>p/2,\ M_0>0,\\
+\|U_t+\Delta U\|_2\le C\tau^{p/2-1},\qquad
+\|\nabla U\|_\infty\le C\tau^{-1-h},\\
+\delta_\tau:=\tau^{-p/2}
+\sup_{t\in I_\tau}\|w(t)\|_{L^2(\Omega(t))}=O(\tau^h),\quad
+I_\tau=[T-\tau,T-\tau/2].
+\end{gathered}
+\]
+On the shrinking cylindrical chart define
+\[
+(\mathcal P_*f)(r,\theta,z)=\frac14\sum_{j=0}^3
+f(r,\theta+j\pi/2,z)-\frac1{2\pi}\int_0^{2\pi}f(r,\phi,z)\,d\phi.
+\]
+Then, with $K=M_0(R_0-p/2)(1-2^{-p})/p>0$,
+\begin{equation}\label{ap:transfer}
+\boxed{\int_{I_\tau}\!\tau(t)^{-2A-1/2}
+\int_{\Omega(t)}(\mathcal P_*w_z)F_4\,dx\,dt
+=K\tau^p+o(\tau^p).}
+\end{equation}
+Necessarily $F_4\not\equiv0$ and
+\[
+\boxed{\tau^{-p/2}\sup_{I_\tau}
+\|\mathcal P_*w_z\|_{L^2(\Omega(t))}\ge c\tau^h.}
+\]
+In particular, an axisymmetric correction alone cannot support the critical signed transfer at natural local amplitude.
+
+\emph{Proof.} The exact cylindrical convective formula, the profile bounds and incompressibility show that the critical acceleration is
+\[
+(U\cdot\nabla)U
+=\tau^{-2A-1/2}\left[-\frac{(V_\theta^0)^2}{R}e_r
++F_4e_z+O_{L^2_{\rm ref}}(\varepsilon)\right].
+\]
+The large radial centrifugal term is a gradient up to a smaller axial term. Indeed with
+$\Phi_0(R,\eta)=\int_R^\infty(V_\theta^0(s,\eta))^2/s\,ds$ and
+$\Phi_\tau=\tau^{-2A}\Phi_0$,
+\[
+-\tau^{-2A-1/2}\frac{(V_\theta^0)^2}{R}e_r
+=\nabla\Phi_\tau-\tau^{-2A-D}\partial_\eta\Phi_0\,e_z.
+\]
+The smooth compactly extended gradient pairs to zero against globally solenoidal $w$. Its remaining axial term is smaller by $\tau^{1/2-D}=\varepsilon$. Hence
+\[
+\langle w,(U\cdot\nabla)U\rangle=
+\tau^{-2A-1/2}\int_\Omega w_zF_4\,dx+
+O\left(\varepsilon\tau^{p/2-1-h}\|w\|_{L^2(\Omega)}\right).
+\]
+Fourfold periodicity and zero angular mean replace $w_z$ by $\mathcal P_*w_z$ exactly. The dyadic error is $O(\tau^{p+h})$, while the $U_t+\Delta U$ and quadratic interaction terms in the exact pressure-free carrier identity are respectively $O(\delta_\tau\tau^p)$ and $O(\delta_\tau^2\tau^{p-h})$, hence $o(\tau^p)$. The carrier-testing identity therefore gives \eqref{ap:transfer}. Cauchy--Schwarz and
+$\|\tau^{-2A-1/2}F_4\|_2=O(\tau^{p/2-1-h})$ prove the lower bound. \hfill$\square$
+
+\paragraph{Proposition AP.2 (Explicit positive kinematic channel).}
+Choose nonzero smooth compact flat $f(R^2)$ and $g(\eta)$ supported in $R<1$, $|\eta|<1$. Let
+\[
+\psi_c=R^6f(R^2)g(\eta)\cos4\theta,\qquad
+V_r=-R^{-1}\partial_\eta\psi_c,\qquad
+V_z=R^{-1}\partial_R\psi_c.
+\]
+Choose $V_\theta=Ra(R,\eta)$ for a smooth compact $a=1$ on $\operatorname{supp}\psi_c$. Define
+\[
+\psi_w=-4R^6f(R^2)g(\eta)\sin4\theta,\quad
+W_r=-R^{-1}\partial_\eta\psi_w,\quad
+W_z=R^{-1}\partial_R\psi_w,
+\]
+and the physical correction $w_r=\tau^{-1/2+h}W_r$, $w_z=\tau^{-1/2}W_z$, $w_\theta=0$. Both the prepared carrier and correction are smooth, compact, exactly solenoidal and $C_4$ equivariant. On the source support
+\[
+F_4=-4R^{-1}\partial_R(R^6fg)\sin4\theta=W_z,
+\]
+and therefore
+\[
+\boxed{C_0=\int F_4W_z\,R\,dR\,d\theta\,d\eta
+=\int F_4^2\,R\,dR\,d\theta\,d\eta>0.}
+\]
+Consequently the signed transfer is
+$C_0(1-2^{-p})\tau^p/p+O(\tau^{p+h})$; scaling $w$ by a constant can match any prescribed positive leading scalar $K$. This does \emph{not} solve the full unforced equation, positive stress or pressure flux.
+
+For a finite-regularity (not flatly smooth) polynomial diagnostic,
+$f(X)=(1-X)^4$ on $[0,1]$, $g(\eta)=(1-\eta^2)^4$ on $[-1,1]$,
+\[
+\int_0^1\frac{X^4}{2}(6f+2Xf')^2\,dX=\frac4{5005},
+\quad\int_{-1}^1g^2\,d\eta=\frac{65536}{109395},
+\quad \boxed{C_0=\frac{4194304\pi}{547521975}>0.}
+\]
+Smooth flat approximations preserve the sign. The independent exact symbolic checker has 23 passing assertions.
+
+\paragraph{Claim boundary.}
+This is a source-grammar conditional selection theorem and a manufactured kinematic positive control. Group harmonic selection and centrifugal-gradient cancellation are established methods, not broad novelty claims. The original four-patch Case~006 profiles, all ordered overlaps, tilted physical frame, compact positive seven-ray inverse and retained unforced solution are still unauthenticated. All five global PDE and Lean closure gates remain OPEN.

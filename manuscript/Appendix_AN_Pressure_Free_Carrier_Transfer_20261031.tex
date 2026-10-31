@@ -1,0 +1,111 @@
+\clearpage
+\section*{Appendix AN. Pressure-Free Carrier Transfer and Critical Correction Amplitude}
+\addcontentsline{toc}{section}{Appendix AN. Pressure-Free Carrier Transfer and Critical Correction Amplitude}
+\noindent\textbf{Objective.} Pair the exact unforced equation against a shrinking prepared carrier to obtain a signed nonlinear-injection constraint without pressure-dominance, correction compactness or a global correction $L^\infty$ hypothesis. The result is conditional on the carrier estimates and does not construct an unforced singularity.
+
+\paragraph{Hypotheses.}
+Let $u=U+w$ be a smooth unforced solenoidal solution on $\mathbb T^3$, $\tau=T-t$, $0<h<1/6$, $p=1/2-3h$, $I_\tau=[T-\tau,T-\tau/2]$, and let $U$ be supported in $\Omega(t)$.
+Write $M=\|U\|_2^2$, $D=\|\nabla U\|_2^2$ and
+$\delta_\tau=\tau^{-p/2}\sup_{I_\tau}\|w\|_{L^2(\Omega(t))}\to0$.
+Assume uniformly
+\[
+M=M_0\tau^p(1+o(1)),\quad
+D=R_0M_0\tau^{p-1}(1+o(1)),\quad M_0>0,\ R_0>p/2,
+\]
+\[
+\|U_t+\Delta U\|_2\le C\tau^{p/2-1},\quad
+\|\nabla U\|_\infty\le C\tau^{-1-h},\quad
+\|(U\cdot\nabla)U\|_2\le C\tau^{p/2-1-\kappa},\quad0\le\kappa\le h.
+\]
+The convective bound is on the \emph{unprojected} compactly supported field. Applying the global Leray projector before estimating against local $w$ is not justified without a global $L^2$ estimate on $w$.
+
+\paragraph{Lemma AN.1 (Exact pressure-free pairing).}
+For smooth solenoidal $u=U+w$,
+\[
+\boxed{
+\frac{d}{dt}\langle w,U\rangle
+=\langle w,U_t+\Delta U+(U\cdot\nabla)U\rangle
++\int_{\mathbb T^3}w_iw_j\partial_jU_i
+-\tfrac12M'-D.}
+\]
+\emph{Proof.}
+Test $u_t-\Delta u+\operatorname{div}(u\otimes u)+\nabla\pi=0$
+against $U$. Pressure vanishes since $\nabla\cdot U=0$.
+The $U\otimes U$ contraction is a divergence; so is
+$U_iw_j\partial_jU_i=w\cdot\nabla(|U|^2/2)$ because $w$ is solenoidal.
+The remaining cross term is
+$w_iU_j\partial_jU_i=\langle w,(U\cdot\nabla)U\rangle$.
+Now $\langle u,U\rangle=M+\langle w,U\rangle$ and
+$\langle U,\Delta U+U_t\rangle=-D+M'/2$. Rearrangement proves the identity.
+
+\paragraph{Theorem AN.2 (Signed transfer and correction floor).}
+Set
+\[
+K=\frac{M_0(1-2^{-p})}{p}(R_0-p/2)>0,\qquad
+m=\max\{\kappa,h/2\}.
+\]
+Every exact locally retained correction obeys
+\[
+\boxed{\int_{I_\tau}\left[
+\langle w,U_t+\Delta U+(U\cdot\nabla)U\rangle+
+\int_{\mathbb T^3}w_iw_j\partial_jU_i\,dx
+\right]dt=K\tau^p+o(\tau^p)}
+\]
+and $\boxed{\delta_\tau\ge c\tau^m}$ for sufficiently small $\tau$.
+If $|\Omega(t)|\le C\tau^{3/2-h}$, then
+\[
+\boxed{\sup_{I_\tau}\|w\|_{L^\infty(\Omega(t))}
+\ge c'\tau^{-1/2-h+m}.}
+\]
+\emph{Proof.}
+Integrate the exact identity. Local $L^2$ retention gives
+$|\langle w,U\rangle|\le C\delta_\tau\tau^p=o(\tau^p)$ at both endpoints. Hence
+$M'/2+D$ integrates to $K\tau^p+o(\tau^p)$.
+The three required interaction integrals are bounded, respectively, by
+\[
+C\delta_\tau\tau^p,\qquad
+C\delta_\tau\tau^{p-\kappa},\qquad
+C\delta_\tau^2\tau^{p-h}.
+\]
+Thus $K/2\le C(\delta_\tau+\delta_\tau\tau^{-\kappa}+
+\delta_\tau^2\tau^{-h})$ for small $\tau$, forcing
+$\delta_\tau\ge c\tau^{\max(\kappa,h/2)}$.
+The volume bound and Cauchy--Schwarz give the $L^\infty$ floor.
+No pressure-dominance or global bound on $w$ was used.
+
+\paragraph{Corollary AN.3 (Critical carrier self-advection).}
+If a retained exact correction has the natural local size
+$\delta_\tau=O(\tau^h)$, its \emph{signed} nonlinear carrier pairing must satisfy
+\[
+\boxed{\int_{I_\tau}\langle w,(U\cdot\nabla)U\rangle\,dt
+=K\tau^p+o(\tau^p).}
+\]
+Any carrier estimate with $\kappa<h$ contradicts this requirement.
+The condition involves the unprojected acceleration: a projected norm
+cannot be substituted unless the nonlocal correction pairing is controlled.
+
+\paragraph{Corollary AN.4 (Compactified no-swirl affine seed).}
+For $U=\operatorname{curl}[\tau^{-1}\chi(r/\sqrt\tau,z/\tau^{1/2-h})(-yz,xz,0)]$
+with fixed smooth compact axisymmetric cutoff $\chi$, the explicit
+$U_r=\tau^{-1/2}F_r$, $U_\theta=0$ and
+$U_z=\tau^{-1/2-h}F_z$ show
+$\|(U\cdot\nabla)U\|_2\le C\tau^{p/2-1}$, hence $\kappa=0$.
+Therefore
+\[
+\boxed{\delta_\tau\ge c\tau^{h/2},\qquad
+\sup_{I_\tau}\|w\|_{L^\infty(\Omega)}\ge c'\tau^{-1/2-h/2}.}
+\]
+At $h=1/10$, the lower $L^2$ magnitude is
+$\sup\|w\|_{L^2(\Omega)}\gtrsim\tau^{3/20}$
+and the $L^\infty$ amplitude is at least order $\tau^{-11/20}$.
+This excludes uniformly natural-amplitude local corrections even when
+$w$ has a global analytic tail. It does not exclude supercritical corrections
+or the distinct authentic four-patch swirling carrier.
+
+\paragraph{Verification and claim boundary.}
+This is a scaling-specific application of the classical weak--strong
+carrier-testing/relative-energy method. The companion independent SymPy,
+unforced-shear and dealiased Fourier suite has 23 local PASS assertions.
+The proof establishes no authentic $U,H,\rho,E$ source, compact one-sided
+positive stress inverse, exact nonlinear retained correction, signed
+periodic-pressure flux or finite-time unforced blowup.

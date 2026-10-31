@@ -1,0 +1,47 @@
+\clearpage
+\section*{Appendix AG. GitHub mathematical verification and independent replay}
+\addcontentsline{toc}{section}{Appendix AG. GitHub verification and independent replay}
+\noindent\textbf{Purpose.} This appendix separates finite algebra verified in the research code, source-available but not yet hosted-certified Lean modules, and unproved physical Navier--Stokes construction gates. The theorem inventory and independent Python checker record exactly which finite arithmetic and Fourier identities are reproducible. The constructive PDE conditions are stated separately.
+
+\paragraph{Exact stress centre and coefficient cones.}
+The pinned seven-ray source at aperture $t=1/4$ has positive reference coefficients $c_3^{(0)}=236/1229$, $c_i^{(0)}=172/1229$ for $i\ne3$. The exact minimum coefficient margin and the sharp componentwise factor are
+\[
+g=\frac{172}{1229}-\frac1{100}=\frac{15971}{122900},
+\qquad \|\delta c(A,B,C,D)\|_{\infty}\le14\max(|A|,|B|,|C|,|D|).
+\]
+The original absolute-perturbation cone and the larger one-sided positivity cone are different mathematical sets. In the latter, with $g_*=22371/122900$, the sharp source-frame meridional cap is
+\[
+ |A|\le\frac{5g+g_*}{4}\rho=\frac{51113}{245800}\rho.
+\]
+The independent exact rational checker enumerated all eight feasible four-dimensional vertices of the one-sided coefficient polytope. Their $(A,C)$ projection has exactly six sharp convex-hull vertices, reproducing the manuscript's source-frame hexagon and the meridional cap. No physical compact positive stress inverse follows from this finite convex calculation.
+
+\paragraph{Formal theorem groups found in the connected GitHub source.}
+The 18 audited Lean modules are grouped as follows:
+\begin{itemize}
+\item \emph{Centre and cones:} \texttt{SevenRayCenter}, \texttt{ConeBudget}, \texttt{ConeOperator}, \texttt{FourFieldPhysical}, \texttt{ExactCoefficientCone}, \texttt{SharpCoefficientDual}, \texttt{PositiveCoefficientCone}, \texttt{AxialFluxCone}, \texttt{JointFluxCone}.
+\item \emph{Geometric frame and coordinate calculus:} \texttt{RotatingFrameDual}, \texttt{FrameConnectionDerivative}, \texttt{CartesianAxialBridge}, \texttt{NonaxisymmetricAxialBridge}, \texttt{PhysicalCircleAngular}, \texttt{AngularMean}.
+\item \emph{Source and pressure compatibility:} \texttt{MeridionalInverse}, \texttt{PressureCompensatedFlux}, \texttt{Case006SourceBand}.
+\end{itemize}
+These modules cover exact matrix reconstruction, sharp finite coefficient bounds, rotating-frame Frobenius pullback, the frame-connection commutator, Cartesian and cylindrical derivatives, angular mean identities, a pressure-compensated radial primitive retaining its endcap trace, and a \emph{conditional} aligned-frame Case~006 axial interval. The connected source and the full catalogue are available under \texttt{docs/unforced-integration/H8\_FULL\_VOLUME\_VERIFICATION\_INVENTORY\_20261030.md}. The repository also contains 34 associated physical and finite-arithmetic regression modules catalogued there.
+
+\paragraph{Lean evidence status.}
+The repository README reports a historical successful pinned workflow (run~12, ID~35779131542) for the \emph{abstract} nonlinear-closure file. This does not constitute a kernel proof of a source-matched H8 correction. At the time of the connected source check, hosted workflows for the current H8 pull-request head were queued rather than certified passed. Statements available in Lean source must not be described as proved by the hosted kernel for that commit until its actual build and axioms are checked.
+
+\paragraph{Independent finite-arithmetic and Fourier verification.}
+A separately implemented script \texttt{verify\_h8\_independent.py} returned 17 successful assertions. They cover exact fractional identities, complete vertex enumeration, the two scale exponents, the dyadic inward-flux constant, the logarithmic retention boundary, exact pressure polarization on a $16^3$ Fourier grid, and the unit Frobenius norm of $k\otimes k/|k|^2$. An additional 26 available local affine-pressure and research-paper Python tests passed. These are finite and symbolic checks, not a proof that the physical pressure-dominance or correction hypotheses hold.
+
+\paragraph{Reviewer notation clarification.}
+The corrected summability law must use the \emph{inverse square} of the relative correction deficit. For clarity the mathematically equivalent statements are
+\[
+\boxed{\sum_{n\ge0}\tau_n^{1/2-h}\delta_{\tau_n}^{-2}<\infty
+\quad\Longleftrightarrow\quad
+\sum_{n\ge0}\frac{\tau_n^{1/2-h}}{\delta_{\tau_n}^{2}}<\infty.}
+\]
+At the excluded rate $\delta_{\tau_n}^2=\tau_n^{1/2-h}\log(1/\tau_n)$, each correct summand is $1/\log(1/\tau_n)\asymp1/n$, and so the series diverges. The incorrect \emph{product} with $\delta^2$ would converge. The logarithmic retention rate contains the square root $\sqrt{\log(1/\tau)}$.
+
+\paragraph{Full unforced physical release boundary.}
+Define $\mathcal B(f,g)=\mathbb P[(f\cdot\nabla)g]$, $G=\partial_tU-\Delta U+\mathcal B(U,U)$, and $L_Uw=\Delta w-\mathcal B(U,w)-\mathcal B(w,U)$. A complete source-matched nonlinear correction would have to satisfy
+\[
+\boxed{G+w_t-L_Uw+\mathcal B(w,w)=0,\quad\nabla\cdot w=0}
+\]
+everywhere, with the genuine periodic pressure, positive weighted seven-ray stress, and pointwise terminal retention. No authenticated common tuple $(U,w,H,\rho,E)$ achieves those conditions in the present record. The proof ledger remains G0 OPEN, G1--G3 PAPER\_CONDITIONAL, and G4--G8 OPEN. No unforced Navier--Stokes singularity or regularity proof is claimed.

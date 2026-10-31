@@ -1,0 +1,23 @@
+import UnforcedPatching.PhysicalCircleAngular
+
+/-! The physical Cartesian circle supplies the angular FTC hypotheses. -/
+
+namespace UnforcedPatching
+
+#check physicalCircle_hasDerivAt
+#check physicalCirclePullback_hasDerivAt
+#check physicalCircleDirectionalCoordinates
+#check physicalCircleAngularTermMatchesCartesian
+#check physicalCircle_periodicEndpoints
+#check physicalCircleAngularIntegral_zero
+#check physicalCircleMean_derivative_vanishes
+
+#print axioms physicalCircle_hasDerivAt
+#print axioms physicalCirclePullback_hasDerivAt
+#print axioms physicalCircleDirectionalCoordinates
+#print axioms physicalCircleAngularTermMatchesCartesian
+#print axioms physicalCircle_periodicEndpoints
+#print axioms physicalCircleAngularIntegral_zero
+#print axioms physicalCircleMean_derivative_vanishes
+
+end UnforcedPatching

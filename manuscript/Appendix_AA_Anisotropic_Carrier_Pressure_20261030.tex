@@ -1,0 +1,84 @@
+\clearpage
+\section*{Appendix AA. Anisotropic carrier pressure and the near-field necessity}
+\addcontentsline{toc}{section}{Appendix AA. Anisotropic carrier pressure and near-field necessity}
+\noindent\textbf{Scope.} The following results use the physical H8 component hierarchy and a compact smooth similarity profile. They prove the carrier-only periodic-to-transverse pressure limit under explicitly stated hypotheses and bound the fourth angular pressure mode from distant kinetic stress. The authentic complete Case~006 profile, positive seven-ray stress, nonlinear unforcing correction and terminal retention remain unconstructed.
+
+\paragraph{Theorem AA.1 (Leading swirl is necessarily axisymmetric).}
+Set $\tau=T-t$, $0<h<1/6$, $A=1/2+h$, $D=1/2-h$, $p=1/2-3h$ and $\epsilon=\tau^h$. In a fixed-centre anisotropic chart
+$x=x_0+\operatorname{diag}(\tau^{1/2},\tau^{1/2},\tau^D)y$ with $y=(R\cos\theta,R\sin\theta,\eta)$, suppose a smooth divergence-free prepared field has the H8 component hierarchy
+\[
+ U_r=\tau^{-1/2}V_r^\epsilon,\quad
+ U_\theta=\tau^{-A}V_\theta^\epsilon,\quad
+ U_z=\tau^{-A}V_z^\epsilon .
+\]
+Then the exact cylindrical divergence equation is
+\begin{equation}\label{eq:AA-main-div}
+\boxed{\frac1R\partial_\theta V_\theta^\epsilon
+=-\epsilon\left[\frac1R\partial_R(RV_r^\epsilon)
++\partial_\eta V_z^\epsilon\right].}
+\end{equation}
+If the three profiles converge in $C^1_{\rm loc}$, or strongly in $H^s$ with $s>5/2$, the leading swirl $V_\theta^0$ is independent of $\theta$. An order-one leading $m=4$ swirl requires an equally leading compensating derivative and cannot coexist with bounded $V_r^\epsilon,V_z^\epsilon$ under these scales.
+\begin{proof}
+The radial, azimuthal and axial pieces of the physical divergence scale as $\tau^{-1}$, $\tau^{-1-h}$ and $\tau^{-1}$, respectively. Multiply their sum by $\tau^{1+h}$ and pass to the differentiated limit. \end{proof}
+
+\paragraph{Theorem AA.2 (Full carrier periodic pressure has a planar limit).}
+Assume, additionally, that $V^\epsilon\to V^0$ strongly in $H^s(\mathbb R^3)$ with $s>5/2$, are uniformly compactly supported in one fixed smooth reference cell, and are regular across the rotation axis. Put
+\[
+ v^\epsilon=\epsilon V_r^\epsilon e_R+V_\theta^\epsilon e_\theta+V_z^\epsilon e_z,
+ \quad v^0=V_\theta^0(R,\eta)e_\theta+V_z^0(y)e_z.
+\]
+Let $\pi_U$ be the \emph{actual} mean-zero periodic pressure determined by
+$-\Delta\pi_U=\partial_i\partial_j(U_iU_j)$, not a prescribed local pressure. Let $\Pi^0$ be the decaying transverse free-space pressure of $V_\theta^0e_\theta$:
+\begin{equation}\label{eq:AA-planar}
+-\Delta_\perp\Pi^0
+=\partial_a\partial_b[(V_\theta^0 e_\theta)_a(V_\theta^0 e_\theta)_b]
+=-R^{-1}\partial_R(V_\theta^0)^2.
+\end{equation}
+Then uniformly in the fixed reference cell,
+\begin{equation}\label{eq:AA-periodic}
+\boxed{\tau^{2A}\pi_U(t,x_0+S_\tau y)\longrightarrow
+\Pi^0(R,\eta)=-\int_R^\infty\frac{(V_\theta^0(s,\eta))^2}{s}\,ds,}
+\end{equation}
+where $S_\tau=\operatorname{diag}(\tau^{1/2},\tau^{1/2},\tau^D)$.
+In particular, if the swirl vanishes on the exterior radial collar of the chosen boundary, then the limiting \emph{carrier-only} pressure is zero on the collar, and all of its leading angular modes, including $m=4$, vanish there.
+\begin{proof}
+Rescaling the whole-space pressure of $U$ produces $\tau^{-2A}\Pi^\epsilon$, with Fourier multiplier
+\[
+\widehat\Pi^\epsilon(k,\xi)=-
+\frac{k_a k_b\widehat T_{ab}^\epsilon+
+2\epsilon k_a\xi\widehat T_{az}^\epsilon+
+\epsilon^2\xi^2\widehat T_{zz}^\epsilon}
+{|k|^2+\epsilon^2\xi^2},\quad
+T_{ij}^\epsilon=v_i^\epsilon v_j^\epsilon.
+\]
+For each nonzero frequency this multiplier has norm at most one as a contraction on tensor entries. The products converge strongly in $H^s$, and for $k\ne0$ its symbol converges to $-k_a k_b/|k|^2$ on horizontal entries and to zero on other entries. The set $k=0$ has measure zero in $\mathbb R^3$, so dominated convergence yields $\Pi^\epsilon\to\Pi^0$ strongly in $H^s(\mathbb R^3)$, hence uniformly. This is a strong limit, not a claimed uniform multiplier-norm bound at low horizontal frequency.
+
+The periodic and whole-space pressure kernels differ by a smooth uniformly bounded kernel when both observation and source are in the shrinking torus chart. Therefore their pressures differ there by at most $C\|U\otimes U\|_1=O(\tau^p)$. After multiplying by $\tau^{2A}$ the error is $O(\tau^{p+2A})=O(\tau^{3/2-h})$. Theorem AA.1 gives axisymmetry of $V_\theta^0$. The unique regular decaying transverse solution of \eqref{eq:AA-planar} has radial derivative $(V_\theta^0)^2/R$, yielding \eqref{eq:AA-periodic}. \end{proof}
+
+\paragraph{Corollary AA.3 (Carrier self-pressure is subcritical on a zero-carrier collar).}
+Assume the interface and exterior normal-velocity trace bounds in Appendix W, including $w_\perp=O(\tau^{-1/2})$ and $w_z=O(\tau^{-1/2})$, and the collar hypothesis of Theorem AA.2. Then
+\begin{equation}\label{eq:AA-carrierwork}
+\boxed{\int_{\partial\Omega(t)}\pi_U(u\cdot n)\,dS=o(\tau^{p-1}).}
+\end{equation}
+Consequently this route requires leading contributions from the \emph{mixed} pressure $2\mathcal Q(U,w)$, the \emph{correction} pressure $\pi[w]$, an alternative velocity scaling, or nonpressure boundary flux. It does not infer that the complete pressure is subcritical.
+
+\paragraph{Proposition AA.4 (Quantitative remoteness bound for fourfold pressure).}
+Suppose a $C_4$-covariant periodic quadratic stress $T^{\rm far}$ satisfies $\sum_{ij}\|T_{ij}^{\rm far}\|_{L^1}\le E_*$ and is supported at physical distance at least $d(\tau)$ from all relevant circles on the shrinking interface. Assume $\tau^{1/2}\ll d(\tau)<d_0$. Let $\pi_{\rm far}=(-\Delta)^{-1}_0\partial_i\partial_j T_{ij}^{\rm far}$. For a circle of radius $a(\eta)\tau^{1/2}$,
+\begin{equation}\label{eq:AA-remote}
+\boxed{\sup_{m\in4\mathbb Z\setminus\{0\}}|(\pi_{\rm far})_m|
+\le CE_*\tau^2d(\tau)^{-7},\quad
+\tau^{2A}\sup_{m\ne0,\,m\in4\mathbb Z}|(\pi_{\rm far})_m|
+\le CE_*\tau^{3+2h}d(\tau)^{-7}.}
+\end{equation}
+If $d(\tau)/\tau^{(3+2h)/7}\to\infty$, this remote stress cannot generate a critical fourfold pressure coefficient. At $h=1/10$ the threshold exponent is $16/35$. The statement concerns pressure-generating \emph{stress}, not the entire correction's spatial support.
+\begin{proof}
+The fourth spatial derivatives of the periodic pressure kernel away from its pole satisfy $|\nabla^4K_{ij}(x)|\le C|x|^{-7}$. Thus $\|\nabla_\perp^4\pi_{\rm far}\|_\infty\le CE_*d^{-7}$ near the interface. On a circle of radius $r$, subtract the transverse Taylor polynomial through total degree three; the remainder is $O(E_*r^4d^{-7})$. Fourfold covariance forces that Taylor polynomial to have only angular frequency zero, so every nonzero allowed harmonic is bounded by the remainder. Insert $r=O(\tau^{1/2})$, then multiply by $\tau^{2A}$. \end{proof}
+
+\paragraph{Source-native seed and the remaining nonlinear gate.}
+For the available local vector-potential seed $A=(-yz,xz,0)=zr e_\theta$ and axisymmetric $\chi(r,z)$,
+\[
+U_r=-r(\chi+z\partial_z\chi),\quad U_\theta=0,\quad
+U_z=z(2\chi+r\partial_r\chi).
+\]
+Its radial and axial divergences cancel exactly in three dimensions, but its transverse divergence need not vanish; therefore it must \emph{not} be treated as a planar solenoidal carrier when invoking Appendix Z. Its axisymmetric fourth angular moment vanishes, but it is not the fully source-matched H8 field.
+A complete proof still requires an authenticated original Case~006 source, correct off-axis physical chain rule, all four-patch and shaper products, periodic \emph{mixed and exterior} Poisson pressure, the signed remaining flux, compatible one-sided seven-ray positive stress, a true nonlinear zero-residual correction and pointwise terminal retention. The three-dimensional unforced singularity theorem is OPEN.

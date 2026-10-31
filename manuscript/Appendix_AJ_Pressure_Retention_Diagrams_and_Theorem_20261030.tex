@@ -1,0 +1,67 @@
+\clearpage
+\section*{Appendix AJ. Pressure-driven retention theorem and two-dimensional findings}
+\addcontentsline{toc}{section}{Appendix AJ. Pressure-driven retention theorem and two-dimensional findings}
+\noindent\textbf{Objective.} The exact seven-ray coefficient cone and the pressure-driven retention obstruction are analyzed under explicit scaling and flux hypotheses. The two-dimensional diagrams display the sharp feasible coefficient geometry and the nonlocal interface-pressure mechanism. No actual unforced H8 singularity is constructed.
+
+\paragraph{Source-frame one-sided cone.}
+For $g=15971/122900$, $H_*=22371/122900$, the sharp one-sided seven-ray $(A,C)$ projection has the six vertices
+\[
+\left(\pm\frac{g\rho}{2},-g\rho\right),\quad
+\left(\pm\frac{(5g+H_*)\rho}{4},\frac{(H_*-g)\rho}{4}\right),\quad
+\left(\pm\frac{g\rho}{2},\frac{(g+H_*)\rho}{2}\right).
+\]
+Thus $|A|\le51113\rho/245800$ in the \emph{source-ray basis}; under a tilted physical frame $E$ the tensor is $EHE^{\mathsf T}$ and $A$ need not equal a physical cylindrical $rz$ component.
+
+\begin{figure}[htbp]\centering
+\begin{tikzpicture}[scale=.74,>=Stealth]
+\draw[->,gray!65](-4.25,0)--(4.45,0)node[right]{$A/\rho$};
+\draw[->,gray!65](0,-2.95)--(0,3.15)node[above]{$C/\rho$};
+\draw[thick,blue!70!black,fill=blue!8]
+(-1.1696,-2.3393)--(-3.7440,.2344)--(-1.1696,2.8074)--(1.1696,2.8074)--(3.7440,.2344)--(1.1696,-2.3393)--cycle;
+\draw[dashed,orange!90!black](-3.7440,.2344)--(3.7440,.2344);
+\fill[orange!90!black](3.7440,.2344)circle(2.5pt);
+\fill[orange!90!black](-3.7440,.2344)circle(2.5pt);
+\node[font=\scriptsize] at (0,2.9) {$C=(g+H_*)\rho/2$};
+\node[font=\scriptsize] at (0,-2.65) {$C=-g\rho$};
+\end{tikzpicture}
+\caption{Original two-dimensional sharp six-vertex coefficient slice. Axis geometry is illustrative; the exact vertices are in the preceding display. This is not a source-matched spatial stress.}
+\end{figure}
+
+\paragraph{Conditional pressure-retention obstruction.}
+Let $0<h<1/6$, $p=1/2-3h$, $\tau=T-t$ and $I_\tau=[T-\tau,T-\tau/2]$. Assume Appendix AC's nontrivial inward flux, local retention and pressure-dominance hypotheses. Put
+$\delta_\tau=\tau^{-p/2}\sup_{I_\tau}\|w\|_{L^2(\Omega)}\to0$ and
+$\mathsf S=U\otimes w+w\otimes U+w\otimes w$. Then
+\[
+\sup_{I_\tau}\|\nabla\mathsf S\|_{L^2(\mathbb T^3)}
+\ge c\,\delta_\tau^{-1}\tau^{p/2-1}.
+\]
+Under Appendix AD's additional global velocity bounds, Appendix AE strengthens this to
+\[
+\boxed{\sum_n\frac{\tau_n^{1/2-h}}{\delta_{\tau_n}^2}<\infty,\quad \tau_n=2^{-n}\tau_0.}
+\]
+Hence $\delta_\tau=O(\tau^{1/4-h/2}\sqrt{\log(1/\tau)})$ is excluded under those additional hypotheses. They have \emph{not} been shown to hold for a complete H8 source and correction.
+
+\begin{figure}[htbp]\centering
+\begin{tikzpicture}[scale=.70,>=Stealth]
+\fill[blue!7](0,0)circle(2.75);
+\fill[white](0,0)circle(1.90);
+\fill[blue!22](0,0)circle(1.25);
+\draw[thick,blue!80!black](0,0)circle(1.25);
+\draw[thick,dashed](0,0)circle(1.90);
+\draw[thick,orange!80!black](0,0)circle(2.75);
+\foreach \a in {30,120,210,300}{\draw[very thick,->,blue!75!black]({1.55*cos(\a)},{1.55*sin(\a)})arc[start angle=\a,end angle=\a+32,radius=1.55];}
+\foreach \a in {0,90,180,270}{\draw[very thick,->,orange!80!black]({2.75*cos(\a)},{2.75*sin(\a)})--({2.3*cos(\a)},{2.3*sin(\a)});}
+\node[fill=white,inner sep=1pt,font=\footnotesize]at(0,0){carrier $U$};
+\node[font=\scriptsize,fill=white]at(0,2.12){interface $\partial\Omega$};
+\node[font=\scriptsize,fill=white]at(3.70,.9){exterior stress};
+\draw[-{Stealth},orange!80!black](3.4,.7)--(2.55,.35);
+\node[font=\scriptsize,fill=white]at(3.7,-1.15){nonlocal pressure};
+\draw[->,orange!80!black](2.85,-.95)--(1.8,-.75);
+\end{tikzpicture}
+\caption{Original transverse slice geometry: the carrier vanishes near the moving interface, while nonlocal pressure can be driven by exterior quadratic velocity stress. These arrows are schematic, not a certified unforced trajectory.}
+\end{figure}
+
+\paragraph{Boundary of integration.}
+The exact physical equation is
+$G+w_t-L_Uw+\mathcal B(w,w)=0$ with projected $\mathcal B$.
+No verified common tuple $(U,w,H,\rho,E)$ simultaneously solves this equation, the actual mixed/exterior periodic pressure, the positive compact seven-ray stress equation and terminal retention. The full unforced singularity theorem remains \textbf{OPEN}.

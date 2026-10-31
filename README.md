@@ -1,5 +1,7 @@
 # Unforced Navier–Stokes — Lean Audit and Reproducibility Package
 
+> **Current mathematical status (30 October 2026):** The original unforced finite-time singularity construction is **NOT proved**. The latest journal-style research edition proves a **conditional pressure-driven retention obstruction**, an exact finite seven-ray cone, and a new **logarithmic dyadic summability exclusion**; it does not construct a source-matched nonlinear correction. See [the journal-style edition and precise theorem scope](docs/unforced-integration/H8_JAMS_RESEARCH_EDITION_20261030.md) and [the proof-gate ledger](docs/unforced-integration/proof_gates.json). The earlier archival manuscript title below is historical and **must not be understood as a currently verified proof of unforced blow-up**.
+
 This repository accompanies the manuscript
 
 > **Unforced Finite-Time Blow-Up for Navier–Stokes: Exact Nonlinear Closure on the Three-Dimensional Periodic Torus**  
@@ -16,9 +18,72 @@ The manuscript and associated formal-verification materials are archived on Zeno
 Zenodo record: `22903432`  
 DOI: `10.5281/zenodo.22903432`
 
+### 29 October 2026: full-equation and energy-compatibility audit
+
+The cumulative **editable** manuscript at
+\`manuscript/Unforced_Navier_Stokes.tex\` now includes the exact
+two-mode equations (Appendix M), terminal-dyad injection necessities
+(Appendix Q), and the global energy-compatibility theorem (Appendix R).
+The existing Appendices N--P remain on this research branch.
+
+For a compact similarity carrier with
+\(\|U\|_2^2\sim M_0\tau^p\) and
+\(\|\nabla U\|_2^2\sim R_0M_0\tau^{p-1}\),
+an exact unforced energy-law argument shows that, assuming a bounded
+dimensionless Laplacian-shape ratio, **global relative \(L^2\) retention**
+\(\|u-U\|_2=o(\|U\|_2)\) requires \(R_0\le p/2\).
+The confined Appendix O prepared-field prototype violates this bound
+by a rigorous disk spectral estimate. Thus the specific globally
+\(L^2\)-subleading correction route is excluded for that prototype.
+This does **not** exclude non-negligible exterior-energy corrections
+or an alternative carrier. It is not a proof of finite-time blow-up.
+
+Twelve independent mathematical regressions now pass locally: six exact 3D PDE/pressure/energy/chart checks, five terminal energy-dyad/spectral checks, and one direct full-residual projection of both amplitude and translation equations.
+The new physical CI workflow explicitly executes all three pytest modules, while the full final theorem remains open. They are supportive symbolic/spectral checks, not an independent
+Lean kernel theorem or a physical PDE solution. CI status is tracked
+separately. The G0--G8 proof gates and the global unforced
+Navier--Stokes existential theorem remain **OPEN**.
+See \`docs/unforced-integration/proof_gates.json\`.
+
 ## Current formal status
 
 The present Lean development **does not constitute a machine-checked proof of the full unforced three-dimensional Navier–Stokes theorem**.
+
+### Case 006 H8 joint-cone and angular-frame audit (27 October 2026)
+
+The cumulative mathematical paper is
+`manuscript/Unforced_Navier_Stokes.tex`; it is distinct from the older
+conditional archival manuscript `paper.tex`. The current H8 revision
+proves a **jointly sharp axial--azimuthal hexagon** for the original
+one-sided seven-ray coefficient floors, with a constructive rational
+lift. `h8_positive_cone.py` and `tests/test_h8_joint_cone.py` replay
+the calculation. The new `UnforcedPatching/JointFluxCone.lean` contains
+the corresponding necessary inequalities; a hosted compilation receipt
+for its exact GitHub commit is required before calling that declaration
+kernel-checked.
+
+An adversarial review also found that the earlier cell-mass-only
+physical variable-frame support formula incorrectly treated
+`e_r(theta) tensor e_z` as constant over angular cells. The cumulative
+manuscript now keeps the frozen-frame support *inside the angular
+integral*. The rational Python enclosure separately requires certified
+test-tensor variation and frame-variation errors. See
+`docs/unforced-integration/H8_SOURCE_FREEZE_CHECKLIST.md`.
+
+The next exact source-side screen is a **zero-density collar / flat-edge
+curl obstruction**. All four admissible H8 stress coefficients vanish
+where `rho=0`; consequently a genuine source
+`f=div(E H E^T)+grad(p)` must have zero curl there. At any smooth flat
+boundary point of `rho`, every jet of `curl(f)` must vanish. The proof
+is in the cumulative manuscript, with exact finite Python regression
+and a new (hosted compilation pending) Lean zero-density lemma.
+
+The original complete H8 cutoff, frame, shaper, pressure and source
+tuple remains unauthenticated. Moreover, stress-divergence matching
+is not equivalent to solving the nonlinear unforced PDE. The final
+existential theorem, source-matched inverse and smooth nonlinear
+correction remain **OPEN**. See the machine-readable
+`docs/unforced-integration/proof_gates.json` ledger.
 
 What is already kernel-checked in `UnforcedClosure.lean`:
 

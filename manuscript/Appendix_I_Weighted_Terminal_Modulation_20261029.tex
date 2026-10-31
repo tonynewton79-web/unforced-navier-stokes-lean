@@ -1,0 +1,70 @@
+\clearpage
+\section*{Appendix I. Integrated H8 source and weighted terminal modulation}
+\addcontentsline{toc}{section}{Appendix I. Integrated H8 source and weighted terminal modulation}
+\noindent\textbf{Claim status.} This appendix reconciles the H8 source-gauge, exterior-pressure and translation-mode research of Appendices E--H and adds an exact conditional terminal-matching lemma. The complete unforced Navier--Stokes finite-time blow-up theorem remains open.
+
+\paragraph{One authenticated periodic source.}
+For the local core $(U_c,p_c)$ and potential $\nabla\times A_c=U_c$, put
+\[
+U=\nabla\times(\chi A_c)=\chi U_c+\nabla\chi\times A_c,\qquad
+G=U_t-\Delta U+\mathbb P\nabla\cdot(U\otimes U).
+\]
+A potential change $A_c\mapsto A_c+\nabla\psi$ changes $U$ by $\nabla\chi\times\nabla\psi$. The exact source tuple must therefore include the potential gauge, cutoff, shapers, H8 frame, density, positive-ray coefficients and one periodic pressure.
+
+\paragraph{Projected residual and nonlinear modulation.}
+Write $W=\partial_zU$, $N=\|W\|_2^2>0$,
+$P_tv=\langle v,W\rangle W/N$, $Q_t=I-P_t$ and
+$L_Uv=\Delta v-\mathbb P\nabla\cdot(U\otimes v+v\otimes U)$.
+Then
+\[
+W_t=L_UW+\partial_zG,\qquad
+P_tG=\frac{\langle G,W\rangle}{N}W,\qquad
+Q_tG=G-P_tG.
+\]
+The exact scalar and moving-projection identities are
+\[
+\frac{\langle G,W\rangle}{N}
+=\frac{\langle U_t,W\rangle+\langle(U\cdot\nabla)U,W\rangle}{N},
+\quad
+\|P_t'\|_{L^2\to L^2}=\frac{\|Q_tW_t\|_2}{\|W\|_2}.
+\]
+For $w_t=L_Uw-G-\mathcal N(w)$ with
+$\mathcal N(w)=\mathbb P\nabla\cdot(w\otimes w)$, set
+$a=\langle w,W\rangle/N$ and $v=Q_tw$.
+The complete amplitude and complementary equations are
+\begin{align*}
+ a'+ba&=f,\quad b=\frac{\langle\partial_zG,W\rangle}{N},\\
+ f&=\frac{\langle-G-\mathcal N(w),W\rangle+
+ \langle v,L_U^*W+W_t\rangle}{N},\\
+ v_t&=Q_tL_Uv-P_t'v-aQ_t\partial_zG-Q_tG-Q_t\mathcal N(w).
+\end{align*}
+The moving projection and quadratic regeneration cannot be suppressed.
+
+\begin{theorem}[Weighted terminal matching under a controlled mode coefficient]
+Let $D>0$, $\sigma>0$, $\kappa_b\ge0$ with
+$\kappa_b<D+\sigma$, and let $a'+b(t)a=f(t)$ on $[t_0,T)$.
+Suppose
+\[
+|b(t)|\le\kappa_b/(T-t),\qquad
+|f(t)|\le M(T-t)^{D+\sigma-1}.
+\]
+Write $B(t)=\int_{t_0}^t b(s)\,ds$. If the terminal compatibility
+condition
+\[
+ a(t_0)+\int_{t_0}^T e^{B(s)}f(s)\,ds=0
+\]
+holds, then
+\[
+ |a(t)|\le\frac{M}{D+\sigma-\kappa_b}(T-t)^{D+\sigma}
+ =o((T-t)^D).
+\]
+\end{theorem}
+\begin{proof}
+The integrating factor gives
+$a(t)=-\int_t^T e^{B(s)-B(t)}f(s)\,ds$. For $s\ge t$,
+$e^{B(s)-B(t)}\le((T-t)/(T-s))^{\kappa_b}$.
+Integration gives the asserted constant and exponent. The strict inequality $\kappa_b<D+\sigma$ also guarantees convergence of the improper matching integral.
+\end{proof}
+
+\paragraph{Limits and next certificate.}
+This theorem is an implication, not an existence proof: the forcing $f$ depends on the unknown nonlinear correction. The authentic H8 tuple still lacks a single authenticated physical cutoff/potential/stress/pressure specification. One must first calculate $N$, $\langle G,W\rangle/N$, $Q_tG$ and $P_t'$ for that source, then prove the stable complementary propagator and the bounds on $b,f$ (and terminal matching) in one compatible shrinking-radius norm. The earlier diagnostic exterior-pressure constant is not a certificate for that authentic source. A final Lean existence witness is not available; the proof-gate ledger remains \textbf{OPEN}.

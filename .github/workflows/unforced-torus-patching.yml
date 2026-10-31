@@ -17,6 +17,32 @@ on:
       - 'tests/test_h8_sharp_dual.py'
       - 'tests/test_h8_sharp_dual_certificate.py'
       - 'tests/test_h8_positive_cone.py'
+      - 'tests/test_h8_axial_flux_cone_cap.py'
+      - 'tests/test_h8_cylindrical_full_source.py'
+      - 'tests/test_h8_torque_flux_gate.py'
+      - 'tests/test_h8_final_physical_pde_20261029.py'
+      - 'tests/test_h8_global_energy_gate_20261029.py'
+      - 'tests/test_h8_local_energy_influx_20261029.py'
+      - 'tests/test_h8_anisotropic_interface_20261029.py'
+      - 'tests/test_h8_signed_poisson_pressure_20261029.py'
+      - 'tests/test_h8_signed_poisson_fft_20261030.py'
+      - 'tests/test_h8_signed_pressure_coefficient_20261030.py'
+      - 'tests/test_h8_axisymmetric_pressure_mode_20261030.py'
+      - 'tests/test_h8_c4_signed_pressure_20261030.py'
+      - 'tests/test_h8_fourth_multipole_20261030.py'
+      - 'tests/test_h8_anisotropic_pressure_limit_20261030.py'
+      - 'tests/test_h8_correction_halo_nogo_20261030.py'
+      - 'tests/test_h8_quadratic_stress_concentration_20261030.py'
+      - 'tests/test_h8_energy_dissipation_retention_20261030.py'
+      - 'tests/test_h8_logarithmic_dyadic_retention_20261030.py'
+      - 'tests/test_h8_affine_pressure_mismatch_20261030.py'
+      - 'tests/test_h8_exact_shear_correction_analytic_gate_20261030.py'
+      - 'tests/test_h8_affine_compact_correction_nogo_20261030.py'
+      - 'tests/test_h8_stress_pressure_localization_20261030.py'
+      - 'tests/test_h8_pressure_free_carrier_transfer_20261031.py'
+      - 'tests/test_h8_axisymmetric_swirl_transfer_20261031.py'
+      - 'tests/test_h8_c4_angular_signed_transfer_20261031.py'
+      - 'tests/test_h8_two_mode_projection_20261029.py'
       - 'tests/test_h8_positive_dual_certificate.py'
       - 'tests/test_h8_rotating_frame.py'
       - 'tests/test_h8_exact_flux_gate.py'
@@ -30,6 +56,7 @@ on:
       - 'h8_sharp_dual.py'
       - 'h8_sharp_dual_certificate.py'
       - 'h8_positive_cone.py'
+      - 'h8_cylindrical_full_source.py'
       - 'h8_positive_dual_certificate.py'
       - 'h8_rotating_frame.py'
       - 'h8_exact_flux_gate.py'
@@ -96,15 +123,27 @@ jobs:
           lake build UnforcedPatching.ExactCoefficientConeSmoke
           lake build UnforcedPatching.SharpCoefficientDualSmoke
           lake build UnforcedPatching.PositiveCoefficientConeSmoke
+          lake build UnforcedPatching.AxialFluxConeSmoke
+          lake build UnforcedPatching.JointFluxConeSmoke
           lake build UnforcedPatching.RotatingFrameDualSmoke
+          lake build UnforcedPatching.Case006SourceBandSmoke
+          lake build UnforcedPatching.PressureCompensatedFluxSmoke
+          lake build UnforcedPatching.CartesianAxialBridgeSmoke
+          lake build UnforcedPatching.AngularMeanSmoke
+          lake build UnforcedPatching.NonaxisymmetricAxialBridgeSmoke
+          lake build UnforcedPatching.PhysicalCircleAngularSmoke
+          lake build UnforcedPatching.FrameConnectionDerivativeSmoke
 
       - name: Install exact symbolic source-flux dependency
-        run: python -m pip install sympy
+        run: python -m pip install sympy mpmath pytest numpy
 
       - name: Revalidate fail-closed mathematical gate ledger
         run: |
           python tools/check_proof_gates.py docs/unforced-integration/proof_gates.json
           python -m unittest discover -s tests -v
+
+      - name: Independently replay final physical PDE and energy-gate regressions
+        run: python -m pytest -q tests/test_h8_final_physical_pde_20261029.py tests/test_h8_global_energy_gate_20261029.py tests/test_h8_local_energy_influx_20261029.py tests/test_h8_two_mode_projection_20261029.py tests/test_h8_anisotropic_interface_20261029.py tests/test_h8_signed_poisson_pressure_20261029.py tests/test_h8_signed_poisson_fft_20261030.py tests/test_h8_signed_pressure_coefficient_20261030.py tests/test_h8_axisymmetric_pressure_mode_20261030.py tests/test_h8_c4_signed_pressure_20261030.py tests/test_h8_fourth_multipole_20261030.py tests/test_h8_anisotropic_pressure_limit_20261030.py tests/test_h8_correction_halo_nogo_20261030.py tests/test_h8_quadratic_stress_concentration_20261030.py tests/test_h8_energy_dissipation_retention_20261030.py tests/test_h8_logarithmic_dyadic_retention_20261030.py tests/test_h8_affine_pressure_mismatch_20261030.py tests/test_h8_exact_shear_correction_analytic_gate_20261030.py tests/test_h8_affine_compact_correction_nogo_20261030.py tests/test_h8_stress_pressure_localization_20261030.py tests/test_h8_pressure_free_carrier_transfer_20261031.py tests/test_h8_axisymmetric_swirl_transfer_20261031.py tests/test_h8_c4_angular_signed_transfer_20261031.py
 
       - name: Replay older exact abstract arithmetic tests
         run: python verify_unforced_closure.py

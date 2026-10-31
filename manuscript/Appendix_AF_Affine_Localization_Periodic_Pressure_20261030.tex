@@ -1,0 +1,78 @@
+\clearpage
+\section*{Appendix AF. Source-native affine localization and periodic pressure}
+\addcontentsline{toc}{section}{Appendix AF. Affine localization and periodic pressure}
+\noindent\textbf{Scope.} This exact calculation uses the available Case~006 local vector-potential seed. The affine full-space pressure is an established elementary control. The theorem detects a pressure mismatch when the seed is cut off anisotropically and periodized. It neither identifies the final Case~006 nonaxisymmetric four-patch source nor proves unforced singularity.
+
+\paragraph{Theorem AF.1 (An explicit localized-source residual).}
+Let $0<h<1/6$, $\tau=T-t$, $A=1/2+h$, $D=1/2-h$, $p=1/2-3h$ and $\epsilon=\tau^h$. The seed $\mathcal A_0=(-yz,xz,0)$ satisfies
+\[
+ \nabla\times\mathcal A_0=(-x,-y,2z).
+\]
+The affine field $u_{\rm aff}=\tau^{-1}(-x,-y,2z)$ solves the unforced three-dimensional Navier--Stokes equation locally with $p_{\rm aff}=-3z^2/\tau^2$ but has infinite whole-space kinetic energy.
+
+Choose any smooth axisymmetric $\chi(R,\eta)$ compactly supported in a fixed reference cell, smooth at $R=0$, and equal to one on a nonempty plateau $R<r_0$, $|\eta|<\eta_0$. For sufficiently small $\tau$ define one periodic compact velocity
+\[
+ U_\tau=\nabla\times\{\tau^{-1}\chi(r/\sqrt\tau,z/\tau^D)(-yz,xz,0)\}.
+\]
+Its components are exactly
+\[
+ U_r=\tau^{-1/2}F_r,\quad U_\theta=0,\quad U_z=\tau^{-A}F_z,\quad
+ F_r=-R(\chi+\eta\chi_\eta),\quad F_z=\eta(2\chi+R\chi_R).
+\]
+Let $\pi_\tau$ be the actual mean-zero \emph{periodic} quadratic pressure, $-\Delta\pi_\tau=\partial_i\partial_j(U_{\tau,i}U_{\tau,j})$. With
+$\Pi_\tau(R,\eta)=\tau^{2A}\pi_\tau(\sqrt\tau R,\tau^D\eta)$, uniformly on fixed compact subsets of the reference cell,
+\begin{equation}\label{eq:AF-axial}
+ \boxed{\|\partial_\eta\Pi_\tau\|_\infty
+ \le C\tau^{2h}(1+|\log\tau|).}
+\end{equation}
+On its plateau the actual physical unforced residual
+$\mathcal R_\tau=\partial_tU_\tau-\Delta U_\tau+(U_\tau\cdot\nabla)U_\tau+\nabla\pi_\tau$ obeys
+\begin{equation}\label{eq:AF-residual}
+\boxed{\tau^{3/2+h}(\mathcal R_\tau)_z(\sqrt\tau R,\tau^D\eta)
+=6\eta+O(\tau^{2h}(1+|\log\tau|)).}
+\end{equation}
+Its normalized periodic pressure satisfies the \emph{exact} plateau Poisson equation
+\[
+ -(\Delta_\perp+\epsilon^2\partial_\eta^2)\Pi_\tau=6\epsilon^2,
+ \quad \epsilon^{-2}\Delta_\perp\Pi_\tau=-6+O(\epsilon^2(1+|\log\epsilon|)).
+\]
+Thus the local affine Poisson source is balanced largely by \emph{transverse} pressure curvature; its axial momentum cancellation is not preserved by compact periodization.
+\begin{proof}
+The affine assertion is immediate from $M=\operatorname{diag}(-1,-1,2)$, $\operatorname{tr}M=0$ and $M+M^2=\operatorname{diag}(0,0,6)$. The cutoff curl is solenoidal, and on the plateau is exactly $Mx/\tau$.
+
+In the anisotropic reference Fourier variables $(k,\xi)\in\mathbb R^2\times\mathbb R$, write the compact velocity as $\tau^{-A}(\epsilon F_\perp,F_z)$. Its rescaled whole-space Poisson pressure has the exact multiplier
+\[
+ \widehat\Pi^\epsilon(k,\xi)=
+ -\epsilon^2\frac{k_a k_b\widehat{F_aF_b}
+     +2 k_a\xi\,\widehat{F_aF_z}
+     +\xi^2\widehat{F_z^2}}{|k|^2+\epsilon^2\xi^2}.
+\]
+All numerator factors are Schwartz. Split the two-dimensional transverse Fourier integral at $|k|=\epsilon|\xi|$. Inside the disk the integrable multiplier contributes $O(\epsilon^2)$, after a Schwartz-weighted integration in $\xi$. Outside, the only logarithmic integral is $\epsilon^2\xi^2\int_{\epsilon|\xi|}^1 dk/k$. Therefore every fixed scaled derivative, including $\partial_\eta$ and $\partial_\eta^2$, is $O(\epsilon^2(1+|\log\epsilon|))$.
+
+The periodic and whole-space pressure kernels differ smoothly within one shrinking chart; their first physical derivatives differ by $O(\|U_\tau\|_2^2)=O(\tau^p)$. Hence the rescaled $\eta$ derivative of this difference is $O(\tau^{p+2A+D})=O(\tau^{2-2h})$. On the plateau $\partial_tU_\tau+(U_\tau\cdot\nabla)U_\tau-\Delta U_\tau=(0,0,6z/\tau^2)$. Finally $2A+D=3/2+h$ gives \eqref{eq:AF-residual}. Rescaling the physical pressure Poisson equation with its exact plateau source $6/\tau^2$ gives the transverse-curvature identity.
+\end{proof}
+
+\paragraph{Corollary AF.2 (Signed correction-pressure reconstruction gate).}
+If an actual unforced periodic solution has $u=U_\tau+w$ and the complete axial nonpressure correction term
+\[
+ Q_z=\big[w_t-\Delta w+(U_\tau\cdot\nabla)w+(w\cdot\nabla)U_\tau+(w\cdot\nabla)w\big]_z
+\]
+satisfies $\tau^{3/2+h}Q_z=o(1)$ uniformly on a compact plateau, then for
+$\pi_c=\pi[U_\tau+w]-\pi_\tau$,
+\[
+ \partial_\eta(\tau^{2A}\pi_c)=-6\eta+o(1).
+\]
+In particular, for $0\le a<b<\eta_0$,
+\begin{equation}\label{eq:AF-jump}
+ \boxed{\tau^{2A}\big[\pi_c(\sqrt\tau R,\tau^D b)-
+ \pi_c(\sqrt\tau R,\tau^D a)\big]=-3(b^2-a^2)+o(1).}
+\end{equation}
+This signed \emph{axial} pressure jump is not the signed \emph{radial interface work} required in Appendix W. The correction may also satisfy the momentum equation by a leading nonpressure term, in which case the premise here does not apply.
+
+\paragraph{Exact energy scale and limitations.}
+The compact carrier has
+$\|U_\tau\|_2^2=M_0\tau^p(1+O(\tau^{2h}))$, $M_0=\int F_z^2>0$, and
+$\|\nabla U_\tau\|_2^2=M_0R_0\tau^{p-1}(1+O(\tau^{2h}))$, where
+$R_0=\int|\nabla_\perp F_z|^2/\int F_z^2\ge j_{0,1}^2/R_1^2$ for horizontal support $R<R_1$. This is an exact singular \emph{prepared field}, not a solution of the compact unforced problem.
+
+The elementary affine field and pressure nonlocality are prior mathematical knowledge. This source-seed result has 14 independent local symbolic, Gaussian-spectral and Fourier tests, but none authenticate the full nonaxisymmetric Case~006 patch tuple, compatible positive seven-ray tensor, exact nonlinear correction or retained terminal blow-up. Full unforced singularity status: OPEN.

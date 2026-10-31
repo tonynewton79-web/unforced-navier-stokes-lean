@@ -1,0 +1,8 @@
+import UnforcedPatching.JointFluxCone
+
+#check UnforcedPatching.one_sided_positive_cone_ab_parallelogram
+#print axioms UnforcedPatching.one_sided_positive_cone_ab_parallelogram
+#check UnforcedPatching.one_sided_positive_cone_joint_ac_bounds
+#print axioms UnforcedPatching.one_sided_positive_cone_joint_ac_bounds
+#check UnforcedPatching.one_sided_positive_cone_zero_density
+#print axioms UnforcedPatching.one_sided_positive_cone_zero_density

@@ -196,6 +196,58 @@ lake build UnforcedPatching.RotatingFrameDualSmoke
 
 ## The complete axial source flux and both exact H8 budgets
 
+### Complete Cartesian frame derivatives
+
+For differentiable orthogonal `E(r,theta,z)`, write
+`Gamma_i = E.T * derivative_i(E)`, with **Cartesian**
+`i=x,y,z`. Orthogonality makes each `Gamma_i` skew. The exact
+moving-frame components of `f=div(E H E.T)+grad(p)` are
+
+\[
+ (E^T f)_b = \sum_{i,a} E_{ia}
+   (\partial_i H+\Gamma_i H-H\Gamma_i)_{ab}
+   +\sum_i E_{ib}\partial_i p.
+\]
+
+This formula accommodates a genuinely varying spatial tilt when its
+actual field and derivatives are supplied. For the standard cylindrical
+frame **only**, the complete four-field source is
+
+\[
+ f_r=-D_r+C_\theta/r+A_z-D/r+p_r,\qquad
+ f_\theta=C_r+2C/r+B_z+p_\theta/r,\qquad
+ f_z=A_r+A/r+B_\theta/r+D_z+p_z.
+\]
+
+`h8_cylindrical_full_source.py` independently implements the Cartesian
+divergence and the moving-frame connection. Its tests cover arbitrary
+symbolic fields, an independently varying spatial `SO(3)` tilt, all
+geometric stress terms, and a nonzero pressure face. Over a full
+angular period and fixed axial interval `[c,d]`, the exact identity is
+
+\[
+ \int_0^{2\pi}\!\int_c^d r f_z\,dz\,d\theta
+ =\partial_r\left(r\int_0^{2\pi}\!\int_c^d A\,dz\,d\theta\right)
+ +r\int_0^{2\pi}[D+p]_c^d\,d\theta.
+\]
+
+The one-sided ray floor also imposes the **sharp** pointwise bound
+`|A| <= (51113/245800)*rho` on the local meridional flux coordinate.
+An exact rational maximizing allocation demonstrates attainment in
+`tests/test_h8_axial_flux_cone_cap.py`. The continuum inverse remains
+open, and the local correction source is not the whole H8 residual.
+
+The 22 October Terminal Core continuity packet does not provide the
+uniquely specified H8 source tuple. The previously analysed 122-page
+Case 006 revision describes diagnostic profiles, but does not validate
+their use as a globally glued same-profile source. A source-matched
+test still requires a common certified `E(r,theta,z)` (including any
+tilt), the core potential and full three-variable cutoff, shaper
+profiles and cutoff, density `rho`, centre `R_*`, complete time-dependent
+residual `g`, and a consistent pressure representative including both
+axial traces. Without that tuple, no authentic seven-ray source match
+or positive-stress existence claim can be certified.
+
 For an arbitrary physical symmetric stress \(K\) and pressure \(p\)
 with \(\operatorname{div}K+\nabla p=f\), set the azimuthal averages
 
