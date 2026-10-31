@@ -1,7 +1,7 @@
 import Mathlib
 
 /-!
-Edition XXIII: finite scalar mathematics behind m=+1/-1 selection,
+Edition XXIII: finite scalar mathematics behind m=+1 and m=-1 selection,
 quadratic Reynolds covariance, and radial torque constants. This does
 NOT formalize cylindrical PDE, pressure, source matching or unforced blowup.
 -/
