@@ -25,8 +25,7 @@ theorem one_sided_positive_cone_axial_cap
   have hA2 := hFloor (4 : Fin 7)
   have hB1 := hFloor (5 : Fin 7)
   have hB2 := hFloor (6 : Fin 7)
-  simp [sevenRayCenter, sevenRayCorrection] at
-    hC1 hC2 hA1 hA2 hB1 hB2
+  simp [sevenRayCenter, sevenRayCorrection] at hC1 hC2 hA1 hA2 hB1 hB2
   apply abs_le.mpr
   constructor <;> nlinarith
 
