@@ -664,6 +664,54 @@ and the rotated frame before deciding whether kappa=h
 survives. Positivity/periodic pressure/actual correction/
 terminal blow-up remain OPEN.
 
+## Axisymmetric swirl cannot supply critical transfer by centrifugal magnitude alone (Appendix AO)
+
+Under uniformly compact smooth H8 similarity profiles with an
+AXISYMMETRIC solenoidal carrier U=(Ur,Utheta,Uz) and fixed
+h in (0,1/6), define the radial centrifugal potential
+
+```
+Psi_tau(r,z) = integral_r^infinity Utheta(s,z)^2 / s ds.
+```
+
+It is supported in the **filled radial disk** that contains the
+swirl. A retention region limited to an annular support does not
+control the full potential and is insufficient for this test.
+
+For ANY globally solenoidal correction w, regardless of an exterior
+analytic tail, periodic integration by parts gives exactly
+
+```
+int_T3 w . (-(Utheta^2/r) e_r)
+     = - int_T3 w_z * partial_z Psi_tau.
+```
+
+The derivative of Psi in z has L2 size O(tau^(p/2-1));
+the apparently larger centrifugal L2 power tau^(p/2-1-h)
+is an unobservable transverse gradient against global w.
+All other axisymmetric convective terms have L2 size
+O(tau^(p/2-1)). Therefore the exact signed carrier pairing
+of AN, with M~M0 tau^p and D~R0 M0 tau^(p-1), R0>p/2,
+forces
+
+```
+delta_tau >= c*tau^(h/2),
+sup_(I_tau) ||w||_Linfty(Omega_filled) >= c*tau^(-1/2-h/2)
+```
+
+for a locally retained smooth unforced u=U+w, assuming
+Ut+Delta U has L2 size O(tau^(p/2-1)), grad U Linfty
+O(tau^(-1-h)), and the full filled-core w L2 deficit
+delta_tau ->0.
+
+At h=1/10, this excludes a uniformly O(tau^-1/2)
+core correction for the **axisymmetric swirl** class.
+It does not exclude the intended authentic C4/nonaxisymmetric
+H8 route. Source freeze must evaluate angular advection,
+theta-dependent axial velocity and all 12 ordered overlaps
+rather than counting the raw centrifugal stress size as a
+certified signed energy injection.
+
 ## Exact nonlinear realization (G5--G7)
 
 Writing a residual as the divergence of a positive stress does **not**
