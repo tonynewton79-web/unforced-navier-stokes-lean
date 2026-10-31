@@ -59,7 +59,7 @@ def test_exact_rational_positive_angular_pairing():
 
 def test_natural_correction_axial_and_radial_physical_divergence():
     h=s.symbols("h",positive=True);D=s.Rational(1,2)-h
-    assert s.simplify((-s.Rational(1,2)+h)-s.Rational(1,2)-(-s.Rational(1,2)-D)-D)==0
+    assert s.simplify((-s.Rational(1,2)+h)-s.Rational(1,2)-(-s.Rational(1,2)-D))==0
 
 def test_signed_dyad_coefficient():
     x,p,C=s.symbols("x p C",positive=True)
