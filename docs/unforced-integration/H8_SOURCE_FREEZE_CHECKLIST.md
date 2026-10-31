@@ -617,6 +617,53 @@ energy is then excluded. This is **not** a full four-patch H8 source
 construction, a proof of stress positivity, or the sought zero-residual
 nonlinear correction. Remaining gates stay OPEN.
 
+## Signed carrier self-advection gate independent of pressure (Appendix AN)
+
+For any fully specified compact shrinking source U with
+M=||U||_2^2~M0*tau^p and D=||grad U||_2^2~R0*M0*tau^(p-1),
+R0>p/2, let an exact unforced u=U+w retain U locally with
+delta_tau=tau^(-p/2)*sup_(I_tau)||w||_L2(Omega)->0.
+
+Exact testing of the unforced PDE against U eliminates the
+physical pressure **without** assuming pressure-dominated boundary
+flux:
+```
+d/dt <w,U> =
+    <w,U_t+Delta U+(U.grad)U>
+  + integral w_i*w_j*partial_j U_i - (1/2)*M' - D.
+```
+The signed dyad integral of the two interaction terms must equal
+K*tau^p+o(tau^p), K=M0*(1-2^(-p))*(R0-p/2)/p>0.
+
+Assuming the carrier profile controls
+```
+||U_t+Delta U||_2 <= C*tau^(p/2-1)
+||grad U||_infty <= C*tau^(-1-h)
+||(U.grad)U||_2 <= C*tau^(p/2-1-kappa)
+0<=kappa<=h
+```
+gives delta_tau>=c*tau^max(kappa,h/2). Under carrier
+volume <=C*tau^(3/2-h), sup core |w|>=
+c*tau^(-1/2-h+max(kappa,h/2)). No global w infinity bound.
+
+**Authentic-source critical test:** for a natural-size retained
+correction delta_tau=O(tau^h), all nonlinear work must be
+supplied by the signed linear pairing
+int_I <w,(U.grad)U>=K*tau^p+o(tau^p); a raw
+source acceleration with kappa<h is insufficient.
+DO NOT replace the raw source by P[(U.grad)U] when estimating
+against local w: Leray P has a nonlocal tail.
+
+The explicit no-swirl compact affine seed has kappa=0,
+forcing delta_tau>=c*tau^(h/2), w infinity >=
+c*tau^(-1/2-h/2); natural-amplitude w=O(tau^-1/2)
+cannot work for that seed even with global tails.
+For the true swirling four-patch Case006 carrier, evaluate
+the full *physical* acceleration, all twelve C4 overlaps,
+and the rotated frame before deciding whether kappa=h
+survives. Positivity/periodic pressure/actual correction/
+terminal blow-up remain OPEN.
+
 ## Exact nonlinear realization (G5--G7)
 
 Writing a residual as the divergence of a positive stress does **not**
