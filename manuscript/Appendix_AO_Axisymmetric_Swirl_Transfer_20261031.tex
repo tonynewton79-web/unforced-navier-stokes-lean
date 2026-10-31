@@ -1,0 +1,67 @@
+\clearpage
+\section*{Appendix AO. Axisymmetric Swirl and Signed Carrier Transfer}
+\addcontentsline{toc}{section}{Appendix AO. Axisymmetric Swirl and Signed Carrier Transfer}
+\noindent\textbf{Objective.} Determine whether axisymmetric swirl supplies the signed carrier transfer required by an exact unforced correction. The leading centrifugal force is a radial gradient, which disappears when paired with globally solenoidal $w$; the remaining axial-gradient coupling is subcritical. No authentic four-patch source or singular unforced solution is asserted.
+
+\paragraph{Assumptions.}
+Let $\tau=T-t$, $0<h<1/6$, $p=1/2-3h$, $A=1/2+h$, $D=1/2-h$, and $I_\tau=[T-\tau,T-\tau/2]$. Let $U$ be a compactly supported smooth axisymmetric solenoidal carrier with uniformly bounded fixed compact similarity profiles
+\[
+U_r=\tau^{-1/2}V_r(R,\eta),\quad U_\theta=\tau^{-A}V_\theta(R,\eta),\quad U_z=\tau^{-A}V_z(R,\eta),\quad R=r/\sqrt\tau,\quad\eta=z/\tau^D.
+\]
+The smooth swirl satisfies $V_\theta=O(R)$ at $R=0$. The retention region $\Omega_\tau$ contains the \emph{filled} cylinder covering all radial interior to the swirl support, as well as its axial support. This condition is essential, even if the actual carrier is annular.
+
+\paragraph{Lemma AO.1 (Centrifugal cancellation).}
+For
+$\Psi_\tau(r,z)=\int_r^\infty U_\theta(s,z)^2/s\,ds$,
+\[
+-\frac{U_\theta^2}{r}e_r=\nabla\Psi_\tau-(\partial_z\Psi_\tau)e_z,
+\qquad
+\boxed{\int_{\mathbb T^3}w\cdot(-U_\theta^2e_r/r)\,dx
+=-\int_{\mathbb T^3}w_z\partial_z\Psi_\tau\,dx}
+\]
+for every globally divergence-free periodic correction $w$. The potential is smooth and compactly supported in the filled shrinking cylinder, and
+$\|\partial_z\Psi_\tau\|_2\le C\tau^{p/2-1}$.
+\emph{Proof.} The radial derivative of the integral is $-U_\theta^2/r$; the gradient pairing vanishes by periodic integration by parts. The axial derivative has physical scale $\tau^{-2A-D}$ and support volume $O(\tau^{1+D})$, giving exponent $-2A-D+(1+D)/2=p/2-1$.
+
+\paragraph{Lemma AO.2 (Reduced convective pairing).}
+The exact axisymmetric convective acceleration is
+\[
+\begin{aligned}
+[(U\cdot\nabla)U]_r&=U_rU_{r,r}+U_zU_{r,z}-U_\theta^2/r,\\
+[(U\cdot\nabla)U]_\theta&=U_rU_{\theta,r}+U_zU_{\theta,z}+U_rU_\theta/r,\\
+[(U\cdot\nabla)U]_z&=U_rU_{z,r}+U_zU_{z,z}.
+\end{aligned}
+\]
+All noncentrifugal terms have $L^2$ norm $O(\tau^{p/2-1})$ by direct substitution; the centrifugal pairing has the same bound by Lemma AO.1. Hence
+\[
+\boxed{|\langle w,(U\cdot\nabla)U\rangle|
+\le C\tau^{p/2-1}\|w\|_{L^2(\Omega_\tau)}}.
+\]
+
+\paragraph{Theorem AO.3 (Natural-amplitude axisymmetric correction no-go).}
+Suppose $u=U+w$ solves the smooth unforced periodic Navier--Stokes equation, $\operatorname{div}w=0$, and uniformly on late dyads
+\[
+\|U\|_2^2=M_0\tau^p(1+o(1)),\quad
+\|\nabla U\|_2^2=R_0M_0\tau^{p-1}(1+o(1)),\quad
+M_0>0,\ R_0>p/2,
+\]
+\[
+\|U_t+\Delta U\|_2\le C\tau^{p/2-1},\qquad
+\|\nabla U\|_\infty\le C\tau^{-1-h}.
+\]
+Let $\delta_\tau=\tau^{-p/2}\sup_{I_\tau}\|w\|_{L^2(\Omega_\tau)}\to0$ and $|\Omega_\tau|\le C\tau^{1+D}$. Then
+\[
+\boxed{\delta_\tau\ge c\tau^{h/2},\qquad
+\sup_{I_\tau}\|w\|_{L^\infty(\Omega_\tau)}\ge c'\tau^{-1/2-h/2}.}
+\]
+Therefore a correction uniformly bounded by $C\tau^{-1/2}$ in the core cannot retain this axisymmetric carrier, regardless of a noncompact exterior analytic tail.
+\emph{Proof.} The exact pressure-free carrier pairing identity gives
+\[
+\frac d{dt}\langle w,U\rangle=
+\langle w,U_t+\Delta U+(U\cdot\nabla)U\rangle+
+\int w_iw_j\partial_jU_i-\tfrac12(\|U\|_2^2)'-\|\nabla U\|_2^2.
+\]
+Integrating on $I_\tau$ and using endpoint retention forces the two interaction terms to total $K\tau^p+o(\tau^p)$, where $K=M_0(1-2^{-p})(R_0-p/2)/p>0$. The linear pairings are $O(\delta_\tau\tau^p)$ using Lemma AO.2, and the quadratic term is $O(\delta_\tau^2\tau^{p-h})$. Thus $K/2\le C(\delta_\tau+\delta_\tau^2\tau^{-h})$, so $\delta_\tau\ge c\tau^{h/2}$. The volume bound yields the $L^\infty$ estimate.
+
+\paragraph{Verification and exact claim boundary.}
+For the polynomial swirl $U_\theta=r(1-r^2)^2(1-z^2)^2$ on the unit cylinder, the radial potential equals $(1-r^2)^5(1-z^2)^4/10$ and its derivative is exactly $-U_\theta^2/r$. A cylindrical stream-function test confirms the solenoidal cancellation. Sixteen independent symbolic and exponent checks passed locally. The differential cancellation is classical, not a claim of a new general regularity theorem. The result applies to axisymmetric carriers with filled-core retention and does not authenticate the nonaxisymmetric Case~006 source. The simultaneous $(U,w,H,\rho,E)$ construction, positive stress, full periodic pressure, signed flux, terminal singularity and end-to-end Lean theorem remain OPEN.
