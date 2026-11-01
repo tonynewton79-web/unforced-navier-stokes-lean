@@ -67,6 +67,24 @@ theorem xxv_ray_floor_gap (mu d1 d2 d3 d4 d5 d6 d7 : ℝ)
       d1+d2+d3+d4+d5+d6+d7-(d2+d3+d6+d7)/16 := by
   linarith
 
+
+/-- Sharp universal scalar coefficient floor, valid even when the common
+lower bound mu is negative. This strengthens the earlier 105/16 estimate
+under its nonnegative-mu hypothesis. -/
+theorem xxv_ray_floor_sharp (mu d1 d2 d3 d4 d5 d6 d7 : ℝ)
+    (h1 : mu ≤ d1) (h2 : mu ≤ d2) (h3 : mu ≤ d3)
+    (h4 : mu ≤ d4) (h5 : mu ≤ d5)
+    (h6 : mu ≤ d6) (h7 : mu ≤ d7) :
+    (27/4 : ℝ) * mu ≤
+      d1+d2+d3+d4+d5+d6+d7-(d2+d3+d6+d7)/16 := by
+  linarith
+
+/-- Equality for seven identical coefficients certifies the constant. -/
+theorem xxv_ray_floor_sharp_equal (mu : ℝ) :
+    (mu+mu+mu+mu+mu+mu+mu-(mu+mu+mu+mu)/16 : ℝ) =
+      (27/4 : ℝ) * mu := by
+  ring
+
 theorem xxv_rational_floor :
     (1-16*(1/16 : ℚ)*(5/4)*(1/2)) = 3/8 := by norm_num
 theorem xxv_rational_c4_floor :
@@ -100,4 +118,6 @@ theorem xxv_constant_ray_floor :
 #print axioms xxv_rz
 #print axioms xxv_tz
 #print axioms xxv_ray_floor_gap
+#print axioms xxv_ray_floor_sharp
+#print axioms xxv_ray_floor_sharp_equal
 end TerminalCore2026
