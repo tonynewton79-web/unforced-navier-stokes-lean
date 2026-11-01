@@ -2,7 +2,7 @@ import Mathlib
 
 /-!
 Edition XXIV, scalar kernel witnesses for the co-rotating covariance
-of ONE m=+/-1 Fourier pair. No Fourier/PDE stress representation
+of ONE m=+1 and m=-1 Fourier pair. No Fourier/PDE stress representation
 is formalized here. In particular, no complete H8 cone theorem.
 -/
 namespace TerminalCore2026
