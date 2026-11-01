@@ -40,8 +40,8 @@ theorem one_sided_positive_cone_ab_parallelogram
     linarith
   have hXlo : -(A - 4 * B) ≤ (17571 / 122900 : ℝ) * ρ := by
     linarith
-  exact ⟨abs_le.mpr ⟨hBlo, hBhi⟩,
-    abs_le.mpr ⟨hXlo, hXhi⟩⟩
+  exact ⟨abs_le.mpr ⟨by linarith [hBlo], hBhi⟩,
+    abs_le.mpr ⟨by linarith [hXlo], hXhi⟩⟩
 
 /-- Exact jointly sharp hexagonal necessary bounds for the `A,C`
 projection of the one-sided seven-ray coefficient floor. -/
