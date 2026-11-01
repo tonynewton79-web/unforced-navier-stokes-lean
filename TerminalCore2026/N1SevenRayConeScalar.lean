@@ -14,7 +14,7 @@ def xxvC5 (r l s c : ℝ) : ℝ :=
   2+16*s^2+16*l^2*(r^2*s^2-r^4*c^2)-16*l*r*c*s
 def xxvC6 (r l s c : ℝ) : ℝ := 1-16*l*r*c*s
 def xxvC7 (r l s c : ℝ) : ℝ := 1+16*l*r*c*s
-def xxvPi (r l c : ℝ) : ℝ := 3/8-2*c^2*(1+l^2*r^4)
+noncomputable def xxvPi (r l c : ℝ) : ℝ := 3/8-2*c^2*(1+l^2*r^4)
 def xxvCarrier (r l s c : ℝ) : ℝ :=
   85/8+32*s^2+32*l^2*r^2*s^2-30*l^2*r^4*c^2
 
