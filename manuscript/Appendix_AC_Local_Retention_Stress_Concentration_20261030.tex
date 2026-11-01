@@ -1,0 +1,130 @@
+\clearpage
+\section*{Appendix AC. Local retention forces quadratic-stress concentration}
+\addcontentsline{toc}{section}{Appendix AC. Local retention and stress concentration}
+\noindent\textbf{Scope.} This appendix derives a source-independent necessary quadratic-stress gradient from pressure-driven inward energy transport and local retention. No separation or disjoint-support assumption is made on the nonlinear exterior correction. The statement is conditional on the nonpressure and carrier-only pressure fluxes being subcritical and does not construct an unforced singularity.
+
+\paragraph{Theorem AC.1 (Pressure-to-stress concentration).}
+Let $0<h<1/6$, $\tau=T-t$, $p=\tfrac12-3h>0$ and
+$I_\tau=[T-\tau,T-\tau/2]$. Assume the smooth periodic divergence-free
+unforced velocity $u=U+w$ and moving regions $\Omega(t)$ satisfy
+all core and local-retention hypotheses of Appendix T, with
+\[
+ \|U(t)\|_2^2=M_0\tau^p(1+o(1)),\qquad
+ \|\nabla U(t)\|_2^2=R_0M_0\tau^{p-1}(1+o(1)),
+ \quad M_0>0,\quad R_0>p/2.
+\]
+Assume, in addition, the integrated sum of nonpressure boundary
+flux and \emph{carrier-only} pressure flux is $o(\tau^p)$:
+\begin{equation}\label{eq:AC-other}
+\int_{I_\tau}\bigl[\Phi_{\rm other}(t)+
+\int_{\partial\Omega(t)}\pi[U](u\cdot n)\,dS\bigr]dt
+=o(\tau^p).
+\end{equation}
+The premise can follow from the additional interface bounds of
+Appendix U and the periodic carrier-pressure collar limit of Appendix AA,
+but it is not implied by local $L^2$ retention alone.
+
+Define $\delta_\tau=\tau^{-p/2}\sup_{t\in I_\tau}
+\|w(t)\|_{L^2(\Omega(t))}$, so $\delta_\tau\to0$,
+and let
+\[
+ \pi_c=\pi[U+w]-\pi[U]=(-\Delta)^{-1}_0\partial_i\partial_j S_{ij},
+ \qquad S=U\otimes w+w\otimes U+w\otimes w.
+\]
+Here $S$ is the \emph{velocity quadratic stress}, not the positive
+seven-ray H8 engineering stress. For some $c_0>0$ and all sufficiently
+small $\tau$,
+\begin{equation}\label{eq:AC-L2}
+\boxed{
+\sup_{t\in I_\tau}\|\nabla\pi_c(t)\|_{L^2(\Omega(t))}
+\ \ge\ c_0\,\delta_\tau^{-1}\tau^{p/2-1}.}
+\end{equation}
+Moreover, with the globally Fourier-defined $L^2$ tensor norm,
+\begin{equation}\label{eq:AC-stress}
+\boxed{
+\sup_{t\in I_\tau}\|\nabla S(t)\|_{L^2(\mathbb T^3)}
+\ \ge\ c_0\,\delta_\tau^{-1}\tau^{p/2-1},
+\qquad
+\tau^{1-p/2}\sup_{t\in I_\tau}\|\nabla S(t)\|_2\longrightarrow\infty.
+}
+\end{equation}
+If $\delta_\tau=0$ on any sufficiently late dyad, the assumed
+inward pressure transfer is impossible.
+
+\begin{proof}
+Appendix T yields the dyadic inward energy estimate
+\[
+-\int_{I_\tau}\Phi(t)\,dt\ge(K+o(1))\tau^p,\qquad
+K=\frac{1-2^{-p}}p(R_0-p/2)M_0>0.
+\]
+Subtracting \eqref{eq:AC-other} gives
+$-\int_{I_\tau}\int_{\partial\Omega}\pi_c u\cdot n\,dSdt
+\ge (K+o(1))\tau^p$. Since $U$ is solenoidal and vanishes on a
+collar of the boundary, $\int_{\Omega(t)}U\cdot\nabla\pi_c=0$.
+The exact divergence theorem therefore gives
+\[
+\int_{\partial\Omega(t)}\pi_c u\cdot n\,dS
+=\int_{\Omega(t)}w\cdot\nabla\pi_c\,dx.
+\]
+By Cauchy--Schwarz, the time interval length $|I_\tau|=\tau/2$,
+and the definition of $\delta_\tau$,
+\[
+ (K+o(1))\tau^p
+ \le\frac\tau2\,\delta_\tau\tau^{p/2}
+ \sup_{t\in I_\tau}\|\nabla\pi_c(t)\|_{L^2(\Omega(t))}.
+\]
+For small enough $\tau$, take $c_0=K$, yielding \eqref{eq:AC-L2}.
+
+For $k\ne0$, the normalized periodic Poisson multiplier obeys
+\[
+ \widehat{\partial_\ell\pi_c}(k)
+ =-ik_\ell\frac{k_i k_j}{|k|^2}\widehat S_{ij}(k).
+\]
+The matrix $(k_i k_j/|k|^2)_{ij}$ has Frobenius norm one.
+Parseval and Cauchy--Schwarz give the exact universal inequality
+\[
+ \|\nabla\pi_c\|_{L^2(\mathbb T^3)}
+ \le\|\nabla S\|_{L^2(\mathbb T^3)}.
+\]
+Its left side dominates the local $L^2(\Omega(t))$ norm.
+Combining with \eqref{eq:AC-L2} proves \eqref{eq:AC-stress}.
+\end{proof}
+
+\paragraph{Corollary AC.2 (No-go for natural-scale quadratic stress).}
+Under the hypotheses of Theorem AC.1, if for all late dyads
+\[
+\sup_{t\in I_\tau}
+\|\nabla(U\otimes w+w\otimes U+w\otimes w)(t)\|_{L^2(\mathbb T^3)}
+\le C\tau^{p/2-1},
+\]
+then the locally retained unforced solution cannot exist. No
+spatial separation, fourfold symmetry, stress positivity, or
+restriction on globally non-negligible exterior energy is assumed.
+The critical growth exponent is $p/2-1=-3/4-3h/2$, equal to $-9/10$
+when $h=1/10$.
+
+\paragraph{Corollary AC.3 (Pointwise pressure concentration).}
+For $\Omega(t)=x_0+\operatorname{diag}(\tau^{1/2},
+\tau^{1/2},\tau^{1/2-h})\Omega_0$, the moving volume equals
+$|\Omega_0|\tau^{3/2-h}$. Therefore
+\begin{equation}\label{eq:AC-Linfty}
+\boxed{\sup_{t\in I_\tau}\|\nabla\pi_c(t)\|_{L^\infty(\Omega(t))}
+\ge\frac{c_0}{|\Omega_0|^{1/2}}\,
+\delta_\tau^{-1}\tau^{-3/2-h}.}
+\end{equation}
+For the regular near-correction scaling $\delta_\tau=O(\tau^h)$,
+this recovers or strengthens the $\tau^{-3/2-2h}$
+gradient threshold of Appendix AB. The new inequality needs no
+a priori $L^\infty$ bound on $w$; instead it explicitly retains the
+local $L^2$ deficit.
+
+\paragraph{Final claim boundary.}
+Theorem AC.1 places a quantitative necessary condition on a
+\emph{hypothetical} pressure-driven exact solution; its hypotheses
+do not follow from the unforced equation without the remaining
+source-specific checks. A correction with sufficiently concentrated
+quadratic stress is not excluded by this result and may still fail
+the positivity, source-matching, nonlinear zero-residual, and
+terminal-retention gates. The original Case~006 H8 source is not
+authenticated as a complete common tuple. No finite-time unforced
+Navier--Stokes singularity is constructed or proved.

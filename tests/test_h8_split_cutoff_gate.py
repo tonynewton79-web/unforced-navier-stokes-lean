@@ -80,7 +80,8 @@ class SplitCutoffGateTests(unittest.TestCase):
         tilted = ((Q(3, 5), 0, Q(-4, 5)), (0, 1, 0),
                   (Q(4, 5), 0, Q(3, 5)))
         exact = m.spatial_frame_support_bounds(
-            [(Q(1), identity, Q(0)), (Q(2), tilted, Q(0))])
+            [(Q(1), identity, Q(0), ((0, 0, 1), (0, 0, 0), (0, 0, 0)), Q(0)),
+             (Q(2), tilted, Q(0), ((0, 0, 1), (0, 0, 0), (0, 0, 0)), Q(0))])
         from h8_positive_cone import positive_support
         from h8_rotating_frame import dual_covector
         G = ((0, 0, 1), (0, 0, 0), (0, 0, 0))
@@ -101,7 +102,8 @@ class SplitCutoffGateTests(unittest.TestCase):
                   (Q(4, 5), 0, Q(3, 5)))
         # ||tilted - I||_F^2=8/5; the rational 4/3 encloses it.
         bounds = m.spatial_frame_support_bounds(
-            [(Q(3, 2), identity, Q(4, 3))])
+            [(Q(3, 2), identity, Q(4, 3),
+              ((0, 0, 1), (0, 0, 0), (0, 0, 0)), Q(0))])
         G = ((0, 0, 1), (0, 0, 0), (0, 0, 0))
         true_plus = positive_support(*dual_covector(tilted, G), Q(3, 2))
         self.assertLessEqual(bounds.lower_plus, true_plus)
@@ -109,7 +111,28 @@ class SplitCutoffGateTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "orthogonal"):
             m.spatial_frame_support_bounds([(Q(1), ((2, 0, 0),
                                                          (0, 1, 0),
-                                                         (0, 0, 1)), Q(0))])
+                                                         (0, 0, 1)), Q(0),
+                ((0, 0, 1), (0, 0, 0), (0, 0, 0)), Q(0))])
+
+    def test_angular_test_tensor_variation_requires_separate_budget(self):
+        """A constant E cannot freeze the varying physical e_r(theta)."""
+        m = self._module()
+        I = ((1, 0, 0), (0, 1, 0), (0, 0, 1))
+        G0 = ((0, 0, 1), (0, 0, 0), (0, 0, 0))
+        from h8_positive_cone import positive_support
+        from h8_rotating_frame import dual_covector
+
+        with self.assertRaisesRegex(ValueError, "test tensor"):
+            m.spatial_frame_support_bounds([(Q(1), I, Q(0))])
+        # A full-circle test e_r(theta) \otimes e_z is within 2 of G0,
+        # even though E=I has exactly zero frame error.
+        bounds = m.spatial_frame_support_bounds(
+            [(Q(1), I, Q(0), G0, Q(2))])
+        G90 = ((0, 0, 0), (0, 0, 1), (0, 0, 0))
+        true_plus = positive_support(*dual_covector(I, G90), Q(1))
+        self.assertGreater(bounds.error, 0)
+        self.assertLessEqual(bounds.lower_plus, true_plus)
+        self.assertGreaterEqual(bounds.upper_plus, true_plus)
 
     def test_rotating_frame_connection_generates_source_from_constant_tensor(self):
         """Catches neglecting connection terms when taking stress divergence."""

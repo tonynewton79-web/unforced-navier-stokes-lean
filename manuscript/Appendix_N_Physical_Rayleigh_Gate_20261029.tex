@@ -1,0 +1,111 @@
+\clearpage
+\section*{Appendix N. Physical Rayleigh quotients and a sharp amplitude-source gate}
+\addcontentsline{toc}{section}{Appendix N. Physical Rayleigh quotients and amplitude source}
+\noindent\textbf{Status: conditional exact reduction, not a fully authenticated H8 singular source.}
+The independent four-page Appendix N and exact verification code accompany the cumulative 87-page PDF.
+
+Put $\tau=T-t$, $A=\tfrac12+h$, $D=\tfrac12-h$, $d=1-\eta^2$, $L=1-2h\eta^2$ and use the true core chart
+$q=\tau/d$, $r=\sqrt{2qX}$, $z=q^D\eta$. Then
+\[
+\boxed{dV=2\pi\tau^{1+D} Ld^{-D-2}\,dX\,d\eta.}
+\]
+Assume, conditionally, that the entire periodic carrier is smoothly supported on $0\le X\le X_*$, $|\eta|\le\eta_*<1$ and has differentiable symbol expansions
+\[
+U_r=q^{-1/2}(V_r+O_{C^2}(q^{2h})),\quad
+(U_\theta,U_z)=q^{-A}((V_\theta,V_z)+O_{C^2}(q^{2h})).
+\]
+The genuine physical derivatives act by
+$Z_aF=L^{-1}(2a\eta F+dF_\eta-2\eta XF_X)$ and
+$T_aF=L^{-1}(-aF+D\eta F_\eta+XF_X)$.
+Define $E_\theta=Z_{-A}V_\theta$, $E_z=Z_{-A}V_z$,
+$E_r=Z_{-1/2}V_r$.
+Then $W=\partial_zU$ has leading components
+$q^{-1}(E_\theta,E_z)$ and radial component $q^{-1+h}E_r$.
+For integrals over the fixed compact profile domain set
+\begin{align*}
+M_0&=2\pi\int Ld^{2A-D-2}(V_\theta^2+V_z^2)\,dX\,d\eta,\\
+N_0&=2\pi\int Ld^{-D}(E_\theta^2+E_z^2)\,dX\,d\eta,\\
+R_U&=2\pi\int Ld^{2A-D-1}
+ [2X(V_{\theta,X}^2+V_{z,X}^2)+V_\theta^2/(2X)]\,dX\,d\eta,\\
+R_W&=2\pi\int Ld^{1-D}
+ [2X(E_{\theta,X}^2+E_{z,X}^2)+E_\theta^2/(2X)]\,dX\,d\eta .
+\end{align*}
+Let
+\[
+\mathcal S=E_r\bigl[\sqrt{2X}(E_\theta V_{\theta,X}+E_z V_{z,X})
+-E_\theta V_\theta/\sqrt{2X}\bigr]
++E_\theta^2(E_z+V_r/\sqrt{2X})+E_z^3,\quad
+S_W=2\pi\int Ld^{1-D}\mathcal S\,dX\,d\eta.
+\]
+For positive $M_0,N_0$, set $p=1+D-2A=\frac12-3h$. The exact energy identities and scaling yield
+\[
+\boxed{\begin{aligned}
+\|U\|_2^2&=\tau^p(M_0+O(\tau^{2h})),&
+\|W\|_2^2&=\tau^{-A}(N_0+O(\tau^{2h})),\\
+c_A&=\tau^{-1}(R_U/M_0-p/2)+O(\tau^{-1+2h}),&
+b_T&=\tau^{-1}(A/2+(R_W+S_W)/N_0)+O(\tau^{-1+2h}).
+\end{aligned}}
+\]
+The apparent $\tau^{-1-h}$ shear does not force that rate for
+$b_T$ because the radial component of $W$ carries an extra $\tau^h$.
+Writing
+\begin{align*}
+B_\theta&=V_r\sqrt{2X}V_{\theta,X}+V_zE_\theta+V_rV_\theta/\sqrt{2X},\\
+B_z&=V_r\sqrt{2X}V_{z,X}+V_zE_z,\\
+J&=E_\theta B_\theta+E_z B_z-E_rV_\theta^2/\sqrt{2X},\\
+I_{\rm adv}&=2\pi\int Ld^{A-D}J\,dX\,d\eta,\\
+I_{\rm time}&=2\pi\int Ld^{A-D}
+ (E_\theta T_{-A}V_\theta+E_zT_{-A}V_z)\,dX\,d\eta,
+\end{align*}
+the additional projected coefficients are
+\[
+\boxed{g_T=\tau^{-A}(I_{\rm time}+I_{\rm adv})/N_0+
+O(\tau^{-A+2h}),\qquad
+e_T=\tau^{-A}I_{\rm adv}/N_0+O(\tau^{-A+2h}).}
+\]
+These formulas include the leading centripetal term in $J$.
+
+\begin{proposition}[Support-based amplitude damping and raw-source lower bound]
+Let $j_{0,1}$ be the first positive zero of $J_0$, and
+$d_*=1-\eta_*^2$. For any smooth periodic field supported on this
+shrinking transverse chart,
+\[
+\frac{\|\nabla U\|_2^2}{\|U\|_2^2}\ge
+\frac{j_{0,1}^2d_*}{2X_*\tau}.
+\]
+If the differentiated mass asymptotic above holds and
+$X_*<j_{0,1}^2d_*/p$ (with $p>0$), then $c_A\ge\kappa/\tau$
+for some $\kappa>0$ at late times. Consequently
+\[
+\boxed{\|G\|_2\ge \|P_A G\|_2=|c_A|\sqrt{\|U\|_2^2}
+\gtrsim \tau^{-3/4-3h/2}.}
+\]
+If the full forcing of the exact $\beta'+c_A\beta=F_A$ equation
+is $o(1/\tau)$, then $\beta\to0$ and carrier-amplitude retention
+fails. This does not exclude a leading-order amplitude injection.
+\end{proposition}
+\begin{proof}
+At each fixed $z$, the support lies in a disk of radius at most
+$\sqrt{2X_*\tau/d_*}$. Apply the sharp Dirichlet disk Poincare
+inequality to each Cartesian velocity component and integrate over
+$z$. Use
+$c_A=\tfrac12(\log\|U\|_2^2)'
++\|\nabla U\|_2^2/\|U\|_2^2$.
+The projected-source lower bound follows by Cauchy--Schwarz and
+$p/2-1=-3/4-3h/2$. The terminal amplitude statement follows
+from the integrating-factor equation.
+\end{proof}
+
+\paragraph{Pressure, limitations and remaining gate.}
+For one fully fixed periodic $U$, the mean-zero pressure is uniquely
+$P_U=(-\Delta)^{-1}\partial_i\partial_j(U_iU_j)$; it need not be
+compactly supported even for a compact carrier, and cannot remove
+the Leray-projected amplitude source. The H8 manuscripts still leave
+the exact physical cutoff, potential gauge, stress shapers and
+positive-ray certificate unfrozen. The displayed coefficients are
+not numerically certified for the authentic H8 source. No bound for
+$QG$, the nonlinear two-mode propagator, terminal matching or
+global $L^\infty$ correction is proved. The unforced singularity
+claim and final Lean existence gate remain OPEN.
+
+\medskip\noindent All computational algorithms, proof-search procedures, and certificate criteria were developed by the author(s). Large Language Models (LLMs) such as ChatGPT and Claude were utilized strictly as computational assistants for debugging code and cross-checking routines. No mathematical claims rely on LLM outputs; all results are grounded exclusively in independently reproducible, rigorously verified certificates (exact, symbolic, rational, interval, exhaustive, or controlled high-precision).

@@ -1,0 +1,110 @@
+\clearpage
+\section*{Appendix AQ. Fourfold Solenoidal Residual and Correction Concentration}
+\addcontentsline{toc}{section}{Appendix AQ. Fourfold Solenoidal Residual and Correction Concentration}
+\noindent\textbf{Objective.} A source-specific divergence-free spacetime test detects the fourfold axial convective defect independently of periodic pressure. It establishes a necessary amplitude--concentration tradeoff for a retained nonlinear correction. No genuine Case~006 four-patch source or singular solution is constructed.
+
+\paragraph{Carrier hypotheses.}
+Let $\tau=T-t$, $0<h<1/6$, $A=1/2+h$, $D=1/2-h$, $p=1/2-3h$ and $\varepsilon=\tau^h$. In an injective cylindrical torus chart put $R=r/\sqrt\tau$, $\eta=z/\tau^D$. Assume a compact smooth solenoidal $C_4$-equivariant carrier has
+\[
+U_r=\tau^{-1/2}V_r^\varepsilon,\quad
+U_\theta=\tau^{-A}V_\theta^\varepsilon,\quad
+U_z=\tau^{-A}V_z^\varepsilon.
+\]
+The fixed-support similarity profiles have uniformly bounded $C^4$ derivatives and smooth Cartesian axis extension, converge with $O(\varepsilon)$ error in $C^2$, and have bounded scaled time derivatives. Exact incompressibility forces $\partial_\theta V_\theta^0=0$. Define
+\[
+F(R,\theta,\eta)=\frac{V_\theta^0(R,\eta)}R\partial_\theta V_z^0(R,\theta,\eta),
+\quad
+J_F=\int |\partial_\theta F|^2 R\,dR\,d\theta\,d\eta>0.
+\]
+The source $F$ is compact, has smooth Cartesian axis extension, and contains only nonzero fourfold angular modes. Let its support lie in a $C_4$-invariant shrinking region $\Omega(t)$ of volume $O(\tau^{1+D})$.
+
+\paragraph{Lemma AQ.1 (Compact divergence-free detector).}
+The cylindrical field
+\[
+\boxed{
+Z_r=0,\quad
+Z_\theta=\tau^{-1/2}\varepsilon R\partial_\eta\partial_\theta F,\quad
+Z_z=-\tau^{-1/2}\partial_\theta^2F
+}
+\]
+is exactly solenoidal and compactly supported. Indeed
+$r^{-1}\partial_\theta Z_\theta
+=\tau^{-1+h}\partial_\eta\partial_\theta^2F
+=-\partial_zZ_z$. Moreover
+\[
+\|Z\|_2\le C\tau^{D/2},\quad
+\|\nabla Z\|_2\le C\tau^{D/2-1/2},\quad
+\|Z_t\|_2+\|\Delta Z\|_2\le C\tau^{D/2-1}.
+\]
+The critical axial source is detected with a strictly positive coefficient:
+\[
+\boxed{
+\left\langle\tau^{-2A-1/2}F e_z,Z\right\rangle
+=J_F\tau^{p-1}>0.
+}
+\]
+The first equality follows from $D-2A=p-1$; the second from periodic angular integration by parts.
+
+\paragraph{Theorem AQ.2 (Pressure-free concentration tradeoff).}
+Assume the above carrier additionally satisfies
+\[
+\|U\|_\infty\le C\tau^{-A},\quad
+\|\nabla U\|_\infty\le C\tau^{-1-h},\quad
+\|U_t-\Delta U\|_2\le C\tau^{p/2-1}.
+\]
+Suppose a smooth exact unforced periodic Navier--Stokes solution $u=U+w$ with $\nabla\cdot w=0$ exists for $t<T$. For $I_\tau=[T-\tau,T-\tau/2]$ define
+\[
+\delta_\tau=\tau^{-p/2}\sup_{I_\tau}\|w\|_{L^2(\Omega(t))},
+\qquad
+M_\tau=\sup_{I_\tau}\|w\|_{L^\infty(\Omega(t))}.
+\]
+If $\delta_\tau\to0$, then for all sufficiently small $\tau$,
+\[
+\boxed{\delta_\tau\,\tau^{1/2+h}M_\tau\ge c>0.}
+\]
+If the local retention rate is $\delta_\tau=O(\tau^h)$, necessarily
+\[
+\boxed{M_\tau\ge c'\tau^{-1/2-2h}.}
+\]
+At $h=1/10$ the lower amplitude is $\tau^{-7/10}$, excluding a uniformly natural $\tau^{-1/2}$ near-core correction within these hypotheses. This does not impose any global support condition or derivative estimate on $w$.
+
+\emph{Proof.}
+In cylindrical variables,
+$(U\cdot\nabla)U_z=U_r\partial_rU_z+(U_\theta/r)\partial_\theta U_z+U_z\partial_zU_z
+=\tau^{-2A-1/2}(F+O(\varepsilon))$.
+The radial convective component pairs to zero since $Z_r=0$. All azimuthal convective contributions tested against the $O(\varepsilon)$-small $Z_\theta$ are lower order. Lemma~AQ.1 and the carrier bounds therefore give
+\[
+\int_{I_\tau}
+\langle U_t-\Delta U+(U\cdot\nabla)U,Z\rangle dt
+=\frac{1-2^{-p}}p J_F\tau^p+O(\tau^{p+h}).
+\]
+Test the exact unforced equation for $u=U+w$ against $Z$. Periodic pressure vanishes exactly since $\nabla\cdot Z=0$. Integrating $w_t$ by parts in time (including both boundary terms), $-\Delta w$ by parts twice in space, and $(U\cdot\nabla)w$ by parts using $\nabla\cdot U=0$, gives
+\[
+\left|\int_{I_\tau}\langle w_t-\Delta w,Z\rangle dt\right|
+ \le C\delta_\tau\tau^{p+h},
+\]
+\[
+\left|\int_{I_\tau}
+\langle(U\cdot\nabla)w+(w\cdot\nabla)U,Z\rangle dt\right|
+\le C\delta_\tau\tau^p,
+\]
+\[
+\left|\int_{I_\tau}\langle(w\cdot\nabla)w,Z\rangle dt\right|
+\le C\delta_\tau M_\tau\tau^{p+1/2+h}.
+\]
+All spatial estimates use $w$ only on $\operatorname{supp}Z\subset\Omega(t)$.
+The exact zero residual implies
+\[
+\frac{1-2^{-p}}p J_F
+\le C\bigl(\tau^h+\delta_\tau+\delta_\tau\tau^h
++\delta_\tau\tau^{1/2+h}M_\tau\bigr).
+\]
+The first three terms vanish when $\tau\downarrow0$; $J_F>0$ forces the fourth to stay positive. This yields both conclusions.
+
+\paragraph{Kinematic calibration and release boundary.}
+For Appendix AP's polynomial fourfold positive control,
+$\int F^2R\,dR\,d\theta\,d\eta=4194304\pi/547521975$ and
+\[
+\boxed{J_F=\frac{67108864\pi}{547521975}>0.}
+\]
+The polynomial is a finite-regularity diagnostic; smooth flat cutoffs preserve positivity. This theorem shows why a scalar signed-transfer match does \emph{not} by itself solve the exact unforced correction equation: sufficiently concentrated correction self-interaction is necessary. The authentic four-patch source, rotating stress frame, one-sided positive coefficients, actual periodic pressure flux, pointwise terminal blow-up and end-to-end Lean closure remain OPEN.

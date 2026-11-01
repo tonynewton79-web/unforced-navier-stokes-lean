@@ -1,0 +1,64 @@
+\clearpage
+\section*{Appendix AM. Local--far stress and the axial pressure-repair scale}
+\addcontentsline{toc}{section}{Appendix AM. Local--far stress and the axial pressure-repair scale}
+\noindent\textbf{Objective.} We apply the standard local--far Poisson pressure decomposition to the affine Case~006 source seed. The splitting acts on the full quadratic velocity correction stress, not on the velocity, so global analytic tails and all mixed products are retained. This is a necessary pressure-localization result, not an H8 singularity construction.
+
+\paragraph{Source and exact pressure decomposition.}
+Let $\tau=T-t$, $0<h<1/6$, $A=\frac12+h$, $D=\frac12-h$, $p=\frac12-3h>0$, and $\beta=(2A+D)/4=\frac38+\frac h4$.
+Let $U$ be Appendix~AF's compactified affine seed with a fixed open reference plateau. Fix a compact plateau $P_\tau=x_0+\operatorname{diag}(\sqrt\tau,\sqrt\tau,\tau^D)P_0$, with reference axial coordinate $\eta\in[a,b]$, $0<a<b$. Suppose a hypothetical smooth unforced periodic solution $u=U+w$ has finite global kinetic energy. Define the complete quadratic \emph{velocity} stress
+\[
+\mathsf S=u\otimes u-U\otimes U
+=U\otimes w+w\otimes U+w\otimes w,\qquad
+\pi_c=\mathcal Q(\mathsf S),
+\]
+where $\mathcal Q(F)=(-\Delta)^{-1}_0\partial_i\partial_jF_{ij}$ is the mean-zero periodic pressure operator. For $0<d<d_0$ let $\zeta_d$ equal one within distance $d/2$ of $P_\tau$ and zero beyond distance $d$. Then
+\[
+\mathsf S_{\mathrm n}=\zeta_d\mathsf S,\quad
+\mathsf S_{\mathrm f}=(1-\zeta_d)\mathsf S,\qquad
+\pi_c=\mathcal Q(\mathsf S_{\mathrm n})+\mathcal Q(\mathsf S_{\mathrm f}).
+\]
+The cut-off tensor need not be divergence free. This is an exact linear pressure split, including every quadratic mixed stress.
+
+\paragraph{Theorem AM.1 (Critical distance gate).}
+Let
+\[
+Q_z=\bigl[w_t-\Delta w+(U\cdot\nabla)w+
+(w\cdot\nabla)U+(w\cdot\nabla)w\bigr]_z
+\]
+be the complete nonpressure axial correction term. Then on $P_0$,
+\[
+\boxed{\sup_{P_0}\left|
+\partial_\eta\left(\tau^{2A}\mathcal Q(\mathsf S_{\mathrm n})\right)+6\eta
+\right|\le C\tau^{2h}(1+|\log\tau|)
++\sup_{P_\tau}|\tau^{2A+D}Q_z|+C\tau^{2A+D}d^{-4}.}
+\]
+The constant depends on the fixed source, plateau, period and initial kinetic energy, but not on $\tau,d$.
+
+\begin{proof}
+The exact global energy equality and $\|U\|_2^2=O(\tau^p)$ give
+$\|\mathsf S_{\mathrm f}\|_1\le\|u\|_2^2+\|U\|_2^2\le C$.
+The derivative of the periodic double-Riesz pressure kernel is at most $C\,\operatorname{dist}(x,0)^{-4}$ away from its pole. The far stress is separated from $P_\tau$ by $d/2$; hence
+\[
+\|\nabla\mathcal Q(\mathsf S_{\mathrm f})\|_{L^\infty(P_\tau)}
+\le Cd^{-4}.
+\]
+Its rescaled axial derivative is thus at most $C\tau^{2A+D}d^{-4}$.
+The genuine periodic pressure calculation of Appendix~AF gives the normalized affine-seed axial residual
+$6\eta+O(\tau^{2h}(1+|\log\tau|))$ on this plateau. The exact axial unforced equation adds $\tau^{2A+D}Q_z$ and the scaled derivative of $\pi_c$. Substituting the exact near--far stress split proves the claim.
+\end{proof}
+
+\paragraph{Corollary AM.2 (Necessary near stress).}
+If $\sup_{P_\tau}|\tau^{2A+D}Q_z|\to0$ and
+$d(\tau)/\tau^\beta\to\infty$, then
+\[
+\partial_\eta\bigl(\tau^{2A}\mathcal Q(\mathsf S_{\mathrm n})\bigr)
+=-6\eta+o(1)\quad\text{uniformly on }P_0.
+\]
+If the near pressure term is also subcritical, no such exact unforced solution exists. Thus bounded-energy \emph{far-only} quadratic stress cannot repair the plateau defect at distances much larger than $\tau^\beta$. At $h=1/10$,
+$\boxed{\beta=D=2/5}$. This matches the axial similarity scale.
+
+\paragraph{Kernel sharpness and claim boundary.}
+For the Euclidean pressure kernel on the axial ray,
+$K_{zz}(0,0,d)=1/(2\pi d^3)$ and
+$\partial_zK_{zz}(0,0,d)=-3/(2\pi d^4)$.
+Thus $d^{-4}$ cannot be improved for arbitrary $L^1$ tensor stresses without additional structure. It does not follow that a physical unforced stress attains that rate. The theorem neither constructs a correction $w$ nor authenticates the full four-patch H8 source or positive seven-ray inverse. The common source-matched $(U,w,H,\rho,E)$, signed full energy flux and pointwise terminal blow-up remain open.

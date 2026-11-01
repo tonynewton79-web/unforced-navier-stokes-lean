@@ -156,6 +156,16 @@ therefore does **not** contradict the one-sided floor. No spatial
 positive-cone inverse is constructed, nor does this test exclude other
 dual obstructions.
 
+The sharp meridional coordinate consequence is
+`|A|=|H_rz| <= (51113/245800)*rho`. An explicit rational seven-ray
+allocation attains the bound. The new `AxialFluxCone.lean` module
+proves the pointwise upper bound and its exact saturation witness,
+subject to compilation of its smoke gate. Its application to the
+full source also requires the Cartesian frame connection and the
+retained axial pressure trace, now calculated in
+`H8_AUTHENTIC_SOURCE_BOUNDARY.md`. The authentic H8 stress inverse
+still has not been obtained.
+
 The `RotatingFrameDual.lean` theorem now supplies the exact bridge
 to a variable physical source frame: with `K=E H E^T` and
 `M=E^T(∇v)E`, the dual covector is

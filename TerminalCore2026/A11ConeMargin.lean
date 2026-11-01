@@ -27,8 +27,7 @@ theorem a11_normalized_cone_margin
 theorem a11_cone_gap_factor (a p w : ℝ) (hp : p ≠ 0) :
     2*(p-a)^2-(a-2)*(p*w)^2 =
     p^2*(2*(1-a/p)^2-(a-2)*w^2) := by
-  field_simp
-  ring
+  field_simp <;> ring
 
 theorem a11_shear_from_slope (ell lam : ℝ)
     (hl : -(3*lam)/2 ≤ ell) (hu : ell ≤ -lam/2) :

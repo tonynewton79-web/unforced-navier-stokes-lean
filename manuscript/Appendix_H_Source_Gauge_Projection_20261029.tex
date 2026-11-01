@@ -1,0 +1,83 @@
+\clearpage
+\section*{Appendix H. H8 source-gauge authentication and projected terminal modulation}
+\addcontentsline{toc}{section}{Appendix H. H8 source-gauge authentication and modulation}
+\noindent\textbf{Status.} This appendix proves source-gauge and moving-projection identities and supplies exact model counterexamples. The source-matched singular H8 carrier and the nonlinear unforced blow-up theorem are still open. A full source file and three-page rendered version accompany the cumulative 69-page research PDF.
+
+\paragraph{Gauge-sensitive source freeze.}
+Let $(U_c,p_c)$ solve the unforced Navier--Stokes equations on a local chart containing the support of a smooth cutoff $\chi$. For a local potential $\nabla\times A_c=U_c$ put
+\[
+U=\nabla\times(\chi A_c)=\chi U_c+S,\quad
+S=\nabla\chi\times A_c,\quad
+G=U_t-\Delta U+\mathbb P\operatorname{div}(U\otimes U).
+\]
+Replacing $A_c$ by $A_c+\nabla\psi$ changes the prepared field by the generally nonzero amount $\nabla\chi\times\nabla\psi$. Therefore $U_c$ and $\chi$ alone do not determine $U$ or its translated mode. The potential gauge must be frozen as part of the physical H8 source.
+
+\paragraph{Complete projected cutoff residual.}
+Writing $\mathcal B=\partial_t-\Delta$ and using the genuine local core pressure $p_c$, the exact projected source is
+\begin{align*}
+G=\mathbb P\big\{&
+\chi_t U_c-2\nabla\chi\cdot\nabla U_c-(\Delta\chi)U_c+
+(\chi^2-\chi)(U_c\cdot\nabla)U_c\\
+&+\chi(U_c\cdot\nabla\chi)U_c+p_c\nabla\chi+
+\mathcal B S+\chi(U_c\cdot\nabla)S
++(S\cdot\nabla)(\chi U_c)+(S\cdot\nabla)S\big\}.
+\end{align*}
+In particular the $p_c\nabla\chi$ and $S$ terms must not be dropped merely because a gradient is annihilated by $\mathbb P$.
+
+\paragraph{Translation channel and exact counterexample.}
+Set $W=\partial_zU$ and $N=\|W\|_2^2>0$. Periodicity and $\operatorname{div}W=0$ give the sharp scalar simplification
+\[
+\boxed{\quad
+\frac{\langle G,W\rangle_2}{N}
+=\frac{\langle U_t,W\rangle_2+\langle(U\cdot\nabla)U,W\rangle_2}{N}.
+\quad}
+\]
+The viscous term is zero by $z$-integration by parts. To show the scalar channel is not determined by core data alone, choose on a cylindrical chart $U_c=0$, $A_c=e_z=\nabla z$ locally and
+$\chi=a(r)b(z-s(t))$ with compact smooth $a,b$. Then
+$U=-a'(r)b(z-s(t))e_\theta$, $U_t=-s'(t)W$, and $(U\cdot\nabla)U$ is purely radial while $W$ is azimuthal. Consequently
+\[
+\boxed{\qquad \langle G,W\rangle/N=-s'(t).\qquad}
+\]
+This is a regular diagnostic example, not the authentic H8 singular carrier. It proves that an arbitrarily improved source exponent cannot be inferred from the abstract cutoff ansatz.
+
+\paragraph{Moving-projection speed.}
+For $P_tv=\langle v,W\rangle W/N$ and $Q_t=I-P_t$,
+\[
+\boxed{\quad P_t'=
+\frac{(Q_tW_t)\otimes W+W\otimes(Q_tW_t)}{N},
+\quad \|P_t'\|_{L^2\to L^2}=\frac{\|Q_tW_t\|_2}{\|W\|_2}.\quad}
+\]
+For a compactly supported self-similar toroidal diagnostic field
+$U=\tau^{-A}\rho\Phi(\rho,\zeta)e_\theta$ with
+$\rho=r/\sqrt\tau$, $\zeta=z/\tau^D$, $A+D=1$, and
+$F=\rho\partial_\zeta\Phi$, one has $W=\tau^{-1}F e_\theta$ and
+\[
+\|P_t'\|=c_F/\tau,\qquad
+c_F^2=\frac{\|\mathcal DF\|_2^2}{\|F\|_2^2}
+-\frac{|\langle\mathcal DF,F\rangle_2|^2}{\|F\|_2^4},
+\quad \mathcal DF=F+\tfrac12\rho\partial_\rho F+D\zeta\partial_\zeta F.
+\]
+A nonzero smooth compactly supported $F$ has $c_F>0$, since no nonzero compactly supported eigenfunction of this dilation operator exists. The noncompact Gaussian benchmark $\Phi=-e^{-\rho^2-\zeta^2}/2$ yields $c_F^2=1/2+3D^2/2$ exactly. A complementary propagator bound must control the order-$1/\tau$ moving-projector coupling, not only the frozen operator $Q_tL_UQ_t$.
+
+\paragraph{Terminal amplitude compatibility.}
+The corrected exact amplitude equation from Appendix G has the form $a'+b(t)a=f(t)$ with
+\[
+b=\frac{\langle\partial_zG,W\rangle}{N},\quad
+f=\frac{\langle-G-\mathcal N(w),W\rangle+
+\langle v,L_U^*W+W_t\rangle}{N},\quad
+\mathcal N(w)=\mathbb P\operatorname{div}(w\otimes w).
+\]
+Even for the ideal case $b=0$, an estimate
+$|f(t)|\le M(T-t)^{D+\sigma-1}$ with $\sigma>0$ does not ensure
+$a=o((T-t)^D)$ from arbitrary initial amplitude: generally $a(T)\ne0$.
+The terminal cancellation
+\[
+\boxed{\quad a(t_0)+\int_{t_0}^T f(s)\,ds=0\quad}
+\]
+is additionally needed in this ideal case; it then yields
+$|a(t)|\le M(T-t)^{D+\sigma}/(D+\sigma)=o((T-t)^D)$.
+For general $b$, a weighted integrating-factor estimate and corresponding
+terminal matching are required.
+
+\paragraph{Unclosed authentic gate.}
+One must specify $U_c,p_c,\chi,A_c$, shell shapers, positive seven-ray stress and a single periodic pressure, then evaluate $G$, $N$, $\langle G,W\rangle/N$, $Q_tG$, and $P_t'$ on that one source. The target $\kappa_s<A$, an improved source exponent $\sigma>0$, nonlinear terminal tuning, and a final kernel-checked Lean theorem remain unproved.

@@ -1,0 +1,42 @@
+\clearpage
+\section*{Appendix P. The complementary swirl-source obstruction}
+\addcontentsline{toc}{section}{Appendix P. The complementary swirl-source obstruction}
+\noindent\textbf{Scope.} Source-independent conditional theorem for reflection-symmetric compact similarity swirls, with an exact diagnostic certificate. The authentic H8 source, nonlinear correction, and full unforced blow-up theorem remain OPEN.
+
+\begin{theorem}[Flat compact equatorial swirl defeats two-mode raw source gain]
+Let $U$ be a smooth periodic axisymmetric solenoidal prepared field supported in a compact physical similarity chart $\tau=T-t=q(1-\eta^2)$, $X=r^2/(2q)$, $z=q^D\eta$, $A=1/2+h$, $D=1/2-h$, $0<h<1/6$. Assume $U_r$ is odd in physical $z$, $U_\theta,U_z$ even, and $U_\theta=q^{-A}V_\theta(X,\eta)$ with nonzero $V(X)=V_\theta(X,0)\not\equiv0\text{ is smooth for }X>0\text{ and flat at }X_*$ flat at $X_*>0$. Assume the higher-order azimuthal source remainder is $O(\tau^{-A-1+2h})$ uniformly in profile coordinates, and $\lambda(t)=\tau c_A(t)\to\lambda_*\in\mathbb R$, where $c_A=\langle G,U\rangle/\|U\|_2^2$ and $G=U_t-\Delta U+\mathbb P[(U\cdot\nabla)U]$. Let $W=\partial_zU$ and $Q_{AT}$ project orthogonally to both $U$ and $W$. Then
+\[
+\boxed{\|Q_{AT}G(t)\|_2\ge c\,\tau^{-3/4-3h/2}}
+\]
+for all sufficiently small $\tau$, with some profile-dependent $c>0$.
+\end{theorem}
+\begin{proof}
+The global periodic pressure need not be axisymmetric, because the torus lacks continuous rotational symmetry. Nonetheless, on each physical circle the angular average of its azimuthal gradient is zero: $(2\pi)^{-1}\int_0^{2\pi}r^{-1}\partial_\theta p\,d\theta=0$. Since $U,W$ are axisymmetric, the angular average of the residual equals the unprojected azimuthal defect minus both mode projections. At the equator $z=0$, $U_r=\partial_zU_\theta=W_\theta=0$ by reflection, so azimuthal advection and the translation projection vanish. The physical vector Laplacian gives
+\[
+\overline{(Q_{AT}G)_\theta}(t,r,0)
+=\tau^{-A-1}\mathcal D_{\lambda(t)}V(X)+O(\tau^{-A-1+2h}),
+\quad
+\mathcal D_\lambda V=-2XV''+(X-2)V'
++\left(A-\lambda+\frac1{2X}\right)V.
+\]
+If $\mathcal D_{\lambda_*}V$ vanished everywhere on $(0,X_*)$, ODE uniqueness with flat outer data $V(X_*)=V'(X_*)=0$ would force $V\equiv0$, a contradiction. A nonzero point persists on an open similarity-coordinate neighborhood and the exact physical Jacobian is
+$2\pi\tau^{1+D}(1-2h\eta^2)(1-\eta^2)^{-D-2}\,dX\,d\eta$.
+Jensen's inequality controls the angular average by the full vector norm; taking the $L^2$ norm yields $\tau^{-A-1+(1+D)/2}=\tau^{-3/4-3h/2}$.
+\end{proof}
+
+\paragraph{Two-radius exact certificate for the Attack O prototype.}
+For $h=1/10$, $A=3/5$, and
+\[
+V(X)=\frac{\sqrt{2X}}4\frac{d}{dX}
+\left[X\exp\left(-\frac{X}{1-X}\right)\right],
+\qquad 0<X<1,
+\]
+define $R(X)=\mathcal D_0V(X)/V(X)$ where nonzero. Exact symbolic arithmetic gives
+\[
+\boxed{R(1/4)=25819/810,\quad R(1/2)=-109/10,\quad
+R(1/4)-R(1/2)=17324/405.}
+\]
+Both $V(1/4)=5\sqrt2\,e^{-1/3}/72$ and $V(1/2)=-e^{-1}/4$ are nonzero. Hence no scalar amplitude coefficient cancels both radii, and $\|Q_{AT}G\|_2\gtrsim\tau^{-9/10}$. The genuine H8 core has a nontrivial odd axial jet $U_0(0,\eta)=j_0+4\eta$ and need not satisfy the assumed reflection symmetry. This theorem is therefore \emph{not} an authentic-H8 no-go or a solution to the unforced Millennium problem.
+
+\paragraph{Verification and next gate.}
+The six fresh exact tests passed, and 12 existing Attack O tests passed alongside them (19/19 selected). The independently distributed 94-page cumulative PDF preserves 91 prior pages and adds the three-page standalone Appendix P; the local rendered pages were checked. The precise next target is a fully frozen physical H8 source, its non-even profile cancellation and Leray residual, its positive seven-ray stress, nonlinear amplitude injection, translation matching and pointwise complementary retention.

@@ -1,0 +1,36 @@
+\clearpage
+\section*{Appendix AK. Exact unforced correction controls and analytic-tail restrictions}
+\addcontentsline{toc}{section}{Appendix AK. Exact correction controls and analytic-tail restrictions}
+\noindent\textbf{Objective.} These statements rule out strictly compact total-velocity patching and an exact zero correction on an affine seed plateau. They do not construct the positive H8 stress, source-matched nonlinear correction or unforced blow-up. The analyticity step is established Foias--Temam Gevrey regularity prior art, not a new general Navier--Stokes theorem.
+
+\paragraph{An exact nonzero correction control.}
+On $(\mathbb R/2\pi\mathbb Z)^3$ consider
+\[
+u_{\rm sh}(t,x,y,z)=(e^{-t}\sin y,0,0),\qquad \pi_{\rm sh}=0.
+\]
+The field is periodic and solenoidal; $(u_{\rm sh}\cdot\nabla)u_{\rm sh}=0$ and $\partial_tu_{\rm sh}-\Delta u_{\rm sh}=0$. For \emph{any} smooth solenoidal prepared carrier $U$, set $w=u_{\rm sh}-U$, $\mathcal B(f,g)=\mathbb P[(f\cdot\nabla)g]$,
+$G=U_t-\Delta U+\mathcal B(U,U)$, $L_Uw=\Delta w-\mathcal B(U,w)-\mathcal B(w,U)$. The exact identity is
+\[
+\boxed{G+w_t-L_Uw+\mathcal B(w,w)=0.}
+\]
+Thus the projected correction equation admits explicit smooth solutions even if the prepared carrier itself does not solve the PDE.
+
+\paragraph{Retention fails for the control.}
+If $\|U(t)\|_2^2=M_0\tau^{p}(1+o(1))$ with $M_0>0$ and the moving cell has volume $O(\tau^{3/2-h})$, then
+\[
+\|u_{\rm sh}(t)\|_{L^2(\Omega(t))}\le C\tau^{(3/2-h)/2},
+\qquad
+\frac{\|u_{\rm sh}\|_{L^2(\Omega)}}{\|U\|_2}
+=O(\tau^{1/2+h})\to0.
+\]
+The two triangle inequalities consequently give
+$\|w(t)\|_{L^2(\Omega(t))}/\|U(t)\|_2\to1$.
+This explicitly demonstrates that exact projected residual cancellation \emph{alone} gives no local or terminal H8 retention and does not imply a compatible positive seven-ray engineering stress.
+
+\paragraph{Spatial-analyticity obstruction.}
+Classical periodic Navier--Stokes Gevrey smoothing (Foias and Temam, J. Funct. Anal. 87 (1989), 359--369) implies that a smooth unforced solution $u(t_*,\cdot)$ is real analytic at every $t_*>0$ before its lifespan ends. If it vanishes on an open subset, the identity theorem forces $u(t_*,\cdot)\equiv0$ everywhere. Thus a nonzero exact solution cannot remain strictly compactly supported in one shrinking torus chart at positive time, even if its auxiliary carrier $U$ is compactly supported.
+
+For the plateau of the localized Case~006 affine seed $U=\tau_*^{-1}(-x,-y,2z)$, an exact correction cannot vanish on an open subregion. Otherwise $\partial_xu_x=-1/\tau_*$ on that subregion, and analyticity would imply the same constant derivative everywhere on the torus. Yet periodicity yields $\int_{\mathbb T^3}\partial_xu_x\,dx=0$, a contradiction.
+
+\paragraph{Constructive compatibility.}
+Analyticity supplies neither a uniform lower bound on the correction's magnitude nor a terminal control of its nonlocal pressure. The source-matched tuple $(U,w,H,\rho,E)$, physical C4 interactions, positivity, all moving-boundary fluxes and pointwise terminal retention are still missing. These elementary tests must not be reported as a new solution of the global unforced regularity question.

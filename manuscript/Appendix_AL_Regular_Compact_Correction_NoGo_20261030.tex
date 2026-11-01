@@ -1,0 +1,62 @@
+\clearpage
+\section*{Appendix AL. Compact regular-correction obstruction for the affine H8 seed}
+\addcontentsline{toc}{section}{Appendix AL. Compact regular-correction obstruction}
+\noindent\textbf{Objective.} An exact prepared affine core is not automatically an exact compact unforced solution. We isolate the failure of corrections with natural amplitude, regular similarity profiles and no nonlocal exterior contribution. This remains a source-seed diagnostic rather than the full four-patch construction.
+
+\paragraph{Theorem AL.1 (Regular compact near-field correction no-go).}
+Let $0<h<1/6$, $\tau=T-t$, $A=\frac12+h$, $D=\frac12-h$, $\varepsilon=\tau^h$ and
+$S_\tau=\operatorname{diag}(\tau^{1/2},\tau^{1/2},\tau^D)$.
+Take the localized affine source of Appendix AF,
+\[
+ U_\tau=\operatorname{curl}\left[
+ \tau^{-1}\chi(r/\sqrt\tau,z/\tau^D)(-yz,xz,0)\right],
+\]
+with fixed smooth compact $\chi$ equal to one on a nonempty open reference plateau.
+Suppose a smooth divergence-free correction is supported in a fixed compact reference set of the same shrinking chart and satisfies
+\[
+ w_\tau(x_0+S_\tau y)=\tau^{-1/2}W^\varepsilon(y),\qquad
+ \sup_{0<\varepsilon<\varepsilon_0}
+ \left(\|W^\varepsilon\|_{H^s}+
+ \|\varepsilon\partial_\varepsilon W^\varepsilon\|_{H^s}\right)<\infty,
+ \quad s>7/2.
+\]
+Then $u=U_\tau+w_\tau$ cannot solve the unforced periodic Navier--Stokes equation at every sufficiently late time.
+
+\paragraph{Proof.}
+On the plateau, $U_\tau=(-x,-y,2z)/\tau$ and
+\[
+ \tau^{3/2+h}[\partial_tU_\tau-\Delta U_\tau+
+  (U_\tau\cdot\nabla)U_\tau+\nabla\pi[U_\tau]]_z
+ =6\eta+O(\varepsilon^2(1+|\log\varepsilon|)),
+\]
+by the actual periodic pressure calculation of Appendix AF.
+With the natural correction scaling, uniform $H^s$ bounds and controlled scaled time derivative, the complete nonpressure axial correction term is $O(\tau^{-3/2})$ on the plateau. In particular the apparently critical $w_\perp\cdot\nabla_\perp U_z$ vanishes there because $\partial_xU_z=\partial_yU_z=0$.
+In reference variables the normalized velocity equals
+$v_U^\varepsilon+\varepsilon W^\varepsilon$ where
+$v_U^\varepsilon=(\varepsilon F_\perp,F_z)$.
+Its quadratic stress difference is $O(\varepsilon)$ in $H^s$.
+The anisotropic pressure multiplier
+\[
+ -\frac{(k,\varepsilon\xi)_i(k,\varepsilon\xi)_j}
+ {|k|^2+\varepsilon^2\xi^2}
+\]
+has Frobenius norm one at nonzero frequency, so the Sobolev algebra estimate,
+$H^{s-1}\hookrightarrow L^\infty$, and the smooth periodic-image correction imply
+\[
+ \left\|\partial_\eta[\tau^{2A}(\pi[U+w]-\pi[U])]\right\|_\infty
+ =O(\varepsilon).
+\]
+Therefore on each fixed compact reference plateau
+\[
+ \tau^{3/2+h}[\partial_tu-\Delta u+
+  (u\cdot\nabla)u+\nabla\pi[u]]_z
+ =6\eta+O(\varepsilon+\varepsilon^2|\log\varepsilon|).
+\]
+For fixed $\eta>0$ the right side cannot vanish as $\tau\downarrow0$.
+\hfill$\square$
+
+\paragraph{Corollary AL.2 (A necessary escape).}
+For this source seed, an exact unforced correction must escape at least one hypothesis: compact confinement to the shrinking chart, uniform rescaled regularity, or natural $\tau^{-1/2}$ amplitude. A global analytic tail or a different H8 carrier is not ruled out.
+
+\paragraph{Constructive compatibility.}
+The full source-matched tuple $(U,w,H,\rho,E)$, nonnegative seven-ray coefficients, all mixed and exterior periodic-pressure contributions, signed inward flux and terminal retention remain unconstructed. The exact unforced singularity theorem remains open.

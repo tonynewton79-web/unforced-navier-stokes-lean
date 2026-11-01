@@ -1,0 +1,71 @@
+\clearpage
+\section*{Appendix W. A source-specific signed pressure-work certificate}
+\addcontentsline{toc}{section}{Appendix W. Source-specific signed pressure-work certificate}
+\noindent\textbf{Scope.} This appendix reduces the pressure part of the H8 energy-transfer problem to one signed coefficient and gives an explicit finite-Fourier error test. It does not authenticate an original H8 source or construct a nonlinear unforced solution. The periodic Poisson pressure is used in full; a local pressure ansatz is not a substitute.
+
+\paragraph{Critical lateral trace.}
+Put $\tau=T-t$, $0<h<1/6$, $D=1/2-h$, $A=1/2+h$, $p=1/2-3h$. Fix a smooth bounded region $\Omega_0$ and let $\Omega(t)=x_0+S_\tau\Omega_0$, with $S_\tau=\operatorname{diag}(\tau^{1/2},\tau^{1/2},\tau^D)$, contained in one periodic chart. Suppose the smooth prepared solenoidal carrier $U$ vanishes in a collar of this boundary, and write the genuine divergence-free unforced velocity as $u=U+w$. Reconstruct the pressure from $-\Delta\pi=\partial_i\partial_j(u_i u_j)$ and $\int_{\mathbb T^3}\pi=0$.
+
+\paragraph{Theorem W.1 (Critical signed pressure coefficient).}
+Suppose the following boundary profiles exist uniformly on $\partial\Omega_0$ as $\tau\downarrow0$:
+\[
+ \tau^{1/2}w_\perp(t,x_0+S_\tau y)\longrightarrow V_\perp(y),\qquad
+ \tau^{1/2}w_z(t,x_0+S_\tau y)=O(1),
+\]
+\[
+ \tau^{2A}(\pi(t,x_0+S_\tau y)-c(t))\longrightarrow\Pi(y),
+\]
+where $c(t)$ is a time-dependent pressure-gauge choice. Then
+\begin{equation}\label{eq:W-coefficient}
+ \boxed{\int_{\partial\Omega(t)}\pi\,(u\cdot n)\,dS
+ =\tau^{p-1}(C_\pi+o(1)),\qquad
+ C_\pi=\int_{\partial\Omega_0}\Pi(y)V_\perp(y)\cdot n_{0,\perp}(y)\,dS_0.}
+\end{equation}
+Moreover, $\int_{\partial\Omega_0}V_\perp\cdot n_{0,\perp}\,dS_0=0$, so $C_\pi$ is gauge independent.
+\begin{proof}
+The exact oriented surface measure is
+\[
+ n\,dS=\det S_\tau\,S_\tau^{-T}n_0\,dS_0
+ =(\tau^{1/2+D}n_{0,1},\tau^{1/2+D}n_{0,2},\tau n_{0,3})\,dS_0.
+\]
+Since $U=0$ in the collar, insert the boundary profiles. The lateral pressure-work term scales as $\tau^{1/2+D-1/2-2A}=\tau^{p-1}$, whereas the axial term is $O(\tau^{1-1/2-2A})=O(\tau^{p-1+h})$. Solenoidality gives zero total normal flux. Divide that identity by $\tau^D$ and pass to the limit to obtain zero mean for the leading lateral normal trace. Thus the pressure gauge cancels.
+\end{proof}
+
+\paragraph{Corollary W.2 (The necessary signed coefficient).}
+Assume also the local core-retention and dissipation hypotheses of Appendix T, with constants $M_0,R_0,p$, and suppose the combined convection, viscous and boundary-motion flux has the leading expansion $\Phi_{\rm other}(t)=\tau^{p-1}(C_{\rm other}+o(1))$. Then
+\begin{equation}\label{eq:W-signed-gate}
+ \boxed{C_\pi+C_{\rm other}\le-M_0(R_0-p/2).}
+\end{equation}
+If $\Phi_{\rm other}=o(\tau^{p-1})$, the pressure coefficient alone must satisfy $C_\pi\le -M_0(R_0-p/2)$. This is a necessary condition on the \emph{actual} pressure and actual boundary-normal velocity, not an existence criterion.
+
+\paragraph{Proposition W.3 (Explicit finite-Fourier tail certificate).}
+For smooth periodic $u$, let $g=u\cdot n$ on the boundary of any smooth domain $\Omega\subset\mathbb T^3$ and set
+\[
+ \widehat A_{ij}(k)=(2\pi)^{-3}\int_{\mathbb T^3}u_i u_j e^{-ik\cdot x}\,dx,\quad
+ \widehat\mu(k)=\int_{\partial\Omega}g(x)e^{-ik\cdot x}\,dS.
+\]
+Let $W_K$ be the pressure-work Fourier sum from Appendix V restricted to $0<\|k\|_\infty\le K$, $K\ge1$ an integer. Define the Fourier-normalized tensor Sobolev norm
+\[
+ \|u\otimes u\|_{H^3_F}^2
+ =\sum_{k\in\mathbb Z^3}(1+|k|^2)^3\sum_{i,j=1}^3|\widehat A_{ij}(k)|^2.
+\]
+Then, with $W=\int_{\partial\Omega}\pi[u]g\,dS$,
+\begin{equation}\label{eq:W-tail}
+ \boxed{|W-W_K|\le\sqrt{\frac{26}{3}}\,K^{-3/2}
+ \|g\|_{L^1(\partial\Omega)}\|u\otimes u\|_{H^3_F}.}
+\end{equation}
+The bound may be integrated over a terminal dyad. Rigorous enclosures of the finite Fourier sum and right-hand side can therefore certify the sign of the full pressure work \emph{only after} a source-specific velocity and moving interface are authenticated.
+\begin{proof}
+For $k\ne0$, $\widehat\pi(k)=-k_i k_j|k|^{-2}\widehat A_{ij}(k)$. The matrix $k\otimes k/|k|^2$ has Frobenius norm one, hence $\|\pi\|_{H^3_F}\le\|u\otimes u\|_{H^3_F}$; also $|\widehat\mu(k)|\le\|g\|_{L^1(\partial\Omega)}$. The lattice shell $\|k\|_\infty=n$ has exactly $(2n+1)^3-(2n-1)^3=24n^2+2$ points. Thus
+\[
+ \sum_{\|k\|_\infty>K}(1+|k|^2)^{-3}
+ \le26\sum_{n=K+1}^\infty n^{-4}\le\frac{26}{3K^3}.
+\]
+Cauchy--Schwarz in the omitted Fourier series proves the result.
+\end{proof}
+
+\paragraph{Independent mode-overlap diagnostic.}
+On the reference unit sphere, choose $V_\perp=(y_1,-y_2)$ and $\Pi=c(y_1^2-y_2^2)$. Then $\int_{\partial\Omega_0}V_\perp\cdot n_{0,\perp}\,dS_0=0$ but $C_\pi=16\pi c/15$, of either sign. This prescribed boundary profile is \emph{not} claimed to solve the complete H8 periodic Poisson or unforced nonlinear problem.
+
+\paragraph{Open source-specific proof gate.}
+The genuine Case~006 source tuple (vector potential, three-variable cutoff, shapers, rotating frame, density, stress centre, complete periodic pressure and common residual), a compatible positive seven-ray stress, and a correction solving the full unforced equation remain unauthenticated. Neither the displayed coefficient criterion nor the elementary Fourier-tail bound closes the complete three-dimensional unforced Navier--Stokes theorem, which remains OPEN.

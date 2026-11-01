@@ -1,0 +1,64 @@
+\clearpage
+\section*{Appendix Z. A fourth-multipole pressure certificate for compact fourfold carriers}
+\addcontentsline{toc}{section}{Appendix Z. Fourth-multipole pressure certificate}
+\noindent\textbf{Scope.} These are exact two-dimensional free-space pressure results for a compact transverse carrier. They supply a moment calculation for a potential leading H8 transverse limit; they do not establish that the original three-dimensional periodic pressure has that limit. They do not authenticate a source-matched positive stress or a nonlinear unforced correction.
+
+\paragraph{Theorem Z.1 (Exact exterior fourth pressure mode).}
+Let $U=(U_1,U_2)$ be sufficiently regular, compactly supported in the disk $R\le R_*$, divergence-free on $\mathbb R^2$ and covariant under rotation through $\pi/2$. Let $\Pi$ decay at infinity and solve $-\Delta_\perp\Pi=\partial_i\partial_j(U_iU_j)$. Define $\zeta=x+iy$, $U_+=U_1+iU_2$ and $\Pi(R,\theta)=\sum_{m\in\mathbb Z}\Pi_m(R)e^{im\theta}$. For $R>R_*$,
+\begin{equation}\label{eq:Z-fourth}
+\boxed{\Pi_4(R)=\frac{3}{4\pi R^4}\overline{\mathcal Q_4(U)},\qquad
+\mathcal Q_4(U)=\int_{\mathbb R^2}\zeta^2U_+^2\,dx\,dy.}
+\end{equation}
+Only angular frequencies divisible by four occur outside the support.
+\begin{proof}
+Write $f=\partial_i\partial_j(U_iU_j)$ and $M_m=\int\zeta^m f$. The fundamental solution $-(2\pi)^{-1}\log|x-y|$ gives the convergent exterior expansion
+\[
+ \Pi(R,\theta)=\frac1{2\pi}\sum_{m\ge1}\frac{1}{mR^m}
+ \operatorname{Re}(e^{-im\theta}M_m).
+\]
+The zero total mass and dipole of a double divergence eliminate the logarithmic and first moments. The quarter-turn symmetry eliminates every $m\notin4\mathbb Z$. Two integrations by parts give
+$M_4=\int\partial_i\partial_j(\zeta^4)U_iU_j=12\int\zeta^2(U_1+iU_2)^2=12\mathcal Q_4(U)$.
+The coefficient of $e^{i4\theta}$ is $\overline{M_4}/(16\pi R^4)$. \end{proof}
+
+\paragraph{Corollary Z.2 (All four-patch cross terms matter).}
+For $U=\frac14\sum_{j=0}^3v_j$,
+\begin{equation}\label{eq:Z-cross}
+\boxed{\mathcal Q_4(U)=\frac1{16}\sum_{j,k=0}^3
+\int\zeta^2(v_{j,1}+iv_{j,2})(v_{k,1}+iv_{k,2})\,dx\,dy.}
+\end{equation}
+There are twelve ordered off-diagonal terms as well as four diagonal terms. Their possible cancellations require checking the actual source and cannot be assumed from the fourfold average.
+
+\paragraph{Proposition Z.3 (An exact compact $C_4$ pressure witness).}
+Let $F(R)=(1-R^2)^6$ for $0\le R<1$ and zero beyond, and set
+$\psi_\varepsilon=F(R)(1+\varepsilon R^4\cos4\theta)$ and
+$U_\varepsilon=(\partial_y\psi_\varepsilon,-\partial_x\psi_\varepsilon)$.
+This is compactly supported, $C^4$, divergence-free and $C_4$-equivariant. The moment and exterior pressure mode are
+\begin{equation}\label{eq:Z-exact}
+\boxed{\mathcal Q_4(U_\varepsilon)=\frac{8\pi\varepsilon}{1001},\qquad
+(\Pi_{U_\varepsilon})_4(R)=\frac{6\varepsilon}{1001R^4}\quad(R>1).}
+\end{equation}
+Compactly supported $C^\infty$ approximations retain the strict nonzero moment by continuity in $H^1$.
+\begin{proof}
+Put $G=R^4F$, $U_R=R^{-1}\partial_\theta\psi$, $U_\theta=-\partial_R\psi$. Angular orthogonality in the exact moment gives
+\[
+\mathcal Q_4=-2\pi\varepsilon\int_0^1R^3F'G'\,dR
+-8\pi\varepsilon\int_0^1R^2F'G\,dR
+=\frac{8\pi\varepsilon}{1001}.
+\]
+The $\varepsilon^2$ terms carry only angular orders zero and eight. Apply Theorem Z.1. \end{proof}
+
+\paragraph{Proposition Z.4 (Full planar-pressure sign control with a disjoint exterior correction).}
+Fix $a>1$. Let $\chi(R)$ be a smooth annular cutoff, equal to one near $R=a$ and supported outside $R=1$. Set
+$\varphi=\chi(R)R^4\sin4\theta/(4a^3)$ and $V=\nabla^\perp\varphi$.
+Then $V$ is compact, solenoidal and $C_4$-equivariant, is disjointly supported from $U_\varepsilon$, and has $V\cdot e_R=\cos4\theta$ on $R=a$. For $u_\delta=U_\varepsilon+\delta V$ and its \emph{complete} planar free-space Poisson pressure,
+\begin{equation}\label{eq:Z-full}
+\boxed{\int_{R=a}\Pi[u_\delta]u_\delta\cdot e_R\,dS
+=\delta\frac{12\pi\varepsilon}{1001a^3}
++\delta^3\int_{R=a}\Pi[V](V\cdot e_R)\,dS.}
+\end{equation}
+Therefore either signed pressure-work direction occurs for sufficiently small $\delta$ of either sign, provided $\varepsilon\ne0$.
+\begin{proof}
+Disjoint supports give $U_\varepsilon\otimes V=V\otimes U_\varepsilon=0$, so the exact pressure polarization is $\Pi[u_\delta]=\Pi[U_\varepsilon]+\delta^2\Pi[V]$. On $R=a$, the only velocity normal trace is $\delta\cos4\theta$ and the carrier's fourth mode is given by \eqref{eq:Z-exact}. Integrating the product yields the stated linear term; the remaining term is cubic. \end{proof}
+
+\paragraph{Application boundary for the original H8 problem.}
+The moment \eqref{eq:Z-cross} can be evaluated on a single frozen genuine H8 four-patch velocity \emph{only after} authenticating every common cutoff, shaper, frame and overlap, and proving that the full periodic three-dimensional Poisson pressure admits the transverse free-space limit used in Theorem Z.1 with controlled periodic, axial and exterior errors. The positive seven-ray tensor, exact nonlinear unforced correction and terminal pointwise retention are independent unresolved gates. Formula \eqref{eq:Z-full} involves static planar diagnostics; it is not an unforced singular solution. The complete three-dimensional unforced Navier--Stokes theorem remains OPEN. The Green-function multipole method is classical; no general novelty claim is made.

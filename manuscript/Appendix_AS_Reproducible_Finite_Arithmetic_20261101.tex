@@ -1,0 +1,23 @@
+\clearpage
+\section*{Appendix AS. Reproducible finite-arithmetic verification}
+\addcontentsline{toc}{section}{Appendix AS. Reproducible finite-arithmetic verification}
+
+The following self-contained source independently verifies the rational
+seven-ray witnesses, the six boundary vertices of the axial--azimuthal
+projection, the exact Case~006 interval, the trigonometric tensor
+polynomial identity, the sharp scalar floor, and both fourfold polynomial
+diagnostic integrals. The identities are checked over
+\(\mathbb{Q}\) and by exact symbolic polynomial arithmetic. The positive
+trigonometric polynomial integral is a kinematic diagnostic, not a
+solution of the unforced equation.
+
+\medskip
+\noindent\textbf{Python 3 source (requires SymPy):}
+\IfFileExists{tests/test_h8_full_paper_20261101.py}{%
+\lstinputlisting[language=Python,breaklines=true,basicstyle=\ttfamily\scriptsize,
+  columns=fullflexible,keepspaces=true]{tests/test_h8_full_paper_20261101.py}
+}{\texttt{tests/test\_h8\_full\_paper\_20261101.py} in the source repository.}
+
+The conditional analytic estimates in Appendices AP and AQ additionally
+require their stated smoothness, support and localization hypotheses;
+finite-arithmetic checks alone do not establish those analytic assumptions.

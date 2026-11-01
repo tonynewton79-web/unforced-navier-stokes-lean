@@ -1,0 +1,77 @@
+\clearpage
+\section*{Appendix O. Solenoidal return flow and sharp transverse confinement}
+\addcontentsline{toc}{section}{Appendix O. Solenoidal return flow and sharp transverse confinement}
+\noindent\textbf{Status.} Exact axisymmetric necessary conditions and a fully specified smooth prepared-field diagnostic. These are not the authentic H8 source-matched seven-ray stress or an unforced singularity theorem. The complete four-page appendix is preserved in the cumulative PDF and the separate source packet.
+\paragraph{Physical chart and exact gauge.}
+Let $\tau=T-t=q(1-\eta^2)$, $z=q^D\eta$, $X=r^2/(2q)$, $A=1/2+h$, $D=1/2-h$ and
+\[
+\mathcal Z_a F=\frac{2a\eta F+(1-\eta^2)F_\eta-2\eta XF_X}{1-2h\eta^2}.
+\]
+For compact, axis-regular smooth functions $\Phi,B$ flat at their outer boundaries put
+\[
+A_r=0,\quad A_\theta=q^{-h}\Phi/\sqrt{2X},\quad A_z=-q^{-h}B,\quad U=\nabla\times A.
+\]
+Then
+\[
+U_r=q^{-1/2}V_r,\quad U_z=q^{-A}V_z,\quad U_\theta=q^{-A}V_\theta,\qquad
+V_r=-\frac{\mathcal Z_{1-A}\Phi}{\sqrt{2X}},\;
+V_z=\Phi_X,\;
+V_\theta=\sqrt{2X}B_X.
+\]
+This is identically solenoidal and extends smoothly by zero to a periodic chart, provided $\Phi,B=O(X)$ at the axis. Conversely compact, regular leading poloidal profiles with zero slice flux obey this representation with $\Phi(X,\eta)=\int_0^X V_z(Y,\eta)dY$.
+\paragraph{Axial return-flow law.}
+For a compact axisymmetric solenoidal field with support in a proper axial subinterval, integrating incompressibility at fixed physical $z$ gives
+\[
+\boxed{\int_0^\infty U_z(t,r,z)r\,dr=0},\qquad
+\boxed{\int_0^{X_*}V_z(X,\eta)\,dX=0}.
+\]
+Thus a positive central axial jet necessarily has a compensating negative annular flow. If $V_z\ge m$ on $0<X<x_0$, then
+\[
+\int_{x_0}^{X_*}V_z^2\,dX\ge\frac{m^2x_0^2}{X_*-x_0}
+\]
+by Cauchy--Schwarz.
+\begin{theorem}[Sharper axisymmetric disk energy bound]
+Let $U$ be smooth, compactly confined in disks $r\le R_*(t)$, axisymmetric, solenoidal, and supported in a proper axial subinterval. With $\theta_z=\|U_z\|_2^2/\|U\|_2^2$,
+\[
+\boxed{\frac{\|\nabla U\|_2^2}{\|U\|_2^2}
+\ge\frac{j_{1,1}^2+(j_{2,1}^2-j_{1,1}^2)\theta_z}{R_*^2}}
+\]
+where $j_{1,1}^2=14.68197064\ldots$ and $j_{2,1}^2=26.37461643\ldots$.
+\end{theorem}
+\begin{proof}
+The horizontal Cartesian components of axisymmetric $U$ have angular Fourier order one, whose Dirichlet disk eigenvalue is $j_{1,1}^2/R_*^2$. The axial component is radial and has zero disk mean by the flux law. The sharp zero-mean radial Dirichlet quotient is $j_{2,1}^2/R_*^2$: its constrained Euler--Lagrange equation is $-(rf')'=\lambda rf+\mu r$, giving $f(r)\propto J_0(kr)-J_0(kR_*)$. The zero mean condition is $2J_1(kR_*)=kR_*J_0(kR_*)$, equivalent to $J_2(kR_*)=0$. Add the two disk-sector bounds at every physical $z$ and then the nonnegative axial gradient energy.
+\end{proof}
+\paragraph{Nonlinear amplitude-injection threshold.}
+For $M=\|U\|_2^2=\tau^p(M_0+O(\tau^{2h}))$ with differentiated bounds and $p=1/2-3h$, the exact identity
+$c_A=\frac12(\log M)'+\|\nabla U\|_2^2/M$ gives, with $d_*=1-\eta_*^2$,
+\[
+\liminf\tau c_A\ge\frac{d_*}{2X_*}
+\bigl[j_{1,1}^2+(j_{2,1}^2-j_{1,1}^2)\liminf\theta_z\bigr]-p/2.
+\]
+If $c_A\ge\kappa/\tau$ and the exact nonlinear amplitude equation
+$\beta'+c_A\beta=F_A$ retains $\beta\to1$, then
+\[
+\boxed{\liminf_{\tau\downarrow0}\int_{T-\tau}^{T-\tau/2}F_A(s)\,ds
+\ge\kappa\log2}.
+\]
+This follows by integrating the exact amplitude equation over the terminal dyad. A positive amplitude damping requires leading injection; an $o(1/\tau)$ amplitude forcing cannot suffice.
+\paragraph{Fully frozen periodic prepared-field diagnostic.}
+Take $h=1/10$, $\eta_*=1/2$, $X_*=1$, $\Phi=Xf(X)g(\eta)$, $B=\Phi/4$, with
+\[
+f(X)=e^{-X/(1-X)}\ (0\le X<1),\qquad
+g(\eta)=e^{-4\eta^2/(1-4\eta^2)}\ (|\eta|<1/2),
+\]
+both extended flatly by zero. This fixes the carrier gauge, its compact support and the canonical periodic mean-zero pressure, and gives $U_z(t,0,0)=\tau^{-A}$. Independent Gauss--Legendre integration of the Appendix N profile quadratures at 40, 64, 90 and 128 nodes per coordinate converges to
+\[
+M_0=0.829691939536,\;\;N_0=9.33098522102,\;\;
+\lim\tau c_A=27.0163023544,\;\;\lim\tau b_T=43.4741340312,
+\]
+\[
+\lim\tau^A g_T=\lim\tau^Ae_T=0.0477816887268,\qquad
+\lim\theta_z=0.95969941416.
+\]
+The signed translation-strain and translation-time quadratures vanish by exact parity. These are convergent numerical diagnostics, not interval-certified digits. The independently proved support bound gives $\liminf\tau c_A\ge9.61377348\ldots$, and hypothetical amplitude retention would demand approximately $18.72627$ integrated forcing per terminal dyad for this prototype.
+\paragraph{Outstanding gate.}
+This explicit prototype is neither authenticated to the true local H8 core nor proved to satisfy its source-matched positive seven-ray stress. Its Leray residual and nonlinear complement are not closed. Freeze the authentic core/potential/cutoff/shapers/stress/pressure as one tuple, enforce the radial return-flow condition and the spectral bound, and establish amplitude injection, terminal translation matching, and global $L^\infty$ retention for the same unforced correction. The unforced Navier--Stokes singularity theorem remains OPEN.
+
+\medskip\noindent All computational algorithms, proof-search procedures, and certificate criteria were developed by the author(s). Large Language Models (LLMs) such as ChatGPT and Claude were utilized strictly as computational assistants for debugging code and cross-checking routines. No mathematical claims rely on LLM outputs; all results are grounded exclusively in independently reproducible, rigorously verified certificates (exact, symbolic, rational, interval, exhaustive, or controlled high-precision).

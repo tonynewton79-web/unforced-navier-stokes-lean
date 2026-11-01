@@ -1,0 +1,18 @@
+\clearpage
+\section*{Appendix AE. A logarithmic dyadic retention barrier}
+\addcontentsline{toc}{section}{Appendix AE. A logarithmic dyadic retention barrier}
+\noindent\textbf{Scope.} We strengthen Appendix AD's conditional energy-dissipation theorem by summing over disjoint terminal intervals. This argument does not authenticate the original H8 source or construct a singular solution.
+
+\paragraph{Theorem AE.1 (Logarithmic strengthening).}
+Under every hypothesis of Appendix AD, including the true unforced equation, local retention of a carrier with gradient energy $O(\tau^{p-1})$, pressure-dominated inward flux, bounded shape ratio, and global bounds $\|w\|_\infty\le C\tau^{-1/2}$, $\|U\|_\infty\le C\tau^{-1/2-h}$, set $\tau_n=2^{-n}\tau_0$ and $\delta_{\tau_n}=\tau_n^{-p/2}\sup_{I_{\tau_n}}\|w\|_{L^2(\Omega(t))}$. Then
+\[
+\boxed{\sum_{n\ge0}\frac{\tau_n^{1/2-h}}{\delta_{\tau_n}^2}<\infty.}
+\]
+Consequently $\delta_\tau=O(\tau^{1/4-h/2}\sqrt{\log(1/\tau)})$ on all late dyads is impossible. At $h=1/10$, the excluded rate is $O(\tau^{1/5}\sqrt{\log(1/\tau)})$.
+
+\begin{proof}
+Appendix AD gives $\int_{I_{\tau_n}}\|\nabla w\|_2^2dt\ge c\tau_n^{1/2-h}/\delta_{\tau_n}^2$ with a uniform constant. The dyads are pairwise disjoint up to endpoints. Since $w=u-U$, the integral of $|\nabla w|^2$ up to $T$ is finite: it is bounded by twice the global unforced dissipation of $u$ plus twice the carrier dissipation, which is integrable because $\|\nabla U\|_2^2=O(\tau^{p-1})$ and $p>0$. Summing proves series convergence. For the stated logarithmic upper bound on $\delta_{\tau_n}$, the $n$-th series term is at least $c/\log(1/\tau_n)\asymp c/n$, contradicting divergence of the harmonic series.
+\end{proof}
+
+\paragraph{Claim boundary.}
+This excludes a specific retention rate under additional global velocity and pressure-flux assumptions. It does not exclude all near-field corrections, solve the spatial H8 positive stress inverse, or establish a finite-time singularity for unforced Navier--Stokes.

@@ -1,0 +1,49 @@
+\clearpage
+\section*{Appendix AD. An energy-dissipation barrier to strong local H8 retention}
+\addcontentsline{toc}{section}{Appendix AD. Energy-dissipation barrier to strong local retention}
+\noindent\textbf{Scope.} The result strengthens the pressure concentration constraint of Appendix AC using the finite total dissipation of genuine smooth unforced flows. It excludes one class of correction/retention rates under explicit global pointwise bounds, but does not construct a singularity.
+
+\paragraph{Theorem AD.1 (Integrated pressure-driven dissipation lower bound).}
+Put $\tau=T-t$, $0<h<1/6$, $A=\frac12+h$, $p=\frac12-3h>0$ and $I_\tau=[T-\tau,T-\tau/2]$. Assume a smooth finite-energy unforced periodic Navier--Stokes solution $u=U+w$ satisfies the retained-core hypotheses of Appendix AC, including the dyad-integrated requirement that the carrier-only pressure and all nonpressure fluxes sum to $o(\tau^p)$. Write
+\[
+ \delta_\tau=\tau^{-p/2}\sup_{I_\tau}\|w(t)\|_{L^2(\Omega(t))}\to0,\qquad S=U\otimes w+w\otimes U+w\otimes w.
+\]
+Assume uniform global bounds on every sufficiently late dyad
+\[
+ \|w\|_{L^\infty(\mathbb T^3)}\le C\tau^{-1/2},\quad
+ \|U\|_{L^\infty(\mathbb T^3)}\le C\tau^{-A},\quad
+ \|\nabla U\|_{L^2(\mathbb T^3)}\le C\tau^{(p-1)/2},
+\]
+understood with comparable instantaneous terminal time on the dyad. Then for some $c>0$,
+\begin{equation}\label{eq:AD-dissipation}
+ \boxed{\int_{I_\tau}\|\nabla w(t)\|_2^2\,dt\ge
+ c\,\delta_\tau^{-2}\tau^{1/2-h}.}
+\end{equation}
+In particular no such finite-energy smooth unforced solution exists if
+\begin{equation}\label{eq:AD-rate}
+ \boxed{\delta_\tau=O(\tau^{1/4-h/2}).}
+\end{equation}
+At $h=1/10$ this excludes the rate $\delta_\tau=O(\tau^{1/5})$. No spatial halo separation or fourfold symmetry is needed.
+\begin{proof}
+The signed correction-pressure work requirement from Appendices T and AC, the exact boundary-to-volume identity, the local retention ratio and the periodic Fourier Poisson multiplier give, for some $K>0$,
+\[
+ K\tau^p\le\left|\int_{I_\tau}\int_{\Omega(t)}w\cdot\nabla\pi_c\,dxdt\right|
+ \le\delta_\tau\tau^{p/2}\int_{I_\tau}\|\nabla\pi_c\|_2dt
+ \le\delta_\tau\tau^{p/2}\int_{I_\tau}\|\nabla S\|_2dt.
+\]
+The product rule and global velocity bounds yield
+\[
+ \|\nabla S\|_2\le 2\|w\|_\infty\|\nabla U\|_2+
+ (2\|U\|_\infty+2\|w\|_\infty)\|\nabla w\|_2
+ \le C_1\tau^{p/2-1}+C_2\tau^{-A}\|\nabla w\|_2,
+\]
+where $(p-1)/2-1/2=p/2-1$. Integrating over $I_\tau$ and using $\delta_\tau\to0$ to absorb the first term gives
+\[
+ \int_{I_\tau}\|\nabla w\|_2dt\ge
+ c_1\delta_\tau^{-1}\tau^{p/2+A}
+ =c_1\delta_\tau^{-1}\tau^{3/4-h/2}.
+\]
+Cauchy--Schwarz in time, with $|I_\tau|=\tau/2$, proves \eqref{eq:AD-dissipation} since $p+2A-1=1/2-h$. Under \eqref{eq:AD-rate}, each late dyad has $\int_{I_\tau}\|\nabla w\|_2^2dt\ge c_2>0$, whereas $\int_{I_\tau}\|\nabla U\|_2^2dt=O(\tau^p)\to0$. The reverse triangle inequality in $L^2(I_\tau;L^2_x)$ gives $\int_{I_\tau}\|\nabla u\|_2^2dt\ge c_3>0$ on every sufficiently late dyad. The disjoint sequence $\tau_n=2^{-n}\tau_0$ would force infinite total dissipation, contrary to the smooth unforced global energy equality for finite initial kinetic energy.
+\end{proof}
+\paragraph{Claim boundary.}
+This does not rule out weaker local retention, a correction without the global $L^\infty$ bound, substantial nonpressure inward flux, or a different physical scaling. For $0<h<1/6$ the natural regular near-correction rate $O(\tau^h)$ is weaker than the excluded $O(\tau^{1/4-h/2})$ rate. No complete original Case~006 source, positive seven-ray stress, zero-residual nonlinear correction or terminal blow-up theorem is established.

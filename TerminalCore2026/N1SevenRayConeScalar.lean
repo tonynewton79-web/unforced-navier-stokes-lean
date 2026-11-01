@@ -14,8 +14,8 @@ def xxvC5 (r l s c : ℝ) : ℝ :=
   2+16*s^2+16*l^2*(r^2*s^2-r^4*c^2)-16*l*r*c*s
 def xxvC6 (r l s c : ℝ) : ℝ := 1-16*l*r*c*s
 def xxvC7 (r l s c : ℝ) : ℝ := 1+16*l*r*c*s
-def xxvPi (r l c : ℝ) : ℝ := 3/8-2*c^2*(1+l^2*r^4)
-def xxvCarrier (r l s c : ℝ) : ℝ :=
+noncomputable def xxvPi (r l c : ℝ) : ℝ := 3/8-2*c^2*(1+l^2*r^4)
+noncomputable def xxvCarrier (r l s c : ℝ) : ℝ :=
   85/8+32*s^2+32*l^2*r^2*s^2-30*l^2*r^4*c^2
 
 theorem xxv_rr (r l s c : ℝ) :
@@ -32,11 +32,11 @@ theorem xxv_tt (r l s c : ℝ) :
   unfold xxvC2 xxvC3 xxvC6 xxvC7 xxvPi
   ring
 
-theorem xxv_zz (r l s c : ℝ) :
+theorem xxv_zz (r l s c : ℝ) (hsc : s ^ 2 + c ^ 2 = 1) :
     (xxvC4 r l s c+xxvC5 r l s c+xxvC6 r l s c+xxvC7 r l s c)/16 =
     2*(1+l^2*r^2*s^2)+xxvPi r l c := by
   unfold xxvC4 xxvC5 xxvC6 xxvC7 xxvPi
-  ring
+  nlinarith [hsc]
 
 theorem xxv_rt (r l s c : ℝ) :
     (xxvC2 r l c-xxvC3 r l c+xxvC6 r l s c+xxvC7 r l s c)/4 =
@@ -59,12 +59,31 @@ theorem xxv_unaugmented_gap (r l c : ℝ) :
   ring
 
 theorem xxv_ray_floor_gap (mu d1 d2 d3 d4 d5 d6 d7 : ℝ)
+    (hmu : 0 ≤ mu)
     (h1 : mu ≤ d1) (h2 : mu ≤ d2) (h3 : mu ≤ d3)
     (h4 : mu ≤ d4) (h5 : mu ≤ d5)
     (h6 : mu ≤ d6) (h7 : mu ≤ d7) :
     (105/16 : ℝ)*mu ≤
       d1+d2+d3+d4+d5+d6+d7-(d2+d3+d6+d7)/16 := by
   linarith
+
+
+/-- Sharp universal scalar coefficient floor, valid even when the common
+lower bound mu is negative. This strengthens the earlier 105/16 estimate
+under its nonnegative-mu hypothesis. -/
+theorem xxv_ray_floor_sharp (mu d1 d2 d3 d4 d5 d6 d7 : ℝ)
+    (h1 : mu ≤ d1) (h2 : mu ≤ d2) (h3 : mu ≤ d3)
+    (h4 : mu ≤ d4) (h5 : mu ≤ d5)
+    (h6 : mu ≤ d6) (h7 : mu ≤ d7) :
+    (27/4 : ℝ) * mu ≤
+      d1+d2+d3+d4+d5+d6+d7-(d2+d3+d6+d7)/16 := by
+  linarith
+
+/-- Equality for seven identical coefficients certifies the constant. -/
+theorem xxv_ray_floor_sharp_equal (mu : ℝ) :
+    (mu+mu+mu+mu+mu+mu+mu-(mu+mu+mu+mu)/16 : ℝ) =
+      (27/4 : ℝ) * mu := by
+  ring
 
 theorem xxv_rational_floor :
     (1-16*(1/16 : ℚ)*(5/4)*(1/2)) = 3/8 := by norm_num
@@ -99,4 +118,6 @@ theorem xxv_constant_ray_floor :
 #print axioms xxv_rz
 #print axioms xxv_tz
 #print axioms xxv_ray_floor_gap
+#print axioms xxv_ray_floor_sharp
+#print axioms xxv_ray_floor_sharp_equal
 end TerminalCore2026
