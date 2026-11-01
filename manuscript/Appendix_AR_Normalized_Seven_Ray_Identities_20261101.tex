@@ -1,0 +1,64 @@
+\clearpage
+\section*{Appendix AR. Normalized seven-ray identities and sharp scalar coefficient floor}
+\addcontentsline{toc}{section}{Appendix AR. Normalized seven-ray identities and sharp scalar coefficient floor}
+
+\noindent
+This appendix records two exact algebraic statements underlying the normalized
+seven-ray tensor representation. Their hypotheses are part of each assertion.
+
+\paragraph{The normalized trigonometric tensor identity.}
+For real \(r,\ell,s,c\) define
+\[
+\begin{aligned}
+C_4&=2+16s^2+16\ell^2(r^2s^2-r^4c^2)+16\ell rcs,\\
+C_5&=2+16s^2+16\ell^2(r^2s^2-r^4c^2)-16\ell rcs,\\
+C_6&=1-16\ell rcs,\qquad C_7=1+16\ell rcs,\\
+\Pi&=\frac38-2c^2(1+\ell^2r^4).
+\end{aligned}
+\]
+\textbf{Proposition AR.1.}
+If \(s^2+c^2=1\), then
+\begin{equation}\label{ar:zz}
+\frac{C_4+C_5+C_6+C_7}{16}
+=2(1+\ell^2r^2s^2)+\Pi.
+\end{equation}
+\emph{Proof.} Expanding the left-hand side gives
+\[
+\frac38+2s^2+2\ell^2r^2s^2-2\ell^2r^4c^2.
+\]
+Subtracting the right-hand side of \eqref{ar:zz} reduces exactly to
+\(2(s^2+c^2-1)\), which vanishes under the stated hypothesis. \(\square\)
+
+\paragraph{A sharp scalar floor.}
+Let \(\mu,d_1,\ldots,d_7\in\mathbb R\) with \(d_i\geq\mu\) for
+each \(1\leq i\leq7\). Define the normalized diagonal functional
+\[
+\mathcal L(d)=\sum_{i=1}^{7}d_i-
+\frac{d_2+d_3+d_6+d_7}{16}.
+\]
+\textbf{Proposition AR.2.}
+For every real \(\mu\),
+\begin{equation}\label{ar:sharp-floor}
+\mathcal L(d)\geq\frac{27}{4}\mu.
+\end{equation}
+The factor \(27/4\) is sharp for the stated coordinate floors.
+If \(\mu\geq0\), the weaker estimate
+\(\mathcal L(d)\geq (105/16)\mu\) follows.
+
+\emph{Proof.}
+The functional has coefficient \(1\) at \(d_1,d_4,d_5\)
+and coefficient \(15/16\) at \(d_2,d_3,d_6,d_7\).
+All seven coefficients are positive, and therefore
+\[
+\mathcal L(d)\geq
+\left(3+4\frac{15}{16}\right)\mu
+=\frac{27}{4}\mu.
+\]
+Equality holds for \(d_1=\cdots=d_7=\mu\), proving sharpness.
+For nonnegative \(\mu\), the remaining implication uses
+\(\frac{27}{4}-\frac{105}{16}=\frac{3}{16}\geq0\).
+\(\square\)
+
+The two propositions are scalar algebraic statements. They apply to a
+physical H8 stress field only once the same normalized parameters and
+one-sided seven-ray coefficient floors have been established for that field.
