@@ -1,0 +1,53 @@
+name: Compile complete H8 research master
+
+on:
+  push:
+    branches:
+      - feature/case006-source-band-lean-20261027
+    paths:
+      - 'manuscript/**'
+      - '.github/workflows/h8-full-manuscript-pdf.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  full-manuscript:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify complete native manuscript source
+        shell: bash
+        run: |
+          test -s manuscript/Unforced_Navier_Stokes.tex
+          for f in manuscript/Appendix_AP_C4_Angular_Transfer_20261031.tex \
+                   manuscript/Appendix_AQ_Fourfold_Solenoidal_Residual_Gate_20261031.tex \
+                   manuscript/Appendix_AR_Normalized_Seven_Ray_Identities_20261101.tex; do
+            test -s "$f" || { echo "Missing $f"; exit 1; }
+          done
+      - name: Compile complete paper with TeX Live
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: manuscript/Unforced_Navier_Stokes.tex
+          work_in_root_file_dir: false
+          args: -pdf -file-line-error -interaction=nonstopmode -halt-on-error
+      - name: Package compiled master and provenance
+        shell: bash
+        run: |
+          mkdir -p dist
+          pdf=$(find . -type f -name 'Unforced_Navier_Stokes.pdf' -print -quit)
+          test -n "$pdf" && test -s "$pdf" || { echo "Full PDF not generated"; exit 1; }
+          cp "$pdf" dist/Unforced_Navier_Stokes_Tony_Newton_Full_2026-11-01.pdf
+          printf "Repository: %s\nCommit: %s\nFull PDF source: manuscript/Unforced_Navier_Stokes.tex\n" \
+             "$GITHUB_REPOSITORY" "$GITHUB_SHA" > dist/PROVENANCE.txt
+          sha256sum dist/Unforced_Navier_Stokes_Tony_Newton_Full_2026-11-01.pdf > dist/SHA256SUMS.txt
+          ls -lh dist/
+      - name: Publish full manuscript PDF artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: H8-Tony-Newton-full-paper-2026-11-01
+          path: dist/*
+          if-no-files-found: error
+          retention-days: 90
