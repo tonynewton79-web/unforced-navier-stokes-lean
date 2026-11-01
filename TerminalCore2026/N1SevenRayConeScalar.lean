@@ -15,7 +15,7 @@ def xxvC5 (r l s c : ℝ) : ℝ :=
 def xxvC6 (r l s c : ℝ) : ℝ := 1-16*l*r*c*s
 def xxvC7 (r l s c : ℝ) : ℝ := 1+16*l*r*c*s
 noncomputable def xxvPi (r l c : ℝ) : ℝ := 3/8-2*c^2*(1+l^2*r^4)
-def xxvCarrier (r l s c : ℝ) : ℝ :=
+noncomputable def xxvCarrier (r l s c : ℝ) : ℝ :=
   85/8+32*s^2+32*l^2*r^2*s^2-30*l^2*r^4*c^2
 
 theorem xxv_rr (r l s c : ℝ) :
@@ -32,11 +32,11 @@ theorem xxv_tt (r l s c : ℝ) :
   unfold xxvC2 xxvC3 xxvC6 xxvC7 xxvPi
   ring
 
-theorem xxv_zz (r l s c : ℝ) :
+theorem xxv_zz (r l s c : ℝ) (hsc : s ^ 2 + c ^ 2 = 1) :
     (xxvC4 r l s c+xxvC5 r l s c+xxvC6 r l s c+xxvC7 r l s c)/16 =
     2*(1+l^2*r^2*s^2)+xxvPi r l c := by
   unfold xxvC4 xxvC5 xxvC6 xxvC7 xxvPi
-  ring
+  nlinarith [hsc]
 
 theorem xxv_rt (r l s c : ℝ) :
     (xxvC2 r l c-xxvC3 r l c+xxvC6 r l s c+xxvC7 r l s c)/4 =
@@ -59,6 +59,7 @@ theorem xxv_unaugmented_gap (r l c : ℝ) :
   ring
 
 theorem xxv_ray_floor_gap (mu d1 d2 d3 d4 d5 d6 d7 : ℝ)
+    (hmu : 0 ≤ mu)
     (h1 : mu ≤ d1) (h2 : mu ≤ d2) (h3 : mu ≤ d3)
     (h4 : mu ≤ d4) (h5 : mu ≤ d5)
     (h6 : mu ≤ d6) (h7 : mu ≤ d7) :
