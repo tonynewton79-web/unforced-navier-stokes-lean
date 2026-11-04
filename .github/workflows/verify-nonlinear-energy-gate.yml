@@ -26,6 +26,8 @@ jobs:
         run: lake env lean UnforcedPatching/NonlinearEnergyGate.lean
       - name: Check smoke import and printed axioms
         run: lake build UnforcedPatching.NonlinearEnergyGateSmoke
+      - name: Build physical correction dependencies
+        run: lake build UnforcedPatching.CorrectionSmoke
       - name: Kernel check quantitative dyad and physical source bridge
         run: lake env lean UnforcedPatching/NonlinearEnergyDyad.lean
       - name: Check dyad smoke import
