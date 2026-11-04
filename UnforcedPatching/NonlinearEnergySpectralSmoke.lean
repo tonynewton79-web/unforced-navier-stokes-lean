@@ -1,0 +1,4 @@
+import UnforcedPatching.NonlinearEnergySpectral
+
+#print axioms UnforcedPatching.finite_high_frequency_energy_bound
+#print axioms UnforcedPatching.high_frequency_fraction_of_dyadic_rate
