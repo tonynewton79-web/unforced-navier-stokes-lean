@@ -4,6 +4,7 @@ on:
     paths:
       - 'UnforcedPatching/NonlinearEnergyGate*.lean'
       - 'UnforcedPatching/NonlinearEnergyDyad*.lean'
+      - 'UnforcedPatching/NonlinearEnergySpectral*.lean'
       - '.github/workflows/verify-nonlinear-energy-gate.yml'
   workflow_dispatch:
 jobs:
@@ -32,3 +33,7 @@ jobs:
         run: lake env lean UnforcedPatching/NonlinearEnergyDyad.lean
       - name: Check dyad smoke import
         run: lake build UnforcedPatching.NonlinearEnergyDyadSmoke
+      - name: Kernel check finite spectral gate
+        run: lake env lean UnforcedPatching/NonlinearEnergySpectral.lean
+      - name: Check spectral smoke import
+        run: lake build UnforcedPatching.NonlinearEnergySpectralSmoke
