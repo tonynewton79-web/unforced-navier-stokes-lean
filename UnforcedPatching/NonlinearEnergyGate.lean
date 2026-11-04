@@ -32,7 +32,7 @@ theorem abstractCorrectionDefect_eq_totalResidual
     (L : X →ₗ[ℝ] Y) (B : X →ₗ[ℝ] X →ₗ[ℝ] Y)
     (U w : X) :
     abstractCorrectionDefect L B U w = abstractResidual L B (U + w) := by
-  simp only [abstractCorrectionDefect, abstractResidual, map_add]
+  simp only [abstractCorrectionDefect, abstractResidual, map_add, LinearMap.add_apply]
   abel
 
 /-- The exact correction `w = -U` always satisfies the correction equation.
