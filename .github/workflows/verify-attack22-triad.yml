@@ -1,0 +1,27 @@
+name: Verify Attack 22 finite C4 triad Lean gate
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'UnforcedPatching/NonlinearTriad22*.lean'
+      - '.github/workflows/verify-attack22-triad.yml'
+jobs:
+  attack22:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Fetch pinned dependencies
+        run: |
+          lake update
+          lake exe cache get
+      - name: Reject proof gaps and project axioms
+        run: |
+          if grep -nE '^[[:space:]]*(sorry|admit|axiom)([[:space:]]|$)' UnforcedPatching/NonlinearTriad22*.lean; then exit 1; fi
+      - name: Kernel check finite triad
+        run: lake env lean UnforcedPatching/NonlinearTriad22.lean
+      - name: Kernel check import and axiom list
+        run: lake build UnforcedPatching.NonlinearTriad22Smoke
