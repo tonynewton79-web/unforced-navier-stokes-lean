@@ -1,0 +1,5 @@
+import UnforcedPatching.NonlinearTriad22
+
+#print axioms UnforcedPatching.active_triad_geometry
+#print axioms UnforcedPatching.triad_projected_pair_nonzero
+#print axioms UnforcedPatching.oblique_axis_projection_x
