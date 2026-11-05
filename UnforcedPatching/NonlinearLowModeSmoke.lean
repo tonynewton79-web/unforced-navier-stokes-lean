@@ -1,0 +1,4 @@
+import UnforcedPatching.NonlinearLowMode
+
+#print axioms UnforcedPatching.finite_mode_squared_sum
+#print axioms UnforcedPatching.fixed_mode_evacuation_power
