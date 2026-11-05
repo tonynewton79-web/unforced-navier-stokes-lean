@@ -5,6 +5,7 @@ on:
       - 'UnforcedPatching/NonlinearEnergyGate*.lean'
       - 'UnforcedPatching/NonlinearEnergyDyad*.lean'
       - 'UnforcedPatching/NonlinearEnergySpectral*.lean'
+      - 'UnforcedPatching/NonlinearLowMode*.lean'
       - '.github/workflows/verify-nonlinear-energy-gate.yml'
   workflow_dispatch:
 jobs:
@@ -37,3 +38,8 @@ jobs:
         run: lake env lean UnforcedPatching/NonlinearEnergySpectral.lean
       - name: Check spectral smoke import
         run: lake build UnforcedPatching.NonlinearEnergySpectralSmoke
+      - name: Kernel check Attack 20 modal sum
+        run: lake env lean UnforcedPatching/NonlinearLowMode.lean
+      - name: Check Attack 20 smoke import
+        run: lake build UnforcedPatching.NonlinearLowModeSmoke
+
