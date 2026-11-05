@@ -25,3 +25,5 @@ jobs:
         run: lake env lean UnforcedPatching/NonlinearTriad22.lean
       - name: Kernel check import and axiom list
         run: lake build UnforcedPatching.NonlinearTriad22Smoke
+      - name: Kernel check viscous receiver budget
+        run: lake env lean UnforcedPatching/NonlinearTriad22Budget.lean
