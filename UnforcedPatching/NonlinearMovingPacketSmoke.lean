@@ -1,0 +1,4 @@
+import UnforcedPatching.NonlinearMovingPacket
+
+#print axioms UnforcedPatching.positive_pair_variance_floor
+#print axioms UnforcedPatching.calibrated_rayleigh_scalar
