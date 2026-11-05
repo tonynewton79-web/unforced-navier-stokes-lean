@@ -1,0 +1,6 @@
+import UnforcedPatching.NonlinearEnergyDyad
+
+#print axioms UnforcedPatching.dyadic_close_energy_contradiction
+#print axioms UnforcedPatching.radial_energy_transfer_scalar
+#print axioms UnforcedPatching.quantitative_radius_bounds
+#print axioms UnforcedPatching.physical_source_and_correction_imply_unforced_residual
