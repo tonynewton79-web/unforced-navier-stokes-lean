@@ -34,7 +34,7 @@ Since uhat(s)=0 at the initial time, its derivative is
 
   d_t uhat(s) = -4 pi A C b != 0.
 
-Thus the 20-dimensional Fourier-support ansatz is **not invariant** under
+Thus the 20-mode Fourier-support ansatz is **not invariant** under
 unforced Navier--Stokes whenever A C is nonzero. No conclusion about the
 full carrier-plus-correction flow follows without the carrier cross terms.
 
