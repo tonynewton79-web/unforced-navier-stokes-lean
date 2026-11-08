@@ -1,0 +1,27 @@
+name: Attack 36 exact mixed analytic G1 regressions
+on:
+  push:
+    branches: [feature/attack36-mixed-g1-startup-gates-20261108]
+    paths:
+      - 'tools/verify_attack36_mixed_g1.py'
+      - '.github/workflows/verify-attack36-g1.yml'
+  pull_request:
+    paths:
+      - 'tools/verify_attack36_mixed_g1.py'
+      - '.github/workflows/verify-attack36-g1.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  exact-startup-and-weight:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install exact symbolic package
+        run: python -m pip install sympy==1.13.3
+      - name: Verify first-order source jets and mixed weights
+        run: python tools/verify_attack36_mixed_g1.py
