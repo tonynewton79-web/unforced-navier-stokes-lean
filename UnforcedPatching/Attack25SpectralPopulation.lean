@@ -70,6 +70,19 @@ theorem terminal_population_power :
     (2 * ((1 / 2 : ℚ) + 1 / 10) + 1 / 5 = 7 / 5) := by
   norm_num
 
+/-- A terminal speed exponent alpha and squared-energy exponent p
+require frequency-band growth exponent at least (2 alpha + p)/3.
+The separate Fourier lattice-count and continuum assumptions must
+still be proved before applying this arithmetic to a physical field. -/
+theorem terminal_bandwidth_power :
+    ((2 * (3 / 5 : ℚ) + 1 / 5) / 3 = 7 / 15) ∧
+    ((9 / 20 : ℚ) < 7 / 15) ∧
+    ((3 / 2 : ℚ) * (9 / 20) - 1 / 10 = 23 / 40) ∧
+    ((23 / 40 : ℚ) < 3 / 5) := by
+  norm_num
+
+#print axioms terminal_bandwidth_power
+
 #print axioms finite_spectral_participation_bound
 #print axioms finite_peak_requires_modal_population
 #print axioms finite_population_card_lower
