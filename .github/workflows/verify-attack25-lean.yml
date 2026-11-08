@@ -47,6 +47,11 @@ jobs:
         run: lake env lean UnforcedPatching/Attack25FiniteSpectrumGate.lean
       - name: Check finite spectral population inequality
         run: lake env lean UnforcedPatching/Attack25SpectralPopulation.lean
+      - name: Build physical PDE prerequisites before direct Lean import
+        run: |
+          lake build UnforcedPatching.Definitions
+          lake build UnforcedPatching.Correction
+          lake build UnforcedPatching.Retention
       - name: Build the physical conditional endpoint
         run: lake env lean UnforcedPatching/Attack25ConditionalTarget.lean
       - name: Check imported module and #print axioms
