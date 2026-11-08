@@ -18,12 +18,7 @@
 \setlength{\parskip}{0.20em}
 \setlength{\emergencystretch}{1em}
 \setcounter{secnumdepth}{2}
-\pagestyle{fancy}
-\fancyhf{}
-\fancyhead[L]{\footnotesize UNFORCED NAVIER--STOKES}
-\fancyhead[R]{\footnotesize H8 RESEARCH MASTER}
-\fancyfoot[C]{\thepage}
-\renewcommand{\headrulewidth}{0.3pt}
+\pagestyle{plain}
 \theoremstyle{plain}
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{proposition}[theorem]{Proposition}
@@ -2187,6 +2182,60 @@ source-band test until the updated branch is independently checked.
 Compilation does not replace semantic theorem auditing or independent
 scrutiny of the paper proof.
 
+\section{Fourfold Fourier transfer and the nonlinear correction}
+
+A finite Fourier test isolates one mechanism relevant to a
+non-perturbative velocity correction, without assuming a source-free
+solution exists. On the unit torus consider the real, solenoidal
+20-mode polynomial obtained from the wavevectors
+$p=(1,0,0)$, $q=(0,2,1)$, $r=p+q$, the polarizations
+$a=(0,1,0)$, $b=(0,1,-2)$, and their four axial quarter-turns.
+The initial coefficients are
+$\widehat h(p)=iAa$, $\widehat h(q)=Bb$, and
+$\widehat h(r)=\sigma Cb$ with $\sigma=\pm1$; complex conjugation
+gives the negative frequencies. Direct exact-arithmetic evaluation
+of the entire projected convolution, rather than a selected
+triad, finds 108 initially absent Fourier modes with nonzero
+generic quadratic source. Of these, 92 require interactions
+between distinct unrotated sectors, while 72 have squared
+wavenumber above the initial maximum $|r|^2=6$.
+
+The off-support source energy is the positive quartic polynomial
+$\mathcal L(A,B,C)$ in \eqref{eq:AT-leakage}. For a local
+isolated unforced solution starting at $h$,
+\begin{equation}\label{eq:fourfold-finite-transfer}
+ \sum_{k\in\mathcal N}|\widehat u(k,t_0+s)|^2
+ =4\pi^2s^2\mathcal L(A,B,C)+o(s^2)
+ \quad(s\downarrow0).
+\end{equation}
+The nonlinear interaction conserves total instantaneous kinetic
+energy; its flux among the occupied $|k|^2=1,5,6$ families is
+$0,-320\pi\sigma ABC,+320\pi\sigma ABC$, respectively.
+Viscosity makes the total energy strictly decrease for a
+nonconstant seed. Thus \eqref{eq:fourfold-finite-transfer}
+proves immediate support expansion, not sustained forward
+spectral transport. The receiver at $|r|^2=6$ grows
+instantaneously against viscosity only for $\sigma=+1$ and
+$AB>6\pi\nu C$ when $A,B,C>0$.
+
+For a prescribed divergence-free carrier $U$ and a correction
+$u=U+w$, the genuine projected residual
+$\mathcal R_\nu(U)=U_t-\nu\Delta U+
+\mathbb P\nabla\cdot(U\otimes U)$ cannot be discarded.
+At the instant when $w=h$, the exact carrier-inclusive estimate
+\eqref{eq:AT-carrier} bounds the 108-mode derivative from below
+by the positive part of
+$2\pi\sqrt{\mathcal L}-\|\Pi_{\mathcal N}\mathcal K_U(h)\|_2$,
+where
+$\mathcal K_U(h)=-\mathcal R_\nu(U)
+-\mathbb P\nabla\cdot(U\otimes h+h\otimes U)$.
+The frozen Version~17 carrier's corresponding spectral coupling
+norm has not been computed from an authenticated profile.
+No sustained energy flux, weighted correction, or non-cancellation
+of its singular velocity trace is inferred. The exact finite
+calculation, its independent spatial-space check, and the
+carrier-coupling identity are documented in Appendix~AT.
+
 \section{Remaining analytic requirements}
 
 The compact meridional inverse of Theorem~\ref{thm:inverse} is a
@@ -2415,6 +2464,11 @@ periodic initial data is \emph{not decided by this manuscript}.
 \input{manuscript/Appendix_AS_Reproducible_Finite_Arithmetic_20261101.tex}}{%
 \input{Appendix_AS_Reproducible_Finite_Arithmetic_20261101.tex}}
 
+\IfFileExists{manuscript/Appendix_AT_Fourfold_Mediator_Energy_20261108.tex}{%
+\input{manuscript/Appendix_AT_Fourfold_Mediator_Energy_20261108.tex}}{%
+\input{Appendix_AT_Fourfold_Mediator_Energy_20261108.tex}}
+
+
 \begin{thebibliography}{9}
 \raggedright
 \small
@@ -2442,6 +2496,12 @@ L. Caffarelli, R. Kohn, and L. Nirenberg, \emph{Partial regularity
 of suitable weak solutions of the Navier--Stokes equations},
 Communications on Pure and Applied Mathematics \textbf{35} (1982),
 771--831.
+
+\bibitem{DarVermaEswaran2001}
+G. Dar, M. K. Verma, and V. Eswaran,
+\emph{A new approach to study energy transfer in turbulence},
+arXiv:physics/0006012 (2000),
+\url{https://arxiv.org/abs/physics/0006012}.
 
 \bibitem{NewtonRepo2026}
 T. Newton, \emph{Unforced Navier--Stokes Lean integration branch},
