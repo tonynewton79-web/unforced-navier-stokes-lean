@@ -1,0 +1,25 @@
+name: Attack 39 exact original exterior pressure-moment certificate
+on:
+  push:
+    branches: [feature/attack39-exterior-moment-tail-cert-20261108]
+    paths:
+      - 'tools/verify_attack39_exterior_moment.py'
+      - '.github/workflows/verify-attack39-exterior.yml'
+  pull_request:
+    paths:
+      - 'tools/verify_attack39_exterior_moment.py'
+      - '.github/workflows/verify-attack39-exterior.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  rational-interval-certificate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Certify original A.5 pressure transition by exact rational bounds
+        run: python tools/verify_attack39_exterior_moment.py
