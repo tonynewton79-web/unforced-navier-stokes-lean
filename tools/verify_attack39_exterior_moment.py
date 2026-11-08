@@ -62,3 +62,20 @@ if __name__=="__main__":
     print("TOTAL pressure moments I0,I1 < 6.63 P_*^2")
     print("Tail uncertainty <= P_*^2 exp(-2/5-T_d), symbolically.")
     print("G1 local and full exterior schedule are NOT certified.")
+
+
+# Separate exact rational envelope for source equation (A.19) pulse.
+# The cutoff has integral 1/2, so phi_b(x)=x-1/100 beyond x=1/50.
+if __name__=="__main__":
+    el,eu=eb(Q(-1,25))
+    e20l,e20u=eb(Q(-20))
+    e26l,e26u=eb(Q(-26))
+    KL=Q(5101,20000)*el-Q(1102901,20000)*e20u
+    KU=Q(5101,20000)*eu+Q(1,375000)
+    assert Q(2450492327,10**10)<KL<KU<Q(2450520132,10**10)
+    cL=(1-e26u)/4;cU=(1-e26l)/4
+    assert Q(101004,100000)**2*KU<cL
+    assert Q(101006,100000)**2*KL>cU
+    assert Q(1008,1000)**2*KU<cL-Q(1,1000)
+    assert Q(1013,1000)**2*KL>cU+Q(1,1000)
+    print("PASS original A.19 pulse Kb and conditional amplitude interval")
