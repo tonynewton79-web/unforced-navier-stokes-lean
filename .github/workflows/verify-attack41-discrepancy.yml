@@ -1,0 +1,27 @@
+name: Attack 41 original normalized moment discrepancies
+on:
+  push:
+    branches: [feature/attack41-exact-angular-discrepancy-axial-ledger-20261108]
+    paths:
+      - 'tools/verify_attack41_discrepancy.py'
+      - '.github/workflows/verify-attack41-discrepancy.yml'
+  pull_request:
+    paths:
+      - 'tools/verify_attack41_discrepancy.py'
+      - '.github/workflows/verify-attack41-discrepancy.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  rational-source-ledger:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Exact source algebra dependency
+        run: python -m pip install sympy==1.13.3
+      - name: Check original A11 discrepancy and axial upstream moment ledger
+        run: python tools/verify_attack41_discrepancy.py
