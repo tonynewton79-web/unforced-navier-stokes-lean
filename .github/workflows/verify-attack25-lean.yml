@@ -45,9 +45,12 @@ jobs:
           ! grep -nE '^[[:space:]]*(sorry|admit|axiom|opaque)([[:space:]]|$)' UnforcedPatching/Attack25*.lean
       - name: Check corrected finite-spectrum mathematics
         run: lake env lean UnforcedPatching/Attack25FiniteSpectrumGate.lean
+      - name: Check finite spectral population inequality
+        run: lake env lean UnforcedPatching/Attack25SpectralPopulation.lean
       - name: Build the physical conditional endpoint
         run: lake env lean UnforcedPatching/Attack25ConditionalTarget.lean
       - name: Check imported module and #print axioms
         run: |
           lake build UnforcedPatching.Attack25FiniteSpectrumGate
           lake build UnforcedPatching.Attack25ConditionalTarget
+          lake build UnforcedPatching.Attack25SpectralPopulation
