@@ -137,6 +137,43 @@ has the opposite occupied-receiver energy-transfer direction,
 although it yields the same off-support polynomial
 \eqref{eq:AT-leakage}. This phase distinction is essential.
 
+\noindent\textbf{Proposition AT.2 (second-generation exit).}
+Let $k_*=(3,2,1)$ and assume the isolated unforced
+Navier--Stokes evolution begins with the above seed. Then
+$k_*\notin\mathcal S\cup\mathcal N$, but
+\begin{equation}\label{eq:AT-second}
+ \partial_t^2\widehat u(k_*,t_0)
+  =16\pi^2\sigma A^2C\,b .
+\end{equation}
+In particular, if $AC\ne0$, the initial 20 modes together
+with all 108 first-generation modes still fail to form a
+Fourier-support invariant subsystem.
+
+\emph{Proof.}
+Write $s=p+r=(2,2,1)$. The first-derivative identity is
+$\partial_t\widehat u(s,t_0)=4\pi\sigma AC\,b$.
+At $k_*=p+s$ the only contributing ordered
+pair involving an initially generated mode is $(p,s)$ and
+its reverse. The reverse derivative term vanishes because
+$b\cdot p=0$, whereas
+\[
+ (\widehat h(p)\cdot s)\,\partial_t\widehat u(s,t_0)
+ =(2iA)(4\pi\sigma AC\,b)
+ =8\pi i\sigma A^2C\,b .
+\]
+Since $k_*\cdot b=0$, the Leray projection leaves
+this vector unchanged. The outer multiplier $-2\pi i$
+gives \eqref{eq:AT-second}. At $k_*$ both the initial
+amplitude and first derivative vanish, so the viscous
+term contributes nothing to the second derivative.
+Consequently
+$\widehat u(k_*,t_0+s)
+=8\pi^2\sigma A^2C\,b\,s^2+o(s^2)$.
+This conclusion concerns the isolated initial evolution.
+An independent physical-space pseudospectral
+second-derivative calculation reproduces
+\eqref{eq:AT-second} at the tested amplitudes.
+
 \paragraph{A carrier-inclusive necessary test.}
 Let $U$ be any smooth periodic divergence-free carrier at
 $t_0<T$ and write $u=U+w$. Define its exact projected residual
