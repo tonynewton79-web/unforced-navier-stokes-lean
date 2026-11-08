@@ -1,0 +1,25 @@
+name: Attack 40 exact source moment-correction gates
+on:
+  push:
+    branches: [feature/attack40-source-moment-inverse-and-cpre-gate-20261108]
+    paths:
+      - 'tools/verify_attack40_moment_gates.py'
+      - '.github/workflows/verify-attack40-moment.yml'
+  pull_request:
+    paths:
+      - 'tools/verify_attack40_moment_gates.py'
+      - '.github/workflows/verify-attack40-moment.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  rational-moment-gates:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Exact rational original-source moment gates
+        run: python tools/verify_attack40_moment_gates.py
