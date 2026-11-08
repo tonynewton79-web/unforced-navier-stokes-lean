@@ -18,7 +18,9 @@ When \(E(t)=\|u(t)\|_2^2>0\), define the effective spectral population
 This is an \(\ell^1/\ell^2\) concentration quotient, rather than a
 count of modes above an arbitrary numerical cutoff.
 
-\begin{proposition}[Necessary terminal spectral population]
+\newtheorem{auproposition}{Proposition}
+\renewcommand{\theauproposition}{AU.\arabic{auproposition}}
+\begin{auproposition}[Necessary terminal spectral population]
 \label{prop:AU-population}
 Suppose that, for a sequence \(\tau_j\downarrow0\), the total velocity
 \(u(T-\tau_j,\cdot)\) satisfies, with constants \(c,C>0\) and
@@ -37,7 +39,7 @@ cardinality must satisfy
 \(
  |S_j|\ge(c^2/C)\tau_j^{-(2\alpha+p)}.
 \)
-\end{proposition}
+\end{auproposition}
 
 \begin{proof}
 The triangle inequality, absolute Fourier convergence, and Parseval give
@@ -76,7 +78,7 @@ Equation~\eqref{eq:AU-exponent} is therefore a necessary
 spectral-concentration test, not a construction.
 
 The finite Fourier inequality underlying the proof is also encoded
-in \texttt{UnforcedPatching/Attack25SpectralPopulation.lean}.
+in \path{UnforcedPatching/Attack25SpectralPopulation.lean}.
 That finite-sum theorem does not by itself formalize the infinite
 Fourier-series reconstruction or the specific carrier asymptotics;
 those remain separate physical and analytic verification
