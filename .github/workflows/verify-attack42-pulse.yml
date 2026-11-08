@@ -1,0 +1,27 @@
+name: Attack 42 exact corrected pulse C1 and axial-moment checks
+on:
+  push:
+    branches: [feature/attack42-corrected-pulse-c1-axial-certificate-20261108]
+    paths:
+      - 'tools/verify_attack42_pulse_c1.py'
+      - '.github/workflows/verify-attack42-pulse.yml'
+  pull_request:
+    paths:
+      - 'tools/verify_attack42_pulse_c1.py'
+      - '.github/workflows/verify-attack42-pulse.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source-rational-C1:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Exact symbolic dependency
+        run: python -m pip install sympy==1.13.3
+      - name: Check A19 implicit-function theorem and axial moment tails
+        run: python tools/verify_attack42_pulse_c1.py
