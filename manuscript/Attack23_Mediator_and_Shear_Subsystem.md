@@ -99,3 +99,29 @@ since cross-sector interactions generate further Fourier modes.
 **Mathematical interpretation:** active transfer out of a finite Fourier
 support is established for the isolated halo. A sustained, blow-up-capable,
 unforced three-dimensional cascade remains entirely open.
+
+## 5. First-generation C4 network count (exact finite support)
+
+The full symmetrized 20-mode initial datum has 170 distinct nonzero
+ordered-pair *sum wavevectors*. At 124 of those wavevectors the projected
+quadratic coefficient is a nonzero polynomial in the independent formal
+amplitudes A,B,C. Exactly 108 of these 124 wavevectors are absent from
+the original 20-mode support.
+
+New-mode counts by axial wavenumber k_z are
+
+    k_z:    -2  -1   0   1   2
+    count:   20  24  20  24  20
+
+The claim is algebraic genericity, not non-vanishing for every amplitude
+specialization. It follows from finite exact Gaussian-integer convolution:
+the transverse projection is nonzero if and only if the cross product of
+the wavevector with the source polynomial is not identically zero.
+The replay in tools/verify_attack23_mediator.py checks these counts,
+reality, incompressibility, and the first omitted-mode identity.
+An independent symbolic rational Leray-projection enumeration gave
+the same total of 108 new modes.
+
+A full dynamical cascade is *not* certified by one generation of
+nonzero interactions. In particular, evolution beyond the initial
+time must include all generated modes and their feedback.
