@@ -53,3 +53,15 @@ which is no larger than the previous moment-dependent B.2 sufficient choice and 
 This bypasses the later exterior for **pressure moments alone**. The original source still uses threshold-dependent \(M_d,T_d,P_*,\lambda,h\), unknown moment-correction amplitudes, strict cone inequalities and heat-compensation choices. No one fully admissible numerical tuple, complete matched exterior, radial leading holomorphic solution, noncircular finite startup threshold, full G1 correction or zero unforced PDE residual is certified. The OpenAI original theorem is **forced**, not unforced.
 
 A polished 3-page LaTeX/PDF proof, exact rational Python certificate, validated ZIP, and 219-page cumulative research edition preserving all earlier 216 page text streams were produced in the conversation. Keep this PR DRAFT.
+
+
+## Further exact original pulse integral, source (A.19)
+
+The source uses \(\phi_b(\xi)=\int_0^\xi\sigma(v/(1/50))\,dv\), \(R_0(\xi)=\phi_b(\xi)[1-\sigma(\xi-10)]\), and \(K_b=\int_0^{13}e^{-2\xi}R_0(\xi)^2d\xi\). Cutoff symmetry implies \(\phi_b(\xi)=\xi-1/100\) **exactly for \(\xi\ge1/50\)**, \(R_0=\phi_b\) for \(\xi\le10\), and \(R_0=0\) for \(\xi\ge11\). Bound the early \(0\le\xi\le1/50\) mass by \(1/375000\) and the last cutoff by the explicit \(\int_{10}^\infty e^{-2\xi}(\xi-1/100)^2d\xi=(1102901/20000)e^{-20}\). Then
+
+\[
+(5101/20000)e^{-1/25}-(1102901/20000)e^{-20}
+\le K_b\le(5101/20000)e^{-1/25}+1/375000.
+\]
+
+Exact rational exponential enclosures certify \(0.2450492327<K_b<0.2450520132\). The principal source A.19 amplitude satisfies \(K_b\mathsf A^2=(1-e^{-26})/4\), hence \(1.01004<\mathsf A_{\mathrm{principal}}<1.01006\). If the source's separate error \(|\mathcal E(\mathsf A,\eta)|\le10^{-3}\), then **conditionally** any positive corrected root lies in \(1.008<\mathsf A<1.013\). The source only establishes \(|\mathcal E|\le C_{\mathrm{pre}}\lambda(1+\log(1/\lambda))\) with unquantified \(C_{\mathrm{pre}}\), so the full corrected pulse and moment-restoring coefficients are **not certified**. The result is a universal source-shape calculation, not a complete exterior construction.
