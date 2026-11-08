@@ -78,8 +78,28 @@ after bounding \(j\le b\) and \(j^2/(b+1)\le b+1\). The primitive \(\mathcal C_X
 \]
 all at most one. The positive split-derivative lemma and bounded fixed multipliers complete the infinite-index proof; no finite case enumeration is used in the theorem.
 
+## Additional exact delayed-viscous pressure cancellation
+
+The original source contains a **linear** viscous term \(-2X V_{n-1,XX}\) in \(\Omega_{n-1}\). Its pressure derivative contribution is exactly \(V_{n-1,XX}\), since \(\Pi_{n,X}\supset-\Omega_{n-1}/(2X)\). For \(k=n-1\ge1\), the valuation \(V_k\in X^{k+1}\mathcal B\) implies \(V_{k,X}(0,\eta)=0\). Therefore its *entire axis-normalized pressure primitive* is
+\[
+\Pi_n^{lag,visc}=V_{n-1,X}=-Z_{-A,n-1}U_{n-1}
+\]
+by the exact incompressibility equation. The final composed pressure contribution is
+\(-J_1Z_{-2A,n}Z_{-A,n-1}U_{n-1}\).
+
+**Uniform one-lift bound:** If the fixed rational coefficients and their required axial derivatives belong to the common analytic \(\mathcal B\), there is \(C_{\rm visc}<\infty\) independent of n with
+\[
+\|J_1Z_{-2A,n}Z_{-A,n-1}U_{n-1}\|_{\mathcal B}
+\le C_{\rm visc}\|U_{n-1}\|_{\mathcal B}.
+\]
+Proof: On each radial degree \(a\ge n-1\), the two Z operators produce \(r=0,1,2\) axial derivatives at coefficient cost at most \(C(a+1)^{2-r}\). The *one-radial-lift* ratio satisfies
+\(\mathcal W_{a,\beta+r}/\mathcal W_{a+1,\beta}\le4\cdot4^r R\varrho^{-r}(a+1)^r\).
+The final J1 contributes \(1/(a+1)^2\). All index growth cancels. This proof never estimates the unbounded bare \(XV_{k,XX}\).
+
+The **other** delayed linear terms \(T_{0,n-1}V_{n-1}\), \(-Z^{[2]}_{0,n-2}V_{n-2}\), and the leading-index cross-interactions still require the corresponding complete pressure composition estimates.
+
 ## Verification and limits
 
 Independent source identity: 12 symbolic tests. Independent exact rational checks: 11,520 split-derivative convolution bounds and 715,208 source-graded radial kernel inequalities, plus a second ordered quadratic \(\Omega\) normal-form replay. All passed. These checks are **diagnostic**, not a Lean proof of the analytic theorem.
 
-A three-page LaTeX/PDF supplement and 200-page cumulative edition retaining the previous 197 pages were created and visually audited in this conversation. The source-level theorem is restricted to **positive-index quadratic** \(\Omega_{n-1}\); it does not prove the delayed linear \(T_{0,n-1}V_{n-1}\), \(-2XV_{n-1,XX}\), or \(-Z^{[2]}_{0,n-2}V_{n-2}\) channels, actual leading-profile multiplier authentication, finite startup recursion, differentiated PDE reconstruction, global H8 stress or an unforced finite-time singularity.
+A four-page LaTeX/PDF supplement and 201-page cumulative edition retaining the previous 197 pages were created and visually audited in this conversation. The source-level theorem is restricted to **positive-index quadratic** \(\Omega_{n-1}\); it does not prove the remaining delayed linear \(T_{0,n-1}V_{n-1}\), \(-Z^{[2]}_{0,n-2}V_{n-2}\) or index-zero cross channels, actual leading-profile multiplier authentication, finite startup recursion, differentiated PDE reconstruction, global H8 stress or an unforced finite-time singularity.
