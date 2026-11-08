@@ -62,11 +62,15 @@ effective spectral participation constraint.
   exact `2π` viscous receiver threshold.
 - `Attack25SpectralPopulation.lean`: finite
   Cauchy--Schwarz population inequality and exact exponent `7/5`.
-- `Attack25` GitHub CI must **compile** these on frozen
-  Lean 4.34.0-rc2, Mathlib and imported upstream dependencies.
-  Currently the attempted hosted run failed **before typechecking**
-  at the pinned Lean download with HTTP 504; code has not yet
-  been kernel certified.
+- The pinned Lean 4.34.0-rc2 / Mathlib / imported-upstream
+  GitHub Actions run **42471563523** (successful rerun) compiled all
+  three modules and printed axiom dependencies. The verified
+  declarations depend only on standard Lean axioms
+  `propext`, `Classical.choice`, `Quot.sound`, with no
+  project-local assumption of a blow-up solution.
+  This certifies only the finite inequalities and the
+  **conditional** endpoint, not the construction of its premises.
+  An earlier failed attempt was a transient HTTP 504 download.
 
 ## Full-release rule
 
