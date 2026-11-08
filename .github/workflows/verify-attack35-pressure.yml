@@ -1,0 +1,25 @@
+name: Attack 35 mixed pressure exact ratio regression
+on:
+  push:
+    branches: [feature/attack35-delayed-linear-weak-pressure-20261108]
+    paths:
+      - 'tools/verify_attack35_pressure.py'
+      - '.github/workflows/verify-attack35-pressure.yml'
+  pull_request:
+    paths:
+      - 'tools/verify_attack35_pressure.py'
+      - '.github/workflows/verify-attack35-pressure.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  finite-weight-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Exact finite rational pressure-weight checks
+        run: python tools/verify_attack35_pressure.py
