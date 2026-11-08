@@ -77,6 +77,41 @@ in Appendix~AT; both refer to the full, unforced correction.
 Equation~\eqref{eq:AU-exponent} is therefore a necessary
 spectral-concentration test, not a construction.
 
+\begin{auproposition}[Necessary frequency radius under a global band limit]
+\label{prop:AU-band}
+Under the hypotheses of Proposition~\ref{prop:AU-population},
+suppose additionally that the Fourier support of the \emph{full}
+velocity at the terminal times lies in
+\(
+ \{k\in\mathbb Z^3:\|k\|_\infty\le K_0\tau_j^{-\beta}\},
+\)
+for constants \(K_0,\beta>0\). Then necessarily
+\[
+ \beta\ge\frac{2\alpha+p}{3}.
+\]
+For \(p=1/5\) and \(\alpha=3/5\), this is
+\(\beta\ge7/15\). A global radius exponent
+\(\beta=9/20<7/15\) is excluded.
+\end{auproposition}
+
+\begin{proof}
+The Fourier support has at most
+\((2\lfloor K_0\tau_j^{-\beta}\rfloor+1)^3
+=O(\tau_j^{-3\beta})\) elements.
+By Cauchy--Schwarz this bound also controls
+\(\mathcal N_{\mathrm{eff}}\).
+Together with \eqref{eq:AU-population}, it implies
+\(2\alpha+p\le 3\beta\) as \(\tau_j\downarrow0\).
+\end{proof}
+
+In particular, a frequency-migrating exterior field with ceiling
+\(O(\tau^{-9/20})\) cannot by itself serve as the \emph{entire}
+velocity subject to both the stated energy and speed scalings.
+The shrinking carrier has higher spatial frequencies, so this
+conditional band-limit obstruction does \emph{not} rule out a
+combined carrier--halo construction. The bound is an elementary
+Fourier/Bernstein consequence, not a dynamical transfer theorem.
+
 The finite Fourier inequality underlying the proof is also encoded
 in \path{UnforcedPatching/Attack25SpectralPopulation.lean}.
 That finite-sum theorem does not by itself formalize the infinite
