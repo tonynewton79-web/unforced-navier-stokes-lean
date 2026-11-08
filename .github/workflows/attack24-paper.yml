@@ -1,0 +1,72 @@
+name: Attack 24 exact Fourier audit and cumulative manuscript PDF
+on:
+  pull_request:
+    paths:
+      - 'manuscript/Unforced_Navier_Stokes.tex'
+      - 'manuscript/Appendix_AT_Fourfold_Mediator_Energy_20261108.tex'
+      - 'tools/verify_attack24_exact.py'
+      - '.github/workflows/attack24-paper.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  attack24-exact:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Exact Gaussian-integer and rational energy verification
+        run: |
+          python3 tools/verify_attack23_mediator.py
+          python3 tools/verify_attack24_exact.py
+  cumulative-paper:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+      - name: Check cumulative source and new appendix
+        run: |
+          test -s manuscript/Unforced_Navier_Stokes.tex
+          test -s manuscript/Appendix_AT_Fourfold_Mediator_Energy_20261108.tex
+          grep -F 'eq:AT-leakage' manuscript/Unforced_Navier_Stokes.tex
+      - name: Compile the complete cumulative manuscript
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: manuscript/Unforced_Navier_Stokes.tex
+          work_in_root_file_dir: false
+          args: -pdf -file-line-error -interaction=nonstopmode -halt-on-error
+      - name: Package new PDF with a SHA256 receipt
+        shell: bash
+        run: |
+          mkdir -p dist
+          pdf=$(find . -type f -name 'Unforced_Navier_Stokes.pdf' -print -quit)
+          test -n "$pdf" && test -s "$pdf"
+          cp "$pdf" dist/Unforced_Navier_Stokes_Attack24_2026-11-08.pdf
+          printf "Commit: %s\nAppendix: Appendix_AT_Fourfold_Mediator_Energy_20261108.tex\n" \
+            "$GITHUB_SHA" > dist/PROVENANCE.txt
+          sha256sum dist/Unforced_Navier_Stokes_Attack24_2026-11-08.pdf > dist/SHA256SUMS.txt
+      - name: Upload complete cumulative PDF
+        uses: actions/upload-artifact@v4
+        with:
+          name: Unforced-Navier-Stokes-Attack24-Cumulative-PDF
+          path: dist/*
+          if-no-files-found: error
+          retention-days: 90
+      - name: Update PDF on this PR branch when permitted
+        if: github.event_name == 'pull_request'
+        continue-on-error: true
+        shell: bash
+        run: |
+          cp dist/Unforced_Navier_Stokes_Attack24_2026-11-08.pdf manuscript/Unforced_Navier_Stokes.pdf
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add manuscript/Unforced_Navier_Stokes.pdf
+          if git diff --cached --quiet; then
+            echo "Existing PDF already matches."
+          else
+            git commit -m "Rebuild cumulative Navier-Stokes PDF with Appendix AT"
+            git push origin HEAD:${{ github.head_ref }}
+          fi
