@@ -122,6 +122,19 @@ def run(sign):
       'CCCC':Fraction(25376,35)}
     s=(2,2,1)
     assert B[s]['AC']==[G(),G(0,2*sign),G(0,-4*sign)]
+    # At k*=(3,2,1), only p+(p+r) contributes at second order.
+    # The first derivative at s=(2,2,1) is (-2*pi*i)*B_s.
+    # After the second outer multiplier the exact acceleration is
+    # 16*pi*pi*sign*A*A*C*b; this checks the rational vector factor.
+    kstar=(3,2,1); p=(1,0,0)
+    assert kstar not in B and kstar not in modes
+    next_pairs={(ell,plus(kstar,neg(ell)))
+                for ell in modes
+                if plus(kstar,neg(ell)) in missing}
+    assert next_pairs=={(p,s)}, next_pairs
+    normalized=[G(0,2)*z for z in B[s]['AC']]
+    assert normalized==[G(),G(-4*sign),G(8*sign)]
+    assert dot(normalized,kstar)==G()
     assert sum(sum(z.x*z.x+z.y*z.y for z in v)
                for v,_ in modes.values())==84
     assert sum(sum(t*t for t in k)*sum(z.x*z.x+z.y*z.y for z in v)
@@ -135,3 +148,4 @@ if __name__=='__main__':
     print('PASS: 92 cross-only, 16 intra; 72 high, 8 equal, 28 low')
     print('PASS: exact rational leakage, cross-sector and high-shell quartics')
     print('PASS: sigma phase flip invariance and initial energy/dissipation')
+    print('PASS: second-generation nonclosure at k=(3,2,1)')
