@@ -1,0 +1,85 @@
+\clearpage
+\section*{Appendix AU. Spectral population forced by terminal concentration}
+\addcontentsline{toc}{section}{Appendix AU. Spectral population forced by terminal concentration}
+
+Let \(u(t,\cdot)\) be a smooth, real-valued, periodic divergence-free
+velocity on the unit three-torus at each time \(t<T\), and denote its
+vector Fourier coefficients by \(\widehat u(k,t)\in\mathbb C^3\).
+For any fixed \(t<T\), smoothness entails absolute convergence of
+\(\sum_{k\in\mathbb Z^3}\|\widehat u(k,t)\|_{\mathbb C^3}\).
+When \(E(t)=\|u(t)\|_2^2>0\), define the effective spectral population
+\[
+ \mathcal N_{\mathrm{eff}}(t)=
+ \frac{\left(\sum_{k\in\mathbb Z^3}
+       \|\widehat u(k,t)\|_{\mathbb C^3}\right)^2}
+      {\sum_{k\in\mathbb Z^3}
+       \|\widehat u(k,t)\|_{\mathbb C^3}^2}.
+\]
+This is an \(\ell^1/\ell^2\) concentration quotient, rather than a
+count of modes above an arbitrary numerical cutoff.
+
+\begin{proposition}[Necessary terminal spectral population]
+\label{prop:AU-population}
+Suppose that, for a sequence \(\tau_j\downarrow0\), the total velocity
+\(u(T-\tau_j,\cdot)\) satisfies, with constants \(c,C>0\) and
+\(p,\alpha>0\),
+\[
+ \|u(T-\tau_j)\|_2^2\le C\tau_j^p,\qquad
+ \|u(T-\tau_j)\|_\infty\ge c\tau_j^{-\alpha}.
+\]
+Then at every time in this sequence,
+\begin{equation}\label{eq:AU-population}
+ \mathcal N_{\mathrm{eff}}(T-\tau_j)\ge
+  \frac{c^2}{C}\,\tau_j^{-(2\alpha+p)}.
+\end{equation}
+If the Fourier series has finite support \(S_j\) at these times, its
+cardinality must satisfy
+\(
+ |S_j|\ge(c^2/C)\tau_j^{-(2\alpha+p)}.
+\)
+\end{proposition}
+
+\begin{proof}
+The triangle inequality, absolute Fourier convergence, and Parseval give
+\[
+ c\tau_j^{-\alpha}
+ \le \|u(T-\tau_j)\|_\infty
+ \le\sum_k\|\widehat u(k,T-\tau_j)\|,
+ \qquad
+ \sum_k\|\widehat u(k,T-\tau_j)\|^2
+ =\|u(T-\tau_j)\|_2^2
+ \le C\tau_j^p.
+\]
+Squaring the former and dividing by the latter yields
+\eqref{eq:AU-population}. If the support is finite,
+Cauchy--Schwarz also yields
+\[
+ \left(\sum_{k\in S_j}\|\widehat u(k)\|\right)^2
+ \le |S_j|\sum_{k\in S_j}\|\widehat u(k)\|^2,
+\]
+so \(\mathcal N_{\mathrm{eff}}\le |S_j|\).
+\end{proof}
+
+For a terminal carrier whose squared energy is comparable to
+\(\tau^{1/5}\), the same upper energy bound on the \emph{full}
+corrected velocity and a retained lower speed
+\(\|u(T-\tau_j)\|_\infty\ge c\tau_j^{-(1/2+h)}\)
+force
+\begin{equation}\label{eq:AU-exponent}
+ \mathcal N_{\mathrm{eff}}(T-\tau_j)
+ \gtrsim\tau_j^{-(6/5+2h)}.
+\end{equation}
+The illustrative \(h=1/10\) class requires exponent \(7/5\).
+Neither assumption follows from the 20-mode Fourier calculation
+in Appendix~AT; both refer to the full, unforced correction.
+Equation~\eqref{eq:AU-exponent} is therefore a necessary
+spectral-concentration test, not a construction.
+
+The finite Fourier inequality underlying the proof is also encoded
+in \texttt{UnforcedPatching/Attack25SpectralPopulation.lean}.
+That finite-sum theorem does not by itself formalize the infinite
+Fourier-series reconstruction or the specific carrier asymptotics;
+those remain separate physical and analytic verification
+requirements. The general inequalities in this appendix are
+standard consequences of Fourier reconstruction and
+Cauchy--Schwarz and are not presented as new prior-art claims.
