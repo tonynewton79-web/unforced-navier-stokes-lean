@@ -1,0 +1,26 @@
+name: Attack 32 exact delayed-pressure model gate
+on:
+  push:
+    branches:
+      - feature/attack32-full-delayed-pressure-majorant-20261108
+    paths:
+      - 'tools/verify_attack32_pressure.py'
+      - '.github/workflows/verify-attack32-pressure.yml'
+  pull_request:
+    paths:
+      - 'tools/verify_attack32_pressure.py'
+      - '.github/workflows/verify-attack32-pressure.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+jobs:
+  exact-model:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Exact rational source-index/model replay
+        run: python tools/verify_attack32_pressure.py
