@@ -1,6 +1,6 @@
 # Attack 31: inherited analytic norm and joint H8 modal/torque dual (8 November 2026)
 
-**Status: exact restricted operator estimates and a conditional, source-matched necessary inequality. Unforced 3D Navier–Stokes finite-time blowup remains OPEN.** Full standalone LaTeX/PDF note and exact rational replay were produced in the chat's research packet, and appended to the previous 184-page manuscript as a 188-page cumulative paper; prior pages are unchanged.
+**Status: exact restricted operator estimates and a conditional, source-matched necessary inequality. Unforced 3D Navier–Stokes finite-time blowup remains OPEN.** Full standalone LaTeX/PDF note and exact rational replay were produced in the chat's research packet, and appended to the previous 184-page manuscript as a 189-page cumulative paper; prior pages are unchanged.
 
 ## G1: precise partial analytic-norm repair
 
@@ -21,6 +21,19 @@ and **inherited** ideal norm \(\|F\|_{\mathcal I_m,\mathrm{inh}}=\|F\|_{\mathcal
 \]
 
 These follow from *exact* coefficient weight ratios and nonnegative polynomial slacks.
+
+### Genuine incompressibility primitive: keep the radial lift
+
+The source-native incompressibility formula is
+\(V_n=\frac{X}{L}[2\eta U_n-2\eta(D+2hn)\mathcal A U_n-d\partial_\eta\mathcal A U_n]\),
+where \(\mathcal AF=X^{-1}\int_0^X F\), \(L=1-2h\eta^2\), and \(d=1-\eta^2\).
+The *bare* \(\partial_\eta\mathcal A\) is not bounded in a fixed analytic norm. The actual field uses \(X\partial_\eta\mathcal A\), which has the needed radial lift. In the inherited norm,
+\[
+\|XF\|_{\mathcal B}\le4R\|F\|_{\mathcal B},\quad
+\|X\mathcal A F\|_{\mathcal B}\le \frac{4R}{m+1}\|F\|_{\mathcal B},\quad
+\|X\mathcal A\partial_\eta F\|_{\mathcal B}\le\frac{8R}{\varrho}\|F\|_{\mathcal B}.
+\]
+For \(n\ge1\), \((D+2hn)/(n+1)\le D+2h\), so the complete \(\mathcal V_n:\mathcal I_n\to\mathcal I_{n+1}\) is uniformly bounded if the fixed analytic \(\eta/L,d/L\) multipliers satisfy their algebra bounds. This is a nontrivial **source-native kinematic block**, not merely a toy scalar radial inverse. It is still insufficient to establish the other variable-coefficient and nonlinear pressure blocks.
 
 ### Four transverse derivatives in the delayed pressure model
 
