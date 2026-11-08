@@ -276,8 +276,8 @@
     "physical_target": "OPEN; conditional endpoint interface only, no constructed correction",
     "finite_mode_energy_gate": "Lean source submitted for kernel check; finite-mode coefficient no-blowup and carrier coupling inequality",
     "spectral_population": "Under full E<=C tau^(1/5), sup speed>=c tau^(-3/5), N_eff>=(c^2/C)tau^(-7/5); finite Fourier/Parseval prerequisites explicit",
-    "kernel_compilation": "NOT_CERTIFIED; pinned Lean 4.34.0-rc2 download returned HTTP 504 before typechecking",
+    "kernel_compilation": "PASS for finite-mode, modal-population, carrier coupling, and conditional physical target; successful GitHub Actions retry 42471563523; #print axioms standard only",
     "authentic_carrier_coupling": "NOT_EVALUATED; true frozen Version 17 profile and Fourier-coupling estimate missing",
-    "unforced_global_theorem": "OPEN; no manuscript or Lean proof of the full unforced 3D periodic finite-time singularity"
+    "unforced_global_theorem": "OPEN; conditional theorem's hypotheses not established by mathematical construction"
   }
 }
