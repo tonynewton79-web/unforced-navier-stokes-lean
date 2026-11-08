@@ -12,7 +12,7 @@ for k in range(5):
         for p in range(5-k-s):
             for j in range(21):
                 for b in (0,1,2,3,5,9,15,40):
-                    for n in (1,max(1,j+1),j+2):
+                    for n in {1,max(1,j+1),j+2}:
                         lhs=Q(n**s*j**p,(j+1)**2*(j+2)**2)*a(j,b+k)/a(j+2,b)
                         cap=9*4**k*2**s*Q(2)**2/Q(3,2)**k
                         assert lhs<=cap,(k,s,p,j,b,n)
