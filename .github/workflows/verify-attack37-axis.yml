@@ -1,0 +1,27 @@
+name: Attack 37 exact original-source startup jets
+on:
+  push:
+    branches: [feature/attack37-original-source-startup-physical-audit-20261108]
+    paths:
+      - 'tools/verify_attack37_source_axis_jets.py'
+      - '.github/workflows/verify-attack37-axis.yml'
+  pull_request:
+    paths:
+      - 'tools/verify_attack37_source_axis_jets.py'
+      - '.github/workflows/verify-attack37-axis.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  finite-source-jets:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install exact symbolic package
+        run: python -m pip install sympy==1.13.3
+      - name: Run original-source axis jet constraints
+        run: python tools/verify_attack37_source_axis_jets.py
