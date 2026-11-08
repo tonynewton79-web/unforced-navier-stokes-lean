@@ -1,0 +1,27 @@
+name: Attack 34 exact quadratic-pressure source checks
+on:
+  push:
+    branches: [feature/attack34-positive-quadratic-pressure-composite-20261108]
+    paths:
+      - 'tools/verify_attack34_pressure.py'
+      - '.github/workflows/verify-attack34-pressure.yml'
+  pull_request:
+    paths:
+      - 'tools/verify_attack34_pressure.py'
+      - '.github/workflows/verify-attack34-pressure.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source-and-rational-kernels:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install exact symbolic library
+        run: python -m pip install sympy==1.13.3
+      - name: Replay source identity and positive rational kernel checks
+        run: python tools/verify_attack34_pressure.py
