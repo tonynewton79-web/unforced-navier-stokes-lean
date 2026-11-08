@@ -1,0 +1,28 @@
+name: Attack 33 composed feedback and quadratic pressure regression
+on:
+  push:
+    branches:
+      - feature/attack33-composed-current-and-pressure-normal-form-20261108
+    paths:
+      - 'tools/verify_attack33_composed.py'
+      - '.github/workflows/verify-attack33-composed.yml'
+  pull_request:
+    paths:
+      - 'tools/verify_attack33_composed.py'
+      - '.github/workflows/verify-attack33-composed.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  exact-rational-and-symbolic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install exact symbolic checker
+        run: python -m pip install sympy==1.14.0
+      - name: Exact model regression
+        run: python tools/verify_attack33_composed.py
