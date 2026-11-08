@@ -1,0 +1,27 @@
+name: Attack 38 exact original-source exterior-pressure and selector checks
+on:
+  push:
+    branches: [feature/attack38-constructive-exterior-pressure-axis-selector-20261108]
+    paths:
+      - 'tools/verify_attack38_pressure_selector.py'
+      - '.github/workflows/verify-attack38-axis.yml'
+  pull_request:
+    paths:
+      - 'tools/verify_attack38_pressure_selector.py'
+      - '.github/workflows/verify-attack38-axis.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  exact-source-moment-screening:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install exact symbolic arithmetic
+        run: python -m pip install sympy==1.13.3
+      - name: Verify source pressure and explicit axis selector
+        run: python tools/verify_attack38_pressure_selector.py
