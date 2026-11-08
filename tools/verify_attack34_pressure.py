@@ -66,3 +66,27 @@ print("PASS: 12 six-term source identity checks")
 print("PASS: 11,520 split-derivative exact ratios")
 print("PASS: 715,208 source-graded radial kernels")
 print("G1 FULL CONVERGENCE AND GLOBAL UNFORCED NS: OPEN")
+
+
+# Source-native delayed viscous pressure identity and weighted one-lift ratio.
+visc_count=0
+for j in (1,2,3,5):
+ for p in (j,j+1,j+3):
+  U=X**p*(1+eta+eta**2)
+  avg=U/(p+1)
+  mu=D+2*h*j
+  V=X*(a*U+b*mu*avg+c*s.diff(avg,eta))
+  Zin=(2*(-(s.Rational(1,2)+h)+2*h*j)*eta*U+d*s.diff(U,eta)-2*eta*X*s.diff(U,X))/L
+  assert s.cancel(s.diff(V,X)+Zin)==0
+  assert s.limit(s.diff(V,X),X,0)==0
+  visc_count+=1
+assert visc_count==12
+lift=0
+for radial in range(1,71):
+ for deriv in (0,1,2):
+  for bidx in (0,1,2,4,9,13,20):
+   assert w(radial,bidx+deriv)/w(radial+1,bidx)<=4*4**deriv*(radial+1)**deriv
+   lift+=1
+assert lift==1470
+print("PASS: 12 delayed viscous/incompressibility identities")
+print("PASS: 1,470 one-lift exact rational pressure ratios")
