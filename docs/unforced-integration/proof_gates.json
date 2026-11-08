@@ -270,5 +270,14 @@
     "appendix_AQ_correction_interaction_floor": "Assume additionally ∥U∥∞<=C tau^(-A), ∥grad U∥∞<=C tau^(-1-h), ∥Ut-Delta U∥2<=C tau^(p/2-1), smooth uniformly bounded compact profiles and scaled time derivative; exact unforced u=U+w and local delta=tau^(-p/2) sup_I∥w∥L2(Omega)->0. Pair full equation against Z and integrate time derivatives/viscosity of w onto Z, no derivative bounds on w or any pressure dominance. Then delta*tau^(1/2+h)*sup_I∥w∥Linfty(Omega)>=c>0. If delta=O(tau^h), correction must peak at least tau^(-1/2-2h), at h=1/10 tau^(-7/10). Strong kinematic AP positive control at natural tau^-1/2 cannot satisfy full unforced PDE under these conditions. Does not exclude superconcentrated corrections, and not an actual Case006 source proof.",
     "appendix_AQ_exact_tests": "15/15 independent symbolic tests passed, including exact positive polynomial detector constant J_F=67108864*pi/547521975, cylindrical divergence identity, H8 scale and dyad exponents. Native GitHub Appendix AQ with 13 smaller checks registered; hosted rerun receipt not yet established. Cumulative research PDF 155 pages with preceding 152 pages text exact.",
     "hosted_CI_fixes": "At 2026-10-31 last source review, two hosted PR workflow failures were parsed: AxialFluxCone.lean Lean 'simp ... at' line continuation error and N1NonaxisFourierScalar.lean nested comment opener in m=+1/-1. These exact parsing errors were repaired without changing theorem statements. Need actual new branch-specific CI PASS to release; other full H8 claims remain open."
+  },
+  "research_additions_2026_11_08": {
+    "attack25_pr": "https://github.com/tonynewton79-web/unforced-navier-stokes-lean/pull/9",
+    "physical_target": "OPEN; conditional endpoint interface only, no constructed correction",
+    "finite_mode_energy_gate": "Lean source submitted for kernel check; finite-mode coefficient no-blowup and carrier coupling inequality",
+    "spectral_population": "Under full E<=C tau^(1/5), sup speed>=c tau^(-3/5), N_eff>=(c^2/C)tau^(-7/5); finite Fourier/Parseval prerequisites explicit",
+    "kernel_compilation": "NOT_CERTIFIED; pinned Lean 4.34.0-rc2 download returned HTTP 504 before typechecking",
+    "authentic_carrier_coupling": "NOT_EVALUATED; true frozen Version 17 profile and Fourier-coupling estimate missing",
+    "unforced_global_theorem": "OPEN; no manuscript or Lean proof of the full unforced 3D periodic finite-time singularity"
   }
 }
