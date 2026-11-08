@@ -1,0 +1,48 @@
+name: Attack 31 delayed-pressure rational Lean inequality
+on:
+  push:
+    branches:
+      - feature/attack31-core-norm-and-joint-h8-dual-20261108
+    paths:
+      - 'UnforcedPatching/Attack31PressureNumerator.lean'
+      - '.github/workflows/verify-attack31-lean.yml'
+  pull_request:
+    paths:
+      - 'UnforcedPatching/Attack31PressureNumerator.lean'
+      - '.github/workflows/verify-attack31-lean.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-numerator:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean environment
+        shell: bash
+        run: |
+          set -eux
+          for trial in 1 2 3; do
+            if curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none; then break; fi
+            sleep 3
+          done
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Fetch exact pinned Mathlib cache
+        shell: bash
+        run: |
+          set -eux
+          for trial in 1 2 3; do
+            if lake exe cache get; then exit 0; fi
+            sleep 5
+          done
+          exit 1
+      - name: Reject unproven holes
+        run: |
+          ! grep -nE '^[[:space:]]*(sorry|admit|axiom|opaque)([[:space:]]|$)' UnforcedPatching/Attack31PressureNumerator.lean
+      - name: Kernel check scalar polynomial inequality
+        run: |
+          lake env lean UnforcedPatching/Attack31PressureNumerator.lean
+          lake build UnforcedPatching.Attack31PressureNumerator
