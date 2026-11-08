@@ -1,0 +1,246 @@
+\clearpage
+\section*{Appendix AT. Exact fourfold mediator energy and carrier-coupling criterion}
+\addcontentsline{toc}{section}{Appendix AT. Exact fourfold mediator energy and carrier-coupling criterion}
+
+We record the finite Fourier calculation independently of the unresolved
+singular-carrier construction. The unit-torus convention is
+$e_k(x)=\exp(2\pi i k\cdot x)$, with viscosity $\nu>0$.
+The finite triadic transfer formula itself is standard
+\cite{DarVermaEswaran2001}; the exact arithmetic below concerns a
+particular fourfold family, not a general cascade theorem.
+
+\paragraph{The fourfold real seed.}
+Set
+\[
+ p=(1,0,0),\quad q=(0,2,1),\quad r=p+q=(1,2,1),
+ \qquad a=(0,1,0),\quad b=(0,1,-2).
+\]
+For real amplitudes $A,B,C$ and $\sigma\in\{-1,+1\}$ prescribe
+\[
+ \widehat h(p)=iAa,\qquad \widehat h(q)=Bb,\qquad
+ \widehat h(r)=\sigma Cb.
+\]
+Extend these coefficients by complex conjugation at $-k$ and by
+the four quarter-turns about the $z$ axis, rotating both wavevectors
+and polarizations. The resulting real solenoidal trigonometric
+polynomial $h$ has exactly 20 distinct possible wavevectors:
+four of type $p$ and eight each of types $q,r$.
+The $p$ coefficients counted under opposite quarter-turns coincide,
+so they are not duplicated in the Fourier series. Let
+$\mathcal S=\operatorname{supp}\widehat h$ for generic nonzero amplitudes,
+and define
+\[
+ \mathcal B_k(h,h)=\sum_{\ell+m=k}
+  (\widehat h(\ell)\cdot m)\,\widehat h(m),\qquad
+ \mathbb P_k=I-\frac{k\otimes k}{|k|^2}
+ \quad(k\ne0).
+\]
+
+\noindent\textbf{Proposition AT.1 (finite mediator enumeration and leakage).}
+Treat $A,B,C$ as independent formal real variables. Among all 170
+distinct nonzero pair sums, 124 have a nonzero Leray-projected
+quadratic coefficient polynomial. Of these, 108 lie outside $\mathcal S$.
+Denote this last set by $\mathcal N$. It decomposes into 92
+cross-sector-only modes, which admit no contributing pair in one
+unrotated sector, and 16 modes with contributing pairs entirely within
+an unrotated sector. Relative to the highest seed wavenumber
+$|r|^2=6$, there are 72 new modes with $|k|^2>6$, 8 with
+$|k|^2=6$, and 28 with $|k|^2<6$.
+
+The exact off-support quadratic source norm is
+\begin{equation}\label{eq:AT-leakage}
+\begin{aligned}
+ \mathcal L(A,B,C)
+ &=\sum_{k\in\mathcal N}|\mathbb P_k\mathcal B_k(h,h)|^2\\
+ &=176A^2B^2+\frac{8000}{33}A^2C^2
+  +\frac{1600}{3}B^4
+  +\frac{1796592}{1105}B^2C^2
+  +\frac{25376}{35}C^4 .
+\end{aligned}
+\end{equation}
+For the 92 cross-sector-only modes, the corresponding sum is
+\begin{equation}\label{eq:AT-cross}
+ \mathcal L_\times
+ =16A^2B^2+\frac{2720}{33}A^2C^2
+ +\frac{1600}{3}B^4+\frac{1796592}{1105}B^2C^2
+ +\frac{25376}{35}C^4,
+\end{equation}
+while the 16 within-sector modes contribute
+$160A^2(B^2+C^2)$. The strictly higher-frequency subfamily has
+\begin{equation}\label{eq:AT-high}
+ \mathcal L_{>6}
+ =8A^2B^2+\frac{2256}{11}A^2C^2
+ +\frac{1600}{3}B^4+\frac{262432}{221}B^2C^2
+ +\frac{25376}{35}C^4 .
+\end{equation}
+All three polynomials are independent of the phase sign $\sigma$.
+
+\emph{Finite verification.}
+For each of the at most $20^2$ ordered pairs, form
+$k=\ell+m$ and accumulate the Gaussian-integer vector
+$(\widehat h(\ell)\cdot m)\widehat h(m)$ under the quadratic
+amplitude monomial. Eliminate $k=0$ and use
+\[
+ |\mathbb P_kv|^2
+  =|v|^2-\frac{|k\cdot v|^2}{|k|^2}
+\]
+with rational arithmetic, then combine monomials and conjugate
+terms. The same computation tests sector membership and the
+$|k|^2$ partition. The stand-alone standard-library verifier
+\texttt{tools/verify\_attack24\_exact.py} carries out all 20-mode
+and 108-mode checks with integer Gaussian coefficients and
+\texttt{Fraction} denominators. A separate physical-space
+pseudospectral implementation reproduces
+\eqref{eq:AT-leakage} to floating-point round-off for three
+independent amplitude choices. The finite enumeration is an exact
+computer-assisted identity, not an analytic theorem concerning
+infinite spectral evolution.
+
+\paragraph{Initial energy transfer and viscosity.}
+For the isolated unforced Navier--Stokes evolution with initial
+datum $h$, local smooth existence gives
+$\widehat u(k,t_0)=0$ on $\mathcal N$ and
+\[
+ \partial_t\widehat u(k,t_0)
+   =-2\pi i\,\mathbb P_k\mathcal B_k(h,h)
+   \quad(k\in\mathcal N).
+\]
+Consequently, for $s\downarrow0$,
+\begin{equation}\label{eq:AT-shorttime}
+ \sum_{k\in\mathcal N}|\widehat u(k,t_0+s)|^2
+ =4\pi^2s^2\mathcal L(A,B,C)+o(s^2).
+\end{equation}
+This is nonzero initial leakage, not a monotone shell-to-shell
+cascade or a lower bound at terminal times.
+
+Parseval gives exactly
+\begin{equation}\label{eq:AT-energy}
+ \|h\|_2^2=4A^2+40B^2+40C^2,\qquad
+ \|\nabla h\|_2^2=(2\pi)^2(4A^2+200B^2+240C^2).
+\end{equation}
+The instantaneous nonlinear energy derivatives in the three
+occupied wavevector families $|k|^2=1,5,6$, respectively, are
+\[
+ 0,\qquad -320\pi\sigma ABC,\qquad
+ +320\pi\sigma ABC.
+\]
+Their sum is zero, as required by incompressibility.
+In particular, for each of the eight receiver modes of type $r$,
+\[
+ \frac{d}{dt}|\widehat u(r)|^2\Big|_{t=t_0}
+   =40\pi\sigma ABC-240\nu\pi^2 C^2.
+\]
+For $A,B,C>0$, gain against viscosity at this occupied receiver
+requires $\sigma=+1$ and $AB>6\pi\nu C$. The choice
+$\sigma=-1$ used in the original first-mediator calculation
+has the opposite occupied-receiver energy-transfer direction,
+although it yields the same off-support polynomial
+\eqref{eq:AT-leakage}. This phase distinction is essential.
+
+\noindent\textbf{Proposition AT.2 (second-generation exit).}
+Let $k_*=(3,2,1)$ and assume the isolated unforced
+Navier--Stokes evolution begins with the above seed. Then
+$k_*\notin\mathcal S\cup\mathcal N$, but
+\begin{equation}\label{eq:AT-second}
+ \partial_t^2\widehat u(k_*,t_0)
+  =16\pi^2\sigma A^2C\,b .
+\end{equation}
+In particular, if $AC\ne0$, the initial 20 modes together
+with all 108 first-generation modes still fail to form a
+Fourier-support invariant subsystem.
+
+\emph{Proof.}
+Write $s=p+r=(2,2,1)$. The first-derivative identity is
+$\partial_t\widehat u(s,t_0)=4\pi\sigma AC\,b$.
+At $k_*=p+s$ the only contributing ordered
+pair involving an initially generated mode is $(p,s)$ and
+its reverse. The reverse derivative term vanishes because
+$b\cdot p=0$, whereas
+\[
+ (\widehat h(p)\cdot s)\,\partial_t\widehat u(s,t_0)
+ =(2iA)(4\pi\sigma AC\,b)
+ =8\pi i\sigma A^2C\,b .
+\]
+Since $k_*\cdot b=0$, the Leray projection leaves
+this vector unchanged. The outer multiplier $-2\pi i$
+gives \eqref{eq:AT-second}. At $k_*$ both the initial
+amplitude and first derivative vanish, so the viscous
+term contributes nothing to the second derivative.
+Consequently
+$\widehat u(k_*,t_0+s)
+=8\pi^2\sigma A^2C\,b\,s^2+o(s^2)$.
+This conclusion concerns the isolated initial evolution.
+An independent physical-space pseudospectral
+second-derivative calculation reproduces
+\eqref{eq:AT-second} at the tested amplitudes.
+
+\paragraph{A carrier-inclusive necessary test.}
+Let $U$ be any smooth periodic divergence-free carrier at
+$t_0<T$ and write $u=U+w$. Define its exact projected residual
+\[
+ \mathcal R_\nu(U)
+ =\partial_tU-\nu\Delta U+
+   \mathbb P\nabla\cdot(U\otimes U)
+\]
+and the carrier-coupling source
+\[
+ \mathcal K_U(w)
+ =-\mathcal R_\nu(U)
+  -\mathbb P\nabla\cdot(U\otimes w+w\otimes U).
+\]
+If the full $u$ solves the unforced equation, the correction
+satisfies
+\[
+ \partial_tw-\nu\Delta w+
+ \mathbb P\nabla\cdot(w\otimes w)=\mathcal K_U(w).
+\]
+Suppose $w(t_0)=h$, so its coefficients vanish on $\mathcal N$.
+Writing $\Pi_{\mathcal N}$ for the orthogonal Fourier projector,
+the triangle inequality and \eqref{eq:AT-leakage} imply
+\begin{equation}\label{eq:AT-carrier}
+ \left\|\Pi_{\mathcal N}\partial_tw(t_0)\right\|_2
+ \ge\left[
+ 2\pi\sqrt{\mathcal L(A,B,C)}
+ -\left\|\Pi_{\mathcal N}\mathcal K_U(h)(t_0)\right\|_2
+ \right]_+ .
+\end{equation}
+Here $[x]_+=\max(x,0)$.
+An explicit, generally non-sharp bound is
+\[
+ \|\Pi_{\mathcal N}\mathcal K_U(h)\|_2
+ \le \|\mathcal R_\nu(U)\|_2
+    +\|U\|_\infty\|\nabla h\|_2
+    +\|\nabla U\|_\infty\|h\|_2 .
+\]
+Thus first-generation leakage persists in the full correction
+whenever the actual projected carrier coupling is strictly
+smaller than $2\pi\sqrt{\mathcal L}$; cancellation is not
+excluded when it is comparable or larger. No value for the
+actual frozen Version~17 carrier-coupling norm is inferred
+from this finite computation.
+
+Finally, the exact correction energy relation is
+\begin{equation}\label{eq:AT-wenergy}
+ \frac12\frac{d}{dt}\|w\|_2^2+\nu\|\nabla w\|_2^2
+ =-\int_{\mathbb T^3}w\cdot(w\cdot\nabla U)\,dx
+   -\langle\mathcal R_\nu(U),w\rangle ,
+\end{equation}
+whereas the full unforced solution must obey
+$\frac12\frac{d}{dt}\|U+w\|_2^2+
+\nu\|\nabla(U+w)\|_2^2=0$.
+The finite-mode identities do not control
+\eqref{eq:AT-wenergy} over a shrinking terminal interval.
+
+\paragraph{Scope of the result.}
+The exact data show that distinct fourfold sectors generate
+many new modes, including both higher and lower frequencies,
+and they quantify the initial transfer. They do not supply
+a sustained nonlinear cascade, an energy-compatible
+terminal-time modulation, a bound on
+$\Pi_{\mathcal N}\mathcal K_U$, or non-cancellation of the
+frozen singular trace. The smooth unrotated invariant
+shear-advection subsystem from the preceding finite-triad
+calculation also remains an obstruction to using a single
+polarization ray as a blow-up mechanism. In particular, no
+unforced finite-time singularity theorem follows from
+Appendix~AT.

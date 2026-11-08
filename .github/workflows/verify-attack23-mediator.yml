@@ -1,0 +1,30 @@
+name: Verify Attack 23 first mediator Lean and exact Fourier replay
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'UnforcedPatching/NonlinearMediator23.lean'
+      - 'tools/verify_attack23_mediator.py'
+      - '.github/workflows/verify-attack23-mediator.yml'
+jobs:
+  attack23:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Replay exact 20-mode convolution
+        run: python3 tools/verify_attack23_mediator.py
+      - name: Install pinned Lean
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Fetch pinned dependencies
+        run: |
+          lake update
+          lake exe cache get
+      - name: Reject unsupported proof placeholders
+        run: |
+          if grep -nE '^[[:space:]]*(sorry|admit|axiom)([[:space:]]|$)' UnforcedPatching/NonlinearMediator23.lean; then exit 1; fi
+      - name: Kernel-check rational mediator geometry
+        run: lake build UnforcedPatching.NonlinearMediator23
+      - name: Print Lean axiom dependencies
+        run: lake env lean UnforcedPatching/NonlinearMediator23.lean
