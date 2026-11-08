@@ -67,3 +67,32 @@ print('PASS unique ordered pairs at s are (p,r),(r,p)')
 print('PASS projected source = -2i AC b')
 print('PASS velocity derivative at absent s = -4pi AC b')
 print('PASS exact ray identities at 201 test indices')
+
+# First-generation projected interaction network, as a polynomial in A,B,C.
+# P_k v = 0 iff k cross v = 0 for nonzero k. No rational divisions needed.
+def cross(v, w):
+    return (v[1]*w[2]-v[2]*w[1],
+            v[2]*w[0]-v[0]*w[2],
+            v[0]*w[1]-v[1]*w[0])
+
+pair_sums = defaultdict(lambda: defaultdict(lambda: [0j,0j,0j]))
+for k,(uk,ak) in modes.items():
+    for ell,(vell,al) in modes.items():
+        target = tuple(k[j]+ell[j] for j in range(3))
+        if target == (0,0,0):
+            continue
+        key = ''.join(sorted((ak,al)))
+        weight = dot(uk,ell)
+        for j in range(3):
+            pair_sums[target][key][j] += weight*vell[j]
+
+active = [k for k,polynomial in pair_sums.items()
+          if any(any(z != 0 for z in cross(k,vector))
+                 for vector in polynomial.values())]
+new = [k for k in active if k not in modes]
+assert len(pair_sums) == 170, len(pair_sums)
+assert len(active) == 124, len(active)
+assert len(new) == 108, len(new)
+assert {z:sum(k[2] == z for k in new) for z in (-2,-1,0,1,2)} == {
+    -2:20, -1:24, 0:20, 1:24, 2:20}
+print('PASS full first generation: 170 pair sums, 124 active, 108 new')
