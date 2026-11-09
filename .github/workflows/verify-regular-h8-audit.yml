@@ -1,0 +1,26 @@
+name: Independent regular H8 stress positive-control arithmetic
+on:
+  push:
+    branches: [feature/regular-h8-model-independent-numeric-audit-20261109]
+    paths:
+      - 'tools/verify_regular_h8_model_20261109.py'
+      - '.github/workflows/verify-regular-h8-audit.yml'
+  pull_request:
+    paths:
+      - 'tools/verify_regular_h8_model_20261109.py'
+      - '.github/workflows/verify-regular-h8-audit.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  exact-finite-regular-model:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install sympy==1.13.3
+      - name: Independently check explicit REGULAR model arithmetic
+        run: python tools/verify_regular_h8_model_20261109.py
