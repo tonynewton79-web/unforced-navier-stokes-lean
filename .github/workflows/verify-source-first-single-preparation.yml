@@ -1,0 +1,26 @@
+name: Explicit source-first diagnostic dual-obstruction
+on:
+  push:
+    branches: [feature/source-first-torque-calibrated-single-preparation-20261109]
+    paths:
+      - 'tools/verify_source_first_single_preparation.py'
+      - '.github/workflows/verify-source-first-single-preparation.yml'
+  pull_request:
+    paths:
+      - 'tools/verify_source_first_single_preparation.py'
+      - '.github/workflows/verify-source-first-single-preparation.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  exact-single-source-no-go:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install sympy==1.13.3
+      - name: Exact rational dual gap and physical residual
+        run: python tools/verify_source_first_single_preparation.py
