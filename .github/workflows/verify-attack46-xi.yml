@@ -1,0 +1,27 @@
+name: Attack 46 original source Xi endpoint algebra
+on:
+  push:
+    branches: [feature/attack46-true-xi-seven-state-error-budget-20261109]
+    paths:
+      - 'tools/verify_attack46_xi_endpoint.py'
+      - '.github/workflows/verify-attack46-xi.yml'
+  pull_request:
+    paths:
+      - 'tools/verify_attack46_xi_endpoint.py'
+      - '.github/workflows/verify-attack46-xi.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  finite-source-ledger:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install exact symbolic dependency
+        run: python -m pip install sympy==1.13.3
+      - name: Verify source Xi moment and derivative ledger
+        run: python tools/verify_attack46_xi_endpoint.py
