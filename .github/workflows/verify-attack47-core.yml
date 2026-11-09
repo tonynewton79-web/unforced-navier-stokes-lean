@@ -1,0 +1,35 @@
+name: Attack 47 original core scalar and input refusal verification
+on:
+  push:
+    branches: [feature/attack47-core-moment-c3-authentication-20261109]
+    paths:
+      - 'tools/verify_attack47_core_moments.py'
+      - 'tools/attack47_initial_moment_budget.py'
+      - 'docs/unforced-integration/ATTACK47_ORIGINAL_SOURCE_INPUT_REQUIRED.json'
+      - '.github/workflows/verify-attack47-core.yml'
+  pull_request:
+    paths:
+      - 'tools/verify_attack47_core_moments.py'
+      - 'tools/attack47_initial_moment_budget.py'
+      - '.github/workflows/verify-attack47-core.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  exact-finite-checks:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check exact rational source scalar moments
+        run: python tools/verify_attack47_core_moments.py
+      - name: Require honest refusal of unavailable authentic nonlinear source intervals
+        run: |
+          if python tools/attack47_initial_moment_budget.py docs/unforced-integration/ATTACK47_ORIGINAL_SOURCE_INPUT_REQUIRED.json; then
+            echo "ERROR: missing original source accepted"; exit 1
+          else
+            echo "PASS: missing authentic source rejected"
+          fi
