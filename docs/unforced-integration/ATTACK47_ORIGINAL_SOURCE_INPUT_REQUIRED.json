@@ -1,0 +1,21 @@
+{
+  "description": "Require one independently source-admissible OpenAI Appendix B profile; this is intentionally incomplete, never diagnostic.",
+  "Lambda": null,
+  "C": null,
+  "phi_axis_norm_C3": null,
+  "U_axis_norm_C3": null,
+  "Z_axis_norm_C3": null,
+  "chi_eta_deriv_bound_1": null,
+  "chi_eta_deriv_bound_2": null,
+  "chi_eta_deriv_bound_3": null,
+  "Phi_nonlin_remainder_norm_C3": null,
+  "u_nonlin_remainder_norm_C3": null,
+  "original_source_admissibility_certificate": null,
+  "needed_proofs": [
+    "complete exterior schedule and pressure",
+    "one common complex axis domain",
+    "explicit B.2 invariant fixed-point ball and Lipschitz contraction",
+    "numeric C3 norm of actual Phi-u error",
+    "source B.22 reference stresses and all cutoff choices"
+  ]
+}
