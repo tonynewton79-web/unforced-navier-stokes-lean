@@ -12,8 +12,7 @@ theorem normalized_W
   (X E D eta d m mEta g : ℝ) (hX : X ≠ 0) :
   1 - (2*D*eta*(X*E*m)+d*(X*E*(mEta+g*m)))/X =
   1 - E*(2*D*eta*m+d*(mEta+g*m)) := by
-  field_simp [hX]
-  ring
+  field_simp [hX] <;> ring
 
 theorem normalized_Q
   (X H E h D eta d W i ieta g j jeta : ℝ)
@@ -23,8 +22,7 @@ theorem normalized_Q
         2*(h-D)*eta*(X*H*E*j))/(X*H) =
   -W+(1-h)*i-D*eta*(ieta+g*i)-
      d*E*(jeta+2*g*j)+2*(h-D)*eta*E*j := by
-  field_simp [hX, hH]
-  ring
+  field_simp [hX, hH] <;> ring
 
 theorem normalized_N
   (X E W a D eta d m mEta g h s seta A p peta : ℝ)
@@ -34,8 +32,7 @@ theorem normalized_N
     4*A*eta*(E^2*p)-d*(E^2*(peta+2*g*p)))/E =
   -W*a+D*(m-eta*(mEta+g*m))+
      E*(4*h*eta*s-d*(seta+2*g*s)+4*A*eta*p-d*(peta+2*g*p)) := by
-  field_simp [hX,hE]
-  ring
+  field_simp [hX,hE] <;> ring
 
 theorem normalized_eN
   (W R Bax D eta g m mEta E t : ℝ) :
