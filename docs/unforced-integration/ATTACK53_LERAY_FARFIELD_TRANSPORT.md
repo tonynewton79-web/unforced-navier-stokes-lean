@@ -78,6 +78,22 @@ If A(s,r,·) converges uniformly to a nonzero L²(S²) field a(·), then
 
 This does not forbid a **localized** finite-energy blow-up construction, but a bare global similarity profile is not itself the final finite-energy witness.
 
+
+## Theorem 53.4 — nonlinear maximum-speed pressure gate
+
+Suppose in addition that W satisfies the same twisted period with P>0, and set M=sup over all s,y of |W(s,y)|. Spatial decay and twisted periodicity ensure that M is attained (after reducing s modulo P and rotating y accordingly). At any maximum point (s*,y*) of the full spacetime speed, the **complete nonlinear Leray PDE** implies
+
+    -W(s*,y*)·∇q(s*,y*) ≥ M²/2+|∇W(s*,y*)|²,
+    |∇q(s*,y*)| ≥ M/2.
+
+To prove this, let S=|W|²/2 and take the inner product of the genuine PDE with W:
+
+    ∂s S +(y/2+W)·∇S - ΔS + S+|∇W|² = -W·∇q.
+
+At the global maximum, ∂s S=0, ∇S=0 and ΔS≤0. The inequality follows, without dropping any nonlinear convection or viscosity. **Corollary:** any decaying twisted-periodic Leray profile with identically zero pressure gradient is trivial.
+
+This is a necessary physical pressure test for *any* candidate nonzero periodic similarity profile, not an existence theorem. It is independent of the numerical certificate and complementary to the far-field transport test.
+
 ## Required negative control: log-periodic nonconvergent tails
 
 The decay bound W=O(r^-1) alone does not force a to exist. The scalar transport-model field
