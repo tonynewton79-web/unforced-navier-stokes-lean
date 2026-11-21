@@ -9,6 +9,8 @@ Let `tau=1-t`, `h=1/200`, `A=1/2+h`, `D=1/2-h`, `beta=1/2-2h=49/100`. On the ope
 `U_r=0, U_theta=(s/20)*tau^(-A), U_z=(1/20)*tau^(-A)`,
 with `s=r/sqrt(tau)`, `xi=z/tau^D`.
 
+**Nonvacuity under bounded energy.** Choose a smooth compact cutoff `eta(s,xi)` supported away from the axis and equal to one near the test annulus. Put `A_theta=eta*tau^(-A)*r/40`, `A_z=-eta*tau^(-A-1/2)*r^2/40`, `A_r=0`, then `U=curl A` on the local torus chart, periodically zero-extended. This is smooth and divergence-free, agrees exactly with the specified local plateau, and has `||U||_L2^2=O(tau^(1/2-3h))`. It is not an exact unforced solution; the obstruction tests whether an additional correction can make it one while remaining subleading.
+
 Replace the exponential cutoff of Attack51 by `K(q)=(1-q^2)^4` for `|q|<1`, zero outside. This is globally `C^3` (sufficient for the weak integration), not `C^infty`.
 Define the divergence-free toroidal test
 
