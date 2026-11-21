@@ -1,0 +1,43 @@
+name: Attack 51 weighted L2 arithmetic Lean and Python gate
+on:
+  push:
+    branches: [feature/attack51-weak-l2-and-lean-repair-20261121]
+    paths:
+      - 'UnforcedPatching/Attack51WeakL2Arithmetic.lean'
+      - 'TerminalCore2026/NormalizedMomentPulseScalar.lean'
+      - 'tools/verify_attack51_l2.py'
+      - '.github/workflows/verify-attack51-l2.yml'
+  pull_request:
+    paths:
+      - 'UnforcedPatching/Attack51WeakL2Arithmetic.lean'
+      - 'TerminalCore2026/NormalizedMomentPulseScalar.lean'
+      - 'tools/verify_attack51_l2.py'
+      - '.github/workflows/verify-attack51-l2.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  finite-arithmetic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install sympy==1.13.3
+      - name: Source-first weak L2 exact rational verification
+        run: python tools/verify_attack51_l2.py
+      - name: Install pinned Lean
+        shell: bash
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Fetch pinned Mathlib cache
+        run: lake exe cache get
+      - name: Reject proof holes in finite gate
+        run: "! grep -nE '^[[:space:]]*(sorry|admit|axiom|opaque)([[:space:]]|$)' UnforcedPatching/Attack51WeakL2Arithmetic.lean"
+      - name: Kernel-check new exact arithmetic
+        run: lake env lean UnforcedPatching/Attack51WeakL2Arithmetic.lean
+      - name: Replay repaired normalized moment tactics
+        run: lake env lean TerminalCore2026/NormalizedMomentPulseScalar.lean
