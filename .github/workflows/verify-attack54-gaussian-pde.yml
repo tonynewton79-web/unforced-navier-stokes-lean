@@ -1,0 +1,26 @@
+name: Attack 54 nonlinear Leray pressure and Gaussian profile regression
+on:
+  push:
+    branches: [feature/attack54-nonlinear-pressure-gaussian-no-go-20261121]
+    paths:
+      - 'tools/verify_attack54_gaussian_pressure.py'
+      - '.github/workflows/verify-attack54-gaussian-pde.yml'
+  pull_request:
+    paths:
+      - 'tools/verify_attack54_gaussian_pressure.py'
+      - '.github/workflows/verify-attack54-gaussian-pde.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  actual-pde-symbolic-regression:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install sympy==1.13.3
+      - name: Check exact Cartesian/cylindrical pressure-curl PDE identities
+        run: python tools/verify_attack54_gaussian_pressure.py
