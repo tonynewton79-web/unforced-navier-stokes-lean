@@ -1,0 +1,39 @@
+name: Attack 52 exact polynomial-dual arithmetic gate
+on:
+  push:
+    branches: [feature/attack52-exact-polynomial-dual-20261121]
+    paths:
+      - 'UnforcedPatching/Attack52PolynomialDualArithmetic.lean'
+      - 'tools/verify_attack52_polynomial_dual.py'
+      - '.github/workflows/verify-attack52-polynomial.yml'
+  pull_request:
+    paths:
+      - 'UnforcedPatching/Attack52PolynomialDualArithmetic.lean'
+      - 'tools/verify_attack52_polynomial_dual.py'
+      - '.github/workflows/verify-attack52-polynomial.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  exact-polynomial:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install sympy==1.13.3
+      - name: Check all rational and polynomial identities
+        run: python tools/verify_attack52_polynomial_dual.py
+      - name: Install pinned Lean
+        shell: bash
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Fetch pinned Mathlib cache
+        run: lake exe cache get
+      - name: Reject proof holes
+        run: "! grep -nE '^[[:space:]]*(sorry|admit|axiom|opaque)([[:space:]]|$)' UnforcedPatching/Attack52PolynomialDualArithmetic.lean"
+      - name: Kernel-check exact arithmetic
+        run: lake env lean UnforcedPatching/Attack52PolynomialDualArithmetic.lean
