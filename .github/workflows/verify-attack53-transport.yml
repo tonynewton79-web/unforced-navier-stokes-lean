@@ -1,0 +1,26 @@
+name: Attack 53 source-free Leray transport symbolic regression
+on:
+  push:
+    branches: [feature/attack53-leray-farfield-pde-gate-20261121]
+    paths:
+      - 'tools/verify_attack53_farfield.py'
+      - '.github/workflows/verify-attack53-transport.yml'
+  pull_request:
+    paths:
+      - 'tools/verify_attack53_farfield.py'
+      - '.github/workflows/verify-attack53-transport.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  symbolic-negative-controls-only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install sympy==1.13.3
+      - name: Test exact similarity characteristics and negative control
+        run: python tools/verify_attack53_farfield.py
