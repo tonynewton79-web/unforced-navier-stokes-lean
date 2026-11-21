@@ -1,0 +1,26 @@
+name: Attack 56 exact nonlinear pressure identities only
+on:
+  push:
+    branches: [feature/attack56-periodic-critical-tail-gauge-20261121]
+    paths:
+      - 'tools/verify_attack56_exact_pressure.py'
+      - '.github/workflows/verify-attack56-exact-pressure.yml'
+  pull_request:
+    paths:
+      - 'tools/verify_attack56_exact_pressure.py'
+      - '.github/workflows/verify-attack56-exact-pressure.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  exact-cross-pressure:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install sympy==1.13.3
+      - name: Check physical mixed Poisson source and exact centre coefficients
+        run: python tools/verify_attack56_exact_pressure.py
