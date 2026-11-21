@@ -116,4 +116,24 @@ The Alpöge–Buckmaster public repository (https://github.com/tristanbuckmaster
 
 When a genuine profile is available, this theorem gives a direct finite-radius condition on the real fields to test with rigorous interval bounds; a violation disproves the candidate's claimed PDE plus decay data. Formalizing the characteristic calculus in the actual PDE types, providing certificate data, proving the interval conditions and bridging to the final unforced theorem are all separate **OPEN** gates.
 
+**Exact external Lean certificate fields (15):** The imported declaration is Breakdown.CellLayerSystem.CellSystemCondition in lean/Breakdown/CertCell/StatementDefs.lean, lines 6223–6242. Its named fields are:
+
+1. cell
+2. shape_valueSets
+3. entry_conditions
+4. enclosure_numbers
+5. coerciveL2_ge
+6. coercivePin_ge
+7. certificate
+8. instantiation
+9. offset_expansion
+10. shift_numbers
+11. frozen_form
+12. adjoint_quadratic
+13. adjoint_links
+14. potential_entries
+15. adjoint_defect
+
+This is an *exact type-declaration inventory*, not verified evidence that any concrete data satisfy those fields. A complete independent release requires actual D, X, R, T, Y, N, B objects, proofs or sound checkers for all 15 fields, certificate integrity, a successfully rebuilt patched Lean package and a closed theorem without an unresolved CellSystemCondition hypothesis.
+
 The companion tools/verify_attack53_farfield.py is a symbolic negative-control regression, not a Lean certificate. Similarity-variable and discretely self-similar Navier–Stokes methods have considerable prior art. This note makes **no priority or novelty claim** without a specialist review.
