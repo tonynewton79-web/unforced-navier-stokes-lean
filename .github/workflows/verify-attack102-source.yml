@@ -1,0 +1,39 @@
+name: Attack102 source-native quadratic torque and physical chart gate
+on:
+  push:
+    branches: [feature/attack102-quadratic-source-torque-20261122]
+    paths:
+      - 'research/attack102/**'
+      - 'docs/unforced-integration/ATTACK102_QUADRATIC_TORQUE_SOURCE_HANDOFF.md'
+      - '.github/workflows/verify-attack102-source.yml'
+  workflow_dispatch:
+jobs:
+  quadratic-torque:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install pinned symbolic dependency
+        run: python -m pip install sympy==1.13.3
+      - name: Exact source quadratic torque and shell
+        run: python research/attack102/verify_attack102.py
+      - name: Independent physical chart pullback
+        run: python research/attack102/verify_attack102_independent.py
+      - name: Fail closed on numerical remainder, original source and full PDE
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json
+          g=json.loads(Path('research/attack102/source_gate.json').read_text())
+          assert g['status']=='SOURCE_NATIVE_QUADRATIC_TORQUE_IDENTITY__ORIGINAL_G_REMAINDER_UNFROZEN'
+          assert g['source_E_uniform_constant'] is None
+          assert not g['source_unchanged_postcutoff_verified']
+          assert not g['physical_coordinate_handoff_validated']
+          assert not g['original_full_pressure']
+          assert not g['end_to_end_Lean_PDE_proved']
+          assert not g['full_unforced_Navier_Stokes_proven']
+          print('PASS: partial exact source identities are not promoted to unforced Millennium proof')
+          PY
