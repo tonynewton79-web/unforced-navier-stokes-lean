@@ -1,0 +1,34 @@
+name: Attack94 exact analytic-multiplier constants and source gate
+on:
+  push:
+    branches: [feature/attack94-source-multiplier-shear-incompatibility-20261122]
+    paths:
+      - 'research/attack94/**'
+      - 'docs/unforced-integration/ATTACK94_EFFECTIVE_CHI_AND_RAYLEIGH_HOLD.md'
+      - '.github/workflows/verify-attack94-source.yml'
+  workflow_dispatch:
+jobs:
+  rational-source-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify source-native coefficient norm and Rayleigh incompatibility
+        run: python research/attack94/verify_attack94.py
+      - name: Require full exterior and PDE to remain OPEN
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          d=json.loads(Path('research/attack94/source_gate.json').read_text())
+          assert d['chi_multiplier_upper']=='72400/81' if 'chi_multiplier_upper' in d else d['certified_partial_constants']['chi_operator_bound']=='72400/81'
+          assert not d['full_exterior_profile_certified']
+          assert not d['actual_continued_strong_Rayleigh_a_at_least_10']
+          assert d['M_terminal'] is None
+          assert not d['Case006_full_unforced_blowup_proved']
+          assert not d['end_to_end_Lean_PDE_certified']
+          print('PASS: source coefficient subcertification, terminal PDE claims remain OPEN')
+          PY
