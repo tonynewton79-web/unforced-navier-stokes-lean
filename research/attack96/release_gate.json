@@ -1,0 +1,34 @@
+{
+  "attack": 96,
+  "date": "2026-11-22",
+  "status": "MANUFACTURED_COUPLED_POSITIVE_CONTROL__ACTUAL_H8_SOURCE_HOLD",
+  "original_case006_pdf_sha256": "56ff24696ac58bef19bcf339d297d3af8b0401e46d5e8125c7fb1d054f01a758",
+  "original_h8_pdf_sha256": "10d70e2f2820980ce471411079e3a06b7f05550aa54cf5dc1c29844d3339a826",
+  "source_sections": [
+    "Case006 247-252",
+    "Case006 269-273",
+    "Appendix Y",
+    "Appendix Z",
+    "Appendix AA",
+    "Appendix AB",
+    "Appendix AC"
+  ],
+  "manufactured_results": {
+    "axisymmetric_compact_four_field_residual": "PROVED using source Appendix AA plus canonical NS stress",
+    "two_moment_neutral_steep_swirl": "PROVED for G(r)=r, with arbitrary nonzero compact poloidal overlap",
+    "strict_pointwise_cone_margin": "PROVED for small manufactured amplitude and an envelope chosen to cover reconstructed stress",
+    "fixed_envelope_swirl_curl_dual": "PROVED necessary condition",
+    "exact_polynomial_curl_pairing": "2096/59657815174123018125 times amplitude squared",
+    "full_case006_cone": false
+  },
+  "actual_case006_envelope": null,
+  "actual_case006_complete_source": null,
+  "actual_case006_H8_cone_margin": null,
+  "actual_case006_compensation_moment_determinant": null,
+  "actual_case006_ninth_jet_bound": null,
+  "actual_case006_four_patch_pressure": null,
+  "M_terminal": null,
+  "terminal_singular_trace": null,
+  "full_unforced_Navier_Stokes_proven": false,
+  "end_to_end_Lean_PDE_proven": false
+}
