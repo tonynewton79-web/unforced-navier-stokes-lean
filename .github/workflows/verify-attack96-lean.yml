@@ -1,0 +1,27 @@
+name: Attack96 finite Lean algebra
+on:
+  push:
+    branches: [feature/attack96-compact-coupled-cone-dual-20261122]
+    paths:
+      - 'research/attack96/Attack96FiniteAlgebra.lean'
+      - '.github/workflows/verify-attack96-lean.yml'
+  workflow_dispatch:
+jobs:
+  eight-finite-lemmas:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean toolchain
+        run: |
+          curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve pinned dependencies and Mathlib cache
+        run: |
+          lake update
+          lake exe cache get
+      - name: Typecheck eight finite algebra lemmas (not continuum PDE)
+        run: lake env lean research/attack96/Attack96FiniteAlgebra.lean
+      - name: Reject placeholders
+        run: |
+          if grep -nE '(^|[^[:alpha:]])(sorry|admit|unsafe|native_decide)([^[:alpha:]]|$)' research/attack96/Attack96FiniteAlgebra.lean; then exit 1; fi
