@@ -8,7 +8,7 @@ note, NOT formally proved in Lean here. Original Case006 PDE remains open.
 namespace UnforcedPatching.Attack99
 
 theorem appendixAD_affine_wronskian (x : ℝ) :
-    (2+x/2)*(-(1+x/2)/4) - (-(1+x/2)/2)*(1/2) = -1/4 := by
+    (2+x/2)*(-1/4) - (-(1+x/2)/2)*(1/2) = -1/4 := by
   ring
 
 theorem axial_gram_offdiag (I0 : ℝ) :
