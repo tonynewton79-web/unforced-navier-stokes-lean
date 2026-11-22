@@ -1,0 +1,49 @@
+{
+  "attack": 101,
+  "date": "2026-11-22",
+  "status": "AXIAL_INTERIOR_FLUX_REPAIR__AFFINE_TORQUE_NO_GO__PHYSICAL_G_HOLD",
+  "sources": {
+    "case006_sha256": "56ff24696ac58bef19bcf339d297d3af8b0401e46d5e8125c7fb1d054f01a758",
+    "H8_sha256": "10d70e2f2820980ce471411079e3a06b7f05550aa54cf5dc1c29844d3339a826",
+    "source_ranges": "Case006 (193)-(194), (250)-(252), Appendix AD; Attack100"
+  },
+  "positive_control": {
+    "class": "Appendix AD diagnostic, not actual original four-patch preparation",
+    "axial_cutoff": "chi(z)=E(1/4-z^2)/[E(1/4-z^2)+E(z^2-1/16)]",
+    "chi_equals_one": "|z|<=1/4",
+    "chi_zero": "|z|>=1/2",
+    "cutoff_gram_strictly_positive": true,
+    "cutoff_gram_uniformly_coercive": true,
+    "both_angular_fluxes_exact": true,
+    "smooth_and_compact": true,
+    "attack100_axial_log_square_source_term_removed": true,
+    "radial_flat_boundary_H8_not_yet_solved": true
+  },
+  "torque": {
+    "radial_A": "1+r/2",
+    "radial_D": "-r/4",
+    "normalized_source_integral": "int_1^3 r*b(r-2)dr = 2",
+    "identity": "int b'(z)M2(z) dz + int [(2-z)b'(z)-b(z)]/4*M3(z) dz = -2*beta*rho0*I0",
+    "beta": "-147 sqrt(182)/9832 -21 sqrt(2)/2458",
+    "nonzero_source_lhs": true,
+    "affine_weight_G_nogo": "If G(r,z)=g0(z)+g1(z)r, g1(z)!=0 and same Theta has both angular flux and torque M=N=0, contradiction",
+    "nonaffine_deviation_required": "|intint r^2 qb(z)*e(r,z)*Theta(r,z)/g1(z)drdz|=2|beta|rho0*I0 if both moments zero",
+    "real_source_torque_conditions_verified": false
+  },
+  "physical_G_profile": null,
+  "physical_G_nonaffine_enclosure": null,
+  "original_poloidal_toroidal_four_patch": null,
+  "actual_C4_maps": null,
+  "original_twelfth_mixed_stresses": null,
+  "physical_pressure": null,
+  "full_torque_neutrality_certified": false,
+  "physical_C4_source_certified": false,
+  "original_H8_pointwise_cone_certified": false,
+  "weighted_inverse_certified": false,
+  "nine_jet_certified": false,
+  "M_terminal": null,
+  "terminal_trace_proven": false,
+  "full_unforced_Navier_Stokes_proven": false,
+  "end_to_end_Lean_PDE_proven": false,
+  "verification": "independent exact symbolic and Fractions checks; analytic continuum theorem is NOT Lean kernel certified"
+}
