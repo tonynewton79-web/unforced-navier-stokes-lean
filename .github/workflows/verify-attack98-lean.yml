@@ -1,0 +1,27 @@
+name: Attack98 finite one-sided cone Lean algebra
+on:
+  push:
+    branches: [feature/attack98-angular-flux-full-diagnostic-20261122]
+    paths:
+      - 'research/attack98/Attack98FiniteAlgebra.lean'
+      - '.github/workflows/verify-attack98-lean.yml'
+  workflow_dispatch:
+jobs:
+  eight-finite-lemmas:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean
+        run: |
+          curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve Mathlib cache
+        run: |
+          lake update
+          lake exe cache get
+      - name: Typecheck eight finite arithmetic and one-sided cap declarations
+        run: lake env lean research/attack98/Attack98FiniteAlgebra.lean
+      - name: Reject proof placeholders
+        run: |
+          if grep -nE '(^|[^[:alpha:]])(sorry|admit|unsafe|native_decide)([^[:alpha:]]|$)' research/attack98/Attack98FiniteAlgebra.lean; then exit 1; fi
