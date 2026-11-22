@@ -1,0 +1,33 @@
+{
+  "attack": 89,
+  "date": "2026-11-22",
+  "status": "SIGNED_REFERENCE_CONTINUATION_GATE_DERIVED__SOURCE_NUMERICAL_FREEZE_OPEN",
+  "source_case006_sha256": "56ff24696ac58bef19bcf339d297d3af8b0401e46d5e8125c7fb1d054f01a758",
+  "source_unforcing_sha256": "c5a6f28992f48a60b9eec4bd927c753b7f2df58f8e143aa80ebb7c4a194efc60",
+  "upstream": "OpenAI, Finite Time Blowup for Navier-Stokes (forced), Appendix B.25 B.26 Lemma B.4",
+  "equation": "X∂X n+n=S/L; X0=4/Λ; M=Z*/L; L=1-2hη²",
+  "domain": "|η|≤1/4, 0<h≤1/6 (the original source uses smaller h)",
+  "integrating_factor": "∂η n−M'=(X0/X)(∂η n(X0)−M')+(1/X)∫_(X0)^X ∂η[(S−Z*)/L] ds",
+  "errors": {
+    "a": "sup |∂η n(X0)−M'|",
+    "b0": "sup |S−Z*|",
+    "b1": "sup |∂η(S−Z*)|",
+    "bound": "max(a,(48/47)b1+(1/6)(48/47)^2 b0)",
+    "frozen_actual_values": null
+  },
+  "conditional_signed_result": "if M'<-13 and a,b0,b1≤1, then ∂η n < -59/5",
+  "cutoff_ninth_jet": "‖κ^(9)‖∞ ≥ 9!(1−κ0)/t1^9 if κ(0)=1,κ(t1)=κ0<1/2 and first eight jets vanish at 0",
+  "physical_fields": {
+    "original_pressure_Pi0_second_derivative": null,
+    "offaxis_remainder_E_and_nine_jet_bounds": null,
+    "final_four_patch_cutoffs": null,
+    "full_mixed_pressure": null,
+    "M_terminal_nine_entries": null,
+    "terminal_spectral_radius": null,
+    "terminal_trace": null
+  },
+  "full_unforced_Navier_Stokes_theorem_proven": false,
+  "end_to_end_Lean_theorem_proven": false,
+  "GitHub_handoff": "Tony original repository; source gate and regression migrated to feature/attack90-postcutoff-89-handoff-20261122",
+  "scope": "finite exact rational tests and conditional analytic source gate; not full PDE certification"
+}
