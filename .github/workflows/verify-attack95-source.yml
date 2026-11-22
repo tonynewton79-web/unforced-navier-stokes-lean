@@ -1,0 +1,37 @@
+name: Attack95 source curl and compact shear repair audit
+on:
+  push:
+    branches: [feature/attack95-source-curl-shear-repair-20261122]
+    paths:
+      - 'research/attack95/**'
+      - 'docs/unforced-integration/ATTACK95_SOURCE_CURL_AND_SHEAR_REPAIR.md'
+      - '.github/workflows/verify-attack95-source.yml'
+  workflow_dispatch:
+jobs:
+  source-curl-exact:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install pinned symbolic backend
+        run: python -m pip install sympy==1.13.3
+      - name: Exact pressure-curl and moment-neutralization replay
+        run: python research/attack95/verify_attack95.py
+      - name: Refuse promotion of missing physical PDE gates
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          g=json.loads(Path('research/attack95/release_gate.json').read_text())
+          assert g['status']=='KINEMATIC_REPAIR_CONSTRUCTED__SOURCE_CURL_HOLD'
+          assert not g['physical_meridional_force_reconstructed']
+          assert not g['H8_cone_margin_certified']
+          assert g['authentic_four_patch_pressure'] is None
+          assert g['M_terminal'] is None
+          assert not g['full_unforced_blowup_proven']
+          assert not g['lean_full_PDE_proven']
+          print('PASS: kinematic construction is not misreported as source-matched PDE')
+          PY
