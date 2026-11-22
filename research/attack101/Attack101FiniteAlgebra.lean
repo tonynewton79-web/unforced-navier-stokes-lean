@@ -26,7 +26,8 @@ theorem torque_test_weight (b bp z : ℝ) :
 theorem strict_positive_for_negative_beta (beta rho I0 : ℝ)
     (hb : beta < 0) (hr : rho > 0) (hI : I0 > 0) :
     0 < -2*beta*rho*I0 := by
-  nlinarith [mul_pos (neg_pos.mpr hb) hr, mul_pos (mul_pos (neg_pos.mpr hb) hr) hI]
+  have hpos : 0 < (-beta)*rho*I0 := mul_pos (mul_pos (neg_pos.mpr hb) hr) hI
+  nlinarith
 
 theorem affine_nonzero_slope_forces_M3
     (M2 M3 g0 g1 : ℝ) (hm2 : M2=0)
