@@ -1,0 +1,37 @@
+name: Attack90 source-aware radial/ninth-jet gate
+on:
+  push:
+    branches:
+      - feature/attack90-postcutoff-89-handoff-20261122
+    paths:
+      - 'research/attack90/**'
+      - 'docs/unforced-integration/ATTACK90_PHYSICAL_NINTH_JET_AND_SOURCE_HOLD.md'
+      - '.github/workflows/verify-attack90-tony.yml'
+  workflow_dispatch:
+jobs:
+  attack90-finite:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Exact rational reproducibility tests
+        run: python research/attack90/verify_attack90.py
+      - name: Explicitly reject false source promotion
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('research/attack90/source_release_gate.json')
+          gate=json.loads(p.read_text())
+          assert gate['status']=='HOLD_SOURCE_NUMERICAL_FREEZE'
+          assert gate['actual_physical_source_certified'] is False
+          assert gate['full_unforced_theorem_proved'] is False
+          assert gate['terminal_matrix'] is None
+          for key in ('a','a0','b0','b1','m_I'):
+              assert gate['physical_source_bounds'][key] is None
+          print('PASS: original physical numerical source and theorem remain correctly HOLD')
+          PY
