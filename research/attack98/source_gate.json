@@ -1,0 +1,71 @@
+{
+  "attack": 98,
+  "date": "2026-11-22",
+  "status": "COMPLETE_AD_DIAGNOSTIC_REFUSED__ORIGINAL_PHYSICAL_SOURCE_UNFROZEN",
+  "source_sha256": {
+    "case006": "56ff24696ac58bef19bcf339d297d3af8b0401e46d5e8125c7fb1d054f01a758",
+    "H8": "10d70e2f2820980ce471411079e3a06b7f05550aa54cf5dc1c29844d3339a826"
+  },
+  "source_sections": [
+    "Case006 (258)-(273)",
+    "Case006 Remark 9.23",
+    "Case006 Appendix AC",
+    "Case006 Appendix AD",
+    "H8 3.1-3.2"
+  ],
+  "diagnostic": {
+    "K1": 1,
+    "K2": 1,
+    "ell": 1,
+    "c": 1,
+    "mu": "1/2",
+    "lambda": "-1/2",
+    "T": "P tensor P",
+    "p0": "0",
+    "rho": "(1229/4443)*b(r-2)^2*b(z)^2/r^2",
+    "alpha": "-4443/9832",
+    "beta": "-147 sqrt(182)/9832 -21 sqrt(2)/2458",
+    "gamma": "147 sqrt(182)/9832 -21 sqrt(2)/2458",
+    "Rbar": "(1229/4443)*N2*b(r-2)^2/r^2",
+    "Rbar_interval_for_r_7over4_to_9over4": [
+      "1229/1079649",
+      "117984/72569"
+    ],
+    "Tbar_over_Rbar": "-4443/9832",
+    "q": "0",
+    "J": "0",
+    "Bbar_canonical_over_Rbar": "-gamma",
+    "Cbar_any_compact_correction_over_Rbar": "-beta",
+    "absolute_C_cap_over_rho": "15971/245800",
+    "one_sided_C_cap_over_rho": "19171/122900",
+    "one_sided_H8_feasible": false,
+    "axial_scalar_test_passes": true
+  },
+  "physical_necessary": {
+    "normalized_T_rtheta_must_be_less_than": "-6799/122900",
+    "if_absolute_cap_less_than": "-35969/245800",
+    "when": "same physical R*, compact traces, vanishing angular endcap defects"
+  },
+  "original_physical": {
+    "core_complete": null,
+    "profiles": null,
+    "amplitudes": null,
+    "cutoffs": null,
+    "all_four_patch_maps": null,
+    "all_twelve_overlap_tensors": null,
+    "complete_T": null,
+    "actual_rho": null,
+    "p0": null,
+    "actual_boundary_q": null,
+    "actual_f_m": null,
+    "actual_B": null,
+    "actual_C": null,
+    "actual_full_Pi0_E_jets": null,
+    "actual_nine_jet": null
+  },
+  "original_physical_H8_status": "NOT_TESTABLE_WITHOUT_A_COMPLETE_SOURCE_TUPLE",
+  "original_weighted_inverse": false,
+  "M_terminal": null,
+  "unforced_blowup_proved": false,
+  "Lean_full_PDE_proven": false
+}
