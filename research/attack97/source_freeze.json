@@ -1,0 +1,47 @@
+{
+  "attack": 97,
+  "date": "2026-11-22",
+  "status": "PHYSICAL_SOURCE_TUPLE_UNFROZEN__EXACT_PROFILE_DISCRIMINATOR",
+  "original_source_sha256": "56ff24696ac58bef19bcf339d297d3af8b0401e46d5e8125c7fb1d054f01a758",
+  "original_H8_sha256": "10d70e2f2820980ce471411079e3a06b7f05550aa54cf5dc1c29844d3339a826",
+  "source": "Original Case006 Remark 9.23, (194), (242), (269)-(273), Appendices AC AD AE",
+  "diagnostic_not_physical": {
+    "shaper_family": "Appendix AD mu=1/2, -1<lambda<1, two smooth normalized poloidal profiles",
+    "T_over_R": "4443*lambda/4916",
+    "J_over_R": "4443*(lambda+1/2)/4916",
+    "alpha": "-4443/9832",
+    "kappa": "15971/122900",
+    "necessary_lambda_interval": [
+      "-143017/222150",
+      "-79133/222150"
+    ],
+    "with_B_integral_fixed_zero_interval": [
+      "-63523/111075",
+      "-47552/111075"
+    ],
+    "lambda_minus_half": "AXIAL_SCALAR_PASS_NOT_FULL_H8",
+    "lambda_zero": "AXIAL_SCALAR_REFUSED",
+    "lambda_plus_half": "AXIAL_SCALAR_REFUSED",
+    "lambda_plus_half_min_normalized_remainder": "23776/30725",
+    "normalized_polar_violation_factor": "111075/15971",
+    "same_envelope_for_all_lambda": true
+  },
+  "unresolved_physical_inputs": {
+    "physical_f_m": null,
+    "physical_B": null,
+    "physical_C": null,
+    "physical_rho": null,
+    "physical_T": null,
+    "boundary_q": null,
+    "actual_four_patch_maps": null,
+    "actual_core_pressure_Pi0_second_derivative": null,
+    "actual_ninth_jet": null
+  },
+  "actual_Y_dual_inequalities_tested": false,
+  "actual_AC_source_primitive_tested": false,
+  "actual_compact_weighted_inverse_proved": false,
+  "M_terminal": null,
+  "full_NS_singularity_proven": false,
+  "full_Lean_PDE_proven": false,
+  "scope": "One source-native diagnostic family with a common adapted diagnostic envelope; physical source not frozen; no millennium proof"
+}
