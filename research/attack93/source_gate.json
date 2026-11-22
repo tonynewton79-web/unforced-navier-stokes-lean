@@ -1,0 +1,49 @@
+{
+  "attack": 93,
+  "date": "2026-11-22",
+  "status": "EFFECTIVE_SUBCERTIFICATES_ONLY__FULL_SOURCE_OPEN",
+  "source": "OpenAI 2026 FORCED Navier-Stokes Theorem 1.1 and Appendix A.5, B.1-B.5; Tony Newton Case006 122 pages, (199)-(210),(255)-(257)",
+  "hierarchy": {
+    "T_d": "exp(M_d)+10",
+    "P_star": ">exp(T_d)",
+    "h": "0<h<min(1/100,lambda,exp(-T_d))",
+    "B2": "delta_star/sigma_star chosen with chi>.99 on low-|Z*| set",
+    "B16": "C>=sup_Omega |phi_star|, after Lambda",
+    "cutoff": "Y_end=4exp(2t1)<4.1"
+  },
+  "numeric_parameter_tuple": null,
+  "complex_weighted_Mchi": null,
+  "inner_pressure": {
+    "exact": "-(5/2)Pstar²/(1+eta²)^2",
+    "eta_interval_if_j_one_twentieth": "[-1/140,-1/180]",
+    "DDlower_normalized": "1475412579200000000/147609026049038401",
+    "global_Ij_DD_bound": ">1999/200 Pstar²"
+  },
+  "analytic_inverse_tail": {
+    "operator": "T=J2*Mchi/2",
+    "requires": "B >= ||Mchi||_Bρ; real sup chi<=1 is inadequate",
+    "formula": "(40B)^(K+1)/((K+1)!(K+2)!)/(1-40B/((K+2)(K+3)))",
+    "diagnostic_B_to_K": {
+      "1": 30,
+      "10": 69,
+      "100": 187
+    },
+    "physical_B_certified": false
+  },
+  "angular_shear_transfer": {
+    "reference": "D_X log phi_r = 0 for Y>=4exp(2t1)",
+    "modified": "a=kappa*p1_r",
+    "Case006_Bessel_10_5207_transferred": false
+  },
+  "actual_a0": null,
+  "actual_b0": null,
+  "actual_a": null,
+  "actual_b1": null,
+  "full_outer_pressure_two_sided_certified": false,
+  "full_nine_jet_certified": false,
+  "full_four_patch_pressure": null,
+  "M_terminal": null,
+  "terminal_trace": null,
+  "full_unforced_theorem_proven": false,
+  "end_to_end_Lean_PDE_proven": false
+}
