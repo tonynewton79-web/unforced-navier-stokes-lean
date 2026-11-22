@@ -1,0 +1,46 @@
+{
+  "attack": 95,
+  "date": "2026-11-22",
+  "status": "KINEMATIC_REPAIR_CONSTRUCTED__SOURCE_CURL_HOLD",
+  "basis": {
+    "case006": "Tony Newton 122-page Case006, sections 9.3.3, 9.4.1, equations (199)-(210), (250)-(252), (255)",
+    "case006_sha256": "56ff24696ac58bef19bcf339d297d3af8b0401e46d5e8125c7fb1d054f01a758",
+    "upstream": "OpenAI Finite Time Blowup for Navier-Stokes (FORCED), B.26, B.29 and continuation",
+    "source_status": "FORCED not UNFORCED"
+  },
+  "kinematic": {
+    "formula": "m(Ye)=exp[-5*integral_0^Ye(beta(s)/s)ds], integral beta(s)/s=0, beta=1 on [6,6.1]",
+    "shear": "a_new=a_up+10 on 6<=Ye<=6.1",
+    "ratio": "777600000/844596301",
+    "divergence_free": true,
+    "C4_equivariant": true,
+    "complete_physical_source_preservation": false
+  },
+  "no_go": {
+    "hypotheses": "same smooth axisymmetric meridional velocities and same meridional force components, compact axial support of swirl change, sign preservation",
+    "integrability": "∂z(delta u_theta^2)=0; if compact axial and same force then delta u_theta^2=0",
+    "general_source_curl": "∂z delta f_r-∂r delta f_z=-∂z[(u_new_theta^2-u_old_theta^2)/r]"
+  },
+  "moment": {
+    "M": "integral R² tau dR",
+    "N": "integral R² G tau dR",
+    "conditional": "two auxiliary radial bumps with distinct G-weighted means allow two-moment cancellation",
+    "source_eq251": "M=N=0 implies zero toroidal slice torque, not pointwise residual",
+    "actual_physical_auxiliary_determinant": null
+  },
+  "raw_nine_jet": {
+    "ansatz": "q^(-1/2-h) Phi((x,y)/sqrt(q),z/q^(1/2-h))",
+    "velocity_H9_exponent": "-17/4-3h/2",
+    "linear_heat_residual_H9_exponent": "-21/4-3h/2",
+    "full_nonlinear_residual_cancellation": null
+  },
+  "physical_meridional_force_reconstructed": false,
+  "H8_cone_margin_certified": false,
+  "authentic_four_patch_pressure": null,
+  "physical_M_N_actuator_determinant": null,
+  "physical_nine_jet_nonlinear_cancellation": null,
+  "M_terminal": null,
+  "terminal_singular_trace_certified": false,
+  "full_unforced_blowup_proven": false,
+  "lean_full_PDE_proven": false
+}
