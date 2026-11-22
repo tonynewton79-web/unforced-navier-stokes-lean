@@ -1,0 +1,52 @@
+{
+  "attack": 91,
+  "date": "2026-11-22",
+  "status": "HOLD_ACTUAL_CONTINUATION_ENCLOSURES",
+  "source": {
+    "original_case006": "Carrier_Independent_Structured_Stress_Route_CASE006_122PAGE-4-1.pdf",
+    "original_sha256": "56ff24696ac58bef19bcf339d297d3af8b0401e46d5e8125c7fb1d054f01a758",
+    "upstream": "https://cdn.openai.com/pdf/32d9f210-8b73-45e0-91bc-82a30aef8a9a/navier-stokes.pdf",
+    "upstream_status": "FORCED Navier-Stokes",
+    "references": "upstream Appendix A.4 Lemma A.5, B.25-B.26; Case006 Eq199-210,255-257 Proposition9.20"
+  },
+  "theorem_hypotheses": {
+    "h": "0<h<=1/100",
+    "j0": "0<j0<=1/20",
+    "P_star": "P_star>=2",
+    "sigma_star": "0<sigma_star<=j0/4",
+    "eta_interval": "[-j0/7,-j0/9]",
+    "pressure_family": "Pi0=-1/2 integral c(y)^2(1+eta^2)^(-2theta(y)) dy, theta in [0,1], c^2=P_star^2 exp(y/5),theta=1 for y<=0"
+  },
+  "exact_source_family_lower_bounds": {
+    "M": ">163*j0/45",
+    "companion": ">=5*j0/14",
+    "H_star": ">j0/3",
+    "chi": ">16/25",
+    "Pi0_second_derivative": ">9*P_star^2",
+    "source_shell_Y": "6<=Y<=305/32"
+  },
+  "conditional_reference_continuation": {
+    "prerequisite": "Actual source errors a0<=j0 and b0<=j0",
+    "n_s_r": ">5501*j0/2115",
+    "physical_radial_shear": "G_R <= -(kappa0/2)(5501/2115)j0 sqrt(12/Lambda), if B.26 and kappa>=kappa0>0",
+    "certification": "CONDITIONAL, not actual interval evaluation"
+  },
+  "actual_source_bounds": {
+    "a": null,
+    "a0": null,
+    "b0": null,
+    "b1": null,
+    "full_Pi0_upper_enclosure": null,
+    "full_Pi0_prime_upper_enclosure": null,
+    "full_Pi0_second_derivative_upper_enclosure": null,
+    "source_parameter_tuple": null,
+    "full_patch_pressure": null,
+    "ninth_jet_source": null
+  },
+  "terminal_matrix": null,
+  "terminal_spectral_radius": null,
+  "singular_trace_certified": false,
+  "end_to_end_Lean_proof": false,
+  "full_unforced_theorem_proven": false,
+  "notes": "One-sided universal pressure lower enclosures are source-certified under explicitly stated parameter-family hypotheses. They do not determine complete source values. GitHub CI checks finite exact rational math only."
+}
