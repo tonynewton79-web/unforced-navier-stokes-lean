@@ -1,0 +1,39 @@
+name: Attack101 exact interior toroidal flux and affine-torque gate
+on:
+  push:
+    branches: [feature/attack101-axial-interior-affine-torque-gate-20261122]
+    paths:
+      - 'research/attack101/**'
+      - 'docs/unforced-integration/ATTACK101_AXIAL_INTERIOR_TOROIDAL_AND_TORQUE_GATE.md'
+      - '.github/workflows/verify-attack101-source.yml'
+  workflow_dispatch:
+jobs:
+  exact-math-source-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install exact symbolic dependency
+        run: python -m pip install sympy==1.13.3
+      - name: Source affine poloidal and polynomial cutoff Gram checks
+        run: python research/attack101/verify_attack101.py
+      - name: Independent exact Fractions-only moment verification
+        run: python research/attack101/verify_attack101_independent.py
+      - name: Fail closed for actual torque G and full Navier–Stokes theorem
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          d=json.loads(Path('research/attack101/source_gate.json').read_text())
+          assert d['status']=='AXIAL_INTERIOR_FLUX_REPAIR__AFFINE_TORQUE_NO_GO__PHYSICAL_G_HOLD'
+          assert d['physical_G_profile'] is None
+          assert not d['full_torque_neutrality_certified']
+          assert not d['physical_C4_source_certified']
+          assert not d['original_H8_pointwise_cone_certified']
+          assert not d['full_unforced_Navier_Stokes_proven']
+          assert d['M_terminal'] is None
+          print('PASS: original physical G, weighted H8, terminal and PDE remain OPEN')
+          PY
