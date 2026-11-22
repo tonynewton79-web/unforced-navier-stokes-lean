@@ -75,6 +75,20 @@ The Case006 Appendix B.10 discriminant for the **same angular logarithmic-shear 
 
 This proves a **no-transfer result for the specific B.26 source continuation**. It does NOT rule out a different continuation, later source-matched transformation, a separately constructed strong-Rayleigh carrier, or blow-up in general. Such alternatives need an explicit replacement field, a new full source and pressure verification, and separate source-native nine-jet estimates.
 
+
+## Corollary — nonperturbative shear-repair threshold
+
+Assume a nonvanishing replacement profile F_new on the whole shell 6<=Ye<=6.1 has a_new>=10, while the source-continued F_up has a_up<4/5. Using a=-R*d_R(log |F|) exactly,
+
+    R*d_R log|F_new/F_up| = -(a_new-a_up) < -46/5.
+
+At fixed eta, R2/R1=sqrt(61/60). Integrating gives the **exact non-smallness witness**
+
+    |F_new/F_up|(R2)/|F_new/F_up|(R1)
+       < (60/61)^(23/5) < 927/1000.
+
+The last comparison is the integer inequality (60/61)^23 < (927/1000)^5. Thus changing the B.26 continuation into a source-matched a>=10 carrier requires a logarithmic C1 shear correction of size at least 46/5 and a >=7.3% relative amplitude change across the very thin first-shell window. Any purported asymptotically O(epsilon) C1 correction alone cannot achieve this. This does not exclude a genuinely nonperturbative redesign.
+
 ## Why the complete outer exterior remains unfrozen
 
 The original Appendix A.2--A.10 outer schedule couples radial moments, amplitude and nonlinear corrections, and the source does not identify one fully specified numerical schedule with certified complex norms and moment corrections. The B_rho chi bound does not construct these outer fields. The actual value/derivative errors a0,b0,a,b1, nine-jet stress, complete four-patch mixed pressure, nine coupling blocks of M_terminal, and singular-trace theorem remain OPEN.
