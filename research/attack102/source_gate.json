@@ -1,0 +1,49 @@
+{
+  "attack": 102,
+  "date": "2026-11-22",
+  "status": "SOURCE_NATIVE_QUADRATIC_TORQUE_IDENTITY__ORIGINAL_G_REMAINDER_UNFROZEN",
+  "source_case006_sha256": "56ff24696ac58bef19bcf339d297d3af8b0401e46d5e8125c7fb1d054f01a758",
+  "source_eq": [
+    "199",
+    "209",
+    "250",
+    "251",
+    "252",
+    "Appendix AF (3)"
+  ],
+  "source_radial_expansion": "G(R,eta)=Ustar-M(eta)*R^2/4+E(R,eta), with E defined exactly but no numerical enclosure",
+  "source_E_uniform_constant": null,
+  "source_unchanged_postcutoff_verified": false,
+  "physical_core_parameter_tuple": null,
+  "real_torque": {
+    "M2": "integral R² tau dR",
+    "M3": "integral R³ tau dR",
+    "M4": "integral R⁴ tau dR",
+    "N": "integral R² G tau dR",
+    "identity": "N=Ustar*M2-(M/4)*M4+E2",
+    "consequence": "M2=N=0 => M*M4/4=E2",
+    "nonzero_smooth_kernel_for_Ezero": true
+  },
+  "geometry": {
+    "shell": "6<=chi Lambda R²/2<=61/10",
+    "Rc": "sqrt(121/(10 chi Lambda))",
+    "ratio_bound": "|R-Rc|<Rc/240",
+    "affine_slope": "g1=-M Rc/2",
+    "affine_residual": "e=E-M*(R-Rc)^2/4",
+    "e_over_g1": "(R-Rc)^2/(2 Rc)-2E/(M Rc)",
+    "moment_bound": "|M3|<=[Rc/115200+2*epsilonE/(|M|Rc)]*integral R²|tau|"
+  },
+  "source_analytic_profile_actual": true,
+  "actual_torque_profile_frozen": false,
+  "physical_coordinate_handoff_validated": false,
+  "source_angular_flux_jacobian_frozen": false,
+  "misleading_101_identity_physical_without_chart": false,
+  "source_original_C4_four_patch": null,
+  "source_original_pressure": null,
+  "source_original_H8_cone": null,
+  "source_original_nine_jet": null,
+  "M_terminal": null,
+  "end_to_end_Lean_PDE_proved": false,
+  "full_unforced_Navier_Stokes_proven": false,
+  "verification_scope": "exact symbolic/fractions-only arithmetic, analytic source-local derivation; no actual interval constant for E"
+}
