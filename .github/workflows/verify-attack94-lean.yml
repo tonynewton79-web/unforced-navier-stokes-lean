@@ -1,0 +1,27 @@
+name: Attack94 finite Lean algebra certificate
+on:
+  push:
+    branches: [feature/attack94-source-multiplier-shear-incompatibility-20261122]
+    paths:
+      - 'research/attack94/Attack94FiniteAlgebra.lean'
+      - '.github/workflows/verify-attack94-lean.yml'
+  workflow_dispatch:
+jobs:
+  lean-finite:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean toolchain
+        run: |
+          curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve frozen Lean and Mathlib
+        run: |
+          lake update
+          lake exe cache get
+      - name: Typecheck finite rational and algebraic claims
+        run: lake env lean research/attack94/Attack94FiniteAlgebra.lean
+      - name: Reject placeholders and unsafe axioms
+        run: |
+          if grep -nE '(^|[^[:alpha:]])(sorry|admit|unsafe|native_decide)([^[:alpha:]]|$)' research/attack94/Attack94FiniteAlgebra.lean; then exit 1; fi
