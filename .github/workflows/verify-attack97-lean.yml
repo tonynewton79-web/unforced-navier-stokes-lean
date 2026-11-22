@@ -1,0 +1,27 @@
+name: Attack97 finite Lean rational gates
+on:
+  push:
+    branches: [feature/attack97-source-freeze-identifiability-20261122]
+    paths:
+      - 'research/attack97/Attack97FiniteAlgebra.lean'
+      - '.github/workflows/verify-attack97-lean.yml'
+  workflow_dispatch:
+jobs:
+  finite-lemmas:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean
+        run: |
+          curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve Mathlib and frozen upstream
+        run: |
+          lake update
+          lake exe cache get
+      - name: Typecheck eight finite rational gates
+        run: lake env lean research/attack97/Attack97FiniteAlgebra.lean
+      - name: Reject placeholder proofs
+        run: |
+          if grep -nE '(^|[^[:alpha:]])(sorry|admit|unsafe|native_decide)([^[:alpha:]]|$)' research/attack97/Attack97FiniteAlgebra.lean; then exit 1; fi
