@@ -1,0 +1,39 @@
+name: Attack97 exact source-family identifiability screen
+on:
+  push:
+    branches: [feature/attack97-source-freeze-identifiability-20261122]
+    paths:
+      - 'research/attack97/**'
+      - 'docs/unforced-integration/ATTACK97_SOURCE_FREEZE_IDENTIFIABILITY.md'
+      - '.github/workflows/verify-attack97-source.yml'
+  workflow_dispatch:
+jobs:
+  exact-shaper-source-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install exact symbolic tools
+        run: python -m pip install sympy==1.13.3
+      - name: Reproduce Appendix AD/AC exact rational tests
+        run: python research/attack97/verify_attack97.py
+      - name: Refuse false source freeze and PDE promotion
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          d=json.loads(Path('research/attack97/source_freeze.json').read_text())
+          assert d['status']=='PHYSICAL_SOURCE_TUPLE_UNFROZEN__EXACT_PROFILE_DISCRIMINATOR'
+          assert d['diagnostic_not_physical']['same_envelope_for_all_lambda']
+          assert not d['actual_Y_dual_inequalities_tested']
+          assert not d['actual_AC_source_primitive_tested']
+          assert not d['actual_compact_weighted_inverse_proved']
+          assert all(v is None for v in d['unresolved_physical_inputs'].values())
+          assert d['M_terminal'] is None
+          assert not d['full_NS_singularity_proven']
+          assert not d['full_Lean_PDE_proven']
+          print('PASS: actual Case006 physical source still requires complete profile freeze')
+          PY
