@@ -1,0 +1,37 @@
+name: Attack96 coupled H8 positive control and fixed-cone dual
+on:
+  push:
+    branches: [feature/attack96-compact-coupled-cone-dual-20261122]
+    paths:
+      - 'research/attack96/**'
+      - 'docs/unforced-integration/ATTACK96_COUPLED_H8_POSITIVE_CONTROL_AND_DUAL.md'
+      - '.github/workflows/verify-attack96-source.yml'
+  workflow_dispatch:
+jobs:
+  exact-manufactured-source-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install pinned symbolic dependency
+        run: python -m pip install sympy==1.13.3
+      - name: Exact cylindrical PDE and cone-dual replay
+        run: python research/attack96/verify_attack96.py
+      - name: Prevent false original H8 source/terminal certification
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          d=json.loads(Path('research/attack96/release_gate.json').read_text())
+          assert d['status']=='MANUFACTURED_COUPLED_POSITIVE_CONTROL__ACTUAL_H8_SOURCE_HOLD'
+          assert d['actual_case006_envelope'] is None
+          assert d['actual_case006_complete_source'] is None
+          assert d['actual_case006_H8_cone_margin'] is None
+          assert d['M_terminal'] is None
+          assert not d['full_unforced_Navier_Stokes_proven']
+          assert not d['end_to_end_Lean_PDE_proven']
+          print('PASS: fixed physical H8 source and terminal remain OPEN')
+          PY
