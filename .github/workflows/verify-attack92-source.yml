@@ -1,0 +1,36 @@
+name: Attack92 non-effective reference continuation gate
+on:
+  push:
+    branches:
+      - feature/attack92-effective-source-parameter-gate-20261122
+    paths:
+      - 'research/attack92/**'
+      - 'docs/unforced-integration/ATTACK92_NON_EFFECTIVE_SOURCE_EXISTENCE.md'
+      - '.github/workflows/verify-attack92-source.yml'
+  workflow_dispatch:
+jobs:
+  source-majorants:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify exact rational source-majorant implications
+        run: python research/attack92/verify_attack92.py
+      - name: Enforce physical source and unforced-PDE holds
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          d=json.loads(Path('research/attack92/source_gate.json').read_text())
+          assert d['status']=='NON_EFFECTIVE_EXISTENCE_ONLY__NUMERIC_SOURCE_OPEN'
+          assert d['physical_parameter_tuple'] is None
+          assert d['M_terminal'] is None
+          assert not d['full_unforced_theorem_proved']
+          assert not d['lean_pde_certified']
+          assert all(v is None for v in d['effective_majorants'].values())
+          assert all(v is None for v in d['actual_measured_errors'].values())
+          print('PASS: non-effective source theorem is not misreported as numerical PDE certification')
+          PY
