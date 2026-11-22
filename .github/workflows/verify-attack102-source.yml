@@ -32,7 +32,7 @@ jobs:
           assert g['source_E_uniform_constant'] is None
           assert not g['source_unchanged_postcutoff_verified']
           assert not g['physical_coordinate_handoff_validated']
-          assert not g['original_full_pressure']
+          assert g['source_original_pressure'] is None
           assert not g['end_to_end_Lean_PDE_proved']
           assert not g['full_unforced_Navier_Stokes_proven']
           print('PASS: partial exact source identities are not promoted to unforced Millennium proof')
