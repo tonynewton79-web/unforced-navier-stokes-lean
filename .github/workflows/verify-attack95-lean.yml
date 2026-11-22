@@ -1,0 +1,27 @@
+name: Attack95 finite Lean algebra certificate
+on:
+  push:
+    branches: [feature/attack95-source-curl-shear-repair-20261122]
+    paths:
+      - 'research/attack95/Attack95FiniteAlgebra.lean'
+      - '.github/workflows/verify-attack95-lean.yml'
+  workflow_dispatch:
+jobs:
+  lean-finite:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean toolchain
+        run: |
+          curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve pinned Mathlib and upstream
+        run: |
+          lake update
+          lake exe cache get
+      - name: Typecheck finite algebra only
+        run: lake env lean research/attack95/Attack95FiniteAlgebra.lean
+      - name: Reject proof placeholders
+        run: |
+          if grep -nE '(^|[^[:alpha:]])(sorry|admit|unsafe|native_decide)([^[:alpha:]]|$)' research/attack95/Attack95FiniteAlgebra.lean; then exit 1; fi
