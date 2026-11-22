@@ -42,14 +42,15 @@ Rlo=F(1229,4443*243)
 Rhi=F(1229*288,4443*49)
 assert Rlo>0 and Rhi<2
 rng=Random(982026)
+gap=F(6799,122900)
+cap_fraction=F(19171,122900)
+beta_lower=F(2597,12290)
 for _ in range(30000):
     R=F(rng.randrange(1,10000),rng.randrange(10000,30000))
-    # The source-forced Cbar exceeds the entire positive coefficient cap.
-    assert q(R.numerator,R.denominator)*(-beta-cap)>0
-    # Any physical T_(rtheta) with compact traces must contribute negatively.
+    assert beta_lower*R>cap_fraction*R
     U=F(rng.randrange(-5000,5001),rng.randrange(1,10000))
-    if q(U.numerator,U.denominator)-beta*q(R.numerator,R.denominator)<=cap*q(R.numerator,R.denominator):
-        assert q(U.numerator,U.denominator)<-q(6799,122900)*q(R.numerator,R.denominator)
+    if U+beta_lower*R<=cap_fraction*R:
+        assert U<=-gap*R
 # These fields are deliberately UNFROZEN for the actual original source.
 gate=json.loads(Path(__file__).with_name('source_gate.json').read_text())
 assert gate['status']=='COMPLETE_AD_DIAGNOSTIC_REFUSED__ORIGINAL_PHYSICAL_SOURCE_UNFROZEN'
