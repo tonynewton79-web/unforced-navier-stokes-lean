@@ -27,6 +27,7 @@ assert 0<r<1 and tail<F(1,2**64)
 assert 2*(2-F(4,5))==F(12,5)
 assert F(61,10)/F(16,25)==F(305,32)<100
 assert F(6)>F(41,10)
+assert F(60,61)**23 < F(927,1000)**5 # nonperturbative shear repair
 rng=Random(942026)
 for _ in range(16000):
     j=F(rng.randrange(1,1001),20000)
