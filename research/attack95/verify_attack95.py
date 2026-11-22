@@ -18,6 +18,11 @@ dfr=sp.diff(p,r)-q/r
 dfz=sp.diff(p,z)
 assert sp.simplify(sp.diff(dfr,z)-sp.diff(dfz,r)+sp.diff(q/r,z))==0
 assert sp.expand(q-(2*u*w+w**2))==0
+raw=sp.Matrix([[0,sp.Rational(-1,2)],[sp.Rational(-1,2),sp.Rational(-3,4)]])
+assert raw.det()==-sp.Rational(1,4)
+assert raw.eigenvals()=={-sp.Integer(1):1,sp.Rational(1,4):1}
+assert raw*sp.Matrix([1,2])==-sp.Matrix([1,2])
+assert raw*sp.Matrix([-2,1])==sp.Rational(1,4)*sp.Matrix([-2,1])
 rng=Random(952026)
 for i in range(25000):
     M0=F(rng.randrange(-500,501),rng.randrange(1,100))
@@ -39,6 +44,7 @@ for i in range(1,301):
     assert -gamma-F(9,2)+(1+D)/2==-F(17,4)-F(3,2)*h
     assert -gamma-1-F(9,2)+(1+D)/2==-F(21,4)-F(3,2)*h
     assert 1-2*D==2*h
+    assert -2*gamma-F(1,2)-D==-2-h
 y=sp.symbols('y')
 J=sp.integrate(y**9*(1-y)**9,(y,0,1))
 assert J==sp.factorial(9)**2/sp.factorial(19)
