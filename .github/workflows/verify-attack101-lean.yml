@@ -1,0 +1,27 @@
+name: Attack101 finite affine torque Lean algebra
+on:
+  push:
+    branches: [feature/attack101-axial-interior-affine-torque-gate-20261122]
+    paths:
+      - 'research/attack101/Attack101FiniteAlgebra.lean'
+      - '.github/workflows/verify-attack101-lean.yml'
+  workflow_dispatch:
+jobs:
+  finite-only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean toolchain
+        run: |
+          curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve pinned Mathlib dependencies
+        run: |
+          lake update
+          lake exe cache get
+      - name: Typecheck eight finite algebra lemmas only
+        run: lake env lean research/attack101/Attack101FiniteAlgebra.lean
+      - name: Reject proof placeholders
+        run: |
+          if grep -nE '(^|[^[:alpha:]])(sorry|admit|unsafe|native_decide)([^[:alpha:]]|$)' research/attack101/Attack101FiniteAlgebra.lean; then exit 1; fi
