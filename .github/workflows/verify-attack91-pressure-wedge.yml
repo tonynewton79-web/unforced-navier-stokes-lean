@@ -1,0 +1,36 @@
+name: Attack91 source pressure and companion wedge
+on:
+  push:
+    branches:
+      - feature/attack91-companion-pressure-wedge-20261122
+    paths:
+      - 'research/attack91/**'
+      - 'docs/unforced-integration/ATTACK91_SOURCE_PRESSURE_WEDGE.md'
+      - '.github/workflows/verify-attack91-pressure-wedge.yml'
+  workflow_dispatch:
+jobs:
+  exact-rational-source-wedge:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Reproduce 14000 pressure/companion checks
+        run: python research/attack91/verify_attack91.py
+      - name: Reject false promotion to source-certified unforced blowup
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          d=json.loads(Path('research/attack91/source_release_gate.json').read_text())
+          assert d['status']=='HOLD_ACTUAL_CONTINUATION_ENCLOSURES'
+          assert d['full_unforced_theorem_proven'] is False
+          assert d['end_to_end_Lean_proof'] is False
+          assert d['terminal_matrix'] is None
+          assert d['actual_source_bounds']['a0'] is None
+          assert d['actual_source_bounds']['b0'] is None
+          assert d['actual_source_bounds']['full_patch_pressure'] is None
+          print('PASS: actual source and terminal PDE remain OPEN')
+          PY
