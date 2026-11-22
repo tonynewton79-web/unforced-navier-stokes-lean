@@ -1,0 +1,27 @@
+name: Attack102 finite source algebra Lean kernel check
+on:
+  push:
+    branches: [feature/attack102-quadratic-source-torque-20261122]
+    paths:
+      - 'research/attack102/Attack102FiniteAlgebra.lean'
+      - '.github/workflows/verify-attack102-lean.yml'
+  workflow_dispatch:
+jobs:
+  finite-algebra-only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Lean toolchain
+        run: |
+          curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve pinned Mathlib
+        run: |
+          lake update
+          lake exe cache get
+      - name: Check source finite-sum and algebraic theorem statements
+        run: lake env lean research/attack102/Attack102FiniteAlgebra.lean
+      - name: Refuse placeholders and unsafe bypasses
+        run: |
+          if grep -nE '(^|[^[:alpha:]])(sorry|admit|unsafe|native_decide)([^[:alpha:]]|$)' research/attack102/Attack102FiniteAlgebra.lean; then exit 1; fi
