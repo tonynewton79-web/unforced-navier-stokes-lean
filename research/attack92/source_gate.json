@@ -1,0 +1,62 @@
+{
+  "attack": 92,
+  "date": "2026-11-22",
+  "status": "NON_EFFECTIVE_EXISTENCE_ONLY__NUMERIC_SOURCE_OPEN",
+  "source_basis": {
+    "case006_sha256": "56ff24696ac58bef19bcf339d297d3af8b0401e46d5e8125c7fb1d054f01a758",
+    "upstream_forced_paper": "https://cdn.openai.com/pdf/32d9f210-8b73-45e0-91bc-82a30aef8a9a/navier-stokes.pdf",
+    "equations": [
+      "B.13",
+      "B.18",
+      "B.22",
+      "B.24",
+      "B.25",
+      "B.26"
+    ],
+    "status": "FORCED_REFERENCE"
+  },
+  "domain": {
+    "eta": "[-j0/7,-j0/9]",
+    "h": "0<h<=1/100",
+    "j": "0<j=j0<=1/20",
+    "P_star": "P_star>=2",
+    "sigma": "0<sigma<=j/4 AND source B.2-admissible"
+  },
+  "source_estimates": {
+    "axis": "a0,a <= A_axis/Lambda",
+    "continuation": "b_k<=A_k/Lambda+B_k(Lambda)/C^2+omega_k(t1;Lambda,C), k=0,1",
+    "omega": "omega_k ->0 as t1->0 after Lambda,C fixed"
+  },
+  "effective_majorants": {
+    "A_axis0": null,
+    "A_axis1": null,
+    "A_cont0": null,
+    "A_cont1": null,
+    "B0": null,
+    "B1": null,
+    "omega0": null,
+    "omega1": null
+  },
+  "physical_parameter_tuple": null,
+  "actual_measured_errors": {
+    "a0": null,
+    "a": null,
+    "b0": null,
+    "b1": null
+  },
+  "non_effective_existence": "Some ordered admissible Lambda,C,kappa0,t1 yield all four errors < j0/4 if the source asymptotic uniformities hold.",
+  "exact_conditional_bounds": {
+    "n_ref": ">7121*j0/2115",
+    "partial_eta_n_ref": "<-129/10 using imported M'<-13",
+    "radial_shear": "G_R< -(kappa0/2)*(7121/2115)*j0*sqrt(12/Lambda), when B.26 persists"
+  },
+  "physical_patch_fields": null,
+  "nine_jet_estimates": null,
+  "full_fourpatch_pressure": null,
+  "M_terminal": null,
+  "spectral_radius_certified": false,
+  "singular_trace_certified": false,
+  "full_unforced_theorem_proved": false,
+  "lean_pde_certified": false,
+  "audit_note": "Exact source values cannot be numerically inferred from unspecified O and little-o constants. CI verifies algebra only; no finite parameter tuple or PDE operator bounds certified."
+}
