@@ -1,0 +1,34 @@
+{
+  "attack": 90,
+  "date": "2026-11-22",
+  "status": "HOLD_SOURCE_NUMERICAL_FREEZE",
+  "basis": {
+    "upstream": "OpenAI, Finite Time Blowup for Navier-Stokes (forced), Appendix B.5 B.6, equations (B.22)-(B.26) and Lemma B.4",
+    "case006": "Tony Newton Case006, eqs. (199)-(210), Proposition 9.20, (255)-(257)",
+    "source_case006_sha256": "56ff24696ac58bef19bcf339d297d3af8b0401e46d5e8125c7fb1d054f01a758"
+  },
+  "parameter_selection": {
+    "h": null,
+    "j0": null,
+    "Lambda": null,
+    "C": null,
+    "t1": null,
+    "P_star": null,
+    "sigma_star": null
+  },
+  "physical_source_bounds": {
+    "a": null,
+    "a0": null,
+    "b0": null,
+    "b1": null,
+    "m_I": null,
+    "chi_min": null,
+    "companion_min": null,
+    "ninth_jet_actual_source": null
+  },
+  "actual_physical_source_certified": false,
+  "terminal_matrix": null,
+  "terminal_trace_proved": false,
+  "full_unforced_theorem_proved": false,
+  "notes": "Upstream Lemma B.4 uses unfrozen implicit O/o constants. Finite exact rational tests prove conditional inequalities; source-specific numerical enclosures not yet computed. A fixed negative-eta sign slab violates the Case006 companion sign, and is not admissible as a full Rayleigh patch."
+}
