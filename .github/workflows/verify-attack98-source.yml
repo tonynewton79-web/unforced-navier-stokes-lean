@@ -1,0 +1,37 @@
+name: Attack98 source-native angular-flux cone screen
+on:
+  push:
+    branches: [feature/attack98-angular-flux-full-diagnostic-20261122]
+    paths:
+      - 'research/attack98/**'
+      - 'docs/unforced-integration/ATTACK98_ANGULAR_FLUX_SOURCE_SCREEN.md'
+      - '.github/workflows/verify-attack98-source.yml'
+  workflow_dispatch:
+jobs:
+  exact-angular-flux:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install pinned symbolic verifier
+        run: python -m pip install sympy==1.13.3
+      - name: Reproduce exact AD diagnostic source and cone arithmetic
+        run: python research/attack98/verify_attack98.py
+      - name: Enforce original H8 source / Millennium proof HOLD
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          g=json.loads(Path('research/attack98/source_gate.json').read_text())
+          assert g['status']=='COMPLETE_AD_DIAGNOSTIC_REFUSED__ORIGINAL_PHYSICAL_SOURCE_UNFROZEN'
+          assert g['diagnostic']['one_sided_H8_feasible'] is False
+          assert g['diagnostic']['axial_scalar_test_passes'] is True
+          assert all(v is None for v in g['original_physical'].values())
+          assert g['M_terminal'] is None
+          assert not g['unforced_blowup_proved']
+          assert not g['Lean_full_PDE_proven']
+          print('PASS: diagnostic failure cannot be promoted to original Case006 full PDE')
+          PY
