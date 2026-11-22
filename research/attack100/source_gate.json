@@ -1,0 +1,42 @@
+{
+  "attack": 100,
+  "date": "2026-11-22",
+  "status": "AD_ANGULAR_WEIGHTED_WEAK_NO_GO__ORIGINAL_CASE006_HOLD",
+  "sources": {
+    "Case006_original_sha256": "56ff24696ac58bef19bcf339d297d3af8b0401e46d5e8125c7fb1d054f01a758",
+    "H8_original_sha256": "10d70e2f2820980ce471411079e3a06b7f05550aa54cf5dc1c29844d3339a826",
+    "attack99_parent": "feature/attack99-toroidal-crossflux-right-inverse-20261122",
+    "equations": "Case006 (193)-(194),(250)-(252),(258)-(273), Appendices AD and U"
+  },
+  "diagnostic": {
+    "original_rho": "rho0*b(x)^2*b(z)^2/r^2, rho0=1229/4443",
+    "original_toroidal": "Theta=rho0*I0*b(x)/r*(c1*u+c2*v), c=(Gram)^-1(beta,gamma)",
+    "both_angular_marginals_zero": true,
+    "full_angular_source_edge_identity": "r²f_theta/(rho0*I0*b(x)^2*b(z)^2)=c1'(x)*h(x,z)^2*w(z)^2-c1*h*k*w'(z)+P1(x,z)*w(z)+P0(x,z)",
+    "Gram_c1_endpoints_distinct": true,
+    "boundary_source_growth_relative_to_weight": "(1-z)^(-4) on a nonempty compact radial interval",
+    "weighted_dual_capacity_growth": "at most (1-z)^(-2) on adapted thin boundary-layer tests",
+    "bounded_weak_weighted_angular_inverse_exists": false,
+    "smooth_compact_H8_full_cone_inverse_exists": false,
+    "no_go_scope": "the EXACT frozen Attack99 Appendix AD diagnostic source and its fixed rho, not any other physical preparation"
+  },
+  "torque": {
+    "first_moment": "Mhat(z)=rho0*I0*b(z)*(m0+m1*z-(n0+n1*z)*w(z))",
+    "required_for_Mhat_zero": "m0=m1=n0=n1=0",
+    "four_actual_integrals_certified_zero": false,
+    "second_physical_moment_N_source_G": null,
+    "physical_similarity_chart": null
+  },
+  "original_physical_source_frozen": false,
+  "original_case006_full_four_patch": null,
+  "original_case006_12_mixed_stress_terms": null,
+  "original_case006_full_pressure": null,
+  "original_case006_ninth_jet": null,
+  "original_case006_H8_cone_status": "OPEN",
+  "full_weighted_H8_inverse_proven": false,
+  "M_terminal": null,
+  "terminal_singular_trace_proven": false,
+  "full_unforced_Navier_Stokes_proven": false,
+  "full_Lean_PDE_certified": false,
+  "verification_scope": "symbolic exact coefficient and torque rank, 30000 rational edge tests, independent 60000 exact fractions; continuum proof in four-page note, not formalized in Lean"
+}
