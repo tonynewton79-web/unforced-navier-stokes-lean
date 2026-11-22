@@ -1,0 +1,42 @@
+name: Attack100 exact weighted angular source no-go
+on:
+  push:
+    branches: [feature/attack100-flat-edge-angular-dual-nogo-20261122]
+    paths:
+      - 'research/attack100/**'
+      - 'docs/unforced-integration/ATTACK100_FLAT_EDGE_ANGULAR_WEAK_NOGO.md'
+      - '.github/workflows/verify-attack100-source.yml'
+  workflow_dispatch:
+jobs:
+  weighted-angular-dual-source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install exact symbolic dependency
+        run: python -m pip install sympy==1.13.3
+      - name: Verify full angular source and exact torque rank
+        run: python research/attack100/verify_attack100.py
+      - name: Independently check edge asymptotics with fractions only
+        run: python research/attack100/verify_attack100_independent.py
+      - name: Prevent false original physical source/PDE promotion
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          d=json.loads(Path('research/attack100/source_gate.json').read_text())
+          assert d['status']=='AD_ANGULAR_WEIGHTED_WEAK_NO_GO__ORIGINAL_CASE006_HOLD'
+          assert d['diagnostic']['bounded_weak_weighted_angular_inverse_exists'] is False
+          assert d['diagnostic']['smooth_compact_H8_full_cone_inverse_exists'] is False
+          assert not d['original_physical_source_frozen']
+          assert d['original_case006_full_four_patch'] is None
+          assert d['torque']['second_physical_moment_N_source_G'] is None
+          assert d['M_terminal'] is None
+          assert not d['full_weighted_H8_inverse_proven']
+          assert not d['full_unforced_Navier_Stokes_proven']
+          assert not d['full_Lean_PDE_certified']
+          print('PASS: diagnostic angular no-go is not falsely promoted to original Case006/PDE')
+          PY
