@@ -1,0 +1,37 @@
+name: Attack89 source gate — exact rational regression
+on:
+  push:
+    branches:
+      - feature/attack90-postcutoff-89-handoff-20261122
+    paths:
+      - 'research/attack89/**'
+      - 'docs/unforced-integration/ATTACK89_TONY_HANDOFF.md'
+      - '.github/workflows/verify-attack89-tony-handoff.yml'
+  workflow_dispatch:
+jobs:
+  signed-continuation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install exact symbolic test dependency
+        run: python -m pip install sympy==1.13.3
+      - name: Verify Attack89 rational gate
+        run: python research/attack89/verify_signed_continuation.py
+      - name: Verify source gate remains OPEN
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          d=json.loads(Path("research/attack89/source_gate.json").read_text())
+          assert d["full_unforced_Navier_Stokes_theorem_proven"] is False
+          assert d["end_to_end_Lean_theorem_proven"] is False
+          assert d["errors"]["frozen_actual_values"] is None
+          assert d["physical_fields"]["M_terminal_nine_entries"] is None
+          assert d["physical_fields"]["full_mixed_pressure"] is None
+          print("PASS: unresolved physical PDE gates cannot be promoted by finite tests")
+          PY
