@@ -66,6 +66,22 @@ For the shell repair tau0 and auxiliary radial bumps tau1,tau2, suppose the actu
 
 the composite tau=tau0+c1*tau1+c2*tau2 has M=N=0 identically. Equation (251) then makes its integrated toroidal slice torque vanish, including its axial-viscous term. The physical determinant, source support, radial shaper norms and stress-cone compatibility remain NOT certified. Integrated zero torque does **not** imply the pointwise source-curl compatibility nor positive seven-ray cone.
 
+## Proposition 95.4 — raw convective stress is indefinite
+
+Let U_m be the unchanged meridional velocity, m=|U_m|>0; let the physical angular velocity change by w≠0. The **exact** quadratic stress difference is
+
+    delta Q = U_new tensor U_new - U_old tensor U_old
+      = U_m tensor (w e_theta) + (w e_theta) tensor U_m
+        + (2 u_theta w+w²) e_theta tensor e_theta.
+
+In the orthonormal basis (U_m/m,e_theta,e_perp) the nonzero principal block is
+
+    [[0,m*w],[m*w,2*u_theta*w+w²]].
+
+Its determinant is -m²w²<0 and its eigenvalues have opposite signs. Thus the unmodified quadratic stress difference cannot itself lie in the positive-semidefinite cone, let alone prove membership of the production-specific seven-ray H8 cone. Any PSD compensator B has ||B||op≥(sqrt(d²+4m²w²)-d)/2, d=2u_theta*w+w²; a pressure gauge shift is another possibility but changes the pressure ledger.
+
+Exact rational control: m=u_theta=1,w=-1/2 gives matrix [[0,-1/2],[-1/2,-3/4]], eigenvalues exactly -1 and +1/4. A PSD additive correction has operator norm at least 1 at that diagnostic point. This is NOT a source-measured physical coefficient.
+
 ## Theorem 95.4 — ninth-jet cost of a fixed self-similar shape
 
 Let q=T-t, D=1/2-h, gamma=1/2+h, and a nonzero smooth compact vector profile Phi(X,Y,Z). On a torus chart set
