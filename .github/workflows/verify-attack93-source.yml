@@ -1,0 +1,38 @@
+name: Attack93 effective partial-source certificate
+on:
+  push:
+    branches:
+      - feature/attack93-effective-majorant-proof-gate-20261122
+    paths:
+      - 'research/attack93/**'
+      - 'docs/unforced-integration/ATTACK93_EFFECTIVE_SOURCE_BOUNDARY.md'
+      - '.github/workflows/verify-attack93-source.yml'
+  workflow_dispatch:
+jobs:
+  rational-partial-certificate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify real source inner-pressure and finite factorial tails
+        run: python research/attack93/verify_attack93.py
+      - name: Forbid unfrozen full numerical certification or PDE promotion
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          d=json.loads(Path('research/attack93/source_gate.json').read_text())
+          assert d['status']=='EFFECTIVE_SUBCERTIFICATES_ONLY__FULL_SOURCE_OPEN'
+          assert d['numeric_parameter_tuple'] is None
+          assert d['complex_weighted_Mchi'] is None
+          assert not d['analytic_inverse_tail']['physical_B_certified']
+          assert d['angular_shear_transfer']['Case006_Bessel_10_5207_transferred'] is False
+          for key in ('actual_a0','actual_b0','actual_a','actual_b1','M_terminal'):
+              assert d[key] is None
+          assert not d['full_unforced_theorem_proven']
+          assert not d['end_to_end_Lean_PDE_proven']
+          print('PASS: effective subcertificates do not close missing source or PDE')
+          PY
