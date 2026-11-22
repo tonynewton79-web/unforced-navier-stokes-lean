@@ -1,0 +1,27 @@
+name: Attack100 finite source-cancellation Lean algebra
+on:
+  push:
+    branches: [feature/attack100-flat-edge-angular-dual-nogo-20261122]
+    paths:
+      - 'research/attack100/Attack100FiniteAlgebra.lean'
+      - '.github/workflows/verify-attack100-lean.yml'
+  workflow_dispatch:
+jobs:
+  eight-finite-lemmas:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Lean toolchain
+        run: |
+          curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve Mathlib and source checkout
+        run: |
+          lake update
+          lake exe cache get
+      - name: Typecheck eight finite algebraic lemmas
+        run: lake env lean research/attack100/Attack100FiniteAlgebra.lean
+      - name: Reject proof placeholders
+        run: |
+          if grep -nE '(^|[^[:alpha:]])(sorry|admit|unsafe|native_decide)([^[:alpha:]]|$)' research/attack100/Attack100FiniteAlgebra.lean; then exit 1; fi
