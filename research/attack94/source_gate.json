@@ -1,0 +1,35 @@
+{
+  "attack": 94,
+  "date": "2026-11-22",
+  "status": "CERTIFIED_CHI_MULTIPLIER__RAYLEIGH_TRANSFER_INCOMPATIBLE__FULL_SOURCE_HOLD",
+  "case006_sha256": "56ff24696ac58bef19bcf339d297d3af8b0401e46d5e8125c7fb1d054f01a758",
+  "upstream": "OpenAI Finite Time Blowup for Navier-Stokes (FORCED), B.1-B.6; DOI not asserted",
+  "source_parameters": "0<h<=1/100, 0<j0<=1/20, 0<sigma*<=j0/4; rho<=sigma*/340 and inside Pi0 analytic neighborhood",
+  "certified_partial_constants": {
+    "chi_complex_sup": "181/81",
+    "chi_Brho": "181/36",
+    "chi_operator_bound": "72400/81",
+    "zeta_Brho": "103/(40*sigma*)",
+    "T_inverse_K": 528,
+    "T_inverse_tail": "<2^-64"
+  },
+  "source_geometry": {
+    "Case006": "6<=Ye=chi*Y<=6.1, chi>16/25 on Ij; 6<=Y<=305/32",
+    "reference_cutoff_end": "Y<4.1",
+    "source_kappa": "kappa=kappa0 on subsequent interval until Xb=100",
+    "source_choice": "kappa0 sup p1r <4/5",
+    "actual_a": "a=kappa0*p1r<4/5",
+    "Case006_bessel_assumption": "a>=10",
+    "Rayleigh_discriminant": "Phi_R=2F^2(2-a)>12F^2/5 wherever F!=0",
+    "source_transfer_compatible": false
+  },
+  "actual_continued_strong_Rayleigh_a_at_least_10": false,
+  "full_exterior_profile_certified": false,
+  "outer_moment_data": null,
+  "axis_profile_full_nonlinear": null,
+  "full_nine_jet": null,
+  "authentic_mixed_pressure": null,
+  "M_terminal": null,
+  "Case006_full_unforced_blowup_proved": false,
+  "end_to_end_Lean_PDE_certified": false
+}
