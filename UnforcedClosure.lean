@@ -332,3 +332,53 @@ theorem packet_margin {N h : ℝ}
 #print axioms neutral_slope
 #print axioms packet_margin
 end ShearPacket210
+
+
+/- Attack 211: scalar ordered-tree identities only.
+   No physical PDE lifts are asserted. -/
+namespace SelectedTree211
+
+inductive Tree where
+  | leaf : Tree
+  | graft : Tree → Tree → Tree
+
+def leaves : Tree → ℕ
+  | .leaf => 1
+  | .graft l r => leaves l + leaves r
+
+def forks : Tree → ℕ
+  | .leaf => 0
+  | .graft l r => forks l + forks r + 1
+
+def weight (C eta : ℝ) : Tree → ℝ
+  | .leaf => eta
+  | .graft l r => C * weight C eta l * weight C eta r
+
+theorem leaves_eq_forks_add_one (t : Tree) : leaves t = forks t + 1 := by
+  induction t with
+  | leaf => rfl
+  | graft l r hl hr =>
+    simp only [leaves, forks, hl, hr]
+    omega
+
+theorem weight_formula (C eta : ℝ) (t : Tree) :
+    weight C eta t = C^(forks t) * eta^(leaves t) := by
+  induction t with
+  | leaf => simp [weight, forks, leaves]
+  | graft l r hl hr =>
+    simp only [weight, forks, leaves, hl, hr, pow_add, pow_one]
+    ring
+
+theorem graft_lift_bound {C a b wa wb : ℝ}
+    (hC : 0 ≤ C) (ha : a ≤ wa) (hb : b ≤ wb)
+    (hb0 : 0 ≤ b) (hwa : 0 ≤ wa) :
+    C*a*b ≤ C*wa*wb := by
+  calc
+    C*a*b = C*(a*b) := by ring
+    _ ≤ C*(wa*wb) := mul_le_mul_of_nonneg_left (mul_le_mul ha hb hb0 hwa) hC
+    _ = C*wa*wb := by ring
+
+#print axioms leaves_eq_forks_add_one
+#print axioms weight_formula
+#print axioms graft_lift_bound
+end SelectedTree211
