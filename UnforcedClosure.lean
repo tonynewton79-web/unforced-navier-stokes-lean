@@ -151,3 +151,54 @@ end Support
 
 end
 end UnforcedClosure
+
+
+/- Attack 207: scalar late-restart comparison only.
+   x = delta^(1/64), m is a H^(17/8)-source inverse bound.
+   The analytic estimates are hypotheses, not proved here. -/
+namespace LateRestart207
+
+theorem packet_margin {h : ℝ} (hh : 0 < h) (hsmall : h < (1 : ℝ) / 100) :
+    0 < (1 + h) / 16 - h / 2 := by
+  linarith
+
+theorem restart_product_bound
+    {x m M K F C eta : ℝ}
+    (hx : 0 ≤ x) (hM : 0 ≤ M) (hK : 0 ≤ K) (hF : 0 ≤ F)
+    (heta : 0 ≤ eta)
+    (hm : m * x^16 ≤ M)
+    (hC : C ≤ m * K * x^21)
+    (hE : eta ≤ m * F * x^24) :
+    4 * C * eta ≤ 4 * M^2 * K * F * x^13 := by
+  have hc : C ≤ M * K * x^5 := calc
+    C ≤ m * K * x^21 := hC
+    _ = (m * x^16) * K * x^5 := by ring
+    _ ≤ M * K * x^5 :=
+      mul_le_mul_of_nonneg_right (mul_le_mul_of_nonneg_right hm hK) (pow_nonneg hx 5)
+  have he : eta ≤ M * F * x^8 := calc
+    eta ≤ m * F * x^24 := hE
+    _ = (m * x^16) * F * x^8 := by ring
+    _ ≤ M * F * x^8 :=
+      mul_le_mul_of_nonneg_right (mul_le_mul_of_nonneg_right hm hF) (pow_nonneg hx 8)
+  have hb : 0 ≤ M * K * x^5 := by positivity
+  calc
+    4 * C * eta = 4 * (C * eta) := by ring
+    _ ≤ 4 * ((M * K * x^5) * (M * F * x^8)) :=
+      mul_le_mul_of_nonneg_left (mul_le_mul hc he heta hb) (by norm_num)
+    _ = 4 * M^2 * K * F * x^13 := by ring
+
+theorem restart_gate
+    {x m M K F C eta : ℝ}
+    (hx : 0 ≤ x) (hM : 0 ≤ M) (hK : 0 ≤ K) (hF : 0 ≤ F)
+    (heta : 0 ≤ eta)
+    (hm : m * x^16 ≤ M)
+    (hC : C ≤ m * K * x^21)
+    (hE : eta ≤ m * F * x^24)
+    (hsmall : 4 * M^2 * K * F * x^13 < 1) :
+    4 * C * eta < 1 :=
+  lt_of_le_of_lt (restart_product_bound hx hM hK hF heta hm hC hE) hsmall
+
+#print axioms packet_margin
+#print axioms restart_product_bound
+#print axioms restart_gate
+end LateRestart207
