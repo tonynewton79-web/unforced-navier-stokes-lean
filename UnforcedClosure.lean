@@ -382,3 +382,31 @@ theorem graft_lift_bound {C a b wa wb : ℝ}
 #print axioms weight_formula
 #print axioms graft_lift_bound
 end SelectedTree211
+
+
+/- Attack 212: abstract algebra of the projected shifted leaf.
+   A represents the projected heat derivative, M the mixed term.
+   This is not a construction of the physical lifts. -/
+namespace PhysicalLeaf212
+
+theorem shifted_leaf
+    {X Y : Type*} [AddCommGroup X] [Module ℝ X]
+    [AddCommGroup Y] [Module ℝ Y]
+    (A M : X →ₗ[ℝ] Y) (v Vn : X) (F Q : Y)
+    (hbase : A Vn + Q = F)
+    (hleaf : A v + M v = -F) :
+    A (v + Vn) + M (v + Vn) = M Vn - Q := by
+  simp only [map_add]
+  calc
+    A v + A Vn + (M v + M Vn) =
+        (A v + M v) + (A Vn + Q) + M Vn - Q := by abel
+    _ = M Vn - Q := by rw [hleaf, hbase]; abel
+
+theorem second_order_residual
+    (s v w : ℝ) :
+    (s*v + s^2*w)^2 - s^2*v^2 =
+      2*s^3*v*w + s^4*w^2 := by ring
+
+#print axioms shifted_leaf
+#print axioms second_order_residual
+end PhysicalLeaf212
