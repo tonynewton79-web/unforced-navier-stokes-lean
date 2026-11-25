@@ -302,3 +302,33 @@ theorem weakened_selection
 #print axioms horizontal_scaling
 #print axioms weakened_selection
 end EnergySpace209
+
+
+/- Attack 210: scalar checks only. The actual finite-order PDE
+   packet expansion and its remainder estimates are analytic. -/
+namespace ShearPacket210
+
+theorem crossing_sign {nu p m Fp : ℝ}
+    (hn : 0 < nu) (hp : 0 < p) (hm : m < 0) (hf : Fp < 0) :
+    0 < 3 * nu * p * m * Fp := by
+  have h : 0 < m * Fp := mul_pos_of_neg_of_neg hm hf
+  calc
+    0 < (3 * nu * p) * (m * Fp) := mul_pos (by positivity) h
+    _ = 3 * nu * p * m * Fp := by ring
+
+theorem neutral_slope {nu p g b l : ℝ}
+    (hl : 0 < l) (hneut : g*b = nu*l^3) :
+    2*nu*p + (g*b/l^3)*p = 3*nu*p := by
+  have h : g*b/l^3 = nu := (div_eq_iff (pow_ne_zero 3 (ne_of_gt hl))).2 hneut
+  rw [h]
+  ring
+
+theorem packet_margin {N h : ℝ}
+    (hN : 1 + h < 4*N*h) :
+    0 < N*h/4 - (1+h)/16 := by
+  nlinarith
+
+#print axioms crossing_sign
+#print axioms neutral_slope
+#print axioms packet_margin
+end ShearPacket210
