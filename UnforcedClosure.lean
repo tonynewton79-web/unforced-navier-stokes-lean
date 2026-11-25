@@ -410,3 +410,35 @@ theorem second_order_residual
 #print axioms shifted_leaf
 #print axioms second_order_residual
 end PhysicalLeaf212
+
+
+/- Attack 213: scalar exact-prefix certificates only.
+   No numerical values for the selected upstream stages are asserted. -/
+namespace ExactPrefix213
+
+theorem doubling_pow_lower (a : ℕ → ℕ) (h0 : 1 ≤ a 0)
+    (hd : ∀ j, 2 * a j ≤ a (j+1)) :
+    ∀ j : ℕ, 2^j ≤ a j := by
+  intro j
+  induction j with
+  | zero => simpa using h0
+  | succ j ih =>
+    calc
+      2^(j+1) = 2 * 2^j := by rw [pow_succ, Nat.mul_comm]
+      _ ≤ 2 * a j := Nat.mul_le_mul_left 2 ih
+      _ ≤ a (j+1) := hd j
+
+theorem cutoff_margin {a q delta b : ℝ} (hb : 0 ≤ b)
+    (hd : 0 < delta) (ha : b ≤ a) (hq : delta ≤ q)
+    (hm : 2 ≤ b * delta) : 1 < a * q := by
+  have hq0 : 0 ≤ q := le_of_lt (hd.trans_le hq)
+  have h : b * delta ≤ a * q := mul_le_mul ha hq hd.le (hb.trans ha)
+  linarith
+
+theorem coordinate_lower {q tau zpow : ℝ} (hz : 0 ≤ zpow)
+    (heq : q - zpow = tau) : tau ≤ q := by linarith
+
+#print axioms doubling_pow_lower
+#print axioms cutoff_margin
+#print axioms coordinate_lower
+end ExactPrefix213
