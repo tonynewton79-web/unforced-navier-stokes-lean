@@ -256,3 +256,49 @@ theorem heat_point_margin {h : ℝ} (hh : h < (1 : ℝ) / 100) :
 #print axioms one_tail_product_bound
 #print axioms heat_point_margin
 end OneTail208
+
+
+/- Attack 209: scalar Gram positivity and abstract norm weakening.
+   This file does not formalize Sobolev duality or carrier coercivity. -/
+namespace EnergySpace209
+
+theorem annular_gram_density_pos
+    {R F Fp Fpp : ℝ}
+    (hR : 0 < R) (hF : 0 < F)
+    (hB : 2 * F + R * Fp < 0) :
+    0 < R * ((R * Fpp + 2 * Fp)^2 + 3 * Fp^2) := by
+  have hp : Fp ≠ 0 := by
+    intro hz
+    rw [hz, mul_zero, add_zero] at hB
+    linarith
+  have hs : 0 < Fp^2 := by positivity
+  have ht : 0 < (R * Fpp + 2 * Fp)^2 + 3 * Fp^2 := by
+    nlinarith [sq_nonneg (R * Fpp + 2 * Fp)]
+  exact mul_pos hR ht
+
+theorem horizontal_trace_margin {h : ℝ}
+    (hh : h < (1 : ℝ)/100) :
+    0 < (5 : ℝ)/64 - 5*h := by linarith
+
+theorem horizontal_scaling (h : ℝ) :
+    -(1/2+h) - 1 + (3/2-h)/2 =
+      -(3 : ℝ)/4 - 3*h/2 := by ring
+
+theorem weakened_selection
+    {X Y Z : Type*}
+    (nX : X → ℝ) (nY : Y → ℝ) (nZ : Z → ℝ)
+    (LX : X → Z → Prop) (LY : Y → Z → Prop)
+    (incl : X → Y) (M : ℝ)
+    (hdom : ∀ x, nY (incl x) ≤ nX x)
+    (hcompat : ∀ x s, LX x s → LY (incl x) s)
+    (hsolve : ∀ s, ∃ x, LX x s ∧ nX x ≤ M*nZ s) :
+    ∀ s, ∃ y, LY y s ∧ nY y ≤ M*nZ s := by
+  intro s
+  obtain ⟨x, hx, hb⟩ := hsolve s
+  exact ⟨incl x, hcompat x s hx, (hdom x).trans hb⟩
+
+#print axioms annular_gram_density_pos
+#print axioms horizontal_trace_margin
+#print axioms horizontal_scaling
+#print axioms weakened_selection
+end EnergySpace209
