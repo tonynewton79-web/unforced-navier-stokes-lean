@@ -202,3 +202,57 @@ theorem restart_gate
 #print axioms restart_product_bound
 #print axioms restart_gate
 end LateRestart207
+
+
+/- Attack 208: abstract restriction and scalar margin only.
+   No singular-carrier PDE coercivity is asserted. -/
+namespace OneTail208
+
+theorem restriction_bound
+    {XL XS ZL ZS : Type*}
+    (nXL : XL → ℝ) (nXS : XS → ℝ)
+    (nZL : ZL → ℝ) (nZS : ZS → ℝ)
+    (large : XL → ZL → Prop) (small : XS → ZS → Prop)
+    (restrictX : XL → XS) (extendZ : ZS → ZL)
+    (M : ℝ)
+    (hcontract : ∀ x, nXS (restrictX x) ≤ nXL x)
+    (hisom : ∀ s, nZL (extendZ s) = nZS s)
+    (hcompat : ∀ x s, large x (extendZ s) → small (restrictX x) s)
+    (hsolve : ∀ z, ∃ x, large x z ∧ nXL x ≤ M * nZL z) :
+    ∀ s, ∃ x, small x s ∧ nXS x ≤ M * nZS s := by
+  intro s
+  obtain ⟨x, hx, hb⟩ := hsolve (extendZ s)
+  refine ⟨restrictX x, hcompat x s hx, ?_⟩
+  calc
+    nXS (restrictX x) ≤ nXL x := hcontract x
+    _ ≤ M * nZL (extendZ s) := hb
+    _ = M * nZS s := by rw [hisom]
+
+theorem one_tail_product_bound
+    {x m M K F C eta : ℝ}
+    (hx : 0 ≤ x) (hM : 0 ≤ M) (hK : 0 ≤ K) (hF : 0 ≤ F)
+    (heta : 0 ≤ eta) (hm : m ≤ M)
+    (hC : C ≤ m * K * x^21)
+    (hE : eta ≤ m * F * x^24) :
+    4 * C * eta ≤ 4 * M^2 * K * F * x^45 := by
+  have hc : C ≤ M * K * x^21 :=
+    hC.trans (mul_le_mul_of_nonneg_right
+      (mul_le_mul_of_nonneg_right hm hK) (pow_nonneg hx 21))
+  have he : eta ≤ M * F * x^24 :=
+    hE.trans (mul_le_mul_of_nonneg_right
+      (mul_le_mul_of_nonneg_right hm hF) (pow_nonneg hx 24))
+  have hb : 0 ≤ M * K * x^21 := by positivity
+  calc
+    4 * C * eta = 4 * (C * eta) := by ring
+    _ ≤ 4 * ((M * K * x^21) * (M * F * x^24)) :=
+      mul_le_mul_of_nonneg_left (mul_le_mul hc he heta hb) (by norm_num)
+    _ = 4 * M^2 * K * F * x^45 := by ring
+
+theorem heat_point_margin {h : ℝ} (hh : h < (1 : ℝ) / 100) :
+    (1 : ℝ) / 16 < (1 : ℝ) / 8 - 3*h/2 := by
+  linarith
+
+#print axioms restriction_bound
+#print axioms one_tail_product_bound
+#print axioms heat_point_margin
+end OneTail208
